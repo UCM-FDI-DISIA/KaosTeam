@@ -2,12 +2,13 @@
 //
 
 #include <iostream>
+#include "Game.h"
 
-int main()
+int main(int ac, char** av)
 {
-    std::cout << "Hello World!\n";
-
-    
+    Game* game = new Game();
+    game->Init();
+    return 0;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
