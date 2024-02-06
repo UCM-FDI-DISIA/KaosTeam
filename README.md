@@ -156,8 +156,7 @@ Las salas 1, 2, 3 y 5 ocupan el tamaño de la pantalla, por lo tanto la cámara 
 
 Cuando consiga activar los cuatro interruptores, se abrirá la puerta a la sala 5. Desde esta sala se puede volver a la sala 1.
 
-- **Sala 5:** al entrar a esta última sala, se bloquea la puerta para volver a la sala 4 y la puerta para salir del hormiguero está cerrada. En las esquinas de esta sala se encuentran los cuatro huevos de hormiga que faltaban en los huecos de la sala 3, pero están encerrados. Para poder desbloquear los huevos de hormigas, el jugador se va a enfrentar a una oleada de enemigos(hormigas negras, termitas y también van a haber hormigas rojas) donde hay que matar a todos. Cuando esto se consiga, el jugador va a desbloquear el "saco de bombas" para que pueda almacenar más de una bomba. A la vez, también se van a desbloquear los huevos de hormiga. Estos huevos son necesarios para abrir la puerta para salir de la zona. Hay que llevarlos a la sala 3 y colocarlos en los huecos donde faltan
-
+- **Sala 5:** al entrar a esta última sala, se bloquea la puerta para volver a la sala 4 y la puerta para salir del hormiguero está cerrada. En las esquinas de esta sala se encuentran los cuatro huevos de hormiga que faltaban en los huecos de la sala 3, pero están encerrados. Para poder desbloquear los huevos de hormigas, el jugador se va a enfrentar a una oleada de enemigos(hormigas negras, termitas y también van a haber hormigas rojas) donde hay que matar a todos. Cuando esto se consiga, el jugador va a desbloquear el "saco de bombas" para que pueda almacenar más de una bomba. A la vez, también se van a desbloquear los huevos de hormiga. Estos huevos son necesarios para abrir la puerta para salir de la zona. Hay que llevarlos a la sala 3 y  colocarlos en los huecos donde faltan, utilizando ya la habilidad del saco de bombas. Al colocarlos se desbloqueará la puerta para salir definitivamente de esta zona.
 ### Zona de la cocina del chef francés
 
 ## Tienda
