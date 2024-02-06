@@ -72,27 +72,27 @@ Mecánicas del escenario
 
 Objetos que se activan con el gancho (de momento solo palanca): objetos que al ser golpeados con el gancho hacen algo.
 
-![](RackMultipart20240205-1-6mq8hl_html_ef1e036cc6322808.jpg)
+![](assets/imgGdd/image3.jpg)
 
-![](RackMultipart20240205-1-6mq8hl_html_d3e64ff72f696370.jpg)
+![](assets/imgGdd/image5-1.jpg)
 
 Piedras movibles: piedras las cuales se pueden empujar.
 
-![](RackMultipart20240205-1-6mq8hl_html_d3e64ff72f696370.jpg)
+![](assets/imgGdd/image5-2.jpg)
 
 **Objetos rompibles (vasijas de momento):** objetos que puedes romper y pueden estar vacíos o tener algo en su interior (dinero, vida).
 
-![](RackMultipart20240205-1-6mq8hl_html_d3e64ff72f696370.jpg)
+![](assets/imgGdd/image5-3.jpg)
 
 **Huecos para saltar:** en el escenario habrá huecos para los cuales se necesita mejorar el salto para poder pasar.
 
-![](RackMultipart20240205-1-6mq8hl_html_d3e64ff72f696370.jpg)
+![](assets/imgGdd/image5-4.jpg)
 
 **Objetos explotables:** objetos en el escenario los cuales solo se pueden destruir con bombas (hormigas rojas).
 
-![](RackMultipart20240205-1-6mq8hl_html_d3e64ff72f696370.jpg)
+![](assets/imgGdd/image5-5.jpg)
 
-![](RackMultipart20240205-1-6mq8hl_html_d3e64ff72f696370.jpg)
+![](assets/imgGdd/image5-6.jpg)
 
 ## Diseño de niveles
 
@@ -102,7 +102,7 @@ Nuestro juego está dividido en diferentes zonas, donde habrá enemigos y objeto
 
 ### Estanqu
 
-![](RackMultipart20240205-1-6mq8hl_html_d3e64ff72f696370.jpg)
+![](assets/imgGdd/image5.jpg)
 
 Diseño inicial sin finalizar
 
@@ -118,7 +118,7 @@ En la parte superior y al casi al final del recorrido inicial del jugador, se en
 
 **El bosque** es una zona amplia dividida en varías subzonas interconectadas y hasta cierto punto independientes con diferentes desafíos.
 
-![](RackMultipart20240205-1-6mq8hl_html_3e144720a1ad5316.jpg)
+![](assets/imgGdd/image1.jpg)
 
 Esquema conceptual de la zona con sus subdivisiones. (cambiar por mejora)
 
@@ -126,15 +126,16 @@ Esquema conceptual de la zona con sus subdivisiones. (cambiar por mejora)
 
 hacia los escombros (izquierda) y tendrá enemigos repartidos a lo largo del camino.
 
-![](RackMultipart20240205-1-6mq8hl_html_191bf5179351cced.jpg)
+![](assets/imgGdd/image9.jpg)
 
 **Escombros/Ruinas** es la subzona inferior central accesible por arriba desde el cruce y la izquierda por el cañón. El principal atractivo es un montón de escombros en el centro donde se podrá entrar y en cuyo interior habrá un combate complicado contra varios enemigos donde se recompensará al final con una mejora.
 
-![](RackMultipart20240205-1-6mq8hl_html_de5d3ccb168acda6.jpg)
+![](assets/imgGdd/imagen2.jpg)
 
 **Árbol del Ovi** es la subzona en la esquina superior derecha accesible desde el cañón por el lado inferior y el cruce por el lado izquierdo. Está zona contiene la mazmorra principal de la zona. Un árbol centenario que con espacio en su interior que sigue una estructura como de un árbol. Una zona ascendente compacta a modo de tronco y una copa con una estructura más "radial" donde se necesitara usar el gancho. El combate contra el jefe empezará después de caerse de una rama en un evento scripteado.
 
-![](RackMultipart20240205-1-6mq8hl_html_3a8448de1bc899db.jpg) ![](RackMultipart20240205-1-6mq8hl_html_49b63f8647c6e23d.jpg)
+![](assets/imgGdd/image4.jpg)
+![](assets/imgGdd/image7.jpg)
 
 **Cruze** es la subzona central superior. Es una zona de transición donde estará localizado el pájaro mercante y conectará con las subzonas el árbol de Ovi (derecha), escombros (inferior) y riachuelo seco tanto como la zona superior como la inferior (izquierda). No tiene nada interesante más allá del mercante y quizás algún cartel o NPC.
 
@@ -142,7 +143,7 @@ hacia los escombros (izquierda) y tendrá enemigos repartidos a lo largo del cam
 
 ### Hormiguero
 
-![](RackMultipart20240205-1-6mq8hl_html_54ce07bcb5d15834.jpg)
+![](assets/imgGdd/image10.jpg)
 
 El hormiguero está dividido en 5 salas.
 
@@ -167,7 +168,8 @@ El precio de las mejoras será relativamente alto, por lo que el jugador no podr
 
 Las lombrices se pueden encontrar por todo el juego al romper objetos o al matar enemigos. Hay varios tipos de lombrices de uróboros con un valor ascendente según su rareza.
 
-![](RackMultipart20240205-1-6mq8hl_html_585fb01169c15eaa.gif) ![](RackMultipart20240205-1-6mq8hl_html_c417017fec5aa838.gif)
+![](assets/imgGdd/image11.gif)
+![](assets/imgGdd/image8.gif)
 
 ## HUD
 
@@ -175,7 +177,7 @@ Las lombrices se pueden encontrar por todo el juego al romper objetos o al matar
 
 Esta interfaz consta de dos elementos muy sencillos.
 
-![image5.png](RackMultipart20240205-1-6mq8hl_html_1293920606bee9ab.gif)
+![](assets/imgGdd/image6.jpg)
 
 Por un lado tenemos en la esquina superior izquierda una barra con iconos de mosca que representan las vidas de nuestro personaje. La cantidad de moscas que posee la barra, coincide con el número de vidas totales que el jugador puede adquirir. Si una mosca está teñida de un tono claro, el jugador posee esa vida, de lo contrario, si está teñida de un tono más oscuro entonces no la posee.
 
