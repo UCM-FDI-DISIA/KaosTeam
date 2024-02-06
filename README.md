@@ -10,24 +10,24 @@ _Flonk!_ es un juego de aventuras al estilo más clásico en el que Flonk, la ra
 
 ## Mecánicas del jugador
 
-El movimiento del juego está basado en saltos de casilla en casilla en un tablero donde la acción se desarrollará. También tendrá un set de habilidades iniciales que luego serán mejoradas con mejoras que aumentarán la fuerza y utilidad de estas y se podrá ampliar el repertorio de habilidades disponibles con otras mejoras obtenidas durante la partida.
+El movimiento del juego está basado en saltos de casilla en casilla en un tablero donde se desarrollará la acción . También tendrá un set de habilidades iniciales que luego serán mejoradas con mejoras que aumentarán la fuerza y utilidad de estas y se podrá ampliar el repertorio de habilidades disponibles con otras mejoras obtenidas durante la partida.
 
 - **Movimientos básicos**
 
-  - **Movimiento basado en saltos** pequeños de una casilla y saltos largos cuyo alcance depende de las mejoras previas y el input del jugador.
-
+  - **Movimiento basado en saltos** pequeños de una casilla o largos cuyo alcance depende de las mejoras previas y el input del jugador.
   - **Ataque básico** con la lengua de la rana. Este afectaría a las casillas en la dirección que el jugador apunte/mire y su alcance dependerá de las mejoras.
-  - **Escudo** con el saco hinchable de la rana localizado en la parte inferior de su boca. La rana lo usará para defenderse y rechazar ataques que provengan de determinada dirección.
-  - **Mejoras:** durante la aventura,el jugador podrá devorar bichos especiales que le otorgarán mejoras permanentes a las habilidades básicas:
-    - **Saltamontes** : permiten al jugador mantener pulsado el botón de salto para llegar más lejos.
-    - **Moscas de la vida** : aumentan la vida máxima del jugador.
-    - **Por determinar** : aumentan el ataque de los ataques básicos.
-    - **Por determinar** : aumentan el alcance de los ataques básicos.
+  - **Escudo** con el saco hinchable de la rana localizado en la parte inferior de su boca. Lo usará para defenderse y rechazar ataques que provengan de determinada dirección.
+- **Mejoras**
 
+  - **Saltamontes** : manteniendo pulsado el botón para saltar permiten al jugador llegar más lejos. 
+  - **Moscas de la vida** : aumentan la vida máxima del jugador.
+  - **Por determinar** : aumentan el ataque de los ataques básicos.
+  - **Por determinar** : aumentan el alcance de los ataques básicos.
 - **Habilidades extras desbloqueables**
-  - **Gancho** de pesca atado a la lengua que se podrá usar tanto en combate para atacar a los enemigos como para desplazarse más eficientemente y poder alcanzar lugares nuevos. Se desbloquea en la mazmorra principal del bosque (árbol del Ovi (nombre sin confirmar)) y será necesario conseguirlo para progresar.
-
-  - **Hormigas explosivas rojas y saco de hormigas** , estas hormigas se pueden usar como bombas contra enemigos y para acceder a sitios previamente inaccesibles (rompiendo paredes o resolviendo puzzles). En un principio las hormigas bombas serían enemigos que usarías pero más adelante (en el hormiguero) el jugador conseguiría un saco donde guardarlas para poder transportarlas y usarlas luego sin ser atado a habitaciones o zonas específicas.
+  - **Gancho** de pesca atado a la lengua. Se podrá usar tanto en combate para atacar a los enemigos, para desplazarse más eficientemente y poder alcanzar lugares nuevos. Se desbloquea en la mazmorra principal del bosque (árbol del Ovi (nombre sin confirmar)) y será necesario conseguirlo para poder avanzar en las zonas posteriores.
+  - **Hormigas explosivas rojas y saco de hormigas** , estas hormigas se pueden usar como bombas contra enemigos, para acceder a sitios previamente inaccesibles rompiendo las paredes o necesarias para resolver puzzles.
+   -**Saco de hormigas** , se desbloquea en el hormiguero. Permitirá a la rana poder almacenar más de una hormiga roja o cualquier otro objeto y poder transportarlo y usarlo cuando quiera. 
+  
 
 - **Power Ups**
 
@@ -48,17 +48,15 @@ En desarrollo: probablemente contendrá algunos enemigos con patrones de ataque 
 
 - **Serpientes:** En desarrollo…
 
-- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidos pero poco resistentes. Se matan de un solo golpe.
+- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes. Se matan de un solo golpe.
 
 ### Hormiguero
 
 En esta zona, los insectos tratarán de defender su hogar atacándote. Hay 2 tipos de enemigos característicos de estas zonas:
 
-- **Las hormigas,** estos insectos sociales suelen ir solos a la hora de atacar.
+- **Las hormigas,** estos insectos sociales suelen ir solos a la hora de atacar.Son algo lentos, pero son bastante resistentes. Mueren de 3 golpes.
 
-Son algo lentos, pero son bastante resistentes. Suelen morir de 3 golpes.
-
-- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidos pero poco resistentes. Se matan de un solo golpe.
+- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes. Se matan de un solo golpe.
 
 ### Zona de la cocina del chef francés
 
@@ -66,21 +64,23 @@ En desarrollo…
 
 ## Cámara
 
-El juego es 2D top down, por tanto la cámara al moverse lo hará de forma scroll lateral. Cuando el tamaño de la sala sea igual o menor al de la pantalla la cámara será fija, cuando el tamaño de la sala sea mayor, si el jugador está en el área central de la cámara, esta no se moverá, pero si se desplaza más a la derecha, izquierda, por encima o por debajo de ese área, la cámara "seguirá" al jugador.
+El juego es 2D top down, por tanto la cámara al moverse lo hará de forma scroll lateral. Cuando el tamaño de la sala sea igual o menor al de la pantalla de juego, la cámara se quedará fija. Cuando el tamaño de la sala sea mayor, si el jugador está en el área central de la cámara, esta no se moverá, pero si se desplaza más a la derecha, izquierda, por encima o por debajo de ese área, la cámara "seguirá" al jugador.
+![](assets/imgGdd/camara.png)
+Cuando el jugador supere el límite del tamaño de la cámara en cualquiera de las direcciones, la cámara seguirá al jugador con este en el centro hasta los límites de la sala.
 
-Mecánicas del escenario
+## Mecánicas del escenario
 
-Objetos que se activan con el gancho (de momento solo palanca): objetos que al ser golpeados con el gancho hacen algo.
+**Objetos que se activan con el gancho** (de momento solo palanca): objetos que al ser golpeados con el gancho hacen algo.
 
 ![](assets/imgGdd/image3.jpg)
 
 ![](assets/imgGdd/image5-1.jpg)
 
-Piedras movibles: piedras las cuales se pueden empujar.
+**Piedras movibles**: piedras las cuales se pueden empujar.
 
 ![](assets/imgGdd/image5-2.jpg)
 
-**Objetos rompibles (vasijas de momento):** objetos que puedes romper y pueden estar vacíos o tener algo en su interior (dinero, vida).
+**Objetos rompibles (vasijas de momento):** objetos que puedes romper y pueden estar vacíos o tener algo en su interior (dinero, vida, objetos como llaves).
 
 ![](assets/imgGdd/image5-3.jpg)
 
@@ -88,7 +88,7 @@ Piedras movibles: piedras las cuales se pueden empujar.
 
 ![](assets/imgGdd/image5-4.jpg)
 
-**Objetos explotables:** objetos en el escenario los cuales solo se pueden destruir con bombas (hormigas rojas).
+**Objetos explotables:** objetos en el escenario los cuales solo se pueden destruir con bombas (hormigas rojas) o su utilidad se activa gracias a la bomba. Por ejemplo, **los interruptores** se activan con bombas y permiten abrir puertas.
 
 ![](assets/imgGdd/image5-5.jpg)
 
@@ -100,7 +100,7 @@ Nuestro juego está dividido en diferentes zonas, donde habrá enemigos y objeto
 
 ### Descripción de los niveles
 
-### Estanqu
+### Estanque
 
 ![](assets/imgGdd/image5.jpg)
 
@@ -149,19 +149,16 @@ El hormiguero está dividido en 5 salas.
 
 Las salas 1, 2, 3 y 5 ocupan el tamaño de la pantalla, por lo tanto la cámara es fija. En cambio, la sala 4 es más grande de lo que abarca la cámara, por lo que la cámara seguirá al jugador.
 
-- **Sala 1:** en esta primera sala, se le va a presentar al jugador las hormigas rojas para que descubra que si se las traga y luego las suelta, sirven de bomba. Desde esta sala puede dirigirse a la sala 2, que está bloqueada pero si utiliza la bomba conseguirá abrirla, o a la sala 4, que hasta que no consiga la llave que abre esa puerta no podrá ir hacia esta sala.
-- **Sala 2:** en esta sala el jugador se va a encontrar un acertijo para abrir la puerta a la sala 3. El jugador se va a encontrar con una cinta transportadora, un interruptor y un _spawn_ de hormigas bombas. Va a necesitar una bomba para colocarla al inicio de la cinta, que la bomba se transporte hasta el interruptor y que gracias a la bomba este se active y así abrir la puerta a la sala 3. En esta sala también se presenta a uno de los enemigos de esta zona, las hormigas negras, que irán a atacar al jugador. Desde esta sala se puede volver a la sala 1.
-- **Sala 3:** en esta sala el jugador se va a encontrar con jarrones que al romperlos se descubrirá si tenían algo dentro. Uno de estos contendrá la llave que permite abrir la puerta de la sala 4. En esta sala también hay una zona donde hay colocados un par de huevos de hormigas, pero hay huecos donde faltan. En esta sala se presenta a los otros enemigos de esta zona, habrá dos _spawns_ de oleadas de termitas(el tiempo de _spawn_ es alto para que no sean muy molestas). Desde esta sala se puede volver a la sala 2.
-- **Sala 4:** cuando el jugador haya encontrado la llave que permite abrir esta sala, se va a encontrar otro acertijo. Para abrir la puerta que le lleva a la sala 5, tiene que activar cuatro interruptores. Entre el suelo por donde va la rana y los interruptores no hay nada, por lo que si se intenta ir por ahí se caerá al vacío. Por lo tanto, estos interruptores son inalcanzables por la lengua gancho y tampoco se llega saltando. Para activar los interruptores, el jugador tendrá que poner a prueba su puntería y lanzar bombas a los interruptores para activarlos. Para tener suficientes intentos, hay un _spawn_ de hormigas rojas en el centro de la sala, pero no va a ser fácil porque en cada lateral también habrá un _spawn_ de hormigas negras que molestarán al jugador.
-
-Cuando consiga activar los cuatro interruptores, se abrirá la puerta a la sala 5. Desde esta sala se puede volver a la sala 1.
-
+- **Sala 1:** en esta primera sala, se le va a presentar al jugador las hormigas rojas para que descubra que si se las traga y luego las suelta, sirven de bomba. Desde esta sala puede dirigirse a la sala 2, que está bloqueada, pero si utiliza la bomba conseguirá abrirla, o a la sala 4, que hasta que no consiga la llave que abre esa puerta no podrá ir hacia esta sala.
+- **Sala 2:** en esta sala el jugador se va a encontrar un acertijo para abrir la puerta que le dirige a la sala 3. El jugador se va a encontrar con una cinta transportadora, un interruptor y un _spawn_ de hormigas bombas. Va a necesitar una bomba para colocarla al inicio de la cinta, que la bomba se transporte hasta el interruptor y que gracias a la bomba, este se active y así abrir la puerta a la sala 3. En esta sala también se presenta a uno de los enemigos de esta zona, las hormigas negras, que irán a atacar al jugador. Desde esta sala se puede volver a la sala 1.
+- **Sala 3:** en esta sala el jugador se va a encontrar con vasijas que al romperlos se descubrirá si tenían algo dentro. Uno de estos contendrá la llave que permite abrir la puerta de la sala 4. En esta sala también hay una zona donde hay colocados un par de huevos de hormigas, pero hay huecos donde faltan. En esta sala se presenta a los otros enemigos de esta zona, habrá dos _spawns_ de oleadas de termitas(el tiempo de _spawn_ es alto para que no sean muy molestas). Desde esta sala se puede volver a la sala 2.
+- **Sala 4:** cuando el jugador haya encontrado la llave que permite abrir esta sala, se va a encontrar otro acertijo. Para abrir la puerta que le lleva a la sala 5, tiene que activar cuatro interruptores. Entre el suelo por donde va la rana y los interruptores no hay nada, por lo que si se intenta ir por ahí se caerá al vacío. Por lo tanto, estos interruptores son inalcanzables por la lengua gancho y tampoco se llega saltando. Para activar los interruptores, el jugador tendrá que poner a prueba su puntería y lanzar bombas a los interruptores para activarlos. Para tener suficientes intentos, hay un _spawn_ de hormigas rojas en el centro de la sala, pero no va a ser fácil porque en cada lateral también habrá un _spawn_ de hormigas negras que molestarán al jugador. Cuando consiga activar los cuatro interruptores, se abrirá la puerta a la sala 5. Desde esta sala se puede volver a la sala 1.
 - **Sala 5:** al entrar a esta última sala, se bloquea la puerta para volver a la sala 4 y la puerta para salir del hormiguero está cerrada. En las esquinas de esta sala se encuentran los cuatro huevos de hormiga que faltaban en los huecos de la sala 3, pero están encerrados. Para poder desbloquear los huevos de hormigas, el jugador se va a enfrentar a una oleada de enemigos(hormigas negras, termitas y también van a haber hormigas rojas) donde hay que matar a todos. Cuando esto se consiga, el jugador va a desbloquear el "saco de bombas" para que pueda almacenar más de una bomba. A la vez, también se van a desbloquear los huevos de hormiga. Estos huevos son necesarios para abrir la puerta para salir de la zona. Hay que llevarlos a la sala 3 y  colocarlos en los huecos donde faltan, utilizando ya la habilidad del saco de bombas. Al colocarlos se desbloqueará la puerta para salir definitivamente de esta zona.
 ### Zona de la cocina del chef francés
 
 ## Tienda
 
-Durante la aventura el jugador encontrará lombrices de uróboros que podrá intercambiar con un curioso pájaro por mejoras en la tienda.
+Durante la aventura, el jugador encontrará lombrices de uróboros que podrá intercambiar con un curioso pájaro por mejoras en la tienda.
 
 El precio de las mejoras será relativamente alto, por lo que el jugador no podrá adquirirlas de buenas a primeras.
 
@@ -182,6 +179,6 @@ Por un lado tenemos en la esquina superior izquierda una barra con iconos de mos
 
 Por último, en la esquina superior derecha, se muestra un icono de una lombriz (que es como se representa el dinero en el juego) junto a un contador (que nos indica la cantidad de dinero en el juego). A medida que el jugador obtenga lombrices, dependiendo de su color, el contador aumenta una cantidad u otra.
 
-Estética y Visual
+## Estética y Visual
 
 El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de Paper Mario y "garabato vivo" al de Ed, Edd & Eddy. Y los animales tendrán tamaño y aspecto "realistas" hasta cierto punto. No serán 100% similares a sus contrapartes reales y se tomarán libertades creativas pero tendrá cierto grado de realismo. Como que la mayoría de los enemigos sean depredadores naturales de las ranas y la mejoras sean presas naturales o al menos factibles.
