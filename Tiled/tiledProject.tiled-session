@@ -1,0 +1,45 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "tileMap_Prueba.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "tileMap_Prueba.tmx": {
+            "scale": 3.9899999999999998,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 80.07518796992481,
+                "y": 80.07518796992483
+            }
+        },
+        "tiledTry.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 2
+        }
+    },
+    "last.imagePath": "C:/UCM3/2.P/KaosTeam/Assets/ProvisionalTileset/Solaria Demo Pack Update 03/16x16/Tilesets",
+    "map.height": 10,
+    "map.lastUsedFormat": "tmx",
+    "map.renderOrder": null,
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 10,
+    "openFiles": [
+        "tiledTry.tsx",
+        "tileMap_Prueba.tmx"
+    ],
+    "project": "tiledProject.tiled-project",
+    "recentFiles": [
+        "tiledTry.tsx",
+        "tileMap_Prueba.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
