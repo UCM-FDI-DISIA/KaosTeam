@@ -46,7 +46,7 @@ A lo largo del juego, el jugador deberá hacer frente a distintos tipos de enemi
 
 ### Bosque
 
-- **Serpientes:** En desarrollo…
+- **Las serpientes** actuan como el snake de Nokia. Su cuerpo ocupa varias casillas y si entras en contacto con cualquier parte de este sufres daño. Estas intentan cazar a la rana persiguiendola y son resistentes.
 
 - **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes y se matan de un solo golpe.
 
