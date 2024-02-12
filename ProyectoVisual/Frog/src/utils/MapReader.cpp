@@ -1,7 +1,9 @@
 #include "MapReader.h"
+#include "../sdlutils/SDLUtils.h"
 
 MapReader::MapReader() {
 
+    #pragma region Lectura ej. (info a consola)
     if (map.load("resources/maps/tileMap_Prueba.tmx"))
     {
         std::cout << "Loaded Map version: " << map.getVersion().upper << ", " << map.getVersion().lower << std::endl;
@@ -123,4 +125,13 @@ MapReader::MapReader() {
     {
         std::cout << "Failed loading map" << std::endl;
     }
+    #pragma endregion
+      
+    
+    #pragma region Lectura real (info guardamos)
+    tilemap = new Texture(sdlutils().renderer(), "resources/maps/tileset/SolariaDemo_setPrueba.png", 1, 1);
+}
+
+void MapReader::renderMap(SDL_Rect rect) {
+    tilemap->renderFrame(rect, 0, 0);
 }

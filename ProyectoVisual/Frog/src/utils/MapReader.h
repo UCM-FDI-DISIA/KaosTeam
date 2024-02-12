@@ -1,4 +1,5 @@
 #pragma once
+#include "../sdlutils/Texture.h"
 #include <tmxlite/Map.hpp>
 #include <tmxlite/ObjectGroup.hpp>
 #include <tmxlite/LayerGroup.hpp>
@@ -21,7 +22,10 @@ namespace
 class MapReader {
 private:
     Map map;
+    Texture* tilemap = nullptr;
 
 public:
     MapReader();
+
+    void renderMap(SDL_Rect rect);
 };

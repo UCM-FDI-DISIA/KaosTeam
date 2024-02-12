@@ -5,7 +5,7 @@ MenuInicio::MenuInicio() : Scene() {
 }
 
 void MenuInicio::Render() {
-	;
+	//mapReader_->renderMap(rect);
 }
 
 void MenuInicio::Update() {
