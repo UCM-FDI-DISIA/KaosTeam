@@ -155,17 +155,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EscenaPlaceholder.cpp" />
-    <ClCompile Include="Frog.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="MenuInicio.cpp" />
-    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="src\EscenaPlaceholder.cpp" />
+    <ClCompile Include="src\Frog.cpp" />
+    <ClCompile Include="src\game\Game.cpp" />
+    <ClCompile Include="src\MenuInicio.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\utils\MapReader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EscenaPlaceholder.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="MenuInicio.h" />
-    <ClInclude Include="Scene.h" />
+    <ClInclude Include="src\EscenaPlaceholder.h" />
+    <ClInclude Include="src\game\Game.h" />
+    <ClInclude Include="src\MenuInicio.h" />
+    <ClInclude Include="src\Scene.h" />
+    <ClInclude Include="src\utils\MapReader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
