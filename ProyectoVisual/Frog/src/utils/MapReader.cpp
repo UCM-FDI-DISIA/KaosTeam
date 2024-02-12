@@ -2,11 +2,7 @@
 
 MapReader::MapReader() {
 
-
-    tmx::Map map;
-
-
-    if (map.load("assets/maps/tileMap_Prueba.tmx"))
+    if (map.load("resources/maps/tileMap_Prueba.tmx"))
     {
         std::cout << "Loaded Map version: " << map.getVersion().upper << ", " << map.getVersion().lower << std::endl;
         if (map.isInfinite())
@@ -122,6 +118,7 @@ MapReader::MapReader() {
             }
         }
     }
+
     else
     {
         std::cout << "Failed loading map" << std::endl;

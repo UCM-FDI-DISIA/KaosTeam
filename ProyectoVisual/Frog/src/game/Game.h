@@ -19,6 +19,7 @@ private:
 	SDL_Renderer* renderer;
 	Scene* escenaActual;
 	bool exit;
+
 public:
 	Game();
 	void Init();

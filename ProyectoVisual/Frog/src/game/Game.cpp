@@ -7,6 +7,7 @@ Game::Game() {
 	window = SDL_CreateWindow("juego", 100, 200, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 }
+
 void Game::Init() {
 	//Lanzar la escena de menu de inicio
 	exit = false;

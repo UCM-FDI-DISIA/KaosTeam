@@ -19,6 +19,9 @@ namespace
 }
 
 class MapReader {
+private:
+    Map map;
+
 public:
     MapReader();
 };
