@@ -6,7 +6,7 @@ Trabajo para Proyectos II de Kaos Team, un grupo de estudiantes de segundo del G
 
 ## Introducción
 
-_Flonk!_ es un juego de aventuras al estilo más clásico en el que Flonk, la rana deberá salir del charco para salvar a su hermana del malvado chef francés que planea hacer un guiso con ella.
+_Flonk!_ es un juego de aventuras de estilo clásico en el que Flonk, la rana deberá salir del charco para salvar a su hermana del malvado chef francés que planea hacer un guiso con ella.
 
 ## Mecánicas del jugador
 
@@ -19,14 +19,14 @@ El movimiento del juego está basado en saltos de casilla en casilla en un table
   - **Escudo** con el saco hinchable de la rana localizado en la parte inferior de su boca. Lo usará para defenderse y rechazar ataques que provengan de determinada dirección.
 - **Mejoras**
 
-  - **Saltamontes** : manteniendo pulsado el botón para saltar permiten al jugador llegar más lejos. 
-  - **Moscas de la vida** : aumentan la vida máxima del jugador.
-  - **Por determinar** : aumentan el ataque de los ataques básicos.
-  - **Por determinar** : aumentan el alcance de los ataques básicos.
+  - **Saltamontes** que amplian el alcance del salto largo. 
+  - **Moscas de la vida** que aumentan la vida máxima del jugador.
+  - **Por determinar**: Aumentan el ataque de los ataques básicos.
+  - **Por determinar**: Aumentan el alcance de los ataques básicos.
 - **Habilidades extras desbloqueables**
   - **Gancho** de pesca atado a la lengua. Se podrá usar tanto en combate para atacar a los enemigos, para desplazarse más eficientemente y poder alcanzar lugares nuevos. Se desbloquea en la mazmorra principal del bosque (árbol del Ovi (nombre sin confirmar)) y será necesario conseguirlo para poder avanzar en las zonas posteriores.
-  - **Hormigas explosivas rojas y saco de hormigas** , estas hormigas se pueden usar como bombas contra enemigos, para acceder a sitios previamente inaccesibles rompiendo las paredes o necesarias para resolver puzzles.
-   -**Saco de hormigas** , se desbloquea en el hormiguero. Permitirá a la rana poder almacenar más de una hormiga roja o cualquier otro objeto y poder transportarlo y usarlo cuando quiera. 
+  - **Hormigas explosivas** rojas que se pueden usar como bombas contra enemigos, para acceder a sitios previamente inaccesibles rompiendo las paredes o necesarias para resolver puzzles.
+   - **Saco de hormigas** desbloqueable en el hormiguero. Permitirá a la rana poder almacenar más de una hormiga roja y poder transportarlo y usarlo cuando quiera. 
   
 
 - **Power Ups**
@@ -42,21 +42,21 @@ A lo largo del juego, el jugador deberá hacer frente a distintos tipos de enemi
 
 ### Estanque
 
-En desarrollo: probablemente contendrá algunos enemigos con patrones de ataque y movimiento sencillos ya que se trata de la primera zona y actúa como tutorial.
+**En desarrollo**: probablemente contendrá algunos enemigos con patrones de ataque y movimiento sencillos ya que se trata de la primera zona y actúa como tutorial.
 
 ### Bosque
 
 - **Serpientes:** En desarrollo…
 
-- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes. Se matan de un solo golpe.
+- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes y se matan de un solo golpe.
 
 ### Hormiguero
 
 En esta zona, los insectos tratarán de defender su hogar atacándote. Hay 2 tipos de enemigos característicos de estas zonas:
 
-- **Las hormigas,** estos insectos sociales suelen ir solos a la hora de atacar.Son algo lentos, pero son bastante resistentes. Mueren de 3 golpes.
+- **Las hormigas** suelen ir solos a la hora de atacar. Son algo lentos, pero son bastante resistentes. Mueren de 3 golpes.
 
-- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes. Se matan de un solo golpe.
+- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes y se matan de un solo golpe.
 
 ### Zona de la cocina del chef francés
 
