@@ -9,11 +9,11 @@
     ],
     "fileStates": {
         "tileMap_Prueba.tmx": {
-            "scale": 3.9899999999999998,
+            "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 80.07518796992481,
-                "y": 80.07518796992483
+                "x": 56.5,
+                "y": 80.375
             }
         },
         "tiledTry.tsx": {

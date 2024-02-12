@@ -2,9 +2,9 @@
 //
 
 #include <tmxlite/Map.hpp>
-//#include <tmxlite/ObjectGroup.hpp>
-//#include <tmxlite/LayerGroup.hpp>
-//#include <tmxlite/TileLayer.hpp>
+#include <tmxlite/ObjectGroup.hpp>
+#include <tmxlite/LayerGroup.hpp>
+#include <tmxlite/TileLayer.hpp>
 #include "Game.h"
 
 #include <iostream>
@@ -28,10 +28,11 @@ int main(int ac, char** av)
     Game* game = new Game();
     game->Init();
 
-    /*
+    
     tmx::Map map;
 
-    if (map.load("maps/platform.tmx"))
+    
+    if (map.load("assets/maps/tileMap_Prueba.tmx"))
     {
         std::cout << "Loaded Map version: " << map.getVersion().upper << ", " << map.getVersion().lower << std::endl;
         if (map.isInfinite())
@@ -151,7 +152,6 @@ int main(int ac, char** av)
     {
         std::cout << "Failed loading map" << std::endl;
     }
-    */
 
 #if defined(PAUSE_AT_END)
     std::cout << std::endl << "Press return to quit..." << std::endl;
