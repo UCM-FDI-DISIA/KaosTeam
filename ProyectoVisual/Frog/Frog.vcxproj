@@ -154,6 +154,19 @@
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tmxlite-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="EscenaPlaceholder.cpp" />
+    <ClCompile Include="Frog.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="MenuInicio.cpp" />
+    <ClCompile Include="Scene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EscenaPlaceholder.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="MenuInicio.h" />
+    <ClInclude Include="Scene.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
