@@ -1,5 +1,6 @@
 #pragma once
 #include "utils/MapReader.h"
+#include "sdlutils/SDLUtils.h"
 
 class Scene
 {

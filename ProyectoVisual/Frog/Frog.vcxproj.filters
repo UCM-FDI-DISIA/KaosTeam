@@ -60,6 +60,9 @@
     <ClCompile Include="src\json\JSONValue.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils\assets.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game\Game.h">
@@ -128,8 +131,12 @@
     <ClInclude Include="src\json\JSONValue.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="src\utils\assets.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\sdlutils\RAEDME.md" />
+    <None Include="resources\maps\tileMap_Prueba.tmx" />
   </ItemGroup>
 </Project>

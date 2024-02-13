@@ -168,6 +168,7 @@
     <ClCompile Include="src\sdlutils\sdlutils_game.cpp" />
     <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
     <ClCompile Include="src\sdlutils\Texture.cpp" />
+    <ClCompile Include="src\utils\assets.cpp" />
     <ClCompile Include="src\utils\MapReader.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
@@ -191,11 +192,13 @@
     <ClInclude Include="src\sdlutils\SoundEffect.h" />
     <ClInclude Include="src\sdlutils\Texture.h" />
     <ClInclude Include="src\sdlutils\VirtualTimer.h" />
+    <ClInclude Include="src\utils\assets.h" />
     <ClInclude Include="src\utils\MapReader.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\maps\tileMap_Prueba.tmx" />
     <None Include="src\sdlutils\RAEDME.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
