@@ -131,17 +131,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EscenaPlaceholder.cpp" />
+    <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="DialogManager.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Frog.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HUDManager.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="LoadManager.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
+    <ClCompile Include="MovementComponent.cpp" />
+    <ClCompile Include="PlayerEntity.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EscenaPlaceholder.h" />
+    <ClInclude Include="AnimationComponent.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="DialogManager.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HUDManager.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="LoadManager.h" />
     <ClInclude Include="MenuInicio.h" />
+    <ClInclude Include="MovementComponent.h" />
+    <ClInclude Include="PlayerEntity.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
