@@ -24,7 +24,7 @@ El movimiento del juego está basado en saltos de casilla en casilla en un table
   - **Por determinar**: Aumentan el ataque de los ataques básicos.
   - **Por determinar**: Aumentan el alcance de los ataques básicos.
 - **Habilidades extras desbloqueables**
-  - **Gancho** de pesca atado a la lengua. Se podrá usar tanto en combate para atacar a los enemigos, para desplazarse más eficientemente y poder alcanzar lugares nuevos. Se desbloquea en la mazmorra principal del bosque (árbol del Ovi (nombre sin confirmar)) y será necesario conseguirlo para poder avanzar en las zonas posteriores.
+  - **Gancho** de pesca atado a la lengua. Se podrá usar tanto en combate para atacar a los enemigos como para desplazarse más eficientemente y poder alcanzar lugares nuevos. Se desbloquea en la mazmorra principal del bosque (árbol del Ovi (nombre sin confirmar)) y será necesario conseguirlo para poder avanzar en las zonas posteriores.
   - **Hormigas explosivas** rojas que se pueden usar como bombas contra enemigos, para acceder a sitios previamente inaccesibles rompiendo las paredes o necesarias para resolver puzzles.
    - **Saco de hormigas** desbloqueable en el hormiguero. Permitirá a la rana poder almacenar más de una hormiga roja y poder transportarlo y usarlo cuando quiera. 
   
