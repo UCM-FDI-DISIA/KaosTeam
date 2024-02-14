@@ -1,5 +1,5 @@
 #pragma once
-#include "Scene.h"
+#include "../ecs/Scene.h"
 
 class MenuInicio : public Scene
 {

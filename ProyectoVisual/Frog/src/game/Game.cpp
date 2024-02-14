@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "../MenuInicio.h"
+#include "../scenes/MenuInicio.h"
 
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 

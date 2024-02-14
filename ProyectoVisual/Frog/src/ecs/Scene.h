@@ -1,6 +1,6 @@
 #pragma once
-#include "utils/MapComponent.h"
-#include "sdlutils/SDLUtils.h"
+#include "../components/MapComponent.h"
+#include "../sdlutils/SDLUtils.h"
 
 class Scene
 {

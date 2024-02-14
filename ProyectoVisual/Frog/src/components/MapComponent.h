@@ -1,6 +1,6 @@
 #pragma once
 #include "../sdlutils/Texture.h"
-#include "assets.h"
+#include "../utils/assets.h"
 #include <tmxlite/Map.hpp>
 #include <tmxlite/ObjectGroup.hpp>
 #include <tmxlite/LayerGroup.hpp>

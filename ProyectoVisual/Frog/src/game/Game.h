@@ -2,7 +2,7 @@
 #include <SDL.h>
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/Singleton.h"
-#include "../Scene.h"
+#include "../ecs/Scene.h"
 
 using namespace std;
 
