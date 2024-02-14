@@ -70,7 +70,7 @@ Cuando el jugador supere el límite del tamaño de la cámara en cualquiera de l
 
 ## Mecánicas del escenario
 
-**Objetos que se activan con el gancho** (de momento solo palanca): objetos que al ser golpeados con el gancho hacen algo.
+**Objetos que se activan con el gancho**: objetos que al ser golpeados con el gancho hacen algo ( como palancas o interruptores)
 
 ![](assets/imgGdd/image3.jpg)
 
@@ -182,3 +182,37 @@ Por último, en la esquina superior derecha, se muestra un icono de una lombriz 
 ## Estética y Visual
 
 El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de Paper Mario y "garabato vivo" al de Ed, Edd & Eddy. Y los animales tendrán tamaño y aspecto "realistas" hasta cierto punto. No serán 100% similares a sus contrapartes reales y se tomarán libertades creativas pero tendrá cierto grado de realismo. Como que la mayoría de los enemigos sean depredadores naturales de las ranas y la mejoras sean presas naturales o al menos factibles.
+
+## Menús de juego y flujo de juego(por definir)
+
+**Menú principal**
+El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar, un botón que le lleva al menú de ajustes y un botón para salir del juego.
+
+**Menú de ajustes**(por definir)
+Este menú muestra los controles y permite ajustar características del juego.
+
+**Durante el juego**
+En la pantalla se ve la interfaz descrita antes junto a un botón que permite ir al menú de pausa.
+![](assets/imgGdd/image6.png)
+
+**Menú de pausa**(por definir)
+En el menú de pausa el jugador puede volver a la partida, ir al menú de ajustes o salir del juego.
+
+**Flujo de juego** (por definir, que pasa cuando el jugador pierde todas las vidas)
+
+## Historia (seguramente se puede contar mejor y falten cosas)
+
+Flonk se despierta un día cualquiera y se entera que un chef francés ha secuestrado a su hermana con el objetivo de utilizarla
+para hacer un guiso. Descontento con esto, Flok deberá salir de su estanque de confianza para salvar a su hermana del chef.
+Se deberá enfrentar a los distintos animales que también viven por la zona para poder seguir avanzando a lo largo del estanque, cruzar el bosque,
+atravesar el hormiguero hasta llegar a la cocina del chef.
+Durante el camino, no solo habrá animales que atacaran a Flonk, habrá otros que le servirán de ayuda para superar el camino hasta la cocina.
+Con las ayudas que obtenga por el camino, finalmente se deberá enfrentar al malvado chef francés para tratar de recuperar a su hermana.
+
+## Nice to have
+
+## Referencias
+
+Hemos obtenido referencias de _The Legend of Zelda: A Link to the Past_ en cuanto a las mecánica, dinámica y escenarios. 
+En cuanto a la estética, nos hemos inspirado en el estilo de _Paper Mario_ en cuanto al entorno tridimensioanl y
+de _Ed, Edd & Eddy_ la idea del "garabato vivo".
