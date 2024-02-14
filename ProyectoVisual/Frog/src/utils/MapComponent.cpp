@@ -1,10 +1,8 @@
-#include "MapReader.h"
+#include "MapComponent.h"
 #include "../sdlutils/SDLUtils.h"
 
 tile::tile(SDL_Texture* tset, int x, int y, int tx, int ty, int w, int h)
-    : sheet(tset), x(x), y(y), tx(tx), ty(ty), width(w), height(h) {
-
-}
+: sheet(tset), x(x), y(y), tx(tx), ty(ty), width(w), height(h) {}
 
 void tile::draw(SDL_Renderer* ren) {
     if (!ren || !sheet)
@@ -22,13 +20,19 @@ void tile::draw(SDL_Renderer* ren) {
     dest.w = src.w* MAP_MULT;
     dest.h = src.h* MAP_MULT;
 
+    if (((this->x/this->width % 2 == 0) && (this->y / this->height % 2 == 1))|| ((this->x / this->width % 2 == 1) && (this->y / this->height % 2 == 0)))
+        SDL_SetTextureAlphaMod(sheet, 222);
+    else 
+        SDL_SetTextureAlphaMod(sheet, 255);
     SDL_RenderCopy(ren, sheet, &src, &dest);
 }
 
-MapReader::MapReader(const std::string& name)
+MapComponent::MapComponent(const std::string& name)
     : name(name), rows(0), cols(0) {
 
+    //Para cuando queramos usar la info de capas/objetos/etc.
     #pragma region Lectura ej. (info a consola)
+    /*
     Map map = Map();
 
     if (map.load("resources/maps/tileMap_Prueba.tmx"))
@@ -71,10 +75,10 @@ MapReader::MapReader(const std::string& name)
             std::cout << "Layer Dimensions: " << layer->getSize() << std::endl;
             std::cout << "Layer Tint: " << layer->getTintColour() << std::endl;
 
-            if (layer->getType() == tmx::Layer::Type::Group)
+            if (layer->getType() == Layer::Type::Group)
             {
                 std::cout << "Checking sublayers" << std::endl;
-                const auto& sublayers = layer->getLayerAs<tmx::LayerGroup>().getLayers();
+                const auto& sublayers = layer->getLayerAs<LayerGroup>().getLayers();
                 std::cout << "LayerGroup has " << sublayers.size() << " layers" << std::endl;
                 for (const auto& sublayer : sublayers)
                 {
@@ -84,20 +88,20 @@ MapReader::MapReader(const std::string& name)
                     std::cout << "Sub-layer Dimensions: " << sublayer->getSize() << std::endl;
                     std::cout << "Sub-layer Tint: " << sublayer->getTintColour() << std::endl;
 
-                    if (sublayer->getType() == tmx::Layer::Type::Object)
+                    if (sublayer->getType() == Layer::Type::Object)
                     {
-                        std::cout << sublayer->getName() << " has " << sublayer->getLayerAs<tmx::ObjectGroup>().getObjects().size() << " objects" << std::endl;
+                        std::cout << sublayer->getName() << " has " << sublayer->getLayerAs<ObjectGroup>().getObjects().size() << " objects" << std::endl;
                     }
-                    else if (sublayer->getType() == tmx::Layer::Type::Tile)
+                    else if (sublayer->getType() == Layer::Type::Tile)
                     {
-                        std::cout << sublayer->getName() << " has " << sublayer->getLayerAs<tmx::TileLayer>().getTiles().size() << " tiles" << std::endl;
+                        std::cout << sublayer->getName() << " has " << sublayer->getLayerAs<TileLayer>().getTiles().size() << " tiles" << std::endl;
                     }
                 }
             }
 
-            if (layer->getType() == tmx::Layer::Type::Object)
+            if (layer->getType() == Layer::Type::Object)
             {
-                const auto& objects = layer->getLayerAs<tmx::ObjectGroup>().getObjects();
+                const auto& objects = layer->getLayerAs<ObjectGroup>().getObjects();
                 std::cout << "Found " << objects.size() << " objects in layer" << std::endl;
                 for (const auto& object : objects)
                 {
@@ -117,12 +121,12 @@ MapReader::MapReader(const std::string& name)
                 }
             }
 
-            if (layer->getType() == tmx::Layer::Type::Tile)
+            if (layer->getType() == Layer::Type::Tile)
             {
-                const auto& tiles = layer->getLayerAs<tmx::TileLayer>().getTiles();
+                const auto& tiles = layer->getLayerAs<TileLayer>().getTiles();
                 if (tiles.empty())
                 {
-                    const auto& chunks = layer->getLayerAs<tmx::TileLayer>().getChunks();
+                    const auto& chunks = layer->getLayerAs<TileLayer>().getChunks();
                     if (chunks.empty())
                     {
                         std::cout << "Layer has missing tile data\n";
@@ -152,26 +156,13 @@ MapReader::MapReader(const std::string& name)
     {
         std::cout << "Failed loading map" << std::endl;
     }
-    #pragma endregion
-      
-    /*
-    #pragma region Lectura real (info guardamos)
-    tilemap = new Texture(sdlutils().renderer(), "resources/maps/tileset/SolariaDemo_setPrueba.png", 1, 1);
-    #pragma endregion
     */
+    #pragma endregion
 }
 
-/*
-void MapReader::renderMap() {
-    Vector2D pos = {0,0};
-    SDL_Rect dest = build_sdlrect(pos, 800, 600);
-    tilemap->render(dest, 0);
-}
-*/
-
-void MapReader::load(const std::string& path, SDL_Renderer* ren) {
+void MapComponent::load(const std::string& path, SDL_Renderer* ren) {
     // Load and parse the Tiled map with tmxlite
-    tmx::Map tiled_map;
+    Map tiled_map;
     tiled_map.load(path);
 
     // We need to know the size of the map (in tiles)
@@ -202,11 +193,11 @@ void MapReader::load(const std::string& path, SDL_Renderer* ren) {
     for (auto& layer : map_layers) {
         // We're only looking to render the tiles on the map, so if
         // this layer isn't a tile layer, we'll move on.
-        if (layer->getType() != tmx::Layer::Type::Tile) {
+        if (layer->getType() != Layer::Type::Tile) {
             continue;
         }
 
-        auto* tile_layer = dynamic_cast<const tmx::TileLayer*>(layer.get());
+        auto* tile_layer = dynamic_cast<const TileLayer*>(layer.get());
 
         // Grab all of this layer's tiles. 
         auto& layer_tiles = tile_layer->getTiles();
@@ -278,7 +269,8 @@ void MapReader::load(const std::string& path, SDL_Renderer* ren) {
     }
 }
 
-void MapReader::draw(SDL_Renderer* ren) {
+void MapComponent::draw(SDL_Renderer* ren) {
+    //Dibujamos cada tile
     for (auto& tile : tiles) {
         tile.draw(ren);
     }

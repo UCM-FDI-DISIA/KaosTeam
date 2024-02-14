@@ -1,5 +1,5 @@
 #pragma once
-#include "utils/MapReader.h"
+#include "utils/MapComponent.h"
 #include "sdlutils/SDLUtils.h"
 
 class Scene
@@ -10,7 +10,7 @@ class Scene
 	*/
 
 protected:
-	MapReader* mapReader_;
+	MapComponent* mapReader_;
 
 	//constructora
 	Scene() {};

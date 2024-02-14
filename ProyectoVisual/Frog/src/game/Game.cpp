@@ -9,7 +9,7 @@ void Game::Init() {
 	//Lanzar la escena de menu de inicio
 	exit = false;
 	SDLUtils::init(WIN_NAME, WIN_WIDTH, WIN_HEIGHT);
-	SDL_SetRenderDrawColor(sdlutils().renderer(), 66, 222, 111, 255);
+	//SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
 	escenaActual = new MenuInicio();
 	GameLoop();
 }

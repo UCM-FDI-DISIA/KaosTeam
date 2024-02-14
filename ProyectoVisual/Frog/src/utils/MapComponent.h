@@ -42,11 +42,9 @@ struct tile {
     void draw(SDL_Renderer* ren);
 };
 
-class MapReader {
+class MapComponent {
 private:
     std::string name;
-    // Multiplicador del tamaño del mapa
-    int mult;
     // Think of the dimensions as a 2D array (after all, that's what our
     // Tiled map is)
     // The rows variable is the number of tiles from top to bottom (Y axis).
@@ -61,7 +59,7 @@ private:
     std::map<gid, SDL_Texture*> tilesets;
 
 public:
-    MapReader(const std::string& name);
+    MapComponent(const std::string& name);
     void load(const std::string& path, SDL_Renderer* ren);
     void draw(SDL_Renderer* ren);
 };
