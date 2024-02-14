@@ -74,16 +74,31 @@
     <Import Project="..\ProyectosSDL.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)SDL2\include;$(SolutionDir)SDL2_image\include;$(SolutionDir)SDL2_ttf-2.0.14\include;$(SolutionDir)SDL2_mixer-2.0.2\include;$(SolutionDir)tmxlite\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)SDL2\include;$(SolutionDir)SDL2_image\include;$(SolutionDir)SDL2_ttf-2.0.14\include;$(SolutionDir)SDL2_mixer-2.0.2\include;$(SolutionDir)tmxlite\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)SDL2\include;$(SolutionDir)SDL2_image\include;$(SolutionDir)SDL2_ttf-2.0.14\include;$(SolutionDir)SDL2_mixer-2.0.2\include;$(SolutionDir)tmxlite\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(SolutionDir)SDL2\include;$(SolutionDir)SDL2_image\include;$(SolutionDir)SDL2_ttf-2.0.14\include;$(SolutionDir)SDL2_mixer-2.0.2\include;$(SolutionDir)tmxlite\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>"$(SolutionDir)tmxlite\include"</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>"$(SolutionDir)tmxlite\lib"; "$(SolutionDir)SDL2_ttf-2.0.14\lib\x64"; "$(SolutionDir)SDL2_mixer-2.0.2\lib\x64";</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;tmxlite-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,12 +109,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>"$(SolutionDir)tmxlite\include"</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>"$(SolutionDir)tmxlite\lib"; "$(SolutionDir)SDL2_ttf-2.0.14\lib\x64"; "$(SolutionDir)SDL2_mixer-2.0.2\lib\x64";</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;tmxlite-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -108,10 +126,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>"$(SolutionDir)tmxlite\include"</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>"$(SolutionDir)tmxlite\lib"; "$(SolutionDir)SDL2_ttf-2.0.14\lib\x64"; "$(SolutionDir)SDL2_mixer-2.0.2\lib\x64";</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;tmxlite-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -122,44 +143,63 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>"$(SolutionDir)tmxlite\include"</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>"$(SolutionDir)tmxlite\lib"; "$(SolutionDir)SDL2_ttf-2.0.14\lib\x64"; "$(SolutionDir)SDL2_mixer-2.0.2\lib\x64";</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;tmxlite-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnimationComponent.cpp" />
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="DialogManager.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Frog.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="HUDManager.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="LoadManager.cpp" />
-    <ClCompile Include="MenuInicio.cpp" />
-    <ClCompile Include="MovementComponent.cpp" />
-    <ClCompile Include="PlayerEntity.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="src\EscenaPlaceholder.cpp" />
+    <ClCompile Include="src\Frog.cpp" />
+    <ClCompile Include="src\game\Game.cpp" />
+    <ClCompile Include="src\json\JSON.cpp" />
+    <ClCompile Include="src\json\JSONValue.cpp" />
+    <ClCompile Include="src\json\json_demo.cpp" />
+    <ClCompile Include="src\MenuInicio.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
+    <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
+    <ClCompile Include="src\sdlutils\sdlutils_game.cpp" />
+    <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
+    <ClCompile Include="src\sdlutils\Texture.cpp" />
+    <ClCompile Include="src\utils\assets.cpp" />
+    <ClCompile Include="src\utils\MapComponent.cpp" />
+    <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnimationComponent.h" />
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="DialogManager.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="HUDManager.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="LoadManager.h" />
-    <ClInclude Include="MenuInicio.h" />
-    <ClInclude Include="MovementComponent.h" />
-    <ClInclude Include="PlayerEntity.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="src\EscenaPlaceholder.h" />
+    <ClInclude Include="src\game\Game.h" />
+    <ClInclude Include="src\json\JSON.h" />
+    <ClInclude Include="src\json\JSONValue.h" />
+    <ClInclude Include="src\json\json_demo.h" />
+    <ClInclude Include="src\MenuInicio.h" />
+    <ClInclude Include="src\Scene.h" />
+    <ClInclude Include="src\sdlutils\Font.h" />
+    <ClInclude Include="src\sdlutils\InputHandler.h" />
+    <ClInclude Include="src\sdlutils\macros.h" />
+    <ClInclude Include="src\sdlutils\Music.h" />
+    <ClInclude Include="src\sdlutils\RandomNumberGenerator.h" />
+    <ClInclude Include="src\sdlutils\SDLNetUtils.h" />
+    <ClInclude Include="src\sdlutils\SDLUtils.h" />
+    <ClInclude Include="src\sdlutils\sdlutils_demo.h" />
+    <ClInclude Include="src\sdlutils\sdlutils_game.h" />
+    <ClInclude Include="src\sdlutils\SoundEffect.h" />
+    <ClInclude Include="src\sdlutils\Texture.h" />
+    <ClInclude Include="src\sdlutils\VirtualTimer.h" />
+    <ClInclude Include="src\utils\assets.h" />
+    <ClInclude Include="src\utils\MapComponent.h" />
+    <ClInclude Include="src\utils\Singleton.h" />
+    <ClInclude Include="src\utils\Vector2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\maps\tileMap_Prueba.tmx" />
+    <None Include="src\sdlutils\RAEDME.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

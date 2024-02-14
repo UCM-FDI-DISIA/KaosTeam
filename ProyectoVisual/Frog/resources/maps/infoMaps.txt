@@ -1,0 +1,10 @@
+Videos interesantes pero no los he visto:
+https://www.youtube.com/watch?v=FbtKSU92Xz8&list=PL-K0viiuJ2RctP5nlJlqmHGeh66-GOZR_&index=13
+
+Git código fuente:
+https://github.com/connorkuehl/sdl2-tiled-example/tree/master
+
+TODO:
+	organizar código
+	aprovechar el read d info y layers
+	MapReader.cpp (263) /*ts_width*/ 448 CORREGIR
