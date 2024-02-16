@@ -3,6 +3,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/Singleton.h"
 #include "../ecs/Scene.h"
+#include "../managers/HUDManager.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ class Game
 {
 private:
 	Scene* escenaActual;
+	HUDManager* HUD;
 	bool exit;
 
 public:

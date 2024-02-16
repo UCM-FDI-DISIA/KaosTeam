@@ -3,7 +3,7 @@
 
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 
-Game::Game() {}
+Game::Game(){}
 
 void Game::Init() {
 	//Lanzar la escena de menu de inicio
@@ -11,6 +11,7 @@ void Game::Init() {
 	SDLUtils::init(WIN_NAME, WIN_WIDTH, WIN_HEIGHT);
 	//SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
 	escenaActual = new MenuInicio();
+	HUD = new HUDManager(this, 9, 10);
 	GameLoop();
 }
 void Game::GameLoop() {
@@ -25,5 +26,6 @@ void Game::GameLoop() {
 void Game::Render() {
 	SDL_RenderClear(sdlutils().renderer());
 	escenaActual->Render();
+	HUD->render();
 	SDL_RenderPresent(sdlutils().renderer());
 }
