@@ -11,10 +11,12 @@ private:
 	Game* game; //por ahora está aqui, aunq no sé para q se va a usar.
 	int vidasActuales;
 	int vidasMax;
-	int xInicial = 15;
+	int xInicialFly = 15;
 	int yInicial = 10;
-	Texture* text;
-	SDL_Rect* rect;
+	int xInicialWorm = 100;
+	Texture* textFly;
+	Texture* textWorm;
+	SDL_Rect* rectFly;
 
 public:
 	HUDManager(Game*, int, int);
