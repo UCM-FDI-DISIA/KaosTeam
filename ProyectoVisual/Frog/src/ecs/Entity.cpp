@@ -1,19 +1,40 @@
 #include "Entity.h"
 #include "Component.h"
+//include rendercomponent()
+
+
+Entity::Entity(int x, int y): pos(x, y)
+{
+}
+void Entity::addComponent(componentsEnum id, Component* component)
+{
+	componentes.insert(std::pair<componentsEnum, Component*>(id, component));
+}
+Entity::~Entity()
+{
+	for (auto it = componentes.begin(); it != componentes.end(); ++it)
+	{
+		delete it->second;
+	}
+}
 void
 Entity::update() {
 	
 	for (auto it = componentes.begin(); it != componentes.end(); ++it)
 	{
-		it->second->update();
+		//it->second->update();
 	}
 }
 
-void Entity::Render()
-{
+void Entity::render()
+{ 
+	//renderComponent.render();
 }
 
 Component* Entity::getComponent(componentsEnum Identificator) const
 {
-	return componentes.at(Identificator);
+	if (componentes.count(Identificator) > 0)
+		return componentes.at(Identificator);
+	else
+		return nullptr;
 }
