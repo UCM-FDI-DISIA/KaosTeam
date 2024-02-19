@@ -3,15 +3,17 @@
 class LifeComponent:public Component
 {
 private:
-	int currentLife = 0; //Un  punto es media mosca
-	int maxLife = 0;
+	int currentLife; //Un  punto es media mosca
+	int maxLife;
 public:
-	LifeComponent() {};
+	LifeComponent(int maxLife) : maxLife(maxLife), currentLife(maxLife) {};
 	LifeComponent(int current, int max) :currentLife(current), maxLife(max) {};
 	int GetCurrent();
 	int GetMax();
 	void SetActual(int n);
 	void SetMax(int n);
-	bool alive();
+	void AddLife(int n);
+	void RemoveLife(int n);
+	bool Alive();
 };
 
