@@ -1,30 +1,30 @@
 #include "LifeComponent.h"
 
-int LifeComponent::GetActual()
+int LifeComponent::GetCurrent()
 {
-	return vidaActual;
+	return currentLife;
 }
 
 int LifeComponent::GetMax()
 {
-	return vidaMaxima;
+	return maxLife;
 }
 
 void LifeComponent::SetActual(int n)
 {
-	vidaActual += n;
-	if (vidaActual > vidaMaxima)
+	currentLife += n;
+	if (currentLife > maxLife)
 	{
-		vidaActual = vidaMaxima;
+		currentLife = maxLife;
 	}
 }
 
 void LifeComponent::SetMax(int n)
 {
-	vidaMaxima += n;
+	maxLife += n;
 }
 
 bool LifeComponent::alive()
 {
-	return vidaActual > 0;
+	return currentLife > 0;
 }
