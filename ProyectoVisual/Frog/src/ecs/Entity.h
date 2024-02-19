@@ -4,6 +4,8 @@
 */
 class Entity
 {
+private:
+	
 
 };
 
