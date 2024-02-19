@@ -13,8 +13,6 @@ class Scene
 	*/
 
 protected:
-	MapComponent* mapReader_;
-
 	//constructora
 	Scene() {};
 

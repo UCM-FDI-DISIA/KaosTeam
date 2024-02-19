@@ -165,6 +165,7 @@
     <ClCompile Include="src\managers\HUDManager.cpp" />
     <ClCompile Include="src\managers\InputManager.cpp" />
     <ClCompile Include="src\scenes\MenuInicio.cpp" />
+    <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_game.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="src\json\json_demo.h" />
     <ClInclude Include="src\managers\HUDManager.h" />
     <ClInclude Include="src\scenes\MenuInicio.h" />
+    <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
     <ClInclude Include="src\sdlutils\InputHandler.h" />
     <ClInclude Include="src\sdlutils\macros.h" />
