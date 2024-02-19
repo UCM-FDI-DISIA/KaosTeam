@@ -3,7 +3,7 @@
 void
 Entity::update() {
 	
-	for (auto it = Componentes.begin(); it != Componentes.end(); ++it)
+	for (auto it = componentes.begin(); it != componentes.end(); ++it)
 	{
 		it->second->update();
 	}
@@ -11,4 +11,9 @@ Entity::update() {
 
 void Entity::Render()
 {
+}
+
+Component* Entity::getComponent(componentsEnum Identificator) const
+{
+	return componentes.at(Identificator);
 }
