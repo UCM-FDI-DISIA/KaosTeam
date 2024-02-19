@@ -9,7 +9,7 @@ private:
 	Vector2D pos;
 
 public:
-
+	Entity() {};
 	
 
 };

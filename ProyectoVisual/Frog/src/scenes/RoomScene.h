@@ -1,10 +1,13 @@
 #pragma once
 #include "../ecs/Scene.h"
+#include "../ecs/Entity.cpp"
 
 class RoomScene : public Scene
 {
 private:
-	MapComponent* mapReader_;
+	//Camara
+	std::vector<Entity*> entityList;
+	MapComponent* mapReader;
 public:
 	RoomScene();
 
