@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\LifeComponent.cpp" />
     <ClCompile Include="src\ecs\Scene.cpp" />
     <ClCompile Include="src\Frog.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
@@ -175,6 +176,7 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\LifeComponent.h" />
     <ClInclude Include="src\ecs\Entity.h" />
     <ClInclude Include="src\game\Game.h" />
     <ClInclude Include="src\json\JSON.h" />
