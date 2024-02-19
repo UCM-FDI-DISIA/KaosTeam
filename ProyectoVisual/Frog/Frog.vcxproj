@@ -82,7 +82,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)SDL2\include;$(SolutionDir)SDL2_image\include;$(SolutionDir)SDL2_ttf-2.0.14\include;$(SolutionDir)SDL2_mixer-2.0.2\include;$(SolutionDir)tmxlite\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)SDL2_ttf-2.0.14\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)SDL2_ttf-2.0.14\lib;$(SolutionDir)SDL2_mixer-2.0.2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)SDL2\include;$(SolutionDir)SDL2_image\include;$(SolutionDir)SDL2_ttf-2.0.14\include;$(SolutionDir)SDL2_mixer-2.0.2\include;$(SolutionDir)tmxlite\include;$(IncludePath)</IncludePath>
