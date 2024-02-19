@@ -12,6 +12,7 @@ int LifeComponent::GetMax()
 
 void LifeComponent::SetActual(int n)
 {
+	currentLife = n;
 	currentLife += n;
 	if (currentLife > maxLife)
 	{
@@ -21,10 +22,27 @@ void LifeComponent::SetActual(int n)
 
 void LifeComponent::SetMax(int n)
 {
-	maxLife += n;
+	maxLife = n;
 }
 
-bool LifeComponent::alive()
+bool LifeComponent::Alive()
+{
+	return false;
+}
+
+void LifeComponent::AddLife(int n)
+{
+	currentLife += n;
+	if (currentLife > maxLife)
+		currentLife = maxLife;
+}
+
+void LifeComponent::RemoveLife(int n)
+{
+	currentLife -= n;
+}
+
+bool LifeComponent::Alive()
 {
 	return currentLife > 0;
 }

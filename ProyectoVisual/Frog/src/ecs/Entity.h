@@ -5,7 +5,7 @@
 #include "../utils/Vector2D.h"
 #include <map>
 //Enum de componentes provisional. Meted los componentes que neceisteis
-enum ComponentsEnum
+enum componentsEnum
 {
 	MOVEMENT_COMPONENT,
 	RENDER_COMPONENT,
@@ -17,13 +17,13 @@ class Entity
 {
 private:
 	Vector2D pos;
-	std::map<ComponentsEnum, Component*> Componentes;
+	std::map<componentsEnum, Component*> componentes;
 
 public:
 
 //provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
 	void update();
 	void Render();
-	Component* getComponent(ComponentsEnum) const;
+	Component* getComponent(componentsEnum) const;
 };
 
