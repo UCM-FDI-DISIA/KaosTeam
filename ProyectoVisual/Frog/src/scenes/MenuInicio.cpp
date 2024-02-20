@@ -7,6 +7,7 @@ MenuInicio::MenuInicio() : Scene() {
 
 void MenuInicio::Render() {
 	mapReader_->draw(sdlutils().renderer());
+
 }
 
 void MenuInicio::Update() {

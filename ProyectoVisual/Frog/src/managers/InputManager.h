@@ -36,7 +36,12 @@ public:
     /*
     *Devuelve una instancia de InputManager, en caso de no haber una, la crea 
     */
-    static InputManager* GetInstance();
+    static InputManager* GetInstance() {
+        if (instance == nullptr) {
+            instance = new InputManager();
+        }
+        return instance;
+    };
     void PollEvents();
     bool getAction1();
     bool getAction2();

@@ -25,10 +25,12 @@ void LifeComponent::SetMax(int n)
 	maxLife = n;
 }
 
+/*
 bool LifeComponent::Alive()
 {
 	return false;
 }
+*/
 
 void LifeComponent::AddLife(int n)
 {

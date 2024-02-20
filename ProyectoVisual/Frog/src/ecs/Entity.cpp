@@ -6,6 +6,7 @@
 Entity::Entity(int x, int y): pos(x, y)
 {
 }
+
 void Entity::addComponent(componentsEnum id, Component* component)
 {
 	componentes.insert(std::pair<componentsEnum, Component*>(id, component));
@@ -17,6 +18,7 @@ Entity::~Entity()
 		delete it->second;
 	}
 }
+
 void
 Entity::update() {
 	
