@@ -85,6 +85,7 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\components\MoneyComponent.cpp">
+    <ClCompile Include="src\scenes\RoomScene.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -177,6 +178,7 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\components\MoneyComponent.h">
+    <ClInclude Include="src\scenes\RoomScene.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
