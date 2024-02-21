@@ -9,7 +9,7 @@
 class MovementComponent : public Component
 {
 private:
-	int tx, ty; //Posiciones en el tileMap
+	Vector2D<int, int> posCasilla; //Posiciones de la entidad en el tileMap
 
 public:
 
