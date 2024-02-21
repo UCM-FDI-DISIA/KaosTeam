@@ -10,10 +10,11 @@ void Game::Init() {
 	exit = false;
 	SDLUtils::init(WIN_NAME, WIN_WIDTH, WIN_HEIGHT);
 	//SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
-	escenaActual = new RoomScene();
+	escenaActual = new RoomScene(1);
 	HUD = new HUDManager(this, 9, 10);
 	GameLoop();
 }
+
 void Game::GameLoop() {
 	while (!exit) {
 		escenaActual->Update();

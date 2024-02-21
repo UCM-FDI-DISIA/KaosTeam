@@ -5,7 +5,6 @@
 #include "../ecs/Scene.h"
 #include "../managers/HUDManager.h"
 
-
 using namespace std;
 
 using uint = unsigned int;

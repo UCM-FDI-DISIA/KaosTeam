@@ -156,9 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MoneyComponent.cpp" />
     <ClCompile Include="src\components\LifeComponent.cpp" />
-    <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\RenderComponent.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />
@@ -184,9 +182,7 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MoneyComponent.h" />
     <ClInclude Include="src\components\LifeComponent.h" />
-    <ClInclude Include="src\components\MoneyComponent.h" />
     <ClInclude Include="src\components\RenderComponent.h" />
     <ClInclude Include="src\ecs\Component.h" />
     <ClInclude Include="src\managers\DataManager.h" />

@@ -22,9 +22,9 @@ private:
 
 public:
 //provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
-	Entity(int, int);
+	Entity(int x, int y);
 	void addComponent(componentsEnum, Component*);
-	~Entity();
+	virtual ~Entity();
 	void update();
 	void render();
 	Component* getComponent(componentsEnum) const;

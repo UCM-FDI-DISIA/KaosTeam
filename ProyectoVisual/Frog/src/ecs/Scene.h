@@ -1,7 +1,7 @@
 #pragma once
 #include "../components/MapComponent.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../managers/DataManager.cpp"
+#include "../managers/DataManager.h"
 class Scene
 {
 	/**
