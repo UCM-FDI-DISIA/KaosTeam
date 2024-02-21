@@ -11,7 +11,7 @@ class Component
 public:
 
 	virtual void initComponent();
-	virtual void setContext(Entity* ent);
+	void setContext(Entity* ent);
 
 	virtual void update();
 	virtual void render();
