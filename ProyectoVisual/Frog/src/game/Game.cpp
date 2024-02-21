@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "../scenes/MenuInicio.h"
+#include "../scenes/RoomScene.h"
 
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 
@@ -10,7 +10,7 @@ void Game::Init() {
 	exit = false;
 	SDLUtils::init(WIN_NAME, WIN_WIDTH, WIN_HEIGHT);
 	//SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
-	escenaActual = new MenuInicio();
+	escenaActual = new RoomScene();
 	HUD = new HUDManager(this, 9, 10);
 	GameLoop();
 }

@@ -22,7 +22,6 @@ private:
 	Component* renderComponent = nullptr; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
 
 public:
-
 //provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
 	Entity(/*int, int*/);
 	void addComponent(componentsEnum, Component*);

@@ -156,10 +156,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MoneyComponent.cpp" />
     <ClCompile Include="src\components\LifeComponent.cpp" />
+    <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\RenderComponent.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />
+    <ClCompile Include="src\managers\DataManager.cpp" />
     <ClCompile Include="src\ecs\Scene.cpp" />
     <ClCompile Include="src\entities\PlayerEntity.cpp" />
     <ClCompile Include="src\Frog.cpp" />
@@ -170,6 +173,7 @@
     <ClCompile Include="src\managers\HUDManager.cpp" />
     <ClCompile Include="src\managers\InputManager.cpp" />
     <ClCompile Include="src\scenes\MenuInicio.cpp" />
+    <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_game.cpp" />
@@ -180,9 +184,12 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MoneyComponent.h" />
     <ClInclude Include="src\components\LifeComponent.h" />
+    <ClInclude Include="src\components\MoneyComponent.h" />
     <ClInclude Include="src\components\RenderComponent.h" />
     <ClInclude Include="src\ecs\Component.h" />
+    <ClInclude Include="src\managers\DataManager.h" />
     <ClInclude Include="src\ecs\Entity.h" />
     <ClInclude Include="src\ecs\Scene.h" />
     <ClInclude Include="src\entities\PlayerEntity.h" />
@@ -192,6 +199,7 @@
     <ClInclude Include="src\json\json_demo.h" />
     <ClInclude Include="src\managers\HUDManager.h" />
     <ClInclude Include="src\scenes\MenuInicio.h" />
+    <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
     <ClInclude Include="src\sdlutils\InputHandler.h" />
     <ClInclude Include="src\sdlutils\macros.h" />
