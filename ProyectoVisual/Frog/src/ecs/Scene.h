@@ -1,6 +1,7 @@
 #pragma once
 #include "../components/MapComponent.h"
 #include "../sdlutils/SDLUtils.h"
+#include "Entity.h"
 
 class Scene
 {
@@ -14,9 +15,10 @@ class Scene
 
 protected:
 	MapComponent* mapReader_;
-
+	Entity* player_;
 	//constructora
-	Scene() {};
+	Scene() {
+	};
 
 public:
 	virtual void Render() = 0;

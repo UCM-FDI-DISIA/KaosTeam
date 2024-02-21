@@ -3,12 +3,15 @@
 //include rendercomponent()
 
 
-Entity::Entity(int x, int y): pos(x, y)
+Entity::Entity(/*int x, int y*/) /*: pos(x, y)*/
 {
 }
 
 void Entity::addComponent(componentsEnum id, Component* component)
 {
+	if (id == RENDER_COMPONENT) {
+		renderComponent = component;
+	}
 	componentes.insert(std::pair<componentsEnum, Component*>(id, component));
 }
 Entity::~Entity()
@@ -30,7 +33,7 @@ Entity::update() {
 
 void Entity::render()
 { 
-	//renderComponent.render();
+	renderComponent->Render();
 }
 
 Component* Entity::getComponent(componentsEnum Identificator) const

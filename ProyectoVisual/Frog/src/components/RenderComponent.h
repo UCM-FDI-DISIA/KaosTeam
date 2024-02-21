@@ -15,4 +15,7 @@ public:
 	RenderComponent(std::string filename, int wframes, int hframes) {
 		myTexture = new Texture(sdlutils().renderer(), filename, wframes, hframes);
 	};
+
+	void Render() override;
+	virtual void Update() {};
 };
