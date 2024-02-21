@@ -5,10 +5,12 @@
 * Clase base abstracta a ser heredada para añadir funcionalidad a una entidad.
 */
 class Component
-{
-	const componentsEnum ID;
+{ 
+	componentsEnum ID;
 
 public:
+	Component();
+	virtual ~Component();
 
 	virtual void initComponent();
 	void setContext(Entity* ent);
