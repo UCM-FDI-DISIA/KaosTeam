@@ -11,7 +11,7 @@ void Game::Init() {
 	SDLUtils::init(WIN_NAME, WIN_WIDTH, WIN_HEIGHT);
 	//SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
 	escenaActual = new MenuInicio();
-	HUD = new HUDManager(this, 9, 10);
+	HUD = new HUDManager(this, 9, 10, 0);
 	GameLoop();
 }
 void Game::GameLoop() {
