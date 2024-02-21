@@ -6,6 +6,18 @@
 */
 class Component
 {
-	componentsEnum id;
+	const componentsEnum ID;
+
+public:
+
+	virtual void initComponent();
+	virtual void setContext(Entity* ent);
+
+	virtual void update();
+	virtual void render();
+	virtual void handleEvents();
+
+protected:
+	Entity* ent;
 };
 
