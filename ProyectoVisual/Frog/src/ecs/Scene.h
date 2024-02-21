@@ -1,7 +1,7 @@
 #pragma once
 #include "../components/MapComponent.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../managers/DataManager.cpp"
+#include "../managers/DataManager.h"
 class Scene
 {
 	/**
@@ -15,6 +15,7 @@ class Scene
 protected:
 	//Singleton que contiene datos generales del juego (vidas del jugador, entidades persistentes, etc)
 	DataManager* dataManager;
+	MapComponent* mapReader_;
 	//constructora
 	Scene() {};
 
