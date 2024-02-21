@@ -1,6 +1,6 @@
 #pragma once
 #include "../ecs/Scene.h"
-#include "../ecs/Entity.cpp"
+#include "../ecs/Entity.h"
 
 class RoomScene : public Scene
 {
