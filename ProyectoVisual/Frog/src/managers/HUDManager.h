@@ -5,6 +5,7 @@
 #include "../sdlutils/Texture.h"
 
 class Game;
+
 class HUDManager
 {
 private:

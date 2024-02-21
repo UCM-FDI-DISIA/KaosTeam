@@ -14,7 +14,7 @@ class Scene
 
 protected:
 	//Singleton que contiene datos generales del juego (vidas del jugador, entidades persistentes, etc)
-	DataManager* dataManager;
+	//DataManager* dataManager;
 	//constructora
 	Scene() {};
 
