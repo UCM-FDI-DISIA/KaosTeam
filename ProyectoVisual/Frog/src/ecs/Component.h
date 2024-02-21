@@ -10,7 +10,7 @@ class Component
 
 public:
 	Component();
-	virtual ~Component();
+	virtual ~Component() {};
 
 	virtual void initComponent() {};
 	void setContext(Entity* ent);

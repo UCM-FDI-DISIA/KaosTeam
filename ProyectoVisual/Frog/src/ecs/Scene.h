@@ -5,16 +5,17 @@
 class Scene
 {
 	/**
-	* Clase abstracta de escena, todo lo que es programación debe ir en su clase hija.
+	* Clase abstracta de escena, todo lo que es programaciï¿½n debe ir en su clase hija.
 	* Todas las clases deben ser implementadas.
 	* 
-	* Las salas deberían ser una clase hija de Escena
-	* Otras escenas pueden ser el menú de inicio y el menú de pausa.
+	* Las salas deberï¿½an ser una clase hija de Escena
+	* Otras escenas pueden ser el menï¿½ de inicio y el menï¿½ de pausa.
 	*/
 
 protected:
 	//Singleton que contiene datos generales del juego (vidas del jugador, entidades persistentes, etc)
-	DataManager* dataManager;
+
+	//DataManager* dataManager;
 	MapComponent* mapReader_;
 	//constructora
 	Scene() {};
