@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
     <ClCompile Include="src\components\LifeComponent.cpp" />
     <ClCompile Include="src\components\RenderComponent.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
@@ -180,6 +181,7 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\FollowPlayerComponent.h" />
     <ClInclude Include="src\components\LifeComponent.h" />
     <ClInclude Include="src\components\RenderComponent.h" />
     <ClInclude Include="src\ecs\Component.h" />
