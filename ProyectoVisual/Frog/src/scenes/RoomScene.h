@@ -18,4 +18,6 @@ public:
 	void AddEntity(Entity* entity);
 	void Render() override;
 	void Update() override;
+	virtual ~RoomScene();
+
 };

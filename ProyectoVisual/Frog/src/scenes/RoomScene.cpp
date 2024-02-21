@@ -16,3 +16,11 @@ void RoomScene::Update() {
 void RoomScene::AddEntity(Entity* entity) {
 	entityList.push_back(entity);
 }
+
+RoomScene::~RoomScene() {
+	//Eliminar la lista de entidades
+	for (auto it = entityList.begin(); it != entityList.end(); ++it)
+	{
+		delete *it;
+	}
+}
