@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../utils/Vector2D.h"
 #include "Entity.h"
 /*
 * Clase base abstracta a ser heredada para a�adir funcionalidad a una entidad.

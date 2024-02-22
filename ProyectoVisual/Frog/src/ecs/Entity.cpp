@@ -1,10 +1,15 @@
 #include "Entity.h"
 #include "Component.h"
+#include "Scene.h"
 //include rendercomponent()
 
 
-Entity::Entity(/*int x, int y*/) /*: pos(x, y)*/
+Entity::Entity(/*int x, int y*/Scene* scn) /*: pos(x, y)*/
 {
+	if (scn == nullptr) {
+		std::cout << "scn null";
+	}
+	myScene = scn;
 }
 
 void Entity::addComponent(componentsEnum id, Component* component)
@@ -33,7 +38,7 @@ Entity::update() {
 
 void Entity::render()
 { 
-	renderComponent->Render();
+	renderComponent->render();
 	//RenderComponent* render = componentes.at(componentsEnum::RENDER_COMPONENT); O NO QUIEN SABE
 }
 
@@ -45,7 +50,12 @@ Component* Entity::getComponent(componentsEnum Identificator) const
 		return nullptr;
 }
 
-RenderComponent* Entity::getRenderComponent() const
+Component* Entity::getRenderComponent() const
 {
 	return renderComponent;
+}
+
+Scene* Entity::getScene() const
+{
+	return myScene;
 }

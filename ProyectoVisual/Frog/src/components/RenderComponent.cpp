@@ -1,12 +1,16 @@
 #include "RenderComponent.h"
 
-void RenderComponent::Render()
+void RenderComponent::render()
 {
+    int t = ent->getScene()->getMapReader()->getTileSize();
+
+    Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getCasilla();
+
     SDL_Rect dest;
-    dest.x = 20;//x * MAP_MULT;
-    dest.y = 20;//y * MAP_MULT;
-    dest.w = 100;//src.w * MAP_MULT;
-    dest.h = 100;//src.h * MAP_MULT;
+    dest.x = pos.getX() * t;
+    dest.y = pos.getY() * t;
+    dest.w = t;
+    dest.h = t;
 
 	myTexture->render(dest);
 }

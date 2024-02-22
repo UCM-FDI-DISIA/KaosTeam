@@ -1,4 +1,4 @@
-#include "MapComponent.h"
+#include "MapManager.h"
 #include "../sdlutils/SDLUtils.h"
 
 tile::tile(SDL_Texture* tset, int x, int y, int tx, int ty, int w, int h)
@@ -27,7 +27,7 @@ void tile::draw(SDL_Renderer* ren) {
     SDL_RenderCopy(ren, sheet, &src, &dest);
 }
 
-MapComponent::MapComponent(const std::string& name)
+MapManager::MapManager(const std::string& name)
     : name(name), rows(0), cols(0) {
 
     //Para cuando queramos usar la info de capas/objetos/etc.
@@ -160,7 +160,7 @@ MapComponent::MapComponent(const std::string& name)
     #pragma endregion
 }
 
-void MapComponent::load(const std::string& path, SDL_Renderer* ren) {
+void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     // Load and parse the Tiled map with tmxlite
     Map tiled_map;
     tiled_map.load(path);
@@ -269,9 +269,19 @@ void MapComponent::load(const std::string& path, SDL_Renderer* ren) {
     }
 }
 
-void MapComponent::draw(SDL_Renderer* ren) {
+void MapManager::draw(SDL_Renderer* ren) {
     //Dibujamos cada tile
     for (auto& tile : tiles) {
         tile.draw(ren);
     }
+}
+
+Vector2D MapManager::getMapSize()
+{
+    return Vector2D(cols, rows);
+}
+
+int MapManager::getTileSize()
+{
+    return tile_width*MAP_MULT; //width y height son iguales
 }

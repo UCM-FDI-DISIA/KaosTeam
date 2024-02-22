@@ -1,8 +1,9 @@
 #pragma once
-#include "../components/MapComponent.h"
+#include "../managers/MapManager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Entity.h"
-#include "../managers/DataManager.h"
+//#include "../managers/DataManager.h"
+
 class Scene
 {
 	/**
@@ -14,12 +15,11 @@ class Scene
 	*/
 
 protected:
-	MapComponent* mapReader_;
-	Entity* player_;
+	std::vector<Entity*> entityList;
+	MapManager* mapReader_;
 	//Singleton que contiene datos generales del juego (vidas del jugador, entidades persistentes, etc)
-
 	//DataManager* dataManager;
-	MapComponent* mapReader_;
+	
 	//constructora
 	Scene() {
 	};
@@ -27,4 +27,6 @@ protected:
 public:
 	virtual void Render() = 0;
 	virtual void Update() = 0;
+
+	MapManager* getMapReader();
 };
