@@ -16,7 +16,7 @@ class Scene
 
 protected:
 	std::vector<Entity*> entityList;
-	MapManager* mapReader_;
+	//MapManager* mapReader_;
 	//Singleton que contiene datos generales del juego (vidas del jugador, entidades persistentes, etc)
 	//DataManager* dataManager;
 	

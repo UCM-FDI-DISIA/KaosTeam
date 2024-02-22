@@ -1,10 +1,10 @@
 #include "Entity.h"
 #include "Component.h"
-#include "Scene.h"
+#include "../scenes/RoomScene.h"
 //include rendercomponent()
 
 
-Entity::Entity(/*int x, int y*/Scene* scn) /*: pos(x, y)*/
+Entity::Entity(/*int x, int y*/RoomScene* scn) /*: pos(x, y)*/
 {
 	if (scn == nullptr) {
 		std::cout << "scn null";
@@ -55,7 +55,7 @@ Component* Entity::getRenderComponent() const
 	return renderComponent;
 }
 
-Scene* Entity::getScene() const
+RoomScene* Entity::getScene() const
 {
 	return myScene;
 }

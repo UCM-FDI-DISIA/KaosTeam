@@ -1,4 +1,5 @@
 #include "RenderComponent.h"
+#include "../scenes/RoomScene.h"
 
 void RenderComponent::render()
 {

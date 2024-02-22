@@ -3,7 +3,7 @@
 #include "MovementComponent.h"
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../ecs/Scene.h"
+
 
 /*
 * Se encargará de renderizar cada entidad en la ubicación de la pantalla acorde al tilemap

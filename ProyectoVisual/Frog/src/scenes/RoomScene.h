@@ -30,5 +30,6 @@ public:
 	void Render() override;
 	void Update() override;
 	virtual ~RoomScene();
+	MapManager* getMapReader() { return mapReader; };
 
 };

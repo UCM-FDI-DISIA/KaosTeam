@@ -26,6 +26,7 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\managers\MapManager.cpp" />
     <ClCompile Include="src\components\MovementComponent.cpp" />
+    <ClCompile Include="src\components\MoneyComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
