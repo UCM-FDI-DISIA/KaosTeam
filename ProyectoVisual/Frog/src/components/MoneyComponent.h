@@ -1,3 +1,4 @@
+#pragma once
 #include "../ecs/Component.h"
 class MoneyComponent:public Component
 {
