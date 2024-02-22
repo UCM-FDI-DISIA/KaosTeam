@@ -136,6 +136,7 @@ hacia los escombros (izquierda) y tendrá enemigos repartidos a lo largo del cam
 
 ![](assets/imgGdd/image4.jpg)
 ![](assets/imgGdd/image7.jpg)
+![](assets/imgGdd/Bosque-Mazmorra-arbol-del-zorro.png)
 
 **Cruze** es la subzona central superior. Es una zona de transición donde estará localizado el pájaro mercante y conectará con las subzonas el árbol de Ovi (derecha), escombros (inferior) y riachuelo seco tanto como la zona superior como la inferior (izquierda). No tiene nada interesante más allá del mercante y quizás algún cartel o NPC.
 
