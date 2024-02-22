@@ -30,7 +30,7 @@ Entity::update() {
 
 void Entity::render()
 { 
-	//renderComponent.render();
+	//RenderComponent* render = componentes.at(componentsEnum::RENDER_COMPONENT); O NO QUIEN SABE
 }
 
 Component* Entity::getComponent(componentsEnum Identificator) const
@@ -39,4 +39,9 @@ Component* Entity::getComponent(componentsEnum Identificator) const
 		return componentes.at(Identificator);
 	else
 		return nullptr;
+}
+
+RenderComponent* Entity::getRenderComponent() const
+{
+	return renderComponent;
 }
