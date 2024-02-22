@@ -178,11 +178,13 @@
     <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
     <ClCompile Include="src\sdlutils\Texture.cpp" />
     <ClCompile Include="src\utils\assets.cpp" />
-    <ClCompile Include="src\components\MapComponent.cpp" />
+    <ClCompile Include="src\managers\MapManager.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
+    <ClInclude Include="src\components\MoneyComponent.h" />
+    <ClInclude Include="src\components\MovementComponent.h" />
     <ClInclude Include="src\components\RenderComponent.h" />
     <ClInclude Include="src\ecs\Component.h" />
     <ClInclude Include="src\managers\DataManager.h" />
@@ -209,7 +211,7 @@
     <ClInclude Include="src\sdlutils\Texture.h" />
     <ClInclude Include="src\sdlutils\VirtualTimer.h" />
     <ClInclude Include="src\utils\assets.h" />
-    <ClInclude Include="src\components\MapComponent.h" />
+    <ClInclude Include="src\managers\MapManager.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
   </ItemGroup>

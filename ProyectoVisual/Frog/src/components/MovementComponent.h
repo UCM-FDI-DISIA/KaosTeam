@@ -1,5 +1,5 @@
 #pragma once
-#include "Component.h"
+#include "../ecs/Component.h"
 /*
 * Clase base abstracta del componente que gestiona el movimiento de la entidad
 * 
@@ -9,10 +9,11 @@
 class MovementComponent : public Component
 {
 private:
-	Vector2D<int, int> posCasilla; //Posiciones de la entidad en el tileMap
+	Vector2D posCasilla = {0,0}; //Posiciones de la entidad en el tileMap
 
 public:
-
-
+	MovementComponent() {};
+	MovementComponent(Vector2D casilla);
+	Vector2D getCasilla();
 };
 

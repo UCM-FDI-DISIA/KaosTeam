@@ -1,6 +1,8 @@
 #pragma once
 #include "../ecs/Scene.h"
-#include "../ecs/Entity.h"
+//#include "../ecs/Entity.h"
+#include"../components/MovementComponent.h"
+#include "../components/RenderComponent.h"
 
 class RoomScene : public Scene
 {
@@ -11,7 +13,7 @@ private:
 	int id;
 public:
 	RoomScene(int id) : id(id) {
-		//A través del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
+		//A travï¿½s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 		mapReader = new MapComponent("tileMap_Prueba");
 		mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
 	};
