@@ -51,8 +51,8 @@ private:
     int rows;
     // The cols variable is the number of tiles from left to right (X axis).
     int cols;
-    int tile_width;
-    int tile_height;
+    int tile_width = 0;
+    int tile_height = 0;
     // All of the tiles we will draw to the screen.
     std::vector<tile> tiles;
     // All of the tilesets used by our Tiled map.

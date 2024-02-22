@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\components\LifeComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponent.cpp" />
     <ClCompile Include="src\components\RenderComponent.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />

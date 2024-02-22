@@ -2,7 +2,6 @@
 /*
 * Clase base de entidad para una arquitectura de componentes.
 */
-#include "../utils/Vector2D.h"
 #include <map>
 //Enum de componentes provisional. Meted los componentes que neceisteis
 enum componentsEnum

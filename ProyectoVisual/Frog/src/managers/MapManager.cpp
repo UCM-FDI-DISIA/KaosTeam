@@ -28,8 +28,9 @@ void tile::draw(SDL_Renderer* ren) {
 }
 
 MapManager::MapManager(const std::string& name)
-    : name(name), rows(0), cols(0) {
+    : name(name), rows(0), cols(0), tile_width(10), tile_height(10){
 
+    
     //Para cuando queramos usar la info de capas/objetos/etc.
     #pragma region Lectura ej. (info a consola)
     /*
@@ -158,9 +159,14 @@ MapManager::MapManager(const std::string& name)
     }
     */
     #pragma endregion
+
+
 }
 
 void MapManager::load(const std::string& path, SDL_Renderer* ren) {
+
+    std::cout << "MAP READER IS LOADING";
+
     // Load and parse the Tiled map with tmxlite
     Map tiled_map;
     tiled_map.load(path);

@@ -1,5 +1,6 @@
 #pragma once
 #include "../ecs/Component.h"
+#include "../utils/Vector2D.h"
 /*
 * Clase base abstracta del componente que gestiona el movimiento de la entidad
 * 
