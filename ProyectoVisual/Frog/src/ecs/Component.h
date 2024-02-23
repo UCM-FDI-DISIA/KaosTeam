@@ -17,7 +17,6 @@ public:
 	void setContext(Entity* ent);
 
 	virtual void update() {};
-	virtual void render() {};	 //Igual se tiene que quitar.
 
 protected:
 	Entity* ent;
