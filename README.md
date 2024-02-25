@@ -43,12 +43,16 @@ A lo largo del juego, el jugador deberá hacer frente a distintos tipos de enemi
 ### Estanque
 
 **En desarrollo**: probablemente contendrá algunos enemigos con patrones de ataque y movimiento sencillos ya que se trata de la primera zona y actúa como tutorial.
+### Pantano
+- **Ranas locas** Son ranas las cuales, debido a la contaminación del pantano traído por el chef, han perdido su cordura. Estos avanzaran lentamente de casilla a casilla hacia Flonk y lo atacará con sus lenguas (las cuales tiene un rango bastante corto debido a la contaminación)
 
 ### Bosque
 
-- **Las serpientes** Actuan como torretas estaticas los cuales giran sobre su propio eje vigilando por si ven la rana. Si la serpiente detecta la rana, estos rápidamente extenderán sus cuellos para mordernos antes de volver a sus puestos.
+- **Las serpientes** Actuan como torretas estaticas los cuales giran sobre su propio eje vigilando por si ven la rana. Si la serpiente detecta la rana, estos rápidamente extenderán sus cuellos para mordernos antes de volver a sus puestos. Si ha pasado suficiente tiempo sin que hayan mordido a Flonk, estos saltaran diagonalmente una casilla.
+
 
 - **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes y se matan de un solo golpe.
+-**Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados.
 
 ### Hormiguero
 
@@ -60,7 +64,7 @@ En esta zona, los insectos tratarán de defender su hogar atacándote. Hay 2 tip
 
 ### Zona de la cocina del chef francés
 
-En desarrollo…
+- **Cucarachas** Actuan como enemigos imposibles de matar. Al atacarlos con nuestra lengua estos son immediatamente "derrotados" pero en unos pocos segundos, estos se volverán a levantarse para atacarte.
 
 ## Cámara
 
