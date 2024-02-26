@@ -20,13 +20,13 @@ private:
 	//Vector2D pos;
 	std::map<componentsEnum, Component*> componentes;
 	RoomScene* myScene;
-	Component* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
+	RenderComponent* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
 
 public:
 //provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
 	Entity(/*int, int*/RoomScene* scn);
 	void addComponent(componentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
-
+	void addRenderComponent(RenderComponent*);
 	virtual ~Entity();
 	void update();
 	void render();

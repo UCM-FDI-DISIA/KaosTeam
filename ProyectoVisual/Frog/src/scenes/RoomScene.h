@@ -22,7 +22,7 @@ public:
 		player->addComponent(MOVEMENT_COMPONENT, new MovementComponent(v));
 		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/unFrameDeRana.png", 1, 1);
 		rndr->setContext(player);
-		player->addComponent(RENDER_COMPONENT, rndr);
+		player->addRenderComponent(rndr);
 		entityList.push_back(player);
 	};
 

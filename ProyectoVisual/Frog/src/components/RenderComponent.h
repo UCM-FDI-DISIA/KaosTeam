@@ -19,6 +19,6 @@ public:
 		myTexture = new Texture(sdlutils().renderer(), filename, wframes, hframes);
 	};
 
-	void render() override;
+	void render();
 	virtual void Update() {};
 };

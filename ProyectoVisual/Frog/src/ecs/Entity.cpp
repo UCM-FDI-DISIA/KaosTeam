@@ -14,11 +14,13 @@ Entity::Entity(/*int x, int y*/RoomScene* scn) /*: pos(x, y)*/
 
 void Entity::addComponent(componentsEnum id, Component* component)
 {
-	if (id == RENDER_COMPONENT) {
-		renderComponent = component;
-	}
 	componentes.insert(std::pair<componentsEnum, Component*>(id, component));
 }
+
+void Entity::addRenderComponent(RenderComponent* renderComponent) {
+	this->renderComponent = renderComponent;
+}
+
 Entity::~Entity()
 {
 	for (auto it = componentes.begin(); it != componentes.end(); ++it)
