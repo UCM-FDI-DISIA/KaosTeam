@@ -9,7 +9,7 @@
 */
 class MovementComponent : public Component
 {
-private:
+protected:
 	Vector2D posCasilla = {0,0}; //Posiciones de la entidad en el tileMap
 
 public:
