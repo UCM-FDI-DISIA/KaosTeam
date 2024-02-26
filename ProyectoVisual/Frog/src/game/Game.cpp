@@ -5,6 +5,12 @@
 
 Game::Game(){}
 
+Game::~Game()
+{
+	delete escenaActual;
+	delete HUD;
+}
+
 void Game::Init() {
 	//Lanzar la escena de menu de inicio
 	exit = false;

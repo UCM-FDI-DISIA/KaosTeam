@@ -27,6 +27,7 @@ private:
 
 public:
 	Game();
+	~Game();
 	void Init();
 	void GameLoop();
 	void Render();

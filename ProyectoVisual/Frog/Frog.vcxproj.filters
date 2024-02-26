@@ -61,6 +61,7 @@
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\MovementComponent.h" />
     <ClInclude Include="src\managers\MapManager.h" />
+    <ClInclude Include="src\managers\InputManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\maps\tileMap_Prueba.tmx" />

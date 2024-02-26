@@ -198,6 +198,7 @@
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />
     <ClInclude Include="src\managers\HUDManager.h" />
+    <ClInclude Include="src\managers\InputManager.h" />
     <ClInclude Include="src\scenes\MenuInicio.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\Font.h" />

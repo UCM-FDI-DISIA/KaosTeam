@@ -23,6 +23,7 @@ private:
 
 public:
 	HUDManager(Game*, int, int, int);
+	~HUDManager();
 
 	void ChangeLives(int);
 	void addWorms(int);

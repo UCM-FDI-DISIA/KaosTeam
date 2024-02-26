@@ -63,3 +63,11 @@ rectFly(new SDL_Rect())
 	textWorm = new Texture(sdlutils().renderer(), "resources/Sprites/wormHUD.png", 1, 3);
 	textNumWorms = new Texture(sdlutils().renderer(), to_string(wormsActuales), font, colorFont);
 }
+
+HUDManager::~HUDManager()
+{
+	delete textFly;
+	delete textNumWorms;
+	delete textWorm;
+	delete rectFly;
+}
