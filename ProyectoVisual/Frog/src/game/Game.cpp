@@ -12,6 +12,11 @@ void Game::Init() {
 	//SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
 	escenaActual = new MenuInicio();
 	HUD = new HUDManager(this, 9, 10);
+	FollowPlayerComponent prueba = FollowPlayerComponent(0, 0);
+	prueba.FollowPlayer(1, 2);
+	prueba.FollowPlayer(2, 1);
+	prueba.FollowPlayer(-1, -2);
+	prueba.FollowPlayer(-2, -1);
 	GameLoop();
 }
 void Game::GameLoop() {

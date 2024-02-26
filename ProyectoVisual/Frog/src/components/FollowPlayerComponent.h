@@ -7,7 +7,7 @@ class FollowPlayerComponent: public MovementComponent
 protected:
 	Vector2D vel;
 public:
-	FollowPlayerComponent();
+	FollowPlayerComponent(float x, float y);
 	virtual ~FollowPlayerComponent();
 	void FollowPlayer(float x, float y);
 };

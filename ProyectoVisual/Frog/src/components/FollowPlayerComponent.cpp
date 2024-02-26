@@ -1,7 +1,7 @@
 #include "FollowPlayerComponent.h"
 
-FollowPlayerComponent::FollowPlayerComponent()
-	:vel(0,0)
+FollowPlayerComponent::FollowPlayerComponent(float x, float y)
+	:MovementComponent(x,y), vel(0, 0)
 {}
 
 FollowPlayerComponent::~FollowPlayerComponent() {
@@ -9,7 +9,7 @@ FollowPlayerComponent::~FollowPlayerComponent() {
 }
 
 void FollowPlayerComponent::FollowPlayer(float x, float y) {
-	/*//Vector2D playerPos = scene->GetPlayerPos(); // coje la pocision del player
+	//Vector2D playerPos = scene->GetPlayerPos(); // coje la pocision del player
 	Vector2D playerPos(x, y);
 	Vector2D aux = playerPos - pos;
 	//sacar X e Y y comparar
@@ -37,5 +37,5 @@ void FollowPlayerComponent::FollowPlayer(float x, float y) {
 		    vel.set(0,1);
 		}
 	}
-	std::cout << vel << std::endl;*/
+	std::cout << vel << std::endl;
 }
