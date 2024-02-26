@@ -17,6 +17,8 @@ void Game::Init() {
 	prueba.FollowPlayer(2, 1);
 	prueba.FollowPlayer(-1, -2);
 	prueba.FollowPlayer(-2, -1);
+	prueba.FollowPlayer(0, 1);
+	prueba.FollowPlayer(1, 0);
 	GameLoop();
 }
 void Game::GameLoop() {

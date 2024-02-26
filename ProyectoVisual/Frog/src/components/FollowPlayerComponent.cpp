@@ -21,7 +21,25 @@ void FollowPlayerComponent::FollowPlayer(float x, float y) {
 	if (ay < 0) {
 		ay *= -1;
 	}
-	if (ax < ay) {
+	if (ax == 0 || ay == 0) {
+		if (ax == 0) {
+			if (aux.getY() < 0) {
+				vel.set(0, -1);
+			}
+			else {
+				vel.set(0, 1);
+			}
+		}
+		else {
+			if (aux.getX() < 0) {
+				vel.set(-1, 0);
+			}
+			else {
+				vel.set(1, 0);
+			}
+		}
+	}
+	else if (ax < ay) {
 	    if(aux.getX() < 0) {
 		    vel.set(-1,0);
 		}
