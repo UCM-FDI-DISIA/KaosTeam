@@ -55,5 +55,6 @@ void FollowPlayerComponent::FollowPlayer(float x, float y) {
 		    vel.set(0,1);
 		}
 	}
+	//aplicar movimiento
 	std::cout << vel << std::endl;
 }
