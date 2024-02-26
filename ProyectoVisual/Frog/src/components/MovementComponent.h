@@ -13,11 +13,9 @@ class MovementComponent : public Component
 {
 private:
 	Vector2D posCasilla = {0,0}; //Posiciones de la entidad en el tileMap
-	InputManager* im;
 public:
-	MovementComponent() { im = InputManager::GetInstance(); };
-	MovementComponent(Vector2D casilla) : im(InputManager::GetInstance()), posCasilla(casilla) {};
+	MovementComponent() { };
+	MovementComponent(Vector2D casilla) : posCasilla(casilla) {};
 	Vector2D getCasilla();
-	void update() override;
 };
 

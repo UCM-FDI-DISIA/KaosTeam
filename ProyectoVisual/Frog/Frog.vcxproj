@@ -159,6 +159,7 @@
     <ClCompile Include="src\components\LifeComponent.cpp" />
     <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\MovementComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentRana.cpp" />
     <ClCompile Include="src\components\RenderComponent.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="src\components\LifeComponent.h" />
     <ClInclude Include="src\components\MoneyComponent.h" />
     <ClInclude Include="src\components\MovementComponent.h" />
+    <ClInclude Include="src\components\MovementComponentRana.h" />
     <ClInclude Include="src\components\RenderComponent.h" />
     <ClInclude Include="src\ecs\Component.h" />
     <ClInclude Include="src\managers\DataManager.h" />
