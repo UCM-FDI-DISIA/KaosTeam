@@ -34,7 +34,7 @@ Entity::update() {
 	
 	for (auto it = componentes.begin(); it != componentes.end(); ++it)
 	{
-		//it->second->update();
+		it->second->update();
 	}
 }
 

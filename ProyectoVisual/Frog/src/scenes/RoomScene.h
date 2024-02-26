@@ -1,7 +1,7 @@
 #pragma once
 #include "../ecs/Scene.h"
 //#include "../ecs/Entity.h"
-#include"../components/MovementComponent.h"
+#include"../components/MovementComponentFly.h"
 #include "../components/RenderComponent.h"
 
 class RoomScene : public Scene
@@ -24,6 +24,19 @@ public:
 		rndr->setContext(player);
 		player->addRenderComponent(rndr);
 		entityList.push_back(player);
+
+
+
+		Entity* fly = new Entity(this);
+		MovementComponentFly* mvm = new MovementComponentFly(Vector2D(2, 3));
+		mvm->setContext(fly);
+		fly->addComponent(MOVEMENT_COMPONENT, mvm);
+
+		rndr = new RenderComponent("../Frog/resources/sprites/unframedemoska.png", 1, 1, 0.3);
+		rndr->setContext(fly);
+		fly->addRenderComponent(rndr);
+		entityList.push_back(fly);
+
 	};
 
 	void AddEntity(Entity* entity);

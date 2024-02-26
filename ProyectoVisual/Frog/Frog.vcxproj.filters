@@ -27,6 +27,7 @@
     <ClCompile Include="src\managers\MapManager.cpp" />
     <ClCompile Include="src\components\MovementComponent.cpp" />
     <ClCompile Include="src\components\MoneyComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentFly.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -62,6 +63,7 @@
     <ClInclude Include="src\components\MovementComponent.h" />
     <ClInclude Include="src\managers\MapManager.h" />
     <ClInclude Include="src\managers\InputManager.h" />
+    <ClInclude Include="src\components\MovementComponentFly.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\maps\tileMap_Prueba.tmx" />
