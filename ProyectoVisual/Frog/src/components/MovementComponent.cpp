@@ -1,9 +1,12 @@
 #include "MovementComponent.h"
-
-MovementComponent::MovementComponent(Vector2D casilla) {
-	this->posCasilla = casilla;
-}
+#include <iostream>
 
 Vector2D MovementComponent::getCasilla() {
 	return posCasilla;
+}
+
+void MovementComponent::update() {
+	if (im->getAction1()) {
+		std::cout << "funks";
+	}
 }

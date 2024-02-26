@@ -1,6 +1,8 @@
 #pragma once
 #include "../ecs/Component.h"
 #include "../utils/Vector2D.h"
+#include "../managers/InputManager.h"
+
 /*
 * Clase base abstracta del componente que gestiona el movimiento de la entidad
 * 
@@ -11,10 +13,11 @@ class MovementComponent : public Component
 {
 private:
 	Vector2D posCasilla = {0,0}; //Posiciones de la entidad en el tileMap
-
+	InputManager* im;
 public:
-	MovementComponent() {};
-	MovementComponent(Vector2D casilla);
+	MovementComponent() { im = InputManager::GetInstance(); };
+	MovementComponent(Vector2D casilla) : im(InputManager::GetInstance()), posCasilla(casilla) {};
 	Vector2D getCasilla();
+	void update() override;
 };
 
