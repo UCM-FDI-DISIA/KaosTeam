@@ -19,6 +19,7 @@ public:
 	RenderComponent(std::string filename, int wframes, int hframes, float sc = 1): scale (sc){
 		myTexture = new Texture(sdlutils().renderer(), filename, wframes, hframes);
 	};
+	RenderComponent(Texture* t, float sc = 1): myTexture(t), scale(sc){}
 
 	void render();
 	virtual void Update() {};

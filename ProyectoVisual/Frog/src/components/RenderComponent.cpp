@@ -5,6 +5,7 @@ void RenderComponent::render()
 {
     int t = ent->getScene()->getMapReader()->getTileSize();
     int size = (int) t*scale;
+    int offset = (t - size) / 2;
 
     Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getCasilla();
 
@@ -12,8 +13,11 @@ void RenderComponent::render()
     dest.w = size;
     dest.h = size;
 
-    dest.x = pos.getX() * t + ((t-size)/2);
-    dest.y = pos.getY() * t + ((t - size)/2);
+    //COSAS IMPORTANTES. pos es de floats, igual nos conviene q sea de ints
+    //TAMBIÉN, el dest podriamos definirlo en la costructora para ahorrar tiempo y cambiar solo su x e y
+    //Y TAMBIÉN. ESTO NO SIRVE SI SE MUEVE LA CAMARA.
+    dest.x = pos.getX() * t + offset; 
+    dest.y = pos.getY() * t + offset;
 
-	myTexture->render(dest);
+	myTexture->renderFrame(dest, 0, 0);
 }

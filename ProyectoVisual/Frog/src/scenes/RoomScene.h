@@ -20,7 +20,7 @@ public:
 		Entity* player = new Entity(this);
 		Vector2D v(2, 2);
 		player->addComponent(MOVEMENT_COMPONENT, new MovementComponent(v));
-		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/unFrameDeRana.png", 1, 1);
+		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
 		rndr->setContext(player);
 		player->addRenderComponent(rndr);
 		entityList.push_back(player);
@@ -32,7 +32,7 @@ public:
 		mvm->setContext(fly);
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);
 
-		rndr = new RenderComponent("../Frog/resources/sprites/unframedemoska.png", 1, 1, 0.3);
+		rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
 		rndr->setContext(fly);
 		fly->addRenderComponent(rndr);
 		entityList.push_back(fly);
