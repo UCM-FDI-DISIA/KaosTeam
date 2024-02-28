@@ -1,7 +1,7 @@
 #pragma once
 #include "MovementComponent.h";
 
-class MovementComponentRana : public MovementComponent
+class MovementComponentFrog: public MovementComponent
 {
 private:
 	InputManager* im;
@@ -9,6 +9,6 @@ private:
 	//La idea es que este cooldown sea compartido por todos los componentes de accion de la rana como atacar y etc
 	Uint32 actionCooldown;
 public:
-	MovementComponentRana(Vector2D casilla) : MovementComponent(casilla), im(InputManager::GetInstance()) { actionCooldown = 100; };
+	MovementComponentFrog(Vector2D casilla) : MovementComponent(casilla), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()) { actionCooldown = 100; };
 	void update() override;
 };

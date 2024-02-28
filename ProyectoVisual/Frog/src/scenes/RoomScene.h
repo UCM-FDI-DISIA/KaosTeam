@@ -3,7 +3,7 @@
 //#include "../ecs/Entity.h"
 #include"../components/MovementComponentFly.h"
 #include "../components/RenderComponent.h"
-#include "../components/MovementComponentRana.h"
+#include "../components/MovementComponentFrog.h"
 
 class RoomScene : public Scene
 {
@@ -20,7 +20,7 @@ public:
 
 		Entity* player = new Entity(this);
 		Vector2D v(2, 2);
-		player->addComponent(MOVEMENT_COMPONENT, new MovementComponent(v));
+		player->addComponent(MOVEMENT_COMPONENT, new MovementComponentFrog(v));
 		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
 		rndr->setContext(player);
 		player->addRenderComponent(rndr);
