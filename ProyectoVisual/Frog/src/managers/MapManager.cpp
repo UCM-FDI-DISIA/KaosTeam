@@ -2,8 +2,8 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
 
-tile::tile(SDL_Texture* tset, int x, int y, int tx, int ty, int w, int h, bool walkable)
-: sheet(tset), x(x), y(y), tx(tx), ty(ty), width(w), height(h), walkable(walkable){}
+tile::tile(SDL_Texture* tset, int x, int y, int tx, int ty, int w, int h, bool walkable, bool theresObj, Entity* objInTile)
+: sheet(tset), x(x), y(y), tx(tx), ty(ty), width(w), height(h), walkable(walkable), theresObj(theresObj), objInTile(objInTile){}
 
 void tile::draw(SDL_Renderer* ren) {
     if (!ren || !sheet)

@@ -1,6 +1,8 @@
 #pragma once
 #include "../sdlutils/Texture.h"
 #include "../utils/assets.h"
+#include "../ecs/Entity.h"
+
 #include <tmxlite/Map.hpp>
 #include <tmxlite/ObjectGroup.hpp>
 #include <tmxlite/LayerGroup.hpp>
@@ -36,11 +38,16 @@ struct tile {
     int ty;
     int width;
     int height;
-    // bool to see if Flonk can walk it
+    // bool to see if Flonk can walk it 
     bool walkable;
+    // bool para ver si hay objeto
+    bool theresObj;
+    // si hay objeto puntero a su entidad
+    Entity* objInTile;
 
-    tile(SDL_Texture* tset, int x = 0, int y = 0,
-        int tx = 0, int ty = 0, int w = 0, int h = 0, bool walkable = true);
+
+    tile(SDL_Texture* tset, int x = 0, int y = 0, int tx = 0, int ty = 0, int w = 0, 
+        int h = 0, bool walkable = true, bool theresObj = false, Entity* objInTile = nullptr);
     void draw(SDL_Renderer* ren);
 };
 

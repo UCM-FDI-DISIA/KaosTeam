@@ -1,10 +1,10 @@
 #include "InputManager.h"
-InputManager* InputManager::GetInstance() {
+/*InputManager* InputManager::GetInstance() {
 	if (instance == nullptr) {
 		instance = new InputManager();
 	}
 	return instance;
-}
+}*/
 
 void InputManager::PollEvents() {
 	SDL_Event event;
@@ -20,7 +20,7 @@ void InputManager::ClearStates() {
 	}
 }
 
-void InputManager::UpdateStates(const SDL_Event &event) {
+void InputManager::UpdateStates(const SDL_Event& event) {
 	if (event.type == SDL_KEYDOWN) {
 		switch (event.key.keysym.sym) {
 		case SDLK_UP:

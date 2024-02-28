@@ -2,7 +2,7 @@
 #include <SDL.h>
 /*
 *Encargado de capturar los eventos de entrada de controles del juego y enviarlas a las entidades pertinentes.
-* 
+*
 * Para hacerla me he inspirado en los ejemplos de Samir.
 * Diego Montenegro Calvo.
 */
@@ -22,7 +22,7 @@ private:
         END //Para tener un valor con el que crear y utilizar el array
     };
     bool states[END];
-    //Constructor vac�o privado para poder instanciar desde dentro
+    //Constructor vacío privado para poder instanciar desde dentro
     InputManager() {};
     ~InputManager() {};
     static InputManager* instance;
@@ -31,12 +31,17 @@ private:
     //Establece todos los estados a false
     void ClearStates();
 public:
-    InputManager(InputManager &im) = delete;
+    InputManager(InputManager& im) = delete;
     void operator=(const InputManager&) = delete;
     /*
-    *Devuelve una instancia de InputManager, en caso de no haber una, la crea 
+    *Devuelve una instancia de InputManager, en caso de no haber una, la crea
     */
-    static InputManager* GetInstance();
+    static InputManager* GetInstance() {
+        if (instance == nullptr) {
+            instance = new InputManager();
+        }
+        return instance;
+    };
     void PollEvents();
     bool getAction1();
     bool getAction2();
