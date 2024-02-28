@@ -13,9 +13,10 @@ class MovementComponent : public Component
 {
 protected:
 	Vector2D posCasilla = {0,0}; //Posiciones de la entidad en el tileMap
+	Vector2D destCasilla = { 0,0 }; //La casilla destino a la que se tiene que mover
 public:
 	MovementComponent() { };
-	MovementComponent(Vector2D casilla) : posCasilla(casilla) {};
-	Vector2D getCasilla();
+	MovementComponent(Vector2D casilla) : posCasilla(casilla), destCasilla(casilla) { };
+	Vector2D getPosition();
 };
 
