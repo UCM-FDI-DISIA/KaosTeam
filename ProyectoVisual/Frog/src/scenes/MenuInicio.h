@@ -1,7 +1,6 @@
 #pragma once
 #include "../ecs/Scene.h"
 
-#include "../components/FollowPlayerComponent.h"
 class Texture;
 class MenuInicio : public Scene
 {
@@ -10,7 +9,6 @@ private:
 
 public:
 	MenuInicio();
-	MenuInicio(Texture* menuBG);
 
 	void Render() override;
 	void Update() override;

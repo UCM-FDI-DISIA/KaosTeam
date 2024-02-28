@@ -1,13 +1,11 @@
 #include "MenuInicio.h"
 #include "../sdlutils/Texture.h"
-MenuInicio::MenuInicio() : Scene() {
+#include "../sdlutils/SDLUtils.h"
 
-	//mapReader_ = new MapManager("tileMap_Prueba");
-	//mapReader_->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
-}
 
-MenuInicio::MenuInicio(Texture* menuBG):menuBackground(menuBG)
+MenuInicio::MenuInicio():Scene()
 {
+	menuBackground = new Texture(sdlutils().renderer(), "../Frog/resources/Menus/MainMenu.png",0,0);
 };
 
 void MenuInicio::Render() {
@@ -15,5 +13,5 @@ void MenuInicio::Render() {
 }
 
 void MenuInicio::Update() {
-	;
+
 }
