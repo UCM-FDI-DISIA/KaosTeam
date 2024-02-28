@@ -43,28 +43,52 @@ A lo largo del juego, el jugador deberá hacer frente a distintos tipos de enemi
 ### Estanque
 
 **En desarrollo**: probablemente contendrá algunos enemigos con patrones de ataque y movimiento sencillos ya que se trata de la primera zona y actúa como tutorial.
-### Pantano
-- **Ranas locas** Son ranas las cuales, debido a la contaminación del pantano traído por el chef, han perdido su cordura. Estos avanzaran lentamente de casilla a casilla hacia Flonk y lo atacará con sus lenguas (las cuales tiene un rango bastante corto debido a la contaminación)
+- **Ranas locas** 
+Vida: 1 golpe
+Daño recibido: Media Mosca
+Son ranas las cuales, debido a la contaminación del Estanque traído por el chef, han perdido su cordura. Estas avanzaran lentamente de una casilla a otra intentando seguir a Flonk (como zombis) atacando con sus lenguas (las cuales tiene un rango melee a diferencia de Flonk debido a la contaminación). El movimiento de estas ranas tienen un tiempo de espera a definir antes de que se muevan a su siguiente casilla.
+- **Peces**
+Vida: 1 golpe
+Daño recibido: Media Mosca
+ Estos nadan en los ríos del estanque siguiendo un camino fijo. Estos nadarán en el río y cada cierto tiempo específico saltarán del agua y caerán. Cuando terminan su recorrido, estos lo repetirán pero en el sentido contrario (irán de un lado para el otro en el río). Si a la hora de saltar sobre el río, Flonk se cruza en su salto con un pez, Flonk recibe daño y es enviado a la casilla donde estaba antes de saltar. 
 
 ### Bosque
 
-- **Las serpientes** Actuan como torretas estaticas los cuales giran sobre su propio eje vigilando por si ven la rana. Si la serpiente detecta la rana, estos rápidamente extenderán sus cuellos para mordernos antes de volver a sus puestos. Si ha pasado suficiente tiempo sin que hayan mordido a Flonk, estos saltaran diagonalmente una casilla.
+Vida: 3 Golpes
+Daño recibido: 1 mosca
+- **Las serpientes** Actuan como torretas estaticas los cuales giran sobre su propio eje vigilando por si ven la rana. Si la serpiente detecta la rana, estos rápidamente extenderán sus cuellos para mordernos antes de volver a sus puestos. Si ha pasado suficiente tiempo sin que hayan mordido a Flonk, estos saltaran diagonalmente una casilla siendo esta casilla la más cercana posible a Flonk.
+
+Vida: 1 golpe 
+Daño recibido: Media mosca
+- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes. Su comportamieno es la de rápidamente seguir al jugador pero al mismo tiempo infligiendo poco daño.
+
+Vida: Depende del tamaño del cúmulo
+Daño recibido: Media Mosca
+-**Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. Estas, como las termitas, siguen al jugador y el cúmulo cuando sea lo suficientemente pequeño, al darles saldrán termitas normales.
 
 
-- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes y se matan de un solo golpe.
--**Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados.
 
 ### Hormiguero
 
 En esta zona, los insectos tratarán de defender su hogar atacándote. Hay 2 tipos de enemigos característicos de estas zonas:
 
-- **Las hormigas** suelen ir solos a la hora de atacar. Son algo lentos, pero son bastante resistentes. Mueren de 3 golpes.
+Vida: 3 Golpes
+Daño recibido: 2 moscas 
+- **Las hormigas** suelen ir en grupo a la hora de atacar. Son de los enemigos más fuertes del juego. El comportamiento de estas serán parecidas a la de un toro. Cuando estas detectan a Flonk, las hormigas empiezan a cargar una embestida (lo cual tarda 1 segundo) antes de correr en linea recta ferozmente hacia Flonk. Si Flonk esquiva el ataque y estas chocan contra la pared se quedarán inmóbiles por unos cuantos segundos antes de recuperarse.
 
-- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes y se matan de un solo golpe.
+Vida: 1 golpe 
+Daño recibido: Media mosca
+- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes. Su comportamieno es la de rápidamente seguir al jugador pero al mismo tiempo infligiendo poco daño.
+
+Vida: Depende del tamaño del cúmulo
+Daño recibido: Media Mosca
+-**Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. Estas, como las termitas, siguen al jugador y el cúmulo cuando sea lo suficientemente pequeño, al darles saldrán termitas normales.
 
 ### Zona de la cocina del chef francés
 
-- **Cucarachas** Actuan como enemigos imposibles de matar. Al atacarlos con nuestra lengua estos son immediatamente "derrotados" pero en unos pocos segundos, estos se volverán a levantarse para atacarte.
+Vida: inmortal
+Daño recibido: Media Mosca
+- **Cucarachas** Son inmortales pero cuansdo son atacadas estas se derrumban, dejándolas immóbiles pero en unos pocos segundos, estas se volverán a levantarse para atacarte. Para atacarte, estas te tiran su cabeza como proyectil. Después de atacarte, estas tendrán que ir a recuperar su cabeza dejándolas vulnerables.
 
 ## Cámara
 
