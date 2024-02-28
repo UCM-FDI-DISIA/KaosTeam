@@ -11,19 +11,11 @@ private:
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
 	int id;
+
 public:
 	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		mapReader = new MapManager("tileMap_Prueba");
-		mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
-
-		Entity* player = new Entity(this);
-		Vector2D v(2, 2);
-		player->addComponent(MOVEMENT_COMPONENT, new MovementComponent(v));
-		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/unFrameDeRana.png", 1, 1);
-		rndr->setContext(player);
-		player->addRenderComponent(rndr);
-		entityList.push_back(player);
+		mapReader = new MapManager("resources/maps/H1map.tmx", this);
 	};
 
 	void AddEntity(Entity* entity);
@@ -31,5 +23,6 @@ public:
 	void Update() override;
 	virtual ~RoomScene();
 	MapManager* getMapReader() { return mapReader; };
+	void createPlayer(std::string texPath, Vector2D pos);
 
 };

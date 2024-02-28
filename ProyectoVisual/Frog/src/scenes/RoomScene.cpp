@@ -15,6 +15,18 @@ void RoomScene::Update() {
 	}
 }
 
+void RoomScene::createPlayer(std::string texPath, Vector2D pos)
+{
+	Entity* player = new Entity(this);
+	player->addComponent(MOVEMENT_COMPONENT, new MovementComponent(pos));
+	RenderComponent* rndr = new RenderComponent(texPath, 1, 1);
+	rndr->setContext(player);
+	player->addRenderComponent(rndr);
+	entityList.push_back(player);
+
+	AddEntity(player);
+}
+
 void RoomScene::AddEntity(Entity* entity) {
 	entityList.push_back(entity);
 }

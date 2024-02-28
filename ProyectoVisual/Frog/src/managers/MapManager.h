@@ -36,11 +36,15 @@ struct tile {
     int ty;
     int width;
     int height;
+    // bool to see if Flonk can walk it
+    bool walkable;
 
     tile(SDL_Texture* tset, int x = 0, int y = 0,
-        int tx = 0, int ty = 0, int w = 0, int h = 0);
+        int tx = 0, int ty = 0, int w = 0, int h = 0, bool walkable = true);
     void draw(SDL_Renderer* ren);
 };
+
+class RoomScene;
 
 class MapManager {
 private:
@@ -58,8 +62,10 @@ private:
     // All of the tilesets used by our Tiled map.
     std::map<gid, SDL_Texture*> tilesets;
 
+    RoomScene* room = nullptr;
+
 public:
-    MapManager(const std::string& name);
+    MapManager(const std::string& path, RoomScene* room);
     void load(const std::string& path, SDL_Renderer* ren);
     void draw(SDL_Renderer* ren);
 
