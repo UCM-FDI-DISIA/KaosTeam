@@ -23,6 +23,7 @@ protected:
 	//constructora
 	Scene() {
 	};
+	virtual ~Scene() {};
 
 public:
 	virtual void Render() = 0;
