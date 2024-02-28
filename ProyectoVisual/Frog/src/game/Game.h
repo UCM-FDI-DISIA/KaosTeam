@@ -4,7 +4,6 @@
 #include "../utils/Singleton.h"
 #include "../ecs/Scene.h"
 #include "../managers/HUDManager.h"
-#include "../components/FollowPlayerComponent.h"
 
 
 using namespace std;
