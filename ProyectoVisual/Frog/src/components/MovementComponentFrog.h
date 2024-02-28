@@ -1,6 +1,6 @@
 #pragma once
 #include "MovementComponent.h";
-
+#include "../managers/DataManager.h"
 class MovementComponentFrog: public MovementComponent
 {
 private:

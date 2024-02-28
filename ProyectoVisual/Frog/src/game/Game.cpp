@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "../scenes/RoomScene.h"
+#include "../managers/DataManager.h"
 
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 
@@ -25,6 +26,7 @@ void Game::Init() {
 
 void Game::GameLoop() {
 	while (!exit) {
+		DataManager::GetInstance()->UpdateFrameTime();
 		escenaActual->Update();
 		Render();
 		inputManager->PollEvents(); //Actualiza la entrada

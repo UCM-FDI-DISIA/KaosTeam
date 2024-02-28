@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 /*
-*Encargado de capturar los eventos de entrada de controles del juego y enviarlas a las entidades pertinentes.
+* Encargado de capturar los eventos de entrada de controles del juego y enviarlas a las entidades pertinentes.
 * 
 * Para hacerla me he inspirado en los ejemplos de Samir.
 * Diego Montenegro Calvo.
