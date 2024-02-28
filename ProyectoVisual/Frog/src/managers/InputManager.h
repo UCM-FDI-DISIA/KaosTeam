@@ -22,7 +22,7 @@ private:
         END //Para tener un valor con el que crear y utilizar el array
     };
     bool states[END];
-    //Constructor vacío privado para poder instanciar desde dentro
+    //Constructor vacï¿½o privado para poder instanciar desde dentro
     InputManager() {};
     ~InputManager() {};
     static InputManager* instance;
@@ -36,12 +36,7 @@ public:
     /*
     *Devuelve una instancia de InputManager, en caso de no haber una, la crea 
     */
-    static InputManager* GetInstance() {
-        if (instance == nullptr) {
-            instance = new InputManager();
-        }
-        return instance;
-    };
+    static InputManager* GetInstance();
     void PollEvents();
     bool getAction1();
     bool getAction2();

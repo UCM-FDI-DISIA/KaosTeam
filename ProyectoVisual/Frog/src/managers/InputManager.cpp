@@ -1,10 +1,10 @@
 #include "InputManager.h"
-/*InputManager* InputManager::GetInstance() {
+InputManager* InputManager::GetInstance() {
 	if (instance == nullptr) {
 		instance = new InputManager();
 	}
 	return instance;
-}*/
+}
 
 void InputManager::PollEvents() {
 	SDL_Event event;
