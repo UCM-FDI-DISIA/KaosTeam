@@ -6,7 +6,12 @@ MenuInicio::MenuInicio() : Scene() {
 	//mapReader_->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
 }
 
+MenuInicio::MenuInicio(Texture* menuBG):menuBackground(menuBG)
+{
+};
+
 void MenuInicio::Render() {
+	menuBackground->render(0,0);
 }
 
 void MenuInicio::Update() {
