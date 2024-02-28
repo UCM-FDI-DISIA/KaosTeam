@@ -1,7 +1,11 @@
 #include "MovementComponentRana.h"
 #include <iostream>
 void MovementComponentRana::update() {
-	if (im->getAction1()) {
-		std::cout << "p";
+
+	if ((SDL_GetTicks() - lastTimeMoved) > actionCooldown)
+	{
+		if (im->getDown()) {
+			posCasilla.setY(posCasilla.getY() - 1);
+		}
 	}
 }
