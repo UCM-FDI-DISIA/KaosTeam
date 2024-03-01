@@ -28,8 +28,10 @@ private:
 public:
 	Game();
 	~Game();
-	void Init();
-	void GameLoop();
-	void Render();
+	void init();
+	void gameLoop();
+	void render();
+	void exitGame();
+	void changeScene();
 };
 
