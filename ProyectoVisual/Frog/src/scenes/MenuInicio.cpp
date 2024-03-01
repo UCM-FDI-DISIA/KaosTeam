@@ -2,21 +2,22 @@
 #include "../sdlutils/SDLUtils.h"
 
 
+
 MenuInicio::MenuInicio():Scene()
 {
+	im = InputManager::GetInstance();
 	SDL_Rect buttonStartDest, buttonEndDest;
 
-	//Valores de posicion temporales -> Hacerlos respecto al tamaño de pantalla
+	//Valores de posicion temporales -> Hacerlos respecto al tamaï¿½o de pantalla
 	//buttonEndDest.y hacerlo a partir de buttonStartDest.y + su size + offsetY
 	buttonStartDest.x = 150; buttonStartDest.y = 250; buttonEndDest.x = 150; buttonEndDest.y = 400;
 	buttonStartDest.w = buttonEndDest.w = 300; buttonStartDest.h = buttonEndDest.h = 100;
 
-	menuButton.emplace_back(2);
 	menuBackground = new Texture(sdlutils().renderer(), "../Frog/resources/Menus/MainMenu.png",0,0);
-	menuButton[0] = new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuJuego.png", 0, 0),
-		buttonStartDest);
-	menuButton[1] = new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuSalir.png", 0, 0),
-		buttonEndDest);
+	menuButton.push_back( new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuJuego.png", 0, 0),
+		buttonStartDest));
+	menuButton.push_back( new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuSalir.png", 0, 0),
+		buttonEndDest));
 	select = new Texture(sdlutils().renderer(), "../Frog/resources/Sprites/unframedemoska.png", 0, 0);
 
 	dest.x = menuButton[0]->getRect().x - offsetX;
@@ -34,7 +35,18 @@ void MenuInicio::render() {
 }
 
 void MenuInicio::update() {
+	if (im->getAction1())
+	{
+		
+	}
+	if (im->getUp())
+	{
+		std::cout << "ohno";
+	}
+	else if (im->getDown())
+	{
 
+	}
 }
 
 void MenuInicio::changeButton(bool dir)
