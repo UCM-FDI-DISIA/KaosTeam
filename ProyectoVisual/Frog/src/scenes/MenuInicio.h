@@ -3,6 +3,7 @@
 #include"../utils/Button.h"
 #include <vector>
 #include "../sdlutils/Texture.h"
+#include"../managers/InputManager.h"
 
 enum direction{ARRIBA, ABAJO};
 
@@ -16,6 +17,7 @@ private:
 	int offsetY = 50;
 	std::vector <Button*> menuButton;
 	int currentButton = 0;
+	InputManager* im;
 
 public:
 	MenuInicio();

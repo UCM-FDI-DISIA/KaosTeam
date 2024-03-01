@@ -5,6 +5,7 @@
 	}
 	return instance;
 }*/
+InputManager* InputManager::instance;
 
 void InputManager::PollEvents() {
 	SDL_Event event;
