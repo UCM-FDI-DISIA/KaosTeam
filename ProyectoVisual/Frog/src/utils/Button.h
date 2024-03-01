@@ -14,6 +14,7 @@ public:
 	Button() {};
 	~Button() {};
 	Button(Texture* tex, Vector2D pos) :texture(tex), position(pos) {};
+	Vector2D GetPosition() const { return position; }
 	void connect(callBack call);
 	void render();
 	void perform();
