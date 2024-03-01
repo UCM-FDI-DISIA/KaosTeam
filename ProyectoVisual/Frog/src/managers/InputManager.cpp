@@ -5,7 +5,6 @@
 	}
 	return instance;
 }*/
-InputManager* InputManager::instance;
 
 InputManager* InputManager::instance = nullptr;
 

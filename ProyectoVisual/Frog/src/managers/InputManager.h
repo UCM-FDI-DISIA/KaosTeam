@@ -23,7 +23,7 @@ private:
     };
     bool states[];
     //Constructor vacío privado para poder instanciar desde dentro
-    InputManager() { instance = nullptr; states[END] = {}; };
+    InputManager() { instance = nullptr; states[END] = {}; PollEvents(); };
     ~InputManager() {};
     static InputManager* instance;
     //Actualiza el estado de los eventos

@@ -49,11 +49,11 @@ void Game::render() {
 
 void Game::exitGame()
 {
+	std::cout << "oh no";
 	exit = true;
 }
 
 void Game::changeScene() //PROVISIONAL, NO FINAL
 {
-	delete escenaActual;
 	escenaActual = new RoomScene(1);
 }
