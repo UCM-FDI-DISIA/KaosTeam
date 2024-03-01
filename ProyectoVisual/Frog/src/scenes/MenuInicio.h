@@ -9,13 +9,13 @@ class MenuInicio : public Scene
 private:
 	Texture* menuBackground = nullptr;
 	std::vector <Button*> menuButton;
-	int currentButton;
+	int currentButton = 0;
 
 public:
 	MenuInicio();
 
-	void Render() override;
-	void Update() override;
+	void render() override;
+	void update() override;
 	void changeButton();
 	void callButton();
 };

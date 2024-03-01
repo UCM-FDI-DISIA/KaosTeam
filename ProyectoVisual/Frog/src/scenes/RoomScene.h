@@ -40,8 +40,8 @@ public:
 	};
 
 	void AddEntity(Entity* entity);
-	void Render() override;
-	void Update() override;
+	void render() override;
+	void update() override;
 	virtual ~RoomScene();
 	MapManager* getMapReader() { return mapReader; };
 

@@ -8,10 +8,18 @@ MenuInicio::MenuInicio():Scene()
 	menuBackground = new Texture(sdlutils().renderer(), "../Frog/resources/Menus/MainMenu.png",0,0);
 };
 
-void MenuInicio::Render() {
+void MenuInicio::render() {
 	menuBackground->render(0,0);
 }
 
-void MenuInicio::Update() {
+void MenuInicio::update() {
 
+}
+
+void MenuInicio::changeButton()
+{
+}
+
+void MenuInicio::callButton()
+{
 }

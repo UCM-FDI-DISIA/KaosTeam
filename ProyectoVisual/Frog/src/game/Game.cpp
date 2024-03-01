@@ -25,7 +25,7 @@ void Game::Init() {
 
 void Game::GameLoop() {
 	while (!exit) {
-		escenaActual->Update();
+		escenaActual->update();
 		Render();
 	}
 }
@@ -34,7 +34,7 @@ void Game::GameLoop() {
 */
 void Game::Render() {
 	SDL_RenderClear(sdlutils().renderer());
-	escenaActual->Render();
+	escenaActual->render();
 	//HUD->render();
 	SDL_RenderPresent(sdlutils().renderer());
 }

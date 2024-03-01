@@ -26,8 +26,8 @@ protected:
 
 public:
 	virtual ~Scene() {};
-	virtual void Render() = 0;
-	virtual void Update() = 0;
+	virtual void render() = 0;
+	virtual void update() = 0;
 
 	MapManager* getMapReader();
 };
