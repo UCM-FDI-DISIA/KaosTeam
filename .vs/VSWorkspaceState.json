@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ProyectoVisual",
+    "\\ProyectoVisual\\Frog",
+    "\\ProyectoVisual\\Frog\\src",
+    "\\ProyectoVisual\\Frog\\src\\ecs",
+    "\\ProyectoVisual\\Frog\\src\\entities",
+    "\\ProyectoVisual\\Frog\\src\\scenes",
+    "\\ProyectoVisual\\Frog\\src\\utils"
   ],
-  "SelectedNode": "\\KaosTeamProyectos2.sln",
+  "SelectedNode": "\\ProyectoVisual\\Frog\\src\\utils\\Button.h",
   "PreviewInSolutionExplorer": true
 }

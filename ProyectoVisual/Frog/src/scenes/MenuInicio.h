@@ -11,10 +11,11 @@ class MenuInicio : public Scene
 private:
 	Texture* menuBackground = nullptr;
 	Texture* select = nullptr;
-	std::vector <Button*> menuButton;
-	int currentButton = 0;
 	SDL_Rect dest; //resize de la mosca
 	int offsetX = 5;
+	int offsetY = 50;
+	std::vector <Button*> menuButton;
+	int currentButton = 0;
 
 public:
 	MenuInicio();

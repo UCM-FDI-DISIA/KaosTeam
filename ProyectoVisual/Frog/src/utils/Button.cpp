@@ -7,7 +7,7 @@ void Button::connect(callBack call)
 
 void Button::render()
 {
-	texture->render(position.getX(), position.getY());
+	texture->render(dest);
 }
 
 void Button::perform()

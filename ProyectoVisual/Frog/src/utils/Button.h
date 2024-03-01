@@ -9,13 +9,17 @@ class Button
 private:
 	Texture* texture = nullptr;
 	callBack callB;
-	Vector2D position;
+	SDL_Rect dest;
 public:
 	Button() {};
 	~Button() {};
-	Button(Texture* tex, Vector2D pos) :texture(tex), position(pos) {};
-	Vector2D GetPosition() const { return position; }
+	Button(Texture* tex, SDL_Rect dst) :texture(tex), dest(dst) {};
+	
 	void connect(callBack call);
 	void render();
 	void perform();
+
+	Texture* getTexture() const { return texture; }
+	SDL_Rect getRect() const { return dest; }
+
 };
