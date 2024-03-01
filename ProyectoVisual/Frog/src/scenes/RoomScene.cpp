@@ -9,9 +9,11 @@ void RoomScene::render() {
 	}
 }
 
+
 void RoomScene::update() {
-	for (size_t i = 0; i < entityList.size(); i++) {
-		entityList.at(i)->update();
+	for (Entity* e : entityList) {
+		if (e != nullptr)
+		e->update();
 	}
 }
 

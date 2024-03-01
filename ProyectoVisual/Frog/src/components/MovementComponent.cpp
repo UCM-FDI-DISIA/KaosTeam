@@ -1,9 +1,6 @@
 #include "MovementComponent.h"
+#include <iostream>
 
-MovementComponent::MovementComponent(Vector2D casilla) {
-	this->posCasilla = casilla;
-}
-
-Vector2D MovementComponent::getCasilla() {
+Vector2D MovementComponent::getPosition() {
 	return posCasilla;
 }

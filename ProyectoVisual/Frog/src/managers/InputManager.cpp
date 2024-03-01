@@ -7,6 +7,8 @@
 }*/
 InputManager* InputManager::instance;
 
+InputManager* InputManager::instance = nullptr;
+
 void InputManager::PollEvents() {
 	SDL_Event event;
 
