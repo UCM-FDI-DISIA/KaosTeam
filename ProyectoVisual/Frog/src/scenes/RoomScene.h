@@ -4,6 +4,7 @@
 #include"../components/MovementComponentFly.h"
 #include "../components/RenderComponent.h"
 #include "../components/MovementComponentFrog.h"
+#include "../components/FollowPlayerComponent.h"
 
 class RoomScene : public Scene
 {
@@ -12,6 +13,7 @@ private:
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
 	int id;
+	Entity* player = nullptr;
 public:
 	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
@@ -38,6 +40,16 @@ public:
 		fly->addRenderComponent(rndr);
 		entityList.push_back(fly);
 
+		Entity* flyToPlayer = new Entity(this);
+		FollowPlayerComponent* fpc = new FollowPlayerComponent(Vector2D(5, 5));
+		fpc->setContext(flyToPlayer);
+		flyToPlayer->addComponent(MOVEMENT_COMPONENT, fpc);
+
+		rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
+		rndr->setContext(flyToPlayer);
+		flyToPlayer->addRenderComponent(rndr);
+		entityList.push_back(flyToPlayer);
+
 	};
 
 	void AddEntity(Entity* entity);
@@ -45,5 +57,6 @@ public:
 	void Update() override;
 	virtual ~RoomScene();
 	MapManager* getMapReader() { return mapReader; };
+	Entity* getPlayer() { return player; };
 
 };
