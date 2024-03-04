@@ -132,15 +132,13 @@ Nuestro juego está dividido en diferentes zonas, donde habrá enemigos y objeto
 
 ![](assets/imgGdd/image5.jpg)
 
-Diseño inicial sin finalizar
-
-El estanque es la zona inicial y la que conecta a las otras tres zonas, conectando con el bosque por la derecha estando bloqueada por piedras movibles, el hormiguero por arriba donde se necesita el gancho para entrar y la cocina por la derecha donde se necesita bombas para continuar.
+El estanque es la zona inicial y la que conecta a las otras tres zonas, conectando con el bosque por la izquierda, el hormiguero por arriba donde se necesita el gancho para entrar y la cocina por la derecha donde se necesita bombas para continuar.
 
 La zona actúa de tutorial en el que el jugador encontrará los primeros enemigos.
 
 También hay objetos rompibles y explotables (para los que se necesitarán hormigas rojas) y los primeros huecos (para los que necesitas una mejora de salto). De esta forma el jugador es incentivado a volver a los lugares por donde ya ha pasado.
 
-En la parte superior y al casi al final del recorrido inicial del jugador, se encuentra la tienda, en la que podrá entrar pero no tendrá suficiente dinero para comprar. Al estar en la zona central el jugador podrá regresar y comprar objetos en cada paso de su aventura. (Más adelante se explica con detalle el funcionamiento de la tienda).
+En el centro, se encuentra la tienda, en la que podrá entrar pero no tendrá suficiente dinero para comprar. Al estar en la zona central el jugador podrá regresar y comprar objetos en cada paso de su aventura. (Más adelante se explica con detalle el funcionamiento de la tienda).
 
 ### Bosque
 
