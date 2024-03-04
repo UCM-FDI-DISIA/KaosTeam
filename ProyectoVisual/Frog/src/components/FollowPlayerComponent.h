@@ -1,6 +1,7 @@
 #pragma once
 #include "MovementComponent.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../managers/DataManager.h"
 #include <iostream>
 
 class FollowPlayerComponent: public MovementComponent

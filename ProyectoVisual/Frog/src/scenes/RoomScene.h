@@ -20,7 +20,7 @@ public:
 		mapReader = new MapManager("tileMap_Prueba");
 		mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
 
-		Entity* player = new Entity(this);
+		player = new Entity(this);
 		Vector2D v(2, 2);
 		player->addComponent(MOVEMENT_COMPONENT, new MovementComponentFrog(v));
 		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);

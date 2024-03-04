@@ -62,7 +62,7 @@ void FollowPlayerComponent::FollowPlayer(float x, float y) {
 }
 
 void FollowPlayerComponent::update() {
-	if ((SDL_GetTicks() - lastTimeMoved) > waitTime) {
+	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
 		RoomScene* sc = ent->getScene();// coje la pocision del player
 		Entity* pl = sc->getPlayer();
 		MovementComponent* pmc = static_cast<MovementComponent*>(pl->getComponent(MOVEMENT_COMPONENT));
