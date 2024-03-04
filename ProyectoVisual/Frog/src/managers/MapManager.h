@@ -11,7 +11,7 @@ using namespace tmx;
 typedef int gid;
 
 using uint = unsigned int;
-constexpr uint MAP_MULT = 4;
+constexpr uint MAP_MULT = 8;
 
 namespace
 {
@@ -42,7 +42,7 @@ struct tile {
     void draw(SDL_Renderer* ren);
 };
 
-class MapComponent {
+class MapManager {
 private:
     std::string name;
     // Think of the dimensions as a 2D array (after all, that's what our
@@ -51,15 +51,18 @@ private:
     int rows;
     // The cols variable is the number of tiles from left to right (X axis).
     int cols;
-    int tile_width;
-    int tile_height;
+    int tile_width = 0;
+    int tile_height = 0;
     // All of the tiles we will draw to the screen.
     std::vector<tile> tiles;
     // All of the tilesets used by our Tiled map.
     std::map<gid, SDL_Texture*> tilesets;
 
 public:
-    MapComponent(const std::string& name);
+    MapManager(const std::string& name);
     void load(const std::string& path, SDL_Renderer* ren);
     void draw(SDL_Renderer* ren);
+
+    Vector2D getMapSize();
+    int getTileSize();
 };

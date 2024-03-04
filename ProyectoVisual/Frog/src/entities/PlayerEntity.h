@@ -1,5 +1,5 @@
 #pragma once
-#include "Entity.h"
+#include "../ecs/Entity.h"
 /*
 * Entidad específica del jugador (la ranita)
 */

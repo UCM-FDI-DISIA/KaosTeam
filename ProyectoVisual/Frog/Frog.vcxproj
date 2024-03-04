@@ -82,6 +82,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)SDL2\include;$(SolutionDir)SDL2_image\include;$(SolutionDir)SDL2_ttf-2.0.14\include;$(SolutionDir)SDL2_mixer-2.0.2\include;$(SolutionDir)tmxlite\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)SDL2_ttf-2.0.14\lib\x64;$(SolutionDir)\SDL2_mixer-2.0.2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)SDL2\include;$(SolutionDir)SDL2_image\include;$(SolutionDir)SDL2_ttf-2.0.14\include;$(SolutionDir)SDL2_mixer-2.0.2\include;$(SolutionDir)tmxlite\include;$(IncludePath)</IncludePath>
@@ -155,29 +156,57 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentFly.cpp" />
     <ClCompile Include="src\components\LifeComponent.cpp" />
+    <ClCompile Include="src\components\MoneyComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentFrog.cpp" />
+    <ClCompile Include="src\components\RenderComponent.cpp" />
+    <ClCompile Include="src\ecs\Component.cpp" />
+    <ClCompile Include="src\ecs\Entity.cpp" />
+    <ClCompile Include="src\managers\DataManager.cpp" />
+    <ClCompile Include="src\ecs\Scene.cpp" />
+    <ClCompile Include="src\entities\PlayerEntity.cpp" />
     <ClCompile Include="src\Frog.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\json\JSON.cpp" />
     <ClCompile Include="src\json\JSONValue.cpp" />
     <ClCompile Include="src\json\json_demo.cpp" />
+    <ClCompile Include="src\managers\HUDManager.cpp" />
+    <ClCompile Include="src\managers\InputManager.cpp" />
     <ClCompile Include="src\scenes\MenuInicio.cpp" />
+    <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_game.cpp" />
     <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
     <ClCompile Include="src\sdlutils\Texture.cpp" />
     <ClCompile Include="src\utils\assets.cpp" />
-    <ClCompile Include="src\components\MapComponent.cpp" />
+    <ClCompile Include="src\managers\MapManager.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\FollowPlayerComponent.h" />
+    <ClInclude Include="src\components\MovementComponentFly.h" />
     <ClInclude Include="src\components\LifeComponent.h" />
+    <ClInclude Include="src\components\MoneyComponent.h" />
+    <ClInclude Include="src\components\MovementComponent.h" />
+    <ClInclude Include="src\components\MovementComponentFrog.h" />
+    <ClInclude Include="src\components\RenderComponent.h" />
+    <ClInclude Include="src\ecs\Component.h" />
+    <ClInclude Include="src\managers\DataManager.h" />
+    <ClInclude Include="src\ecs\Entity.h" />
+    <ClInclude Include="src\ecs\Scene.h" />
+    <ClInclude Include="src\entities\PlayerEntity.h" />
     <ClInclude Include="src\game\Game.h" />
     <ClInclude Include="src\json\JSON.h" />
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />
+    <ClInclude Include="src\managers\HUDManager.h" />
+    <ClInclude Include="src\managers\InputManager.h" />
     <ClInclude Include="src\scenes\MenuInicio.h" />
+    <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
     <ClInclude Include="src\sdlutils\InputHandler.h" />
     <ClInclude Include="src\sdlutils\macros.h" />
@@ -191,7 +220,7 @@
     <ClInclude Include="src\sdlutils\Texture.h" />
     <ClInclude Include="src\sdlutils\VirtualTimer.h" />
     <ClInclude Include="src\utils\assets.h" />
-    <ClInclude Include="src\components\MapComponent.h" />
+    <ClInclude Include="src\managers\MapManager.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
   </ItemGroup>
