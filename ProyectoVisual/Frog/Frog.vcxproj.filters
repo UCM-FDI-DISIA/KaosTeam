@@ -29,6 +29,7 @@
     <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFly.cpp" />
     <ClCompile Include="src\utils\Button.cpp" />
+    <ClCompile Include="src\components\MovementComponentFrog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -66,6 +67,7 @@
     <ClInclude Include="src\managers\InputManager.h" />
     <ClInclude Include="src\components\MovementComponentFly.h" />
     <ClInclude Include="src\utils\Button.h" />
+    <ClInclude Include="src\components\MovementComponentFrog.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\maps\tileMap_Prueba.tmx" />

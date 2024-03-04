@@ -1,10 +1,10 @@
 #include "MenuInicio.h"
 
 #include "../sdlutils/SDLUtils.h"
+#include "../game/Game.h"
 
 
-
-MenuInicio::MenuInicio():Scene()
+MenuInicio::MenuInicio(Game*g):Scene(), game(g)
 {
 	im = InputManager::GetInstance();
 	SDL_Rect buttonStartDest, buttonEndDest;
@@ -18,10 +18,14 @@ MenuInicio::MenuInicio():Scene()
 	
 
 	menuBackground = new Texture(sdlutils().renderer(), "../Frog/resources/Menus/MainMenu.png",0,0);
-	menuButton.push_back( new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuJuego.png", 0, 0),
+
+	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuJuego.png", 0, 0),
 		buttonStartDest));
-	menuButton.push_back( new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuSalir.png", 0, 0),
+	menuButton[0]->connect([this]() {game->changeScene(); });
+	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuSalir.png", 0, 0),
 		buttonEndDest));
+	menuButton[1]->connect([this]() {game->exitGame(); });
+	
 	select = new Texture(sdlutils().renderer(), "../Frog/resources/Sprites/unframedemoska.png", 0, 0);
 
 	dest.w = select->width();
@@ -40,15 +44,15 @@ void MenuInicio::render() {
 void MenuInicio::update() {
 	if (im->getAction1())
 	{
-		
+		callButton();
 	}
 	if (im->getUp())
 	{
-		std::cout << "ohno";
+		changeButton(ARRIBA);
 	}
 	else if (im->getDown())
 	{
-
+		changeButton(ABAJO);
 	}
 }
 

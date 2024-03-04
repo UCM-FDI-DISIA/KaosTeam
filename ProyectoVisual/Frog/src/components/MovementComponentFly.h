@@ -1,5 +1,6 @@
 #pragma once
 #include "MovementComponent.h"
+#include "../managers/DataManager.h"
 #include "../sdlutils/SDLUtils.h"
 class MovementComponentFly : public MovementComponent
 {

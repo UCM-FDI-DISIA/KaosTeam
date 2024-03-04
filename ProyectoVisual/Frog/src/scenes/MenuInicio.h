@@ -20,9 +20,11 @@ private:
 	std::vector <Button*> menuButton;
 	int currentButton = 0;
 	InputManager* im;
-
+	Game* game;
 public:
-	MenuInicio();
+	MenuInicio() {};
+
+	MenuInicio(Game* g);
 
 	void render() override;
 	void update() override;
