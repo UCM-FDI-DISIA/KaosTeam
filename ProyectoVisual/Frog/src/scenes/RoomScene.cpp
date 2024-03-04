@@ -14,6 +14,7 @@ void RoomScene::Update() {
 		if (e != nullptr)
 		e->update();
 	}
+	//cameraManager->update();
 }
 
 void RoomScene::AddEntity(Entity* entity) {

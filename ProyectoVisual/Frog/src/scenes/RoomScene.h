@@ -5,11 +5,12 @@
 #include "../components/RenderComponent.h"
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
+#include "../managers/CameraManager.h"
 
 class RoomScene : public Scene
 {
 private:
-	//Camara
+	Camera* cameraManager;
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
 	int id;
@@ -17,9 +18,9 @@ private:
 public:
 	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		mapReader = new MapManager("tileMap_Prueba");
+		mapReader = new MapManager("tileMap_Prueba", Vector2D(0,0));
 		mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
-
+		
 		Entity* player = new Entity(this);
 		Vector2D v(2, 2);
 		player->addComponent(MOVEMENT_COMPONENT, new MovementComponentFrog(v));
@@ -28,6 +29,8 @@ public:
 		player->addRenderComponent(rndr);
 		entityList.push_back(player);
 
+		//camara
+		cameraManager->getInstance(player, mapReader);
 
 
 		Entity* fly = new Entity(this);

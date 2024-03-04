@@ -27,10 +27,10 @@ void tile::draw(SDL_Renderer* ren) {
     SDL_RenderCopy(ren, sheet, &src, &dest);
 }
 
-MapManager::MapManager(const std::string& name)
-    : name(name), rows(0), cols(0), tile_width(10), tile_height(10){
+MapManager::MapManager(const std::string& name, const Vector2D& pos)
+    : name(name), rows(0), cols(0), tile_width(10), tile_height(10), position(pos) {
 
-    
+    mapRect = {int(pos.getX()), int(pos.getY()), int(tile_width * MAP_MULT), int(tile_height * MAP_MULT) };
     //Para cuando queramos usar la info de capas/objetos/etc.
     #pragma region Lectura ej. (info a consola)
     /*
@@ -290,4 +290,41 @@ Vector2D MapManager::getMapSize()
 int MapManager::getTileSize()
 {
     return tile_width*MAP_MULT; //width y height son iguales
+}
+
+void MapManager::moveRight(int speed, int limit) {
+
+    position = position + Vector2D(speed, 0);
+    if (position.getX() > limit) {
+        position.setX(limit);
+    }
+    mapRect.x = position.getX();
+    
+}
+void MapManager::moveLeft(int speed, int limit) {
+
+    position = position + Vector2D(-speed, 0);
+    if (position.getX() < limit) {
+        position.setX(limit);
+    }
+    mapRect.x = position.getX();
+}
+void MapManager::moveUp(int speed, int limit) {
+
+    position = position + Vector2D(0, -speed);
+	if (position.getY() < limit) {
+		position.setY(limit);
+	}
+	mapRect.y = position.getY();
+
+
+}
+void MapManager::moveDown(int speed, int limit) {
+
+    position = position + Vector2D(0, speed);
+	if (position.getY() > limit) {
+		position.setY(limit);
+	}
+	mapRect.y = position.getY();
+
 }

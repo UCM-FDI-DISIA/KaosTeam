@@ -6,7 +6,7 @@
 #include <tmxlite/LayerGroup.hpp>
 #include <tmxlite/TileLayer.hpp>
 #include <iostream>
-
+#include "../utils/Vector2D.h"
 using namespace tmx;
 typedef int gid;
 
@@ -57,12 +57,24 @@ private:
     std::vector<tile> tiles;
     // All of the tilesets used by our Tiled map.
     std::map<gid, SDL_Texture*> tilesets;
+    Vector2D position;
+    SDL_Rect mapRect;
 
 public:
-    MapManager(const std::string& name);
+    MapManager(const std::string& name, const Vector2D& position);
     void load(const std::string& path, SDL_Renderer* ren);
     void draw(SDL_Renderer* ren);
 
     Vector2D getMapSize();
     int getTileSize();
+
+    //revisar position map
+    //int getX() { return x; }
+    //int getY() { return y; }
+    int getX() { return position.getX(); }
+    int getY() { return position.getY(); }
+    void moveRight(int speed, int limit);
+    void moveLeft(int speed, int limit);
+    void moveUp(int speed, int limit);
+    void moveDown(int speed, int limit);
 };
