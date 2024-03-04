@@ -41,7 +41,7 @@ public:
 		entityList.push_back(fly);
 
 		Entity* flyToPlayer = new Entity(this);
-		FollowPlayerComponent* fpc = new FollowPlayerComponent(Vector2D(5, 5));
+		FollowPlayerComponent* fpc = new FollowPlayerComponent(Vector2D(0, 0));
 		fpc->setContext(flyToPlayer);
 		flyToPlayer->addComponent(MOVEMENT_COMPONENT, fpc);
 
