@@ -1,0 +1,41 @@
+MANUAL PARA LA CORRECTA PROGRAMACIÓN EN C++
+
+ÍNDICE
+....................VARIABLES.......................................................
+			-Locales
+			-Globales
+....................CONSTANTES......................................................
+....................CLASES..........................................................
+			-Público
+			-Privado
+			-Atributos
+....................IDENTACIÓN......................................................
+....................USO DE CORCHETES................................................
+....................COMENTARIOS.....................................................
+....................TIPS............................................................
+
+
+VARIABLES:
+
+Locales
+	->Deben ser descriptivas de su propósito, tratando de no caer en abreviaciones indescifrables o en nombres kilimétricos.
+		*Una excepción son los iteradores (sean del tipo que sean). Estos si que sueles tener nombre cortos, tal como "i" ó "j".
+	->Si es compuesto el nombre, trata de usar solo nombres o adjetivos. Ej: int numCasas, string colorFuente.
+
+Globales
+	->Normalmente, suelen ser constantes, por lo que seguirán sus reglas.
+
+CONSTANTES:
+	->Estas van siempre en MAYÚSCULAS.
+	->Casi siempre se definen al principio del archivo en el que se quieran definir. 
+	->Si están compuestas por varias palabras, se pone una barra baja "_" entre cada una de ellas. Ej: const int NUM_ELEMS.
+		*Una excepción son las tipos constantes pasados por referencia. Estos seguirán las reglas de variables, pues simplemente representan una referencia 
+		a una variable.
+	
+CLASES: 
+	->Tienen la primera letra de su nombre siempre en MAYÚSCULAS. Si son nombres compuestos, la primera letra de cada palabra también se pone en MAYÚSCULAS.
+		Ej: EstoEsUnaClase {}
+	
+Privado, Protected y Público
+	->Van en este orden las secciones de una clase. 
+	->Privado no es obligatorio ponerlo, pero es recomendable para aclararlo, sobre todo si algunos lo usan y otros no.

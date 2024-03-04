@@ -4,6 +4,7 @@
 #include "../utils/Singleton.h"
 #include "../ecs/Scene.h"
 #include "../managers/HUDManager.h"
+#include "../managers/InputManager.h"
 
 using namespace std;
 
@@ -23,10 +24,12 @@ class Game
 private:
 	Scene* escenaActual;
 	HUDManager* HUD;
+	InputManager* inputManager;
 	bool exit;
 
 public:
 	Game();
+	~Game();
 	void Init();
 	void GameLoop();
 	void Render();

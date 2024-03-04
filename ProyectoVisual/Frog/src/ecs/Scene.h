@@ -1,24 +1,32 @@
 #pragma once
-#include "../components/MapComponent.h"
+#include "../managers/MapManager.h"
 #include "../sdlutils/SDLUtils.h"
+#include "Entity.h"
+//#include "../managers/DataManager.h"
 
 class Scene
 {
 	/**
-	* Clase abstracta de escena, todo lo que es programación debe ir en su clase hija.
+	* Clase abstracta de escena, todo lo que es programaciï¿½n debe ir en su clase hija.
 	* Todas las clases deben ser implementadas.
 	* 
-	* Las salas deberían ser una clase hija de Escena
-	* Otras escenas pueden ser el menú de inicio y el menú de pausa.
+	* Las salas deberï¿½an ser una clase hija de Escena
+	* Otras escenas pueden ser el menï¿½ de inicio y el menï¿½ de pausa.
 	*/
 
 protected:
-	MapComponent* mapReader_;
-
+	std::vector<Entity*> entityList;
+	//MapManager* mapReader_;
+	//Singleton que contiene datos generales del juego (vidas del jugador, entidades persistentes, etc)
+	//DataManager* dataManager;
+	
 	//constructora
-	Scene() {};
+	Scene() {
+	};
 
 public:
 	virtual void Render() = 0;
 	virtual void Update() = 0;
+
+	MapManager* getMapReader();
 };
