@@ -48,15 +48,15 @@ public:
 		fly->addRenderComponent(rendr);
 		entityList.push_back(fly);
 
-		Entity* flyToPlayer = new Entity(this);
+		/*Entity* flyToPlayer = new Entity(this);
 		FollowPlayerComponent* fpc = new FollowPlayerComponent(Vector2D(5, 5));
 		fpc->setContext(flyToPlayer);
 		flyToPlayer->addComponent(MOVEMENT_COMPONENT, fpc);
 
-		rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
-		rndr->setContext(flyToPlayer);
-		flyToPlayer->addRenderComponent(rndr);
-		entityList.push_back(flyToPlayer);
+		rendr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
+		rendr->setContext(flyToPlayer);
+		flyToPlayer->addRenderComponent(rendr);
+		entityList.push_back(flyToPlayer);*/
 
 	};
 

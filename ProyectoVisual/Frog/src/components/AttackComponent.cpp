@@ -1,14 +1,15 @@
 #include "AttackComponent.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../managers/DataManager.h"
 
 
 
 void AttackComponent::update()
 {
-	if ((SDL_GetTicks() - lastTimeChanged) > attackFrameTime)
+	if ((DataManager::GetInstance()->getFrameTime() - lastTimeChanged) > attackFrameTime)
 	{
-		lastTimeChanged = SDL_GetTicks();
+		lastTimeChanged = DataManager::GetInstance()->getFrameTime();
 		if (state == 1)
 		{
 			distanceMoved++;
@@ -19,13 +20,14 @@ void AttackComponent::update()
 		else if (state == 2)
 		{
 			distanceMoved--;
-			if (distanceMoved == 1)
-				state = 1;
+			if (distanceMoved == 0)
+				state = 0;
 		}
-		else
-		{
-			//pregunar si hay q atacar
-		}
+		
+	}
+	if (state == 0 && inputM->getSpace())
+	{
+		state = 1;
 	}
 	
 }

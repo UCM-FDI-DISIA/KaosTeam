@@ -8,8 +8,8 @@ void RenderComponentFrog::render()
     int t = ent->getScene()->getMapReader()->getTileSize();
     int size = (int)t * scale;
     int offset = (t - size) / 2;
-    Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getCasilla();
-
+    Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
+    //Vector2D pos = Vector2D(2, 2);
     
     SDL_Rect dest;
     //COSAS IMPORTANTES. pos es de floats, igual nos conviene q sea de ints

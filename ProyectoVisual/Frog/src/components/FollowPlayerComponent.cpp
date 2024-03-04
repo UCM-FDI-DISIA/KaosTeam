@@ -66,7 +66,7 @@ void FollowPlayerComponent::update() {
 		RoomScene* sc = ent->getScene();// coje la pocision del player
 		Entity* pl = sc->getPlayer();
 		MovementComponent* pmc = static_cast<MovementComponent*>(pl->getComponent(MOVEMENT_COMPONENT));
-		Vector2D playerPos = pmc->getCasilla();
+		Vector2D playerPos = pmc->getPosition();
 		Vector2D aux = playerPos - posCasilla;
 		//sacar X e Y y comparar
 		float ax = aux.getX();
