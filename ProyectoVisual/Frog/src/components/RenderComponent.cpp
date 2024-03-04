@@ -8,7 +8,7 @@ void RenderComponent::render()
     int size = (int) t*scale;
     int offset = (t - size) / 2;
 
-    Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getCasilla();
+    Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
 
     SDL_Rect dest;
     dest.w = size;

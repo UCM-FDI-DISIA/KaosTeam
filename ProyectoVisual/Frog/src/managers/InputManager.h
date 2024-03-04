@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 /*
-*Encargado de capturar los eventos de entrada de controles del juego y enviarlas a las entidades pertinentes.
+* Encargado de capturar los eventos de entrada de controles del juego y enviarlas a las entidades pertinentes.
 * 
 * Para hacerla me he inspirado en los ejemplos de Samir.
 * Diego Montenegro Calvo.
@@ -21,9 +21,9 @@ private:
         BTN_ESCAPE,
         END //Para tener un valor con el que crear y utilizar el array
     };
-    bool states[END];
+    bool states[];
     //Constructor vacío privado para poder instanciar desde dentro
-    InputManager() {};
+    InputManager() { instance = nullptr; states[END] = {}; };
     ~InputManager() {};
     static InputManager* instance;
     //Actualiza el estado de los eventos
@@ -31,7 +31,7 @@ private:
     //Establece todos los estados a false
     void ClearStates();
 public:
-    InputManager(InputManager &im) = delete;
+    InputManager(InputManager&) = delete;
     void operator=(const InputManager&) = delete;
     /*
     *Devuelve una instancia de InputManager, en caso de no haber una, la crea 
