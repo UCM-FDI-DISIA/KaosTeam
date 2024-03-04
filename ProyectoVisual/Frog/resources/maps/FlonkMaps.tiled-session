@@ -8,11 +8,11 @@
     ],
     "fileStates": {
         "H1map.tmx": {
-            "scale": 8,
-            "selectedLayer": 3,
+            "scale": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 17.8125,
-                "y": 13.8125
+                "x": 293.5,
+                "y": 256.5
             }
         },
         "tileset/H01_tileset.tsx": {

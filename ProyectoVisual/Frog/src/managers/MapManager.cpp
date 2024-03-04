@@ -21,10 +21,19 @@ void tile::draw(SDL_Renderer* ren) {
     dest.w = src.w* MAP_MULT;
     dest.h = src.h* MAP_MULT;
 
-    if (((this->x/this->width % 2 == 0) && (this->y / this->height % 2 == 1))|| ((this->x / this->width % 2 == 1) && (this->y / this->height % 2 == 0)))
-        SDL_SetTextureAlphaMod(sheet, 222);
-    else 
-        SDL_SetTextureAlphaMod(sheet, 255);
+    if (DEBUG) {
+        if (walkable){ //SOLO SE VERÁN CASILLAS EN LAS PARTES EN LAS QUE SE PUEDE CAMINAR
+            if (((this->x / this->width % 2 == 0) && (this->y / this->height % 2 == 1)) || ((this->x / this->width % 2 == 1) && (this->y / this->height % 2 == 0))) {
+                SDL_SetTextureColorMod(sheet, 200, 200, 200);
+            }
+            else {
+                SDL_SetTextureColorMod(sheet, 255, 255, 255);
+            }
+        }
+        else
+            SDL_SetTextureColorMod(sheet, 255, 255, 255);
+    }
+    
     SDL_RenderCopy(ren, sheet, &src, &dest);
 }
 
