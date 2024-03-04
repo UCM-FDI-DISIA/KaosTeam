@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tileMap_Prueba.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
         "."
     ],
@@ -12,8 +12,8 @@
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 108.75,
-                "y": 79.625
+                "x": 108.5,
+                "y": 79.375
             }
         },
         "tiledTry.tsx": {
@@ -29,13 +29,11 @@
     "map.tileWidth": 16,
     "map.width": 10,
     "openFiles": [
-        "tiledTry.tsx",
-        "tileMap_Prueba.tmx"
     ],
     "project": "tiledProject.tiled-project",
     "recentFiles": [
-        "tiledTry.tsx",
-        "tileMap_Prueba.tmx"
+        "tileMap_Prueba.tmx",
+        "tiledTry.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

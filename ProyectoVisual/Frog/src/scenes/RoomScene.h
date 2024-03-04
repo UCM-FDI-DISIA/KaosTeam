@@ -17,8 +17,7 @@ private:
 public:
 	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		mapReader = new MapManager("tileMap_Prueba");
-		mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
+		mapReader = new MapManager("resources/maps/H1map.tmx", this);
 
 		player = new Entity(this);
 		Vector2D v(2, 2);
@@ -58,5 +57,6 @@ public:
 	virtual ~RoomScene();
 	MapManager* getMapReader() { return mapReader; };
 	Entity* getPlayer() { return player; };
+	void createPlayer(std::string texPath, Vector2D pos);
 
 };
