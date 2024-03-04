@@ -1,11 +1,15 @@
 #pragma once
 #include "../ecs/Scene.h"
 #include"../utils/Button.h"
-#include <vector>
+#include "../game/Game.h"
 #include "../sdlutils/Texture.h"
 #include"../managers/InputManager.h"
 
+#include <vector>
+
 enum direction{ARRIBA, ABAJO};
+
+const int offsetX = 50;
 
 class MenuInicio : public Scene
 {
@@ -13,8 +17,6 @@ private:
 	Texture* menuBackground = nullptr;
 	Texture* select = nullptr;
 	SDL_Rect dest; //resize de la mosca
-	int offsetX = 5;
-	int offsetY = 50;
 	std::vector <Button*> menuButton;
 	int currentButton = 0;
 	InputManager* im;
