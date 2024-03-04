@@ -42,7 +42,6 @@ A lo largo del juego, el jugador deberá hacer frente a distintos tipos de enemi
 
 ### Estanque
 
-**En desarrollo**: probablemente contendrá algunos enemigos con patrones de ataque y movimiento sencillos ya que se trata de la primera zona y actúa como tutorial.
 - **Ranas locas** 
 Vida: 1 golpe
 Daño recibido: Media Mosca
