@@ -31,7 +31,7 @@ public:
 	void addAnimation(const std::string& name, const std::vector<Vector2D>& coorFrames);
 	void playAnimation(const std::string& name);
 	void updateAnimation();
-	void render() override;
+	void render();
 	void update() override;
 };
 

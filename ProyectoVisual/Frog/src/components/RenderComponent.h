@@ -1,6 +1,5 @@
 #pragma once
 #include "../ecs/Component.h"
-#include "MovementComponent.h"
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
 
@@ -10,7 +9,7 @@
 */
 class RenderComponent :public Component
 {
-private:
+protected:
 	Texture* myTexture = nullptr;
 	float scale;
 
@@ -21,6 +20,6 @@ public:
 	};
 	RenderComponent(Texture* t, float sc = 1): myTexture(t), scale(sc){}
 
-	void render();
+	virtual void render();
 	virtual void Update() {};
 };
