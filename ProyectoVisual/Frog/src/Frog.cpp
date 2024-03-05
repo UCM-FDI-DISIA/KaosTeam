@@ -10,7 +10,7 @@
 int main(int ac, char** av)
 {
     Game* game = new Game();
-    game->Init();
+    game->init();
 
     return 0;
 }

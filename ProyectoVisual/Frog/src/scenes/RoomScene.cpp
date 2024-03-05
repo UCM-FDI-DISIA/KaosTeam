@@ -1,6 +1,6 @@
 #include "RoomScene.h"
 
-void RoomScene::Render() {
+void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
 
 	for (Entity* e : entityList) {
@@ -9,7 +9,8 @@ void RoomScene::Render() {
 	}
 }
 
-void RoomScene::Update() {
+
+void RoomScene::update() {
 	for (Entity* e : entityList) {
 		if (e != nullptr)
 		e->update();

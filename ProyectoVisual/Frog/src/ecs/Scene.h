@@ -4,6 +4,8 @@
 #include "Entity.h"
 //#include "../managers/DataManager.h"
 
+//enum scenes {MENUINICIO, ESCENAJUEGO}; //Enum provisional para ver si renderiza el HUD o no
+
 class Scene
 {
 	/**
@@ -16,18 +18,19 @@ class Scene
 
 protected:
 	std::vector<Entity*> entityList;
+	bool canRenderHUD;
 	//MapManager* mapReader_;
 	//Singleton que contiene datos generales del juego (vidas del jugador, entidades persistentes, etc)
 	//DataManager* dataManager;
 	
 	//constructora
-	Scene() {
-	};
+	Scene(bool render): canRenderHUD(render) {};
 
 public:
-	virtual void Render() = 0;
-	virtual void Update() = 0;
-	//virtual void HandleEvents(const SDL_Event& event) = 0;
+	virtual ~Scene() {};
+	virtual void render() = 0;
+	virtual void update() = 0;
 
-	MapManager* getMapReader();
+	MapManager* getMapReader() const;
+	bool getCanRenderHUD() const { return canRenderHUD; }
 };

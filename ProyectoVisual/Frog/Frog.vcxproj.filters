@@ -27,6 +27,7 @@
     <ClCompile Include="src\components\MovementComponent.cpp" />
     <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFly.cpp" />
+    <ClCompile Include="src\utils\Button.cpp" />
     <ClCompile Include="src\components\MovementComponentFrog.cpp" />
     <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
     <ClCompile Include="src\managers\CameraManager.cpp" />
@@ -65,6 +66,7 @@
     <ClInclude Include="src\managers\MapManager.h" />
     <ClInclude Include="src\managers\InputManager.h" />
     <ClInclude Include="src\components\MovementComponentFly.h" />
+    <ClInclude Include="src\utils\Button.h" />
     <ClInclude Include="src\components\MovementComponentFrog.h" />
     <ClInclude Include="src\components\FollowPlayerComponent.h" />
     <ClInclude Include="src\managers\CameraManager.h" />
