@@ -18,9 +18,12 @@ private:
 	Entity* player = nullptr;
 public:
 	RoomScene(int id) : id(id) {
+
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 		mapReader = new MapManager("resources/maps/H1map.tmx", this);
 		//mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
+
+
 		Entity* player = new Entity(this);
 
 		MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2));
@@ -29,7 +32,7 @@ public:
 
 		Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
 		Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
-		RenderComponentFrog* rndr = new RenderComponentFrog(txtFrog, txtTongue);
+		RenderComponent* rndr = new RenderComponentFrog(txtFrog, txtTongue);
 		rndr->setContext(player);
 		player->addRenderComponent(rndr);
 
@@ -49,7 +52,7 @@ public:
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);
 
 
-		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
+		rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
 		rndr->setContext(fly);
 		fly->addRenderComponent(rndr);
 		entityList.push_back(fly);

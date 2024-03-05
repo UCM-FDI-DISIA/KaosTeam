@@ -52,6 +52,4 @@ public:
     bool getLeft();
     bool getRight();
     bool getSpace();
-
-
 };
