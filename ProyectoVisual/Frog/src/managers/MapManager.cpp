@@ -22,7 +22,7 @@ void tile::draw(SDL_Renderer* ren) {
     dest.h = src.h* MAP_MULT;
 
     if (DEBUG) {
-        if (walkable){ //SOLO SE VERÁN CASILLAS EN LAS PARTES EN LAS QUE SE PUEDE CAMINAR
+        if (walkable){ //SOLO SE VERï¿½N CASILLAS EN LAS PARTES EN LAS QUE SE PUEDE CAMINAR
             if (((this->x / this->width % 2 == 0) && (this->y / this->height % 2 == 1)) || ((this->x / this->width % 2 == 1) && (this->y / this->height % 2 == 0))) {
                 SDL_SetTextureColorMod(sheet, 200, 200, 200);
             }
@@ -278,4 +278,55 @@ Vector2D MapManager::getMapSize()
 int MapManager::getTileSize()
 {
     return tile_width*MAP_MULT; //width y height son iguales
+}
+
+void MapManager::move(std::string direction) {
+
+    int dx = 0, dy = 0;
+    //determinar la velocidad
+    if (direction == "right") {
+        dx = tile_width;
+    }
+    else  if (direction == "left") {
+        dx = -tile_width;
+    }
+    else  if (direction == "up") {
+        dy = -tile_height;
+    }
+    else  if (direction == "down") {
+        dy = tile_height;
+    }
+    //comprobar que al moverse los tiles, no se superen los bordes del mapa
+    //COMPROBAR LIMITES
+    bool canMove = true;
+    for (auto& tile : tiles) {
+        if (direction == "right" || direction == "left") {
+            int nextX = tile.x + dx;
+            if (nextX > getTileSize() + tile_width || nextX <  -(getTileSize()/2)) {
+                canMove = false;
+                break;
+            }
+        }
+        else if (direction == "up" || direction == "down") {
+            int nextY = tile.y + dy;
+            if (nextY > getTileSize() + tile_height || nextY < -((getTileSize()/2) + tile_height)) {
+                canMove = false;
+                break;
+            }
+        }
+    }
+    //si se pueden mover los tiles, se actualiza su posicion
+    if (canMove) {
+        if (direction == "right" || direction == "left") {
+            for (auto& tile : tiles) {
+                tile.x += dx;
+            }
+        }
+        else if (direction == "up" || direction == "down") {
+            for (auto& tile : tiles) {
+                tile.y += dy;
+            }
+        }
+       
+    }
 }

@@ -27,6 +27,7 @@ protected:
 public:
 	virtual void Render() = 0;
 	virtual void Update() = 0;
+	//virtual void HandleEvents(const SDL_Event& event) = 0;
 
 	MapManager* getMapReader();
 };

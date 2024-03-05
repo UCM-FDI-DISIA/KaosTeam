@@ -14,6 +14,7 @@ void RoomScene::Update() {
 		if (e != nullptr)
 		e->update();
 	}
+	cameraManager->update();
 }
 
 void RoomScene::createPlayer(std::string texPath, Vector2D pos)
@@ -31,11 +32,14 @@ void RoomScene::createPlayer(std::string texPath, Vector2D pos)
 void RoomScene::AddEntity(Entity* entity) {
 	entityList.push_back(entity);
 }
-
+//void RoomScene::HandleEvents(const SDL_Event& event) {
+//	cameraManager->handleEvents(event);
+//}
 RoomScene::~RoomScene() {
 	//Eliminar la lista de entidades
 	for (auto it = entityList.begin(); it != entityList.end(); ++it)
 	{
 		delete *it;
 	}
+	delete cameraManager;
 }

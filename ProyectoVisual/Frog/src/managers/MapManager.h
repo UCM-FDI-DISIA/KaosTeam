@@ -8,7 +8,6 @@
 #include <tmxlite/LayerGroup.hpp>
 #include <tmxlite/TileLayer.hpp>
 #include <iostream>
-
 using namespace tmx;
 typedef int gid;
 
@@ -79,4 +78,5 @@ public:
 
     Vector2D getMapSize();
     int getTileSize();
+    void move(std::string dir);
 };

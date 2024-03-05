@@ -5,11 +5,12 @@
 #include "../components/RenderComponent.h"
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
+#include "../managers/CameraManager.h"
 
 class RoomScene : public Scene
 {
 private:
-	//Camara
+	Camera* cameraManager = nullptr;
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
 	int id;
@@ -17,8 +18,21 @@ private:
 public:
 	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		mapReader = new MapManager("resources/maps/H1map.tmx", this);
-		
+		mapReader = new MapManager("tileMap_Prueba");
+		mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
+
+		Entity* player = new Entity(this);
+		Vector2D v(2, 2);
+		player->addComponent(MOVEMENT_COMPONENT, new MovementComponentFrog(v));
+		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
+		rndr->setContext(player);
+		player->addRenderComponent(rndr);
+		entityList.push_back(player);
+
+		//camara
+		//cameraManager->getInstance(player, mapReader);
+		cameraManager = new Camera(player, mapReader);
+
 		Entity* fly = new Entity(this);
 		MovementComponentFly* mvm = new MovementComponentFly(Vector2D(2, 3));
 		mvm->setContext(fly);
@@ -43,6 +57,7 @@ public:
 	void AddEntity(Entity* entity);
 	void Render() override;
 	void Update() override;
+	//void HandleEvents(const SDL_Event& event) override;
 	virtual ~RoomScene();
 	MapManager* getMapReader() { return mapReader; };
 	Entity* getPlayer() { return player; };
