@@ -28,7 +28,7 @@ public:
 		fly->addRenderComponent(rndr);
 		entityList.push_back(fly);
 
-		/*
+		
 		Entity* flyToPlayer = new Entity(this);
 		FollowPlayerComponent* fpc = new FollowPlayerComponent(Vector2D(0, 0));
 		fpc->setContext(flyToPlayer);
@@ -37,7 +37,7 @@ public:
 		rndr->setContext(flyToPlayer);
 		flyToPlayer->addRenderComponent(rndr);
 		entityList.push_back(flyToPlayer);
-		*/
+		
 	};
 
 	void AddEntity(Entity* entity);
