@@ -43,8 +43,10 @@ void Game::gameLoop() {
 void Game::render() {
 	SDL_RenderClear(sdlutils().renderer());
 	escenaActual->render();
+	
 	if(escenaActual->getCanRenderHUD())
 		HUD->render();
+	
 	SDL_RenderPresent(sdlutils().renderer());
 }
 
