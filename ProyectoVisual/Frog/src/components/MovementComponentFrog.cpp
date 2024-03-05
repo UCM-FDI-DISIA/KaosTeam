@@ -1,24 +1,60 @@
 #include "MovementComponentFrog.h"
 #include <iostream>
+#include "../scenes/RoomScene.h"
 
 void MovementComponentFrog::update() {
-	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > actionCooldown) {
+	//no te puedes mover más si ya te estás movimiendo
+	if (jumping && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate)
+	{
+		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+		int t = ent->getScene()->getMapReader()->getTileSize();
+			
+		framesMoved++;
+		
+		if (actualDirection == LEFT || actualDirection == RIGHT)
+		{
+			offsetInCasilla.setX(t / framesPerJump * framesMoved * (destCasilla.getX() - posCasilla.getX()));
+			offsetInCasilla.setY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
+		}
+		else
+		{
+			offsetInCasilla.setY(t / framesPerJump * framesMoved * (destCasilla.getY() - posCasilla.getY()));
+		}
+
+		if (framesMoved == framesPerJump) //para acabar el movimiento
+		{
+			posCasilla = destCasilla;
+			offsetInCasilla = { 0,0 };
+			framesMoved = 0;
+			jumping = false;
+		}
+	}
+
+	else if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > actionCooldown) {
 		if (im->getDown()) {
 			destCasilla.setY(posCasilla.getY() + 1);
+			actualDirection = DOWN;
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			jumping = true;
 		}
-		if (im->getUp()) {
-			destCasilla.setY(posCasilla.getY() - 1);
+		else if (im->getUp()) {
+			destCasilla.setY(posCasilla.getY() -1);
+			actualDirection = UP;
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			jumping = true;
 		}
-		if (im->getRight()) {
+		else if (im->getRight()) {
 			destCasilla.setX(posCasilla.getX() + 1);
+			actualDirection = RIGHT;
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			jumping = true;
 		}
-		if (im->getLeft()) {
+		else if (im->getLeft()) {
 			destCasilla.setX(posCasilla.getX() - 1);
+			actualDirection = LEFT;
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			jumping = true;
 		}
-		lastTimeMoved = DataManager::GetInstance()->getFrameTime(); //Esto más adelante habrá que cambiarlo para que use un mismo tiempo que el resto de componentes del juego
+		
 	}
-	else if (destCasilla.getX() != posCasilla.getX() || destCasilla.getY() != posCasilla.getY()) {
-
-	}
-
 }

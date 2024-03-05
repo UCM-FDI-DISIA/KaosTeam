@@ -23,7 +23,9 @@ public:
 
 		Entity* player = new Entity(this);
 
-		player->addComponent(MOVEMENT_COMPONENT, new MovementComponent(Vector2D(2, 2)));
+		MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2));
+		mvm->setContext(player);
+		player->addComponent(MOVEMENT_COMPONENT, mvm);
 
 		Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
 		Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
@@ -32,14 +34,14 @@ public:
 		player->addRenderComponent(rndr);
 
 		Component* atck = new AttackComponent();
-		player->addComponent(ATTACK_COMPONENT, new AttackComponent());
+		player->addComponent(ATTACK_COMPONENT, atck);
 		atck->setContext(player);
 		entityList.push_back(player);
 
 
 
 		Entity* fly = new Entity(this);
-		MovementComponentFly* mvm = new MovementComponentFly(Vector2D(2, 3));
+		mvm = new MovementComponentFly(Vector2D(2, 3));
 		mvm->setContext(fly);
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);
 
