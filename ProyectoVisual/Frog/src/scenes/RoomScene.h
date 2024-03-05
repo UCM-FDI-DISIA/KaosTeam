@@ -18,16 +18,16 @@ private:
 public:
 	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		mapReader = new MapManager("tileMap_Prueba");
-		mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
+		mapReader = new MapManager("resources/maps/H1map.tmx", this);
+		//mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
 
-		Entity* player = new Entity(this);
+		/*Entity* player = new Entity(this);
 		Vector2D v(2, 2);
 		player->addComponent(MOVEMENT_COMPONENT, new MovementComponentFrog(v));
 		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
 		rndr->setContext(player);
 		player->addRenderComponent(rndr);
-		entityList.push_back(player);
+		entityList.push_back(player);*/
 
 		//camara
 		//cameraManager->getInstance(player, mapReader);
