@@ -19,9 +19,11 @@ MenuInicio::MenuInicio(Game*g):Scene(), game(g)
 
 	menuBackground = new Texture(sdlutils().renderer(), "../Frog/resources/Menus/MainMenu.png",0,0);
 
+	//Boton de Start
 	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuJuego.png", 0, 0),
 		buttonStartDest));
 	menuButton[0]->connect([this]() {game->changeScene(); });
+	//Boton de exit
 	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuSalir.png", 0, 0),
 		buttonEndDest));
 	menuButton[1]->connect([this]() {game->exitGame(); });
@@ -30,8 +32,8 @@ MenuInicio::MenuInicio(Game*g):Scene(), game(g)
 
 	dest.w = select->width();
 	dest.h = select->height();
-	dest.x = menuButton[0]->getRect().x - offsetX - dest.w / 2;
-	dest.y = menuButton[0]->getRect().y + menuButton[0]->getTexture()->height() / 2;
+	dest.x = buttonStartDest.x - offsetX - dest.w / 2;
+	dest.y = buttonStartDest.y + buttonStartDest.h / 2 - select->height() / 2;
 };
 
 void MenuInicio::render() {
@@ -60,14 +62,14 @@ void MenuInicio::changeButton(bool dir)
 {
 	if (ARRIBA)
 	{
-		currentButton -= 1;
-		
-		if (currentButton < 0)
-			currentButton = menuButton.size() - 1;
+		if (currentButton < 0) currentButton = menuButton.size() - 1;
+		else currentButton -= 1;
 	}
 	else
 		currentButton = (currentButton + 1) % menuButton.size();
 	
+	//Modifico posicion del cursor (mosca)
+	dest.y = menuButton[currentButton]->getRect().y + menuButton[currentButton]->getRect().h / 2 - select->height() / 2;
 }
 
 void MenuInicio::callButton()

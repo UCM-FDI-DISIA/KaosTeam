@@ -49,7 +49,6 @@ void Game::render() {
 
 void Game::exitGame()
 {
-	std::cout << "oh no";
 	exit = true;
 }
 

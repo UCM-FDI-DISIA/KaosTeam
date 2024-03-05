@@ -1,14 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\ProyectoVisual",
-    "\\ProyectoVisual\\Frog",
-    "\\ProyectoVisual\\Frog\\src",
-    "\\ProyectoVisual\\Frog\\src\\ecs",
-    "\\ProyectoVisual\\Frog\\src\\entities",
-    "\\ProyectoVisual\\Frog\\src\\scenes",
-    "\\ProyectoVisual\\Frog\\src\\utils"
+    ""
   ],
-  "SelectedNode": "\\ProyectoVisual\\Frog\\src\\scenes\\RoomScene.cpp",
+  "SelectedNode": "\\KaosTeamProyectos2.sln",
   "PreviewInSolutionExplorer": true
 }
