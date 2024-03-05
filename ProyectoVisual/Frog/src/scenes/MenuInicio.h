@@ -22,7 +22,7 @@ private:
 	InputManager* im;
 	Game* game;
 public:
-	MenuInicio() {};
+	MenuInicio(): Scene(false) {};
 
 	MenuInicio(Game* g);
 

@@ -4,7 +4,7 @@
 #include "../game/Game.h"
 
 
-MenuInicio::MenuInicio(Game*g):Scene(), game(g)
+MenuInicio::MenuInicio(Game*g): Scene(false), game(g)
 {
 	im = InputManager::GetInstance();
 	SDL_Rect buttonStartDest, buttonEndDest;

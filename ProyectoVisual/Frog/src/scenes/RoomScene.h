@@ -13,7 +13,7 @@ private:
 	MapManager* mapReader;
 	int id;
 public:
-	RoomScene(int id) : id(id) {
+	RoomScene(int id) : Scene(true), id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 		mapReader = new MapManager("tileMap_Prueba");
 		mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
