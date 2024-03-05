@@ -27,10 +27,8 @@ void tile::draw(SDL_Renderer* ren) {
     SDL_RenderCopy(ren, sheet, &src, &dest);
 }
 
-MapManager::MapManager(const std::string& name, const Vector2D& pos)
-    : name(name), rows(0), cols(0), tile_width(10), tile_height(10), position(pos) {
-
-    mapRect = {int(pos.getX()), int(pos.getY()), int(tile_width * MAP_MULT), int(tile_height * MAP_MULT) };
+MapManager::MapManager(const std::string& name)
+    : name(name), rows(0), cols(0), tile_width(10), tile_height(10) {
     //Para cuando queramos usar la info de capas/objetos/etc.
     #pragma region Lectura ej. (info a consola)
     /*
@@ -166,7 +164,6 @@ MapManager::MapManager(const std::string& name, const Vector2D& pos)
 void MapManager::load(const std::string& path, SDL_Renderer* ren) {
 
     std::cout << "MAP READER IS LOADING";
-
     // Load and parse the Tiled map with tmxlite
     Map tiled_map;
     tiled_map.load(path);
@@ -292,39 +289,53 @@ int MapManager::getTileSize()
     return tile_width*MAP_MULT; //width y height son iguales
 }
 
-void MapManager::moveRight(int speed, int limit) {
+void MapManager::move(std::string direction) {
 
-    position = position + Vector2D(speed, 0);
-    if (position.getX() > limit) {
-        position.setX(limit);
+    int dx = 0, dy = 0;
+    //determinar la velocidad
+    if (direction == "right") {
+        dx = tile_width;
     }
-    mapRect.x = position.getX();
-    
-}
-void MapManager::moveLeft(int speed, int limit) {
-
-    position = position + Vector2D(-speed, 0);
-    if (position.getX() < limit) {
-        position.setX(limit);
+    else  if (direction == "left") {
+        dx = -tile_width;
     }
-    mapRect.x = position.getX();
-}
-void MapManager::moveUp(int speed, int limit) {
-
-    position = position + Vector2D(0, -speed);
-	if (position.getY() < limit) {
-		position.setY(limit);
-	}
-	mapRect.y = position.getY();
-
-
-}
-void MapManager::moveDown(int speed, int limit) {
-
-    position = position + Vector2D(0, speed);
-	if (position.getY() > limit) {
-		position.setY(limit);
-	}
-	mapRect.y = position.getY();
-
+    else  if (direction == "up") {
+        dy = -tile_height;
+    }
+    else  if (direction == "down") {
+        dy = tile_height;
+    }
+    //comprobar que al moverse los tiles, no se superen los bordes del mapa
+    //COMPROBAR LIMITES
+    bool canMove = true;
+    for (auto& tile : tiles) {
+        if (direction == "right" || direction == "left") {
+            int nextX = tile.x + dx;
+            if (nextX > getTileSize() + tile_width || nextX <  -(getTileSize()/2)) {
+                canMove = false;
+                break;
+            }
+        }
+        else if (direction == "up" || direction == "down") {
+            int nextY = tile.y + dy;
+            if (nextY > getTileSize() + tile_height || nextY < -((getTileSize()/2) + tile_height)) {
+                canMove = false;
+                break;
+            }
+        }
+    }
+    //si se pueden mover los tiles, se actualiza su posicion
+    if (canMove) {
+        if (direction == "right" || direction == "left") {
+            for (auto& tile : tiles) {
+                tile.x += dx;
+            }
+        }
+        else if (direction == "up" || direction == "down") {
+            for (auto& tile : tiles) {
+                tile.y += dy;
+            }
+        }
+       
+    }
 }

@@ -10,7 +10,7 @@
 class RoomScene : public Scene
 {
 private:
-	Camera* cameraManager;
+	Camera* cameraManager = nullptr;
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
 	int id;
@@ -18,9 +18,9 @@ private:
 public:
 	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		mapReader = new MapManager("tileMap_Prueba", Vector2D(0,0));
+		mapReader = new MapManager("tileMap_Prueba");
 		mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
-		
+
 		Entity* player = new Entity(this);
 		Vector2D v(2, 2);
 		player->addComponent(MOVEMENT_COMPONENT, new MovementComponentFrog(v));
@@ -30,8 +30,8 @@ public:
 		entityList.push_back(player);
 
 		//camara
-		cameraManager->getInstance(player, mapReader);
-
+		//cameraManager->getInstance(player, mapReader);
+		cameraManager = new Camera(player, mapReader);
 
 		Entity* fly = new Entity(this);
 		MovementComponentFly* mvm = new MovementComponentFly(Vector2D(2, 3));
@@ -58,6 +58,7 @@ public:
 	void AddEntity(Entity* entity);
 	void Render() override;
 	void Update() override;
+	//void HandleEvents(const SDL_Event& event) override;
 	virtual ~RoomScene();
 	MapManager* getMapReader() { return mapReader; };
 	Entity* getPlayer() { return player; };
