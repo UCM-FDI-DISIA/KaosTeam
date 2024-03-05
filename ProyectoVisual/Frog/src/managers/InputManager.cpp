@@ -22,7 +22,7 @@ void InputManager::ClearStates() {
 	}
 }
 
-void InputManager::UpdateStates(const SDL_Event &event) {
+void InputManager::UpdateStates(const SDL_Event& event) {
 	if (event.type == SDL_KEYDOWN) {
 		switch (event.key.keysym.sym) {
 		case SDLK_UP:

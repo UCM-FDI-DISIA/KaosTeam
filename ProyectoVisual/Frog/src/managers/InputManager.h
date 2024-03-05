@@ -22,7 +22,7 @@ private:
         END //Para tener un valor con el que crear y utilizar el array
     };
     bool states[];
-    //Constructor vacío privado para poder instanciar desde dentro
+    //Constructor vacï¿½o privado para poder instanciar desde dentro
     InputManager() { instance = nullptr; states[END] = {}; };
     ~InputManager() {};
     static InputManager* instance;
@@ -34,7 +34,7 @@ public:
     InputManager(InputManager&) = delete;
     void operator=(const InputManager&) = delete;
     /*
-    *Devuelve una instancia de InputManager, en caso de no haber una, la crea 
+    *Devuelve una instancia de InputManager, en caso de no haber una, la crea
     */
     static InputManager* GetInstance() {
         if (instance == nullptr) {

@@ -1,6 +1,8 @@
 #pragma once
 #include "../sdlutils/Texture.h"
 #include "../utils/assets.h"
+#include "../ecs/Entity.h"
+
 #include <tmxlite/Map.hpp>
 #include <tmxlite/ObjectGroup.hpp>
 #include <tmxlite/LayerGroup.hpp>
@@ -12,6 +14,7 @@ typedef int gid;
 
 using uint = unsigned int;
 constexpr uint MAP_MULT = 8;
+constexpr bool DEBUG = true;
 
 namespace
 {
@@ -36,11 +39,20 @@ struct tile {
     int ty;
     int width;
     int height;
+    // bool to see if Flonk can walk it 
+    bool walkable;
+    // bool para ver si hay objeto
+    bool theresObj;
+    // si hay objeto puntero a su entidad
+    Entity* objInTile;
 
-    tile(SDL_Texture* tset, int x = 0, int y = 0,
-        int tx = 0, int ty = 0, int w = 0, int h = 0);
+
+    tile(SDL_Texture* tset, int x = 0, int y = 0, int tx = 0, int ty = 0, int w = 0, 
+        int h = 0, bool walkable = true, bool theresObj = false, Entity* objInTile = nullptr);
     void draw(SDL_Renderer* ren);
 };
+
+class RoomScene;
 
 class MapManager {
 private:
@@ -58,8 +70,10 @@ private:
     // All of the tilesets used by our Tiled map.
     std::map<gid, SDL_Texture*> tilesets;
 
+    RoomScene* room = nullptr;
+
 public:
-    MapManager(const std::string& name);
+    MapManager(const std::string& path, RoomScene* room);
     void load(const std::string& path, SDL_Renderer* ren);
     void draw(SDL_Renderer* ren);
 
