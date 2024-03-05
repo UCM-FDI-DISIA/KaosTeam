@@ -1,17 +1,19 @@
 MANUAL PARA LA CORRECTA PROGRAMACIÓN EN C++
 
-ÍNDICE
+ÍNDICE:
 ....................VARIABLES.......................................................
 			-Locales
 			-Globales
 ....................CONSTANTES......................................................
 ....................CLASES..........................................................
-			-Público
-			-Privado
+			-Privado, Protected y público
 			-Atributos
+			-Métodos
 ....................IDENTACIÓN......................................................
 ....................USO DE CORCHETES................................................
 ....................COMENTARIOS.....................................................
+			-Comentarios de Métodos con parámetros
+....................INCLUDES........................................................
 ....................TIPS............................................................
 
 
@@ -39,3 +41,22 @@ CLASES:
 Privado, Protected y Público
 	->Van en este orden las secciones de una clase. 
 	->Privado no es obligatorio ponerlo, pero es recomendable para aclararlo, sobre todo si algunos lo usan y otros no.
+
+Atributos
+	->Tienen que ser descriptivos de su función, siguiendo las reglas de las secciones "Variables" y "Constantes".
+	
+
+Métodos
+	->Tienen la misma nomenclatura que las "Variables".
+	->Están ordenados por aparición en el .h de cada archivo.
+
+
+IDENTACIÓN:
+	->Usa el tabulador para crear columnas que respeten la jerarquía de cada parte del código.
+		Ej:	miMétodo(miTipo miParámetro) {
+				...código
+				.........
+				.........
+			}
+		
+

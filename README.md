@@ -98,7 +98,7 @@ Cuando el jugador supere el límite del tamaño de la cámara en cualquiera de l
 
 ## Mecánicas del escenario
 
-**Objetos que se activan con el gancho**: objetos que al ser golpeados con el gancho hacen algo ( como palancas o interruptores)
+**Objetos que se activan con el gancho**: objetos que al ser golpeados con el gancho hacen algo (como palancas o interruptores)
 
 ![](assets/imgGdd/image3.jpg)
 
