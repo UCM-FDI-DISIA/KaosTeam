@@ -29,7 +29,7 @@ void Game::GameLoop() {
 		DataManager::GetInstance()->UpdateFrameTime();
 		escenaActual->Update();
 		Render();
-		//inputManager->PollEvents(); //Actualiza la entrada
+		inputManager->PollEvents(); //Actualiza la entrada
 		SDL_Event event;
 		/*while (SDL_PollEvent(&event)) {
 			escenaActual->HandleEvents(event);
