@@ -19,6 +19,7 @@ private:
         BTN_LEFT,
         BTN_RIGHT,
         BTN_ESCAPE,
+        BTN_SPACE,
         END //Para tener un valor con el que crear y utilizar el array
     };
     bool states[];
@@ -50,6 +51,7 @@ public:
     bool getDown();
     bool getLeft();
     bool getRight();
+    bool getSpace();
 
 
 };
