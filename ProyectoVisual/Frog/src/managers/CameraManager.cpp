@@ -3,40 +3,81 @@
 
 Camera::Camera(Entity* target, MapManager* room) :
 	camTarget(target), actualRoom(room) {
+	playerMoved = false;
 }
 void Camera::update() {
-	
-	if (camTarget->getMove()) {
-
-		if (camTarget->getDirectionY() == 0) {
-			if (camTarget->getDirectionX() == -1) actualRoom->move("right");
-			else actualRoom->move("left");
+	if (!playerMoved && camTargetMovementComp->getIsMoving()) {
+		switch (camTargetMovementComp->getDirection()) {
+		case UP:
+			actualRoom->move("down");
+			break;
+		case DOWN:
+			actualRoom->move("up");
+			break;
+		case RIGHT:
+			actualRoom->move("left");
+			break;
+		case LEFT:
+			actualRoom->move("right");
+			break;
+		default:
+			break;
 		}
-		else if (camTarget->getDirectionX() == 0) {
-			if (camTarget->getDirectionY() == -1) actualRoom->move("down");
-			else actualRoom->move("up");
-		}
-		////si player supera el limite de la izquieda
-		//if ((camTarget->getX() - offsetX < limitLeft) /*&& actualRoom->getX() > 0*/ && camTarget->getDirectionY() == 0) {
-		//	if (camTarget->getDirectionX() == -1) actualRoom->moveRight(speed, 0);
-		//	else actualRoom->moveLeft(speed, -offsetX);
-		//}
-		////si player supera el limite de la derecha
-		//else if ((camTarget->getX() + offsetX > limitRight) && camTarget->getDirectionY() == 0) {
-		//	if (camTarget->getDirectionX() == -1) actualRoom->moveRight(speed, 0);
-		//	else actualRoom->moveLeft(speed, -offsetX);
-		//}
-		////si player supera el limite de arriba
-		//else if ((camTarget->getY() < limitTop) /*&& actualRoom->getY() > 0*/ && camTarget->getDirectionX() == 0) {
-		//	if (camTarget->getDirectionY() == -1) actualRoom->moveDown(speed, 0);
-		//	else actualRoom->moveUp(speed, -offsetY);
-		//}
-		////si player supera el limite de abajo 
-		//else if ((camTarget->getY() > limitBotton) && /*actualRoom->getY() < actualRoom->getTileSize() &&*/ camTarget->getDirectionX() == 0) {
-		//	if (camTarget->getDirectionY() == -1) actualRoom->moveDown(speed, 0);
-		//	else actualRoom->moveUp(speed, -offsetY);
-		//}
+		playerMoved = true;
 	}
+	if (camTargetMovementComp->getMovementCompleted() && playerMoved) {
+		playerMoved = false;
+	}
+	/*if (!camTargetMovementComp->getIsMoving() && camTargetMovementComp->getMovementCompleted()) {
+		switch (camTargetMovementComp->getDirection()) {
+		case UP:
+			actualRoom->move("down");
+			break;
+		case DOWN:
+			actualRoom->move("up");
+			break;
+		case RIGHT:
+			actualRoom->move("left");
+			break;
+		case LEFT:
+			actualRoom->move("right");
+			break;
+		default:
+			break;
+		}
+	}*/
+	
+	//if (camTarget->getMove()) {
+
+	//	if (camTarget->getDirectionY() == 0) {
+	//		if (camTarget->getDirectionX() == -1) actualRoom->move("right");
+	//		else actualRoom->move("left");
+	//	}
+	//	else if (camTarget->getDirectionX() == 0) {
+	//		if (camTarget->getDirectionY() == -1) actualRoom->move("down");
+	//		else actualRoom->move("up");
+	//	}
+	//	////si player supera el limite de la izquieda
+	//	//if ((camTarget->getX() - offsetX < limitLeft) /*&& actualRoom->getX() > 0*/ && camTarget->getDirectionY() == 0) {
+	//	//	if (camTarget->getDirectionX() == -1) actualRoom->moveRight(speed, 0);
+	//	//	else actualRoom->moveLeft(speed, -offsetX);
+	//	//}
+	//	////si player supera el limite de la derecha
+	//	//else if ((camTarget->getX() + offsetX > limitRight) && camTarget->getDirectionY() == 0) {
+	//	//	if (camTarget->getDirectionX() == -1) actualRoom->moveRight(speed, 0);
+	//	//	else actualRoom->moveLeft(speed, -offsetX);
+	//	//}
+	//	////si player supera el limite de arriba
+	//	//else if ((camTarget->getY() < limitTop) /*&& actualRoom->getY() > 0*/ && camTarget->getDirectionX() == 0) {
+	//	//	if (camTarget->getDirectionY() == -1) actualRoom->moveDown(speed, 0);
+	//	//	else actualRoom->moveUp(speed, -offsetY);
+	//	//}
+	//	////si player supera el limite de abajo 
+	//	//else if ((camTarget->getY() > limitBotton) && /*actualRoom->getY() < actualRoom->getTileSize() &&*/ camTarget->getDirectionX() == 0) {
+	//	//	if (camTarget->getDirectionY() == -1) actualRoom->moveDown(speed, 0);
+	//	//	else actualRoom->moveUp(speed, -offsetY);
+	//	//}
+	//}
 }
 //void Camera::handleEvents(const SDL_Event& event) { //maneja los eventos del teclado que realizan el movimiento lateral y disparo 
 //	if (event.type == SDL_KEYDOWN) {
