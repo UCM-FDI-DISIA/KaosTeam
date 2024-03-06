@@ -21,10 +21,17 @@ void RoomScene::update() {
 void RoomScene::createPlayer(std::string texPath, Vector2D pos)
 {
 	player = new Entity(this);
-	player->addComponent(MOVEMENT_COMPONENT, new MovementComponent(pos));
-	RenderComponent* rndr = new RenderComponent(texPath, 1, 1);
+	MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2));
+	mvm->setContext(player);
+	player->addComponent(MOVEMENT_COMPONENT, mvm);
+	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
+	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
+	RenderComponent* rndr = new RenderComponentFrog(txtFrog, txtTongue);
 	rndr->setContext(player);
 	player->addRenderComponent(rndr);
+	Component* atck = new AttackComponent();
+	player->addComponent(ATTACK_COMPONENT, atck);
+	atck->setContext(player);
 	entityList.push_back(player);
 
 	AddEntity(player);

@@ -22,36 +22,19 @@ public:
 		mapReader = new MapManager("resources/maps/H1map.tmx", this);
 		//mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
 
-
-		Entity* player = new Entity(this);
-
-		MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2));
-		mvm->setContext(player);
-		player->addComponent(MOVEMENT_COMPONENT, mvm);
-
-		Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
-		Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
-		RenderComponent* rndr = new RenderComponentFrog(txtFrog, txtTongue);
-		rndr->setContext(player);
-		player->addRenderComponent(rndr);
-
-		Component* atck = new AttackComponent();
-		player->addComponent(ATTACK_COMPONENT, atck);
-		atck->setContext(player);
-		entityList.push_back(player);
-
-
+		//Create player desde el mapa
+		//Camara despues del mapa
 		//camara
 		//cameraManager->getInstance(player, mapReader);
-		cameraManager = new Camera(player, mapReader);
+		cameraManager = new Camera(entityList[1], mapReader); //el primer obj es el player siempre
 
 		Entity* fly = new Entity(this);
-		mvm = new MovementComponentFly(Vector2D(2, 3));
+		MovementComponent* mvm = new MovementComponentFly(Vector2D(2, 3));
 		mvm->setContext(fly);
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);
 
 
-		rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
+		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
 		rndr->setContext(fly);
 		fly->addRenderComponent(rndr);
 		entityList.push_back(fly);
