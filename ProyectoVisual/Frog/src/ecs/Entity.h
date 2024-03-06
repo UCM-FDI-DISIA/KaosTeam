@@ -22,11 +22,6 @@ private:
 	std::map<componentsEnum, Component*> componentes;
 	RoomScene* myScene;
 	RenderComponent* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
-	//esto es kk, CAMBIAR EN EL FUTURO
-	int speed = 0;
-	int directionX = 0;
-	int directionY = 0;
-	bool isMoving = false;
 public:
 //provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
 	Entity(/*int, int*/RoomScene* scn);
@@ -42,10 +37,5 @@ public:
 	Component* getComponent(componentsEnum) const;
 	RoomScene* getScene() const;
 	Component* getRenderComponent() const;
-	//por ahora, seguramente se cambie
-	int getSpeed() { return speed; }
-	int getDirectionX() { return directionX; }
-	int getDirectionY() { return directionY; }
-	bool getMove() { return isMoving; }
 };
 

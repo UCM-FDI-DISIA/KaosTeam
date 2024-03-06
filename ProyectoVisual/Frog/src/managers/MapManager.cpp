@@ -285,21 +285,21 @@ void MapManager::move(std::string direction) {
     int dx = 0, dy = 0;
     //determinar la velocidad
     if (direction == "right") {
-        dx = tile_width;
+        dx = tile_width/2;
     }
     else  if (direction == "left") {
-        dx = -tile_width;
+        dx = -tile_width/2;
     }
     else  if (direction == "up") {
-        dy = -tile_height;
+        dy = -tile_height/2;
     }
     else  if (direction == "down") {
-        dy = tile_height;
+        dy = tile_height/2;
     }
     //comprobar que al moverse los tiles, no se superen los bordes del mapa
     //COMPROBAR LIMITES
     bool canMove = true;
-    for (auto& tile : tiles) {
+   /* for (auto& tile : tiles) {
         if (direction == "right" || direction == "left") {
             int nextX = tile.x + dx;
             if (nextX > getTileSize() + tile_width || nextX <  -(getTileSize()/2)) {
@@ -314,7 +314,7 @@ void MapManager::move(std::string direction) {
                 break;
             }
         }
-    }
+    }*/
     //si se pueden mover los tiles, se actualiza su posicion
     if (canMove) {
         if (direction == "right" || direction == "left") {

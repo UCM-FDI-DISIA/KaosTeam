@@ -27,6 +27,8 @@ void MovementComponentFrog::update() {
 			offsetInCasilla = { 0,0 };
 			framesMoved = 0;
 			jumping = false;
+			isMoving = false;
+			movementCompleted = true;
 		}
 	}
 
@@ -36,24 +38,32 @@ void MovementComponentFrog::update() {
 			actualDirection = DOWN;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			jumping = true;
+			isMoving = true;
+			movementCompleted = false;
 		}
 		else if (im->getUp()) {
 			destCasilla.setY(posCasilla.getY() -1);
 			actualDirection = UP;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			jumping = true;
+			isMoving = true;
+			movementCompleted = false;
 		}
 		else if (im->getRight()) {
 			destCasilla.setX(posCasilla.getX() + 1);
 			actualDirection = RIGHT;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			jumping = true;
+			isMoving = true;
+			movementCompleted = false;
 		}
 		else if (im->getLeft()) {
 			destCasilla.setX(posCasilla.getX() - 1);
 			actualDirection = LEFT;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			jumping = true;
+			isMoving = true;
+			movementCompleted = false;
 		}
 		
 	}
