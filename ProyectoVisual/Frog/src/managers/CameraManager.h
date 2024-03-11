@@ -28,6 +28,5 @@ private:
 	MovementComponentFrog* camTargetMovementComp = dynamic_cast<MovementComponentFrog*>(camTarget->getComponent(MOVEMENT_COMPONENT));
 	MapManager* actualRoom;
 	bool mapCanMove;
-	InputManager* im;
 };
 #endif // !CAMERAMANAGER_H

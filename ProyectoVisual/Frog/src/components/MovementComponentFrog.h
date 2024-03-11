@@ -19,10 +19,11 @@ private:
 	Uint32 actionCooldown, movementFrameRate = 50, 
 		framesPerJump = 5, framesMoved = 0;
 	bool jumping = false;
+	bool hasMoved = false;
 
 public:
 	MovementComponentFrog(Vector2D casilla) : MovementComponent(casilla), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()) { actionCooldown = 100; };
 	Directions getDirection() { return actualDirection; }
 	void update() override;
-
+	bool getMoveCompleted() { return hasMoved; }
 };
