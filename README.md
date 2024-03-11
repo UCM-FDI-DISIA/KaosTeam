@@ -42,14 +42,14 @@ A lo largo del juego, el jugador deberá hacer frente a distintos tipos de enemi
 
 ### Estanque
 
+Vida: 1 golpe
+Daño recibido: Media Mosca
 - **Ranas locas** 
-Vida: 1 golpe
-Daño recibido: Media Mosca
 Son ranas las cuales, debido a la contaminación del Estanque traído por el chef, han perdido su cordura. Estas avanzaran lentamente de una casilla a otra intentando seguir a Flonk (como zombis) atacando con sus lenguas (las cuales tiene un rango melee a diferencia de Flonk debido a la contaminación). El movimiento de estas ranas tienen un tiempo de espera a definir antes de que se muevan a su siguiente casilla.
-- **Peces**
+
 Vida: 1 golpe
 Daño recibido: Media Mosca
- Estos nadan en los ríos del estanque siguiendo un camino fijo. Estos nadarán en el río y cada cierto tiempo específico saltarán del agua y caerán. Cuando terminan su recorrido, estos lo repetirán pero en el sentido contrario (irán de un lado para el otro en el río). Si a la hora de saltar sobre el río, Flonk se cruza en su salto con un pez, Flonk recibe daño y es enviado a la casilla donde estaba antes de saltar. 
+- **Peces** Estos nadan en los ríos del estanque siguiendo un camino fijo. Estos nadarán en el río y cada cierto tiempo específico saltarán del agua y caerán. Cuando terminan su recorrido, estos lo repetirán pero en el sentido contrario (irán de un lado para el otro en el río). Si a la hora de saltar sobre el río, Flonk se cruza en su salto con un pez, Flonk recibe daño y es enviado a la casilla donde estaba antes de saltar. 
 
 ### Bosque
 
