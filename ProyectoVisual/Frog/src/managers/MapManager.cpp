@@ -40,6 +40,10 @@ void tile::draw(SDL_Renderer* ren) {
 MapManager::MapManager(const std::string& path, RoomScene* room)
     : name(name), rows(0), cols(0), tile_width(10), tile_height(10), room(room){
         load(path, sdlutils().renderer());
+        boundLeft = -((cols * tile_width)-(5*tile_width));
+        boundTop = -((rows * tile_height) - (3 * tile_height));
+        boundRight = cols * tile_width;
+        boundBottom = rows * tile_height;
     }
 
 void MapManager::load(const std::string& path, SDL_Renderer* ren) {
@@ -213,7 +217,7 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                             Vector2D pos;
                             pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
                             pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
-                            room->createPlayer(texPath, pos);
+                            room->createPlayer(texPath, pos, cols, rows);
                         }
 
                     }
@@ -281,40 +285,75 @@ int MapManager::getTileSize()
 }
 
 void MapManager::move(std::string direction) {
-
     int dx = 0, dy = 0;
     //determinar la velocidad
     if (direction == "right") {
-        dx = tile_width/2;
+        dx = tile_width;
     }
     else  if (direction == "left") {
-        dx = -tile_width/2;
+        dx = -tile_width;
     }
     else  if (direction == "up") {
-        dy = -tile_height/2;
+        dy = -tile_height;
     }
     else  if (direction == "down") {
-        dy = tile_height/2;
+        dy = tile_height;
     }
+    int cont = 0;
     //comprobar que al moverse los tiles, no se superen los bordes del mapa
     //COMPROBAR LIMITES
     bool canMove = true;
-   /* for (auto& tile : tiles) {
-        if (direction == "right" || direction == "left") {
+    for (auto& tile : tiles) {
+        if (direction == "right") {
             int nextX = tile.x + dx;
-            if (nextX > getTileSize() + tile_width || nextX <  -(getTileSize()/2)) {
+            cont++;
+            if (nextX >= boundRight) {
                 canMove = false;
                 break;
             }
+            //para que no haga vueltas de mas
+            else if (cont > cols ) {
+                break;
+            }
         }
-        else if (direction == "up" || direction == "down") {
+        else if (direction == "left") {
+            int nextX = tile.x + dx;
+            cont++;
+            if ( nextX <= boundLeft) {
+                canMove = false;
+                break;
+            }
+            //para que no haga vueltas de mas
+            else if (cont > cols ) {
+                break;
+            }
+        }
+        else if (direction == "up") {
             int nextY = tile.y + dy;
-            if (nextY > getTileSize() + tile_height || nextY < -((getTileSize()/2) + tile_height)) {
+            cont++;
+            if ( nextY <= boundTop) {
                 canMove = false;
                 break;
             }
+            //para que no haga vueltas de mas
+            else if (cont > rows ) {
+                break;
+            }
         }
-    }*/
+        else if (direction == "down") {
+            //aqui se buguea lo del cont wtf
+            int nextY = tile.y + dy;
+            //cont++;
+            if (nextY >= boundBottom) {
+                canMove = false;
+                break;
+            }
+            ////para que no haga vueltas de mas
+            //else if (cont > rows - 1) {
+            //    break;
+            //}
+        }
+    }
     //si se pueden mover los tiles, se actualiza su posicion
     if (canMove) {
         if (direction == "right" || direction == "left") {

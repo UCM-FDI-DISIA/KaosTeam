@@ -56,6 +56,6 @@ public:
 	virtual ~RoomScene();
 	MapManager* getMapReader() { return mapReader; };
 	Entity* getPlayer() { return player; };
-	void createPlayer(std::string texPath, Vector2D pos);
+	void createPlayer(std::string texPath, Vector2D pos, int boundX, int boundY);
 
 };

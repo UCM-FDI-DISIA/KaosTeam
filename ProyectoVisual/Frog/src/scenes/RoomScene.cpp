@@ -18,11 +18,13 @@ void RoomScene::update() {
 	cameraManager->update();
 }
 
-void RoomScene::createPlayer(std::string texPath, Vector2D pos)
+void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int boundY)
 {
 	player = new Entity(this);
 	MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2));
 	mvm->setContext(player);
+	mvm->setBoundX(boundX);
+	mvm->setBoundY(boundY);
 	player->addComponent(MOVEMENT_COMPONENT, mvm);
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);

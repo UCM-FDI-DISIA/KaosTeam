@@ -27,43 +27,33 @@ void MovementComponentFrog::update() {
 			offsetInCasilla = { 0,0 };
 			framesMoved = 0;
 			jumping = false;
-			isMoving = false;
-			movementCompleted = true;
 		}
 	}
 
 	else if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > actionCooldown) {
-		if (im->getDown()) {
+		if (im->getDown() && posCasilla.getY()< boundY) { //revisar limite
 			destCasilla.setY(posCasilla.getY() + 1);
 			actualDirection = DOWN;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			jumping = true;
-			isMoving = true;
-			movementCompleted = false;
 		}
-		else if (im->getUp()) {
+		else if (im->getUp() && posCasilla.getY() > 0) {
 			destCasilla.setY(posCasilla.getY() -1);
 			actualDirection = UP;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			jumping = true;
-			isMoving = true;
-			movementCompleted = false;
 		}
-		else if (im->getRight()) {
+		else if (im->getRight() && posCasilla.getX() < boundX) { //revisar limite
 			destCasilla.setX(posCasilla.getX() + 1);
 			actualDirection = RIGHT;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			jumping = true;
-			isMoving = true;
-			movementCompleted = false;
 		}
-		else if (im->getLeft()) {
+		else if (im->getLeft() && posCasilla.getX() > 0) {
 			destCasilla.setX(posCasilla.getX() - 1);
 			actualDirection = LEFT;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			jumping = true;
-			isMoving = true;
-			movementCompleted = false;
 		}
 		
 	}
