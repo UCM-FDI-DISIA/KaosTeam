@@ -87,7 +87,7 @@ Daño recibido: Media Mosca
 
 Vida: inmortal
 Daño recibido: Media Mosca
-- **Cucarachas** Son inmortales pero cuansdo son atacadas estas se derrumban, dejándolas immóbiles pero en unos pocos segundos, estas se volverán a levantarse para atacarte. Para atacarte, estas te tiran su cabeza como proyectil. Después de atacarte, estas tendrán que ir a recuperar su cabeza dejándolas vulnerables.
+- **Cucarachas** Son inmortales pero cuando son atacadas estas se derrumban, dejándolas immóbiles pero en unos pocos segundos, estas se volverán a levantarse para atacarte. Para atacarte, estas te tiran su cabeza como proyectil. Después de atacarte, estas tendrán que ir a recuperar su cabeza dejándolas vulnerables.
 
 ## Cámara
 
@@ -191,12 +191,17 @@ Las salas 1, 2, 3 y 5 ocupan el tamaño de la pantalla, por lo tanto la cámara 
 
 ## Tienda
 
-Durante la aventura, el jugador encontrará lombrices de uróboros que podrá intercambiar con un curioso pájaro por mejoras en la tienda.
+Durante la aventura, el jugador encontrará lombrices de uróboros que podrá intercambiar con un curioso pájaro por mejoras en la tienda. Estas lombrices se podrán encontrar al romper objetos o matar enemigos.
+Hay varios tipos de lombrices de uróboros con diferente valor siendo este ascendente dependiendo de su rareza.
 
-El precio de las mejoras será relativamente alto, por lo que el jugador no podrá adquirirlas de buenas a primeras.
-
-Las lombrices se pueden encontrar por todo el juego al romper objetos o al matar enemigos. Hay varios tipos de lombrices de uróboros con un valor ascendente según su rareza.
-
+### Valores de uróboros
+- Uróboro rosa: X
+- Uróboro dorado: X
+### Mejoras
+- Más ataque (x precio): Flonk tendrá la capacidad de hacer (x daño) al atacar.
+- Saltamonte (x precio): en vez de saltar de casilla en casilla, Flonk tendrá la capacidad de saltar de dos en dos casillas.
+- Mosca de la vida (x precio): permite aumentar la vida máxima de Flonk.
+- Más alcance (x precio): con esto va a aumentar el alcance de ataque de Flonk.
 ![](assets/imgGdd/image11.gif)
 ![](assets/imgGdd/image8.gif)
 
@@ -218,20 +223,20 @@ El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de
 
 ## Menús de juego y flujo de juego(por definir)
 
-**Menú principal**
+**Menú principal:**
 El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar, un botón que le lleva al menú de ajustes y un botón para salir del juego.
 
-**Menú de ajustes**(por definir)
+**Menú de ajustes:**(por definir)
 Este menú muestra los controles y permite ajustar características del juego.
 
-**Durante el juego**
+**Durante el juego:**
 En la pantalla se ve la interfaz descrita antes junto a un botón que permite ir al menú de pausa.
 ![](assets/imgGdd/image6.png)
 
-**Menú de pausa**(por definir)
+**Menú de pausa:**(por definir)
 En el menú de pausa el jugador puede volver a la partida, ir al menú de ajustes o salir del juego.
 
-**Flujo de juego** (por definir, que pasa cuando el jugador pierde todas las vidas)
+**Flujo de juego:** (por definir, que pasa cuando el jugador pierde todas las vidas)
 
 ## Historia (seguramente se puede contar mejor y falten cosas)
 
@@ -247,5 +252,5 @@ Con las ayudas que obtenga por el camino, finalmente se deberá enfrentar al mal
 ## Referencias
 
 Hemos obtenido referencias de _The Legend of Zelda: A Link to the Past_ en cuanto a las mecánica, dinámica y escenarios. 
-En cuanto a la estética, nos hemos inspirado en el estilo de _Paper Mario_ en cuanto al entorno tridimensioanl y
+En cuanto a la estética, nos hemos inspirado en el estilo de _Paper Mario_ en cuanto al entorno tridimensional y
 de _Ed, Edd & Eddy_ la idea del "garabato vivo".
