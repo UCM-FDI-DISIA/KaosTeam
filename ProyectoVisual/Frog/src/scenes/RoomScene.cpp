@@ -31,7 +31,7 @@ void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int 
 	RenderComponent* rndr = new RenderComponentFrog(txtFrog, txtTongue);
 	rndr->setContext(player);
 	player->addRenderComponent(rndr);
-	Component* atck = new AttackComponent();
+	Component* atck = new AttackComponentFrog();
 	player->addComponent(ATTACK_COMPONENT, atck);
 	atck->setContext(player);
 	entityList.push_back(player);

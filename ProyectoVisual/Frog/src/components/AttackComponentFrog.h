@@ -2,7 +2,7 @@
 #include "../ecs/Component.h"
 #include "../managers/InputManager.h"
 class Entity;
-class AttackComponent : public Component
+class AttackComponentFrog : public Component
 {
 private:
 	int attackDistance = 2, distanceMoved = 0;
@@ -12,8 +12,7 @@ private:
 	InputManager* inputM;
 
 public:
-	AttackComponent(): inputM(InputManager::GetInstance()) {};
-	~AttackComponent() {};
+	AttackComponentFrog(): inputM(InputManager::GetInstance()) {};
 	void update() override;
 	int getDistanceMoved() { return distanceMoved; }
 

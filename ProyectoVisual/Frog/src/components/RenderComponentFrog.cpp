@@ -1,6 +1,6 @@
 #include "RenderComponentFrog.h"
 #include "../scenes/RoomScene.h"
-#include "AttackComponent.h"
+#include "AttackComponentFrog.h"
 
 void RenderComponentFrog::render()
 {
@@ -21,7 +21,7 @@ void RenderComponentFrog::render()
     //la lengua 
     if (attacking)
     {
-        int distanceMoved = static_cast<AttackComponent*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
+        int distanceMoved = static_cast<AttackComponentFrog*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
         if (distanceMoved < 0)
         {
             attacking = false;

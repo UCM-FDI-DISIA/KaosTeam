@@ -3,7 +3,7 @@
 //#include "../ecs/Entity.h"
 #include"../components/MovementComponentFly.h"
 #include "../components/RenderComponentFrog.h"
-#include "../components/AttackComponent.h"
+#include "../components/AttackComponentFrog.h"
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
 #include "../managers/CameraManager.h"
