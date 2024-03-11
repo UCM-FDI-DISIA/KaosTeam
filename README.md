@@ -63,7 +63,7 @@ Daño recibido: Media mosca
 
 Vida: Depende del tamaño del cúmulo
 Daño recibido: Media Mosca
--**Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. Estas, como las termitas, siguen al jugador y el cúmulo cuando sea lo suficientemente pequeño, al darles saldrán termitas normales.
+- **Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. Estas, como las termitas, siguen al jugador y el cúmulo cuando sea lo suficientemente pequeño, al darles saldrán termitas normales.
 
 
 
@@ -81,7 +81,7 @@ Daño recibido: Media mosca
 
 Vida: Depende del tamaño del cúmulo
 Daño recibido: Media Mosca
--**Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. Estas, como las termitas, siguen al jugador y el cúmulo cuando sea lo suficientemente pequeño, al darles saldrán termitas normales.
+- **Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. Estas, como las termitas, siguen al jugador y el cúmulo cuando sea lo suficientemente pequeño, al darles saldrán termitas normales.
 
 ### Zona de la cocina del chef francés
 
