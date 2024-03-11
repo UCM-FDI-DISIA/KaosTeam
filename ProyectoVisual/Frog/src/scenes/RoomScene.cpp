@@ -23,6 +23,7 @@ void RoomScene::createPlayer(std::string texPath, Vector2D pos)
 	player = new Entity(this);
 	MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2));
 	mvm->setContext(player);
+	mvm->initComponent();
 	player->addComponent(MOVEMENT_COMPONENT, mvm);
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);

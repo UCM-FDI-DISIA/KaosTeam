@@ -1,6 +1,7 @@
 #include "RenderComponentFrog.h"
 #include "../scenes/RoomScene.h"
 #include "AttackComponent.h"
+#include "../managers/MapManager.h"
 
 void RenderComponentFrog::render()
 {
@@ -8,15 +9,17 @@ void RenderComponentFrog::render()
     int t = ent->getScene()->getMapReader()->getTileSize();
     int size = (int)t * scale;
   
-    Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
+    tile* actualTile = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getTile();
     Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() + Vector2D((t - size) / 2, (t - size) / 2);
     
+    
     SDL_Rect dest;
+
     //COSAS IMPORTANTES. pos es de floats, igual nos conviene q sea de ints
     //TAMBIÉN, el dest podriamos definirlo en la costructora para ahorrar tiempo y cambiar solo su x e y
     //Y TAMBIÉN. ESTO NO SIRVE SI SE MUEVE LA CAMARA.
-    dest.x = pos.getX() * t + offset.getX();
-    dest.y = pos.getY() * t + offset.getY();
+    dest.x = actualTile->x + offset.getX();
+    dest.y = actualTile->y + offset.getY();
 
     //la lengua 
     if (attacking)

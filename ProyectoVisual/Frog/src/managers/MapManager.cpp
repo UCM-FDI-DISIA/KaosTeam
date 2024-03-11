@@ -280,6 +280,11 @@ int MapManager::getTileSize()
     return tile_width*MAP_MULT; //width y height son iguales
 }
 
+tile* MapManager::getTile(Vector2D v)
+{
+    return &tiles[v.getX() + v.getY()*cols];
+}
+
 void MapManager::move(std::string direction) {
 
     int dx = 0, dy = 0;

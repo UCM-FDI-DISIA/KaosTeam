@@ -78,5 +78,6 @@ public:
 
     Vector2D getMapSize();
     int getTileSize();
+    tile* getTile(Vector2D);
     void move(std::string dir);
 };
