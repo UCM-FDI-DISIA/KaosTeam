@@ -44,7 +44,6 @@ Privado, Protected y Público
 
 Atributos
 	->Tienen que ser descriptivos de su función, siguiendo las reglas de las secciones "Variables" y "Constantes".
-	
 
 Métodos
 	->Tienen la misma nomenclatura que las "Variables".
@@ -52,11 +51,42 @@ Métodos
 
 
 IDENTACIÓN:
-	->Usa el tabulador para crear columnas que respeten la jerarquía de cada parte del código.
+	->Usa TAB para crear columnas y SHIFT + TAB para eliminarlas, y así poder respetar la jerarquía de cada parte del código.
+	->Evita usar espacios para identar. 
 		Ej:	miMétodo(miTipo miParámetro) {
-				...código
-				.........
-				.........
+				if(miCondicion) {
+				
+				}
 			}
 		
+
+USO DE CORCHETES:
+	->Estos deben estar separados de otros elementos, para que sea más clara su lectura.
+	->Cuando haya cascada de corchetes de cierre, NO dejes líneas vacías entre ellos.
+		Ej:	void miFuncion(tipo miParametro) {
+		
+			}
+
+COMENTARIOS:
+	->Deben ser explicativos y claros de lo que realiza el código que preceden.
+	->Utiliza varias líneas si el muy largo, para que se vea todo el comentario sin necesidad de deslizar la barra inferior.
+	->Evita el uso de abreviaturas que no vayan a ser entendibles por otras personas.
+	->Es preferible poner los comentarios en la MISMA LÍNEA para variables, atributos, o partes específicas del código, como bucles o condiciones, 
+		pues reduces el espacio. Con métodos o clases, es preferible ponerlo ENCIMA.
+
+Comentarios de Métodos con Parámetros
+	->Hay que definir para qué se va a necesitar cada parámetro.
+		Ej:	
+			//Se encarga de sumar dos elementos.
+				//a: sumando
+				//b: sumando
+			int suma(int a, int b) {
+				return a + b;
+			}
+
+
+INCLUDES:
+	->Estos se separan en bloques. Los includes con < > primero, y los includes con " " después.
+	->Van inmediatamente después del #pragma once de cada clase (dejando una línea de separación).
+	->Usa rutas relativas, NO absolutas.
 
