@@ -7,8 +7,6 @@
 /* Constructor del animador */
 AnimationComponent::AnimationComponent(Texture* tex, int rows, int cols) :
 	Component(),
-	//x_(x),
-	//y_(y),
 	tex_(tex),
 	nRow_(rows),
 	nCol_(cols),
@@ -20,14 +18,7 @@ AnimationComponent::AnimationComponent(Texture* tex, int rows, int cols) :
 	frameIndex_(0),
 	isPlaying_(false),
 	currentAnimName_(""),
-	currentAnim_()
-{
-	//Creamos textura -> En el futuro habria que cabiar para que funcione con todas las entidades
-	//tex_ = new Texture(sdlutils().renderer(), filename, rows, cols);
-	//Dimensiones de un frame
-	//frameWidth_ = tex_->width() / cols;
-	//frameHeight_ = tex_->height() / rows;
-}
+	currentAnim_() {}
 
 /* Añade una animacion nueva al mapa */
 void AnimationComponent::addAnimation(const std::string& name, const Animation& anim)
@@ -59,13 +50,7 @@ void AnimationComponent::playAnimation(const std::string& name)
 /* Mueve al siguiente frame de animacion */
 void AnimationComponent::updateAnimation(const Animation& currenAnim, int index)
 {
-	/*if (currentFrameC_ < finalFrameC_ && currentFrameR_ < finalFrameR_) {
-		currentFrameC_ = (currentFrameC_ + 1) % nCol_;
-		if (currentFrameC_ == 0) {
-			currentFrameR_ = (currentFrameR_ + 1) % nRow_;
-		}
-	}*/
-	if (currentFrameC_ != finalFrameC_ || currentFrameR_ != finalFrameR_){
+	if (currentFrameC_ != finalFrameC_ || currentFrameR_ != finalFrameR_){ //Actualizamos animacion
 		currentFrameR_ = currenAnim.frames[index].getX();
 		currentFrameC_ = currenAnim.frames[index].getY();
 	}
@@ -73,7 +58,11 @@ void AnimationComponent::updateAnimation(const Animation& currenAnim, int index)
 		isPlaying_ = false;
 		playAnimation(currentAnimName_);
 	}  
-	else isPlaying_ = false;
+	else { //si no es en bucle -> volvemos a frame inicial
+		isPlaying_ = false;
+		currentFrameR_ = currenAnim.frames.front().getX();
+		currentFrameC_ = currenAnim.frames.front().getY(); 
+	}
 }
 
 /* Renderiza el frame actual -> (Esto deberia hacerlo el renderComponent) */

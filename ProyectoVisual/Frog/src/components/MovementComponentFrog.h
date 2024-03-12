@@ -1,6 +1,7 @@
 #pragma once
 #include "MovementComponent.h";
 #include "../managers/DataManager.h"
+#include "AnimationComponent.h"
 enum Directions
 {
 	UP,
@@ -12,6 +13,7 @@ class MovementComponentFrog: public MovementComponent
 {
 private:
 	InputManager* im;
+	AnimationComponent* anim;
 	Uint32 lastTimeMoved;
 	Directions actualDirection;
 	
@@ -21,7 +23,7 @@ private:
 	bool jumping = false;
 
 public:
-	MovementComponentFrog(Vector2D casilla) : MovementComponent(casilla), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()) { actionCooldown = 100; };
+	MovementComponentFrog(Vector2D casilla, AnimationComponent* animator) : MovementComponent(casilla), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()), anim(animator) { actionCooldown = 100; };
 	Directions getDirection() { return actualDirection; }
 	void update() override;
 

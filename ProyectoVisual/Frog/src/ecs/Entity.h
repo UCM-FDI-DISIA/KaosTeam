@@ -9,7 +9,8 @@ enum componentsEnum
 	MOVEMENT_COMPONENT,
 	LIFE_COMPONENT,
 	RENDER_COMPONENT,
-	ATTACK_COMPONENT
+	ATTACK_COMPONENT,
+	ANIMATION_COMPONENT
 };
 class Component;
 class RenderComponent;

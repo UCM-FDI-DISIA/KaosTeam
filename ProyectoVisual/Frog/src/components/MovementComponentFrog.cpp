@@ -35,24 +35,28 @@ void MovementComponentFrog::update() {
 			destCasilla.setY(posCasilla.getY() + 1);
 			actualDirection = DOWN;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			anim->playAnimation("DOWN");
 			jumping = true;
 		}
 		else if (im->getUp() && posCasilla.getY() > 0) {
 			destCasilla.setY(posCasilla.getY() -1);
 			actualDirection = UP;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			anim->playAnimation("UP");
 			jumping = true;
 		}
 		else if (im->getRight() && posCasilla.getX() < boundX) { //revisar limite
 			destCasilla.setX(posCasilla.getX() + 1);
 			actualDirection = RIGHT;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			anim->playAnimation("RIGHT");
 			jumping = true;
 		}
 		else if (im->getLeft() && posCasilla.getX() > 0) {
 			destCasilla.setX(posCasilla.getX() - 1);
 			actualDirection = LEFT;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			anim->playAnimation("LEFT");
 			jumping = true;
 		}
 		

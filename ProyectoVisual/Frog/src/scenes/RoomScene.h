@@ -6,6 +6,7 @@
 #include "../components/AttackComponentFrog.h"
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
+#include "../components/AnimationComponent.h"
 #include "../managers/CameraManager.h"
 
 class RoomScene : public Scene

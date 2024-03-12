@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\AnimationComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
     <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFly.cpp" />
@@ -190,6 +191,7 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\AnimationComponent.h" />
     <ClInclude Include="src\components\AttackComponentFrog.h" />
     <ClInclude Include="src\components\FollowPlayerComponent.h" />
     <ClInclude Include="src\components\MovementComponentFly.h" />

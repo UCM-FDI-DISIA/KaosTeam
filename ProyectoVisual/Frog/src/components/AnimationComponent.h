@@ -23,7 +23,7 @@ struct Animation {
 
  /* Mapa de animaciones con su nombre y coordenadas de frames */
 using Animations = std::unordered_map<std::string, Animation>;
-const int FRAME_RATE = 30;
+const int FRAME_RATE = 10;
 class Texture;
 class AnimationComponent : public Component
 {
@@ -41,12 +41,12 @@ private:
 	std::string currentAnimName_;
 	//SDL_RendererFlip flip_;					// Flip
 	bool isPlaying_;						// Bool que indica si ya se esta reproduciendo una animacion
+	void updateAnimation(const Animation& currentAnim, int index);
+	Animation getCurrentAnim() const { return currentAnim_; };
 public:
 	AnimationComponent(Texture* tex, int rows, int cols);
 	void addAnimation(const std::string& name, const Animation& anim);
 	void playAnimation(const std::string& name);
-	void updateAnimation(const Animation& currentAnim, int index);
-	Animation getCurrentAnim() const { return currentAnim_; };
 	int getCurrentFil() const { return  currentFrameR_; };
 	int getCurrentCol() const { return currentFrameC_; };
 	//void render() override;

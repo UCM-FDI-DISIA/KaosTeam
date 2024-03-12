@@ -1,6 +1,7 @@
 #include "RenderComponentFrog.h"
 #include "../scenes/RoomScene.h"
 #include "AttackComponentFrog.h"
+#include "AnimationComponent.h"
 
 void RenderComponentFrog::render()
 {
@@ -50,7 +51,7 @@ void RenderComponentFrog::render()
     //renderizamos la rana
     dest.w = size;
     dest.h = size;
-    myTexture->renderFrame(dest, 2, 2);
+    myTexture->renderFrame(dest, myAnim->getCurrentFil(), myAnim->getCurrentCol());
 }
 
 void RenderComponentFrog::AttackStart()
