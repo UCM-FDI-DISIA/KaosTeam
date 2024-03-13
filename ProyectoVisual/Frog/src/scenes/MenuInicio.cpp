@@ -10,8 +10,8 @@ MenuInicio::MenuInicio(Game* g):
 		Scene(false), //
 		imngr(im()), //
 		game(*g), //
-		bg(sdlutils().images().at("background")), //
-		currSelec(sdlutils().images().at("fly")), //
+		bg(sdlutils().images().at("background")), //Modificar
+		currSelec(sdlutils().images().at("fly")), //Modificar
 		width(WIN_WIDTH), height(WIN_HEIGHT), //
 		currButton(0) //
 {

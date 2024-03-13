@@ -38,7 +38,7 @@ void Game::init() {
 	hud = new HUDManager(this, 9, 10, 0);
 
 	newgame_state_ = new NewGameState(this);
-	escenaActual = newgame_state_.;
+	current_state_ = newgame_state_;
 	//paused_state_ = new PausedState(); //No esta terminado, mejor no llamarlo aun
 
 	gameLoop();
