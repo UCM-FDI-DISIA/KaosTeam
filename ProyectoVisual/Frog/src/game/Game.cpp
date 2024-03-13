@@ -4,13 +4,27 @@
 #include"../scenes/MenuInicio.h"
 #include "../managers/DataManager.h"
 
+#include "GameOverState.h"
+#include "NewGameState.h"
+#include "PausedState.h"
+#include "RunningState.h"
+
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 
-Game::Game(){}
+Game::Game():current_state_(nullptr), //
+paused_state_(nullptr), //
+newgame_state_(nullptr), //
+gameover_state_(nullptr) {}
 
 Game::~Game()
 {
 	delete escenaActual;
+
+	delete current_state_;
+	delete paused_state_;
+	delete newgame_state_;
+	delete gameover_state_;
+
 	delete HUD;
 	//Al actuar como singleton, no creo que haya que eliminar inputManager (existe durante toda la duración del programa)
 }
@@ -24,6 +38,10 @@ void Game::init() {
 	escenaActual = new RoomScene(1);
 	HUD = new HUDManager(this, 9, 10, 0);
 	escenaActual = new MenuInicio(this);
+
+	newgame_state_ = new NewGameState();
+	paused_state_ = new PausedState();
+
 	gameLoop();
 
 }

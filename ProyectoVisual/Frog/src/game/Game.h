@@ -5,6 +5,7 @@
 #include "../ecs/Scene.h"
 #include "../managers/HUDManager.h"
 #include "../managers/InputManager.h"
+#include "GameState.h"
 
 using namespace std;
 
@@ -25,6 +26,13 @@ private:
 	Scene* escenaActual;
 	HUDManager* HUD;
 	InputManager* inputManager;
+
+	GameState* current_state_;
+	GameState* paused_state_;
+	GameState* running_state_;
+	GameState* newgame_state_;
+	GameState* gameover_state_;
+
 	bool exit;
 
 public:
