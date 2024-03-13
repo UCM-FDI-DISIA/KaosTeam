@@ -22,7 +22,7 @@ MenuInicio::MenuInicio(Game*g): Scene(false), game(g)
 	//Boton de Start
 	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuJuego.png", 0, 0),
 		buttonStartDest));
-	menuButton[0]->connect([this]() {game->changeScene(); });
+	menuButton[0]->connect([this]() {game->setScene(game->RUNNING); });
 	//Boton de exit
 	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuSalir.png", 0, 0),
 		buttonEndDest));

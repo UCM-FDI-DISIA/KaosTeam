@@ -37,6 +37,6 @@ public:
 	void gameLoop();
 	void render();
 	void exitGame();
-	void changeScene();
+    void setScene(State s);
 };
 
