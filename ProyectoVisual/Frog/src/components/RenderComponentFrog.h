@@ -1,16 +1,14 @@
 #pragma once
 #include "RenderComponent.h"
 #include "AnimationComponent.h"
-class RenderComponentFrog: public RenderComponent
+class RenderComponentFrog: public AnimationComponent
 {
 private:
 	SDL_Rect tongueRect;
 	Texture* tongueText = nullptr;
-	AnimationComponent* myAnim = nullptr;
 	bool attacking = false;
-
 public:
-	RenderComponentFrog(Texture* tf, Texture* tt, AnimationComponent* a, float sc = 1): RenderComponent(tf, sc), myAnim(a), tongueText(tt){}
+	RenderComponentFrog(Texture* tf, Texture* tt, float sc = 1) : AnimationComponent(tf, 4, 4, sc), tongueText(tt) {}
 	~RenderComponentFrog() { delete tongueText; };
 	void render() override;
 	void AttackStart();

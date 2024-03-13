@@ -7,7 +7,7 @@ void RenderComponentFrog::render()
 {
     //copiado descaradamente del OG render component
     int t = ent->getScene()->getMapReader()->getTileSize();
-    int size = (int)t * scale;
+    int size = (int)t * sc;
   
     Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
     Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() + Vector2D((t - size) / 2, (t - size) / 2);
@@ -47,14 +47,18 @@ void RenderComponentFrog::render()
 
         } 
     }
-   
     //renderizamos la rana
     dest.w = size;
     dest.h = size;
-    myTexture->renderFrame(dest, myAnim->getCurrentFil(), myAnim->getCurrentCol());
+
+    if (getCurrentAnim().flip) { //Si se tiene que invertir
+    tex_->renderFrame(dest, currentFrameR_, currentFrameC_, SDL_FLIP_HORIZONTAL);
+    }
+    else { 
+        tex_->renderFrame(dest, currentFrameR_, currentFrameC_, SDL_FLIP_NONE);
+    }
 }
 
-void RenderComponentFrog::AttackStart()
-{
+void RenderComponentFrog::AttackStart() {
     attacking = true;
 }

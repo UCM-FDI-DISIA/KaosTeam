@@ -31,6 +31,10 @@
     <ClCompile Include="src\components\MovementComponentFrog.cpp" />
     <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
     <ClCompile Include="src\managers\CameraManager.cpp" />
+    <ClCompile Include="src\components\AnimationComponent.cpp" />
+    <ClCompile Include="src\components\AttackComponentFrog.cpp" />
+    <ClCompile Include="src\components\RenderComponentFrog.cpp" />
+    <ClCompile Include="src\components\RenderComponentFly.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -70,15 +74,16 @@
     <ClInclude Include="src\components\MovementComponentFrog.h" />
     <ClInclude Include="src\components\FollowPlayerComponent.h" />
     <ClInclude Include="src\managers\CameraManager.h" />
+    <ClInclude Include="src\components\AnimationComponent.h" />
+    <ClInclude Include="src\components\AttackComponentFrog.h" />
+    <ClInclude Include="src\components\RenderComponentFrog.h" />
+    <ClInclude Include="src\components\RenderComponentFly.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\game\Game.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\components\MapComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\sdlutils\SDLUtils.cpp">
@@ -120,9 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game\Game.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\components\MapComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\sdlutils\Font.h">

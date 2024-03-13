@@ -98,7 +98,7 @@ public:
 		return column_;
 	}
 
-	void renderFrame(const SDL_Rect &destRect, int row, int col, float angle = 0, SDL_RendererFlip flip = SDL_FLIP_NONE) {
+	void renderFrame(const SDL_Rect &destRect, int row, int col, float angle = 0, SDL_RendererFlip flip) {
 		
 		fw = width_ / column_;
 		fh = height_ / row_;
@@ -108,9 +108,8 @@ public:
 		srcRect.y = fh * row;
 		srcRect.w = fw;
 		srcRect.h = fh;
-		render(srcRect, destRect, angle);
-		//SDL_RenderCopyEx(renderer, texture, &srcRect, &destRect, angle, 0, flip);
-	
+		//render(srcRect, destRect, angle);
+		SDL_RenderCopyEx(renderer_, texture_, &srcRect, &destRect, angle, 0, flip);
 	}
 
 private:

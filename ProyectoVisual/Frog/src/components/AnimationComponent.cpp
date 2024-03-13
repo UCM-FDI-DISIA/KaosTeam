@@ -4,9 +4,31 @@
 #include "../ecs/Component.h"
 #include <SDL.h>
 
+//AnimationComponent::AnimationComponent(std::string filename, int rows, int cols, float sc) :
+//	Component(),
+//	x_(ent->getX()),
+//	y_(ent->getY()),
+//	sc(sc),
+//	nRow_(rows),
+//	nCol_(cols),
+//	currentFrameR_(0),
+//	currentFrameC_(0),
+//	finalFrameR_(0),
+//	finalFrameC_(0),
+//	lastChange_(0),
+//	frameIndex_(0),
+//	isPlaying_(false),
+//	currentAnimName_(""),
+//	currentAnim_() {
+//	tex_ = new Texture(sdlutils().renderer(), filename, rows, cols);
+//}
+
 /* Constructor del animador */
-AnimationComponent::AnimationComponent(Texture* tex, int rows, int cols) :
+AnimationComponent::AnimationComponent(Texture* tex, int rows, int cols, float scale) :
 	Component(),
+	x_(ent->getX()),
+	y_(ent->getY()),
+	sc(scale),
 	tex_(tex),
 	nRow_(rows),
 	nCol_(cols),

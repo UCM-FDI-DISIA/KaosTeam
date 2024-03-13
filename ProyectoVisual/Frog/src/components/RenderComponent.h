@@ -21,5 +21,5 @@ public:
 	RenderComponent(Texture* t, float sc = 1): myTexture(t), scale(sc){}
 
 	virtual void render();
-	virtual void Update() {};
+	virtual void update() {};
 };
