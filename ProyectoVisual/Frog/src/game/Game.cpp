@@ -58,7 +58,22 @@ void Game::exitGame()
 	exit = true;
 }
 
-void Game::changeScene() //PROVISIONAL, NO FINAL
+void Game::setScene(State s) //PROVISIONAL, NO FINAL
 {
-	escenaActual = new RoomScene(1);
+	switch (s) {
+	case RUNNING:
+		escenaActual = new RoomScene(1);
+		break;
+	case PAUSED:
+
+		break;
+	case NEWGAME:
+		
+		break;
+	case GAMEOVER:
+	
+		break;
+	default:
+		break;
+	}
 }

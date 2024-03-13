@@ -28,12 +28,15 @@ private:
 	bool exit;
 
 public:
+	enum State {
+		RUNNING, PAUSED, NEWGAME, GAMEOVER
+	};
 	Game();
 	~Game();
 	void init();
 	void gameLoop();
 	void render();
 	void exitGame();
-	void changeScene();
+    void setScene(State s);
 };
 
