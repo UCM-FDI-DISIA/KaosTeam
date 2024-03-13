@@ -71,6 +71,7 @@ COMENTARIOS:
 	->Deben ser explicativos y claros de lo que realiza el código que preceden.
 	->Utiliza varias líneas si el muy largo, para que se vea todo el comentario sin necesidad de deslizar la barra inferior.
 	->Evita el uso de abreviaturas que no vayan a ser entendibles por otras personas.
+	->Evita el uso de tildes, la letra ñ y otros caracteres raros. Esto genera problemas.
 	->Es preferible poner los comentarios en la MISMA LÍNEA para variables, atributos, o partes específicas del código, como bucles o condiciones, 
 		pues reduces el espacio. Con métodos o clases, es preferible ponerlo ENCIMA.
 

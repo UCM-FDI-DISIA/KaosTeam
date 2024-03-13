@@ -1,11 +1,13 @@
 #pragma once
+
 #include "../ecs/Scene.h"
 #include"../utils/Button.h"
-#include "../game/Game.h"
-#include "../sdlutils/Texture.h"
-#include"../managers/InputManager.h"
 
 #include <vector>
+
+class Texture;
+class InputManager;
+class Game;
 
 enum direction{ARRIBA, ABAJO};
 
@@ -14,17 +16,20 @@ const int offsetX = 50;
 class MenuInicio : public Scene
 {
 private:
-	Texture* menuBackground = nullptr;
-	Texture* select = nullptr;
+	Texture& bg; //Textura de fondo
+	Texture& currSelec; //Textura que apunta al boton seleccionado
 	SDL_Rect dest; //resize de la mosca
-	std::vector <Button*> menuButton;
-	int currentButton = 0;
-	InputManager* im;
-	Game* game;
-public:
-	MenuInicio(): Scene(false) {};
+	Game& game;
+	InputManager& imngr;
 
-	MenuInicio(Game* g);
+	int width; //Ancho de la pantalla
+	int height; //Alto de la pantalla
+	int currButton; //Iterador del vector de botones
+	
+	std::vector <Button*> menuButton;
+public:
+	MenuInicio(Game* game);
+	~MenuInicio() {};
 
 	void render() override;
 	void update() override;

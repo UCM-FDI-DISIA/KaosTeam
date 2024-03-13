@@ -11,39 +11,37 @@
 
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 
-Game::Game():current_state_(nullptr), //
-paused_state_(nullptr), //
-newgame_state_(nullptr), //
-gameover_state_(nullptr) {}
+Game::Game():
+	imngr(im()), //
+	current_state_(nullptr), //
+	paused_state_(nullptr), //
+	newgame_state_(nullptr), //
+	gameover_state_(nullptr) {}
 
 Game::~Game()
 {
+	delete hud;
 	delete escenaActual;
 
 	delete current_state_;
 	delete paused_state_;
 	delete newgame_state_;
 	delete gameover_state_;
-
-	delete HUD;
-	//Al actuar como singleton, no creo que haya que eliminar inputManager (existe durante toda la duración del programa)
 }
 
 void Game::init() {
 	//Lanzar la escena de menu de inicio
 	exit = false;
-	SDLUtils::init(WIN_NAME, WIN_WIDTH, WIN_HEIGHT);
-    inputManager = InputManager::GetInstance();
+	SDLUtils::init(WIN_NAME, WIN_WIDTH, WIN_HEIGHT, "resources/config/menus.resources.json");
 	SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
-	escenaActual = new RoomScene(1);
-	HUD = new HUDManager(this, 9, 10, 0);
-	escenaActual = new MenuInicio(this);
+	//escenaActual = new RoomScene(1);
+	hud = new HUDManager(this, 9, 10, 0);
 
-	newgame_state_ = new NewGameState();
-	paused_state_ = new PausedState();
+	newgame_state_ = new NewGameState(this);
+	escenaActual = newgame_state_.;
+	//paused_state_ = new PausedState(); //No esta terminado, mejor no llamarlo aun
 
 	gameLoop();
-
 }
 
 void Game::gameLoop() {
@@ -51,7 +49,7 @@ void Game::gameLoop() {
         DataManager::GetInstance()->UpdateFrameTime();
 		escenaActual->update();
 		render();
-		inputManager->PollEvents(); //Actualiza la entrada
+		imngr.PollEvents(); //Actualiza la entrada
 		SDL_Event event;
 		/*while (SDL_PollEvent(&event)) {
 			escenaActual->HandleEvents(event);
@@ -59,14 +57,14 @@ void Game::gameLoop() {
 	}
 }
 /**
-* M�todo general del renderizado, llama al Render como tal de la escena que est� actualmente en uso.
+* Metodo general del renderizado, llama al Render como tal de la escena que est� actualmente en uso.
 */
 void Game::render() {
 	SDL_RenderClear(sdlutils().renderer());
 	escenaActual->render();
 	
 	if(escenaActual->getCanRenderHUD())
-		HUD->render();
+		hud->render();
 	
 	SDL_RenderPresent(sdlutils().renderer());
 }

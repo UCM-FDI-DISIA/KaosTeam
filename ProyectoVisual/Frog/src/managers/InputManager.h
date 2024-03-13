@@ -53,3 +53,7 @@ public:
     bool getRight();
     bool getSpace();
 };
+
+inline InputManager& im() {
+    return *InputManager::GetInstance();
+}
