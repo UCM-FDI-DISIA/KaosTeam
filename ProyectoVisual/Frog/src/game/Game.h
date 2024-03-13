@@ -28,6 +28,9 @@ private:
 	bool exit;
 
 public:
+	enum State {
+		RUNNING, PAUSED, NEWGAME, GAMEOVER
+	};
 	Game();
 	~Game();
 	void init();
