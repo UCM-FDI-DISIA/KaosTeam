@@ -27,11 +27,12 @@ private:
 	HUDManager* hud;
 	InputManager& imngr;
 
-	GameState* current_state_;
-	GameState* paused_state_;
-	GameState* running_state_;
-	GameState* newgame_state_;
-	GameState* gameover_state_;
+	GameState* previousState;
+	GameState* currentState;
+	GameState* pausedState;
+	GameState* runningState;
+	GameState* newgameState;
+	GameState* gameoverState;
 
 	bool exit;
 

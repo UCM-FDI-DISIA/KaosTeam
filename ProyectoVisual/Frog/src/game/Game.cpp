@@ -13,20 +13,21 @@
 
 Game::Game():
 	imngr(im()), //
-	current_state_(nullptr), //
-	paused_state_(nullptr), //
-	newgame_state_(nullptr), //
-	gameover_state_(nullptr) {}
+	previousState(nullptr),
+	currentState(nullptr), //
+	pausedState(nullptr), //
+	newgameState(nullptr), //
+	gameoverState(nullptr) {}
 
 Game::~Game()
 {
 	delete hud;
 	delete escenaActual;
-
-	delete current_state_;
-	delete paused_state_;
-	delete newgame_state_;
-	delete gameover_state_;
+	delete previousState;
+	delete currentState;
+	delete pausedState;
+	delete newgameState;
+	delete gameoverState;
 }
 
 void Game::init() {
@@ -37,8 +38,8 @@ void Game::init() {
 	//escenaActual = new RoomScene(1);
 	hud = new HUDManager(this, 9, 10, 0);
 
-	newgame_state_ = new NewGameState(this);
-	current_state_ = newgame_state_;
+	newgameState = new NewGameState(this);
+	currentState = newgameState;
 	//paused_state_ = new PausedState(); //No esta terminado, mejor no llamarlo aun
 
 	gameLoop();
