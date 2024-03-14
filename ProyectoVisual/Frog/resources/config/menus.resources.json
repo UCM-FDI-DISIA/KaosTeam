@@ -1,5 +1,5 @@
 {
-    "menuImages" : [
+    "images" : [
         { "id" : "background", "file" : "resources/Menus/MainMenu.png" },
         { "id" : "fly", "file" : "resources/Sprites/unframedemoska.png"}
     ]
