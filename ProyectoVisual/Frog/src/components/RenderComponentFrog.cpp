@@ -52,10 +52,10 @@ void RenderComponentFrog::render()
     dest.h = size;
 
     if (getCurrentAnim().flip) { //Si se tiene que invertir
-    tex_->renderFrame(dest, currentFrameR_, currentFrameC_, SDL_FLIP_HORIZONTAL);
+        tex_->renderFrameWithFlip(dest, currentFrameR_, currentFrameC_, SDL_FLIP_HORIZONTAL);
     }
     else { 
-        tex_->renderFrame(dest, currentFrameR_, currentFrameC_, SDL_FLIP_NONE);
+        tex_->renderFrame(dest, currentFrameR_, currentFrameC_);
     }
 }
 
