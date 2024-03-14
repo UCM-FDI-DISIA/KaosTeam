@@ -12,9 +12,11 @@ public:
 	void leave() override;
 	void update() override;
 	void enter() override;
-
-	MenuInicio* getMenuInicio() const { return mInicio; }
+	
+	//Getters
+	Scene* getScene() const override { return &currScene; };
 private:
-	MenuInicio* mInicio; //Puntero que gestiona la pantalla de MenuInicio
+	MenuInicio* mStart; //Puntero que gestiona la pantalla de MenuInicio
+	Scene& currScene; //puede haber escenas d menu d opciones,etc.
 };
 

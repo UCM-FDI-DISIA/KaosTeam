@@ -18,6 +18,7 @@ void RoomScene::update() {
 	cameraManager->update();
 }
 
+//Crear fachada para el player desde RunningState, dandole los valores iniciales y setteando su hud y sus caracteristicas
 void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int boundY)
 {
 	player = new Entity(this);

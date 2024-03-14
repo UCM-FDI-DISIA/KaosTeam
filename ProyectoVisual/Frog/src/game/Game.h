@@ -2,9 +2,7 @@
 #include <SDL.h>
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/Singleton.h"
-#include "../ecs/Scene.h"
-#include "../managers/HUDManager.h"
-#include "../managers/InputManager.h"
+
 #include "GameState.h"
 
 using namespace std;
@@ -23,10 +21,6 @@ constexpr uint WIN_CHANCE = 75;
 class Game
 {
 private:
-	Scene* escenaActual;
-	HUDManager* hud;
-	InputManager& imngr;
-
 	GameState* previousState;
 	GameState* currentState;
 	GameState* pausedState;
@@ -46,6 +40,6 @@ public:
 	void gameLoop();
 	void render();
 	void exitGame();
-    void setScene(State s);
+    //void setScene(State s); Cambiar a cambio de estados (newgame, runnin, pause, gameover)
 };
 

@@ -211,7 +211,7 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                         texPath = prop.getStringValue();
                     }
 
-
+                    //Abstraerlo para que se llame a metodo de Crear Entidades y que de ahi se gestione que es lo que se crea
                     if (prop.getName() == "isPlayer") {
                         if (prop.getBoolValue()) {
                             Vector2D pos;
@@ -219,7 +219,6 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                             pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
                             room->createPlayer(texPath, pos, cols, rows);
                         }
-
                     }
                 }
 

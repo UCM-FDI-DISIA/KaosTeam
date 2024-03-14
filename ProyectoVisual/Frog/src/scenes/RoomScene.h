@@ -17,7 +17,7 @@ private:
 	int id;
 	Entity* player = nullptr;
 public:
-	RoomScene(int id) : Scene(true), id(id) {
+	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 		mapReader = new MapManager("resources/maps/H1map.tmx", this);
 		//mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());

@@ -1,4 +1,6 @@
 #include "Game.h"
+
+#include "../managers/InputManager.h"
 #include "../scenes/RoomScene.h"
 
 #include"../scenes/MenuInicio.h"
@@ -12,7 +14,6 @@
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 
 Game::Game():
-	imngr(im()), //
 	previousState(nullptr),
 	currentState(nullptr), //
 	pausedState(nullptr), //
@@ -21,8 +22,6 @@ Game::Game():
 
 Game::~Game()
 {
-	delete hud;
-	delete escenaActual;
 	delete previousState;
 	delete currentState;
 	delete pausedState;
@@ -36,7 +35,6 @@ void Game::init() {
 	SDLUtils::init(WIN_NAME, WIN_WIDTH, WIN_HEIGHT, "resources/config/menus.resources.json");
 	SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
 	//escenaActual = new RoomScene(1);
-	hud = new HUDManager(this, 9, 10, 0);
 
 	newgameState = new NewGameState(this);
 	currentState = newgameState;
@@ -46,12 +44,16 @@ void Game::init() {
 }
 
 void Game::gameLoop() {
+	SDL_Event event;
+	auto& imngr = im();
+
 	while (!exit) {
         DataManager::GetInstance()->UpdateFrameTime();
-		escenaActual->update();
+
+		currentState->getScene()->update();
 		render();
 		imngr.PollEvents(); //Actualiza la entrada
-		SDL_Event event;
+		
 		/*while (SDL_PollEvent(&event)) {
 			escenaActual->HandleEvents(event);
 		}*/
@@ -62,10 +64,12 @@ void Game::gameLoop() {
 */
 void Game::render() {
 	SDL_RenderClear(sdlutils().renderer());
-	escenaActual->render();
+	currentState->getScene()->render();
 	
-	if(escenaActual->getCanRenderHUD())
-		hud->render();
+
+	//Esto se realiza en cada escena
+	/*if (currentState->getScene()->getCanRenderHUD())
+		hud->render();*/
 	
 	SDL_RenderPresent(sdlutils().renderer());
 }
@@ -75,7 +79,9 @@ void Game::exitGame()
 	exit = true;
 }
 
-void Game::setScene(State s) //PROVISIONAL, NO FINAL
+
+//Cambiar a metodo para cambiar de estado (newgame, running, pause, gameover)
+/*void Game::setScene(State s) //PROVISIONAL, NO FINAL
 {
 	switch (s) {
 	case RUNNING:
@@ -93,4 +99,4 @@ void Game::setScene(State s) //PROVISIONAL, NO FINAL
 	default:
 		break;
 	}
-}
+}*/
