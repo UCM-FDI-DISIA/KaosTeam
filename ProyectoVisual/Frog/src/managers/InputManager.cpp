@@ -49,7 +49,6 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_ESCAPE:
 			states[BTN_ESCAPE] = true;
 			break;
-
 		case SDLK_SPACE:
 			states[BTN_SPACE] = true;
 			break;
@@ -82,4 +81,9 @@ bool InputManager::getRight() {
 bool InputManager::getSpace()
 {
 	return states[BTN_SPACE];
+}
+
+bool InputManager::getEscape()
+{
+	return states[BTN_ESCAPE];
 }

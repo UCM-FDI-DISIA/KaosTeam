@@ -12,8 +12,8 @@ public:
 	void leave() override;
 	void update() override;
 	void enter() override;
-
 	MenuInicio* getMenuInicio() const { return mInicio; }
+
 private:
 	MenuInicio* mInicio; //Puntero que gestiona la pantalla de MenuInicio
 };

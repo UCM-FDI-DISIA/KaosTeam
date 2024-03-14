@@ -52,6 +52,7 @@ public:
     bool getLeft();
     bool getRight();
     bool getSpace();
+    bool getEscape();
 };
 
 inline InputManager& im() {

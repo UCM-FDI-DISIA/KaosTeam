@@ -64,6 +64,7 @@ void Game::render() {
 	SDL_RenderClear(sdlutils().renderer());
 	escenaActual->render();
 	
+	
 	if(escenaActual->getCanRenderHUD())
 		hud->render();
 	
