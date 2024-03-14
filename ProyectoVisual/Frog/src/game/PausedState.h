@@ -3,7 +3,7 @@
 #include "../ecs/Scene.h"
 class InputManager;
 
-class PausedState:public GameState, public Scene
+class PausedState:public GameState
 {
 public:
 	PausedState();

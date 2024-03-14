@@ -82,3 +82,8 @@ bool InputManager::getSpace()
 {
 	return states[BTN_SPACE];
 }
+
+bool InputManager::getEscape()
+{
+	return states[BTN_ESCAPE];
+}
