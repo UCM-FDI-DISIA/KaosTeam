@@ -20,6 +20,6 @@ void MovementComponent::changePos(Vector2D v)
 
 void MovementComponent::initComponent()
 {
-	actualTile = ent->getScene()->getMapReader()->getTile(posCasilla);
+	//actualTile = ent->getScene()->getMapReader()->getTile(posCasilla);
 }
 

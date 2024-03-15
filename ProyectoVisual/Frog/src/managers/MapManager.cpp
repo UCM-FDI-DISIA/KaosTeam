@@ -68,7 +68,7 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     }
     else
     {
-        walkableTiles = vector<vector<tile*>>(rows, vector<tile*>(cols)); //reservamos el espacio para la matriz de tiles
+        walkableTiles = vector<vector<tile*>>(cols + 1, vector<tile*>(rows + 1)); //reservamos el espacio para la matriz de tiles
         std::cout << "Map Dimensions: " << tiled_map.getBounds() << std::endl;
     }
 
