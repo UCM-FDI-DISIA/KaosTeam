@@ -1,7 +1,7 @@
 #include "RenderComponentFrog.h"
 #include "../scenes/RoomScene.h"
-#include "AttackComponent.h"
 #include "../managers/MapManager.h"
+#include "AttackComponentFrog.h"
 
 void RenderComponentFrog::render()
 {
@@ -16,15 +16,15 @@ void RenderComponentFrog::render()
     SDL_Rect dest;
 
     //COSAS IMPORTANTES. pos es de floats, igual nos conviene q sea de ints
-    //TAMBIÉN, el dest podriamos definirlo en la costructora para ahorrar tiempo y cambiar solo su x e y
-    //Y TAMBIÉN. ESTO NO SIRVE SI SE MUEVE LA CAMARA.
+    //TAMBIï¿½N, el dest podriamos definirlo en la costructora para ahorrar tiempo y cambiar solo su x e y
+    //Y TAMBIï¿½N. ESTO NO SIRVE SI SE MUEVE LA CAMARA.
     dest.x = actualTile->x + offset.getX();
     dest.y = actualTile->y + offset.getY();
 
     //la lengua 
     if (attacking)
     {
-        int distanceMoved = static_cast<AttackComponent*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
+        int distanceMoved = static_cast<AttackComponentFrog*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
         if (distanceMoved < 0)
         {
             attacking = false;

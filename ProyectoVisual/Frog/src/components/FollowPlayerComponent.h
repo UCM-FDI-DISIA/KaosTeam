@@ -13,7 +13,6 @@ protected:
 public:
 	FollowPlayerComponent(Vector2D pos);
 	virtual ~FollowPlayerComponent();
-	void FollowPlayer(float x, float y);
 	void update() override;
 };
 

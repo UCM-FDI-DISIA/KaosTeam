@@ -19,6 +19,7 @@ public:
 		actualRoom = newRoom;
 	}
 	void update();
+	void setMapCanMove(){mapCanMove = true;}
 	//void handleEvents(const SDL_Event& event);
 private:
 	//static Camera* cameraInstance;
@@ -26,6 +27,6 @@ private:
 	//ns si esta bien
 	MovementComponentFrog* camTargetMovementComp = dynamic_cast<MovementComponentFrog*>(camTarget->getComponent(MOVEMENT_COMPONENT));
 	MapManager* actualRoom;
-	bool playerMoved;
+	bool mapCanMove;
 };
 #endif // !CAMERAMANAGER_H

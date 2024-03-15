@@ -1,4 +1,4 @@
-#include "AttackComponent.h"
+#include "AttackComponentFrog.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../managers/DataManager.h"
@@ -6,7 +6,7 @@
 
 
 
-void AttackComponent::update()
+void AttackComponentFrog::update()
 {
 	if (state == 0)
 	{

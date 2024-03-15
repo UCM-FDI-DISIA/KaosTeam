@@ -66,6 +66,10 @@ private:
     int cols;
     int tile_width = 0;
     int tile_height = 0;
+    int boundRight;
+    int boundLeft;
+    int boundTop;
+    int boundBottom;
     // All of the tiles we will draw to the screen.
     std::vector<tile> tiles;
     // All of the tilesets used by our Tiled map.

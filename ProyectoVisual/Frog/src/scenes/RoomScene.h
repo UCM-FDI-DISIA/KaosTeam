@@ -3,7 +3,7 @@
 //#include "../ecs/Entity.h"
 #include"../components/MovementComponentFly.h"
 #include "../components/RenderComponentFrog.h"
-#include "../components/AttackComponent.h"
+#include "../components/AttackComponentFrog.h"
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
 #include "../managers/CameraManager.h"
@@ -56,6 +56,7 @@ public:
 	virtual ~RoomScene();
 	MapManager* getMapReader() { return mapReader; };
 	Entity* getPlayer() { return player; };
-	void createPlayer(std::string texPath, Vector2D pos, tile*);
+
+	void createPlayer(std::string texPath, Vector2D pos, tile*, int boundX, int boundY);
 
 };

@@ -21,10 +21,7 @@ VARIABLES:
 
 Locales
 	->Deben ser descriptivas de su propósito, tratando de no caer en abreviaciones indescifrables o en nombres kilimétricos.
-		*Una excepción son los iteradores (sean del tipo que sean). Estos si que suelen tener nombre cortos, tal como "i" ó "j".
-	->Empiezan con minúscula, y si están compuestas por varias palabras, la primera letra de cada palabra en mayúsculas.
-		Ej:	int miVariable; 
-			string casa;
+		*Una excepción son los iteradores (sean del tipo que sean). Estos si que sueles tener nombre cortos, tal como "i" ó "j".
 	->Si es compuesto el nombre, trata de usar solo nombres o adjetivos. Ej: int numCasas, string colorFuente.
 
 Globales
