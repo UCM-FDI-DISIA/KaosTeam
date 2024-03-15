@@ -8,7 +8,9 @@
 #include <tmxlite/LayerGroup.hpp>
 #include <tmxlite/TileLayer.hpp>
 #include <iostream>
+#include <vector>
 using namespace tmx;
+using namespace std;
 typedef int gid;
 
 using uint = unsigned int;
@@ -77,6 +79,7 @@ public:
     void draw(SDL_Renderer* ren);
 
     Vector2D getMapSize();
+    vector<vector<tile*>> walkableTiles;
     int getTileSize();
     tile* getTile(Vector2D);
     void move(std::string dir);

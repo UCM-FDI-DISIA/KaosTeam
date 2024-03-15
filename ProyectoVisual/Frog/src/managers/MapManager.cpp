@@ -54,6 +54,7 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     auto map_dimensions = tiled_map.getTileCount();
     rows = map_dimensions.y;
     cols = map_dimensions.x;
+    walkableTiles = vector<vector<tile*>>(rows, vector<tile*>(cols)); //reservamos el espacio para la matriz de tiles
     if (tiled_map.isInfinite())
     {
         std::cout << "Map is infinite.\n";
@@ -183,6 +184,10 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                     tile t(tilesets[tset_gid], x_pos, y_pos,
                         region_x, region_y, tile_width, tile_height, walkable);
                     tiles.push_back(t);
+
+                    //la añadimos a el mapa de tiles caminables
+                    if (walkable)
+                        walkableTiles[x][y] = &t;
                 }
             }
         }
@@ -282,7 +287,10 @@ int MapManager::getTileSize()
 
 tile* MapManager::getTile(Vector2D v)
 {
-    return &tiles[v.getX() + v.getY()*cols];
+    if (walkableTiles[v.getX()][v.getY()] != nullptr)
+        return walkableTiles[v.getX()][v.getY()];
+    else
+        return nullptr;
 }
 
 void MapManager::move(std::string direction) {
