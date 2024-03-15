@@ -58,13 +58,17 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     auto map_dimensions = tiled_map.getTileCount();
     rows = map_dimensions.y;
     cols = map_dimensions.x;
-    walkableTiles = vector<vector<tile*>>(rows, vector<tile*>(cols)); //reservamos el espacio para la matriz de tiles
+
+    
+
+
     if (tiled_map.isInfinite())
     {
         std::cout << "Map is infinite.\n";
     }
     else
     {
+        walkableTiles = vector<vector<tile*>>(rows, vector<tile*>(cols)); //reservamos el espacio para la matriz de tiles
         std::cout << "Map Dimensions: " << tiled_map.getBounds() << std::endl;
     }
 

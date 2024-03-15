@@ -13,7 +13,7 @@ class MovementComponentFrog: public MovementComponent
 private:
 	InputManager* im;
 	Uint32 lastTimeMoved;
-	Directions actualDirection;
+	Directions actualDirection = DOWN; //empieza mirando al frente
 	
 	//La idea es que este cooldown sea compartido por todos los componentes de accion de la rana como atacar y etc
 	Uint32 actionCooldown, movementFrameRate = 50, 
