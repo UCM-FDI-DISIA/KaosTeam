@@ -18,10 +18,10 @@ void RoomScene::update() {
 	cameraManager->update();
 }
 
-void RoomScene::createPlayer(std::string texPath, Vector2D pos)
+void RoomScene::createPlayer(std::string texPath, Vector2D pos, tile* t)
 {
 	player = new Entity(this);
-	MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2));
+	MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2), t);
 	mvm->setContext(player);
 	mvm->initComponent();
 	player->addComponent(MOVEMENT_COMPONENT, mvm);

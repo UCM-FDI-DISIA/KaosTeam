@@ -19,7 +19,7 @@ protected:
 	tile* actualTile;
 public:
 	MovementComponent() { };
-	MovementComponent(Vector2D casilla);
+	MovementComponent(Vector2D casilla, tile* t = nullptr);
 	Vector2D getPosition();
 	Vector2D getOffset() { return offsetInCasilla; }
 	//importante!! usad este metodo para cambiar de casilla!!

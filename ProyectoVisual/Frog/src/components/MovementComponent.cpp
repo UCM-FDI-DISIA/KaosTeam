@@ -3,7 +3,7 @@
 #include "../scenes/Roomscene.h"
 #include <iostream>
 
-MovementComponent::MovementComponent(Vector2D casilla): posCasilla(casilla), destCasilla(casilla)
+MovementComponent::MovementComponent(Vector2D casilla, tile* t): posCasilla(casilla), destCasilla(casilla), actualTile(t)
 {}
 
 Vector2D MovementComponent::getPosition() {
