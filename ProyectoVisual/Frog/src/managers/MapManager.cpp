@@ -5,7 +5,7 @@
 tile::tile(SDL_Texture* tset, int x, int y, int tx, int ty, int w, int h, bool walkable, bool theresObj, Entity* objInTile)
 : sheet(tset), x(x), y(y), tx(tx), ty(ty), width(w), height(h), walkable(walkable), theresObj(theresObj), objInTile(objInTile){}
 
-void tile::draw(SDL_Renderer* ren) {
+void tile::draw(SDL_Renderer* ren, int i) {
     if (!ren || !sheet)
         return;
 
@@ -16,14 +16,16 @@ void tile::draw(SDL_Renderer* ren) {
     src.h = height;
 
     SDL_Rect dest;
-    dest.x = x* MAP_MULT;
-    dest.y = y* MAP_MULT;
+    dest.x = (/* - 300 + */x)* MAP_MULT;
+    dest.y = (/* - 200 + */y)* MAP_MULT;
     dest.w = src.w* MAP_MULT;
     dest.h = src.h* MAP_MULT;
 
     if (DEBUG) {
         if (walkable){ //SOLO SE VER�N CASILLAS EN LAS PARTES EN LAS QUE SE PUEDE CAMINAR
-            if (((this->x / this->width % 2 == 0) && (this->y / this->height % 2 == 1)) || ((this->x / this->width % 2 == 1) && (this->y / this->height % 2 == 0))) {
+            if (i%2==0
+                /*((this->x / this->width % 2 == 0) && (this->y / this->height % 2 == 1)) || 
+                ((this->x / this->width % 2 == 1) && (this->y / this->height % 2 == 0))*/) {
                 SDL_SetTextureColorMod(sheet, 200, 200, 200);
             }
             else {
@@ -189,6 +191,7 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                     tiles.push_back(t);
                 }
             }
+            std::cout << "Tile vector size: " << tiles.size() << std::endl;
         }
 
         //TILES DE OBJETOS
@@ -213,11 +216,14 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
 
 
                     if (prop.getName() == "isPlayer") {
+
                         if (prop.getBoolValue()) {
                             Vector2D pos;
                             pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
                             pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
                             room->createPlayer(texPath, pos, cols, rows);
+                            /*/std::cout << "Player is in tile: " << pos.getX() + (pos.getY() * cols) << std::endl;
+                            room->createPlayer(texPath, pos);*/
                         }
 
                     }
@@ -269,8 +275,9 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
 
 void MapManager::draw(SDL_Renderer* ren) {
     //Dibujamos cada tile
-    for (auto& tile : tiles) {
-        tile.draw(ren);
+    int s = tiles.size();
+    for (int i = 0; i < s; ++i) {
+        tiles[i].draw(ren, i);
     }
 }
 
@@ -282,6 +289,12 @@ Vector2D MapManager::getMapSize()
 int MapManager::getTileSize()
 {
     return tile_width*MAP_MULT; //width y height son iguales
+}
+
+
+tile* MapManager::getTile(int i)
+{
+    return &(tiles[i]);
 }
 
 void MapManager::move(std::string direction) {

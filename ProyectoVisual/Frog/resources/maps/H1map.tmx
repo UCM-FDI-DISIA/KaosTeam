@@ -80,7 +80,7 @@
 </data>
  </layer>
  <objectgroup id="5" name="Obj">
-  <object id="1" name="Flonk" x="23.8333" y="42.792">
+  <object id="1" name="Flonk" x="105.917" y="138.959">
    <properties>
     <property name="TexPath" value="../Frog/resources/sprites/unFrameDeRana.png"/>
     <property name="isPlayer" type="bool" value="true"/>

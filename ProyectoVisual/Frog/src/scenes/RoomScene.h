@@ -26,10 +26,10 @@ public:
 		//Camara despues del mapa
 		//camara
 		//cameraManager->getInstance(player, mapReader);
-		cameraManager = new Camera(entityList[1], mapReader); //el primer obj es el player siempre
-
+		//cameraManager = new Camera(entityList[0], mapReader); //el primer obj es el player
+		
 		Entity* fly = new Entity(this);
-		MovementComponent* mvm = new MovementComponentFly(Vector2D(2, 3));
+		MovementComponent* mvm = new MovementComponentFly(Vector2D(0, 3));
 		mvm->setContext(fly);
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);
 
@@ -48,6 +48,7 @@ public:
 		rndr->setContext(flyToPlayer);
 		flyToPlayer->addRenderComponent(rndr);
 		entityList.push_back(flyToPlayer);
+		
 	};
 
 	void AddEntity(Entity* entity);

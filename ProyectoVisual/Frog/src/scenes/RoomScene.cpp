@@ -15,13 +15,13 @@ void RoomScene::update() {
 		if (e != nullptr)
 		e->update();
 	}
-	cameraManager->update();
+	//cameraManager->update();
 }
 
 void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int boundY)
 {
 	player = new Entity(this);
-	MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2));
+	MovementComponent* mvm = new MovementComponentFrog(Vector2D(1,1));
 	mvm->setContext(player);
 	mvm->setBoundX(boundX);
 	mvm->setBoundY(boundY);
@@ -34,8 +34,6 @@ void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int 
 	Component* atck = new AttackComponentFrog();
 	player->addComponent(ATTACK_COMPONENT, atck);
 	atck->setContext(player);
-	entityList.push_back(player);
-
 	AddEntity(player);
 }
 

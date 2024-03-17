@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "H1map.tmx",
+    "activeFile": "niveles/nivel01/mapaN1_02.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -11,15 +11,27 @@
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 23,
-                "y": 42.5
+                "x": 263,
+                "y": 175.5
             }
+        },
+        "niveles/nivel01/mapaN1_02.tmx": {
+            "scale": 2,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 71.25,
+                "y": 149.25
+            }
+        },
+        "niveles/nivel01/tileset/H01_tileset.tsx": {
+            "scaleInDock": 1
         },
         "tileset/H01_tileset.tsx": {
             "scaleInDock": 2,
             "scaleInEditor": 1
         }
     },
+    "last.externalTilesetPath": "C:/UCM3/2.P/KaosTeam/ProyectoVisual/Frog/resources/maps/tileset",
     "last.imagePath": "C:/UCM3/2.P/KaosTeam/ProyectoVisual/Frog/resources/maps/tileset",
     "map.height": 22,
     "map.lastUsedFormat": "tmx",
@@ -27,14 +39,14 @@
     "map.tileWidth": 16,
     "map.width": 33,
     "openFiles": [
-        "H1map.tmx",
-        "tileset/H01_tileset.tsx"
+        "niveles/nivel01/mapaN1_02.tmx"
     ],
     "project": "FlonkMaps.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "tileset/H01_tileset.tsx",
-        "H1map.tmx"
+        "niveles/nivel01/mapaN1_02.tmx",
+        "H1map.tmx",
+        "tileset/H01_tileset.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
