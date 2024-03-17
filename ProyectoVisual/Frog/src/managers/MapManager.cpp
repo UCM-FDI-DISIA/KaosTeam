@@ -5,7 +5,7 @@
 tile::tile(SDL_Texture* tset, int x, int y, int tx, int ty, int w, int h, bool walkable, bool theresObj, Entity* objInTile)
 : sheet(tset), x(x), y(y), tx(tx), ty(ty), width(w), height(h), walkable(walkable), theresObj(theresObj), objInTile(objInTile){}
 
-void tile::draw(SDL_Renderer* ren) {
+void tile::draw(SDL_Renderer* ren, int num) {
     if (!ren || !sheet)
         return;
 
@@ -23,7 +23,7 @@ void tile::draw(SDL_Renderer* ren) {
 
     if (DEBUG) {
         if (walkable){ //SOLO SE VER�N CASILLAS EN LAS PARTES EN LAS QUE SE PUEDE CAMINAR
-            if (((this->x / this->width % 2 == 0) && (this->y / this->height % 2 == 1)) || ((this->x / this->width % 2 == 1) && (this->y / this->height % 2 == 0))) {
+            if (num % 2 == 0) {
                 SDL_SetTextureColorMod(sheet, 200, 200, 200);
             }
             else {
@@ -280,8 +280,8 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
 
 void MapManager::draw(SDL_Renderer* ren) {
     //Dibujamos cada tile
-    for (auto& tile : tiles) {
-        tile.draw(ren);
+    for (int i = 0; i < tiles.size(); i++ ) {
+        tiles[i].draw(ren, i);
     }
 }
 

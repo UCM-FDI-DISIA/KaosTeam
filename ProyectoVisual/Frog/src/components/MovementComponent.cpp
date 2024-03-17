@@ -16,6 +16,7 @@ void MovementComponent::changePos(Vector2D v)
 	actualTile->objInTile = nullptr;
 	actualTile = ent->getScene()->getMapReader()->getTile(v);
 	actualTile->objInTile = ent;
+	cout << posCasilla;
 }
 
 void MovementComponent::initComponent()
