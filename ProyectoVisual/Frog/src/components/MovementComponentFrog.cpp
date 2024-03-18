@@ -2,6 +2,18 @@
 #include <iostream>
 #include "../scenes/RoomScene.h"
 
+void MovementComponentFrog::startMovement(Directions d, Vector2D v)
+{
+	if (checkIfTileWalkable(posCasilla + v))
+	{
+		actualDirection = d;
+		velocity = v;
+		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+		jumping = true;
+	}
+	
+}
+
 void MovementComponentFrog::update() {
 	//no te puedes mover m�s si ya te est�s movimiendo
 	if (jumping && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate)
@@ -13,52 +25,40 @@ void MovementComponentFrog::update() {
 		
 		if (actualDirection == LEFT || actualDirection == RIGHT)
 		{
-			offsetInCasilla.setX(t / framesPerJump * framesMoved * (destCasilla.getX() - posCasilla.getX()));
+			offsetInCasilla.setX(t / framesPerJump * framesMoved * velocity.getX());
 			offsetInCasilla.setY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
 		}
 		else
 		{
-			offsetInCasilla.setY(t / framesPerJump * framesMoved * (destCasilla.getY() - posCasilla.getY()));
+			offsetInCasilla.setY(t / framesPerJump * framesMoved * velocity.getY() );
 		}
+
 
 		if (framesMoved == framesPerJump) //para acabar el movimiento
 		{
-			changePos(destCasilla);
+			changePos(velocity + posCasilla);
 			offsetInCasilla = { 0,0 };
 			framesMoved = 0;
 			jumping = false;
-			hasMoved = true;
 		}
 	}
 
 	else if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > actionCooldown) {
 		if (im->getDown() && posCasilla.getY()< boundY) { //revisar limite
-			destCasilla.setY(posCasilla.getY() + 1);
-			actualDirection = DOWN;
-			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-			jumping = true;
-			hasMoved = false;
+			startMovement(DOWN,	Vector2D(0, 1));
+		
 		}
 		else if (im->getUp() && posCasilla.getY() > 0) {
-			destCasilla.setY(posCasilla.getY() -1);
-			actualDirection = UP;
-			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-			jumping = true;
-			hasMoved = false;
+			startMovement(UP, Vector2D(0, -1));
+
 		}
 		else if (im->getRight() && posCasilla.getX() < boundX) { //revisar limite
-			destCasilla.setX(posCasilla.getX() + 1);
-			actualDirection = RIGHT;
-			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-			jumping = true;
-			hasMoved = false;
+			startMovement(RIGHT, Vector2D(1, 0));
+
 		}
 		else if (im->getLeft() && posCasilla.getX() > 0) {
-			destCasilla.setX(posCasilla.getX() - 1);
-			actualDirection = LEFT;
-			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-			jumping = true;
-			hasMoved = false;
+			startMovement(LEFT, Vector2D(-1, 0));
+
 		}
 		
 	}

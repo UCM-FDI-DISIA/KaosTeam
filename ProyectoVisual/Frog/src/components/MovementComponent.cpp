@@ -3,7 +3,7 @@
 #include "../scenes/Roomscene.h"
 #include <iostream>
 
-MovementComponent::MovementComponent(Vector2D casilla, tile* t): posCasilla(casilla), destCasilla(casilla), actualTile(t)
+MovementComponent::MovementComponent(Vector2D casilla, tile* t): posCasilla(casilla), actualTile(t)
 {}
 
 Vector2D MovementComponent::getPosition() {
@@ -22,5 +22,10 @@ void MovementComponent::changePos(Vector2D v)
 void MovementComponent::initComponent()
 {
 	//actualTile = ent->getScene()->getMapReader()->getTile(posCasilla);
+}
+
+bool MovementComponent::checkIfTileWalkable(Vector2D v)
+{
+	return (ent->getScene()->getMapReader()->getTile(v) != nullptr); //para comprobar q la tile existe
 }
 
