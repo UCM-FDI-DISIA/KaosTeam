@@ -227,8 +227,7 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                             pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
                             pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
 
-                            room->createPlayer(texPath, pos, getTile(pos), cols, rows);
-
+                            room->createPlayer(texPath, pos, getTile(Vector2D(2,2)), cols, rows);
                         }
 
                     }
