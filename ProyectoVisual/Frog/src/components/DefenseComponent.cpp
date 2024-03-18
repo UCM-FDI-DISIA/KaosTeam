@@ -6,13 +6,17 @@
 
 void DefenseComponent::update()
 {
-	if (!defenseActive)
+	if (!defenseActive && auxInput->getAction4())
 	{
-
+		
+	}
+	else if (defenseActive)
+	{
+		
 	}
 }
 
-bool DefenseComponent::defenseActive()
+bool DefenseComponent::getDefenseActive()
 {
 	return defenseActive;
 }
