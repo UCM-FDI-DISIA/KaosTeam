@@ -6,7 +6,6 @@
     <ClCompile Include="src\ecs\Component.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />
     <ClCompile Include="src\managers\DataManager.cpp" />
-    <ClCompile Include="src\ecs\Scene.cpp" />
     <ClCompile Include="src\Frog.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\json\JSON.cpp" />
@@ -37,6 +36,8 @@
     <ClCompile Include="src\game\PausedState.cpp" />
     <ClCompile Include="src\game\NewGameState.cpp" />
     <ClCompile Include="src\game\GameOverState.cpp" />
+    <ClCompile Include="src\scenes\MenuGameOver.cpp" />
+    <ClCompile Include="src\scenes\MenuGameWon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -83,6 +84,8 @@
     <ClInclude Include="src\game\NewGameState.h" />
     <ClInclude Include="src\game\GameState.h" />
     <ClInclude Include="src\game\GameOverState.h" />
+    <ClInclude Include="src\scenes\MenuGameOver.h" />
+    <ClInclude Include="src\scenes\MenuGameWon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
