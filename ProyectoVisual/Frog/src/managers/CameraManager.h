@@ -9,6 +9,13 @@
 #include "../components/MovementComponentFrog.h"
 #include <SDL.h>
 class Camera { //en un futuro miro si puede heredar de component
+private:
+	//static Camera* cameraInstance;
+	Entity* camTarget;
+	//ns si esta bien
+	MovementComponentFrog* camTargetMovementComp = dynamic_cast<MovementComponentFrog*>(camTarget->getComponent(MOVEMENT_COMPONENT));
+	MapManager* actualRoom;
+	bool mapCanMove;
 public:
 	Camera(Entity* target, MapManager* room);
 	/*inline static Camera* getInstance(Entity* target, MapManager* room)
@@ -21,12 +28,6 @@ public:
 	void update();
 	void setMapCanMove(){mapCanMove = true;}
 	//void handleEvents(const SDL_Event& event);
-private:
-	//static Camera* cameraInstance;
-	Entity* camTarget;
-	//ns si esta bien
-	MovementComponentFrog* camTargetMovementComp = dynamic_cast<MovementComponentFrog*>(camTarget->getComponent(MOVEMENT_COMPONENT));
-	MapManager* actualRoom;
-	bool mapCanMove;
+
 };
 #endif // !CAMERAMANAGER_H

@@ -7,6 +7,7 @@
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
 #include "../managers/CameraManager.h"
+#include "../components/MovementComponentFish.h"
 
 class RoomScene : public Scene
 {
@@ -32,8 +33,6 @@ public:
 		MovementComponent* mvm = new MovementComponentFly(Vector2D(0, 3));
 		mvm->setContext(fly);
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);
-
-
 		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
 		rndr->setContext(fly);
 		fly->addRenderComponent(rndr);
@@ -48,6 +47,17 @@ public:
 		rndr->setContext(flyToPlayer);
 		flyToPlayer->addRenderComponent(rndr);
 		entityList.push_back(flyToPlayer);
+
+		Entity* fish = new Entity(this);
+		MovementComponentFish* mvmFish = new MovementComponentFish(Vector2D(2, 2), 4); //tiene que ser MovementComponent* = ?
+		mvmFish->setContext(fish);
+		fish->addComponent(MOVEMENT_COMPONENT, mvmFish);
+		RenderComponent* renderFish = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5); //cambiar obv
+		renderFish->setContext(fish);
+		fish->addRenderComponent(renderFish);
+		//1 de vida, daño media mosca
+		entityList.push_back(fish);
+
 		
 	};
 
