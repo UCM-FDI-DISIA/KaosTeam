@@ -22,4 +22,5 @@ void NewGameState::update()
 
 void NewGameState::enter()
 {
+	game.changeState(game.RUNNING);
 }

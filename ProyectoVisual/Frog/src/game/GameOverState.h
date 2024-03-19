@@ -5,11 +5,13 @@
 #include "../ecs/Scene.h"
 #include "Game.h"
 
+class MenuGameOver;
+
 class GameOverState :public GameState
 {
 public:
-	NewGameState(Game* game/*Llamar a la constructora de la fachada del player*/);
-	virtual ~NewGameState();
+	GameOverState(Game* game/*Llamar a la constructora de la fachada del player*/);
+	virtual ~GameOverState();
 	void leave() override;
 	void update() override;
 	void enter() override;
