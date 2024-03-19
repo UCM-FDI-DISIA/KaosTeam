@@ -4,8 +4,6 @@
 #include "../managers/DataManager.h"
 #include "RenderComponentFrog.h"
 
-
-
 void AttackComponentFrog::update()
 {
 	if (state == 0)

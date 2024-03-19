@@ -14,6 +14,7 @@ private:
         BTN_ACTION1,
         BTN_ACTION2,
         BTN_ACTION3,
+        BTN_ACTION4,
         BTN_UP,
         BTN_DOWN,
         BTN_LEFT,
@@ -47,6 +48,7 @@ public:
     bool getAction1();
     bool getAction2();
     bool getAction3();
+    bool getAction4();
     bool getUp();
     bool getDown();
     bool getLeft();
