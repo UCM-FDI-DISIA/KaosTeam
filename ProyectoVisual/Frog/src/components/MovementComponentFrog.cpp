@@ -21,8 +21,7 @@ void MovementComponentFrog::update() {
 			offsetInCasilla.setY(t / framesPerJump * framesMoved * (destCasilla.getY() - posCasilla.getY()));
 		}
 
-		if (framesMoved == framesPerJump) //para acabar el movimiento
-		{
+		if (framesMoved == framesPerJump) { //para acabar el movimiento
 			posCasilla = destCasilla;
 			offsetInCasilla = { 0,0 };
 			framesMoved = 0;
@@ -59,6 +58,5 @@ void MovementComponentFrog::update() {
 			anim->playAnimation("LEFT");
 			jumping = true;
 		}
-		
 	}
 }

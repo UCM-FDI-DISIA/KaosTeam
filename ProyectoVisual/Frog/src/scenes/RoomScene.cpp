@@ -35,6 +35,14 @@ void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int 
 	a = Animation({ Vector2D(2,0), Vector2D(2,1) }, true, false);
 	rndr->addAnimation("LEFT", a);
 
+	a = Animation({ Vector2D(2,0), Vector2D(2,2),Vector2D(2,2), Vector2D(2,3) }, false, false);
+	rndr->addAnimation("ATTACK_RIGHT", a);
+	a = Animation({ Vector2D(2,0), Vector2D(2,2),Vector2D(2,2), Vector2D(2,3) }, true, false);
+	rndr->addAnimation("ATTACK_LEFT", a);
+	a = Animation({ Vector2D(1,0),Vector2D(1,2),Vector2D(1,2) , Vector2D(1,3) }, false, false);
+	rndr->addAnimation("ATTACK_UP", a);
+	a = Animation({ Vector2D(0,0),Vector2D(0,2),Vector2D(0,2), Vector2D(0,3) }, false, false);
+	rndr->addAnimation("ATTACK_DOWN", a);
 	player->addAnimationComponent(rndr);
 
 	//AnimationComponent* anim = new AnimationComponent(txtFrog, 4, 4);

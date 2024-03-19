@@ -112,8 +112,7 @@ public:
 		SDL_RenderCopyEx(renderer_, texture_, &srcRect, &destRect, angle, 0, flip);
 	}
 
-
-	void renderFrameWithFlip(const SDL_Rect& destRect, int row, int col, SDL_RendererFlip flip, float angle = 0) {
+	void renderFrameWithFlip(const SDL_Rect& destRect, int row, int col, SDL_RendererFlip flip, float angle) {
 		fw = width_ / column_;
 		fh = height_ / row_;
 
