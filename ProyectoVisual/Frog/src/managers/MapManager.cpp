@@ -46,6 +46,18 @@ MapManager::MapManager(const std::string& path, RoomScene* room)
         boundBottom = rows * tile_height;
     }
 
+MapManager::~MapManager()
+{
+    for (int i = 0; i < walkableTiles.size(); i++)
+    {
+        for (int j = 0; j < walkableTiles[0].size(); j++)
+        {
+            delete walkableTiles[i][j];
+
+        }
+    }
+}
+
 void MapManager::load(const std::string& path, SDL_Renderer* ren) {
 
     // Load and parse the Tiled map with tmxlite
@@ -189,13 +201,13 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                     auto y_pos = y * tile_height;
 
                     // Phew, all done. 
-                    tile t(tilesets[tset_gid], x_pos, y_pos,
+                    tile* t = new tile(tilesets[tset_gid], x_pos, y_pos,
                         region_x, region_y, tile_width, tile_height, walkable);
-                    tiles.push_back(t);
+                    tiles.push_back(*t);
 
                     //la añadimos a el mapa de tiles caminables
                     if (walkable)
-                        walkableTiles[x][y] = &t;
+                        walkableTiles[x][y] = t;
                 }
             }
         }
