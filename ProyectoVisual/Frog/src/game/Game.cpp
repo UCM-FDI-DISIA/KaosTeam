@@ -81,14 +81,18 @@ void Game::exitGame()
 
 
 //Cambiar a metodo para cambiar de estado (newgame, running, pause, gameover)
-/*void Game::setScene(State s) //PROVISIONAL, NO FINAL
+void Game::changeGameState(State s) //PROVISIONAL, NO FINAL
 {
 	switch (s) {
 	case RUNNING:
-		escenaActual = new RoomScene(1);
+		runningState = new RunningState(this);
+		currentState = runningState;
+		previousState = newgameState;
 		break;
 	case PAUSED:
-
+		pausedState = new PausedState();
+		currentState = pausedState;
+		previousState = runningState;
 		break;
 	case NEWGAME:
 		
@@ -99,4 +103,4 @@ void Game::exitGame()
 	default:
 		break;
 	}
-}*/
+}

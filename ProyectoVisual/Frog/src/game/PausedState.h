@@ -1,6 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "../ecs/Scene.h"
+
 class InputManager;
 
 class PausedState:public GameState
@@ -19,7 +20,7 @@ public:
 
 		va a renderizar las tres escenas (bg y hud del running y el menu d pausa
 	}*/;
-	
+	Scene* getScene() const override { return &bgScene; };
 
 private:
 	HUDManager* hud; //Puntero que gestiona la pantalla de MenuInicio

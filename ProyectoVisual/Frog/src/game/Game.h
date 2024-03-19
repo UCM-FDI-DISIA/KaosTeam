@@ -39,6 +39,8 @@ public:
 	void init();
 	void gameLoop();
 	void render();
+
+	void changeGameState(State s);
 	void exitGame();
     //void setScene(State s); Cambiar a cambio de estados (newgame, runnin, pause, gameover)
 };
