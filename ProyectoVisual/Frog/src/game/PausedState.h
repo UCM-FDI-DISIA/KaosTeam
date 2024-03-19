@@ -2,23 +2,19 @@
 #include "GameState.h"
 #include "../ecs/Scene.h"
 class InputManager;
+class HUDManager;
 
 class PausedState:public GameState
 {
 public:
-	PausedState();
+	PausedState(HUDManager* hud_, Scene& bg_, Scene& pause_);
 	~PausedState() {};
 	void enter() override;
 	void leave() override;
-	void update() override/* {
+	void update() override;
 
-		solo va a hacer update del menu d pausa
-		scene->update()
-	}*/;
-	void render() override /* {
-
-		va a renderizar las tres escenas (bg y hud del running y el menu d pausa
-	}*/;
+	//	solo va a hacer update del menu d pausa
+	//	scene->update()
 	
 
 private:
