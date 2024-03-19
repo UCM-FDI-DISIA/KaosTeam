@@ -1,4 +1,5 @@
 #include "HUDManager.h"
+#include"../game/Game.h"
 #include "../sdlutils/SDLUtils.h"
 #include <string>
 using namespace std;
@@ -51,10 +52,11 @@ HUDManager::render()
 	textNumWorms->render(xInicialWorm + 50, yInicial + 30);
 }
 
-HUDManager::HUDManager(Game* g, int vidasActuales, int VidasMaximas, int worms) : game(g), 
+HUDManager::HUDManager( int vidasActuales, int VidasMaximas, int worms) : game(g()), 
 vidasActuales(vidasActuales), vidasMax(VidasMaximas), wormsActuales(worms), 
 rectFly(new SDL_Rect())
 {
+	instance = nullptr;
 	textFly = new Texture(sdlutils().renderer(), "resources/Sprites/moscaVidaSpritesheet.png", 1, 3);
 	rectFly->y = yInicial;
 	rectFly->w = textFly->width() / textFly->getCol();

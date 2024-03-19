@@ -10,6 +10,7 @@
 #include "NewGameState.h"
 #include "PausedState.h"
 #include "RunningState.h"
+Game* Game::instance = nullptr;
 
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 
@@ -18,7 +19,9 @@ Game::Game():
 	currentState(nullptr), //
 	pausedState(nullptr), //
 	newgameState(nullptr), //
-	gameoverState(nullptr) {}
+	gameoverState(nullptr) {
+	instance = nullptr;
+}
 
 Game::~Game()
 {
@@ -90,9 +93,9 @@ void Game::changeGameState(State s) //PROVISIONAL, NO FINAL
 		previousState = newgameState;
 		break;
 	case PAUSED:
-		pausedState = new PausedState();
-		currentState = pausedState;
-		previousState = runningState;
+		//pausedState = new PausedState(this,new HUDManager(0,0,0),runningState,);
+		//currentState = pausedState;
+		//previousState = runningState;
 		break;
 	case NEWGAME:
 		
