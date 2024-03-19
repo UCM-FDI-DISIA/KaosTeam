@@ -1,10 +1,9 @@
 #include "DefenseComponent.h"
 #include "../ecs/Entity.h"
-#include "../sdlutils/SDLUtils.h"
 #include "../managers/DataManager.h"
-#include "RenderComponentFrog.h"
 
 // faltan animaciones e implementarlo en el daño
+// la idea es que cuando reciba daño se compruebe el defenseActive y si está activado no se recibe daño
 
 void DefenseComponent::update()
 {
