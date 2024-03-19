@@ -71,6 +71,8 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     rows = map_dimensions.y;
     cols = map_dimensions.x;
 
+    //it starts in the origin
+
     
 
 
@@ -239,7 +241,7 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                             pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
                             pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
 
-                            room->createPlayer(texPath, pos, getTile(Vector2D(2,2)), cols, rows);
+                            room->createPlayer(texPath, pos, cols, rows);
                         }
 
                     }
@@ -308,10 +310,7 @@ int MapManager::getTileSize()
 
 tile* MapManager::getTile(Vector2D v)
 {
-    if (walkableTiles[v.getX()][v.getY()] != nullptr)
-        return walkableTiles[v.getX()][v.getY()];
-    else
-        return nullptr;
+    return walkableTiles[v.getX()][v.getY()];
 }
 
 void MapManager::move(std::string direction) {

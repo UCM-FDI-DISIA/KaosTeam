@@ -22,7 +22,7 @@ private:
 	void startMovement(Directions, Vector2D);
 
 public:
-	MovementComponentFrog(Vector2D casilla, tile* t) : MovementComponent(casilla, t), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()) {};
+	MovementComponentFrog(Vector2D casilla) : MovementComponent(casilla), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()) {};
 	Directions getDirection() { return actualDirection; }
 	void update() override;
 	bool getMoveCompleted() { return !jumping; }

@@ -1,43 +1,18 @@
 #include "CameraManager.h"
-//Camera* Camera::cameraInstance = nullptr;
 
-Camera::Camera(Entity* target, MapManager* room) :
-	camTarget(target), actualRoom(room) {
-	mapCanMove = true;
+void Camera::setTarget(Entity* target)
+{
+	camTarget = target;
+	camTargetMovementComp = dynamic_cast<MovementComponentFrog*>(camTarget->getComponent(MOVEMENT_COMPONENT));
+	lastTargetPosition = camTargetMovementComp->getPosition();
 }
 void Camera::update() {
 
-	if (camTargetMovementComp->getMoveCompleted()) {
-		switch (camTargetMovementComp->getDirection()) {
-		case UP:
-			if (mapCanMove) {
-				actualRoom->move("down");
-				mapCanMove = false;
-			}
-			break;
-		case DOWN:
-			if (mapCanMove) {
-				actualRoom->move("up");
-				mapCanMove = false;
-			}
-			break;
-		case RIGHT:
-			if (mapCanMove) {
-				actualRoom->move("left");
-				mapCanMove = false;
-			}
-			break;
-		case LEFT:
-			if (mapCanMove) {
-				actualRoom->move("right");
-				mapCanMove = false;
-			}
-			break;
-		default:
-			break;
-		}
-	}
-	else if (!camTargetMovementComp->getMoveCompleted()) {
-		mapCanMove = true;
+	Vector2D actualTargetPos = camTargetMovementComp->getPosition();
+	if (lastTargetPosition.getX() != actualTargetPos.getX() && lastTargetPosition.getY() != actualTargetPos.getY()) {
+		
+		cameraPos.setX(cameraPos.getX() + lastTargetPosition.getX() - actualTargetPos.getX());
+		cameraPos.setY(cameraPos.getY() + lastTargetPosition.getY() - actualTargetPos.getY());
+		lastTargetPosition = actualTargetPos;
 	}
 }

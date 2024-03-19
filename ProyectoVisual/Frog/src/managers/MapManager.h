@@ -75,6 +75,8 @@ private:
     // All of the tilesets used by our Tiled map.
     std::map<gid, SDL_Texture*> tilesets;
 
+    //the coordinate in which the map starts
+
     RoomScene* room = nullptr;
 
 public:
@@ -84,8 +86,10 @@ public:
     void draw(SDL_Renderer* ren);
 
     Vector2D getMapSize();
+    //la matriz para gestionar colisiones etc
     vector<vector<tile*>> walkableTiles;
     int getTileSize();
     tile* getTile(Vector2D);
     void move(std::string dir);
+    
 };

@@ -8,18 +8,15 @@ void RenderComponentFrog::render()
     //copiado descaradamente del OG render component
     int t = ent->getScene()->getMapReader()->getTileSize();
     int size = (int)t * scale;
-  
-    tile* actualTile = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getTile();
-    Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() + Vector2D((t - size) / 2, (t - size) / 2);
-    
-    
     SDL_Rect dest;
+ 
+    Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() + Vector2D((t - size) / 2, (t - size) / 2);
+    Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
+    Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
-    //COSAS IMPORTANTES. pos es de floats, igual nos conviene q sea de ints
-    //TAMBI�N, el dest podriamos definirlo en la costructora para ahorrar tiempo y cambiar solo su x e y
-    //Y TAMBI�N. ESTO NO SIRVE SI SE MUEVE LA CAMARA.
-    dest.x = actualTile->x + offset.getX();
-    dest.y = actualTile->y + offset.getY();
+   
+    dest.x = (pos.getX() - cameraPos.getX())*t + offset.getX();
+    dest.y = (pos.getY() - cameraPos.getY())*t + offset.getY();
 
     //la lengua 
     if (attacking)
