@@ -20,25 +20,30 @@ private:
 	SDL_Rect* rectFly;
 	Font font = Font("resources/fonts/COMIC.ttf", 30);
 	SDL_Color colorFont = {255, 255, 255, 255};
-	/*static HUDManager* instance;*/
+    static HUDManager* instance;
 public:
+	HUDManager(HUDManager&) = delete;
+	void operator=(const HUDManager&) = delete;
 	HUDManager(Game* g, int, int, int);
 	~HUDManager();
 	
 	//devuelve una isntancia del HUDManager y en caso de no haberla, crea una
-	/*static HUDManager* GetInstance() {
+	static HUDManager* GetInstance() {
 		if (instance == nullptr) {
-			instance = new HUDManager();
+			//instance = new HUDManager(game,0,0,0);
 		}
 		return instance;
-	};*/
+	};
 
 	void ChangeLives(int);
+	void ChangeMaxLife(int);
 	void addWorms(int);
 
 	void render();
 	void update() {}; //por ahora no tiene nada
 };
-
+inline HUDManager& hud() {
+	return *HUDManager::GetInstance();
+}
 
 
