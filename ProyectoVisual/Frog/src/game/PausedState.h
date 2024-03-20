@@ -8,7 +8,7 @@ class Game;
 class PausedState:public GameState
 {
 public:
-	PausedState(Game* game, HUDManager* hud, Scene& bg);
+	PausedState(Game* game);
 	~PausedState() {};
 	void enter() override;
 	void leave() override;
@@ -19,9 +19,8 @@ public:
 	
 
 private:
-	HUDManager* hud; //Puntero que gestiona la pantalla de MenuInicio
-	Scene& bgScene; //puede haber escenas d menu d opciones,etc.
-	Scene& mPause;
+	HUDManager& hudmngr; //Puntero que gestiona la pantalla de MenuInicio
+	Scene* mPause;
 	InputManager& imngr;
 	Game*  game;
 	//pauseMenuScene

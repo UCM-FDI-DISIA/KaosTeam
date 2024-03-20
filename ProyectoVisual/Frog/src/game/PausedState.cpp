@@ -1,11 +1,13 @@
 #include "PausedState.h"
+#include "../scenes/MenuPausa.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../managers/InputManager.h"
 #include "../managers/HUDManager.h"
 #include"Game.h"
 
-PausedState::PausedState(Game* game, HUDManager* hud, Scene& bg) :game(game), imngr(im()), hud(hud_),
-	bgScene(bg_), mPause(pause_){};
+PausedState::PausedState(Game* game) :game(game), imngr(im()), hudmngr(hud()),mPause(new MenuPausa(game,this))
+{
+};
 void PausedState::enter()
 {
 	sdlutils().virtualTimer().pause();
