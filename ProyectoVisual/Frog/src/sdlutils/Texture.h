@@ -98,19 +98,31 @@ public:
 		return column_;
 	}
 
-	void renderFrame(const SDL_Rect &destRect, int row, int col, float angle = 0, SDL_RendererFlip flip = SDL_FLIP_NONE) {
-		
+	void renderFrame(const SDL_Rect& destRect, int row, int col, float angle = 0, SDL_RendererFlip flip = SDL_FLIP_NONE) {
+
 		fw = width_ / column_;
 		fh = height_ / row_;
-		
+
 		SDL_Rect srcRect;
 		srcRect.x = fw * col;
 		srcRect.y = fh * row;
 		srcRect.w = fw;
 		srcRect.h = fh;
-		render(srcRect, destRect, angle);
-		//SDL_RenderCopyEx(renderer, texture, &srcRect, &destRect, angle, 0, flip);
-	
+		//render(srcRect, destRect, angle);
+		SDL_RenderCopyEx(renderer_, texture_, &srcRect, &destRect, angle, 0, flip);
+	}
+
+	void renderFrameWithFlip(const SDL_Rect& destRect, int row, int col, SDL_RendererFlip flip, float angle) {
+		fw = width_ / column_;
+		fh = height_ / row_;
+
+		SDL_Rect srcRect;
+		srcRect.x = fw * col;
+		srcRect.y = fh * row;
+		srcRect.w = fw;
+		srcRect.h = fh;
+		//render(srcRect, destRect, angle);
+		SDL_RenderCopyEx(renderer_, texture_, &srcRect, &destRect, angle, 0, flip);
 	}
 
 private:

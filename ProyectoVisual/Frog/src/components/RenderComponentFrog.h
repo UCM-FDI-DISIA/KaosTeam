@@ -1,14 +1,15 @@
 #pragma once
 #include "RenderComponent.h"
-class RenderComponentFrog: public RenderComponent
+#include "AnimationComponent.h"
+class RenderComponentFrog: public AnimationComponent
 {
 private:
 	SDL_Rect tongueRect;
-	Texture* tongueText;
+	Texture* tongueText = nullptr;
 	bool attacking = false;
-
+	enum direction { LEFT, RIGHT, UP, DOWN };
 public:
-	RenderComponentFrog(Texture* tf, Texture* tt, float sc = 1): RenderComponent(tf, sc), tongueText(tt){}
+	RenderComponentFrog(Texture* tf, Texture* tt, float sc = 1) : AnimationComponent(tf, 4, 4, sc), tongueText(tt) {}
 	~RenderComponentFrog() { delete tongueText; };
 	void render() override;
 	void AttackStart();

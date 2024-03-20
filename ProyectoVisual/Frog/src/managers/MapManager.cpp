@@ -1,11 +1,12 @@
 #include "MapManager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
+#include "CameraManager.h"
 
 tile::tile(SDL_Texture* tset, int x, int y, int tx, int ty, int w, int h, bool walkable, bool theresObj, Entity* objInTile)
 : sheet(tset), x(x), y(y), tx(tx), ty(ty), width(w), height(h), walkable(walkable), theresObj(theresObj), objInTile(objInTile){}
 
-void tile::draw(SDL_Renderer* ren, int i) {
+void tile::draw(SDL_Renderer* ren, int num, Vector2D cameraPos) {
     if (!ren || !sheet)
         return;
 
@@ -16,16 +17,14 @@ void tile::draw(SDL_Renderer* ren, int i) {
     src.h = height;
 
     SDL_Rect dest;
-    dest.x = (/* - 300 + */x)* MAP_MULT;
-    dest.y = (/* - 200 + */y)* MAP_MULT;
+    dest.x = (x -cameraPos.getX() * width) * MAP_MULT; 
+    dest.y = (y - cameraPos.getY() * height) * MAP_MULT;  
     dest.w = src.w* MAP_MULT;
     dest.h = src.h* MAP_MULT;
 
     if (DEBUG) {
         if (walkable){ //SOLO SE VER�N CASILLAS EN LAS PARTES EN LAS QUE SE PUEDE CAMINAR
-            if (i%2==0
-                /*((this->x / this->width % 2 == 0) && (this->y / this->height % 2 == 1)) || 
-                ((this->x / this->width % 2 == 1) && (this->y / this->height % 2 == 0))*/) {
+            if (num % 2 == 0) {
                 SDL_SetTextureColorMod(sheet, 200, 200, 200);
             }
             else {
@@ -48,6 +47,18 @@ MapManager::MapManager(const std::string& path, RoomScene* room)
         boundBottom = rows * tile_height;
     }
 
+MapManager::~MapManager()
+{
+    for (int i = 0; i < walkableTiles.size(); i++)
+    {
+        for (int j = 0; j < walkableTiles[0].size(); j++)
+        {
+            delete walkableTiles[i][j];
+
+        }
+    }
+}
+
 void MapManager::load(const std::string& path, SDL_Renderer* ren) {
 
     // Load and parse the Tiled map with tmxlite
@@ -60,12 +71,19 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     auto map_dimensions = tiled_map.getTileCount();
     rows = map_dimensions.y;
     cols = map_dimensions.x;
+
+    //it starts in the origin
+
+    
+
+
     if (tiled_map.isInfinite())
     {
         std::cout << "Map is infinite.\n";
     }
     else
     {
+        walkableTiles = vector<vector<tile*>>(cols + 1, vector<tile*>(rows + 1)); //reservamos el espacio para la matriz de tiles
         std::cout << "Map Dimensions: " << tiled_map.getBounds() << std::endl;
     }
 
@@ -186,9 +204,13 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                     auto y_pos = y * tile_height;
 
                     // Phew, all done. 
-                    tile t(tilesets[tset_gid], x_pos, y_pos,
+                    tile* t = new tile(tilesets[tset_gid], x_pos, y_pos,
                         region_x, region_y, tile_width, tile_height, walkable);
-                    tiles.push_back(t);
+                    tiles.push_back(*t);
+
+                    //la añadimos a el mapa de tiles caminables
+                    if (walkable)
+                        walkableTiles[x][y] = t;
                 }
             }
             std::cout << "Tile vector size: " << tiles.size() << std::endl;
@@ -221,6 +243,7 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                             Vector2D pos;
                             pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
                             pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
+
                             room->createPlayer(texPath, pos, cols, rows);
                             /*/std::cout << "Player is in tile: " << pos.getX() + (pos.getY() * cols) << std::endl;
                             room->createPlayer(texPath, pos);*/
@@ -275,9 +298,9 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
 
 void MapManager::draw(SDL_Renderer* ren) {
     //Dibujamos cada tile
-    int s = tiles.size();
-    for (int i = 0; i < s; ++i) {
-        tiles[i].draw(ren, i);
+    Vector2D cameraPos = Camera::instance()->getCameraMovement();
+    for (int i = 0; i < tiles.size(); i++ ) {
+        tiles[i].draw(ren, i, cameraPos);
     }
 }
 
@@ -291,10 +314,10 @@ int MapManager::getTileSize()
     return tile_width*MAP_MULT; //width y height son iguales
 }
 
-
-tile* MapManager::getTile(int i)
+//por ahora esto no es del todo funcional. usar con precaución
+tile* MapManager::getTile(Vector2D v)
 {
-    return &(tiles[i]);
+    return walkableTiles[v.getX()][v.getY()];
 }
 
 void MapManager::move(std::string direction) {

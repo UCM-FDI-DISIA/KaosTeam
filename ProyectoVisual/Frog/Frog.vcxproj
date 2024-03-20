@@ -156,6 +156,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\AnimationComponent.cpp" />
+    <ClCompile Include="src\components\DefenseComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
     <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFish.cpp" />
@@ -165,6 +167,7 @@
     <ClCompile Include="src\components\MovementComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFrog.cpp" />
     <ClCompile Include="src\components\RenderComponent.cpp" />
+    <ClCompile Include="src\components\RenderComponentFly.cpp" />
     <ClCompile Include="src\components\RenderComponentFrog.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />
@@ -191,6 +194,8 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\AnimationComponent.h" />
+    <ClInclude Include="src\components\DefenseComponent.h" />
     <ClInclude Include="src\components\AttackComponentFrog.h" />
     <ClInclude Include="src\components\FollowPlayerComponent.h" />
     <ClInclude Include="src\components\MovementComponentFish.h" />
@@ -200,6 +205,7 @@
     <ClInclude Include="src\components\MovementComponent.h" />
     <ClInclude Include="src\components\MovementComponentFrog.h" />
     <ClInclude Include="src\components\RenderComponent.h" />
+    <ClInclude Include="src\components\RenderComponentFly.h" />
     <ClInclude Include="src\components\RenderComponentFrog.h" />
     <ClInclude Include="src\ecs\Component.h" />
     <ClInclude Include="src\managers\DataManager.h" />

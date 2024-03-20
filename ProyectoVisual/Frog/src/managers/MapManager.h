@@ -8,7 +8,9 @@
 #include <tmxlite/LayerGroup.hpp>
 #include <tmxlite/TileLayer.hpp>
 #include <iostream>
+#include <vector>
 using namespace tmx;
+using namespace std;
 typedef int gid;
 
 using uint = unsigned int;
@@ -48,7 +50,7 @@ struct tile {
 
     tile(SDL_Texture* tset, int x = 0, int y = 0, int tx = 0, int ty = 0, int w = 0, 
         int h = 0, bool walkable = true, bool theresObj = false, Entity* objInTile = nullptr);
-    void draw(SDL_Renderer* ren, int i);
+    void draw(SDL_Renderer* ren, int num, Vector2D cameraPos);
 };
 
 class RoomScene;
@@ -73,15 +75,23 @@ private:
     // All of the tilesets used by our Tiled map.
     std::map<gid, SDL_Texture*> tilesets;
 
+    //the coordinate in which the map starts
+
     RoomScene* room = nullptr;
 
 public:
     MapManager(const std::string& path, RoomScene* room);
+    ~MapManager();
     void load(const std::string& path, SDL_Renderer* ren);
     void draw(SDL_Renderer* ren);
 
     Vector2D getMapSize();
+    //la matriz para gestionar colisiones etc
+    vector<vector<tile*>> walkableTiles;
     int getTileSize();
-    tile* getTile(int i);
+    int getCols() { return cols; }
+    int getRows() { return rows; }
+    tile* getTile(Vector2D);
     void move(std::string dir);
+    
 };

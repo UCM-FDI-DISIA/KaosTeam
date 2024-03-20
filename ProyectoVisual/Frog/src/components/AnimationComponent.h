@@ -1,6 +1,7 @@
 #pragma once
 #include "../ecs/Component.h"
 #include "../utils/Vector2D.h"
+#include "../ecs/Entity.h"
 #include <unordered_map>
 #include <vector>
 #include <string>
@@ -23,13 +24,15 @@ struct Animation {
 
  /* Mapa de animaciones con su nombre y coordenadas de frames */
 using Animations = std::unordered_map<std::string, Animation>;
-const int FRAME_RATE = 30;
+const int FRAME_RATE = 10;
 class Texture;
+
 class AnimationComponent : public Component
 {
-private:
+protected:
 	Texture* tex_;							// Textura
-	//int x_, y_;								// Coordenadas x e y (Supongo que habria que leerlas de la posicion de la entidad)
+	float sc;								// Escala
+	int x_, y_;								// Coordenadas x e y (Supongo que habria que leerlas de la posicion de la entidad)
 	//int frameWidth_, frameHeight_;			// Ancho y Alto de un frame
 	int nRow_, nCol_;						// Numero de filas y cols
 	int currentFrameR_, currentFrameC_;		// Fila y Columna actual
@@ -39,17 +42,16 @@ private:
 	Animations animationSet_;				// Mapa de animaciones de la entidad
 	Animation currentAnim_;                 // Animacion actual
 	std::string currentAnimName_;
-	//SDL_RendererFlip flip_;					// Flip
+	//SDL_RendererFlip flip_;				// Flip
 	bool isPlaying_;						// Bool que indica si ya se esta reproduciendo una animacion
-public:
-	AnimationComponent(Texture* tex, int rows, int cols);
-	void addAnimation(const std::string& name, const Animation& anim);
-	void playAnimation(const std::string& name);
 	void updateAnimation(const Animation& currentAnim, int index);
 	Animation getCurrentAnim() const { return currentAnim_; };
-	int getCurrentFil() const { return  currentFrameR_; };
-	int getCurrentCol() const { return currentFrameC_; };
-	//void render() override;
+public:
+	//AnimationComponent(std::string filename, int wframes, int hframes, float sc = 1);
+	AnimationComponent(Texture* tex, int rows, int cols, float scale);
+	void addAnimation(const std::string& name, const Animation& anim);
+	void playAnimation(const std::string& name);
+	virtual void render() {};
 	void update() override;
 };
 

@@ -10,4 +10,5 @@ void MovementComponentFly::update()
 
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 	}
+
 }

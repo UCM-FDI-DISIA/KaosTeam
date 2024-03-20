@@ -37,7 +37,7 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_RIGHT:
 			states[BTN_RIGHT] = true;
 			break;
-		case SDLK_z: //Se puede cambiar si queremos usar otra tecla
+		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
 			states[BTN_ACTION1] = true;
 			break;
 		case SDLK_x:
@@ -46,10 +46,12 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_c:
 			states[BTN_ACTION3] = true;
 			break;
+		case SDLK_v:	// Escudo
+			states[BTN_ACTION4] = true;
+			break;
 		case SDLK_ESCAPE:
 			states[BTN_ESCAPE] = true;
 			break;
-
 		case SDLK_SPACE:
 			states[BTN_SPACE] = true;
 			break;
@@ -66,6 +68,9 @@ bool InputManager::getAction2() {
 bool InputManager::getAction3() {
 	return states[BTN_ACTION3];
 }
+bool InputManager::getAction4() {
+	return states[BTN_ACTION4];
+}
 bool InputManager::getUp() {
 	return states[BTN_UP];
 }
@@ -78,7 +83,6 @@ bool InputManager::getLeft() {
 bool InputManager::getRight() {
 	return states[BTN_RIGHT];
 }
-
 bool InputManager::getSpace()
 {
 	return states[BTN_SPACE];
