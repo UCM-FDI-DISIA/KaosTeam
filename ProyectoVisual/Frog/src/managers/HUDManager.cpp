@@ -4,6 +4,7 @@
 #include <string>
 using namespace std;
 
+HUDManager* HUDManager::instance = nullptr;
 
 void HUDManager::ChangeLives(int vidasToAdd)
 {
@@ -11,6 +12,11 @@ void HUDManager::ChangeLives(int vidasToAdd)
 
 	if (vidasActuales > vidasMax)
 		vidasActuales = vidasMax;
+}
+
+void HUDManager::ChangeMaxLife(int maxLifeToAdd)
+{
+	vidasMax += maxLifeToAdd;
 }
 
 void HUDManager::addWorms(const int wormsToAdd)
