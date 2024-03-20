@@ -40,6 +40,12 @@ Al romper objetos o matar enemigos, podrán aparecer aleatoriamente power ups qu
   - **Luciérnagas** que hacen brillar al jugador, iluminando la oscuridad a su alrededor.
   - Por desarrollar…
 
+</details>
+
+<details>
+
+<summary>Enemigos</summary>
+
 ## Enemigos
 
 A lo largo del juego, el jugador deberá hacer frente a distintos tipos de enemigos distribuidos por las diferentes zonas:
@@ -92,6 +98,8 @@ Daño recibido: Media Mosca
 Vida: inmortal
 Daño recibido: Media Mosca
 - **Cucarachas** Son inmortales pero cuando son atacadas estas se derrumban, dejándolas immóbiles pero en unos pocos segundos, estas se volverán a levantarse para atacarte. Para atacarte, estas te tiran su cabeza como proyectil. Después de atacarte, estas tendrán que ir a recuperar su cabeza dejándolas vulnerables.
+
+</details>
 
 ## Cámara
 
