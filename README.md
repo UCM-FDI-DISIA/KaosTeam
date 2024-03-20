@@ -8,6 +8,10 @@ Trabajo para Proyectos II de Kaos Team, un grupo de estudiantes de segundo del G
 
 _Flonk!_ es un juego de aventuras de estilo clásico en el que Flonk, la rana deberá salir del charco para salvar a su hermana del malvado chef francés que planea hacer un guiso con ella.
 
+<details>
+
+<summary>Mecánicas del jugador</summary>
+
 ## Mecánicas del jugador
 
 El movimiento del juego está basado en saltos de casilla en casilla en un tablero donde se desarrollará la acción . También tendrá un set de habilidades iniciales que luego serán mejoradas con mejoras que aumentarán la fuerza y utilidad de estas y se podrá ampliar el repertorio de habilidades disponibles con otras mejoras obtenidas durante la partida.
@@ -35,6 +39,8 @@ Al romper objetos o matar enemigos, podrán aparecer aleatoriamente power ups qu
 
   - **Luciérnagas** que hacen brillar al jugador, iluminando la oscuridad a su alrededor.
   - Por desarrollar…
+
+<details>
 
 ## Enemigos
 
@@ -223,14 +229,14 @@ El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de
 
 ## Menús de juego y flujo de juego(por definir)
 
-**Menú principal: **
-El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar, un botón que le lleva al menú de ajustes y un botón para salir del juego.
+**Menú principal:**
+ El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar, un botón que le lleva al menú de ajustes y un botón para salir del juego.
 
-**Menú de ajustes: **(por definir)
-Este menú muestra los controles y permite ajustar características del juego.
+**Menú de ajustes:**(por definir)
+ Este menú muestra los controles y permite ajustar características del juego.
 
-**Durante el juego: **
-En la pantalla se ve la interfaz descrita antes junto a un botón que permite ir al menú de pausa.
+**Durante el juego:**
+ En la pantalla se ve la interfaz descrita antes junto a un botón que permite ir al menú de pausa.
 ![](assets/imgGdd/image6.png)
 
 **Menú de pausa: **(por definir)
@@ -248,8 +254,8 @@ Durante el camino, no solo habrá animales que atacaran a Flonk, habrá otros qu
 Con las ayudas que obtenga por el camino, finalmente se deberá enfrentar al malvado chef francés para tratar de recuperar a su hermana.
 
 ## Resources
-**Mapas de tiled: **
-Tabla de propiedades de cada objeto para incluir en tiled.
+**Mapas de tiled:**
+ Tabla de propiedades de cada objeto para incluir en tiled.
 | Name | Class | Propieadades |
 |  :---:  |     :---:      | :---: |
 | `PosN`   | Player     | bla bla bla    |
