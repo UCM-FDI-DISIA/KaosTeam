@@ -24,7 +24,6 @@ void RenderComponentFrog::render()
         if (distanceMoved < 0)
             attacking = false;
         else {
-
             Directions d = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
             float endAngle = 0.0f;
             SDL_RendererFlip endFlip = SDL_FLIP_NONE;

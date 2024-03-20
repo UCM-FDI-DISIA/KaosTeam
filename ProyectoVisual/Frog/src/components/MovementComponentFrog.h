@@ -23,7 +23,9 @@ private:
 	bool jumping = false;
 
 public:
-	MovementComponentFrog(Vector2D casilla, AnimationComponent* animator) : MovementComponent(casilla), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()), anim(animator), actualDirection(Directions::DOWN) { actionCooldown = 100; };
+	MovementComponentFrog(Vector2D casilla, AnimationComponent* a) : MovementComponent(casilla), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()), anim(a), actualDirection(Directions::DOWN) {
+		actionCooldown = 100;
+	};
 	Directions getDirection() { return actualDirection; }
 	void update() override;
 
