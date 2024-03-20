@@ -19,7 +19,7 @@ private:
 	Texture& bg; //Textura de fondo
 	Texture& currSelec; //Textura que apunta al boton seleccionado
 	SDL_Rect dest; //resize de la mosca
-	Game& game;
+	Game* game;
 	InputManager& imngr;
 
 	int width; //Ancho de la pantalla
@@ -28,7 +28,7 @@ private:
 	
 	std::vector <Button*> menuButton;
 public:
-	MenuInicio(Game* game);
+	MenuInicio(Game*g);
 	~MenuInicio() {};
 
 	void render() override;

@@ -4,7 +4,7 @@
 #include "../managers/HUDManager.h"
 #include"Game.h"
 
-PausedState::PausedState(HUDManager* hud_, Scene& bg_, Scene& pause_) :game(g()), imngr(im()), hud(hud_),
+PausedState::PausedState(Game* game,HUDManager* hud_, Scene& bg_, Scene& pause_) :game(game), imngr(im()), hud(hud_),
 bgScene(bg_), mPause(pause_){};
 void PausedState::enter()
 {
@@ -20,7 +20,7 @@ void PausedState::update()
 {
 	if (imngr.getEscape())
 	{
-		game.changeGameState(game.RUNNING);
+		game->changeGameState(game->RUNNING);
 	}
 }
 

@@ -1,8 +1,8 @@
 #include "NewGameState.h"
-
+#include "Game.h"
 #include "../scenes/MenuInicio.h"
 
-NewGameState::NewGameState(Game* game): mStart(new MenuInicio(game)), currScene(*mStart)
+NewGameState::NewGameState(Game* g/*Game* game*/):game(g), mStart(new MenuInicio(g)), currScene(*mStart)
 {
 }
 
@@ -22,5 +22,5 @@ void NewGameState::update()
 
 void NewGameState::enter()
 {
-	game.changeState(game.RUNNING);
+	game->changeGameState(game->RUNNING);
 }

@@ -52,11 +52,11 @@ HUDManager::render()
 	textNumWorms->render(xInicialWorm + 50, yInicial + 30);
 }
 
-HUDManager::HUDManager( int vidasActuales, int VidasMaximas, int worms) : game(g()), 
+HUDManager::HUDManager( Game* g, int vidasActuales, int VidasMaximas, int worms) : game(g), 
 vidasActuales(vidasActuales), vidasMax(VidasMaximas), wormsActuales(worms), 
 rectFly(new SDL_Rect())
 {
-	instance = nullptr;
+	//instance = nullptr;
 	textFly = new Texture(sdlutils().renderer(), "resources/Sprites/moscaVidaSpritesheet.png", 1, 3);
 	rectFly->y = yInicial;
 	rectFly->w = textFly->width() / textFly->getCol();

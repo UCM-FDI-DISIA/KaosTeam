@@ -28,24 +28,14 @@ private:
 	GameState* newgameState;
 	GameState* gameoverState;
 
-	static Game* instance;
-
 	bool exit;
 
 public:
 	enum State {
 		RUNNING, PAUSED, NEWGAME, GAMEOVER
 	};
-	Game(Game&) = delete;
-	void operator=(const Game&) = delete;
 	Game();
 	~Game();
-	static Game* GetInstance() {
-		if (instance == nullptr) {
-			instance = new Game();
-		}
-		return instance;
-	};
 	void init();
 	void gameLoop();
 	void render();
@@ -54,7 +44,3 @@ public:
 	void exitGame();
     //void setScene(State s); Cambiar a cambio de estados (newgame, runnin, pause, gameover)
 };
-inline Game& g() {
-	return *Game::GetInstance();
-}
-

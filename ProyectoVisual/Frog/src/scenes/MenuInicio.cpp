@@ -6,10 +6,10 @@
 #include "../game/Game.h"
 
 
-MenuInicio::MenuInicio(Game* g): 
-		Scene(false), //
+MenuInicio::MenuInicio(Game*g): 
+		Scene(/*false*/), //
 		imngr(im()), //
-		game(*g), //
+		game(g), //
 		bg(sdlutils().images().at("background")), //Modificar
 		currSelec(sdlutils().images().at("fly")), //Modificar
 		width(WIN_WIDTH), height(WIN_HEIGHT), //
@@ -27,11 +27,11 @@ MenuInicio::MenuInicio(Game* g):
 	//Boton de Start
 	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuJuego.png", 0, 0),
 		buttonStartDest));
-	menuButton[0]->connect([this]() { game.setScene(game.RUNNING); });
+	menuButton[0]->connect([this]() { game->changeGameState(game->RUNNING); });
 	//Boton de exit
 	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuSalir.png", 0, 0),
 		buttonEndDest));
-	menuButton[1]->connect([this]() { game.exitGame(); });
+	menuButton[1]->connect([this]() { game->exitGame(); });
 
 	dest.w = currSelec.width();
 	dest.h = currSelec.height();

@@ -9,7 +9,7 @@ class Game;
 class HUDManager
 {
 private:
-	Game& game; //por ahora está aqui, aunq no sé para q se va a usar.
+	Game* game; //por ahora está aqui, aunq no sé para q se va a usar.
 	int vidasActuales, vidasMax, wormsActuales;
 	int xInicialFly = 15;
 	int yInicial = 10;
@@ -22,7 +22,7 @@ private:
 	SDL_Color colorFont = {255, 255, 255, 255};
 	/*static HUDManager* instance;*/
 public:
-	HUDManager( int, int, int);
+	HUDManager(Game* g, int, int, int);
 	~HUDManager();
 	
 	//devuelve una isntancia del HUDManager y en caso de no haberla, crea una
