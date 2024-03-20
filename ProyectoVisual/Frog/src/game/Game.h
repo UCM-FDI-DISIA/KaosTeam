@@ -1,8 +1,8 @@
 #pragma once
 #include <SDL.h>
+#include<list>
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/Singleton.h"
-
 #include "GameState.h"
 
 using namespace std;
@@ -21,8 +21,8 @@ constexpr uint WIN_CHANCE = 75;
 class Game
 {
 private:
-	GameState* previousState;
-	GameState* currentState;
+	list<GameState*> updateStates;
+	list<GameState*> renderStates;
 	GameState* pausedState;
 	GameState* runningState;
 	GameState* newgameState;

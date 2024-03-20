@@ -13,17 +13,13 @@
 
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 
-Game::Game():
-	previousState(nullptr),
-	currentState(nullptr), //
+Game::Game(): //
 	pausedState(nullptr), //
 	newgameState(nullptr), //
 	gameOverState(nullptr) {}
 
 Game::~Game()
 {
-	delete previousState;
-	delete currentState;
 	delete pausedState;
 	delete newgameState;
 	delete gameOverState;
@@ -38,9 +34,9 @@ void Game::init() {
 
 	newgameState = new NewGameState(this);
 	runningState = new RunningState(this);
-	pausedState = new PausedState();
-	currentState = newgameState;
-
+	//pausedState = new PausedState();
+	renderStates.push_front(newgameState);
+	updateStates.push_front(newgameState);
 	//paused_state_ = new PausedState(); //No esta terminado, mejor no llamarlo aun
 
 	gameLoop();
@@ -53,7 +49,9 @@ void Game::gameLoop() {
 	while (!exit) {
         DataManager::GetInstance()->UpdateFrameTime();
 
-		currentState->getScene()->update();
+		for (auto a : updateStates)
+			a->getScene()->update();
+
 		render();
 		imngr.PollEvents(); //Actualiza la entrada
 		
@@ -67,8 +65,11 @@ void Game::gameLoop() {
 */
 void Game::render() {
 	SDL_RenderClear(sdlutils().renderer());
-	currentState->getScene()->render();
-	
+
+	for (auto a : renderStates)
+	{
+		a->getScene()->render();
+	}
 
 	//Esto se realiza en cada escena
 	/*if (currentState->getScene()->getCanRenderHUD())
@@ -88,20 +89,27 @@ void Game::changeGameState(State s) //PROVISIONAL, NO FINAL
 {
 	switch (s) {
 	case RUNNING:
-		currentState = runningState;
-		previousState = newgameState;
+		updateStates.clear();
+		renderStates.clear();
+		updateStates.push_front(runningState);
+		renderStates.push_front(runningState);
 		break;
 	case PAUSED:
-		currentState = pausedState;
-		previousState = runningState;
+		updateStates.clear();
+		updateStates.push_front(pausedState);
+		renderStates.push_front(pausedState);
 		break;
 	case NEWGAME:
-		currentState = newgameState;
-		previousState = runningState;
+		updateStates.clear();
+		renderStates.clear();
+		updateStates.push_front(newgameState);
+		renderStates.push_front(newgameState);
 		break;
 	case GAMEOVER:
-		currentState = gameOverState;
-		previousState = runningState;
+		updateStates.clear();
+		renderStates.clear();
+		updateStates.push_front(gameOverState);
+		renderStates.push_front(gameOverState);
 		break;
 	default:
 		break;
