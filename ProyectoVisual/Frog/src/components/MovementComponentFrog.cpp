@@ -2,8 +2,21 @@
 #include <iostream>
 #include "../scenes/RoomScene.h"
 
+void MovementComponentFrog::startMovement(Directions d, Vector2D v)
+{
+	if (checkIfTileWalkable(posCasilla + v))
+	{
+		actualDirection = d;
+		velocity = v;
+		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+		jumping = true;
+		framesPerJump = 4 + v.magnitude()*3; //2 frames de despegue, 3 en cada casilla, 2 de aterrizaje
+	}
+	
+}
+
 void MovementComponentFrog::update() {
-	//no te puedes mover más si ya te estás movimiendo
+	//no te puedes mover mï¿½s si ya te estï¿½s movimiendo
 	if (jumping && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate)
 	{
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
@@ -13,55 +26,54 @@ void MovementComponentFrog::update() {
 		
 		if (actualDirection == LEFT || actualDirection == RIGHT)
 		{
-			offsetInCasilla.setX(t / framesPerJump * framesMoved * (destCasilla.getX() - posCasilla.getX()));
+			offsetInCasilla.setX(offsetInCasilla.getX() + t / framesPerJump * velocity.getX());
 			offsetInCasilla.setY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
 		}
 		else
 		{
-			offsetInCasilla.setY(t / framesPerJump * framesMoved * (destCasilla.getY() - posCasilla.getY()));
+			offsetInCasilla.setY(offsetInCasilla.getY() + t / framesPerJump * velocity.getY());
 		}
 
-		if (framesMoved == framesPerJump) { //para acabar el movimiento
-			posCasilla = destCasilla;
-			offsetInCasilla = { 0,0 };
+
+		if (offsetInCasilla.getX()*velocity.normalize().getX() >= t / 2 ||
+			offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, estÃ¡ en la casilla siguiente
+		{
+			changePos(velocity.normalize() + posCasilla);
+			if (actualDirection == LEFT || actualDirection == RIGHT)
+				offsetInCasilla.setX(offsetInCasilla.getX() * -1);
+			else
+				offsetInCasilla.setY(offsetInCasilla.getY() * -1);
+		}
+
+		if (framesMoved == framesPerJump) //para acabar el movimiento
+		{
+			//changePos(velocity.normalize() + posCasilla);
+			offsetInCasilla = {0,0};
 			framesMoved = 0;
 			jumping = false;
-			hasMoved = true;
 		}
 	}
 
 	else if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > actionCooldown) {
 		if (im->getDown() && posCasilla.getY()< boundY) { //revisar limite
-			destCasilla.setY(posCasilla.getY() + 1);
-			actualDirection = DOWN;
-			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			startMovement(DOWN,	Vector2D(0, 1));
 			anim->playAnimation("DOWN");
-			jumping = true;
-			hasMoved = false;
+		
 		}
 		else if (im->getUp() && posCasilla.getY() > 0) {
-			destCasilla.setY(posCasilla.getY() -1);
-			actualDirection = UP;
-			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			startMovement(UP, Vector2D(0, -1));
 			anim->playAnimation("UP");
-			jumping = true;
-			hasMoved = false;
+
 		}
 		else if (im->getRight() && posCasilla.getX() < boundX) { //revisar limite
-			destCasilla.setX(posCasilla.getX() + 1);
-			actualDirection = RIGHT;
-			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			startMovement(RIGHT, Vector2D(1, 0));
 			anim->playAnimation("RIGHT");
-			jumping = true;
-			hasMoved = false;
+
 		}
 		else if (im->getLeft() && posCasilla.getX() > 0) {
-			destCasilla.setX(posCasilla.getX() - 1);
-			actualDirection = LEFT;
-			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			startMovement(LEFT, Vector2D(-1, 0));
 			anim->playAnimation("LEFT");
-			jumping = true;
-			hasMoved = false;
+
 		}
 	}
 }

@@ -27,9 +27,9 @@ public:
 		//Create player desde el mapa
 		//Camara despues del mapa
 		//camara
-		//cameraManager->getInstance(player, mapReader);
-		//cameraManager = new Camera(entityList[0], mapReader); //el primer obj es el player
-		
+		cameraManager = Camera::instance();
+		cameraManager->setTarget(entityList[0]);
+
 		Entity* fly = new Entity(this);
 		MovementComponent* mvm = new MovementComponentFly(Vector2D(0, 3));
 		mvm->setContext(fly);
@@ -60,6 +60,7 @@ public:
 	virtual ~RoomScene();
 	MapManager* getMapReader() { return mapReader; };
 	Entity* getPlayer() { return player; };
+
 	void createPlayer(std::string texPath, Vector2D pos, int boundX, int boundY);
 
 };

@@ -1,43 +1,32 @@
 #include "CameraManager.h"
-//Camera* Camera::cameraInstance = nullptr;
+#include "../scenes/RoomScene.h"
 
-Camera::Camera(Entity* target, MapManager* room) :
-	camTarget(target), actualRoom(room) {
-	mapCanMove = true;
+void Camera::setTarget(Entity* target)
+{
+	camTarget = target;
+	camTargetMovementComp = dynamic_cast<MovementComponentFrog*>(camTarget->getComponent(MOVEMENT_COMPONENT));
+	lastTargetPosition = camTargetMovementComp->getPosition();
+	limitX = target->getScene()->getMapReader()->getCols();
+	limitY = target->getScene()->getMapReader()->getRows();
 }
 void Camera::update() {
 
-	if (camTargetMovementComp->getMoveCompleted()) {
-		switch (camTargetMovementComp->getDirection()) {
-		case UP:
-			if (mapCanMove) {
-				actualRoom->move("down");
-				mapCanMove = false;
-			}
-			break;
-		case DOWN:
-			if (mapCanMove) {
-				actualRoom->move("up");
-				mapCanMove = false;
-			}
-			break;
-		case RIGHT:
-			if (mapCanMove) {
-				actualRoom->move("left");
-				mapCanMove = false;
-			}
-			break;
-		case LEFT:
-			if (mapCanMove) {
-				actualRoom->move("right");
-				mapCanMove = false;
-			}
-			break;
-		default:
-			break;
-		}
-	}
-	else if (!camTargetMovementComp->getMoveCompleted()) {
-		mapCanMove = true;
+	Vector2D actualTargetPos = camTargetMovementComp->getPosition();
+	if (lastTargetPosition.getX() != actualTargetPos.getX() || lastTargetPosition.getY() != actualTargetPos.getY()) {
+		
+		if ((actualTargetPos.getX() > tilesToStartMoving || cameraPos.getX() >0) &&	//si te has movido lo suficiente
+			((camTargetMovementComp->getDirection() == LEFT) ||							//y cabes por la izquierda
+			(cameraPos.getX() < limitX && camTargetMovementComp->getDirection() == RIGHT)))																		//y la derecha
+
+			cameraPos.setX(cameraPos.getX() + actualTargetPos.getX() - lastTargetPosition.getX());	//te mueves
+
+		if ((actualTargetPos.getY() > tilesToStartMoving && cameraPos.getY() > 0) && //si te has movido lo suficiente
+			((camTargetMovementComp->getDirection() == UP) ||   //y cabes
+			(cameraPos.getY() < limitY && camTargetMovementComp->getDirection() == DOWN)))
+
+			cameraPos.setY(cameraPos.getY() + actualTargetPos.getY() - lastTargetPosition.getY());  //te mueves
+			
+		lastTargetPosition = actualTargetPos;
+		
 	}
 }

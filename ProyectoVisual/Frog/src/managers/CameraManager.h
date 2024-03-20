@@ -5,28 +5,36 @@
 
 #include "../ecs/Entity.h"
 #include "../utils/Vector2D.h"
-#include "MapManager.h"
 #include "../components/MovementComponentFrog.h"
-#include <SDL.h>
-class Camera { //en un futuro miro si puede heredar de component
-public:
-	Camera(Entity* target, MapManager* room);
-	/*inline static Camera* getInstance(Entity* target, MapManager* room)
-	{ return cameraInstance = (cameraInstance != nullptr) ? cameraInstance : new Camera(target,room); }*/
+#include "../utils/Singleton.h"
 
-	inline void setTarget(Entity* target) { camTarget = target; }
-	inline void setRoom(MapManager* newRoom) {
+
+
+class Camera: public Singleton<Camera> { 
+
+	friend Singleton<Camera>;
+public:
+
+	void setTarget(Entity* target);
+
+	/*inline void setRoom(MapManager* newRoom) {
 		actualRoom = newRoom;
-	}
+	}*/
 	void update();
 	void setMapCanMove(){mapCanMove = true;}
-	//void handleEvents(const SDL_Event& event);
+	Vector2D getCameraMovement() { return cameraPos; }
+
+
 private:
 	//static Camera* cameraInstance;
 	Entity* camTarget;
+	Vector2D cameraPos = { 0,0 };
+	int limitX, limitY, tilesToStartMoving = 3;
+	Vector2D lastTargetPosition;
+	Camera() {};
 	//ns si esta bien
-	MovementComponentFrog* camTargetMovementComp = dynamic_cast<MovementComponentFrog*>(camTarget->getComponent(MOVEMENT_COMPONENT));
-	MapManager* actualRoom;
+	MovementComponentFrog* camTargetMovementComp;
+	//MapManager* actualRoom;
 	bool mapCanMove;
 };
 #endif // !CAMERAMANAGER_H
