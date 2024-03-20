@@ -5,9 +5,10 @@
 
 using namespace std;
 
+HUDManager* HUDManager::instance = nullptr;
+
 HUDManager::HUDManager() : vidasActuales(0), vidasMax(0), wormsActuales(0), rectFly(new SDL_Rect())
 {
-	instance = nullptr;
 	textFly = new Texture(sdlutils().renderer(), "resources/Sprites/moscaVidaSpritesheet.png", 1, 3);
 	rectFly->y = yInicial;
 	rectFly->w = textFly->width() / textFly->getCol();

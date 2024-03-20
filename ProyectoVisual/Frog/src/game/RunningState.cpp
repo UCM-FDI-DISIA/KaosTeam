@@ -2,7 +2,7 @@
 
 #include "../scenes/RoomScene.h"
 
-RunningState::RunningState(Game* game) : hud(new HUDManager(game,9, 10, 0)), currScene(new RoomScene(1))
+RunningState::RunningState(Game* game) : hud(new HUDManager()), currScene(new RoomScene(1))
 {
 }
 
