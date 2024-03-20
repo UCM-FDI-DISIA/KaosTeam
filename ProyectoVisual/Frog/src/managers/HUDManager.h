@@ -6,10 +6,14 @@
 
 class Game;
 
+
+
 class HUDManager
 {
 private:
 	Game* game; //por ahora está aqui, aunq no sé para q se va a usar.
+	static HUDManager* instance;
+
 	int vidasActuales, vidasMax, wormsActuales;
 	int xInicialFly = 15;
 	int yInicial = 10;
@@ -20,17 +24,19 @@ private:
 	SDL_Rect* rectFly;
 	Font font = Font("resources/fonts/COMIC.ttf", 30);
 	SDL_Color colorFont = {255, 255, 255, 255};
-    static HUDManager* instance;
+    
 public:
+	//Constructora
+	HUDManager(); 
+	//Destructora
+	~HUDManager(); 
+	
+	//Gestion para hacer singleton de HUDManager
 	HUDManager(HUDManager&) = delete;
 	void operator=(const HUDManager&) = delete;
-	HUDManager(Game* g, int, int, int);
-	~HUDManager();
-	
-	//devuelve una isntancia del HUDManager y en caso de no haberla, crea una
 	static HUDManager* GetInstance() {
 		if (instance == nullptr) {
-			//instance = new HUDManager(game,0,0,0);
+			instance = new HUDManager();
 		}
 		return instance;
 	};

@@ -8,7 +8,7 @@ class Game;
 class PausedState:public GameState
 {
 public:
-	PausedState(Game* game,HUDManager* hud_, Scene& bg_, Scene& pause_);
+	PausedState(Game* game, HUDManager* hud, Scene& bg);
 	~PausedState() {};
 	void enter() override;
 	void leave() override;

@@ -37,13 +37,15 @@ CONSTANTES:
 CLASES: 
 	->Tienen la primera letra de su nombre siempre en MAYÚSCULAS. Si son nombres compuestos, la primera letra de cada palabra también se pone en MAYÚSCULAS.
 		Ej: EstoEsUnaClase {}
-	
+	->El orden de los metodos tiene que ser IGUAL en el .h y en el .cpp.
 Privado, Protected y Público
 	->Van en este orden las secciones de una clase. 
 	->Privado no es obligatorio ponerlo, pero es recomendable para aclararlo, sobre todo si algunos lo usan y otros no.
 
 Atributos
 	->Tienen que ser descriptivos de su función, siguiendo las reglas de las secciones "Variables" y "Constantes".
+	->Estos se inicializan en LA CONSTRCUTORA, no en su definición en el .h.
+		*Una excepción son atributos que quieras darles valores por defecto, como '0' o 'nullptr'.
 
 Métodos
 	->Tienen la misma nomenclatura que las "Variables".
