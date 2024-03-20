@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "../scenes/MenuInicio.h"
 
-NewGameState::NewGameState(Game* g/*Game* game*/):game(g), mStart(new MenuInicio(g)), currScene(*mStart)
+NewGameState::NewGameState(Game* g): game(g), mStart(new MenuInicio(g, this)), currScene(*mStart)
 {
 }
 
@@ -13,7 +13,7 @@ NewGameState::~NewGameState()
 
 void NewGameState::leave()
 {
-	game.exitGame();
+	game->exitGame();
 }
 
 void NewGameState::update()
