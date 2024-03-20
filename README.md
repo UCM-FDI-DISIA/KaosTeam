@@ -101,11 +101,21 @@ Daño recibido: Media Mosca
 
 </details>
 
+<details>
+
+<summary>Cámara</summary>
+
 ## Cámara
 
 El juego es 2D top down, por tanto la cámara al moverse lo hará de forma scroll lateral. Cuando el tamaño de la sala sea igual o menor al de la pantalla de juego, la cámara se quedará fija. Cuando el tamaño de la sala sea mayor, si el jugador está en el área central de la cámara, esta no se moverá, pero si se desplaza más a la derecha, izquierda, por encima o por debajo de ese área, la cámara "seguirá" al jugador.
 ![](assets/imgGdd/camara.png)
 Cuando el jugador supere el límite del tamaño de la cámara en cualquiera de las direcciones, la cámara seguirá al jugador con este en el centro hasta los límites de la sala.
+
+</details>
+
+<details>
+
+<summary>Mecánicas del escenario</summary>
 
 ## Mecánicas del escenario
 
@@ -132,6 +142,12 @@ Cuando el jugador supere el límite del tamaño de la cámara en cualquiera de l
 ![](assets/imgGdd/image5-5.jpg)
 
 ![](assets/imgGdd/image5-6.jpg)
+
+</details>
+
+<details>
+
+<summary>Diseño de los niveles</summary>
 
 ## Diseño de niveles
 
@@ -217,6 +233,13 @@ Hay varios tipos de lombrices de uróboros con diferente valor siendo este ascen
 ![](assets/imgGdd/image11.gif)
 ![](assets/imgGdd/image8.gif)
 
+
+</details>
+
+<details>
+
+<summary>HUD</summary>
+
 ## HUD
 
 ### HUD In-Game
@@ -229,26 +252,50 @@ Por un lado tenemos en la esquina superior izquierda una barra con iconos de mos
 
 Por último, en la esquina superior derecha, se muestra un icono de una lombriz (que es como se representa el dinero en el juego) junto a un contador (que nos indica la cantidad de dinero en el juego). A medida que el jugador obtenga lombrices, dependiendo de su color, el contador aumenta una cantidad u otra.
 
+</details>
+
+<details>
+
+<summary>Estética y Visual</summary>
+
 ## Estética y Visual
 
 El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de Paper Mario y "garabato vivo" al de Ed, Edd & Eddy. Y los animales tendrán tamaño y aspecto "realistas" hasta cierto punto. No serán 100% similares a sus contrapartes reales y se tomarán libertades creativas pero tendrá cierto grado de realismo. Como que la mayoría de los enemigos sean depredadores naturales de las ranas y la mejoras sean presas naturales o al menos factibles.
+
+</details>
+
+<details>
+
+<summary>Menus de juego</summary>
 
 ## Menús de juego y flujo de juego(por definir)
 
 **Menú principal:**
  El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar, un botón que le lleva al menú de ajustes y un botón para salir del juego.
 
-**Menú de ajustes:**(por definir)
+**Menú de ajustes:** (por definir)
  Este menú muestra los controles y permite ajustar características del juego.
 
 **Durante el juego:**
  En la pantalla se ve la interfaz descrita antes junto a un botón que permite ir al menú de pausa.
 ![](assets/imgGdd/image6.png)
 
-**Menú de pausa: **(por definir)
+**Menú de pausa:** (por definir)
 En el menú de pausa el jugador puede volver a la partida, ir al menú de ajustes o salir del juego.
 
+</details>
+
+<details>
+
+<summary>Flujo de juego</summary>
+
 **Flujo de juego:** (por definir, que pasa cuando el jugador pierde todas las vidas)
+
+</details>
+
+<details>
+
+<summary>Historia</summary>
 
 ## Historia (seguramente se puede contar mejor y falten cosas)
 
@@ -259,6 +306,12 @@ atravesar el hormiguero hasta llegar a la cocina del chef.
 Durante el camino, no solo habrá animales que atacaran a Flonk, habrá otros que le servirán de ayuda para superar el camino hasta la cocina.
 Con las ayudas que obtenga por el camino, finalmente se deberá enfrentar al malvado chef francés para tratar de recuperar a su hermana.
 
+</details>
+
+<details>
+
+<summary>Resources</summary>
+
 ## Resources
 **Mapas de tiled:**
  Tabla de propiedades de cada objeto para incluir en tiled.
@@ -267,10 +320,24 @@ Con las ayudas que obtenga por el camino, finalmente se deberá enfrentar al mal
 | `PosN`   | Player     | bla bla bla    |
 | `RanaLoca`     | Enemigo       | bla bla bla  |
 
+</details>
+
+<details>
+
+<summary>Nice to have</summary>
+
 ## Nice to have
+
+</details>
+
+<details>
+
+<summary>Referencias</summary>
 
 ## Referencias
 
 Hemos obtenido referencias de _The Legend of Zelda: A Link to the Past_ en cuanto a las mecánica, dinámica y escenarios. 
 En cuanto a la estética, nos hemos inspirado en el estilo de _Paper Mario_ en cuanto al entorno tridimensional y
 de _Ed, Edd & Eddy_ la idea del "garabato vivo".
+
+</details>
