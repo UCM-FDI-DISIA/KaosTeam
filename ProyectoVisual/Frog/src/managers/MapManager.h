@@ -89,6 +89,8 @@ public:
     //la matriz para gestionar colisiones etc
     vector<vector<tile*>> walkableTiles;
     int getTileSize();
+    int getCols() { return cols; }
+    int getRows() { return rows; }
     tile* getTile(Vector2D);
     void move(std::string dir);
     

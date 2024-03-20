@@ -10,6 +10,7 @@ void MovementComponentFrog::startMovement(Directions d, Vector2D v)
 		velocity = v;
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		jumping = true;
+		framesPerJump = 4 + v.magnitude()*3; //2 frames de despegue, 3 en cada casilla, 2 de aterrizaje
 	}
 	
 }
@@ -25,19 +26,29 @@ void MovementComponentFrog::update() {
 		
 		if (actualDirection == LEFT || actualDirection == RIGHT)
 		{
-			offsetInCasilla.setX(t / framesPerJump * framesMoved * velocity.getX());
+			offsetInCasilla.setX(offsetInCasilla.getX() + t / framesPerJump * velocity.getX());
 			offsetInCasilla.setY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
 		}
 		else
 		{
-			offsetInCasilla.setY(t / framesPerJump * framesMoved * velocity.getY() );
+			offsetInCasilla.setY(offsetInCasilla.getY() + t / framesPerJump * velocity.getY());
 		}
 
 
+		if (offsetInCasilla.getX()*velocity.normalize().getX() >= t / 2 ||
+			offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
+		{
+			changePos(velocity.normalize() + posCasilla);
+			if (actualDirection == LEFT || actualDirection == RIGHT)
+				offsetInCasilla.setX(offsetInCasilla.getX() * -1);
+			else
+				offsetInCasilla.setY(offsetInCasilla.getY() * -1);
+		}
+
 		if (framesMoved == framesPerJump) //para acabar el movimiento
 		{
-			changePos(velocity + posCasilla);
-			offsetInCasilla = { 0,0 };
+			//changePos(velocity.normalize() + posCasilla);
+			offsetInCasilla = {0,0};
 			framesMoved = 0;
 			jumping = false;
 		}

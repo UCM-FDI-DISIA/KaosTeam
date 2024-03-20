@@ -29,6 +29,7 @@ private:
 	//static Camera* cameraInstance;
 	Entity* camTarget;
 	Vector2D cameraPos = { 0,0 };
+	int limitX, limitY, tilesToStartMoving = 3;
 	Vector2D lastTargetPosition;
 	Camera() {};
 	//ns si esta bien
