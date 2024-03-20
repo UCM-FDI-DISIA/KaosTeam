@@ -40,8 +40,6 @@ Al romper objetos o matar enemigos, podrán aparecer aleatoriamente power ups qu
   - **Luciérnagas** que hacen brillar al jugador, iluminando la oscuridad a su alrededor.
   - Por desarrollar…
 
-<details>
-
 ## Enemigos
 
 A lo largo del juego, el jugador deberá hacer frente a distintos tipos de enemigos distribuidos por las diferentes zonas:
