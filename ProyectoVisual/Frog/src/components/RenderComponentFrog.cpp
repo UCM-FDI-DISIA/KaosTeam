@@ -7,7 +7,7 @@
 void RenderComponentFrog::render()
 {
     int t = ent->getScene()->getMapReader()->getTileSize();
-    int size = (int)t * scale;
+    int size = (int)t * sc;
     SDL_Rect dest;
  
     Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() + Vector2D((t - size) / 2, (t - size) / 2);

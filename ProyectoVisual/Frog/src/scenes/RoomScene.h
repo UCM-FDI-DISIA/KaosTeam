@@ -28,9 +28,24 @@ public:
 		//Camara despues del mapa
 		//camara
 		cameraManager = Camera::instance();
-		cameraManager->setTarget(entityList[0]);
+		cameraManager->setTarget(player);
+
 
 		Entity* fly = new Entity(this);
+
+		Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
+		AnimationComponent* rndr = new RenderComponentFly(textFly);
+		rndr->setContext(fly);
+
+		Animation a; //Animaciones mosca
+		a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true);
+		rndr->addAnimation("FLY", a);
+		fly->addAnimationComponent(rndr);
+		rndr->playAnimation("FLY");
+
+
+
+
 		MovementComponent* mvm = new MovementComponentFly(Vector2D(0, 3));
 		mvm->setContext(fly);
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);

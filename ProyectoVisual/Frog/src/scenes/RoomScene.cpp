@@ -14,7 +14,7 @@ void RoomScene::update() {
 		if (e != nullptr)
 		e->update();
 	}
-	//cameraManager->update();
+	cameraManager->update();
 }
 
 
