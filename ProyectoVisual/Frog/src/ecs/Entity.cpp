@@ -17,8 +17,8 @@ void Entity::addComponent(componentsEnum id, Component* component)
 	componentes.insert(std::pair<componentsEnum, Component*>(id, component));
 }
 
-void Entity::addRenderComponent(RenderComponent* renderComponent) {
-	this->renderComponent = renderComponent;
+void Entity::addAnimationComponent(AnimationComponent* animComponent) {
+	this->animationComponent = animComponent;
 }
 
 Entity::~Entity()
@@ -40,7 +40,8 @@ Entity::update() {
 
 void Entity::render()
 { 
-	renderComponent->render();
+	animationComponent->update();
+	animationComponent->render();
 	//RenderComponent* render = componentes.at(componentsEnum::RENDER_COMPONENT); O NO QUIEN SABE
 }
 
@@ -52,9 +53,9 @@ Component* Entity::getComponent(componentsEnum Identificator) const
 		return nullptr;
 }
 
-Component* Entity::getRenderComponent() const
+Component* Entity::getAnimationComponent() const
 {
-	return renderComponent;
+	return animationComponent;
 }
 
 RoomScene* Entity::getScene() const
