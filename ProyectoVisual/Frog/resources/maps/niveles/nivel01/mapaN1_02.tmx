@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="13" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="4">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="13" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="5">
  <tileset firstgid="1" source="../../tileset/H01_tileset.tsx"/>
  <layer id="1" name="Walk" width="13" height="16">
   <data encoding="csv">
@@ -18,12 +18,12 @@
 24,24,24,24,21,24,24,24,24,24,24,24,24,
 24,21,22,24,24,24,24,24,24,24,22,24,24,
 24,24,24,21,24,24,24,24,24,24,24,24,21,
-24,24,24,24,24,24,24,24,24,24,24,24,24
+24,24,24,24,24,24,21,24,24,24,24,24,24
 </data>
  </layer>
  <layer id="2" name="NotWalk" width="13" height="16">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,37,0,0,39,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -83,6 +83,13 @@
  </layer>
  <objectgroup id="5" name="Obj">
   <object id="1" name="Flonk" x="104.25" y="250.917">
+   <properties>
+    <property name="TexPath" value="../Frog/resources/sprites/unFrameDeRana.png"/>
+    <property name="isPlayer" type="bool" value="true"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="4" name="Flonk" x="119.363" y="11.1886">
    <properties>
     <property name="TexPath" value="../Frog/resources/sprites/unFrameDeRana.png"/>
     <property name="isPlayer" type="bool" value="true"/>
