@@ -16,6 +16,7 @@ public:
 
 	//Getters
 	Scene* getScene() const override { return currScene; };
+	HUDManager* getHUD()const { return hud; }
 private:
 	HUDManager* hud; //Puntero que gestiona la pantalla de MenuInicio
 	Scene* currScene; //puede haber escenas d menu d opciones,etc.

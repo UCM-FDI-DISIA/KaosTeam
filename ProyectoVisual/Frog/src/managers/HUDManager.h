@@ -20,10 +20,18 @@ private:
 	SDL_Rect* rectFly;
 	Font font = Font("resources/fonts/COMIC.ttf", 30);
 	SDL_Color colorFont = {255, 255, 255, 255};
-
+	/*static HUDManager* instance;*/
 public:
-	HUDManager(Game*, int, int, int);
+	HUDManager(Game* g, int, int, int);
 	~HUDManager();
+	
+	//devuelve una isntancia del HUDManager y en caso de no haberla, crea una
+	/*static HUDManager* GetInstance() {
+		if (instance == nullptr) {
+			instance = new HUDManager();
+		}
+		return instance;
+	};*/
 
 	void ChangeLives(int);
 	void addWorms(int);

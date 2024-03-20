@@ -12,7 +12,7 @@ MenuInicio::MenuInicio(Game* g, NewGameState* nGS):
 		Scene(), //
 		newGSt(nGS), //
 		imngr(im()), //
-		game(*g), //
+		game(g), //
 		bg(sdlutils().images().at("background")), //Modificar
 		currSelec(sdlutils().images().at("fly")), //Modificar
 		width(WIN_WIDTH), height(WIN_HEIGHT), //

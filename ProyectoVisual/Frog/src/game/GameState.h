@@ -1,4 +1,5 @@
 #pragma once
+#include "../ecs/Scene.h"
 
 class GameState {
 public:

@@ -44,4 +44,3 @@ public:
 	void exitGame();
     //void setScene(State s); Cambiar a cambio de estados (newgame, runnin, pause, gameover)
 };
-
