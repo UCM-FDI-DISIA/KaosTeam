@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="3">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="4">
  <tileset firstgid="1" source="../../tileset/H01_tileset.tsx"/>
  <layer id="1" name="Walk" width="10" height="10">
   <data encoding="csv">
@@ -45,6 +45,13 @@
  </layer>
  <objectgroup id="5" name="Obj">
   <object id="1" name="Flonk" x="87.8753" y="104.917">
+   <properties>
+    <property name="TexPath" value="../Frog/resources/sprites/unFrameDeRana.png"/>
+    <property name="isPlayer" type="bool" value="true"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="3" name="Flonk" x="73.5677" y="8.85159">
    <properties>
     <property name="TexPath" value="../Frog/resources/sprites/unFrameDeRana.png"/>
     <property name="isPlayer" type="bool" value="true"/>

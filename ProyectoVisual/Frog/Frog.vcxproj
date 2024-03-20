@@ -189,6 +189,7 @@
     <ClCompile Include="src\managers\MapManager.cpp" />
     <ClCompile Include="src\utils\Button.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
+    <ClCompile Include="U:\hlocal\Practica1JoseDiego\src\components\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\DefenseComponent.h" />
@@ -231,6 +232,7 @@
     <ClInclude Include="src\utils\Button.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
+    <ClInclude Include="U:\hlocal\Practica1JoseDiego\src\components\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\maps\tileMap_Prueba.tmx" />

@@ -34,6 +34,7 @@
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
     <ClCompile Include="src\components\RenderComponentFrog.cpp" />
     <ClCompile Include="src\components\DefenseComponent.cpp" />
+    <ClCompile Include="U:\hlocal\Practica1JoseDiego\src\components\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -76,6 +77,7 @@
     <ClInclude Include="src\components\AttackComponentFrog.h" />
     <ClInclude Include="src\components\RenderComponentFrog.h" />
     <ClInclude Include="src\components\DefenseComponent.h" />
+    <ClInclude Include="U:\hlocal\Practica1JoseDiego\src\components\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
