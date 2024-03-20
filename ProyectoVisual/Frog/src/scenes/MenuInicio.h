@@ -7,6 +7,7 @@
 
 class Texture;
 class InputManager;
+class NewGameState;
 class Game;
 
 enum direction{ARRIBA, ABAJO};
@@ -19,6 +20,7 @@ private:
 	Texture& bg; //Textura de fondo
 	Texture& currSelec; //Textura que apunta al boton seleccionado
 	SDL_Rect dest; //resize de la mosca
+	NewGameState* newGSt;
 	Game* game;
 	InputManager& imngr;
 
@@ -28,7 +30,7 @@ private:
 	
 	std::vector <Button*> menuButton;
 public:
-	MenuInicio(Game*g);
+	MenuInicio(Game* game, NewGameState* nGS);
 	~MenuInicio() {};
 
 	void render() override;

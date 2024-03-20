@@ -13,6 +13,7 @@ NewGameState::~NewGameState()
 
 void NewGameState::leave()
 {
+	game.exitGame();
 }
 
 void NewGameState::update()

@@ -18,8 +18,7 @@ Game::Game():
 	currentState(nullptr), //
 	pausedState(nullptr), //
 	newgameState(nullptr), //
-	gameoverState(nullptr) {
-}
+	gameOverState(nullptr) {}
 
 Game::~Game()
 {
@@ -27,7 +26,7 @@ Game::~Game()
 	delete currentState;
 	delete pausedState;
 	delete newgameState;
-	delete gameoverState;
+	delete gameOverState;
 }
 
 void Game::init() {
@@ -38,7 +37,10 @@ void Game::init() {
 	//escenaActual = new RoomScene(1);
 
 	newgameState = new NewGameState(this);
+	runningState = new RunningState(this);
+	pausedState = new PausedState();
 	currentState = newgameState;
+
 	//paused_state_ = new PausedState(); //No esta terminado, mejor no llamarlo aun
 
 	gameLoop();
@@ -86,20 +88,20 @@ void Game::changeGameState(State s) //PROVISIONAL, NO FINAL
 {
 	switch (s) {
 	case RUNNING:
-		runningState = new RunningState(this);
 		currentState = runningState;
 		previousState = newgameState;
 		break;
 	case PAUSED:
-		//pausedState = new PausedState(this,new HUDManager(0,0,0),runningState,);
-		//currentState = pausedState;
-		//previousState = runningState;
+		currentState = pausedState;
+		previousState = runningState;
 		break;
 	case NEWGAME:
-		
+		currentState = newgameState;
+		previousState = runningState;
 		break;
 	case GAMEOVER:
-	
+		currentState = gameOverState;
+		previousState = runningState;
 		break;
 	default:
 		break;
