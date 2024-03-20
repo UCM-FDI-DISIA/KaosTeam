@@ -1,11 +1,12 @@
 #include "MapManager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
+#include "CameraManager.h"
 
 tile::tile(SDL_Texture* tset, int x, int y, int tx, int ty, int w, int h, bool walkable, bool theresObj, Entity* objInTile)
 : sheet(tset), x(x), y(y), tx(tx), ty(ty), width(w), height(h), walkable(walkable), theresObj(theresObj), objInTile(objInTile){}
 
-void tile::draw(SDL_Renderer* ren, int num) {
+void tile::draw(SDL_Renderer* ren, int num, Vector2D cameraPos) {
     if (!ren || !sheet)
         return;
 
@@ -16,8 +17,8 @@ void tile::draw(SDL_Renderer* ren, int num) {
     src.h = height;
 
     SDL_Rect dest;
-    dest.x = x* MAP_MULT;
-    dest.y = y* MAP_MULT;
+    dest.x = (x -cameraPos.getX() * width) * MAP_MULT; 
+    dest.y = (y - cameraPos.getY() * height) * MAP_MULT;  
     dest.w = src.w* MAP_MULT;
     dest.h = src.h* MAP_MULT;
 
@@ -293,8 +294,9 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
 
 void MapManager::draw(SDL_Renderer* ren) {
     //Dibujamos cada tile
+    Vector2D cameraPos = Camera::instance()->getCameraMovement();
     for (int i = 0; i < tiles.size(); i++ ) {
-        tiles[i].draw(ren, i);
+        tiles[i].draw(ren, i, cameraPos);
     }
 }
 

@@ -9,10 +9,10 @@ void Camera::setTarget(Entity* target)
 void Camera::update() {
 
 	Vector2D actualTargetPos = camTargetMovementComp->getPosition();
-	if (lastTargetPosition.getX() != actualTargetPos.getX() && lastTargetPosition.getY() != actualTargetPos.getY()) {
+	if (lastTargetPosition.getX() != actualTargetPos.getX() || lastTargetPosition.getY() != actualTargetPos.getY()) {
 		
-		cameraPos.setX(cameraPos.getX() + lastTargetPosition.getX() - actualTargetPos.getX());
-		cameraPos.setY(cameraPos.getY() + lastTargetPosition.getY() - actualTargetPos.getY());
+		cameraPos.setX(cameraPos.getX() + actualTargetPos.getX() - lastTargetPosition.getX());
+		cameraPos.setY(cameraPos.getY() + actualTargetPos.getY() - lastTargetPosition.getY() );
 		lastTargetPosition = actualTargetPos;
 	}
 }
