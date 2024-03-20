@@ -8,11 +8,13 @@ enum componentsEnum
 {
 	MOVEMENT_COMPONENT,
 	LIFE_COMPONENT,
-	RENDER_COMPONENT,
-	ATTACK_COMPONENT
+	//RENDER_COMPONENT,
+	ATTACK_COMPONENT,
+	ANIMATION_COMPONENT
 };
 class Component;
-class RenderComponent;
+//class RenderComponent;
+class AnimationComponent;
 class RoomScene;
 
 class Entity
@@ -21,12 +23,13 @@ private:
 	//Vector2D pos;
 	std::map<componentsEnum, Component*> componentes;
 	RoomScene* myScene;
-	RenderComponent* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
+	//RenderComponent* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
+	AnimationComponent* animationComponent;
 public:
 //provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
 	Entity(/*int, int*/RoomScene* scn);
 	void addComponent(componentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
-	void addRenderComponent(RenderComponent*);
+	void addAnimationComponent(AnimationComponent*);
 	virtual ~Entity();
 	void update();
 	void render();
@@ -36,6 +39,6 @@ public:
 	float getY() { return 0; }
 	Component* getComponent(componentsEnum) const;
 	RoomScene* getScene() const;
-	Component* getRenderComponent() const;
+	Component* getAnimationComponent() const;
 };
 

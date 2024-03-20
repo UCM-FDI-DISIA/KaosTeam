@@ -1,11 +1,13 @@
 #pragma once
 #include "../ecs/Scene.h"
 //#include "../ecs/Entity.h"
-#include"../components/MovementComponentFly.h"
+#include "../components/MovementComponentFly.h"
 #include "../components/RenderComponentFrog.h"
+#include "../components/RenderComponentFly.h"
 #include "../components/AttackComponentFrog.h"
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
+#include "../components/AnimationComponent.h"
 #include "../managers/CameraManager.h"
 
 class RoomScene : public Scene
@@ -33,20 +35,21 @@ public:
 		mvm->setContext(fly);
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);
 
-
-		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
-		rndr->setContext(fly);
-		fly->addRenderComponent(rndr);
 		entityList.push_back(fly);
-
 		
 		Entity* flyToPlayer = new Entity(this);
+
 		FollowPlayerComponent* fpc = new FollowPlayerComponent(Vector2D(0, 0));
 		fpc->setContext(flyToPlayer);
 		flyToPlayer->addComponent(MOVEMENT_COMPONENT, fpc);
-		rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
-		rndr->setContext(flyToPlayer);
-		flyToPlayer->addRenderComponent(rndr);
+
+		AnimationComponent* rndr2 = new RenderComponentFly(textFly);
+		rndr2->addAnimation("FLY", a);
+		rndr2->setContext(flyToPlayer);
+
+		flyToPlayer->addAnimationComponent(rndr2);
+		rndr2->playAnimation("FLY");
+
 		entityList.push_back(flyToPlayer);
 		
 	};

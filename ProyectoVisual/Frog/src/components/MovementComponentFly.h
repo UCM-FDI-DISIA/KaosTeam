@@ -1,5 +1,6 @@
 #pragma once
 #include "MovementComponent.h"
+#include "AnimationComponent.h"
 #include "../managers/DataManager.h"
 #include "../sdlutils/SDLUtils.h"
 class MovementComponentFly : public MovementComponent
@@ -13,8 +14,7 @@ private:
 	int status = 0;
 	
 public:
-	MovementComponentFly(Vector2D pos) : MovementComponent(pos), lastTimeMoved(SDL_GetTicks()) {};
+	MovementComponentFly(Vector2D pos) : MovementComponent(pos), lastTimeMoved(SDL_GetTicks()) { };
 	void update() override;
-	
 };
 

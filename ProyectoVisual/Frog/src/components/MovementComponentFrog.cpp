@@ -21,8 +21,7 @@ void MovementComponentFrog::update() {
 			offsetInCasilla.setY(t / framesPerJump * framesMoved * (destCasilla.getY() - posCasilla.getY()));
 		}
 
-		if (framesMoved == framesPerJump) //para acabar el movimiento
-		{
+		if (framesMoved == framesPerJump) { //para acabar el movimiento
 			posCasilla = destCasilla;
 			offsetInCasilla = { 0,0 };
 			framesMoved = 0;
@@ -36,6 +35,7 @@ void MovementComponentFrog::update() {
 			destCasilla.setY(posCasilla.getY() + 1);
 			actualDirection = DOWN;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			anim->playAnimation("DOWN");
 			jumping = true;
 			hasMoved = false;
 		}
@@ -43,6 +43,7 @@ void MovementComponentFrog::update() {
 			destCasilla.setY(posCasilla.getY() -1);
 			actualDirection = UP;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			anim->playAnimation("UP");
 			jumping = true;
 			hasMoved = false;
 		}
@@ -50,6 +51,7 @@ void MovementComponentFrog::update() {
 			destCasilla.setX(posCasilla.getX() + 1);
 			actualDirection = RIGHT;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			anim->playAnimation("RIGHT");
 			jumping = true;
 			hasMoved = false;
 		}
@@ -57,9 +59,9 @@ void MovementComponentFrog::update() {
 			destCasilla.setX(posCasilla.getX() - 1);
 			actualDirection = LEFT;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			anim->playAnimation("LEFT");
 			jumping = true;
 			hasMoved = false;
 		}
-		
 	}
 }
