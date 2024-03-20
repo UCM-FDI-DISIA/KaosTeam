@@ -26,7 +26,7 @@ private:
 	GameState* pausedState;
 	GameState* runningState;
 	GameState* newgameState;
-	GameState* gameoverState;
+	GameState* gameOverState;
 
 	bool exit;
 

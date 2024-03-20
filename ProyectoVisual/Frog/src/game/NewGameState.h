@@ -18,5 +18,6 @@ public:
 private:
 	MenuInicio* mStart; //Puntero que gestiona la pantalla de MenuInicio
 	Scene& currScene; //puede haber escenas d menu d opciones,etc.
+	Game& game;
 };
 
