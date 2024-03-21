@@ -10,13 +10,13 @@ enum componentsEnum
 	LIFE_COMPONENT,
 	//RENDER_COMPONENT,
 	ATTACK_COMPONENT,
-	ANIMATION_COMPONENT
+	ANIMATION_COMPONENT,
+	TRANSFORM_COMPONENT
 };
 class Component;
 //class RenderComponent;
 class AnimationComponent;
 class RoomScene;
-
 class Entity
 {
 private:
