@@ -1,11 +1,11 @@
 #include "PausedState.h"
-#include "../scenes/MenuPausa.h"
+#include "../scenes/Menu.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../managers/InputManager.h"
 #include "../managers/HUDManager.h"
 #include"Game.h"
 
-PausedState::PausedState(Game* game) :game(game), imngr(im()), hudmngr(hud()),mPause(new MenuPausa(game,this))
+PausedState::PausedState(Game* game) :game(game), imngr(im()), hudmngr(hud()),mPause(new Menu(game,this,"","",""))
 {
 };
 void PausedState::enter()

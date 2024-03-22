@@ -160,8 +160,6 @@
     <ClCompile Include="src\managers\DialogManager.cpp" />
     <ClCompile Include="src\managers\LoadManager.cpp" />
     <ClCompile Include="src\managers\SceneManager.cpp" />
-    <ClCompile Include="src\scenes\MenuGameOver.cpp" />
-    <ClCompile Include="src\scenes\MenuGameWon.cpp" />
     <ClCompile Include="src\game\GameOverState.cpp" />
     <ClCompile Include="src\game\NewGameState.cpp" />
     <ClCompile Include="src\game\PausedState.cpp" />
@@ -186,8 +184,7 @@
     <ClCompile Include="src\managers\CameraManager.cpp" />
     <ClCompile Include="src\managers\HUDManager.cpp" />
     <ClCompile Include="src\managers\InputManager.cpp" />
-    <ClCompile Include="src\scenes\MenuInicio.cpp" />
-    <ClCompile Include="src\scenes\MenuPausa.cpp" />
+    <ClCompile Include="src\scenes\Menu.cpp" />
     <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
@@ -204,8 +201,6 @@
     <ClInclude Include="src\managers\DialogManager.h" />
     <ClInclude Include="src\managers\LoadManager.h" />
     <ClInclude Include="src\managers\SceneManager.h" />
-    <ClInclude Include="src\scenes\MenuGameOver.h" />
-    <ClInclude Include="src\scenes\MenuGameWon.h" />
     <ClInclude Include="src\game\GameOverState.h" />
     <ClInclude Include="src\game\NewGameState.h" />
     <ClInclude Include="src\game\PausedState.h" />
@@ -231,8 +226,7 @@
     <ClInclude Include="src\managers\CameraManager.h" />
     <ClInclude Include="src\managers\HUDManager.h" />
     <ClInclude Include="src\managers\InputManager.h" />
-    <ClInclude Include="src\scenes\MenuInicio.h" />
-    <ClInclude Include="src\scenes\MenuPausa.h" />
+    <ClInclude Include="src\scenes\Menu.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
     <ClInclude Include="src\sdlutils\InputHandler.h" />

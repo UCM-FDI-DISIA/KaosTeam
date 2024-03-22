@@ -3,24 +3,25 @@
 #include "../ecs/Scene.h"
 #include"../utils/Button.h"
 
+#include <string>
 #include <vector>
 
 class Texture;
 class InputManager;
-class NewGameState;
+class GameState;
 class Game;
 
 enum direction{ARRIBA, ABAJO};
 
 const int offsetX = 50;
 
-class MenuInicio : public Scene
+class Menu : public Scene
 {
 private:
 	Texture& bg; //Textura de fondo
 	Texture& currSelec; //Textura que apunta al boton seleccionado
 	SDL_Rect dest; //resize de la mosca
-	NewGameState* newGSt;
+	GameState* newGSt;
 	Game* game;
 	InputManager& imngr;
 
@@ -30,8 +31,8 @@ private:
 	
 	std::vector <Button*> menuButton;
 public:
-	MenuInicio(Game* game, NewGameState* nGS);
-	~MenuInicio() {};
+	Menu(Game* g, GameState* nGS, std::string path,std::string path2, std::string bgKey);
+	~Menu() {};
 
 	void render() override;
 	void update() override;
