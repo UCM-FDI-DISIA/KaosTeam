@@ -96,6 +96,7 @@ void Game::changeGameState(State s) //PROVISIONAL, NO FINAL
 		break;
 	case PAUSED:
 		updateStates.clear();
+		sdlutils().virtualTimer().pause();
 		updateStates.push_front(pausedState);
 		renderStates.push_front(pausedState);
 		break;

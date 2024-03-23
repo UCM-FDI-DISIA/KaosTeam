@@ -7,15 +7,22 @@
 
 PausedState::PausedState(Game* game) :game(game), imngr(im()), hudmngr(hud()),mPause(new Menu(game,this,"","",""))
 {
-};
-void PausedState::enter()
+}
+PausedState::~PausedState()
 {
-	sdlutils().virtualTimer().pause();
+	delete mPause;
+}
+;
+void PausedState::enter() //Asi no deberia de ser el enter pero por ahora funcionara como el callback para continuar 
+{
+	sdlutils().virtualTimer().resume();
+	game->changeGameState(game->RUNNING);
 }
 
 void PausedState::leave()
 {
 	sdlutils().virtualTimer().resume();
+	game->changeGameState(game->NEWGAME);
 }
 
 void PausedState::update()
