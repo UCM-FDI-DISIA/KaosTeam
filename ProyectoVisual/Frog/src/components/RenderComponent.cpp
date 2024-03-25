@@ -24,8 +24,8 @@ void RenderComponent::render()
     //TAMBI�N, el dest podriamos definirlo en la costructora para ahorrar tiempo y cambiar solo su x e y
     //Y TAMBI�N. ESTO NO SIRVE SI SE MUEVE LA CAMARA.
     
-    dest.x = pos.getX() * t + offset; 
-    dest.y = pos.getY() * t + offset;
+    dest.x = pos.getX() * t + offset.getX(); 
+    dest.y = pos.getY() * t + offset.getY();
 
 	myTexture->renderFrame(dest, 0, 0);
 }
