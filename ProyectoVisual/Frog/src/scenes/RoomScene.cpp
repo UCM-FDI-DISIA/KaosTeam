@@ -24,46 +24,48 @@ void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int 
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
-	AnimationComponent* rndr = new RenderComponentFrog(txtFrog, txtTongue);
-	rndr->setContext(player);
+	AnimationComponent* animFrog = new AnimationComponent();
+	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
+
+	//AnimationComponent* rndr = new RenderComponentFrog(txtFrog, txtTongue);
+	renderFrog->setContext(player);
 
 	Animation a; //Animaciones de la rana
 	a = Animation({ Vector2D(0,0) }, false, false);
-	rndr->addAnimation("IDLE_DOWN", a);
+	animFrog->addAnimation("IDLE_DOWN", a);
 	a = Animation({ Vector2D(1,0) }, false, false);
-	rndr->addAnimation("IDLE_UP", a);
+	animFrog->addAnimation("IDLE_UP", a);
 	a = Animation({ Vector2D(2,0) }, false, false);
-	rndr->addAnimation("IDLE_RIGHT", a);
+	animFrog->addAnimation("IDLE_RIGHT", a);
 	a = Animation({ Vector2D(2,0) }, true, false);
-	rndr->addAnimation("IDLE_LEFT", a);
-
-
-
+	animFrog->addAnimation("IDLE_LEFT", a);
 
 	a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false);
-	rndr->addAnimation("DOWN", a);
+	animFrog->addAnimation("DOWN", a);
 	a = Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false);
-	rndr->addAnimation("UP", a);
+	animFrog->addAnimation("UP", a);
 	a = Animation({ Vector2D(2,0), Vector2D(2,1) }, false, false);
-	rndr->addAnimation("RIGHT", a);
+	animFrog->addAnimation("RIGHT", a);
 	a = Animation({ Vector2D(2,0), Vector2D(2,1) }, true, false);
-	rndr->addAnimation("LEFT", a);
+	animFrog->addAnimation("LEFT", a);
 
 	a = Animation({ Vector2D(2,2) }, false, false);
-	rndr->addAnimation("ATTACK_RIGHT", a);
+	animFrog->addAnimation("ATTACK_RIGHT", a);
 	a = Animation({ Vector2D(2,2) }, true, false);
-	rndr->addAnimation("ATTACK_LEFT", a);
+	animFrog->addAnimation("ATTACK_LEFT", a);
 	a = Animation({ Vector2D(1,2) }, false, false);
-	rndr->addAnimation("ATTACK_UP", a);
+	animFrog->addAnimation("ATTACK_UP", a);
 	a = Animation({ Vector2D(0,2) }, false, false);
-	rndr->addAnimation("ATTACK_DOWN", a);
-	player->addAnimationComponent(rndr);
+	animFrog->addAnimation("ATTACK_DOWN", a);
+	//player->addAnimationComponent(animFrog);
 
 	//AnimationComponent* anim = new AnimationComponent(txtFrog, 4, 4);
 	//player->addComponent(ANIMATION_COMPONENT, anim);
 	//anim->setContext(player);
+	player->addRenderComponentFrog(renderFrog);
+	player->addComponent(ANIMATION_COMPONENT, animFrog);
 
-	MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2), rndr);
+	MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2), animFrog);
 	mvm->setContext(player);
 
 	mvm->initComponent();
@@ -72,8 +74,6 @@ void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int 
 	mvm->setBoundY(boundY);
 
 	player->addComponent(MOVEMENT_COMPONENT, mvm);
-
-	//player->addRenderComponent(rndr);
 
 	Component* atck = new AttackComponentFrog();
 	player->addComponent(ATTACK_COMPONENT, atck);

@@ -29,29 +29,30 @@ class Texture;
 
 class AnimationComponent : public Component
 {
-protected:
-	Texture* tex_;							// Textura
-	float sc;								// Escala
-	int x_, y_;								// Coordenadas x e y (Supongo que habria que leerlas de la posicion de la entidad)
-	//int frameWidth_, frameHeight_;			// Ancho y Alto de un frame
-	int nRow_, nCol_;						// Numero de filas y cols
-	int currentFrameR_, currentFrameC_;		// Fila y Columna actual
-	int finalFrameR_, finalFrameC_;			// Fila y Columna final de la animacion 
-	int frameIndex_;
-	int lastChange_;						// Ultimo refresh de animacion
-	Animations animationSet_;				// Mapa de animaciones de la entidad
-	Animation currentAnim_;                 // Animacion actual
-	std::string currentAnimName_;
+private:
+	//Texture* tex;							// Textura
+	//float sc;								// Escala
+	//int x, y;								// Coordenadas x e y (Supongo que habria que leerlas de la posicion de la entidad)
+	//int nRow, nCol;						// Numero de filas y cols
+	int currentFrameR, currentFrameC;		// Fila y Columna actual
+	int finalFrameR, finalFrameC;			// Fila y Columna final de la animacion 
+	int frameIndex;
+	int lastChange;						// Ultimo refresh de animacion
+	Animations animationSet;				// Mapa de animaciones de la entidad
+	Animation currentAnim;                 // Animacion actual
+	std::string currentAnimName;
 	//SDL_RendererFlip flip_;				// Flip
-	bool isPlaying_;						// Bool que indica si ya se esta reproduciendo una animacion
+	bool isPlaying;						// Bool que indica si ya se esta reproduciendo una animacion
 	void updateAnimation(const Animation& currentAnim, int index);
-	Animation getCurrentAnim() const { return currentAnim_; };
+	void update() override;
 public:
 	//AnimationComponent(std::string filename, int wframes, int hframes, float sc = 1);
-	AnimationComponent(Texture* tex, int rows, int cols, float scale);
+	//AnimationComponent(Texture* tex, int rows, int cols, float scale);
+	AnimationComponent();
 	void addAnimation(const std::string& name, const Animation& anim);
 	void playAnimation(const std::string& name);
-	virtual void render() {};
-	void update() override;
+	int getCurrentFil() const { return currentFrameR; };
+	int getCurrentCol() const { return currentFrameC; };
+	Animation getCurrentAnim() const { return currentAnim; };
 };
 
