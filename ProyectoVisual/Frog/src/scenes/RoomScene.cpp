@@ -25,7 +25,7 @@ void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int 
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
 	AnimationComponent* animFrog = new AnimationComponent();
-	RenderComponent* renderFrog = new RenderComponent(txtFrog, 4, 4, 1, animFrog);
+	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
 	//AnimationComponent* rndr = new RenderComponentFrog(txtFrog, txtTongue);
 	renderFrog->setContext(player);
@@ -62,7 +62,7 @@ void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int 
 	//AnimationComponent* anim = new AnimationComponent(txtFrog, 4, 4);
 	//player->addComponent(ANIMATION_COMPONENT, anim);
 	//anim->setContext(player);
-	player->addRenderComponent(renderFrog);
+	player->addRenderComponentFrog(renderFrog);
 	player->addComponent(ANIMATION_COMPONENT, animFrog);
 
 	MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2), animFrog);

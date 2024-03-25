@@ -8,36 +8,23 @@ void RenderComponent::render()
     int size = (int)t * scale;
     SDL_Rect dest;
 
-    Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() + Vector2D((t - size) / 2, (t - size) / 2);
+    Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() //el offset el objeto
+        + Vector2D((t - size) / 2, (t - size) / 2);                                             //para que este centrado en la casilla
     Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
-    
-      
-    dest.x = (pos.getX() - cameraPos.getX()) * t + offset.getX();
-    dest.y = (pos.getY() - cameraPos.getY()) * t + offset.getY();
+
+
+    dest.x = pos.getX() * t + offset.getX() - cameraPos.getX();
+    dest.y = pos.getY() * t + offset.getY() - cameraPos.getY();
 
     dest.w = size;
     dest.h = size;
-   
 
-    //PROVISIONAL CON MOV CAMARA
-    /*
-    if (ent->getComponent(ATTACK_COMPONENT) != nullptr) {
-        int x = ent->getScene()->getMapReader()->getMapSize().getX();
-        int i = pos.getX() + (pos.getY() * x - 1);
-        std::cout << "Buscando en: " << i << std::endl;
-        ent->getScene()->getMapReader()->getTile(i)->x;
-        dest.x = (-300 + ent->getScene()->getMapReader()->getTile(i)->x)*6;
-        dest.y = (-200 + ent->getScene()->getMapReader()->getTile(i)->y)*6;
+    if (myAnimator != nullptr) { //Si la entidad tiene animaciones
+        if (myAnimator->getCurrentAnim().flip) //Si se tiene que flipear
+            myTexture->renderFrameWithFlip(dest, myAnimator->getCurrentFil(), myAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
+        else
+            myTexture->renderFrame(dest, myAnimator->getCurrentFil(), myAnimator->getCurrentCol());
     }
-    else {
-        dest.x = pos.getX() * t + offset;
-        dest.y = pos.getY() * t + offset;
-    }
-    */
-
-    if (myAnimator->getCurrentAnim().flip) //Si se tiene que flipear
-        myTexture->renderFrameWithFlip(dest, myAnimator->getCurrentFil(), myAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
-    else
-        myTexture->renderFrame(dest, myAnimator->getCurrentFil(), myAnimator->getCurrentCol());
+    else myTexture->renderFrame(dest, 0, 0);
 }

@@ -14,8 +14,11 @@ protected:
 	AnimationComponent* myAnimator = nullptr;
 	float scale;
 
-public:
+public: 
+	//Constructora con animador
 	RenderComponent(Texture* tex, int wframes, int hframes, float sc, AnimationComponent* anim) : myTexture(tex), scale(sc), myAnimator(anim) {};
+	//Constructora sin animador
+	RenderComponent(Texture* tex, int wframes, int hframes, float sc) : myTexture(tex), scale(sc) {};
 	RenderComponent(Texture* t, float sc = 1) : myTexture(t), scale(sc) {}
     void render();
 };
