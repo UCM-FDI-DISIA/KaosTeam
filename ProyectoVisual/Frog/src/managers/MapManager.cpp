@@ -17,8 +17,8 @@ void tile::draw(SDL_Renderer* ren, int num, Vector2D cameraPos) {
     src.h = height;
 
     SDL_Rect dest;
-    dest.x = (x -cameraPos.getX() * width) * MAP_MULT; 
-    dest.y = (y - cameraPos.getY() * height) * MAP_MULT;  
+    dest.x = x * MAP_MULT - cameraPos.getX(); 
+    dest.y = y * MAP_MULT - cameraPos.getY();  
     dest.w = src.w* MAP_MULT;
     dest.h = src.h* MAP_MULT;
 

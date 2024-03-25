@@ -1,5 +1,8 @@
 #include "CameraManager.h"
 #include "../scenes/RoomScene.h"
+#include "../sdlutils/SDLUtils.h"
+#include "../game/Game.h"
+#include <math.h>
 
 void Camera::setTarget(Entity* target)
 {
@@ -8,25 +11,47 @@ void Camera::setTarget(Entity* target)
 	lastTargetPosition = camTargetMovementComp->getPosition();
 	limitX = target->getScene()->getMapReader()->getCols();
 	limitY = target->getScene()->getMapReader()->getRows();
+
+
+	tileSize = target->getScene()->getMapReader()->getTileSize();
+	screenSize = { round(WIN_WIDTH / (float)tileSize), round(WIN_HEIGHT / (float)tileSize) }; //calcular cuantas tiles hay en la pantalla
 }
 void Camera::update() {
 
 	Vector2D actualTargetPos = camTargetMovementComp->getPosition();
 	if (lastTargetPosition.getX() != actualTargetPos.getX() || lastTargetPosition.getY() != actualTargetPos.getY()) {
 		
-		if ((actualTargetPos.getX() > tilesToStartMoving || cameraPos.getX() >0) &&	//si te has movido lo suficiente
-			((camTargetMovementComp->getDirection() == LEFT) ||							//y cabes por la izquierda
-			(cameraPos.getX() < limitX && camTargetMovementComp->getDirection() == RIGHT)))																		//y la derecha
+		if ((cameraPos.getX() > 0 || actualTargetPos.getX() > tilesToStartMoving) &&				//si no te sales por la izquierda
+			(cameraPos.getX() < limitX - screenSize.getX() || actualTargetPos.getX() < limitX - tilesToStartMoving)) //ni la derecha
+		{
+			cameraPos.setX(cameraPos.getX() + actualTargetPos.getX() - lastTargetPosition.getX());
+		}
+			
 
-			cameraPos.setX(cameraPos.getX() + actualTargetPos.getX() - lastTargetPosition.getX());	//te mueves
-
-		if ((actualTargetPos.getY() > tilesToStartMoving && cameraPos.getY() > 0) && //si te has movido lo suficiente
-			((camTargetMovementComp->getDirection() == UP) ||   //y cabes
-			(cameraPos.getY() < limitY && camTargetMovementComp->getDirection() == DOWN)))
-
-			cameraPos.setY(cameraPos.getY() + actualTargetPos.getY() - lastTargetPosition.getY());  //te mueves
+		if ((cameraPos.getY() > 0 || actualTargetPos.getY() > 2) &&				//si no te sales por arriba
+			(cameraPos.getY() < limitY - screenSize.getY() || actualTargetPos.getY() < limitY - 2)) //ni por abajo
+		{
+			cameraPos.setY(cameraPos.getY() + actualTargetPos.getY() - lastTargetPosition.getY());  
+		}
 			
 		lastTargetPosition = actualTargetPos;
 		
 	}
+
+
+	////calcular el ofset
+	//additionalOffset = camTargetMovementComp->getOffset();
+	//if (cameraPos.getX() == 0 || cameraPos.getX() >= limitX - screenSize.getX())
+	//	additionalOffset.setX(0);
+
+	//if(cameraPos.getY() == 0 || cameraPos.getY() >= limitY - screenSize.getY())
+	//	additionalOffset.setX(0);
+	
+}
+
+
+
+Vector2D Camera::GetAdditionalOffset()
+{
+	return additionalOffset;
 }
