@@ -1,9 +1,8 @@
 #pragma once
 #include "../ecs/Scene.h"
-//#include "../ecs/Entity.h"
 #include "../components/MovementComponentFly.h"
+#include "../components/RenderComponent.h"
 #include "../components/RenderComponentFrog.h"
-#include "../components/RenderComponentFly.h"
 #include "../components/AttackComponentFrog.h"
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
@@ -30,20 +29,23 @@ public:
 		cameraManager = Camera::instance();
 		cameraManager->setTarget(player);
 
+		Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
 
 		Entity* fly = new Entity(this);
 
-		Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
-		AnimationComponent* rndr = new RenderComponentFly(textFly);
-		rndr->setContext(fly);
+		AnimationComponent* animFly = new AnimationComponent();
+		RenderComponent* rndrFly = new RenderComponent(textFly, 1, 3, 0.5, animFly);
+
+		rndrFly->setContext(fly);
 
 		Animation a; //Animaciones mosca
 		a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true);
-		rndr->addAnimation("FLY", a);
-		fly->addAnimationComponent(rndr);
-		rndr->playAnimation("FLY");
+		animFly->addAnimation("FLY", a);
 
+		fly->addRenderComponent(rndrFly);
+		fly->addComponent(ANIMATION_COMPONENT, animFly);
 
+		animFly->playAnimation("FLY");
 
 
 		MovementComponent* mvm = new MovementComponentFly(Vector2D(0, 3));
@@ -52,18 +54,24 @@ public:
 
 		entityList.push_back(fly);
 		
+
 		Entity* flyToPlayer = new Entity(this);
 
 		FollowPlayerComponent* fpc = new FollowPlayerComponent(Vector2D(0, 0));
 		fpc->setContext(flyToPlayer);
 		flyToPlayer->addComponent(MOVEMENT_COMPONENT, fpc);
 
-		AnimationComponent* rndr2 = new RenderComponentFly(textFly);
-		rndr2->addAnimation("FLY", a);
-		rndr2->setContext(flyToPlayer);
+		AnimationComponent* animFly2 = new AnimationComponent();
+		RenderComponent* rndrFly2 = new RenderComponent(textFly, 1, 3, 0.5, animFly2);
+		rndrFly2->setContext(flyToPlayer);
 
-		flyToPlayer->addAnimationComponent(rndr2);
-		rndr2->playAnimation("FLY");
+		a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true);
+		animFly2->addAnimation("FLY", a);
+
+		flyToPlayer->addRenderComponent(rndrFly2);
+		flyToPlayer->addComponent(ANIMATION_COMPONENT, animFly2);
+
+		animFly2->playAnimation("FLY");
 
 		entityList.push_back(flyToPlayer);
 		
