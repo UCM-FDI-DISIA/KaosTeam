@@ -17,13 +17,8 @@ void RenderComponentFrog::render()
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
    
-<<<<<<< Updated upstream
-    dest.x = pos.getX() * t + offset.getX() - cameraPos.getX();
-    dest.y = pos.getY() * t + offset.getY() -cameraPos.getY();
-=======
-    frogRect.x = (pos.getX() - cameraPos.getX()) * t + offset.getX();
-    frogRect.y = (pos.getY() - cameraPos.getY()) * t + offset.getY();
->>>>>>> Stashed changes
+    frogRect.x = pos.getX() * t + offset.getX() - cameraPos.getX();
+    frogRect.y = pos.getY() * t + offset.getY() -cameraPos.getY();
 
     //la lengua 
     if (attacking) {
