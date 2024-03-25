@@ -15,7 +15,7 @@ void RenderComponentFrog::render()
     Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
-   
+  
     dest.x = pos.getX() * t + offset.getX() - cameraPos.getX();
     dest.y = pos.getY() * t + offset.getY() -cameraPos.getY();
 

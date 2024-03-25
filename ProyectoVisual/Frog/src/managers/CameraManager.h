@@ -21,7 +21,7 @@ public:
 		actualRoom = newRoom;
 	}*/
 	void update();
-	Vector2D getCameraMovement() { return cameraPos * tileSize + additionalOffset; }
+	Vector2D getCameraMovement() { return cameraPos * tileSize /*+ additionalOffset*/; }
 
 	//para hacer el movimiento fluido
 	Vector2D GetAdditionalOffset();
