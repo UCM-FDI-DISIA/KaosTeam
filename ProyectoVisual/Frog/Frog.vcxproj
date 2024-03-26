@@ -190,6 +190,7 @@
     <ClCompile Include="src\managers\MapManager.cpp" />
     <ClCompile Include="src\utils\Button.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
+    <ClCompile Include="src\components\TransitionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\AnimationComponent.h" />
@@ -233,6 +234,7 @@
     <ClInclude Include="src\utils\Button.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
+    <ClInclude Include="src\components\TransitionComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\maps\tileMap_Prueba.tmx" />

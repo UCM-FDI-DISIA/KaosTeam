@@ -44,14 +44,14 @@
 </data>
  </layer>
  <objectgroup id="5" name="Obj">
-  <object id="1" name="Flonk" x="87.8753" y="104.917">
+  <object id="1" name="FlonkS" type="Player" x="87.8753" y="104.917">
    <properties>
     <property name="TexPath" value="../Frog/resources/sprites/unFrameDeRana.png"/>
     <property name="isPlayer" type="bool" value="true"/>
    </properties>
    <point/>
   </object>
-  <object id="3" name="Flonk" x="73.5677" y="8.85159">
+  <object id="3" name="FlonkN" type="Player" x="73.5677" y="8.85159">
    <properties>
     <property name="TexPath" value="../Frog/resources/sprites/unFrameDeRana.png"/>
     <property name="isPlayer" type="bool" value="true"/>

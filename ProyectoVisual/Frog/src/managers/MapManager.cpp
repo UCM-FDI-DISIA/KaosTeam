@@ -226,7 +226,13 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
 
                 std::cout << "Object " << object.getUID() << ", " << object.getName() << std::endl;
 
-                room->createEntity(object.getName(), object.getClass(), object.getProperties());
+                int x = (int)object.getPosition().x / tiled_map.getTileSize().x;
+                int y = (int)object.getPosition().y / tiled_map.getTileSize().y;
+                Vector2D pos;
+                pos.setX(x);
+                pos.setY(y);
+
+                walkableTiles[x][y]->objInTile = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
                 
                 /*                
                 const auto& properties = object.getProperties();

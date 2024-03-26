@@ -90,14 +90,14 @@
 </data>
  </layer>
  <objectgroup id="5" name="Obj">
-  <object id="1" name="Flonk" x="104.25" y="250.917">
+  <object id="1" name="FlonkS" type="Player" x="105.583" y="264.917">
    <properties>
     <property name="TexPath" value="../Frog/resources/sprites/unFrameDeRana.png"/>
     <property name="isPlayer" type="bool" value="true"/>
    </properties>
    <point/>
   </object>
-  <object id="3" name="Enemigo01" x="71.5" y="149.5">
+  <object id="3" name="Enemigo01" type="Enemigo" x="71.5" y="149.5">
    <point/>
   </object>
  </objectgroup>

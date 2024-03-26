@@ -7,6 +7,7 @@
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
 #include "../components/AnimationComponent.h"
+#include "../components/TransitionComponent.h"
 #include "../managers/CameraManager.h"
 
 class RoomScene : public Scene
@@ -17,10 +18,11 @@ private:
 	MapManager* mapReader;
 	int id;
 	Entity* player = nullptr;
+	flonkOrig playerOrig = S;
 public:
 	RoomScene(int id) : Scene(true), id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		mapReader = new MapManager("resources/maps/H1map.tmx", this);
+		mapReader = new MapManager("resources/maps/niveles/nivel01/mapaN1_01.tmx", this);
 		//mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
 
 		//Create player desde el mapa
@@ -84,16 +86,17 @@ public:
 	MapManager* getMapReader() { return mapReader; };
 	Entity* getPlayer() { return player; };
 
-	void createPlayer(std::string texPath, Vector2D pos, int boundX, int boundY);
+	void createPlayer(Vector2D pos, int boundX, int boundY);
 
-	Entity* createEntity(std::string objName, std::string objClass, std::vector<tmx::Property> objProps) {
+	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps) {
 
 		Entity* c = new Entity(this);
 		if (objClass == "Enemigo") {
 			//createEnemy(objName, objProps);
 		}
 		else if (objClass == "Player") {
-			//createPlayer(objName, objProps);
+			if (objName == "FlonkS")
+				createPlayer(pos, 100, 100);
 		}
 		return c;
 	}

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "niveles/nivel01/mapaN1_05.tmx",
+    "activeFile": "niveles/nivel01/mapaN1_01.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -16,11 +16,11 @@
             }
         },
         "niveles/nivel01/mapaN1_01.tmx": {
-            "scale": 4,
-            "selectedLayer": 2,
+            "scale": 3,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 78.875,
-                "y": 80.125
+                "x": 75.66666666666666,
+                "y": 77.49999999999999
             }
         },
         "niveles/nivel01/mapaN1_02.tmx": {
@@ -36,10 +36,10 @@
         },
         "niveles/nivel01/mapaN1_05.tmx": {
             "scale": 2,
-            "selectedLayer": 1,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 111.75,
-                "y": 174.75
+                "x": 120.5,
+                "y": 192.25
             }
         },
         "niveles/nivel01/tileset/H01_tileset.tsx": {
@@ -58,7 +58,8 @@
     "map.tileWidth": 16,
     "map.width": 33,
     "openFiles": [
-        "niveles/nivel01/mapaN1_05.tmx"
+        "niveles/nivel01/mapaN1_05.tmx",
+        "niveles/nivel01/mapaN1_01.tmx"
     ],
     "project": "FlonkMaps.tiled-project",
     "property.type": "bool",
