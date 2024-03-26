@@ -316,10 +316,12 @@ Con las ayudas que obtenga por el camino, finalmente se deberá enfrentar al mal
 **Mapas de tiled:**
 Objetos que tenemos en tiled segun la clase.
 | Class | Names | Otras propiedades |
-| Player | N - S - E - O = Segun la entrada por la que accedas a la sala. | * |
-| Enemigo | RanaLoca - Hormiga - ... = Tipo de enemigo.  | * |
-| ObjInter | Jarron - Piedra - ... = Tipo de objeto interactuable.  | * |
-*Las propiedades especificas al objeto, y no a su clase o nombre, se pasarán al createEntity.
+| :--- | :--- | :--- |
+| Player | N - S - E - O = Segun la entrada por la que accedas a la sala. | *** |
+| Enemigo | RanaLoca - Hormiga - ... = Tipo de enemigo.  | *** |
+| ObjInter | Jarron - Piedra - ... = Tipo de objeto interactuable.  | *** |
+
+***Las propiedades especificas al objeto, y no a su clase o nombre, se pasarán al createEntity.
 
 </details>
 
