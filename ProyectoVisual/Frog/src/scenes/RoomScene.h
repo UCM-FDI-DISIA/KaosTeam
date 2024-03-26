@@ -86,4 +86,15 @@ public:
 
 	void createPlayer(std::string texPath, Vector2D pos, int boundX, int boundY);
 
+	Entity* createEntity(std::string objName, std::string objClass, std::vector<tmx::Property> objProps) {
+
+		Entity* c = new Entity(this);
+		if (objClass == "Enemigo") {
+			//createEnemy(objName, objProps);
+		}
+		else if (objClass == "Player") {
+			//createPlayer(objName, objProps);
+		}
+		return c;
+	}
 };

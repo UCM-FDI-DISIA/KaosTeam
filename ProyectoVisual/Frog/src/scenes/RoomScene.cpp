@@ -17,8 +17,7 @@ void RoomScene::update() {
 	cameraManager->update();
 }
 
-
-void RoomScene::createPlayer(std::string texPath, Vector2D pos, int boundX, int boundY)
+void RoomScene::createPlayer(std::string name, std::string texPath, Vector2D pos, int boundX, int boundY)
 {
 	player = new Entity(this);
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);

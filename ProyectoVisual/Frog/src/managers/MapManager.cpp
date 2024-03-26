@@ -225,10 +225,14 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                 std::string texPath = "";
 
                 std::cout << "Object " << object.getUID() << ", " << object.getName() << std::endl;
+
+                room->createEntity(object.getName(), object.getClass(), object.getProperties());
+                
+                /*                
                 const auto& properties = object.getProperties();
                 std::cout << "Object has " << properties.size() << " properties" << std::endl;
                 for (const auto& prop : properties)
-                {
+                {                    
                     std::cout << "Found property: " << prop.getName() << std::endl;
                     std::cout << "Type: " << int(prop.getType()) << std::endl;
 
@@ -243,14 +247,15 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                             Vector2D pos;
                             pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
                             pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
-
-                            room->createPlayer(texPath, pos, cols, rows);
-                            /*/std::cout << "Player is in tile: " << pos.getX() + (pos.getY() * cols) << std::endl;
-                            room->createPlayer(texPath, pos);*/
+                            //room->createPlayer(texPath, pos, cols, rows);
+                            //room->createEntity(object.getName(), texPath, pos, cols, rows);
+                            std::cout << "Player is in tile: " << pos.getX() + (pos.getY() * cols) << std::endl;
+                            room->createPlayer(texPath, pos);
                         }
 
-                    }
+                    }                    
                 }
+                */
 
                 if (!object.getTilesetName().empty())
                 {
