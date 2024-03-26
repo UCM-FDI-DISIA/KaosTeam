@@ -17,8 +17,14 @@ void Entity::addComponent(componentsEnum id, Component* component)
 	componentes.insert(std::pair<componentsEnum, Component*>(id, component));
 }
 
-void Entity::addAnimationComponent(AnimationComponent* animComponent) {
-	this->animationComponent = animComponent;
+void Entity::addRenderComponent(RenderComponent* rnd)
+{
+	renderComponent = rnd;
+}
+
+void Entity::addRenderComponentFrog(RenderComponentFrog* rndF)
+{
+	renderComponentFrog = rndF;
 }
 
 Entity::~Entity()
@@ -40,9 +46,10 @@ Entity::update() {
 
 void Entity::render()
 { 
-	animationComponent->update();
-	animationComponent->render();
-	//RenderComponent* render = componentes.at(componentsEnum::RENDER_COMPONENT); O NO QUIEN SABE
+	if (renderComponent != nullptr) { //Si la entidad No es la rana -> Ejecutamos render general
+		renderComponent->render();
+	}
+	else renderComponentFrog->render(); //Sino, ejecutamos render de la rana (un render mas complejo)
 }
 
 Component* Entity::getComponent(componentsEnum Identificator) const
@@ -51,11 +58,6 @@ Component* Entity::getComponent(componentsEnum Identificator) const
 		return componentes.at(Identificator);
 	else
 		return nullptr;
-}
-
-Component* Entity::getAnimationComponent() const
-{
-	return animationComponent;
 }
 
 RoomScene* Entity::getScene() const

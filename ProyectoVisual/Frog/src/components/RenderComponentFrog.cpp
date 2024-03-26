@@ -7,56 +7,93 @@
 void RenderComponentFrog::render()
 {
     int t = ent->getScene()->getMapReader()->getTileSize();
-    int size = (int)t * sc;
-    SDL_Rect dest;
+    int size = (int)t * scale;
+    SDL_Rect frogRect; // Rect de la rana
+    SDL_Rect tongueRect;
  
-    Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() + Vector2D((t - size) / 2, (t - size) / 2);
+    Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() //el offset el objeto
+                    + Vector2D((t - size) / 2, (t - size) / 2);                                             //para que este centrado en la casilla
     Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
    
-    dest.x = (pos.getX() - cameraPos.getX())*t + offset.getX();
-    dest.y = (pos.getY() - cameraPos.getY())*t + offset.getY();
+    frogRect.x = pos.getX() * t + offset.getX() - cameraPos.getX();
+    frogRect.y = pos.getY() * t + offset.getY() -cameraPos.getY();
 
     //la lengua 
     if (attacking) {
         int distanceMoved = static_cast<AttackComponentFrog*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
-        if (distanceMoved < 0)
-            attacking = false;
-        else {
-            Directions d = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
-            float endAngle = 0.0f;
-            SDL_RendererFlip endFlip = SDL_FLIP_NONE;
+        Directions d = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
 
+        if (distanceMoved < 0) { //Si el ataque acaba
+            attacking = false;
+            switch (d) { //Se reproduce el idle correspondiente
+            case Directions::LEFT:
+                frogAnimator->playAnimation("IDLE_LEFT");
+                break;
+            case Directions::RIGHT:
+                frogAnimator->playAnimation("IDLE_RIGHT");
+                break;
+            case Directions::UP:
+                frogAnimator->playAnimation("IDLE_UP");
+                break;
+            case Directions::DOWN:
+                frogAnimator->playAnimation("IDLE_DOWN");
+                break;
+            default:
+                break;
+            }
+        }
+        else { //Sino, se renderiza el ataque
             //parte del medio
             tongueRect.h = size;
             tongueRect.w = t;
-            tongueRect.y = dest.y;
-            tongueRect.x = dest.x + (size / 2);
+            tongueRect.y = frogRect.y;
+            tongueRect.x = frogRect.x + size / 2;
 
+            float endAngle = 0.0f;
+            SDL_RendererFlip endFlip = SDL_FLIP_NONE;
 
+            switch (d) { //Se configura como se empieza a renderizar la lengua
+            case Directions::LEFT:
+                tongueRect.x = frogRect.x - size / 2; 
+                endFlip = SDL_FLIP_HORIZONTAL;
+                break;
+            case Directions::RIGHT:
+                tongueRect.x = frogRect.x + size / 2;
+                break;
+            case Directions::UP:
+                tongueRect.y = frogRect.y - size / 2;
+                tongueRect.x = frogRect.x + 5;
+                endAngle = -90.0f;
+                break;
+            case Directions::DOWN:
+                tongueRect.y = frogRect.y + size / 2; 
+                tongueRect.x = frogRect.x - 5;
+                endAngle = 90.0f;
+                break;
+            default:
+                break;
+            }
             for (int i = 0; i < distanceMoved; i++) {
-                switch (d) { //Dependdiendo de la direccion, se renderiza en una dir u otra
+                switch (d) { //Dependiendo de la direccion, la lengua se alarga en una dir u otra
                 case Directions::LEFT:
-                    playAnimation("ATTACK_LEFT");
-                    endFlip = SDL_FLIP_HORIZONTAL;
+                    frogAnimator->playAnimation("ATTACK_LEFT");
                     tongueText->renderFrameWithFlip(tongueRect, 0, 0, endFlip, endAngle);
                     tongueRect.x -= tongueRect.w;
                     break;
                 case Directions::RIGHT:
-                    playAnimation("ATTACK_RIGHT");
+                    frogAnimator->playAnimation("ATTACK_RIGHT");
                     tongueText->renderFrameWithFlip(tongueRect, 0, 0, endFlip, endAngle);
                     tongueRect.x += tongueRect.w;
                     break;
                 case Directions::UP:
-                    playAnimation("ATTACK_UP");
-                    endAngle = -90.0f;
+                    frogAnimator->playAnimation("ATTACK_UP");
                     tongueText->renderFrameWithFlip(tongueRect, 0, 0, endFlip, endAngle);
                     tongueRect.y -= tongueRect.h;
                     break;
                 case Directions::DOWN:
-                    playAnimation("ATTACK_DOWN");
-                    endAngle = 90.0f;
+                    frogAnimator->playAnimation("ATTACK_DOWN");
                     tongueText->renderFrameWithFlip(tongueRect, 0, 0, endFlip, endAngle);
                     tongueRect.y += tongueRect.h;
                     break;
@@ -64,19 +101,19 @@ void RenderComponentFrog::render()
                     break;
                 }
             }
-            //punta
-            tongueRect.w = tongueRect.h;
+            //Renderizamos punta de la lengua
             tongueText->renderFrameWithFlip(tongueRect, 1, 0, endFlip, endAngle);
         }
     }
-    //renderizamos la rana
-    dest.w = size;
-    dest.h = size;
 
-    if (getCurrentAnim().flip) //Si se tiene que flipear
-        tex_->renderFrameWithFlip(dest, currentFrameR_, currentFrameC_, SDL_FLIP_HORIZONTAL, 0);
+    //renderizamos la rana
+    frogRect.w = size;
+    frogRect.h = size;
+
+    if (frogAnimator->getCurrentAnim().flip) //Si se tiene que flipear
+        frogText->renderFrameWithFlip(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
     else
-        tex_->renderFrame(dest, currentFrameR_, currentFrameC_);
+        frogText->renderFrame(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol());
 }
 
 void RenderComponentFrog::AttackStart() {

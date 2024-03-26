@@ -11,7 +11,7 @@ void AttackComponentFrog::update()
 			lastTimeChanged = DataManager::GetInstance()->getFrameTime();
 			state = 1;
 			distanceMoved = 0;
-			static_cast<RenderComponentFrog*>(ent->getAnimationComponent())->AttackStart();
+			static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->AttackStart();
 		}
 	}
 	else if ((DataManager::GetInstance()->getFrameTime() - lastTimeChanged) > attackFrameTime) {

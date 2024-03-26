@@ -1,17 +1,26 @@
 #pragma once
-#include "RenderComponent.h"
-#include "AnimationComponent.h"
-class RenderComponentFrog: public AnimationComponent
+
+#include "../ecs/Component.h"
+#include "../sdlutils/Texture.h"
+#include "../sdlutils/SDLUtils.h"
+class RenderComponentFrog : public Component
 {
 private:
-	SDL_Rect tongueRect;
+	Texture* frogText = nullptr;
 	Texture* tongueText = nullptr;
+	AnimationComponent* frogAnimator = nullptr;
+	float scale;
 	bool attacking = false;
-	enum direction { LEFT, RIGHT, UP, DOWN };
 public:
-	RenderComponentFrog(Texture* tf, Texture* tt, float sc = 1) : AnimationComponent(tf, 4, 4, sc), tongueText(tt) {}
-	~RenderComponentFrog() { delete tongueText; };
-	void render() override;
+	RenderComponentFrog(Texture* tf, Texture* tt, AnimationComponent* animFrog, float sc = 1) :
+		frogText(tf), tongueText(tt), 
+		frogAnimator(animFrog), 
+		scale(sc) {};
+	~RenderComponentFrog() {
+		delete tongueText;
+		delete frogText;
+	};
+	void render();
 	void AttackStart();
 };
 

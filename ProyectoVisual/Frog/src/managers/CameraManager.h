@@ -21,20 +21,24 @@ public:
 		actualRoom = newRoom;
 	}*/
 	void update();
-	void setMapCanMove(){mapCanMove = true;}
-	Vector2D getCameraMovement() { return cameraPos; }
+	Vector2D getCameraMovement() { return cameraPos * tileSize /*+ additionalOffset*/; }
+
+	//para hacer el movimiento fluido
+	Vector2D GetAdditionalOffset();
 
 
 private:
 	//static Camera* cameraInstance;
 	Entity* camTarget;
 	Vector2D cameraPos = { 0,0 };
-	int limitX, limitY, tilesToStartMoving = 3;
+	int limitX, limitY, tilesToStartMoving = 3; 
+	int tileSize;
+	Vector2D screenSize; //IMPORTANTE en casillas
 	Vector2D lastTargetPosition;
+	Vector2D additionalOffset;
 	Camera() {};
 	//ns si esta bien
 	MovementComponentFrog* camTargetMovementComp;
-	//MapManager* actualRoom;
-	bool mapCanMove;
+	
 };
 #endif // !CAMERAMANAGER_H
