@@ -50,14 +50,6 @@ MapManager::MapManager(const std::string& path, RoomScene* room)
 
 MapManager::~MapManager()
 {
-    for (int i = 0; i < walkableTiles.size(); i++)
-    {
-        for (int j = 0; j < walkableTiles[0].size(); j++)
-        {
-            delete walkableTiles[i][j];
-
-        }
-    }
 }
 
 void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
@@ -80,7 +72,10 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
     }
     else
     {
-        walkableTiles = vector<vector<tile*>>(cols + 1, vector<tile*>(rows + 1)); //reservamos el espacio para la matriz de tiles
+        walkableTiles = vector<vector<bool>>(cols, vector<bool>(rows)); //reservamos el espacio para la matriz de booleanos de tiles
+  
+
+
         std::cout << "Map Dimensions: " << tiled_map.getBounds() << std::endl;
     }
 
@@ -347,6 +342,15 @@ void MapManager::draw(SDL_Renderer* ren) {
 Vector2D MapManager::getMapSize()
 {
     return Vector2D(cols, rows);
+}
+
+bool MapManager::isTileWalkable(Vector2D pos)
+{
+    if (pos.getX() < walkableTiles.size() && pos.getY() < walkableTiles[0].size()
+        && pos.getX() >= 0 && pos.getY() >= 0) 
+        return walkableTiles[pos.getX()][pos.getY()];
+    else
+        return false;
 }
 
 int MapManager::getTileSize()

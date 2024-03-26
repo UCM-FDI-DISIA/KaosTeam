@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\FrogInputComponent.cpp" />
     <ClCompile Include="src\components\AnimationComponent.cpp" />
     <ClCompile Include="src\components\DefenseComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
@@ -193,6 +194,7 @@
     <ClCompile Include="src\components\TransitionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\FrogInputComponent.h" />
     <ClInclude Include="src\components\AnimationComponent.h" />
     <ClInclude Include="src\components\DefenseComponent.h" />
     <ClInclude Include="src\components\AttackComponentFrog.h" />

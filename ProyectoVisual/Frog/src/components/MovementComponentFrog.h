@@ -2,6 +2,7 @@
 #include "MovementComponent.h";
 #include "../managers/DataManager.h"
 #include "AnimationComponent.h"
+#include <iostream>
 enum Directions
 {
 	UP,
@@ -21,7 +22,7 @@ private:
 	Uint32 actionCooldown = 100, movementFrameRate = 50,
 		framesPerJump = 6, framesMoved = 0;
 	bool jumping = false;
-	void startMovement(Directions, Vector2D);
+	
 
 public:
 	MovementComponentFrog(Vector2D casilla, AnimationComponent* a) : MovementComponent(casilla), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()), 
@@ -29,4 +30,5 @@ public:
 	Directions getDirection() { return actualDirection; }
 	void update() override;
 	bool getMoveCompleted() { return !jumping; }
+	void startMovement(Directions d, Vector2D v, std::string animation);
 };

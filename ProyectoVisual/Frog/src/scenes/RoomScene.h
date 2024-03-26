@@ -9,6 +9,7 @@
 #include "../components/AnimationComponent.h"
 #include "../components/TransitionComponent.h"
 #include "../managers/CameraManager.h"
+#include "../components/FrogInputComponent.h"
 
 class RoomScene : public Scene
 {

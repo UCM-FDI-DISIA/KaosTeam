@@ -20,12 +20,5 @@ void RenderComponent::render()
     dest.w = size;
     dest.h = size;
 
-    //COSAS IMPORTANTES. pos es de floats, igual nos conviene q sea de ints
-    //TAMBI�N, el dest podriamos definirlo en la costructora para ahorrar tiempo y cambiar solo su x e y
-    //Y TAMBI�N. ESTO NO SIRVE SI SE MUEVE LA CAMARA.
-    
-    dest.x = pos.getX() * t + offset.getX(); 
-    dest.y = pos.getY() * t + offset.getY();
-
-	myTexture->renderFrame(dest, 0, 0);
+	myTexture->renderFrame(dest, myAnimator->getCurrentFil(), myAnimator->getCurrentCol());
 }

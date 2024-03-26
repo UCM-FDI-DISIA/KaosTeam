@@ -64,7 +64,7 @@ void RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	player->addRenderComponentFrog(renderFrog);
 	player->addComponent(ANIMATION_COMPONENT, animFrog);
 
-	MovementComponent* mvm = new MovementComponentFrog(Vector2D(2, 2), animFrog);
+	MovementComponentFrog* mvm = new MovementComponentFrog(Vector2D(2, 2), animFrog);
 	mvm->setContext(player);
 
 	mvm->initComponent();
@@ -74,11 +74,14 @@ void RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 	player->addComponent(MOVEMENT_COMPONENT, mvm);
 
-	Component* atck = new AttackComponentFrog();
+	AttackComponentFrog* atck = new AttackComponentFrog();
 	player->addComponent(ATTACK_COMPONENT, atck);
 	atck->setContext(player);
 
-	entityList.push_back(player);
+	FrogInputComponent* input = new FrogInputComponent();
+	input->setComponents(mvm, atck);
+	input->setContext(player);
+	player->addComponent(INPUT_COMPONENT, input);
 
 	AddEntity(player);
 }
