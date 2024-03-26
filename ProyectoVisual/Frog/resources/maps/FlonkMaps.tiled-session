@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "niveles/nivel01/mapaN1_01.tmx",
+    "activeFile": "niveles/nivel01/mapaN1_02.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -30,11 +30,11 @@
             "expandedObjectLayers": [
                 5
             ],
-            "scale": 1.5,
-            "selectedLayer": 4,
+            "scale": 2,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 104.66666666666666,
-                "y": 176.99999999999997
+                "x": 113.5,
+                "y": 6.25
             }
         },
         "niveles/nivel01/mapaN1_05.tmx": {
@@ -69,8 +69,8 @@
     "property.type": "string",
     "recentFiles": [
         "niveles/nivel01/mapaN1_05.tmx",
-        "niveles/nivel01/mapaN1_02.tmx",
         "niveles/nivel01/mapaN1_01.tmx",
+        "niveles/nivel01/mapaN1_02.tmx",
         "H1map.tmx",
         "tileset/H01_tileset.tsx"
     ],
