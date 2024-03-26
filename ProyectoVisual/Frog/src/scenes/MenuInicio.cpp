@@ -13,8 +13,8 @@ MenuInicio::MenuInicio(Game* g, NewGameState* nGS):
 		newGSt(nGS), //
 		imngr(im()), //
 		game(g), //
-		bg(sdlutils().images().at("background")), //Modificar
-		currSelec(sdlutils().images().at("fly")), //Modificar
+		bg(new Texture(sdlutils().renderer(), "../Frog/resources/Menus/MainMenu.png", 0, 0)), //
+		currSelec(new Texture(sdlutils().renderer(), "../Frog/resources/Sprites/unframedemoska.png", 0, 0)), //
 		width(WIN_WIDTH), height(WIN_HEIGHT), //
 		currButton(0) //
 {
@@ -37,15 +37,19 @@ MenuInicio::MenuInicio(Game* g, NewGameState* nGS):
 		buttonEndDest));
 	menuButton[1]->connect([this]() { newGSt->leave(); });
 
-	dest.w = currSelec.width();
-	dest.h = currSelec.height();
+	dest.w = currSelec->width();
+	dest.h = currSelec->height();
 	dest.x = buttonStartDest.x - offsetX - dest.w / 2;
-	dest.y = buttonStartDest.y + buttonStartDest.h / 2 - currSelec.height() / 2;
+	dest.y = buttonStartDest.y + buttonStartDest.h / 2 - currSelec->height() / 2;
+
+	bgDest.x = bgDest.y = 0;
+	bgDest.w = width;
+	bgDest.h = height;
 }
 
 void MenuInicio::render() {
-	bg.render(SDL_Rect());
-	currSelec.render(dest);
+	bg->render(bgDest); 
+	currSelec->render(dest);
 	for (auto it : menuButton)
 		it->render();
 }
@@ -66,7 +70,7 @@ void MenuInicio::changeButton(bool dir)
 	else currButton = (currButton + 1) % menuButton.size();
 	
 	//Modifico la pos de la seleccion actual (mosca)
-	dest.y = menuButton[currButton]->getRect().y + menuButton[currButton]->getRect().h / 2 - currSelec.height() / 2;
+	dest.y = menuButton[currButton]->getRect().y + menuButton[currButton]->getRect().h / 2 - currSelec->height() / 2;
 }
 
 void MenuInicio::callButton()

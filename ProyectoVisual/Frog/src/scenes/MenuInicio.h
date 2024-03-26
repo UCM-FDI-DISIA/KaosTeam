@@ -17,9 +17,10 @@ const int offsetX = 50;
 class MenuInicio : public Scene
 {
 private:
-	Texture& bg; //Textura de fondo
-	Texture& currSelec; //Textura que apunta al boton seleccionado
+	Texture* bg; //Textura de fondo
+	Texture* currSelec; //Textura que apunta al boton seleccionado
 	SDL_Rect dest; //resize de la mosca
+	SDL_Rect bgDest; //resize del fondo
 	NewGameState* newGSt;
 	Game* game;
 	InputManager& imngr;
