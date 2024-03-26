@@ -1,19 +1,28 @@
 {
-    "fonts" : [
-      { "id" : "COMICSANS", "file" : "resources/fonts/COMIC.ttf", "size": 18 }
-    ],
-    
-    "images" : [
-    ],
-    
-    "messages" : [
-    ],
-    
-    "sounds" : [
-    ],
-  
-    "musics" : [
-      
+    "images" : [   
+        { "id" : "fly", "file" : "resources/Sprites/unframedemoska.png"},
+        { "id" : "flySheet", "file" : "resources/Sprites/moscaSpritesheet.png"},
+        { "id" : "flyLifeSheet", "file" : "resources/Sprites/moscaVidaSpritesheet.png"},
+        { "id" : "frogSheet", "file" : "resources/Sprites/ranaSpritesheet.png"},
+        { "id" : "TongueSheet", "file" : "resources/Sprites/spritesheetTongue.png"},
+        { "id" : "frog", "file" : "resources/Sprites/unFrameDeRana.png"},
+        { "id" : "worm", "file" : "resources/Sprites/wormHUD.png"},
+        { "id" : "wormGoldSheet", "file" : "resources/Sprites/LombrizSprites.png"},
+        { "id" : "wormPinkSheet", "file" : "resources/Sprites/LombrizSpritesPink.png"},
+        { "id" : "wormPinkSheet", "file" : "resources/Sprites/LombrizSpritesPurple.png"},
+        { "id" : "fireflySheet", "file" : "resources/Sprites/LuciérnagaSheet.png"},
+        { "id" : "birdSheet", "file" : "resources/Sprites/PajaroSheet.png"},
+        { "id" : "grasshopperSheet", "file" : "resources/Sprites/SaltamontesSheet.png"},
+
+        { "id" : "background", "file" : "resources/Menus/MainMenu.png" },
+        { "id" : "GameOver", "file" : "resources/Menus/MenuGameOver.png"},
+        { "id" : "Pausa", "file" : "resources/Menus/MenuPausa.png"},
+
+        { "id" : "BotonJuego", "file" : "resources/Buttons/MenuJuego.png"},
+        { "id" : "BotonSalir", "file" : "resources/Buttons/MenuSalir.png"},
+        { "id" : "BotonSalirPausa", "file" : "resources/Buttons/MenuSalirPausa.png"},
+        { "id" : "BotonSeguirPausa", "file" : "resources/Buttons/MenuSeguir.png"}
+
     ]
   
   }

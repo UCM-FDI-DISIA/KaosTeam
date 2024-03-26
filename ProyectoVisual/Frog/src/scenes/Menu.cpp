@@ -1,14 +1,13 @@
-#include "MenuInicio.h"
+#include "Menu.h"
 
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/Texture.h"
 #include"../managers/InputManager.h"
-#include "../game/NewGameState.h"
-
+#include "../game/GameState.h"
 #include "../game/Game.h"
 
 
-MenuInicio::MenuInicio(Game* g, NewGameState* nGS): 
+Menu::Menu(Game* g, GameState* nGS, std::string path, std::string path2, std::string bgKey):
 		Scene(), //
 		newGSt(nGS), //
 		imngr(im()), //
@@ -18,9 +17,7 @@ MenuInicio::MenuInicio(Game* g, NewGameState* nGS):
 		width(WIN_WIDTH), height(WIN_HEIGHT), //
 		currButton(0) //
 {
-
-	SDL_Rect buttonStartDest, buttonEndDest;
-	
+	SDL_Rect buttonStartDest, buttonEndDest;	
 	//Valores de posicion temporales -> Hacerlos respecto al tama�o de pantalla
 	//buttonEndDest.y hacerlo a partir de buttonStartDest.y + su size + offsetY
 	buttonStartDest.w = buttonEndDest.w = width * 2 / 5;
@@ -29,11 +26,11 @@ MenuInicio::MenuInicio(Game* g, NewGameState* nGS):
 	buttonStartDest.y = height * 4 / 8; buttonEndDest.y = height * 5 / 7;
 	
 	//Boton de Start
-	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuJuego.png", 0, 0),
+	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), path, 0, 0),
 		buttonStartDest));
 	menuButton[0]->connect([this]() { newGSt->enter(); });
 	//Boton de exit
-	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), "../Frog/resources/Buttons/MenuSalir.png", 0, 0),
+	menuButton.push_back(new Button(new Texture(sdlutils().renderer(), path2, 0, 0),
 		buttonEndDest));
 	menuButton[1]->connect([this]() { newGSt->leave(); });
 
@@ -54,13 +51,13 @@ void MenuInicio::render() {
 		it->render();
 }
 
-void MenuInicio::update() {
+void Menu::update() {
 	if (imngr.getAction1()) callButton();
 	else if (imngr.getUp()) changeButton(ARRIBA);
 	else if (imngr.getDown()) changeButton(ABAJO);
 }
 
-void MenuInicio::changeButton(bool dir)
+void Menu::changeButton(bool dir)
 {
 	if (ARRIBA)
 	{
@@ -73,7 +70,7 @@ void MenuInicio::changeButton(bool dir)
 	dest.y = menuButton[currButton]->getRect().y + menuButton[currButton]->getRect().h / 2 - currSelec->height() / 2;
 }
 
-void MenuInicio::callButton()
+void Menu::callButton()
 {
 	menuButton[currButton]->perform();
 }
