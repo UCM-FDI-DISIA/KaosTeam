@@ -12,24 +12,33 @@ enum flonkOrig
 	P //flonk extra para transiciones
 };
 
+class RoomScene;
+
 // String switch paridgam   
+/*
 struct flonkOrigMap : public std::map<std::string, flonkOrig>
 {
 	flonkOrigMap()
     {
-        this->operator[]("N") = N;
-        this->operator[]("S") = S;
-        this->operator[]("E") = E;
-        this->operator[]("W") = W;
-        this->operator[]("P") = P;
+        this->operator[]("FlonkN") = N;
+        this->operator[]("FlonkS") = S;
+        this->operator[]("FlonkE") = E;
+        this->operator[]("FlonkW") = W;
+        this->operator[]("FlonkP") = P;
     };
     ~flonkOrigMap() {}
 };
+*/
 
 class TransitionComponent :public Component
 {
 private:
 	std::string nextMap;
 	flonkOrig nextFlonk;
+
+public:
+	TransitionComponent(std::string nextMap, flonkOrig nextFlonk) : nextMap(nextMap), nextFlonk(nextFlonk) {};
+	void changeMap();
+
 };
 

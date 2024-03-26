@@ -27,6 +27,7 @@ public:
 
 	//importante!! usad este metodo para cambiar de casilla!!
 	void changePos(Vector2D v);
+	void resetPos(Vector2D v);
 	void initComponent() override;
 
 	void setBoundX(int newBoundX) { boundX = newBoundX; }

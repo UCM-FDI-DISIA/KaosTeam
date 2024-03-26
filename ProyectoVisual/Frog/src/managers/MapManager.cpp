@@ -39,8 +39,9 @@ void tile::draw(SDL_Renderer* ren, int num, Vector2D cameraPos) {
 }
 
 MapManager::MapManager(const std::string& path, RoomScene* room)
-    : name(name), rows(0), cols(0), tile_width(10), tile_height(10), room(room){
-        load(path, sdlutils().renderer());
+    : name(name), rows(0), cols(0), tile_width(16), tile_height(16), room(room){
+        std::cout << path << std::endl;
+        loadBg(path, sdlutils().renderer());
         boundLeft = -((cols * tile_width)-(5*tile_width));
         boundTop = -((rows * tile_height) - (3 * tile_height));
         boundRight = cols * tile_width;
@@ -59,7 +60,7 @@ MapManager::~MapManager()
     }
 }
 
-void MapManager::load(const std::string& path, SDL_Renderer* ren) {
+void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
 
     // Load and parse the Tiled map with tmxlite
     Map tiled_map;
@@ -73,10 +74,6 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     cols = map_dimensions.x;
 
     //it starts in the origin
-
-    
-
-
     if (tiled_map.isInfinite())
     {
         std::cout << "Map is infinite.\n";
@@ -216,60 +213,6 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
             std::cout << "Tile vector size: " << tiles.size() << std::endl;
         }
 
-        //TILES DE OBJETOS
-        else if (layer->getType() == Layer::Type::Object) {
-            const auto& objects = layer->getLayerAs<ObjectGroup>().getObjects();
-            std::cout << "Found " << objects.size() << " objects in layer" << std::endl;
-            for (const auto& object : objects)
-            {
-                std::string texPath = "";
-
-                std::cout << "Object " << object.getUID() << ", " << object.getName() << std::endl;
-
-                int x = (int)object.getPosition().x / tiled_map.getTileSize().x;
-                int y = (int)object.getPosition().y / tiled_map.getTileSize().y;
-                Vector2D pos;
-                pos.setX(x);
-                pos.setY(y);
-
-                walkableTiles[x][y]->objInTile = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
-                
-                /*                
-                const auto& properties = object.getProperties();
-                std::cout << "Object has " << properties.size() << " properties" << std::endl;
-                for (const auto& prop : properties)
-                {                    
-                    std::cout << "Found property: " << prop.getName() << std::endl;
-                    std::cout << "Type: " << int(prop.getType()) << std::endl;
-
-                    if (prop.getName() == "TexPath") {
-                        texPath = prop.getStringValue();
-                    }
-
-
-                    if (prop.getName() == "isPlayer") {
-
-                        if (prop.getBoolValue()) {
-                            Vector2D pos;
-                            pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
-                            pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
-                            //room->createPlayer(texPath, pos, cols, rows);
-                            //room->createEntity(object.getName(), texPath, pos, cols, rows);
-                            std::cout << "Player is in tile: " << pos.getX() + (pos.getY() * cols) << std::endl;
-                            room->createPlayer(texPath, pos);
-                        }
-
-                    }                    
-                }
-                */
-
-                if (!object.getTilesetName().empty())
-                {
-                    std::cout << "Object uses template tile set " << object.getTilesetName() << "\n";
-                }
-            }
-        }
-
         //TILES DE GRUPO (SOLO PORSEACA EN UN FUTURO)
         else if (layer->getType() == Layer::Type::Group)
         {
@@ -307,6 +250,92 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     }
 }
 
+void MapManager::loadObj(const std::string& path)
+{
+    // Load and parse the Tiled map with tmxlite
+    Map tiled_map;
+
+    tiled_map.load(path);
+    std::cout << "Loaded Map version: " << tiled_map.getVersion().upper << ", " << tiled_map.getVersion().lower << std::endl;
+
+    // This is the hard part; iterate through each layer in the map,
+    // poke each tile for the information you need, and store it in
+    // our tiles data structure. 
+    //
+    // We start at the bottom most layer, and work our way up with this
+    // outer for-loop.
+    auto& map_layers = tiled_map.getLayers();
+    std::cout << "Map has " << map_layers.size() << " layers" << std::endl;
+    for (auto& layer : map_layers) {
+
+        std::cout << "Found Layer: " << layer->getName() << std::endl;
+        std::cout << "Layer Type: " << LayerStrings[static_cast<std::int32_t>(layer->getType())] << std::endl;
+        std::cout << "Layer Dimensions: " << layer->getSize() << std::endl;
+        std::cout << "Layer Tint: " << layer->getTintColour() << std::endl;
+
+        //TILES DE OBJETOS
+        if (layer->getType() == Layer::Type::Object) {
+            const auto& objects = layer->getLayerAs<ObjectGroup>().getObjects();
+            std::cout << "Found " << objects.size() << " objects in layer" << std::endl;
+            for (const auto& object : objects)
+            {
+                std::string texPath = "";
+
+                std::cout << "Object " << object.getUID() << ", " << object.getName() << std::endl;
+
+                int x = (int)object.getPosition().x / tiled_map.getTileSize().x;
+                int y = (int)object.getPosition().y / tiled_map.getTileSize().y;
+                Vector2D pos;
+                pos.setX(x);
+                pos.setY(y);
+
+                walkableTiles[x][y]->objInTile = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
+
+                /*
+                const auto& properties = object.getProperties();
+                std::cout << "Object has " << properties.size() << " properties" << std::endl;
+                for (const auto& prop : properties)
+                {
+                    std::cout << "Found property: " << prop.getName() << std::endl;
+                    std::cout << "Type: " << int(prop.getType()) << std::endl;
+
+                    if (prop.getName() == "TexPath") {
+                        texPath = prop.getStringValue();
+                    }
+
+
+                    if (prop.getName() == "isPlayer") {
+
+                        if (prop.getBoolValue()) {
+                            Vector2D pos;
+                            pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
+                            pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
+                            //room->createPlayer(texPath, pos, cols, rows);
+                            //room->createEntity(object.getName(), texPath, pos, cols, rows);
+                            std::cout << "Player is in tile: " << pos.getX() + (pos.getY() * cols) << std::endl;
+                            room->createPlayer(texPath, pos);
+                        }
+
+                    }
+                }
+                */
+
+                if (!object.getTilesetName().empty())
+                {
+                    std::cout << "Object uses template tile set " << object.getTilesetName() << "\n";
+                }
+            }
+        }
+        const auto& properties = layer->getProperties();
+        std::cout << properties.size() << " Layer Properties:" << std::endl;
+        for (const auto& prop : properties)
+        {
+            std::cout << "Found property: " << prop.getName() << std::endl;
+            std::cout << "Type: " << int(prop.getType()) << std::endl;
+        }
+    }
+}
+
 void MapManager::draw(SDL_Renderer* ren) {
     //Dibujamos cada tile
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
@@ -328,6 +357,7 @@ int MapManager::getTileSize()
 //por ahora esto no es del todo funcional. usar con precaución
 tile* MapManager::getTile(Vector2D v)
 {
+    std::cout << "getTile  x : " << v.getX() << " y: " << v.getY() << std::endl;
     return walkableTiles[v.getX()][v.getY()];
 }
 

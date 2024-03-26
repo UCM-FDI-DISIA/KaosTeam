@@ -23,7 +23,7 @@ public:
 	RoomScene(int id) : Scene(true), id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 		mapReader = new MapManager("resources/maps/niveles/nivel01/mapaN1_01.tmx", this);
-		//mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
+		mapReader->loadObj("resources/maps/niveles/nivel01/mapaN1_01.tmx");
 
 		//Create player desde el mapa
 		//Camara despues del mapa
@@ -83,21 +83,15 @@ public:
 	void render() override;
 	void update() override;
 	virtual ~RoomScene();
+
 	MapManager* getMapReader() { return mapReader; };
-	Entity* getPlayer() { return player; };
+	void changeMap(std::string nextMap, flonkOrig nextFlonk);
+
+	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps);
 
 	void createPlayer(Vector2D pos, int boundX, int boundY);
+	void movePlayer(Vector2D pos);
+	Entity* createTransition(std::string objName, std::string nextMap);
 
-	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps) {
-
-		Entity* c = new Entity(this);
-		if (objClass == "Enemigo") {
-			//createEnemy(objName, objProps);
-		}
-		else if (objClass == "Player") {
-			if (objName == "FlonkS")
-				createPlayer(pos, 100, 100);
-		}
-		return c;
-	}
+	Entity* getPlayer() { return player; };
 };
