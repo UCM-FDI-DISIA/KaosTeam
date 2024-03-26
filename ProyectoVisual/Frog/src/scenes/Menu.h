@@ -22,7 +22,7 @@ private:
 	Texture* currSelec; //Textura que apunta al boton seleccionado
 	SDL_Rect dest; //resize de la mosca
 	SDL_Rect bgDest; //resize del fondo
-	NewGameState* newGSt;
+	GameState* newGSt;
 	Game* game;
 	InputManager& imngr;
 

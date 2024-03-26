@@ -44,7 +44,7 @@ Menu::Menu(Game* g, GameState* nGS, std::string path, std::string path2, std::st
 	bgDest.h = height;
 }
 
-void MenuInicio::render() {
+void Menu::render() {
 	bg->render(bgDest); 
 	currSelec->render(dest);
 	for (auto it : menuButton)

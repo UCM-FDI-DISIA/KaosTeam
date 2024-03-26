@@ -9,6 +9,11 @@ RunningState::RunningState(Game* game) : hud(new HUDManager()), currScene(new Ro
 
 RunningState::~RunningState()
 {
+	for (auto a : allRooms)
+	{
+		delete a;
+	}
+	allRooms.clear();
 }
 
 void RunningState::leave()
