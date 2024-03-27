@@ -12,7 +12,21 @@ Vector2D MovementComponent::getPosition() {
 
 void MovementComponent::changePos(Vector2D v)
 {
+	ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = nullptr;
 	posCasilla = v;
+	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile;
+	if (objEnDestino != nullptr) {
+		if (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr) {
+			//COLISION CON OBJETO DE TRANSICION PROVISIONAL
+			static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
+		}
+		else {
+			ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = ent;
+		}
+	}
+	else {
+		ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = ent;
+	}
 	cout << posCasilla;
 }
 
