@@ -88,9 +88,10 @@ public:
 
     Vector2D getMapSize();
     //la matriz para gestionar colisiones etc
-    vector<vector<bool>> walkableTiles;
+    vector<vector<tile*>> walkableTiles;
     bool isTileWalkable(Vector2D);
     int getTileSize();
+    tile* getTile(Vector2D);
     int getCols() { return cols; }
     int getRows() { return rows; }
     void move(std::string dir);
