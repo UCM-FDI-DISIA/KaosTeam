@@ -22,7 +22,7 @@
             "scale": 5.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 80,
+                "x": 79.9090909090909,
                 "y": 79.90909090909092
             }
         },
@@ -33,15 +33,15 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 113.5,
-                "y": 6.25
+                "x": 383.5,
+                "y": 37.25
             }
         },
         "niveles/nivel01/mapaN1_05.tmx": {
             "scale": 2,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 120.5,
+                "x": 137.25,
                 "y": 192.25
             }
         },

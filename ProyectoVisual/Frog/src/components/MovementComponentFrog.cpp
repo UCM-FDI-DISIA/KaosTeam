@@ -22,7 +22,7 @@ void MovementComponentFrog::update() {
 		int t = ent->getScene()->getMapReader()->getTileSize();
 			
 		framesMoved++;
-		
+
 		if (actualDirection == LEFT || actualDirection == RIGHT)
 		{
 			offsetInCasilla.setX(offsetInCasilla.getX() + t / framesPerJump * velocity.getX());
@@ -33,15 +33,22 @@ void MovementComponentFrog::update() {
 			offsetInCasilla.setY(offsetInCasilla.getY() + t / framesPerJump * velocity.getY());
 		}
 
-
 		if (offsetInCasilla.getX()*velocity.normalize().getX() >= t / 2 ||
 			offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
 		{
-			changePos(velocity.normalize() + posCasilla);
-			if (actualDirection == LEFT || actualDirection == RIGHT)
-				offsetInCasilla.setX(offsetInCasilla.getX() * -1);
-			else
-				offsetInCasilla.setY(offsetInCasilla.getY() * -1);
+			Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + posCasilla)->objInTile;
+			if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
+				//COLISION CON OBJETO DE TRANSICION
+				static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
+			}
+			else {
+				//Simplemente pasa a la otra casilla
+				changePos(velocity.normalize() + posCasilla);
+				if (actualDirection == LEFT || actualDirection == RIGHT)
+					offsetInCasilla.setX(offsetInCasilla.getX() * -1);
+				else
+					offsetInCasilla.setY(offsetInCasilla.getY() * -1);
+			}
 		}
 
 		if (framesMoved == framesPerJump) //para acabar el movimiento
