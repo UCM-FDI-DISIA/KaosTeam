@@ -166,6 +166,10 @@
     <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\MovementComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFrog.cpp" />
+    <ClCompile Include="src\components\ObjectBreakableJarComponent.cpp" />
+    <ClCompile Include="src\components\ObjectExplodingComponent.cpp" />
+    <ClCompile Include="src\components\ObjectLeverComponent.cpp" />
+    <ClCompile Include="src\components\ObjectMoveableRockComponent.cpp" />
     <ClCompile Include="src\components\RenderComponent.cpp" />
     <ClCompile Include="src\components\RenderComponentFrog.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
@@ -204,6 +208,10 @@
     <ClInclude Include="src\components\MoneyComponent.h" />
     <ClInclude Include="src\components\MovementComponent.h" />
     <ClInclude Include="src\components\MovementComponentFrog.h" />
+    <ClInclude Include="src\components\ObjectBreakableJarComponent.h" />
+    <ClInclude Include="src\components\ObjectExplodingComponent.h" />
+    <ClInclude Include="src\components\ObjectLeverComponent.h" />
+    <ClInclude Include="src\components\ObjectMoveableRockComponent.h" />
     <ClInclude Include="src\components\RenderComponent.h" />
     <ClInclude Include="src\components\RenderComponentFrog.h" />
     <ClInclude Include="src\ecs\Component.h" />

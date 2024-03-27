@@ -36,6 +36,11 @@
     <ClCompile Include="src\components\DefenseComponent.cpp" />
     <ClCompile Include="src\components\AnimationComponent.cpp" />
     <ClCompile Include="src\components\TransitionComponent.cpp" />
+    <ClCompile Include="src\components\FrogInputComponent.cpp" />
+    <ClCompile Include="src\components\ObjectLeverComponent.cpp" />
+    <ClCompile Include="src\components\ObjectMoveableRockComponent.cpp" />
+    <ClCompile Include="src\components\ObjectBreakableJarComponent.cpp" />
+    <ClCompile Include="src\components\ObjectExplodingComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -80,6 +85,11 @@
     <ClInclude Include="src\components\DefenseComponent.h" />
     <ClInclude Include="src\components\AnimationComponent.h" />
     <ClInclude Include="src\components\TransitionComponent.h" />
+    <ClInclude Include="src\components\FrogInputComponent.h" />
+    <ClInclude Include="src\components\ObjectLeverComponent.h" />
+    <ClInclude Include="src\components\ObjectMoveableRockComponent.h" />
+    <ClInclude Include="src\components\ObjectBreakableJarComponent.h" />
+    <ClInclude Include="src\components\ObjectExplodingComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
