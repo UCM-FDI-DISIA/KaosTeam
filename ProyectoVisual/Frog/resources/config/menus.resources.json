@@ -1,4 +1,7 @@
 {
+    "fonts" : [
+        { "id" : "COMICSANS", "file" : "resources/fonts/COMIC.ttf", "size": 18 }
+      ],
     "images" : [   
         { "id" : "fly", "file" : "resources/Sprites/unframedemoska.png"},
         { "id" : "flySheet", "file" : "resources/Sprites/moscaSpritesheet.png"},
@@ -23,6 +26,15 @@
         { "id" : "BotonSalirPausa", "file" : "resources/Buttons/MenuSalirPausa.png"},
         { "id" : "BotonSeguirPausa", "file" : "resources/Buttons/MenuSeguir.png"}
 
+    ],
+    "messages" : [
+    ],
+    
+    "sounds" : [
+    ],
+  
+    "musics" : [
+      
     ]
   
   }
