@@ -2,63 +2,121 @@
 #include "../sdlutils/RandomNumberGenerator.h"
 
 void MovementComponentFish::update() {
-	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime)
-	{
-		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-		//si la casilla actual es donde debe saltar
-		if (casillaActual == casillaSalto) {
+		if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			if (casillaActual == casillaSalto)
+				isJumping = true;
+			
 			switch (actualDirection)
 			{
-			//se mueve media casilla hacia arriba y media casilla hacia abajo en la direccion correspondiente
-			//cuando ha terminado de saltar es cuando termina el movimiento completo (casillaActual++)
-			case RIGHT:
-				if (!isJumping) {
-					isJumping = true;
-					posCasilla = posCasilla + Vector2D(0.5, -1);
-					
+				case RIGHT: {
+					velocity = Vector2D(1, 0);
+					framesPerJump = 4 + velocity.magnitude() * 3;
 				}
-				else if (isJumping) {
-					isJumping = false;
-					posCasilla = posCasilla + Vector2D(0.5, 1);
-					casillaActual++;
+				break;
+				case LEFT:
+				{
+					velocity = Vector2D(-1, 0);
+					framesPerJump = 4 + velocity.magnitude() * 3;
 				}
+				break;
+				default:
+				break;
+			}
+			isMoving = true;
+		}
+		else if (isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate) {
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			int t = 128;
+			//int t = ent->getScene()->getMapReader()->getTileSize();
+			framesMoved++;
+			offsetInCasilla.setX(offsetInCasilla.getX() + t / framesPerJump * velocity.getX());
+			if (isJumping) {
 				
-				break;
-			case LEFT:
-				if (!isJumping) {
-					isJumping = true;
-					posCasilla = posCasilla + Vector2D(-0.5, -1);
-				}
-				else if (isJumping) {
-					isJumping = false;
-					posCasilla = posCasilla + Vector2D(-0.5, 1);
-					casillaActual++;
-				}
-				break;
-			default:
-				break;
+				offsetInCasilla.setY(-t / 2 * sin(3.14 / framesPerJump * framesMoved));
+
 			}
-		}
-		else {
-			//se mueve una casilla en la direccion correspondiente
-			switch (actualDirection)
+
+			if (offsetInCasilla.getX() * velocity.normalize().getX() >= t / 2 ||
+				offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
 			{
-			case RIGHT:
-				posCasilla = posCasilla + Vector2D(1, 0);
-				break;
-			case LEFT:
-				posCasilla = posCasilla + Vector2D(-1, 0);
-				break;
-			default:
-				break;
+				changePos(velocity.normalize() + posCasilla);
+				if (actualDirection == LEFT || actualDirection == RIGHT)
+					offsetInCasilla.setX(offsetInCasilla.getX() * -1);
+				else
+					offsetInCasilla.setY(offsetInCasilla.getY() * -1);
 			}
-			casillaActual++;
+			/*else {
+				offsetInCasilla.setX(offsetInCasilla.getX() + t / framesPerJump * velocity.getX());
+			}*/
+
+			if (framesMoved == framesPerJump) {
+				//posCasilla = destCasilla;
+				offsetInCasilla = { 0,0 };
+				framesMoved = 0;
+				isMoving = false;
+				isJumping = false;
+				casillaActual++;
+				if (casillaActual == limite - 1)  changeDirection();
+			}
 		}
-		
-		//si la casilla en la que se encuentra es la del borde (-1 pq se empieza a contar en 0) 
-		//se cambia de direccion
-		if (casillaActual == limite - 1) changeDirection();
-	}
+		//if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime)
+		//{
+		//	lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+		//	//si la casilla actual es donde debe saltar
+		//	if (casillaActual == casillaSalto) {
+		//		switch (actualDirection)
+		//		{
+		//		//se mueve media casilla hacia arriba y media casilla hacia abajo en la direccion correspondiente
+		//		//cuando ha terminado de saltar es cuando termina el movimiento completo (casillaActual++)
+		//		case RIGHT:
+		//			if (!isJumping) {
+		//				isJumping = true;
+		//				posCasilla = posCasilla + Vector2D(0.5, -1);
+		//				
+		//			}
+		//			else if (isJumping) {
+		//				isJumping = false;
+		//				posCasilla = posCasilla + Vector2D(0.5, 1);
+		//				casillaActual++;
+		//			}
+		//			
+		//			break;
+		//		case LEFT:
+		//			if (!isJumping) {
+		//				isJumping = true;
+		//				posCasilla = posCasilla + Vector2D(-0.5, -1);
+		//			}
+		//			else if (isJumping) {
+		//				isJumping = false;
+		//				posCasilla = posCasilla + Vector2D(-0.5, 1);
+		//				casillaActual++;
+		//			}
+		//			break;
+		//		default:
+		//			break;
+		//		}
+		//	}
+		//	else {
+		//		//se mueve una casilla en la direccion correspondiente
+		//		switch (actualDirection)
+		//		{
+		//		case RIGHT:
+		//			posCasilla = posCasilla + Vector2D(1, 0);
+		//			break;
+		//		case LEFT:
+		//			posCasilla = posCasilla + Vector2D(-1, 0);
+		//			break;
+		//		default:
+		//			break;
+		//		}
+		//		casillaActual++;
+		//	}
+		//	
+		//	//si la casilla en la que se encuentra es la del borde (-1 pq se empieza a contar en 0) 
+		//	//se cambia de direccion
+		//	if (casillaActual == limite - 1) changeDirection();
+		//}
 }
 //metodo para cambiar de direccion y todo lo que conlleva eso
 void MovementComponentFish::changeDirection() {

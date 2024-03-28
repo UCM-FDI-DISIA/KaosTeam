@@ -44,15 +44,12 @@ public:
 		fly->addAnimationComponent(rndr);
 		rndr->playAnimation("FLY");
 
-
-
-
 		MovementComponent* mvm = new MovementComponentFly(Vector2D(0, 3));
 		mvm->setContext(fly);
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);
-		RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
-		rndr->setContext(fly);
-		fly->addRenderComponent(rndr);
+		/*RenderComponent* rndr = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5);
+		rndr->setContext(fly);*/
+		//fly->addRenderComponent(rndr);
 
 		entityList.push_back(fly);
 		
@@ -75,9 +72,15 @@ public:
 		MovementComponentFish* mvmFish = new MovementComponentFish(Vector2D(2, 2), 4); //tiene que ser MovementComponent* = ?
 		mvmFish->setContext(fish);
 		fish->addComponent(MOVEMENT_COMPONENT, mvmFish);
-		RenderComponent* renderFish = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5); //cambiar obv
-		renderFish->setContext(fish);
-		fish->addRenderComponent(renderFish);
+		AnimationComponent* rndr3 = new RenderComponentFly(textFly);
+		rndr3->addAnimation("FLY", a);
+		rndr3->setContext(fish);
+
+		fish->addAnimationComponent(rndr3);
+		rndr3->playAnimation("FLY");
+		//RenderComponent* renderFish = new RenderComponent("../Frog/resources/sprites/moscaSpritesheet.png", 1, 3, 0.5); //cambiar obv
+		//renderFish->setContext(fish);
+		//fish->addRenderComponent(renderFish);
 		//1 de vida, daño media mosca
 		entityList.push_back(fish);
 
