@@ -4,7 +4,7 @@
 
 void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string animation)
 {
-	if (!jumping && checkIfTileWalkable(posCasilla + v))
+	if (!jumping/* && checkIfTileWalkable(posCasilla + v)*/)  //COLISIONES COMENTADAS PARA PROBAR LA TRANSICIÓON ENTRE ESCENAS
 	{
 		actualDirection = d;
 		velocity = v;

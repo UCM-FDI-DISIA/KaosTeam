@@ -17,7 +17,7 @@ void RoomScene::update() {
 	cameraManager->update();
 }
 
-void RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
+Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 {
 	player = new Entity(this);
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
@@ -84,6 +84,8 @@ void RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	player->addComponent(INPUT_COMPONENT, input);
 
 	AddEntity(player);
+
+	return player;
 }
 
 Entity* RoomScene::createTransition(std::string objName, std::string nextMap) {
@@ -150,14 +152,14 @@ Entity* RoomScene::createObjInteract(std::string objName, std::vector<tmx::Prope
 
 Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps)
 {
-	Entity* c = new Entity(this);
+	Entity* c = nullptr;
 	if (objClass == "Enemigo") {
 		c = createEnemy(objName, objProps);
 	}
 	else if (objClass == "Player") {
 		//SOLO CREARÁ (aka cambiará d sitio) EL FLONK QUE CORRESPONDE
 		if (player == nullptr) {
-			createPlayer(pos, 100, 100);
+			c = createPlayer(pos, 100, 100);
 		}
 		else { //FLONK YA EXISTE estamos cambiando de mapa
 			bool placeHere = false;
@@ -182,9 +184,10 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 				break;
 			}
 			if (placeHere) {
+				cout << "El flonk q va a aparecer en pantalla es: " << objName << endl;
 				movePlayer(pos);
+				c = player;
 			}
-			c = player;
 		}
 	}
 
@@ -199,7 +202,6 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 
 void RoomScene::movePlayer(Vector2D pos)
 {
-	cout << "PLAYER MOVED";
 	static_cast<MovementComponent*>(player->getComponent(MOVEMENT_COMPONENT))->resetPos(pos);
 }
 
@@ -217,6 +219,13 @@ RoomScene::~RoomScene() {
 void RoomScene::changeMap(std::string nextMap, flonkOrig nextFlonk)
 {
 	playerOrig = nextFlonk;
+
+	//borramos entidades(objetos del mapa actual)
+	auto it = entityList.begin();
+	++it; //la primera es flonk, no le borramos
+	while (it != entityList.end()) {
+		it = entityList.erase(it);
+	}
 
 	mapReader = new MapManager(nextMap, this);
 	mapReader->loadObj(nextMap);

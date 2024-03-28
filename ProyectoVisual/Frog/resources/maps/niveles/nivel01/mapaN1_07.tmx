@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="11">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="15">
  <tileset firstgid="1" source="../../tileset/H01_tileset.tsx"/>
  <tileset firstgid="43" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="16" height="16">
@@ -43,12 +43,6 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Flonk" x="119" y="253">
-   <point/>
-  </object>
-  <object id="2" name="Flonk" x="7.5" y="124">
-   <point/>
-  </object>
   <object id="3" name="Enemigo" x="42" y="73.5">
    <point/>
   </object>
@@ -70,7 +64,13 @@
   <object id="9" name="Piedra" x="40.5" y="216.5">
    <point/>
   </object>
-  <object id="10" name="FlonkP" x="40" y="233">
+  <object id="10" name="FlonkP" type="Player" x="40" y="233">
+   <point/>
+  </object>
+  <object id="11" name="FlonkS" type="Player" x="121.334" y="235.667">
+   <point/>
+  </object>
+  <object id="12" name="FlonkW" type="Player" x="24.667" y="121.667">
    <point/>
   </object>
  </objectgroup>

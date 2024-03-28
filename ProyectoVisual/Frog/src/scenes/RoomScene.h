@@ -92,7 +92,7 @@ public:
 
 	Entity* createEnemy(std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createObjInteract(std::string objName, std::vector<tmx::Property> objProps);
-	void createPlayer(Vector2D pos, int boundX, int boundY);
+	Entity* createPlayer(Vector2D pos, int boundX, int boundY);
 	Entity* createTransition(std::string objName, std::string nextMap);
 
 	Entity* getPlayer() { return player; };
