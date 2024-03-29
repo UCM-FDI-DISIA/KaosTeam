@@ -27,11 +27,10 @@ public:
 		mapReader->loadObj("resources/maps/niveles/nivel01/mapaN1_01.tmx");
 
 		//Create player desde el mapa
-		//Camara despues del mapa
-		//camara
 		cameraManager = Camera::instance();
 		cameraManager->setTarget(player);
 
+#pragma region Cosas q vamos a borrar pronto
 		Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
 
 		Entity* fly = new Entity(this);
@@ -56,7 +55,7 @@ public:
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);
 
 		entityList.push_back(fly);
-		
+
 
 		Entity* flyToPlayer = new Entity(this);
 
@@ -77,6 +76,11 @@ public:
 		animFly2->playAnimation("FLY");
 
 		entityList.push_back(flyToPlayer);
+
+#pragma endregion
+
+
+
 		
 	};
 
@@ -93,6 +97,7 @@ public:
 	void createPlayer(Vector2D pos, int boundX, int boundY);
 	void movePlayer(Vector2D pos);
 	Entity* createTransition(std::string objName, std::string nextMap);
+	Entity* createCrazyFrog(int posX, int posY);
 
 	Entity* getPlayer() { return player; };
 };

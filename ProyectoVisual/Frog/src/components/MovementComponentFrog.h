@@ -3,6 +3,7 @@
 #include "../managers/DataManager.h"
 #include "AnimationComponent.h"
 #include <iostream>
+using namespace std;
 enum Directions
 {
 	UP,
@@ -31,4 +32,5 @@ public:
 	void update() override;
 	bool getMoveCompleted() { return !jumping; }
 	void startMovement(Directions d, Vector2D v, std::string animation);
+	void changeDirection(Directions d, string animation);
 };

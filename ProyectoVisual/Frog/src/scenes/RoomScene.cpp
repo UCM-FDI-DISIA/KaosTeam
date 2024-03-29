@@ -1,4 +1,5 @@
 #include "RoomScene.h"
+#include "../components/CrazyFrogIAComponent.h"
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
@@ -26,52 +27,28 @@ void RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	AnimationComponent* animFrog = new AnimationComponent();
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
-	//AnimationComponent* rndr = new RenderComponentFrog(txtFrog, txtTongue);
 	renderFrog->setContext(player);
 
-	Animation a; //Animaciones de la rana
-	a = Animation({ Vector2D(0,0) }, false, false);
-	animFrog->addAnimation("IDLE_DOWN", a);
-	a = Animation({ Vector2D(1,0) }, false, false);
-	animFrog->addAnimation("IDLE_UP", a);
-	a = Animation({ Vector2D(2,0) }, false, false);
-	animFrog->addAnimation("IDLE_RIGHT", a);
-	a = Animation({ Vector2D(2,0) }, true, false);
-	animFrog->addAnimation("IDLE_LEFT", a);
+	animFrog->addAnimation("IDLE_DOWN", Animation({ Vector2D(0,0) }, false, false));
+	animFrog->addAnimation("IDLE_UP", Animation({ Vector2D(1,0) }, false, false));
+	animFrog->addAnimation("IDLE_RIGHT",Animation({ Vector2D(2,0) }, false, false));
+	animFrog->addAnimation("IDLE_LEFT", Animation({ Vector2D(2,0) }, true, false));
 
-	a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false);
-	animFrog->addAnimation("DOWN", a);
-	a = Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false);
-	animFrog->addAnimation("UP", a);
-	a = Animation({ Vector2D(2,0), Vector2D(2,1) }, false, false);
-	animFrog->addAnimation("RIGHT", a);
-	a = Animation({ Vector2D(2,0), Vector2D(2,1) }, true, false);
-	animFrog->addAnimation("LEFT", a);
+	animFrog->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false));
+	animFrog->addAnimation("UP", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false));
+	animFrog->addAnimation("RIGHT", Animation({ Vector2D(2,0), Vector2D(2,1) }, false, false));
+	animFrog->addAnimation("LEFT", Animation({ Vector2D(2,0), Vector2D(2,1) }, true, false));
 
-	a = Animation({ Vector2D(2,2) }, false, false);
-	animFrog->addAnimation("ATTACK_RIGHT", a);
-	a = Animation({ Vector2D(2,2) }, true, false);
-	animFrog->addAnimation("ATTACK_LEFT", a);
-	a = Animation({ Vector2D(1,2) }, false, false);
-	animFrog->addAnimation("ATTACK_UP", a);
-	a = Animation({ Vector2D(0,2) }, false, false);
-	animFrog->addAnimation("ATTACK_DOWN", a);
-	//player->addAnimationComponent(animFrog);
+	animFrog->addAnimation("ATTACK_RIGHT", Animation({ Vector2D(2,2) }, false, false));
+	animFrog->addAnimation("ATTACK_LEFT", Animation({ Vector2D(2,2) }, true, false));
+	animFrog->addAnimation("ATTACK_UP", Animation({ Vector2D(1,2) }, false, false));
+	animFrog->addAnimation("ATTACK_DOWN", Animation({ Vector2D(0,2) }, false, false));
 
-	//AnimationComponent* anim = new AnimationComponent(txtFrog, 4, 4);
-	//player->addComponent(ANIMATION_COMPONENT, anim);
-	//anim->setContext(player);
 	player->addRenderComponentFrog(renderFrog);
 	player->addComponent(ANIMATION_COMPONENT, animFrog);
 
-	MovementComponentFrog* mvm = new MovementComponentFrog(Vector2D(2, 2), animFrog);
+	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
 	mvm->setContext(player);
-
-	mvm->initComponent();
-
-	mvm->setBoundX(boundX);
-	mvm->setBoundY(boundY);
-
 	player->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AttackComponentFrog* atck = new AttackComponentFrog();
@@ -113,11 +90,56 @@ Entity* RoomScene::createTransition(std::string objName, std::string nextMap) {
 	c->addComponent(TRANSITION_COMPONENT, trans);
 	trans->setContext(c);
 
-	entityList.push_back(c);
+	//entityList.push_back(c); add entity ya hace esto
 
 	AddEntity(c);
 
 	return c;
+}
+
+Entity* RoomScene::createCrazyFrog(int posX, int posY)
+{
+	Entity* frog = new Entity(this);
+	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaLocaSpritesheet.png", 4, 4);
+	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
+
+	AnimationComponent* animFrog = new AnimationComponent();
+	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
+
+	renderFrog->setContext(frog);
+
+	animFrog->addAnimation("IDLE_DOWN", Animation({ Vector2D(0,0) }, false, false));
+	animFrog->addAnimation("IDLE_UP", Animation({ Vector2D(1,0) }, false, false));
+	animFrog->addAnimation("IDLE_RIGHT", Animation({ Vector2D(2,0) }, false, false));
+	animFrog->addAnimation("IDLE_LEFT", Animation({ Vector2D(2,0) }, true, false));
+
+	animFrog->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false));
+	animFrog->addAnimation("UP", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false));
+	animFrog->addAnimation("RIGHT", Animation({ Vector2D(2,0), Vector2D(2,1) }, false, false));
+	animFrog->addAnimation("LEFT", Animation({ Vector2D(2,0), Vector2D(2,1) }, true, false));
+
+	animFrog->addAnimation("ATTACK_RIGHT", Animation({ Vector2D(2,2) }, false, false));
+	animFrog->addAnimation("ATTACK_LEFT", Animation({ Vector2D(2,2) }, true, false));
+	animFrog->addAnimation("ATTACK_UP", Animation({ Vector2D(1,2) }, false, false));
+	animFrog->addAnimation("ATTACK_DOWN", Animation({ Vector2D(0,2) }, false, false));
+
+	frog->addRenderComponentFrog(renderFrog);
+	frog->addComponent(ANIMATION_COMPONENT, animFrog);
+
+	MovementComponentFrog* mvm = new MovementComponentFrog(Vector2D(posX, posY), animFrog);
+	mvm->setContext(frog);
+	frog->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AttackComponentFrog* atck = new AttackComponentFrog();
+	frog->addComponent(ATTACK_COMPONENT, atck);
+	atck->setContext(frog);
+
+	CrazyFrogIAComponent* IA = new CrazyFrogIAComponent(mvm, atck);
+	frog->addComponent(IACOMPONENT, IA);
+	IA->setContext(frog);
+
+	AddEntity(frog);
+	return frog;
 }
 
 void RoomScene::movePlayer(Vector2D pos)
