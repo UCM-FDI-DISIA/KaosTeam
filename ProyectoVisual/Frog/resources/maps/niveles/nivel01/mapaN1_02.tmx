@@ -48,7 +48,7 @@
   <object id="4" name="FlonkN" type="Player" x="119.363" y="28.8553">
    <point/>
   </object>
-  <object id="3" name="Enemigo01" x="103.811" y="59.8624">
+  <object id="3" name="Crazy frog" type="Enemigo" x="103.811" y="59.8624">
    <point/>
   </object>
   <object id="5" name="TransitionN" type="Transition" x="119.788" y="11.9091">

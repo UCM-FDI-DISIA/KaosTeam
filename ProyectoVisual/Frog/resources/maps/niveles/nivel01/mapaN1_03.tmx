@@ -43,13 +43,13 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Enemigo" type="Enemigo" x="56.5" y="104">
+  <object id="1" name="Crazy frog" type="Enemigo" x="56.5" y="104">
    <point/>
   </object>
-  <object id="2" name="Enemigo" type="Enemigo" x="57" y="201">
+  <object id="2" name="Crazy frog" type="Enemigo" x="57" y="201">
    <point/>
   </object>
-  <object id="3" name="Enemigo" type="Enemigo" x="169" y="122">
+  <object id="3" name="Crazy frog" type="Enemigo" x="169" y="122">
    <point/>
   </object>
   <object id="4" name="Pez" type="Enemigo" x="250" y="52">
