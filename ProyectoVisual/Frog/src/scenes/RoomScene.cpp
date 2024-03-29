@@ -99,7 +99,7 @@ Entity* RoomScene::createTransition(std::string objName, std::string nextMap) {
 	return c;
 }
 
-Entity* RoomScene::createCrazyFrog(int posX, int posY)
+Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
 	Entity* frog = new Entity(this);
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaLocaSpritesheet.png", 4, 4);
@@ -128,7 +128,7 @@ Entity* RoomScene::createCrazyFrog(int posX, int posY)
 	frog->addRenderComponentFrog(renderFrog);
 	frog->addComponent(ANIMATION_COMPONENT, animFrog);
 
-	MovementComponentFrog* mvm = new MovementComponentFrog(Vector2D(posX, posY), animFrog);
+	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
 	mvm->setContext(frog);
 	frog->addComponent(MOVEMENT_COMPONENT, mvm);
 
@@ -144,13 +144,12 @@ Entity* RoomScene::createCrazyFrog(int posX, int posY)
 	return frog;
 }
 
-Entity* RoomScene::createEnemy(std::string objName, std::vector<tmx::Property> objProps)
+Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
-
-	
+		
 	if (objName == "Crazy frog"){
-		c = createCrazyFrog(objProps[0].getIntValue(), objProps[1].getIntValue());
+		c = createCrazyFrog(pos);
 	}
 	/*
 	else if ()......
@@ -159,7 +158,7 @@ Entity* RoomScene::createEnemy(std::string objName, std::vector<tmx::Property> o
 	return c;
 }
 
-Entity* RoomScene::createObjInteract(std::string objName, std::vector<tmx::Property> objProps)
+Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
 
@@ -177,7 +176,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 {
 	Entity* c = nullptr;
 	if (objClass == "Enemigo") {
-		c = createEnemy(objName, objProps);
+		c = createEnemy(pos, objName, objProps);
 	}
 	else if (objClass == "Player") {
 		//SOLO CREAR� (aka cambiar� d sitio) EL FLONK QUE CORRESPONDE
@@ -215,7 +214,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	}
 
 	else if (objClass == "ObjInteract") {
-		c = createObjInteract(objName, objProps);
+		c = createObjInteract(pos, objName, objProps);
 	}
 	else if (objClass == "Transition") {		
 		c = createTransition(objName, objProps[0].getStringValue());

@@ -94,11 +94,11 @@ public:
 
 	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps);
 
-	Entity* createEnemy(std::string objName, std::vector<tmx::Property> objProps);
-	Entity* createObjInteract(std::string objName, std::vector<tmx::Property> objProps);
+	Entity* createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
+	Entity* createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createPlayer(Vector2D pos, int boundX, int boundY);
 	Entity* createTransition(std::string objName, std::string nextMap);
-	Entity* createCrazyFrog(int posX, int posY);
+	Entity* createCrazyFrog(Vector2D pos);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);

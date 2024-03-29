@@ -11,6 +11,7 @@ enum Directions
 	RIGHT,
 	DOWN
 };
+
 class MovementComponentFrog : public MovementComponent
 {
 private:

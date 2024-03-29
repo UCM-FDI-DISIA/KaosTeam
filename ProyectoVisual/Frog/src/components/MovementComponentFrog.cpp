@@ -25,7 +25,7 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 
 //CAMBIARÁ CUANDO TENGAMOS LAS COLISIONES!!!!
 void MovementComponentFrog::changePosFrog(Vector2D v)
-{
+{	
 	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + posCasilla)->objInTile;
 	if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
 		//COLISION CON OBJETO DE TRANSICION

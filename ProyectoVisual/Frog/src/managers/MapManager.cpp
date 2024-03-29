@@ -287,7 +287,6 @@ bool MapManager::isTileWalkable(Vector2D pos)
 {
     if (pos.getX() < walkableTiles.size() && pos.getY() < walkableTiles[0].size()
         && pos.getX() >= 0 && pos.getY() >= 0) 
-
         return walkableTiles[pos.getX()][pos.getY()] != nullptr;
     else
         return false;
