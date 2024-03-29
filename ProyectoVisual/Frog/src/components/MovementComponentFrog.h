@@ -33,4 +33,5 @@ public:
 	bool getMoveCompleted() { return !jumping; }
 	void startMovement(Directions d, Vector2D v, std::string animation);
 	void changeDirection(Directions d, string animation);
+	void changePosFrog(Vector2D v);
 };

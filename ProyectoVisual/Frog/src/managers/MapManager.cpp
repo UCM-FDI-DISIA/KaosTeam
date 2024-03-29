@@ -209,8 +209,8 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
                     //la añadimos a el mapa de tiles caminables
                     if (walkable)
                         walkableTiles[x][y] = t;
-                    else //si hay una tile not walkable encima de una walkable no se podrá pasar
-                        ; // walkableTiles[x][y] = nullptr; ¿¿¿¿¿¿SE HARIA ASI??????
+                    else 
+                        walkableTiles[x][y] = nullptr; //por si hay tiles no walkables sobre walkables
                 }
             }
             std::cout << "Tile vector size: " << tiles.size() << std::endl;
@@ -287,6 +287,7 @@ bool MapManager::isTileWalkable(Vector2D pos)
 {
     if (pos.getX() < walkableTiles.size() && pos.getY() < walkableTiles[0].size()
         && pos.getX() >= 0 && pos.getY() >= 0) 
+
         return walkableTiles[pos.getX()][pos.getY()] != nullptr;
     else
         return false;

@@ -4,7 +4,7 @@
 
 void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string animation)
 {
-	if (!jumping/* && checkIfTileWalkable(posCasilla + v)*/)  //COLISIONES COMENTADAS PARA PROBAR LA TRANSICIÓON ENTRE ESCENAS
+	if (!jumping && checkIfTileWalkable(posCasilla + v))  //COLISIONES COMENTADAS PARA PROBAR LA TRANSICIÓON ENTRE ESCENAS
 	{
 		velocity = v;
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
@@ -21,6 +21,20 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 {
 	actualDirection = d;
 	anim->playAnimation("IDLE_" + animation);
+}
+
+//CAMBIARÁ CUANDO TENGAMOS LAS COLISIONES!!!!
+void MovementComponentFrog::changePosFrog(Vector2D v)
+{
+	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + posCasilla)->objInTile;
+	if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
+		//COLISION CON OBJETO DE TRANSICION
+		static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
+	}
+	else {
+		//Simplemente pasa a la otra casilla
+		changePos(velocity.normalize() + posCasilla);
+	}
 }
 
 void MovementComponentFrog::update() {
@@ -44,19 +58,12 @@ void MovementComponentFrog::update() {
 		if (offsetInCasilla.getX()*velocity.normalize().getX() >= t / 2 ||
 			offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
 		{
-			Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + posCasilla)->objInTile;
-			if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
-				//COLISION CON OBJETO DE TRANSICION
-				static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
-			}
-			else {
-				//Simplemente pasa a la otra casilla
-				changePos(velocity.normalize() + posCasilla);
-				if (actualDirection == LEFT || actualDirection == RIGHT)
-					offsetInCasilla.setX(offsetInCasilla.getX() * -1);
-				else
-					offsetInCasilla.setY(offsetInCasilla.getY() * -1);
-			}
+			changePosFrog(velocity.normalize() + posCasilla);
+			if (actualDirection == LEFT || actualDirection == RIGHT)
+				offsetInCasilla.setX(offsetInCasilla.getX() * -1);
+			else
+				offsetInCasilla.setY(offsetInCasilla.getY() * -1);
+
 		}
 
 		if (framesMoved == framesPerJump) //para acabar el movimiento
