@@ -67,7 +67,7 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
     Map tiled_map;
 
     tiled_map.load(path);
-    std::cout << "Loaded Map version: " << tiled_map.getVersion().upper << ", " << tiled_map.getVersion().lower << std::endl;
+    //std::cout << "Loaded Map version: " << tiled_map.getVersion().upper << ", " << tiled_map.getVersion().lower << std::endl;
 
     // We need to know the size of the map (in tiles)
     auto map_dimensions = tiled_map.getTileCount();
@@ -82,9 +82,6 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
     else
     {
         walkableTiles = vector<vector<tile*>>(cols, vector<tile*>(rows)); //reservamos el espacio para la matriz de booleanos de tiles
-  
-
-
         std::cout << "Map Dimensions: " << tiled_map.getBounds() << std::endl;
     }
 
@@ -110,7 +107,7 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
     }
 
     const auto& mapProperties = tiled_map.getProperties();
-    std::cout << "Map has " << mapProperties.size() << " properties" << std::endl;
+    //std::cout << "Map has " << mapProperties.size() << " properties" << std::endl;
     for (const auto& prop : mapProperties)
     {
         std::cout << "Found property: " << prop.getName() << std::endl;
@@ -130,9 +127,9 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
     for (auto& layer : map_layers) {
 
         std::cout << "Found Layer: " << layer->getName() << std::endl;
-        std::cout << "Layer Type: " << LayerStrings[static_cast<std::int32_t>(layer->getType())] << std::endl;
-        std::cout << "Layer Dimensions: " << layer->getSize() << std::endl;
-        std::cout << "Layer Tint: " << layer->getTintColour() << std::endl;
+        //std::cout << "Layer Type: " << LayerStrings[static_cast<std::int32_t>(layer->getType())] << std::endl;
+        //std::cout << "Layer Dimensions: " << layer->getSize() << std::endl;
+        //std::cout << "Layer Tint: " << layer->getTintColour() << std::endl;
 
         //TILES BG PARA RENDER 
         if (layer->getType() == Layer::Type::Tile) {
@@ -212,40 +209,15 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
                     //la añadimos a el mapa de tiles caminables
                     if (walkable)
                         walkableTiles[x][y] = t;
+                    else //si hay una tile not walkable encima de una walkable no se podrá pasar
+                        ; // walkableTiles[x][y] = nullptr; ¿¿¿¿¿¿SE HARIA ASI??????
                 }
             }
             std::cout << "Tile vector size: " << tiles.size() << std::endl;
         }
 
-        //TILES DE GRUPO (SOLO PORSEACA EN UN FUTURO)
-        else if (layer->getType() == Layer::Type::Group)
-        {
-            /*
-            std::cout << "Checking sublayers" << std::endl;
-            const auto& sublayers = layer->getLayerAs<LayerGroup>().getLayers();
-            std::cout << "LayerGroup has " << sublayers.size() << " layers" << std::endl;
-            for (const auto& sublayer : sublayers)
-            {
-                std::cout << "Found Layer: " << sublayer->getName() << std::endl;
-                std::cout << "Sub-layer Type: " << LayerStrings[static_cast<std::int32_t>(sublayer->getType())] << std::endl;
-                std::cout << "Sub-layer Class: " << sublayer->getClass() << std::endl;
-                std::cout << "Sub-layer Dimensions: " << sublayer->getSize() << std::endl;
-                std::cout << "Sub-layer Tint: " << sublayer->getTintColour() << std::endl;
-
-                if (sublayer->getType() == Layer::Type::Object)
-                {
-                    std::cout << sublayer->getName() << " has " << sublayer->getLayerAs<ObjectGroup>().getObjects().size() << " objects" << std::endl;
-                }
-                else if (sublayer->getType() == Layer::Type::Tile)
-                {
-                    std::cout << sublayer->getName() << " has " << sublayer->getLayerAs<TileLayer>().getTiles().size() << " tiles" << std::endl;
-                }
-            }
-            */
-        }
-
         const auto& properties = layer->getProperties();
-        std::cout << properties.size() << " Layer Properties:" << std::endl;
+        //std::cout << properties.size() << " Layer Properties:" << std::endl;
         for (const auto& prop : properties)
         {
             std::cout << "Found property: " << prop.getName() << std::endl;
@@ -258,71 +230,29 @@ void MapManager::loadObj(const std::string& path)
 {
     // Load and parse the Tiled map with tmxlite
     Map tiled_map;
-
     tiled_map.load(path);
-    std::cout << "Loaded Map version: " << tiled_map.getVersion().upper << ", " << tiled_map.getVersion().lower << std::endl;
 
-    // This is the hard part; iterate through each layer in the map,
-    // poke each tile for the information you need, and store it in
-    // our tiles data structure. 
-    //
-    // We start at the bottom most layer, and work our way up with this
-    // outer for-loop.
     auto& map_layers = tiled_map.getLayers();
-    std::cout << "Map has " << map_layers.size() << " layers" << std::endl;
     for (auto& layer : map_layers) {
-
-        std::cout << "Found Layer: " << layer->getName() << std::endl;
-        std::cout << "Layer Type: " << LayerStrings[static_cast<std::int32_t>(layer->getType())] << std::endl;
-        std::cout << "Layer Dimensions: " << layer->getSize() << std::endl;
-        std::cout << "Layer Tint: " << layer->getTintColour() << std::endl;
-
         //TILES DE OBJETOS
         if (layer->getType() == Layer::Type::Object) {
             const auto& objects = layer->getLayerAs<ObjectGroup>().getObjects();
             std::cout << "Found " << objects.size() << " objects in layer" << std::endl;
             for (const auto& object : objects)
             {
-                std::string texPath = "";
-
-                std::cout << "Object " << object.getUID() << ", " << object.getName() << std::endl;
-
                 int x = (int)object.getPosition().x / tiled_map.getTileSize().x;
                 int y = (int)object.getPosition().y / tiled_map.getTileSize().y;
                 Vector2D pos;
                 pos.setX(x);
                 pos.setY(y);
 
-                walkableTiles[x][y]->objInTile = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
+                std::cout << "Object " << object.getName() << ", in posX = " << x << " , posY = " << y << std::endl;
 
-                /*
-                const auto& properties = object.getProperties();
-                std::cout << "Object has " << properties.size() << " properties" << std::endl;
-                for (const auto& prop : properties)
-                {
-                    std::cout << "Found property: " << prop.getName() << std::endl;
-                    std::cout << "Type: " << int(prop.getType()) << std::endl;
-
-                    if (prop.getName() == "TexPath") {
-                        texPath = prop.getStringValue();
-                    }
-
-
-                    if (prop.getName() == "isPlayer") {
-
-                        if (prop.getBoolValue()) {
-                            Vector2D pos;
-                            pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
-                            pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
-                            //room->createPlayer(texPath, pos, cols, rows);
-                            //room->createEntity(object.getName(), texPath, pos, cols, rows);
-                            std::cout << "Player is in tile: " << pos.getX() + (pos.getY() * cols) << std::endl;
-                            room->createPlayer(texPath, pos);
-                        }
-
-                    }
+                Entity* ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
+                if (ent != nullptr) {
+                    walkableTiles[x][y]->objInTile = ent;
+                    std::cout << "Anadida entidad a tile: " << object.getName() << std::endl;
                 }
-                */
 
                 if (!object.getTilesetName().empty())
                 {
@@ -331,7 +261,7 @@ void MapManager::loadObj(const std::string& path)
             }
         }
         const auto& properties = layer->getProperties();
-        std::cout << properties.size() << " Layer Properties:" << std::endl;
+        //std::cout << properties.size() << " Layer Properties:" << std::endl;
         for (const auto& prop : properties)
         {
             std::cout << "Found property: " << prop.getName() << std::endl;
@@ -370,7 +300,6 @@ int MapManager::getTileSize()
 //por ahora esto no es del todo funcional. usar con precaución
 tile* MapManager::getTile(Vector2D v)
 {
-    std::cout << "getTile  x : " << v.getX() << " y: " << v.getY() << std::endl;
     return walkableTiles[v.getX()][v.getY()];
 }
 

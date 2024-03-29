@@ -18,7 +18,7 @@ void RoomScene::update() {
 	cameraManager->update();
 }
 
-void RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
+Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 {
 	player = new Entity(this);
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
@@ -61,6 +61,8 @@ void RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	player->addComponent(INPUT_COMPONENT, input);
 
 	AddEntity(player);
+
+	return player;
 }
 
 Entity* RoomScene::createTransition(std::string objName, std::string nextMap) {
@@ -143,21 +145,44 @@ Entity* RoomScene::createCrazyFrog(int posX, int posY)
 }
 
 void RoomScene::movePlayer(Vector2D pos)
+Entity* RoomScene::createEnemy(std::string objName, std::vector<tmx::Property> objProps)
 {
-	cout << "PLAYER MOVED";
-	static_cast<MovementComponent*>(player->getComponent(MOVEMENT_COMPONENT))->resetPos(pos);
+	Entity* c = nullptr;
+
+	/*
+	if (objName == "Nombre que le quieras poner a tu enemigo"){
+		c = createLoqsea(objProps[0].getStringValue(), objProps[1].getIntValue()); POR EJEMPLO
+	}
+	else if ()......
+	*/
+
+	return c;
+}
+
+Entity* RoomScene::createObjInteract(std::string objName, std::vector<tmx::Property> objProps)
+{
+	Entity* c = nullptr;
+
+	/*
+	if (objName == "Nombre que le quieras poner a tu objeto"){
+		c = createLoqsea(objProps[0].getStringValue(), objProps[1].getIntValue()); POR EJEMPLO
+	}
+	else if ()......
+	*/
+
+	return c;
 }
 
 Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps)
 {
-	Entity* c = new Entity(this);
+	Entity* c = nullptr;
 	if (objClass == "Enemigo") {
-		//createEnemy(objName, objProps);
+		c = createEnemy(objName, objProps);
 	}
 	else if (objClass == "Player") {
-		//SOLO CREARÁ (aka cambiará d sitio) EL FLONK QUE CORRESPONDE
+		//SOLO CREARï¿½ (aka cambiarï¿½ d sitio) EL FLONK QUE CORRESPONDE
 		if (player == nullptr) {
-			createPlayer(pos, 100, 100);
+			c = createPlayer(pos, 100, 100);
 		}
 		else { //FLONK YA EXISTE estamos cambiando de mapa
 			bool placeHere = false;
@@ -182,18 +207,25 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 				break;
 			}
 			if (placeHere) {
+				cout << "El flonk q va a aparecer en pantalla es: " << objName << endl;
 				movePlayer(pos);
+				c = player;
 			}
-			c = player;
 		}
 	}
-	else if (objClass == "ObjInteract") {
 
+	else if (objClass == "ObjInteract") {
+		c = createObjInteract(objName, objProps);
 	}
 	else if (objClass == "Transition") {		
 		c = createTransition(objName, objProps[0].getStringValue());
 	}
 	return c;
+}
+
+void RoomScene::movePlayer(Vector2D pos)
+{
+	static_cast<MovementComponent*>(player->getComponent(MOVEMENT_COMPONENT))->resetPos(pos);
 }
 
 void RoomScene::AddEntity(Entity* entity) {
@@ -210,6 +242,13 @@ RoomScene::~RoomScene() {
 void RoomScene::changeMap(std::string nextMap, flonkOrig nextFlonk)
 {
 	playerOrig = nextFlonk;
+
+	//borramos entidades(objetos del mapa actual)
+	auto it = entityList.begin();
+	++it; //la primera es flonk, no le borramos
+	while (it != entityList.end()) {
+		it = entityList.erase(it);
+	}
 
 	mapReader = new MapManager(nextMap, this);
 	mapReader->loadObj(nextMap);
