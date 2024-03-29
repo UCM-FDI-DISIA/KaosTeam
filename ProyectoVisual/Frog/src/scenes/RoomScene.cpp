@@ -144,15 +144,15 @@ Entity* RoomScene::createCrazyFrog(int posX, int posY)
 	return frog;
 }
 
-void RoomScene::movePlayer(Vector2D pos)
 Entity* RoomScene::createEnemy(std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
 
-	/*
-	if (objName == "Nombre que le quieras poner a tu enemigo"){
-		c = createLoqsea(objProps[0].getStringValue(), objProps[1].getIntValue()); POR EJEMPLO
+	
+	if (objName == "Crazy frog"){
+		c = createCrazyFrog(objProps[0].getIntValue(), objProps[1].getIntValue());
 	}
+	/*
 	else if ()......
 	*/
 
