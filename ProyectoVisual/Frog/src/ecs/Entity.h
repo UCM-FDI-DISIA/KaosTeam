@@ -42,6 +42,7 @@ public:
 	void render();
 	Component* getComponent(componentsEnum) const;
 	RenderComponentFrog* getRenderComponentFrog() const { return renderComponentFrog; };
+	RenderComponent* getRenderComponent() const { return renderComponent; };
 	RoomScene* getScene() const;
 };
 

@@ -2,11 +2,12 @@
 #include <SDL.h>
 #include "MovementComponent.h"
 #include "RenderComponent.h"
+#include "RenderComponentFrog.h"
 
 bool ColliderComponent::CheckCollision(Entity* e) {
 	//Habra que cambiar cosas cuando esté el transform
 	MovementComponent* mc = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
-	Texture* t = static_cast<RenderComponent*>(ent->getComponent(RENDER_COMPONENT))->GetTexture();
+	//Texture* t = ent->getRenderComponentFrog()->getTexture();
 	SDL_Rect miRect = {
 		mc->getPosition().getX(),
 		mc->getPosition().getY(),
@@ -14,7 +15,7 @@ bool ColliderComponent::CheckCollision(Entity* e) {
 		t->height()
 	};
 	mc = static_cast<MovementComponent*>(e->getComponent(MOVEMENT_COMPONENT));
-	t = static_cast<RenderComponent*>(e->getComponent(RENDER_COMPONENT))->GetTexture();
+	t = e->getRenderComponent()->GetTexture();
 	SDL_Rect suRect = {
 		mc->getPosition().getX(),
 		mc->getPosition().getY(),
