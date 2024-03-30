@@ -39,8 +39,9 @@ void tile::draw(SDL_Renderer* ren, int num, Vector2D cameraPos) {
 }
 
 MapManager::MapManager(const std::string& path, RoomScene* room)
-    : name(name), rows(0), cols(0), tile_width(10), tile_height(10), room(room){
-        load(path, sdlutils().renderer());
+    : name(name), rows(0), cols(0), tile_width(16), tile_height(16), room(room){
+        std::cout << path << std::endl;
+        loadBg(path, sdlutils().renderer());
         boundLeft = -((cols * tile_width)-(5*tile_width));
         boundTop = -((rows * tile_height) - (3 * tile_height));
         boundRight = cols * tile_width;
@@ -49,23 +50,24 @@ MapManager::MapManager(const std::string& path, RoomScene* room)
 
 MapManager::~MapManager()
 {
-    for (int i = 0; i < walkableTiles.size(); i++)
-    {
-        for (int j = 0; j < walkableTiles[0].size(); j++)
-        {
-            delete walkableTiles[i][j];
+   for (int i = 0; i < walkableTiles.size(); i++)
+   {
+       for (int j = 0; j < walkableTiles[0].size(); j++)
+       {
+           delete walkableTiles[i][j];
 
-        }
-    }
+       }
+   }
+ 
 }
 
-void MapManager::load(const std::string& path, SDL_Renderer* ren) {
+void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
 
     // Load and parse the Tiled map with tmxlite
     Map tiled_map;
 
     tiled_map.load(path);
-    std::cout << "Loaded Map version: " << tiled_map.getVersion().upper << ", " << tiled_map.getVersion().lower << std::endl;
+    //std::cout << "Loaded Map version: " << tiled_map.getVersion().upper << ", " << tiled_map.getVersion().lower << std::endl;
 
     // We need to know the size of the map (in tiles)
     auto map_dimensions = tiled_map.getTileCount();
@@ -73,17 +75,13 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     cols = map_dimensions.x;
 
     //it starts in the origin
-
-    
-
-
     if (tiled_map.isInfinite())
     {
         std::cout << "Map is infinite.\n";
     }
     else
     {
-        walkableTiles = vector<vector<tile*>>(cols + 1, vector<tile*>(rows + 1)); //reservamos el espacio para la matriz de tiles
+        walkableTiles = vector<vector<tile*>>(cols, vector<tile*>(rows)); //reservamos el espacio para la matriz de booleanos de tiles
         std::cout << "Map Dimensions: " << tiled_map.getBounds() << std::endl;
     }
 
@@ -109,7 +107,7 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     }
 
     const auto& mapProperties = tiled_map.getProperties();
-    std::cout << "Map has " << mapProperties.size() << " properties" << std::endl;
+    //std::cout << "Map has " << mapProperties.size() << " properties" << std::endl;
     for (const auto& prop : mapProperties)
     {
         std::cout << "Found property: " << prop.getName() << std::endl;
@@ -129,9 +127,9 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
     for (auto& layer : map_layers) {
 
         std::cout << "Found Layer: " << layer->getName() << std::endl;
-        std::cout << "Layer Type: " << LayerStrings[static_cast<std::int32_t>(layer->getType())] << std::endl;
-        std::cout << "Layer Dimensions: " << layer->getSize() << std::endl;
-        std::cout << "Layer Tint: " << layer->getTintColour() << std::endl;
+        //std::cout << "Layer Type: " << LayerStrings[static_cast<std::int32_t>(layer->getType())] << std::endl;
+        //std::cout << "Layer Dimensions: " << layer->getSize() << std::endl;
+        //std::cout << "Layer Tint: " << layer->getTintColour() << std::endl;
 
         //TILES BG PARA RENDER 
         if (layer->getType() == Layer::Type::Tile) {
@@ -211,45 +209,49 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                     //la añadimos a el mapa de tiles caminables
                     if (walkable)
                         walkableTiles[x][y] = t;
+                    else 
+                        walkableTiles[x][y] = nullptr; //por si hay tiles no walkables sobre walkables
                 }
             }
             std::cout << "Tile vector size: " << tiles.size() << std::endl;
         }
 
+        const auto& properties = layer->getProperties();
+        //std::cout << properties.size() << " Layer Properties:" << std::endl;
+        for (const auto& prop : properties)
+        {
+            std::cout << "Found property: " << prop.getName() << std::endl;
+            std::cout << "Type: " << int(prop.getType()) << std::endl;
+        }
+    }
+}
+
+void MapManager::loadObj(const std::string& path)
+{
+    // Load and parse the Tiled map with tmxlite
+    Map tiled_map;
+    tiled_map.load(path);
+
+    auto& map_layers = tiled_map.getLayers();
+    for (auto& layer : map_layers) {
         //TILES DE OBJETOS
-        else if (layer->getType() == Layer::Type::Object) {
+        if (layer->getType() == Layer::Type::Object) {
             const auto& objects = layer->getLayerAs<ObjectGroup>().getObjects();
             std::cout << "Found " << objects.size() << " objects in layer" << std::endl;
             for (const auto& object : objects)
             {
-                std::string texPath = "";
+                int x = (int)object.getPosition().x / tiled_map.getTileSize().x;
+                int y = (int)object.getPosition().y / tiled_map.getTileSize().y;
+                Vector2D pos;
+                pos.setX(x);
+                pos.setY(y);
 
-                std::cout << "Object " << object.getUID() << ", " << object.getName() << std::endl;
-                const auto& properties = object.getProperties();
-                std::cout << "Object has " << properties.size() << " properties" << std::endl;
-                for (const auto& prop : properties)
-                {
-                    std::cout << "Found property: " << prop.getName() << std::endl;
-                    std::cout << "Type: " << int(prop.getType()) << std::endl;
+                std::cout << "Object " << object.getName() << ", in posX = " << x << " , posY = " << y << std::endl;
 
-                    if (prop.getName() == "TexPath") {
-                        texPath = prop.getStringValue();
-                    }
-
-
-                    if (prop.getName() == "isPlayer") {
-
-                        if (prop.getBoolValue()) {
-                            Vector2D pos;
-                            pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
-                            pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
-
-                            room->createPlayer(texPath, pos, cols, rows);
-                            /*/std::cout << "Player is in tile: " << pos.getX() + (pos.getY() * cols) << std::endl;
-                            room->createPlayer(texPath, pos);*/
-                        }
-
-                    }
+                Entity* ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
+                if (ent != nullptr) {
+                    walkableTiles[x][y]->objInTile = ent;
+                    std::cout << "Anadida entidad a tile: " << object.getName() << std::endl;
                 }
 
                 if (!object.getTilesetName().empty())
@@ -258,36 +260,8 @@ void MapManager::load(const std::string& path, SDL_Renderer* ren) {
                 }
             }
         }
-
-        //TILES DE GRUPO (SOLO PORSEACA EN UN FUTURO)
-        else if (layer->getType() == Layer::Type::Group)
-        {
-            /*
-            std::cout << "Checking sublayers" << std::endl;
-            const auto& sublayers = layer->getLayerAs<LayerGroup>().getLayers();
-            std::cout << "LayerGroup has " << sublayers.size() << " layers" << std::endl;
-            for (const auto& sublayer : sublayers)
-            {
-                std::cout << "Found Layer: " << sublayer->getName() << std::endl;
-                std::cout << "Sub-layer Type: " << LayerStrings[static_cast<std::int32_t>(sublayer->getType())] << std::endl;
-                std::cout << "Sub-layer Class: " << sublayer->getClass() << std::endl;
-                std::cout << "Sub-layer Dimensions: " << sublayer->getSize() << std::endl;
-                std::cout << "Sub-layer Tint: " << sublayer->getTintColour() << std::endl;
-
-                if (sublayer->getType() == Layer::Type::Object)
-                {
-                    std::cout << sublayer->getName() << " has " << sublayer->getLayerAs<ObjectGroup>().getObjects().size() << " objects" << std::endl;
-                }
-                else if (sublayer->getType() == Layer::Type::Tile)
-                {
-                    std::cout << sublayer->getName() << " has " << sublayer->getLayerAs<TileLayer>().getTiles().size() << " tiles" << std::endl;
-                }
-            }
-            */
-        }
-
         const auto& properties = layer->getProperties();
-        std::cout << properties.size() << " Layer Properties:" << std::endl;
+        //std::cout << properties.size() << " Layer Properties:" << std::endl;
         for (const auto& prop : properties)
         {
             std::cout << "Found property: " << prop.getName() << std::endl;
@@ -309,6 +283,16 @@ Vector2D MapManager::getMapSize()
     return Vector2D(cols, rows);
 }
 
+bool MapManager::isTileWalkable(Vector2D pos)
+{
+    if (pos.getX() < walkableTiles.size() && pos.getY() < walkableTiles[0].size()
+        && pos.getX() >= 0 && pos.getY() >= 0) 
+
+        return walkableTiles[pos.getX()][pos.getY()] != nullptr;
+    else
+        return false;
+}
+
 int MapManager::getTileSize()
 {
     return tile_width*MAP_MULT; //width y height son iguales
@@ -321,87 +305,5 @@ tile* MapManager::getTile(Vector2D v)
 }
 
 void MapManager::move(std::string direction) {
-    int dx = 0, dy = 0;
-    //determinar la velocidad
-    if (direction == "right") {
-        dx = tile_width;
-    }
-    else  if (direction == "left") {
-        dx = -tile_width;
-    }
-    else  if (direction == "up") {
-        dy = -tile_height;
-    }
-    else  if (direction == "down") {
-        dy = tile_height;
-    }
-    int cont = 0;
-    //comprobar que al moverse los tiles, no se superen los bordes del mapa
-    //COMPROBAR LIMITES
-    bool canMove = true;
-    for (auto& tile : tiles) {
-        if (direction == "right") {
-            int nextX = tile.x + dx;
-            cont++;
-            if (nextX >= boundRight) {
-                canMove = false;
-                break;
-            }
-            //para que no haga vueltas de mas
-            else if (cont > cols ) {
-                break;
-            }
-        }
-        else if (direction == "left") {
-            int nextX = tile.x + dx;
-            cont++;
-            if ( nextX <= boundLeft) {
-                canMove = false;
-                break;
-            }
-            //para que no haga vueltas de mas
-            else if (cont > cols ) {
-                break;
-            }
-        }
-        else if (direction == "up") {
-            int nextY = tile.y + dy;
-            cont++;
-            if ( nextY <= boundTop) {
-                canMove = false;
-                break;
-            }
-            //para que no haga vueltas de mas
-            else if (cont > rows ) {
-                break;
-            }
-        }
-        else if (direction == "down") {
-            //aqui se buguea lo del cont wtf
-            int nextY = tile.y + dy;
-            //cont++;
-            if (nextY >= boundBottom) {
-                canMove = false;
-                break;
-            }
-            ////para que no haga vueltas de mas
-            //else if (cont > rows - 1) {
-            //    break;
-            //}
-        }
-    }
-    //si se pueden mover los tiles, se actualiza su posicion
-    if (canMove) {
-        if (direction == "right" || direction == "left") {
-            for (auto& tile : tiles) {
-                tile.x += dx;
-            }
-        }
-        else if (direction == "up" || direction == "down") {
-            for (auto& tile : tiles) {
-                tile.y += dy;
-            }
-        }
-       
-    }
+
 }

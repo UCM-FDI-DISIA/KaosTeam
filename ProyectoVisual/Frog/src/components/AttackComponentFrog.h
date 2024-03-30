@@ -15,5 +15,6 @@ public:
 	AttackComponentFrog() : inputM(InputManager::GetInstance()) {};
 	void update() override;
 	int getDistanceMoved() { return distanceMoved; };
+	void attack();
 };
 

@@ -11,6 +11,9 @@ enum componentsEnum
 	RENDER_COMPONENT,
 	ATTACK_COMPONENT,
 	ANIMATION_COMPONENT,
+	TRANSITION_COMPONENT,
+	INPUT_COMPONENT,
+	IACOMPONENT,
 	TRANSFORM_COMPONENT
 };
 class Component;
@@ -36,10 +39,6 @@ public:
 	virtual ~Entity();
 	void update();
 	void render();
-	/*float getX() { return pos.getX(); }
-	float getY() { return pos.getY(); }*/
-	float getX() { return 0; }
-	float getY() { return 0; }
 	Component* getComponent(componentsEnum) const;
 	RenderComponentFrog* getRenderComponentFrog() const { return renderComponentFrog; };
 	RoomScene* getScene() const;

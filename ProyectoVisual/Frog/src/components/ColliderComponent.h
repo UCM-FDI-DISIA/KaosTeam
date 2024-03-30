@@ -9,5 +9,7 @@ class ColliderComponent : public Component
 public:
 	ColliderComponent() {};
 	~ColliderComponent() {};
+private:
+
 };
 

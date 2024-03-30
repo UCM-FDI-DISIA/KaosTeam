@@ -7,7 +7,9 @@
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
 #include "../components/AnimationComponent.h"
+#include "../components/TransitionComponent.h"
 #include "../managers/CameraManager.h"
+#include "../components/FrogInputComponent.h"
 
 class RoomScene : public Scene
 {
@@ -17,18 +19,18 @@ private:
 	MapManager* mapReader;
 	int id;
 	Entity* player = nullptr;
+	flonkOrig playerOrig = S;
 public:
 	RoomScene(int id) : Scene(true), id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		mapReader = new MapManager("resources/maps/H1map.tmx", this);
-		//mapReader->load("resources/maps/tileMap_Prueba.tmx", sdlutils().renderer());
+		mapReader = new MapManager("resources/maps/niveles/nivel01/mapaN1_01.tmx", this);
+		mapReader->loadObj("resources/maps/niveles/nivel01/mapaN1_01.tmx");
 
 		//Create player desde el mapa
-		//Camara despues del mapa
-		//camara
 		cameraManager = Camera::instance();
 		cameraManager->setTarget(player);
 
+#pragma region Cosas q vamos a borrar pronto
 		Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
 
 		Entity* fly = new Entity(this);
@@ -53,7 +55,7 @@ public:
 		fly->addComponent(MOVEMENT_COMPONENT, mvm);
 
 		entityList.push_back(fly);
-		
+
 
 		Entity* flyToPlayer = new Entity(this);
 
@@ -74,6 +76,11 @@ public:
 		animFly2->playAnimation("FLY");
 
 		entityList.push_back(flyToPlayer);
+
+#pragma endregion
+
+
+
 		
 	};
 
@@ -81,9 +88,18 @@ public:
 	void render() override;
 	void update() override;
 	virtual ~RoomScene();
+
 	MapManager* getMapReader() { return mapReader; };
+	void changeMap(std::string nextMap, flonkOrig nextFlonk);
+
+	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps);
+
+	Entity* createEnemy(std::string objName, std::vector<tmx::Property> objProps);
+	Entity* createObjInteract(std::string objName, std::vector<tmx::Property> objProps);
+	Entity* createPlayer(Vector2D pos, int boundX, int boundY);
+	Entity* createTransition(std::string objName, std::string nextMap);
+	Entity* createCrazyFrog(int posX, int posY);
+
 	Entity* getPlayer() { return player; };
-
-	void createPlayer(std::string texPath, Vector2D pos, int boundX, int boundY);
-
+	void movePlayer(Vector2D pos);
 };

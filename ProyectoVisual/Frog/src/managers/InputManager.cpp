@@ -37,6 +37,22 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_RIGHT:
 			states[BTN_RIGHT] = true;
 			break;
+
+		//ahora para poder usar WASD
+		case SDLK_a:
+			states[BTN_LEFT] = true;
+			break;
+		case SDLK_w:
+			states[BTN_UP] = true;
+			break;
+		case SDLK_s:
+			states[BTN_DOWN] = true;
+			break;
+		case SDLK_d:
+			states[BTN_RIGHT] = true;
+			break;
+
+
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
 			states[BTN_ACTION1] = true;
 			break;

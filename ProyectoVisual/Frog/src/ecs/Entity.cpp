@@ -49,7 +49,8 @@ void Entity::render()
 	if (renderComponent != nullptr) { //Si la entidad No es la rana -> Ejecutamos render general
 		renderComponent->render();
 	}
-	else renderComponentFrog->render(); //Sino, ejecutamos render de la rana (un render mas complejo)
+	else if (renderComponentFrog != nullptr) renderComponentFrog->render(); //Sino, ejecutamos render de la rana (un render mas complejo)
+	else {} //hay entidades que no se renderizan los objetos de transición
 }
 
 Component* Entity::getComponent(componentsEnum Identificator) const

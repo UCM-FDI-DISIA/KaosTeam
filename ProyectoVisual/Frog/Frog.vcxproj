@@ -156,6 +156,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
+    <ClCompile Include="src\components\FrogInputComponent.cpp" />
     <ClCompile Include="src\components\AnimationComponent.cpp" />
     <ClCompile Include="src\components\ColliderComponent.cpp" />
     <ClCompile Include="src\components\DefenseComponent.cpp" />
@@ -192,8 +194,11 @@
     <ClCompile Include="src\utils\Button.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\components\TransformComponent.cpp" />
+    <ClCompile Include="src\components\TransitionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
+    <ClInclude Include="src\components\FrogInputComponent.h" />
     <ClInclude Include="src\components\AnimationComponent.h" />
     <ClInclude Include="src\components\ColliderComponent.h" />
     <ClInclude Include="src\components\DefenseComponent.h" />
@@ -236,7 +241,7 @@
     <ClInclude Include="src\utils\Button.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
-    <ClInclude Include="src\components\TransformComponent.h" />
+    <ClInclude Include="src\components\TransitionComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\maps\tileMap_Prueba.tmx" />

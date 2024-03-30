@@ -15,7 +15,12 @@ void MovementComponent::changePos(Vector2D v)
 	ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = nullptr;
 	posCasilla = v;
 	ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = ent;
-	cout << posCasilla;
+}
+
+void MovementComponent::resetPos(Vector2D v)
+{
+	posCasilla = v;
+	ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = ent;
 }
 
 void MovementComponent::initComponent()
@@ -24,6 +29,6 @@ void MovementComponent::initComponent()
 
 bool MovementComponent::checkIfTileWalkable(Vector2D v)
 {
-	return (ent->getScene()->getMapReader()->getTile(v) != nullptr); //para comprobar q la tile existe
+	return (ent->getScene()->getMapReader()->isTileWalkable(v)); //para comprobar q la tile existe
 }
 

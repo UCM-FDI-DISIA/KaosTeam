@@ -16,10 +16,6 @@ class Camera: public Singleton<Camera> {
 public:
 
 	void setTarget(Entity* target);
-
-	/*inline void setRoom(MapManager* newRoom) {
-		actualRoom = newRoom;
-	}*/
 	void update();
 	Vector2D getCameraMovement() { return cameraPos * tileSize /*+ additionalOffset*/; }
 
