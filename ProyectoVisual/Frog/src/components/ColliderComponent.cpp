@@ -34,3 +34,4 @@ void ColliderComponent::OnCollision() {
 	if(funcion != nullptr)
 		(*funcion)();
 }
+

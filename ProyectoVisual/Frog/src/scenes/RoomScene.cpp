@@ -1,5 +1,6 @@
 #include "RoomScene.h"
 #include "../components/CrazyFrogIAComponent.h"
+#include "../components/ColliderComponent.h"
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
@@ -14,6 +15,14 @@ void RoomScene::update() {
 	for (Entity* e : entityList) {
 		if (e != nullptr)
 		e->update();
+	}
+	//Esto es provisional, en la version final se va a llamar a todas las colisiones de las entidades utilizando transform.
+	ColliderComponent* collRana = static_cast<ColliderComponent*>(player->getComponent(COLLIDER_COMPONENT));
+	for (Entity* e : entityList) {
+		if (e != nullptr) {
+			if (collRana->CheckCollision(e))
+				std::cout << "colision detectada";
+		}
 	}
 	cameraManager->update();
 	//comrpueba las colisiones con la rana
@@ -62,6 +71,11 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	input->setContext(player);
 	player->addComponent(INPUT_COMPONENT, input);
 
+	//Sistema de colisiones
+	ColliderComponent* coll = new ColliderComponent();
+	coll->setContext(player);
+	player->addComponent(COLLIDER_COMPONENT, coll);
+	
 	AddEntity(player);
 
 	return player;
