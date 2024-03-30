@@ -22,5 +22,9 @@ public:
 	};
 	void render();
 	void AttackStart();
+	
+	Texture* getFrogText() {
+		return frogText;
+	}
 };
 

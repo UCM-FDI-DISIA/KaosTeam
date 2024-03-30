@@ -19,7 +19,7 @@ void RoomScene::update() {
 	//Esto es provisional, en la version final se va a llamar a todas las colisiones de las entidades utilizando transform.
 	ColliderComponent* collRana = static_cast<ColliderComponent*>(player->getComponent(COLLIDER_COMPONENT));
 	for (Entity* e : entityList) {
-		if (e != nullptr) {
+		if (e != nullptr ) {
 			if (collRana->CheckCollision(e))
 				std::cout << "colision detectada";
 		}

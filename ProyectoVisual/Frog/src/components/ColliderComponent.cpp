@@ -7,7 +7,7 @@
 bool ColliderComponent::CheckCollision(Entity* e) {
 	//Habra que cambiar cosas cuando esté el transform
 	MovementComponent* mc = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
-	//Texture* t = ent->getRenderComponentFrog()->getTexture();
+	Texture* t = ent->getRenderComponentFrog()->getFrogText();
 	SDL_Rect miRect = {
 		mc->getPosition().getX(),
 		mc->getPosition().getY(),
