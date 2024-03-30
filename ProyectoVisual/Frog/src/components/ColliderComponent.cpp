@@ -4,26 +4,33 @@
 #include "RenderComponent.h"
 #include "RenderComponentFrog.h"
 
+/*
+	Comprueba si tiene colisión con la entidad e.
+	En caso de que le entidad tenga collider, no sea ella misma y se esté tocando devuelve true.
+*/
 bool ColliderComponent::CheckCollision(Entity* e) {
 	//Habra que cambiar cosas cuando esté el transform
-	MovementComponent* mc = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
-	Texture* t = ent->getRenderComponentFrog()->getFrogText();
-	SDL_Rect miRect = {
-		mc->getPosition().getX(),
-		mc->getPosition().getY(),
-		t->width(),
-		t->height()
-	};
-	mc = static_cast<MovementComponent*>(e->getComponent(MOVEMENT_COMPONENT));
-	t = e->getRenderComponent()->GetTexture();
-	SDL_Rect suRect = {
-		mc->getPosition().getX(),
-		mc->getPosition().getY(),
-		t->width(),
-		t->height()
-	};
+	if (e != ent && (static_cast<ColliderComponent*>(e->getComponent(COLLIDER_COMPONENT)) != nullptr)) {
+		MovementComponent* mc = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
+		Texture* t = ent->getRenderComponentFrog()->getFrogText();
+		SDL_Rect miRect = {
+			mc->getPosition().getX(),
+			mc->getPosition().getY(),
+			t->width(),
+			t->height()
+		};
+		mc = static_cast<MovementComponent*>(e->getComponent(MOVEMENT_COMPONENT));
+		t = e->getRenderComponent()->GetTexture();
+		SDL_Rect suRect = {
+			mc->getPosition().getX(),
+			mc->getPosition().getY(),
+			t->width(),
+			t->height()
+		};
 
-	return SDL_HasIntersection(&miRect, &suRect);
+		return SDL_HasIntersection(&miRect, &suRect);
+	}
+	return false;
 }
 
 void ColliderComponent::AddCall(std::function<void()>* func) {

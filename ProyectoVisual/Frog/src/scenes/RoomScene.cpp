@@ -19,7 +19,9 @@ void RoomScene::update() {
 	//Esto es provisional, en la version final se va a llamar a todas las colisiones de las entidades utilizando transform.
 	ColliderComponent* collRana = static_cast<ColliderComponent*>(player->getComponent(COLLIDER_COMPONENT));
 	for (Entity* e : entityList) {
-		if (e != nullptr ) {
+		//Problema: para que CheckColision funcione e tiene que tener ambos un movement component y un render component
+		//Por ahora, simplemente pondré una comprobación adicional de que tenga ColliderComponent
+		if (e != nullptr) {
 			if (collRana->CheckCollision(e))
 				std::cout << "colision detectada";
 		}
