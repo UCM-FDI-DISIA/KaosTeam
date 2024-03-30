@@ -10,6 +10,7 @@
 #include "../components/TransitionComponent.h"
 #include "../managers/CameraManager.h"
 #include "../components/FrogInputComponent.h"
+#include "../components/ColliderComponent.h"
 
 class RoomScene : public Scene
 {
@@ -74,6 +75,11 @@ public:
 		flyToPlayer->addComponent(ANIMATION_COMPONENT, animFly2);
 
 		animFly2->playAnimation("FLY");
+
+		//Collider al flyToPlayer para probar las colisiones
+		ColliderComponent* collider = new ColliderComponent();
+		collider->setContext(flyToPlayer);
+		flyToPlayer->addComponent(COLLIDER_COMPONENT, collider);
 
 		entityList.push_back(flyToPlayer);
 

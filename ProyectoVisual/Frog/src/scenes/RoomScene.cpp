@@ -1,6 +1,5 @@
 #include "RoomScene.h"
 #include "../components/CrazyFrogIAComponent.h"
-#include "../components/ColliderComponent.h"
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
