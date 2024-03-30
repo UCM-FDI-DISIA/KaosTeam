@@ -14,18 +14,20 @@ llamará al metodo callback que corresponda, es un for simplemente y así Diego im
 gente que ha estado haciendo enemigos puede hacer su método onCollision y meterlo en las constructoras y fuera : )
 */
 //Es decir, al refactorizar en el hito 3 van a cambiar muchas cosas
-//En el futuro molaria poder almacenas muchas funciones y llamar a todas
 class ColliderComponent : public Component
 {
 public:
 	ColliderComponent() : funcion(nullptr) {};
-	~ColliderComponent() {};
+	~ColliderComponent() {
+		//No hay que eliminar function porque pertenece al objeto llamado
+	};
 
 	//Comprueba la colisión con la estidad e
 	bool CheckCollision(Entity* e);
 	void OnCollision();
 
-	//Añade la funcion callable
+	//Añade la funcion a llamar cuando hay colision
+	//En el futuro molaria poder almacenas muchas funciones y llamar a todas
 	void AddCall(std::function<void()>* func);
 private:
 	std::function<void()>* funcion;
