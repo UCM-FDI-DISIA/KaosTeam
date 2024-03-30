@@ -16,6 +16,8 @@ void RoomScene::update() {
 		e->update();
 	}
 	cameraManager->update();
+	//comrpueba las colisiones con la rana
+
 }
 
 Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
