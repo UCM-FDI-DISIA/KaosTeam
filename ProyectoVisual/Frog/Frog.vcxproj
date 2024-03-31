@@ -162,6 +162,7 @@
     <ClCompile Include="src\components\DefenseComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
     <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentBlackAnt.cpp" />
     <ClCompile Include="src\components\MovementComponentFish.cpp" />
     <ClCompile Include="src\components\MovementComponentFly.cpp" />
     <ClCompile Include="src\components\LifeComponent.cpp" />

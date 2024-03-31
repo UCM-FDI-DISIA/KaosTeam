@@ -39,6 +39,7 @@
     <ClCompile Include="src\components\FrogInputComponent.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFish.cpp" />
+    <ClCompile Include="src\components\MovementComponentBlackAnt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -86,6 +87,7 @@
     <ClInclude Include="src\components\FrogInputComponent.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
     <ClInclude Include="src\components\MovementComponentFish.h" />
+    <ClInclude Include="src\components\MovementComponentBlackAnt.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
