@@ -168,6 +168,27 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	AddEntity(fish);
 	return fish;	
 }
+Entity* RoomScene::createBlackAnt(Vector2D pos, Vector2D playerPos) {
+	Entity* blackAnt = new Entity(this);
+	//textura cambiar
+	Texture* txtBlackAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+
+	AnimationComponent* animBlackAnt = new AnimationComponent();
+	RenderComponent* renderBlackAnt = new RenderComponent(txtBlackAnt, 1, 3, 0.5, animBlackAnt);
+
+	renderBlackAnt->setContext(blackAnt);
+	//animaciones
+
+	blackAnt->addRenderComponent(renderBlackAnt);
+	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
+
+	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(pos, animBlackAnt, playerPos);
+	mvm->setContext(blackAnt);
+	blackAnt->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AddEntity(blackAnt);
+	return blackAnt;
+}
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
@@ -187,6 +208,14 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 				}
 			}
 		}
+	}
+	else if (objName == "Black ant") {	//CONSEGUIR POSICION PLAYER
+		if (player != nullptr) {
+			Component* mvmPlayer = player->getComponent(MOVEMENT_COMPONENT);
+			//mvmPlayer->
+				c = createBlackAnt(pos, Vector2D(0, 0));
+		}
+		
 	}
 	/*
 	else if ()......

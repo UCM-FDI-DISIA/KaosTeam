@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -202,6 +202,7 @@
     <ClInclude Include="src\components\DefenseComponent.h" />
     <ClInclude Include="src\components\AttackComponentFrog.h" />
     <ClInclude Include="src\components\FollowPlayerComponent.h" />
+    <ClInclude Include="src\components\MovementComponentBlackAnt.h" />
     <ClInclude Include="src\components\MovementComponentFish.h" />
     <ClInclude Include="src\components\MovementComponentFly.h" />
     <ClInclude Include="src\components\LifeComponent.h" />

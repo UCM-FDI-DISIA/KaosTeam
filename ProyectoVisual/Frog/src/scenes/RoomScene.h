@@ -10,7 +10,8 @@
 #include "../components/TransitionComponent.h"
 #include "../managers/CameraManager.h"
 #include "../components/FrogInputComponent.h"
-#include "../components/MovementComponentFish.h"
+#include "../components/MovementComponentFish.h";
+#include "../components/MovementComponentBlackAnt.h";
 
 class RoomScene : public Scene
 {
@@ -77,9 +78,7 @@ public:
 		animFly2->playAnimation("FLY");
 
 		entityList.push_back(flyToPlayer);
-		createFish(Vector2D(0, 3), 4);
 
-		
 
 #pragma endregion
 
@@ -104,7 +103,7 @@ public:
 	Entity* createTransition(std::string objName, std::string nextMap);
 	Entity* createCrazyFrog(Vector2D pos);
 	Entity* createFish(Vector2D pos, int boundX);
-
+	Entity* createBlackAnt(Vector2D pos, Vector2D playerPosition);
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
 };
