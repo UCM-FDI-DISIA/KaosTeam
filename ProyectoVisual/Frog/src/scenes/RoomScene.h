@@ -12,6 +12,7 @@
 #include "../components/FrogInputComponent.h"
 #include "../components/MovementComponentFish.h";
 #include "../components/MovementComponentBlackAnt.h";
+#include "../components/MovementComponentRedAnt.h"
 
 class RoomScene : public Scene
 {
@@ -104,6 +105,7 @@ public:
 	Entity* createCrazyFrog(Vector2D pos);
 	Entity* createFish(Vector2D pos, int boundX);
 	Entity* createBlackAnt(Vector2D pos, Vector2D playerPosition);
+	Entity* createRedAnt(Vector2D pos, Vector2D playerPosition);
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
 };

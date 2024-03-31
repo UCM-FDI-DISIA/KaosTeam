@@ -189,6 +189,27 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, Vector2D playerPos) {
 	AddEntity(blackAnt);
 	return blackAnt;
 }
+Entity* RoomScene::createRedAnt(Vector2D pos, Vector2D playerPos) {
+	Entity* redAnt = new Entity(this);
+	//textura cambiar
+	Texture* txtRedAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+
+	AnimationComponent* animRedAnt = new AnimationComponent();
+	RenderComponent* renderRedAnt = new RenderComponent(txtRedAnt, 1, 3, 0.5, animRedAnt);
+
+	renderRedAnt->setContext(redAnt);
+	//animaciones
+
+	redAnt->addRenderComponent(renderRedAnt);
+	redAnt->addComponent(ANIMATION_COMPONENT, animRedAnt);
+
+	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(pos, animRedAnt, playerPos);
+	mvm->setContext(redAnt);
+	redAnt->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AddEntity(redAnt);
+	return redAnt;
+}
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
@@ -216,6 +237,14 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 				c = createBlackAnt(pos, Vector2D(0, 0));
 		}
 		
+	}
+	else if (objName == "Red ant") {	//CONSEGUIR POSICION PLAYER
+		if (player != nullptr) {
+			Component* mvmPlayer = player->getComponent(MOVEMENT_COMPONENT);
+			//mvmPlayer->
+			c = createRedAnt(pos, Vector2D(0, 0));
+		}
+
 	}
 	/*
 	else if ()......
