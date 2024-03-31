@@ -24,6 +24,7 @@ public:
 	{
 		casillaSalto = rand_.nextInt(0, boundX - 1); //elegir aleatoriamente la casilla en la que va a saltar
 		actualDirection = RIGHT;
+		anim->playAnimation("RIGHT");
 		casillaActual = 0;
 		waitTime = 1000;
 		movementFrameRate = 50;
