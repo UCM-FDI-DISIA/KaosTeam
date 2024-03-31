@@ -175,9 +175,18 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	if (objName == "Crazy frog"){
 		c = createCrazyFrog(pos);
 	}
-	else if (objName == "Fish") {
-		//c = createFish(pos, objProps[0]);
-		c = createFish(pos, 4);
+	else if (objName == "Fish") { 
+		for (const auto& prop : objProps) {
+			if (prop.getName() == "object") //revisar esto
+			{
+				if (prop.getType() == tmx::Property::Type::Int) {
+					int boundX = prop.getIntValue();
+					c = createFish(pos, boundX);
+					//c = createFish(pos, 4);
+					break;
+				}
+			}
+		}
 	}
 	/*
 	else if ()......
