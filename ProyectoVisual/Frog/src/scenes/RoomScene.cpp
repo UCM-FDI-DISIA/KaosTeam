@@ -143,13 +143,41 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	AddEntity(frog);
 	return frog;
 }
+Entity* RoomScene::createFish(Vector2D pos, int boundX) {
+	Entity* fish = new Entity(this);
+	Texture* txtFish = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
 
+	AnimationComponent* animFish = new AnimationComponent();
+	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 0.5, animFish);
+
+	renderFish->setContext(fish);
+
+	animFish->addAnimation("RIGHT", Animation({ Vector2D(0,1), Vector2D(0,2) }, true, false));
+	animFish->addAnimation("LEFT", Animation({ Vector2D(0,1), Vector2D(0,2) }, false, false));
+	animFish->addAnimation("JUMP_RIGHT", Animation({ Vector2D(0,0) }, true, false));
+	animFish->addAnimation("JUMP_LEFT", Animation({ Vector2D(0,0) }, false, false));
+
+	fish->addRenderComponent(renderFish);
+	fish->addComponent(ANIMATION_COMPONENT, animFish);
+
+	//el limite tiene que ser una propiedad
+	MovementComponentFish* mvm = new MovementComponentFish(pos, boundX, animFish);
+	mvm->setContext(fish);
+	fish->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AddEntity(fish);
+	return fish;	
+}
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
 		
 	if (objName == "Crazy frog"){
 		c = createCrazyFrog(pos);
+	}
+	else if (objName == "Fish") {
+		//c = createFish(pos, objProps[0]);
+		c = createFish(pos, 4);
 	}
 	/*
 	else if ()......

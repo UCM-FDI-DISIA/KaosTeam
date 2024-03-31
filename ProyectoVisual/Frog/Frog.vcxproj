@@ -162,6 +162,7 @@
     <ClCompile Include="src\components\DefenseComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
     <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentFish.cpp" />
     <ClCompile Include="src\components\MovementComponentFly.cpp" />
     <ClCompile Include="src\components\LifeComponent.cpp" />
     <ClCompile Include="src\components\MoneyComponent.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="src\components\DefenseComponent.h" />
     <ClInclude Include="src\components\AttackComponentFrog.h" />
     <ClInclude Include="src\components\FollowPlayerComponent.h" />
+    <ClInclude Include="src\components\MovementComponentFish.h" />
     <ClInclude Include="src\components\MovementComponentFly.h" />
     <ClInclude Include="src\components\LifeComponent.h" />
     <ClInclude Include="src\components\MoneyComponent.h" />
