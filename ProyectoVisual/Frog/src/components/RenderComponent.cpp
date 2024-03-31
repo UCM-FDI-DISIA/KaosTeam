@@ -20,5 +20,14 @@ void RenderComponent::render()
     dest.w = size;
     dest.h = size;
 
-	myTexture->renderFrame(dest, myAnimator->getCurrentFil(), myAnimator->getCurrentCol());
+    //segun si necesita flip o no la textura
+    if (myAnimator->getCurrentAnim().flip) {
+        myTexture->renderFrameWithFlip(dest, myAnimator->getCurrentFil(), myAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
+    }
+    else {
+        myTexture->renderFrame(dest, myAnimator->getCurrentFil(), myAnimator->getCurrentCol());
+    }
+	
 }
+
+
