@@ -53,7 +53,7 @@ void Game::gameLoop() {
 		DataManager::GetInstance()->UpdateFrameTime();
 
 		for (auto a : updateStates)
-			a->getScene()->update();
+			a->update();
 
 		render();
 		imngr.PollEvents(); //Actualiza la entrada
