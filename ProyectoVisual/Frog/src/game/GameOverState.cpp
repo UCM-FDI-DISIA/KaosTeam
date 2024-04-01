@@ -16,7 +16,7 @@ GameOverState::~GameOverState()
 
 void GameOverState::leave() //en este caso volveriamos a la pantalla de menu inicio
 {
-	game->changeGameState(game->NEWGAME);
+	game->setNextState(game->NEWGAME);
 }
 
 void GameOverState::update()
@@ -26,5 +26,5 @@ void GameOverState::update()
 
 void GameOverState::enter()
 {
-	game->changeGameState(game->NEWGAME);
+	game->setNextState(game->NEWGAME);
 }

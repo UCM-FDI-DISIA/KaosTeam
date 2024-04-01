@@ -26,5 +26,4 @@ void NewGameState::update()
 void NewGameState::enter()
 {
 	game->setNextState(game->RUNNING);
-	//game->changeGameState(game->RUNNING);
 }

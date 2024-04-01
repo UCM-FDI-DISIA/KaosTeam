@@ -18,20 +18,20 @@ PausedState::~PausedState()
 void PausedState::enter() //Asi no deberia de ser el enter pero por ahora funcionara como el callback para continuar 
 {
 	sdlutils().virtualTimer().resume();
-	game->changeGameState(game->RUNNING);
+	game->setNextState(game->RUNNING);
 }
 
 void PausedState::leave()
 {
 	sdlutils().virtualTimer().resume();
-	game->changeGameState(game->NEWGAME);
+	game->setNextState(game->NEWGAME);
 }
 
 void PausedState::update()
 {
 	if (imngr.getEscape())
 	{
-		game->changeGameState(game->RUNNING);
+		game->setNextState(game->RUNNING);
 	}
 }
 
