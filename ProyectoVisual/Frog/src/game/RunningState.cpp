@@ -26,7 +26,7 @@ void RunningState::update()
 	currScene->update();
 	if (imngr.getEscape())
 	{
-		game->changeGameState(game->PAUSED);
+		game->setNextState(game->PAUSED);
 	}
 	currScene->update();
 }
@@ -45,6 +45,6 @@ void RunningState::changeScene(int id)
 	{
 		allRooms[id] = new RoomScene(id);
 	}*/
- //Tenemos de encontrar una forma de entrar en nuevas habitaciones aquí
+ //Tenemos de encontrar una forma de entrar en nuevas habitaciones aquï¿½
 
 }
