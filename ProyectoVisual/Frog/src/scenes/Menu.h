@@ -13,7 +13,18 @@ class Game;
 
 enum direction{ARRIBA, ABAJO};
 
-const int offsetX = 50;
+//Constantes de los botones
+const int BUTTONSTART_W = WIN_WIDTH * 2 / 5;
+const int BUTTONEND_W = WIN_WIDTH * 2 / 5;
+const int BUTTONSTART_H = WIN_HEIGHT * 2 / 12;
+const int BUTTONEND_H = WIN_HEIGHT * 2 / 12;
+const int BUTTONSTART_X = WIN_WIDTH / 2 - BUTTONSTART_W / 2;
+const int BUTTONEND_X = WIN_WIDTH / 2 - BUTTONSTART_W / 2;
+const int BUTTONSTART_Y = WIN_HEIGHT * 4 / 8;
+const int BUTTONEND_Y = WIN_HEIGHT * 5 / 7;
+
+
+const int offsetX = 50; //Offset de la seleccion
 
 class Menu : public Scene
 {

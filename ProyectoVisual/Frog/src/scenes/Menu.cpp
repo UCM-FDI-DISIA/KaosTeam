@@ -54,10 +54,23 @@ void Menu::initButtons(SDL_Rect & buttonStartDest, SDL_Rect & buttonEndDest, Tex
 	Texture* path2, int menu)
 {
 	//Asignamos posicion a los botones
-	buttonStartDest.w = buttonEndDest.w = width * 2 / 5;
-	buttonStartDest.h = buttonEndDest.h = height * 2 / 12;
-	buttonStartDest.x = buttonEndDest.x = width / 2 - buttonStartDest.w / 2;
-	buttonStartDest.y = height * 4 / 8; buttonEndDest.y = height * 5 / 7;
+	switch (menu)
+	{
+	case INICIO:
+		buttonStartDest.w = buttonEndDest.w = BUTTONSTART_W;
+		buttonStartDest.h = buttonEndDest.h = BUTTONSTART_H;
+		buttonStartDest.x = buttonEndDest.x = BUTTONSTART_X;
+		buttonStartDest.y = BUTTONSTART_Y; buttonEndDest.y = BUTTONEND_Y;
+		break;
+	case PAUSA:
+
+		break;
+	case GAMEOVER:
+
+		break;
+	default:
+		break;
+	}
 
 	//Boton de Start
 	menuButton.push_back(new Button(path1, buttonStartDest));
