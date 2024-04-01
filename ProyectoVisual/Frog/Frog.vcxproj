@@ -228,6 +228,7 @@
     <ClInclude Include="src\managers\InputManager.h" />
     <ClInclude Include="src\scenes\Menu.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
+    <ClInclude Include="src\sdlutils\checkML.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
     <ClInclude Include="src\sdlutils\InputHandler.h" />
     <ClInclude Include="src\sdlutils\macros.h" />
