@@ -2,14 +2,15 @@
 
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/Texture.h"
-#include"../managers/InputManager.h"
+#include "../managers/InputManager.h"
+#include "../game/NewGameState.h"
 #include "../game/GameState.h"
 #include "../game/Game.h"
 
 
 Menu::Menu(Game* g, GameState* nGS, std::string path, std::string path2, std::string bgKey):
 		Scene(), //
-		newGSt(nGS), //
+		//newGSt(nGS), //
 		imngr(im()), //
 		game(g), //
 		bg(new Texture(sdlutils().renderer(), "../Frog/resources/Menus/MainMenu.png", 0, 0)), //
@@ -44,7 +45,7 @@ Menu::Menu(Game* g, GameState* nGS, std::string path, std::string path2, std::st
 	bgDest.h = height;
 }
 
-void MenuInicio::render() {
+void Menu::render() {
 	bg->render(bgDest); 
 	currSelec->render(dest);
 	for (auto it : menuButton)

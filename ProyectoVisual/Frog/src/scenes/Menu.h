@@ -8,6 +8,7 @@
 
 class Texture;
 class InputManager;
+class NewGameState;
 class GameState;
 class Game;
 
