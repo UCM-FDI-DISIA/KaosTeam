@@ -13,16 +13,18 @@
 
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 
-Game::Game(): //
+Game::Game() : //
 	pausedState(nullptr), //
 	newgameState(nullptr), //
-	gameOverState(nullptr) {}
+	gameOverState(nullptr),
+	runningState(nullptr) {}
 
 Game::~Game()
 {
 	delete pausedState;
 	delete newgameState;
 	delete gameOverState;
+	delete runningState;
 }
 
 void Game::init() {
@@ -34,10 +36,10 @@ void Game::init() {
 
 	newgameState = new NewGameState(this);
 	runningState = new RunningState(this);
-	//pausedState = new PausedState();
+	pausedState = new PausedState(this);
+    gameOverState = new GameOverState(this);
 	renderStates.push_front(newgameState);
 	updateStates.push_front(newgameState);
-	//paused_state_ = new PausedState(); //No esta terminado, mejor no llamarlo aun
 
 	gameLoop();
 }
@@ -47,14 +49,14 @@ void Game::gameLoop() {
 	auto& imngr = im();
 
 	while (!exit) {
-        DataManager::GetInstance()->UpdateFrameTime();
+		DataManager::GetInstance()->UpdateFrameTime();
 
 		for (auto a : updateStates)
 			a->getScene()->update();
 
 		render();
 		imngr.PollEvents(); //Actualiza la entrada
-		
+
 		/*while (SDL_PollEvent(&event)) {
 			escenaActual->HandleEvents(event);
 		}*/
@@ -74,7 +76,7 @@ void Game::render() {
 	//Esto se realiza en cada escena
 	/*if (currentState->getScene()->getCanRenderHUD())
 		hud->render();*/
-	
+
 	SDL_RenderPresent(sdlutils().renderer());
 }
 
