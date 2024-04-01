@@ -5,13 +5,14 @@
 #include "../managers/HUDManager.h"
 #include"Game.h"
 
-PausedState::PausedState(Game* g) :game(g), imngr(im()), hudmngr(hud()),mPause(new Menu(g, this, 
-	&sdlutils().images().at("BotonSeguirPausa"), &sdlutils().images().at("BotonSalirPausa"), PAUSA))
+PausedState::PausedState(Game* g): game(g), imngr(im()), 
+				menu(new Menu(g, this, &sdlutils().images().at("BotonSeguirPausa"), 
+				&sdlutils().images().at("BotonSalirPausa"), PAUSA)), currScene(*menu)
 {
 }
 PausedState::~PausedState()
 {
-	delete mPause;
+	delete menu;
 }
 ;
 void PausedState::enter() //Asi no deberia de ser el enter pero por ahora funcionara como el callback para continuar 

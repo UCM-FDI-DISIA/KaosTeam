@@ -19,10 +19,9 @@ public:
 	
 
 private:
-	HUDManager& hudmngr; //Puntero que gestiona la pantalla de MenuInicio
-	Scene* mPause;
+	Scene* menu;
 	InputManager& imngr;
 	Game*  game;
-	//pauseMenuScene
+	Scene& currScene; //puede haber escenas d menu d opciones,etc.
 };
 

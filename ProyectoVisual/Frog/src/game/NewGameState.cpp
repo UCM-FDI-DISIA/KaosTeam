@@ -10,6 +10,7 @@ NewGameState::NewGameState(Game* g): game(g), menu(new Menu(g, this, &sdlutils()
 NewGameState::~NewGameState()
 {
 	delete menu;
+	game = nullptr;
 }
 
 void NewGameState::leave()

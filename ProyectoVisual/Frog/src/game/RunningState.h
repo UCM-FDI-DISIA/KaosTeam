@@ -11,7 +11,7 @@ class InputManager;
 class RunningState: public GameState
 {
 public:
-	RunningState(Game* game/*Llamar a la constructora de la fachada del player*/);
+	RunningState(Game* game);
 	virtual ~RunningState();
 	void leave() override;
 	void update() override;
@@ -28,5 +28,3 @@ private:
 	InputManager& imngr;
 	//void se presiona el boton d pausa {llama al game change estate a ause y le pasa la currScene y el hud
 };
-
-
