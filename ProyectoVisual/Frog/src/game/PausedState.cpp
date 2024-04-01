@@ -33,5 +33,6 @@ void PausedState::update()
 	{
 		game->changeGameState(game->RUNNING);
 	}
+	currScene.update();
 }
 
