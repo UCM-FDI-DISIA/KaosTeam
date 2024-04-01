@@ -1,8 +1,30 @@
 #include "HUDManager.h"
+#include"../game/Game.h"
 #include "../sdlutils/SDLUtils.h"
 #include <string>
+
 using namespace std;
 
+HUDManager* HUDManager::instance = nullptr;
+
+HUDManager::HUDManager() : vidasActuales(0), vidasMax(0), wormsActuales(0), rectFly(new SDL_Rect())
+{
+	textFly = new Texture(sdlutils().renderer(), "resources/Sprites/moscaVidaSpritesheet.png", 1, 3);
+	rectFly->y = yInicial;
+	rectFly->w = textFly->width() / textFly->getCol();
+	rectFly->h = textFly->height() / textFly->getRow();
+
+	textWorm = new Texture(sdlutils().renderer(), "resources/Sprites/wormHUD.png", 1, 3);
+	textNumWorms = new Texture(sdlutils().renderer(), to_string(wormsActuales), font, colorFont);
+}
+
+HUDManager::~HUDManager()
+{
+	delete textFly;
+	delete textNumWorms;
+	delete textWorm;
+	delete rectFly;
+}
 
 void HUDManager::ChangeLives(int vidasToAdd)
 {
@@ -10,6 +32,11 @@ void HUDManager::ChangeLives(int vidasToAdd)
 
 	if (vidasActuales > vidasMax)
 		vidasActuales = vidasMax;
+}
+
+void HUDManager::ChangeMaxLife(int maxLifeToAdd)
+{
+	vidasMax += maxLifeToAdd;
 }
 
 void HUDManager::addWorms(const int wormsToAdd)
@@ -20,8 +47,7 @@ void HUDManager::addWorms(const int wormsToAdd)
 	textNumWorms = new Texture(sdlutils().renderer(), to_string(wormsActuales), font, colorFont);
 }
 
-void
-HUDManager::render()
+void HUDManager::render()
 {
 	int i = 0;
 	rectFly->x = xInicialFly;
@@ -49,25 +75,4 @@ HUDManager::render()
 	textWorm->render(xInicialWorm, yInicial-10);
 	//y el numero de worms
 	textNumWorms->render(xInicialWorm + 50, yInicial + 30);
-}
-
-HUDManager::HUDManager(Game* g, int vidasActuales, int VidasMaximas, int worms) : game(g), 
-vidasActuales(vidasActuales), vidasMax(VidasMaximas), wormsActuales(worms), 
-rectFly(new SDL_Rect())
-{
-	textFly = new Texture(sdlutils().renderer(), "resources/Sprites/moscaVidaSpritesheet.png", 1, 3);
-	rectFly->y = yInicial;
-	rectFly->w = textFly->width() / textFly->getCol();
-	rectFly->h = textFly->height() / textFly->getRow();
-
-	textWorm = new Texture(sdlutils().renderer(), "resources/Sprites/wormHUD.png", 1, 3);
-	textNumWorms = new Texture(sdlutils().renderer(), to_string(wormsActuales), font, colorFont);
-}
-
-HUDManager::~HUDManager()
-{
-	delete textFly;
-	delete textNumWorms;
-	delete textWorm;
-	delete rectFly;
 }
