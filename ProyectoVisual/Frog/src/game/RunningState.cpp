@@ -26,6 +26,7 @@ void RunningState::update()
 	currScene->update();
 	if (imngr.getEscape())
 	{
+		
 		game->changeGameState(game->PAUSED);
 	}
 }

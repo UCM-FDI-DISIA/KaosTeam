@@ -13,7 +13,7 @@ public:
 	void enter() override;
 	void leave() override;
 	void update() override;
-
+	Scene* getScene() const override { return mPause; }
 	//	solo va a hacer update del menu d pausa
 	//	scene->update()
 	
