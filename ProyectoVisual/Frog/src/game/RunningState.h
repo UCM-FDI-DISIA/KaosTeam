@@ -3,9 +3,11 @@
 #include "GameState.h"
 #include "../managers/HUDManager.h"
 #include "../ecs/Scene.h"
-#include "Game.h"
 #include <vector>
-const int numRooms = 100;
+//const int numRooms = 100;
+
+class Game;
+class InputManager;
 class RunningState: public GameState
 {
 public:
@@ -19,9 +21,11 @@ public:
 	Scene* getScene() const override { return currScene; };
 	HUDManager* getHUD()const { return hud; }
 private:
+	Game* game;
 	HUDManager* hud; //Puntero que gestiona la pantalla de MenuInicio
 	Scene* currScene; //puede haber escenas d menu d opciones,etc.
-	vector<Scene*> allRooms;
+	std::vector<Scene*> allRooms;
+	InputManager& imngr;
 	//void se presiona el boton d pausa {llama al game change estate a ause y le pasa la currScene y el hud
 };
 
