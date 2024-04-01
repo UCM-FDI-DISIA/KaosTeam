@@ -10,7 +10,7 @@
 */
 bool ColliderComponent::CheckCollision(Entity* e) {
 	//Habra que cambiar cosas cuando esté el transform
-	if (e != ent && (static_cast<ColliderComponent*>(e->getComponent(COLLIDER_COMPONENT)) != nullptr)) {
+	if (e != ent) {
 		/*MovementComponent* mc = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
 		Texture* t = ent->getRenderComponentFrog()->getFrogText();
 		SDL_Rect miRect = {

@@ -22,6 +22,9 @@ private:
 	int id;
 	Entity* player = nullptr;
 	flonkOrig playerOrig = S;
+
+	//Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
+	void CheckColisions();
 public:
 	RoomScene(int id) : Scene(true), id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
@@ -93,7 +96,6 @@ public:
 
 		
 	};
-
 	void AddEntity(Entity* entity);
 	void render() override;
 	void update() override;
