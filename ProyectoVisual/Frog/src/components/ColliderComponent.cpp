@@ -11,7 +11,7 @@
 bool ColliderComponent::CheckCollision(Entity* e) {
 	//Habra que cambiar cosas cuando esté el transform
 	if (e != ent && (static_cast<ColliderComponent*>(e->getComponent(COLLIDER_COMPONENT)) != nullptr)) {
-		MovementComponent* mc = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
+		/*MovementComponent* mc = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
 		Texture* t = ent->getRenderComponentFrog()->getFrogText();
 		SDL_Rect miRect = {
 			mc->getPosition().getX(),
@@ -26,7 +26,10 @@ bool ColliderComponent::CheckCollision(Entity* e) {
 			mc->getPosition().getY(),
 			t->width(),
 			t->height()
-		};
+		};*/
+		SDL_Rect suRect = static_cast<RenderComponent*>(e->getRenderComponent())->GetOnDisplayPosition();
+		SDL_Rect miRect = static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->GetOnDisplayPosition();
+
 
 		return SDL_HasIntersection(&miRect, &suRect);
 	}
@@ -42,4 +45,3 @@ void ColliderComponent::OnCollision() {
 	if(funcion != nullptr)
 		(*funcion)();
 }
-

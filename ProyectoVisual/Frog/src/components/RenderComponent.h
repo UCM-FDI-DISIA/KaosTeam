@@ -22,4 +22,8 @@ public:
 	RenderComponent(Texture* t, float sc = 1) : myTexture(t), scale(sc) {}
 	Texture* GetTexture() { return myTexture; };
     void render();
+	//Obtiene la posición en pantalla de la entidad
+	//Esto no está bien aquí, pero es necesario hasta que haya un transform
+	SDL_Rect GetOnDisplayPosition();
+
 };

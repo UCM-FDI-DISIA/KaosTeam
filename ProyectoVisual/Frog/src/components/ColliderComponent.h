@@ -29,6 +29,7 @@ public:
 	//Añade la funcion a llamar cuando hay colision
 	//En el futuro molaria poder almacenas muchas funciones y llamar a todas
 	void AddCall(std::function<void()>* func);
+	
 private:
 	std::function<void()>* funcion;
 };
