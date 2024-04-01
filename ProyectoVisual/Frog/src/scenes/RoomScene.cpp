@@ -232,17 +232,17 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	else if (objName == "Black ant") {	//CONSEGUIR POSICION PLAYER
 		if (player != nullptr) {
-			Component* mvmPlayer = player->getComponent(MOVEMENT_COMPONENT);
+			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			//mvmPlayer->
-				c = createBlackAnt(pos, Vector2D(0, 0));
+				c = createBlackAnt(pos, mvmPlayer->getPosition());
 		}
 		
 	}
 	else if (objName == "Red ant") {	//CONSEGUIR POSICION PLAYER
 		if (player != nullptr) {
-			Component* mvmPlayer = player->getComponent(MOVEMENT_COMPONENT);
+			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			//mvmPlayer->
-			c = createRedAnt(pos, Vector2D(0, 0));
+			c = createRedAnt(pos, mvmPlayer->getPosition());
 		}
 
 	}
