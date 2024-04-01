@@ -6,7 +6,7 @@
 #include"Game.h"
 
 PausedState::PausedState(Game* g) :game(g), imngr(im()), hudmngr(hud()),mPause(new Menu(g, this, 
-	&sdlutils().images().at("BotonSeguirPausa"), &sdlutils().images().at("BotonSalirPausa"), INICIO))
+	&sdlutils().images().at("BotonSeguirPausa"), &sdlutils().images().at("BotonSalirPausa"), PAUSA))
 {
 }
 PausedState::~PausedState()
