@@ -9,6 +9,11 @@ RunningState::RunningState(Game* game) : hud(new HUDManager()), currScene(new Ro
 
 RunningState::~RunningState()
 {
+	//for (auto a : allRooms)
+	//{
+	//	delete a;
+	//}
+	//allRooms.clear();
 }
 
 void RunningState::leave()
@@ -25,7 +30,7 @@ void RunningState::enter()
 }
 
 void RunningState::changeScene(int id)
-{
+{/*
 	if (allRooms[id] == nullptr)
 	{
 		currScene = allRooms[id];
@@ -33,7 +38,7 @@ void RunningState::changeScene(int id)
 	else
 	{
 		allRooms[id] = new RoomScene(id);
-	}
+	}*/
  //Tenemos de encontrar una forma de entrar en nuevas habitaciones aquí
 
 }
