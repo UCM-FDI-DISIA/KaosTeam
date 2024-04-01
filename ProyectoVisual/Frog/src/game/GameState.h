@@ -1,6 +1,8 @@
 #pragma once
 #include "../ecs/Scene.h"
 
+enum WhatMenu { INICIO, PAUSA, GAMEOVER }; //Define el tipo de menu a usar
+
 class GameState {
 public:
 

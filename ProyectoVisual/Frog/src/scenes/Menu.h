@@ -8,7 +8,6 @@
 
 class Texture;
 class InputManager;
-class NewGameState;
 class GameState;
 class Game;
 
@@ -19,11 +18,11 @@ const int offsetX = 50;
 class Menu : public Scene
 {
 private:
-	Texture* bg; //Textura de fondo
-	Texture* currSelec; //Textura que apunta al boton seleccionado
-	SDL_Rect dest; //resize de la mosca
+	Texture* bg; //Textura de fondo del menu
+	Texture& currSelec; //Textura que apunta al boton seleccionado
+	SDL_Rect selecDest; //resize de la mosca
 	SDL_Rect bgDest; //resize del fondo
-	GameState* newGSt;
+	GameState* gameState;
 	Game* game;
 	InputManager& imngr;
 
@@ -33,12 +32,14 @@ private:
 	
 	std::vector <Button*> menuButton;
 public:
-	Menu(Game* g, GameState* nGS, std::string path,std::string path2, std::string bgKey);
-	~Menu() {};
+	Menu(Game* g, GameState* nGS, Texture * path1, Texture * path2, int menu);
+	~Menu();
 
 	void render() override;
 	void update() override;
+	void initButtons(SDL_Rect & buttonStartDest, SDL_Rect & buttonEndDest, Texture* path1, Texture* path2, int menu);
 	void changeButton(bool dir);
+	void menuToRender(int menu);
 	void callButton();
 };
 

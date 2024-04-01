@@ -2,13 +2,14 @@
 #include "Game.h"
 #include "../scenes/Menu.h"
 
-GameOverState::GameOverState(Game* g):game(g),mGameOver(new Menu(game, this, "", "", "")), currScene(*mGameOver)
+GameOverState::GameOverState(Game* g):game(g), menu(new Menu(g, this, &sdlutils().images().at("Reintentar"),
+	&sdlutils().images().at("VolverMenuInicial"), GAMEOVER)), currScene(*menu)
 {
 }
 
 GameOverState::~GameOverState()
 {
-	delete mGameOver;
+	delete menu;
 }
 
 void GameOverState::leave() //en este caso volveriamos a la pantalla de menu inicio

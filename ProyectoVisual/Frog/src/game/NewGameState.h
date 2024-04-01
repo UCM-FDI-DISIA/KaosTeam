@@ -7,7 +7,7 @@ class Menu;
 
 class NewGameState : public GameState {
 public:
-	NewGameState(Game* game);//*Llamar a la constructora de la fachada del player*/);
+	NewGameState(Game* game);
 	virtual ~NewGameState();
 	void leave() override;
 	void update() override;
@@ -17,7 +17,7 @@ public:
 	Scene* getScene() const override { return &currScene; };
 private:
 	Game* game;
-	Menu* mStart; //Puntero que gestiona la pantalla de MenuInicio
+	Menu* menu; //Puntero que gestiona la pantalla de MenuInicio
 	Scene& currScene; //puede haber escenas d menu d opciones,etc.
 };
 

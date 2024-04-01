@@ -17,7 +17,7 @@
         { "id" : "birdSheet", "file" : "resources/Sprites/PajaroSheet.png", "rows" : 1, "cols" : 4},
         { "id" : "grasshopperSheet", "file" : "resources/Sprites/SaltamontesSheet.png", "rows" : 1, "cols" : 2},
 
-        { "id" : "background", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
+        { "id" : "MenuInicio", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
         { "id" : "GameOver", "file" : "resources/Menus/MenuGameOver.png", "rows" : 1, "cols" : 1},
         { "id" : "Pausa", "file" : "resources/Menus/MenuPausa.png", "rows" : 1, "cols" : 1},
 

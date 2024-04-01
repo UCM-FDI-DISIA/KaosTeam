@@ -5,7 +5,8 @@
 #include "../managers/HUDManager.h"
 #include"Game.h"
 
-PausedState::PausedState(Game* game) :game(game), imngr(im()), hudmngr(hud()),mPause(new Menu(game,this,"","",""))
+PausedState::PausedState(Game* g) :game(g), imngr(im()), hudmngr(hud()),mPause(new Menu(g, this, 
+	&sdlutils().images().at("BotonSeguirPausa"), &sdlutils().images().at("BotonSalirPausa"), INICIO))
 {
 }
 PausedState::~PausedState()
