@@ -91,26 +91,26 @@ void Game::changeGameState(State s) //PROVISIONAL, NO FINAL
 	case RUNNING:
 		updateStates.clear();
 		renderStates.clear();
-		updateStates.push_front(runningState);
-		renderStates.push_front(runningState);
+		updateStates.push_back(runningState);
+		renderStates.push_back(runningState);
 		break;
 	case PAUSED:
 		updateStates.clear();
 		sdlutils().virtualTimer().pause();
-		updateStates.push_front(pausedState);
-		renderStates.push_front(pausedState);
+		updateStates.push_back(pausedState);
+		renderStates.push_back(pausedState);
 		break;
 	case NEWGAME:
 		updateStates.clear();
 		renderStates.clear();
-		updateStates.push_front(newgameState);
-		renderStates.push_front(newgameState);
+		updateStates.push_back(newgameState);
+		renderStates.push_back(newgameState);
 		break;
 	case GAMEOVER:
 		updateStates.clear();
 		renderStates.clear();
-		updateStates.push_front(gameOverState);
-		renderStates.push_front(gameOverState);
+		updateStates.push_back(gameOverState);
+		renderStates.push_back(gameOverState);
 		break;
 	default:
 		break;

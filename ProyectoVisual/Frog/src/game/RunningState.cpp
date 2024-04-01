@@ -1,10 +1,11 @@
 #include "RunningState.h"
-
+#include "../managers/InputManager.h"
+#include "Game.h"
 #include "../scenes/RoomScene.h"
 
-RunningState::RunningState(Game* game) : hud(new HUDManager()), currScene(new RoomScene(1))
+RunningState::RunningState(Game* g) :game(g), hud(new HUDManager()), currScene(new RoomScene(1)),imngr(im())
 {
-	allRooms.reserve(numRooms);
+	//allRooms.reserve(numRooms);
 }
 
 RunningState::~RunningState()
@@ -23,6 +24,10 @@ void RunningState::leave()
 void RunningState::update()
 {
 	currScene->update();
+	if (imngr.getEscape())
+	{
+		game->changeGameState(game->PAUSED);
+	}
 }
 
 void RunningState::enter()
