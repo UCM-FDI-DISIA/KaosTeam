@@ -26,7 +26,7 @@ private:
 	//Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
 	void CheckColisions();
 public:
-	RoomScene(int id) : id(id) {
+	RoomScene(int id) : Scene(true), id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 		mapReader = new MapManager("resources/maps/niveles/nivel01/mapaN1_01.tmx", this);
 		mapReader->loadObj("resources/maps/niveles/nivel01/mapaN1_01.tmx");

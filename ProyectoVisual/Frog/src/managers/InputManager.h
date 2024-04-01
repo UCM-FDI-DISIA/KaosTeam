@@ -23,30 +23,27 @@ private:
         BTN_SPACE,
         END //Para tener un valor con el que crear y utilizar el array
     };
-
     bool states[];
-    static InputManager* instance;
-
-    //Constructor vacio privado para poder instanciar desde dentro
-    InputManager();
-    //Destructor
+    //Constructor vac�o privado para poder instanciar desde dentro
+    InputManager() { instance = nullptr; states[END] = {}; PollEvents(); };
     ~InputManager() {};
-
+    static InputManager* instance;
     //Actualiza el estado de los eventos
     void UpdateStates(const SDL_Event& event);
     //Establece todos los estados a false
     void ClearStates();
 public:
-    //Gestion para hacer singleton de InputManager
     InputManager(InputManager&) = delete;
     void operator=(const InputManager&) = delete;
+    /*
+    *Devuelve una instancia de InputManager, en caso de no haber una, la crea
+    */
     static InputManager* GetInstance() {
         if (instance == nullptr) {
             instance = new InputManager();
         }
         return instance;
     };
-
     void PollEvents();
     bool getAction1();
     bool getAction2();
@@ -57,9 +54,4 @@ public:
     bool getLeft();
     bool getRight();
     bool getSpace();
-    bool getEscape();
 };
-
-inline InputManager& im() {
-    return *InputManager::GetInstance();
-}
