@@ -4,7 +4,7 @@
 #include "../sdlutils/Texture.h"
 #include "../managers/InputManager.h"
 #include "../game/GameState.h"
-#include "../game/Game.h"
+
 
 Menu::Menu(Game* g, GameState* gs, Texture * path1, Texture * path2, int menu):
 		Scene(), //
@@ -17,17 +17,13 @@ Menu::Menu(Game* g, GameState* gs, Texture * path1, Texture * path2, int menu):
 		currButton(0) //
 {
 	menuToRender(menu); //Define que menu se renderizara
-	SDL_Rect buttonStartDest, buttonEndDest; //Posiciones de botones en pantalla
-	initButtons(buttonStartDest, buttonEndDest, path1, path2, menu);
+	SDL_Rect button1Dest, button2Dest; //Posiciones de botones en pantalla
+	initButtons(button1Dest, button2Dest, path1, path2, menu);
 
 	selecDest.w = currSelec.width();
 	selecDest.h = currSelec.height();
-	selecDest.x = buttonStartDest.x - offsetX - selecDest.w / 2;
-	selecDest.y = buttonStartDest.y + buttonStartDest.h / 2 - currSelec.height() / 2;
-
-	bgDest.x = bgDest.y = 0;
-	bgDest.w = width;
-	bgDest.h = height;
+	selecDest.x = button1Dest.x - offsetX - selecDest.w / 2;
+	selecDest.y = button1Dest.y + button1Dest.h / 2 - currSelec.height() / 2;
 }
 
 Menu::~Menu()
@@ -50,33 +46,54 @@ void Menu::update() {
 	else if (imngr.getDown()) changeButton(ABAJO);
 }
 
-void Menu::initButtons(SDL_Rect & buttonStartDest, SDL_Rect & buttonEndDest, Texture* path1,
+void Menu::initButtons(SDL_Rect & button1Dest, SDL_Rect & button2Dest, Texture* path1,
 	Texture* path2, int menu)
 {
 	//Asignamos posicion a los botones
 	switch (menu)
 	{
 	case INICIO:
-		buttonStartDest.w = buttonEndDest.w = BUTTONSTART_W;
-		buttonStartDest.h = buttonEndDest.h = BUTTONSTART_H;
-		buttonStartDest.x = buttonEndDest.x = BUTTONSTART_X;
-		buttonStartDest.y = BUTTONSTART_Y; buttonEndDest.y = BUTTONEND_Y;
+		//Botones
+		button1Dest.w = button2Dest.w = BUTTONSTART_W;
+		button1Dest.h = button2Dest.h = BUTTONSTART_H;
+		button1Dest.x = button2Dest.x = BUTTONSTART_X;
+		button1Dest.y = BUTTONSTART_Y; button2Dest.y = BUTTONEND_Y;
+		//Fondo
+		bgDest.x = bgDest.y = 0;
+		bgDest.w = width;
+		bgDest.h = height;
 		break;
 	case PAUSA:
-
+		//Botones
+		button1Dest.w = button2Dest.w = BUTTONCONTINUE_W;
+		button1Dest.h = button2Dest.h = BUTTONCONTINUE_H;
+		button1Dest.x = BUTTONCONTINUE_X;  button2Dest.x = BUTTONOUT_X;
+		button1Dest.y = BUTTONCONTINUE_Y; button2Dest.y = BUTTONOUT_Y;
+		//Fondo
+		bgDest.x = bgDest.y = 1 / 10;
+		bgDest.w = width - 3 / 10;
+		bgDest.h = height - 1 / 10;
 		break;
 	case GAMEOVER:
-
+		//Botones
+		/*button1Dest.w = button2Dest.w = BUTTONSTART_W;
+		button1Dest.h = button2Dest.h = BUTTONSTART_H;
+		button1Dest.x = button2Dest.x = BUTTONSTART_X;
+		button1Dest.y = BUTTONSTART_Y; button2Dest.y = BUTTONEND_Y;*/
+		//Fondo
+		/*bgDest.x = bgDest.y = 0;
+		bgDest.w = width;
+		bgDest.h = height;*/
 		break;
 	default:
 		break;
 	}
 
 	//Boton de Start
-	menuButton.push_back(new Button(path1, buttonStartDest));
+	menuButton.push_back(new Button(path1, button1Dest));
 	menuButton[0]->connect([this]() { gameState->enter(); }); 
 	//Boton de exit
-	menuButton.push_back(new Button(path2, buttonEndDest));
+	menuButton.push_back(new Button(path2, button2Dest));
 	menuButton[1]->connect([this]() { gameState->leave(); });
 }
 
@@ -90,6 +107,7 @@ void Menu::changeButton(bool dir)
 	else currButton = (currButton + 1) % menuButton.size();
 	
 	//Modifico la pos de la seleccion actual (mosca)
+	selecDest.x = menuButton[currButton]->getRect().x - offsetX - selecDest.w / 2;
 	selecDest.y = menuButton[currButton]->getRect().y + menuButton[currButton]->getRect().h / 2 
 		- currSelec.height() / 2;
 }
