@@ -17,24 +17,22 @@ enum direction{ARRIBA, ABAJO};
 const int BUTTONSTART_W = WIN_WIDTH * 2 / 5;
 const int BUTTONEND_W = WIN_WIDTH * 2 / 5;
 const int BUTTONSTART_H = WIN_HEIGHT * 2 / 12;
-const int BUTTONEND_H = WIN_HEIGHT * 2 / 12;
-const int BUTTONSTART_X = WIN_WIDTH / 2 - BUTTONSTART_W / 2;
-const int BUTTONEND_X = WIN_WIDTH / 2 - BUTTONSTART_W / 2;
-const int BUTTONSTART_Y = WIN_HEIGHT * 4 / 8;
-const int BUTTONEND_Y = WIN_HEIGHT * 5 / 7;
+const int BUTTONEND_H = WIN_HEIGHT * 2 / 13;
+const int BUTTONSTART_X = WIN_WIDTH / 2 - BUTTONSTART_W * 2 / 5;
+const int BUTTONEND_X = WIN_WIDTH / 2 - BUTTONSTART_W * 2 / 5;
+const int BUTTONSTART_Y = WIN_HEIGHT * 4 / 9;
+const int BUTTONEND_Y = WIN_HEIGHT * 5 / 8;
 //Constantes de los botones (Menu Pausa)
-const int BUTTONCONTINUE_W = WIN_WIDTH * 3 / 5;
-const int BUTTONOUT_W = WIN_WIDTH * 3 / 5;
-const int BUTTONCONTINUE_H = WIN_HEIGHT * 6 / 12;
-const int BUTTONOUT_H = WIN_HEIGHT * 6 / 12;
-const int BUTTONCONTINUE_X = WIN_WIDTH / 2 - BUTTONSTART_W * 3 / 2;
-const int BUTTONOUT_X = WIN_WIDTH / 2;
-const int BUTTONCONTINUE_Y = WIN_HEIGHT * 3 / 8;
-const int BUTTONOUT_Y = WIN_HEIGHT * 5 / 7;
+const int BUTTONCONTINUE_W = WIN_WIDTH * 4 / 8;
+const int BUTTONOUT_W = WIN_WIDTH * 2 / 9;
+const int BUTTONCONTINUE_H = WIN_HEIGHT / 2;
+const int BUTTONOUT_H = WIN_HEIGHT / 3;
+const int BUTTONCONTINUE_X = WIN_WIDTH * 2 / 9;
+const int BUTTONOUT_X = WIN_WIDTH * 3 / 9;
+const int BUTTONCONTINUE_Y = WIN_HEIGHT * 2 / 10;
+const int BUTTONOUT_Y = WIN_HEIGHT * 5 / 9;
 
-
-
-const int offsetX = 50; //Offset de la seleccion
+const int offset = 50; //Offset de la seleccion
 
 class Menu : public Scene
 {

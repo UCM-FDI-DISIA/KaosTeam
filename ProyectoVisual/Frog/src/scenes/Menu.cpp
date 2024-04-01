@@ -22,7 +22,7 @@ Menu::Menu(Game* g, GameState* gs, Texture * path1, Texture * path2, int menu):
 
 	selecDest.w = currSelec.width();
 	selecDest.h = currSelec.height();
-	selecDest.x = button1Dest.x - offsetX - selecDest.w / 2;
+	selecDest.x = button1Dest.x - offset - selecDest.w / 2;
 	selecDest.y = button1Dest.y + button1Dest.h / 2 - currSelec.height() / 2;
 }
 
@@ -66,7 +66,7 @@ void Menu::initButtons(SDL_Rect & button1Dest, SDL_Rect & button2Dest, Texture* 
 	case PAUSA:
 		//Botones
 		button1Dest.w = button2Dest.w = BUTTONCONTINUE_W;
-		button1Dest.h = button2Dest.h = BUTTONCONTINUE_H;
+		button1Dest.h = BUTTONCONTINUE_H; button2Dest.h = BUTTONOUT_H;
 		button1Dest.x = BUTTONCONTINUE_X;  button2Dest.x = BUTTONOUT_X;
 		button1Dest.y = BUTTONCONTINUE_Y; button2Dest.y = BUTTONOUT_Y;
 		//Fondo
@@ -107,7 +107,7 @@ void Menu::changeButton(bool dir)
 	else currButton = (currButton + 1) % menuButton.size();
 	
 	//Modifico la pos de la seleccion actual (mosca)
-	selecDest.x = menuButton[currButton]->getRect().x - offsetX - selecDest.w / 2;
+	selecDest.x = menuButton[currButton]->getRect().x - offset - selecDest.w / 2;
 	selecDest.y = menuButton[currButton]->getRect().y + menuButton[currButton]->getRect().h / 2 
 		- currSelec.height() / 2;
 }
