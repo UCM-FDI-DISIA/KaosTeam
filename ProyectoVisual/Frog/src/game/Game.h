@@ -21,16 +21,6 @@ constexpr uint WIN_CHANCE = 75;
 */
 class Game
 {
-private:
-	list<GameState*> updateStates;
-	list<GameState*> renderStates;
-	GameState* pausedState;
-	GameState* runningState;
-	GameState* newgameState;
-	GameState* gameOverState;
-
-	bool exit;
-
 public:
 	enum State {
 		RUNNING, PAUSED, NEWGAME, GAMEOVER
@@ -41,6 +31,19 @@ public:
 	void gameLoop();
 	void render();
 
+	void setNextState(State nState);
 	void changeGameState(State s);
 	void exitGame();
+
+private:
+	list<GameState*> updateStates;
+	list<GameState*> renderStates;
+	GameState* pausedState;
+	GameState* runningState;
+	GameState* newgameState;
+	GameState* gameOverState;
+
+	bool exit;
+	bool changeState;
+	State nextState;
 };

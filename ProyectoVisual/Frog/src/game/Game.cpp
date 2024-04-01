@@ -30,6 +30,7 @@ Game::~Game()
 void Game::init() {
 	//Lanzar la escena de menu de inicio
 	exit = false;
+	changeState = false;
 	SDLUtils::init(WIN_NAME, WIN_WIDTH, WIN_HEIGHT, "resources/config/resources.json");
 	SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
 	//escenaActual = new RoomScene(1);
@@ -60,6 +61,11 @@ void Game::gameLoop() {
 		/*while (SDL_PollEvent(&event)) {
 			escenaActual->HandleEvents(event);
 		}*/
+
+		if (changeState) {
+			changeGameState(nextState);
+		}
+
 	}
 }
 /**
@@ -85,6 +91,12 @@ void Game::exitGame()
 	exit = true;
 }
 
+
+void Game::setNextState(State nState)
+{
+	nextState = nState;
+	changeState = true;
+}
 
 //Cambiar a metodo para cambiar de estado (newgame, running, pause, gameover)
 void Game::changeGameState(State s) //PROVISIONAL, NO FINAL
