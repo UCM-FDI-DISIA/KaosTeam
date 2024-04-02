@@ -248,6 +248,7 @@ void MapManager::loadObj(const std::string& path)
 
                 std::cout << "Object " << object.getName() << ", in posX = " << x << " , posY = " << y << std::endl;
 
+
                 Entity* ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
                 if (ent != nullptr) {
                     walkableTiles[x][y]->objInTile = ent;
