@@ -10,16 +10,19 @@ FrogInputComponent::FrogInputComponent()
 
 void FrogInputComponent::update()
 {
+	//mover shortJump y LngJump al movemente despues del hito
+	int JumpSize = shortJump;
 	if (input->getShift())
 	{
 		preparingJump = true;
 		cyclesJumpPrepared++;
+		if (cyclesJumpPrepared > cyclesToPrepareJump)
+			JumpSize = LongJump;
 	}
-	int JumpSize;
-	if (cyclesJumpPrepared > cyclesToPrepareJump)
-		JumpSize = LongJump;
+	
 	else
-		JumpSize = shortJump;
+		cyclesJumpPrepared = 0;
+		
 
 	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > actionCoolDown) {
 		if (input->getDown()) {

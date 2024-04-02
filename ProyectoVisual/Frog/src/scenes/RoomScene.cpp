@@ -171,7 +171,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	Texture* txtFish = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
 
 	AnimationComponent* animFish = new AnimationComponent();
-	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 0.5, animFish);
+	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 1, animFish);
 
 	renderFish->setContext(fish);
 

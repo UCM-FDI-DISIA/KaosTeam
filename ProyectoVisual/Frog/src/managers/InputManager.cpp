@@ -23,7 +23,7 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 			states[BTN_RIGHT] = true;
 			break;
 		case SDLK_LSHIFT:
-			states[BTN_SHIFT] = true;
+			btnShift = true;
 			break;
 
 		//ahora para poder usar WASD
@@ -40,7 +40,7 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 			states[BTN_RIGHT] = true;
 			break;
 		case SDLK_RSHIFT:
-			states[BTN_SHIFT] = true;
+			btnShift = true;
 			break;
 
 
@@ -60,6 +60,11 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 			states[BTN_SPACE] = true;
 			break;
 		}
+	}
+	else if (event.type == SDL_KEYUP)
+	{
+		if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
+			btnShift = false;
 	}
 }
 
@@ -84,7 +89,7 @@ bool InputManager::getAction2() {
 	return states[BTN_ACTION2];
 }
 bool InputManager::getShift() {
-	return states[BTN_SHIFT];
+	return btnShift;
 }
 bool InputManager::getAction4() {
 	return states[BTN_ACTION4];

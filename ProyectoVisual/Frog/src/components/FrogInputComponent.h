@@ -14,7 +14,7 @@ private:
 	InputManager* input;
 	int lastTimeMoved, actionCoolDown = 200;
 	int LongJump = 2, shortJump = 1;
-	int cyclesJumpPrepared = 0, cyclesToPrepareJump = 0;
+	int cyclesJumpPrepared = 0, cyclesToPrepareJump = 20;
 	bool preparingJump;
 	MovementComponentFrog* movementComponent;
 	AttackComponentFrog* attackComponent;

@@ -9,11 +9,12 @@
 class InputManager
 {
 private:
+
+    bool btnShift = false; //shift, al ser una tecla especial, cambia todo;
     //Definen los distintos botones que pueden estar pulsados o no
     enum state {
         BTN_ACTION1,
         BTN_ACTION2,
-        BTN_SHIFT,
         BTN_ACTION4,
         BTN_UP,
         BTN_DOWN,
@@ -26,6 +27,7 @@ private:
 
     bool states[];
     static InputManager* instance;
+
 
     //Constructor vacio privado para poder instanciar desde dentro
     InputManager();
