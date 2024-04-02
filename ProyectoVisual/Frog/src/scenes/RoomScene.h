@@ -12,6 +12,7 @@
 #include "../components/FrogInputComponent.h"
 #include "../components/ColliderComponent.h"
 #include "../components/MovementComponentFish.h"
+#include "../components/MovementComponentSnake.h"
 
 class RoomScene : public Scene
 {
@@ -87,7 +88,6 @@ public:
 
 		entityList.push_back(flyToPlayer);
 		createFish(Vector2D(0, 3), 4);
-
 		
 
 #pragma endregion
@@ -112,6 +112,7 @@ public:
 	Entity* createTransition(std::string objName, std::string nextMap);
 	Entity* createCrazyFrog(Vector2D pos);
 	Entity* createFish(Vector2D pos, int boundX);
+	Entity* createSnake(Vector2D pos);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);

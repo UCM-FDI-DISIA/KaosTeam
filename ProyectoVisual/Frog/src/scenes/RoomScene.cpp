@@ -181,6 +181,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 
 	fish->addRenderComponent(renderFish);
 	fish->addComponent(ANIMATION_COMPONENT, animFish);
+	animFish->setContext(fish);
 
 	//el limite tiene que ser una propiedad
 	MovementComponentFish* mvm = new MovementComponentFish(pos, boundX, animFish);
@@ -190,14 +191,38 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	AddEntity(fish);
 	return fish;	
 }
+Entity* RoomScene::createSnake(Vector2D pos) {
+	Entity* snake = new Entity(this);
+	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaLocaSpritesheet.png", 4, 4);
+
+	AnimationComponent* animSnake = new AnimationComponent();
+	RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1.5, animSnake);
+
+	renderSnake->setContext(snake);
+
+	animSnake->addAnimation("DOWN_ROTATION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false));
+	animSnake->addAnimation("UP_ROTATION", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false));
+	animSnake->addAnimation("RIGHT_ROTATION", Animation({ Vector2D(2,0), Vector2D(2,1) }, false, false));
+	animSnake->addAnimation("LEFT_ROTATION", Animation({ Vector2D(2,0), Vector2D(2,1) }, true, false));
+
+	snake->addRenderComponent(renderSnake);
+	snake->addComponent(ANIMATION_COMPONENT, animSnake);
+
+	MovementComponentSnake* mvmSnake = new MovementComponentSnake(pos, animSnake);
+	mvmSnake->setContext(snake);
+	snake->addComponent(MOVEMENT_COMPONENT, mvmSnake);
+
+	AddEntity(snake);
+	return snake;
+}
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
 		
-	if (objName == "Crazy frog"){
+	if (objName == "Crazy frog") {
 		c = createCrazyFrog(pos);
 	}
-	else if (objName == "Fish") { 
+	else if (objName == "Fish") {
 		for (const auto& prop : objProps) {
 			if (prop.getName() == "object") //revisar esto
 			{
@@ -209,6 +234,9 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 				}
 			}
 		}
+	}
+	else if (objName == "Snake") {
+		c = createSnake(pos);
 	}
 	/*
 	else if ()......

@@ -156,12 +156,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
     <ClCompile Include="src\components\FrogInputComponent.cpp" />
     <ClCompile Include="src\components\AnimationComponent.cpp" />
     <ClCompile Include="src\components\ColliderComponent.cpp" />
     <ClCompile Include="src\components\DefenseComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentSnake.cpp" />
     <ClCompile Include="src\managers\LoadManager.cpp" />
     <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
@@ -210,6 +210,7 @@
     <ClInclude Include="src\components\AnimationComponent.h" />
     <ClInclude Include="src\components\ColliderComponent.h" />
     <ClInclude Include="src\components\DefenseComponent.h" />
+    <ClInclude Include="src\components\MovementComponentSnake.h" />
     <ClInclude Include="src\managers\DialogManager.h" />
     <ClInclude Include="src\managers\LoadManager.h" />
     <ClInclude Include="src\managers\SceneManager.h" />
