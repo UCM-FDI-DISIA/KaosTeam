@@ -1,0 +1,41 @@
+﻿#pragma once
+
+#ifndef CAMERAMANAGER_H
+#define CAMERAMANAGER_H	
+
+#include "../ecs/Entity.h"
+#include "../utils/Vector2D.h"
+#include "../components/MovementComponentFrog.h"
+#include "../utils/Singleton.h"
+
+
+
+class Camera: public Singleton<Camera> { 
+
+	friend Singleton<Camera>;
+public:
+
+	void setTarget(Entity* target);
+	void update();
+	Vector2D getCameraMovement() { return cameraPos * tileSize + additionalOffset; }
+
+	//para hacer el movimiento fluido
+	Vector2D GetAdditionalOffset();
+
+
+private:
+	//static Camera* cameraInstance;
+	Entity* camTarget;
+	Vector2D cameraPos = { 0,0 };
+	int limitX, limitY, tilesToStartMovingX, tilesToStartMovingY; 
+	int tileSize;
+	Vector2D screenSize; //IMPORTANTE en casillas
+	Vector2D lastTargetPosition;
+	Vector2D additionalOffset;
+	Directions direction;
+	Camera() {};
+	//ns si esta bien
+	MovementComponentFrog* camTargetMovementComp;
+	
+};
+#endif // !CAMERAMANAGER_H

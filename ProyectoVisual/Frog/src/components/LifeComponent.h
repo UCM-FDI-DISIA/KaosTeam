@@ -1,19 +1,16 @@
 #pragma once
-#include "../ecs/Component.h"
-class LifeComponent:public Component
+class LifeComponent
 {
 private:
-	int currentLife; //Un  punto es media mosca
-	int maxLife;
+	int vidaActual = 0; //Un  punto es media mosca
+	int vidaMaxima = 0;
 public:
-	LifeComponent(int maxLife) : maxLife(maxLife), currentLife(maxLife) {};
-	LifeComponent(int current, int max) :currentLife(current), maxLife(max) {};
-	int GetCurrent();
+	LifeComponent() {};
+	LifeComponent(int actual, int maxima) :vidaActual(actual), vidaMaxima(maxima) {};
+	int GetActual();
 	int GetMax();
 	void SetActual(int n);
 	void SetMax(int n);
-	void AddLife(int n);
-	void RemoveLife(int n);
-	bool Alive();
+	bool alive();
 };
 

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="25">
+ <tileset firstgid="1" source="../../tileset/H01_tileset.tsx"/>
+ <tileset firstgid="43" source="../../tileset/Tileset completo.tsx"/>
+ <layer id="1" name="Walk" width="20" height="20">
+  <data encoding="csv">
+76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,
+21,21,21,21,21,24,22,23,23,272,272,24,24,21,22,22,23,23,24,21,
+21,21,21,21,24,21,23,24,24,272,272,24,22,24,21,21,23,23,24,21,
+21,21,21,21,22,23,23,23,23,272,272,22,22,24,21,21,23,24,21,21,
+76,76,76,76,76,76,76,76,76,76,76,76,76,21,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,21,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,24,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,24,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,23,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,22,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,22,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,24,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,21,76,76,76,76,76,76,
+21,21,21,21,24,24,24,21,23,23,22,22,24,21,21,22,24,21,21,21,
+76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,
+76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76
+</data>
+ </layer>
+ <layer id="2" name="NotWalk" width="20" height="20">
+  <data encoding="csv">
+379,380,380,380,380,380,380,380,437,0,0,435,380,380,380,380,380,380,380,381,
+407,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,409,
+435,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,437,
+217,217,217,42,217,217,217,217,217,36,36,217,217,217,217,217,217,41,217,217,
+42,217,217,217,217,217,217,217,217,36,36,42,217,217,217,217,217,217,41,217,
+217,217,42,217,42,217,217,217,217,36,36,42,217,217,217,217,217,217,41,217,
+379,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,381,
+407,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,409,
+435,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,437,
+0,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,0,
+379,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,381,
+407,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,409,
+407,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,409,
+435,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,437,
+217,217,217,217,217,217,217,217,217,217,217,217,217,217,217,217,217,217,217,217,
+379,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,381,
+407,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,409,
+407,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,409,
+435,380,380,380,380,380,380,380,381,0,0,379,380,380,380,380,380,380,380,437
+</data>
+ </layer>
+ <objectgroup id="3" name="Obj" visible="0">
+  <object id="5" name="Crazy frog" type="Enemigo" x="56" y="124.667">
+   <point/>
+  </object>
+  <object id="6" name="Crazy frog" type="Enemigo" x="117.333" y="201.333">
+   <point/>
+  </object>
+  <object id="7" name="Crazy frog" type="Enemigo" x="248.667" y="124.667">
+   <point/>
+  </object>
+  <object id="8" name="Crazy frog" type="Enemigo" x="246.667" y="214.667">
+   <point/>
+  </object>
+  <object id="9" name="Jarron" x="88" y="104.667">
+   <point/>
+  </object>
+  <object id="10" name="Jarron" x="104.667" y="105.333">
+   <point/>
+  </object>
+  <object id="11" name="Jarron" x="120.667" y="106">
+   <point/>
+  </object>
+  <object id="12" name="Palanca" x="56.6667" y="38.6667">
+   <point/>
+  </object>
+  <object id="13" name="FlonkS" type="Player" x="152.142" y="299.006">
+   <point/>
+  </object>
+  <object id="14" name="FlonkW" type="Player" x="24.7445" y="148.765">
+   <point/>
+  </object>
+  <object id="15" name="FlonkN" type="Player" x="170.047" y="25.541">
+   <point/>
+  </object>
+  <object id="16" name="FlonkE" type="Player" x="300.625" y="168.313">
+   <point/>
+  </object>
+  <object id="17" name="TransitionN" type="Transition" x="149.333" y="7.33333">
+   <properties>
+    <property name="nextMap" value=""/>
+   </properties>
+   <point/>
+  </object>
+  <object id="22" name="TransitionN" type="Transition" x="168" y="6.66667">
+   <properties>
+    <property name="nextMap" value=""/>
+   </properties>
+   <point/>
+  </object>
+  <object id="18" name="TransitionW" type="Transition" x="6.66667" y="150.667">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_05.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="21" name="TransitionW" type="Transition" x="6" y="169.333">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_05.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="19" name="TransitionS" type="Transition" x="153.333" y="313.333">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_03.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="23" name="TransitionS" type="Transition" x="168" y="313.333">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_03.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="20" name="TransitionE" type="Transition" x="313.333" y="152.667">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_07.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="24" name="TransitionE" type="Transition" x="312" y="169.333">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_07.tmx"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+</map>

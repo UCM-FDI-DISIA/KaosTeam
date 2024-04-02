@@ -1,17 +1,19 @@
 MANUAL PARA LA CORRECTA PROGRAMACIÓN EN C++
 
-ÍNDICE
+ÍNDICE:
 ....................VARIABLES.......................................................
 			-Locales
 			-Globales
 ....................CONSTANTES......................................................
 ....................CLASES..........................................................
-			-Público
-			-Privado
+			-Privado, Protected y público
 			-Atributos
+			-Métodos
 ....................IDENTACIÓN......................................................
 ....................USO DE CORCHETES................................................
 ....................COMENTARIOS.....................................................
+			-Comentarios de Métodos con parámetros
+....................INCLUDES........................................................
 ....................TIPS............................................................
 
 
@@ -19,7 +21,10 @@ VARIABLES:
 
 Locales
 	->Deben ser descriptivas de su propósito, tratando de no caer en abreviaciones indescifrables o en nombres kilimétricos.
-		*Una excepción son los iteradores (sean del tipo que sean). Estos si que sueles tener nombre cortos, tal como "i" ó "j".
+		*Una excepción son los iteradores (sean del tipo que sean). Estos si que suelen tener nombre cortos, tal como "i" ó "j".
+	->Empiezan con minúscula, y si están compuestas por varias palabras, la primera letra de cada palabra en mayúsculas.
+		Ej:	int miVariable; 
+			string casa;
 	->Si es compuesto el nombre, trata de usar solo nombres o adjetivos. Ej: int numCasas, string colorFuente.
 
 Globales
@@ -39,3 +44,52 @@ CLASES:
 Privado, Protected y Público
 	->Van en este orden las secciones de una clase. 
 	->Privado no es obligatorio ponerlo, pero es recomendable para aclararlo, sobre todo si algunos lo usan y otros no.
+
+Atributos
+	->Tienen que ser descriptivos de su función, siguiendo las reglas de las secciones "Variables" y "Constantes".
+
+Métodos
+	->Tienen la misma nomenclatura que las "Variables".
+	->Están ordenados por aparición en el .h de cada archivo.
+
+
+IDENTACIÓN:
+	->Usa TAB para crear columnas y SHIFT + TAB para eliminarlas, y así poder respetar la jerarquía de cada parte del código.
+	->Evita usar espacios para identar. 
+		Ej:	miMétodo(miTipo miParámetro) {
+				if(miCondicion) {
+				
+				}
+			}
+		
+
+USO DE CORCHETES:
+	->Estos deben estar separados de otros elementos, para que sea más clara su lectura.
+	->Cuando haya cascada de corchetes de cierre, NO dejes líneas vacías entre ellos.
+		Ej:	void miFuncion(tipo miParametro) {
+		
+			}
+
+COMENTARIOS:
+	->Deben ser explicativos y claros de lo que realiza el código que preceden.
+	->Utiliza varias líneas si el muy largo, para que se vea todo el comentario sin necesidad de deslizar la barra inferior.
+	->Evita el uso de abreviaturas que no vayan a ser entendibles por otras personas.
+	->Es preferible poner los comentarios en la MISMA LÍNEA para variables, atributos, o partes específicas del código, como bucles o condiciones, 
+		pues reduces el espacio. Con métodos o clases, es preferible ponerlo ENCIMA.
+
+Comentarios de Métodos con Parámetros
+	->Hay que definir para qué se va a necesitar cada parámetro.
+		Ej:	
+			//Se encarga de sumar dos elementos.
+				//a: sumando
+				//b: sumando
+			int suma(int a, int b) {
+				return a + b;
+			}
+
+
+INCLUDES:
+	->Estos se separan en bloques. Los includes con < > primero, y los includes con " " después.
+	->Van inmediatamente después del #pragma once de cada clase (dejando una línea de separación).
+	->Usa rutas relativas, NO absolutas.
+

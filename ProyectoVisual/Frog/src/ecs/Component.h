@@ -17,6 +17,7 @@ public:
 	void setContext(Entity* ent);
 
 	virtual void update() {};
+
 protected:
 	Entity* ent;
 };

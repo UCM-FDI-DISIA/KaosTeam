@@ -6,8 +6,6 @@
     <ClCompile Include="src\ecs\Component.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />
     <ClCompile Include="src\managers\DataManager.cpp" />
-    <ClCompile Include="src\ecs\Scene.cpp" />
-    <ClCompile Include="src\entities\PlayerEntity.cpp" />
     <ClCompile Include="src\Frog.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\json\JSON.cpp" />
@@ -15,7 +13,7 @@
     <ClCompile Include="src\json\json_demo.cpp" />
     <ClCompile Include="src\managers\HUDManager.cpp" />
     <ClCompile Include="src\managers\InputManager.cpp" />
-    <ClCompile Include="src\scenes\MenuInicio.cpp" />
+    <ClCompile Include="src\scenes\Menu.cpp" />
     <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
@@ -28,7 +26,29 @@
     <ClCompile Include="src\components\MovementComponent.cpp" />
     <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFly.cpp" />
+    <ClCompile Include="src\utils\Button.cpp" />
     <ClCompile Include="src\components\MovementComponentFrog.cpp" />
+    <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
+    <ClCompile Include="src\managers\CameraManager.cpp" />
+    <ClCompile Include="src\components\AttackComponentFrog.cpp" />
+    <ClCompile Include="src\components\RenderComponentFrog.cpp" />
+    <ClCompile Include="src\components\DefenseComponent.cpp" />
+    <ClCompile Include="src\components\AnimationComponent.cpp" />
+    <ClCompile Include="src\components\TransformComponent.cpp" />
+    <ClCompile Include="src\components\ColliderComponent.cpp" />
+    <ClCompile Include="src\components\TransitionComponent.cpp" />
+    <ClCompile Include="src\components\FrogInputComponent.cpp" />
+    <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentFish.cpp" />
+    <ClCompile Include="src\scenes\Menu.cpp" />
+    <ClCompile Include="src\managers\SceneManager.cpp" />
+    <ClCompile Include="src\managers\LoadManager.cpp" />
+    <ClCompile Include="src\managers\DialogManager.cpp" />
+    <ClCompile Include="src\game\GameOverState.cpp" />
+    <ClCompile Include="src\game\NewGameState.cpp" />
+    <ClCompile Include="src\game\PausedState.cpp" />
+    <ClCompile Include="src\game\RunningState.cpp" />
+    <ClCompile Include="src\components\AnimationComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -38,13 +58,12 @@
     <ClInclude Include="src\managers\DataManager.h" />
     <ClInclude Include="src\ecs\Entity.h" />
     <ClInclude Include="src\ecs\Scene.h" />
-    <ClInclude Include="src\entities\PlayerEntity.h" />
     <ClInclude Include="src\game\Game.h" />
     <ClInclude Include="src\json\JSON.h" />
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />
     <ClInclude Include="src\managers\HUDManager.h" />
-    <ClInclude Include="src\scenes\MenuInicio.h" />
+    <ClInclude Include="src\scenes\Menu.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
     <ClInclude Include="src\sdlutils\InputHandler.h" />
@@ -65,10 +84,157 @@
     <ClInclude Include="src\managers\MapManager.h" />
     <ClInclude Include="src\managers\InputManager.h" />
     <ClInclude Include="src\components\MovementComponentFly.h" />
+    <ClInclude Include="src\utils\Button.h" />
     <ClInclude Include="src\components\MovementComponentFrog.h" />
+    <ClInclude Include="src\components\FollowPlayerComponent.h" />
+    <ClInclude Include="src\managers\CameraManager.h" />
+    <ClInclude Include="src\components\AttackComponentFrog.h" />
+    <ClInclude Include="src\components\RenderComponentFrog.h" />
+    <ClInclude Include="src\components\DefenseComponent.h" />
+    <ClInclude Include="src\components\AnimationComponent.h" />
+    <ClInclude Include="src\components\ColliderComponent.h" />
+    <ClInclude Include="src\components\TransitionComponent.h" />
+    <ClInclude Include="src\components\FrogInputComponent.h" />
+    <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
+    <ClInclude Include="src\components\MovementComponentFish.h" />
+    <ClInclude Include="src\sdlutils\checkML.h" />
+    <ClInclude Include="src\scenes\Menu.h" />
+    <ClInclude Include="src\managers\SceneManager.h" />
+    <ClInclude Include="src\managers\LoadManager.h" />
+    <ClInclude Include="src\managers\DialogManager.h" />
+    <ClInclude Include="src\game\RunningState.h" />
+    <ClInclude Include="src\game\GameOverState.h" />
+    <ClInclude Include="src\game\GameState.h" />
+    <ClInclude Include="src\game\NewGameState.h" />
+    <ClInclude Include="src\game\PausedState.h" />
+    <ClInclude Include="src\components\TransformComponent.h" />
+    <ClInclude Include="src\components\AnimationComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Frog.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\Game.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sdlutils\SDLUtils.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sdlutils\sdlutils_demo.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sdlutils\sdlutils_game.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sdlutils\SoundEffect.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sdlutils\Texture.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\Vector2D.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\json\JSON.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\json\json_demo.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\json\JSONValue.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\assets.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\LifeComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\game\Game.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\Font.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\InputHandler.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\macros.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\Music.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\RandomNumberGenerator.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\SDLNetUtils.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\SDLUtils.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\sdlutils_demo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\sdlutils_game.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\SoundEffect.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\Texture.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdlutils\VirtualTimer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\Singleton.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\Vector2D.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\JSON.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\json_demo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\JSONValue.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\assets.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\MenuInicio.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\LifeComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\sdlutils\RAEDME.md" />
     <None Include="resources\maps\tileMap_Prueba.tmx" />
     <None Include="src\sdlutils\RAEDME.md" />
+    <None Include="zlib1.dll" />
+    <None Include=".gitignore" />
+    <None Include="libFLAC-8.dll" />
+    <None Include="libfreetype-6.dll" />
+    <None Include="libmodplug-1.dll" />
+    <None Include="libmpg123-0.dll" />
+    <None Include="libogg-0.dll" />
+    <None Include="libtiff-5.dll" />
+    <None Include="libvorbis-0.dll" />
+    <None Include="libvorbisfile-3.dll" />
+    <None Include="libwebp-7.dll" />
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="SDL2_mixer.dll" />
+    <None Include="SDL2_ttf.dll" />
+    <None Include="src\json\RAEDME.md" />
   </ItemGroup>
 </Project>

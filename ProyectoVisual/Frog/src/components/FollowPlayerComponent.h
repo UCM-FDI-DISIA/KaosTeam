@@ -9,11 +9,10 @@ class FollowPlayerComponent: public MovementComponent
 protected:
 	Vector2D vel;
 	int lastTimeMoved;
-	int waitTime = 300;
+	int waitTime = 3000;
 public:
 	FollowPlayerComponent(Vector2D pos);
 	virtual ~FollowPlayerComponent();
-	void FollowPlayer(float x, float y);
 	void update() override;
 };
 

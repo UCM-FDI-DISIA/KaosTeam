@@ -1,6 +1,5 @@
 #pragma once
 #include "../ecs/Component.h"
-#include "MovementComponent.h"
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
 
@@ -10,17 +9,21 @@
 */
 class RenderComponent :public Component
 {
-private:
+protected:
 	Texture* myTexture = nullptr;
+	AnimationComponent* myAnimator = nullptr;
 	float scale;
 
-public:
-	RenderComponent() {};
-	RenderComponent(std::string filename, int wframes, int hframes, float sc = 1): scale (sc){
-		myTexture = new Texture(sdlutils().renderer(), filename, wframes, hframes);
-	};
-	RenderComponent(Texture* t, float sc = 1): myTexture(t), scale(sc){}
+public: 
+	//Constructora con animador
+	RenderComponent(Texture* tex, int wframes, int hframes, float sc, AnimationComponent* anim) : myTexture(tex), scale(sc), myAnimator(anim) {};
+	//Constructora sin animador
+	RenderComponent(Texture* tex, int wframes, int hframes, float sc) : myTexture(tex), scale(sc) {};
+	RenderComponent(Texture* t, float sc = 1) : myTexture(t), scale(sc) {}
+	Texture* GetTexture() { return myTexture; };
+    void render();
+	//Obtiene la posición en pantalla de la entidad
+	//Esto no está bien aquí, pero es necesario hasta que haya un transform
+	SDL_Rect GetOnDisplayPosition();
 
-	void render();
-	virtual void Update() {};
 };

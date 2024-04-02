@@ -9,11 +9,19 @@ enum componentsEnum
 	MOVEMENT_COMPONENT,
 	LIFE_COMPONENT,
 	RENDER_COMPONENT,
+	ATTACK_COMPONENT,
+	ANIMATION_COMPONENT,
+	TRANSITION_COMPONENT,
+	INPUT_COMPONENT,
+	IACOMPONENT,
+	TRANSFORM_COMPONENT,
+	COLLIDER_COMPONENT
 };
 class Component;
 class RenderComponent;
+class RenderComponentFrog;
+class AnimationComponent;
 class RoomScene;
-
 class Entity
 {
 private:
@@ -21,17 +29,20 @@ private:
 	std::map<componentsEnum, Component*> componentes;
 	RoomScene* myScene;
 	RenderComponent* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
-
+	RenderComponentFrog* renderComponentFrog;
+	//AnimationComponent* animationComponent;
 public:
 //provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
 	Entity(/*int, int*/RoomScene* scn);
 	void addComponent(componentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
-	void addRenderComponent(RenderComponent*);
+	void addRenderComponent(RenderComponent* rnd);
+	void addRenderComponentFrog(RenderComponentFrog* rndF);
 	virtual ~Entity();
 	void update();
 	void render();
 	Component* getComponent(componentsEnum) const;
+	RenderComponentFrog* getRenderComponentFrog() const { return renderComponentFrog; };
+	RenderComponent* getRenderComponent() const { return renderComponent; };
 	RoomScene* getScene() const;
-	Component* getRenderComponent() const;
 };
 

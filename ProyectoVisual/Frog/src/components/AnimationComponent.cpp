@@ -5,76 +5,77 @@
 #include <SDL.h>
 
 /* Constructor del animador */
-AnimationComponent::AnimationComponent(std::string filename, int rows, int cols, int x, int y) :
+AnimationComponent::AnimationComponent() :
 	Component(),
-	x_(x),
-	y_(y),
-	nRow_(rows),
-	nCol_(cols),
-	currentFrameR_(0),
-	currentFrameC_(0),
-	finalFrameR_(0),
-	finalFrameC_(0),
-	lastChange_(0),
-	isPlaying_(false)
-{
-	//Creamos textura -> En el futuro habria que cabiar para que funcione con todas las entidades
-	tex_ = new Texture(sdlutils().renderer(), filename, rows, cols);
-	//Dimensiones de un frame
-	frameWidth_ = tex_->width() / cols;
-	frameHeight_ = tex_->height() / rows;
-}
+	//x(ent->getX()),
+	//y(ent->getY()),
+	//sc(scale),
+	//tex(tex),
+    //nRow(rows),
+	//nCol(cols),
+	currentFrameR(0),
+	currentFrameC(0),
+	finalFrameR(0),
+	finalFrameC(0),
+	lastChange(0),
+	frameIndex(0),
+	isPlaying(false),
+	currentAnimName(""),
+	currentAnim() {}
 
 /* Añade una animacion nueva al mapa */
-void AnimationComponent::addAnimation(const std::string& name, const std::vector<Vector2D>& coorFrames)
+void AnimationComponent::addAnimation(const std::string& name, const Animation& anim)
 {
 	//Insertamos en el mapa la lista de coordenadas
-	animationSet_[name] = coorFrames;
+	animationSet[name] = anim;
 }
 
 /* Reproduce una animacion dado su nombre */
 void AnimationComponent::playAnimation(const std::string& name)
 {
 	//Comprobamos si esta en el mapa y que no este reproduciendo otra animacion
-	if (animationSet_.find(name) != animationSet_.end() && !isPlaying_) {
-		//Iniacilizamos inicio y final de la animacion
-		currentFrameR_ = animationSet_[name].front().getX();
-		currentFrameC_ = animationSet_[name].front().getY();
+	if (animationSet.find(name) != animationSet.end() && !isPlaying) {
+		currentAnim = animationSet[name]; //Seteamos animacion actual
+		currentAnimName = name;
 
-		finalFrameR_ = animationSet_[name].back().getX();
-		finalFrameC_ = animationSet_[name].back().getY();
+		//Inicializamos inicio y final de la animacion
+		currentFrameR = animationSet[name].frames.front().getX();
+		currentFrameC = animationSet[name].frames.front().getY();
 
-		isPlaying_ = true;
+		finalFrameR = animationSet[name].frames.back().getX();
+		finalFrameC = animationSet[name].frames.back().getY();
+
+		isPlaying = true;
+		frameIndex = 0;
 	}	
 }
 
 /* Mueve al siguiente frame de animacion */
-void AnimationComponent::updateAnimation()
+void AnimationComponent::updateAnimation(const Animation& currenAnim, int index)
 {
-	if (currentFrameC_ <= finalFrameC_ && currentFrameR_ <= finalFrameR_) {
-		currentFrameC_ = (currentFrameC_ + 1) % nCol_;
-		if (currentFrameC_ == 0) {
-			currentFrameR_ = (currentFrameR_ + 1) % nRow_;
-		}
+	if (currentFrameC != finalFrameC || currentFrameR != finalFrameR){ //Actualizamos animacion
+		currentFrameR = currenAnim.frames[index].getX();
+		currentFrameC = currenAnim.frames[index].getY();
 	}
-	else isPlaying_ = false;
-}
-
-/* Renderiza el frame actual */
-void AnimationComponent::render()
-{
-	//Rect destino
-	SDL_Rect dest = build_sdlrect(x_, y_, frameWidth_, frameHeight_);
-	//Renderizamos con el metodo de Texture renderFrame
-	tex_->renderFrame(dest, currentFrameR_, currentFrameC_);
+	else if (currenAnim.repeat) { //si la anim es en bucle
+		isPlaying = false;
+		playAnimation(currentAnimName);
+	}  
+	else { //si no es en bucle -> volvemos a frame inicial
+		isPlaying = false;
+		currentFrameR = currenAnim.frames.front().getX();
+		currentFrameC = currenAnim.frames.front().getY(); 
+	}
 }
 
 /* Actualiza la animacion */
 void AnimationComponent::update()
 {
-	if (sdlutils().virtualTimer().currTime() > lastChange_ + 500) {
-		lastChange_ = sdlutils().virtualTimer().currTime();
-		if (isPlaying_) 
-			updateAnimation();
+	if (sdlutils().virtualTimer().currTime() > lastChange+ (1000 / FRAME_RATE)) {
+		lastChange = sdlutils().virtualTimer().currTime();
+		if (isPlaying) {
+			updateAnimation(currentAnim, frameIndex);
+			frameIndex++;
+		}
 	}
 }
