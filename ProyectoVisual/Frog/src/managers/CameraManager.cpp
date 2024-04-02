@@ -54,7 +54,7 @@ void Camera::update() {
 	////calcular el ofset
 	additionalOffset = camTargetMovementComp->getOffset();
 	//si la camara no se mueve en Y (y la rana está saltando hacia los lados)
-	if (cameraPos.getY() == 0 || cameraPos.getY() >= limitY - screenSize.getY() || direction == LEFT || direction == RIGHT)
+	if (cameraPos.getY() == 0 || cameraPos.getY() >= limitY - screenSize.getY() || additionalOffset.getX() != 0)
 		additionalOffset.setY(0);
 	//si la camara no se mueve en x
 	if (cameraPos.getX() == 0 || cameraPos.getX() >= limitX - screenSize.getX())

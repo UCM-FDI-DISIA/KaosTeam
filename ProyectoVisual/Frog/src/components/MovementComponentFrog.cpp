@@ -26,14 +26,14 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 //CAMBIARÁ CUANDO TENGAMOS LAS COLISIONES!!!!
 void MovementComponentFrog::changePosFrog(Vector2D v)
 {	
-	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + posCasilla)->objInTile;
+	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(v)->objInTile;
 	if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
 		//COLISION CON OBJETO DE TRANSICION
 		static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
 	}
 	else {
 		//Simplemente pasa a la otra casilla
-		posCasilla = velocity.normalize() + posCasilla;
+		posCasilla = v;
 	}
 }
 
@@ -55,26 +55,28 @@ void MovementComponentFrog::update() {
 			offsetInCasilla.setY(offsetInCasilla.getY() + t / framesPerJump * velocity.getY());
 		}
 
-		if (offsetInCasilla.getX()*velocity.normalize().getX() >= t / 2 ||
-			offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
-		{
-			//este chikiparrafo cambiará cuando tengamos las colisones
-			if (checkIfTileWalkable(velocity.normalize() + posCasilla))
-				changePosFrog(velocity.normalize() + posCasilla);
-			else
-				posCasilla = velocity.normalize() + posCasilla;
+		//como las colisiones ya no se hacen por casillas, esto no lo necesitamos
+
+		//if (offsetInCasilla.getX()*velocity.normalize().getX() >= t / 2 ||
+		//	offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
+		//{
+		//	//este chikiparrafo cambiará cuando tengamos las colisones
+		//	if (checkIfTileWalkable(velocity.normalize() + posCasilla))
+		//		changePosFrog(velocity.normalize() + posCasilla);
+		//	else
+		//		posCasilla = velocity.normalize() + posCasilla;
 
 
-			if (actualDirection == LEFT || actualDirection == RIGHT)
-				offsetInCasilla.setX(offsetInCasilla.getX() * -1);
-			else
-				offsetInCasilla.setY(offsetInCasilla.getY() * -1);
+		//	if (actualDirection == LEFT || actualDirection == RIGHT)
+		//		offsetInCasilla.setX(offsetInCasilla.getX() * -1);
+		//	else
+		//		offsetInCasilla.setY(offsetInCasilla.getY() * -1);
 
-		}
+		//}
 
 		if (framesMoved == framesPerJump) //para acabar el movimiento
 		{
-			//changePos(velocity.normalize() + posCasilla);
+			changePosFrog(velocity + posCasilla);
 			offsetInCasilla = {0,0};
 			framesMoved = 0;
 			jumping = false;
