@@ -39,7 +39,6 @@
     <ClCompile Include="src\components\FrogInputComponent.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFish.cpp" />
-    <ClCompile Include="AttackComponent.cpp" />
     <ClCompile Include="src\scenes\Menu.cpp" />
     <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\managers\LoadManager.cpp" />
@@ -96,7 +95,6 @@
     <ClInclude Include="src\components\FrogInputComponent.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
     <ClInclude Include="src\components\MovementComponentFish.h" />
-    <ClInclude Include="AttackComponent.h" />
     <ClInclude Include="src\sdlutils\checkML.h" />
     <ClInclude Include="src\scenes\Menu.h" />
     <ClInclude Include="src\managers\SceneManager.h" />
