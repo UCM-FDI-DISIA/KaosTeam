@@ -7,7 +7,7 @@ using namespace std;
 
 HUDManager* HUDManager::instance = nullptr;
 
-HUDManager::HUDManager() : vidasActuales(0), vidasMax(0), wormsActuales(0), rectFly(new SDL_Rect())
+HUDManager::HUDManager() : vidasActuales(10), vidasMax(10), wormsActuales(0), rectFly(new SDL_Rect())
 {
 	textFly = new Texture(sdlutils().renderer(), "resources/Sprites/moscaVidaSpritesheet.png", 1, 3);
 	rectFly->y = yInicial;

@@ -9,6 +9,7 @@ void Camera::setTarget(Entity* target)
 	camTarget = target;
 	camTargetMovementComp = dynamic_cast<MovementComponentFrog*>(camTarget->getComponent(MOVEMENT_COMPONENT));
 	lastTargetPosition = camTargetMovementComp->getPosition();
+	direction = camTargetMovementComp->getDirection();
 
 	tileSize = target->getScene()->getMapReader()->getTileSize();
 	screenSize = { round(WIN_WIDTH / (float)tileSize), round(WIN_HEIGHT / (float)tileSize) }; //calcular cuantas tiles hay en la pantalla
@@ -44,14 +45,15 @@ void Camera::update() {
 		}
 			
 		lastTargetPosition = actualTargetPos;
+		direction = camTargetMovementComp->getDirection();
 		
 	}
 
 
 	////calcular el ofset
 	additionalOffset = camTargetMovementComp->getOffset();
-	//si la camara no se mueve en Y (y la rana está saltando hacia los lados
-	if (cameraPos.getY() == 0 || cameraPos.getY() >= limitY - screenSize.getY() || additionalOffset.getX() != 0)
+	//si la camara no se mueve en Y (y la rana está saltando hacia los lados)
+	if (cameraPos.getY() == 0 || cameraPos.getY() >= limitY - screenSize.getY() || direction == LEFT || direction == RIGHT)
 		additionalOffset.setY(0);
 	//si la camara no se mueve en x
 	if (cameraPos.getX() == 0 || cameraPos.getX() >= limitX - screenSize.getX())

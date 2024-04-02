@@ -12,13 +12,14 @@
 #include "../components/FrogInputComponent.h"
 #include "../components/ColliderComponent.h"
 #include "../components/MovementComponentFish.h"
-
+#include "../managers/HUDManager.h"
 class RoomScene : public Scene
 {
 private:
 	Camera* cameraManager = nullptr;
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
+	HUDManager* HUD;
 	int id;
 	Entity* player = nullptr;
 	flonkOrig playerOrig = S;
@@ -34,6 +35,7 @@ public:
 		//Create player desde el mapa
 		cameraManager = Camera::instance();
 		cameraManager->setTarget(player);
+		HUD = HUDManager::GetInstance();
 
 #pragma region Cosas q vamos a borrar pronto
 		Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
@@ -91,8 +93,6 @@ public:
 		
 
 #pragma endregion
-
-
 
 		
 	};

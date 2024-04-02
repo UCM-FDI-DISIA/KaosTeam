@@ -8,6 +8,7 @@ void RoomScene::render() {
 		if (e != nullptr)
 			e->render();
 	}
+	HUD->render();
 }
 
 void RoomScene::update() {

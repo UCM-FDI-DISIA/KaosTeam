@@ -32,6 +32,7 @@ private:
 	Vector2D screenSize; //IMPORTANTE en casillas
 	Vector2D lastTargetPosition;
 	Vector2D additionalOffset;
+	Directions direction;
 	Camera() {};
 	//ns si esta bien
 	MovementComponentFrog* camTargetMovementComp;
