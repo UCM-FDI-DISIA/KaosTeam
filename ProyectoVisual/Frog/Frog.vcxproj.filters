@@ -6,7 +6,6 @@
     <ClCompile Include="src\ecs\Component.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />
     <ClCompile Include="src\managers\DataManager.cpp" />
-    <ClCompile Include="src\ecs\Scene.cpp" />
     <ClCompile Include="src\Frog.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\json\JSON.cpp" />
@@ -14,7 +13,7 @@
     <ClCompile Include="src\json\json_demo.cpp" />
     <ClCompile Include="src\managers\HUDManager.cpp" />
     <ClCompile Include="src\managers\InputManager.cpp" />
-    <ClCompile Include="src\scenes\MenuInicio.cpp" />
+    <ClCompile Include="src\scenes\Menu.cpp" />
     <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
@@ -41,6 +40,14 @@
     <ClCompile Include="src\components\FrogInputComponent.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFish.cpp" />
+    <ClCompile Include="src\game\RunningState.cpp" />
+    <ClCompile Include="src\game\PausedState.cpp" />
+    <ClCompile Include="src\game\NewGameState.cpp" />
+    <ClCompile Include="src\game\GameOverState.cpp" />
+    <ClCompile Include="src\managers\SceneManager.cpp" />
+    <ClCompile Include="src\managers\DialogManager.cpp" />
+    <ClCompile Include="src\managers\LoadManager.cpp" />
+    <ClCompile Include="src\components\AnimationComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -55,7 +62,7 @@
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />
     <ClInclude Include="src\managers\HUDManager.h" />
-    <ClInclude Include="src\scenes\MenuInicio.h" />
+    <ClInclude Include="src\scenes\Menu.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
     <ClInclude Include="src\sdlutils\InputHandler.h" />
@@ -90,6 +97,15 @@
     <ClInclude Include="src\components\FrogInputComponent.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
     <ClInclude Include="src\components\MovementComponentFish.h" />
+    <ClInclude Include="src\game\RunningState.h" />
+    <ClInclude Include="src\game\PausedState.h" />
+    <ClInclude Include="src\game\NewGameState.h" />
+    <ClInclude Include="src\game\GameState.h" />
+    <ClInclude Include="src\game\GameOverState.h" />
+    <ClInclude Include="src\managers\SceneManager.h" />
+    <ClInclude Include="src\managers\DialogManager.h" />
+    <ClInclude Include="src\managers\LoadManager.h" />
+    <ClInclude Include="src\components\AnimationComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
@@ -204,5 +220,6 @@
     <None Include="src\sdlutils\RAEDME.md" />
     <None Include="resources\maps\tileMap_Prueba.tmx" />
     <None Include="src\sdlutils\RAEDME.md" />
+    <None Include="src\json\RAEDME.md" />
   </ItemGroup>
 </Project>

@@ -1,25 +1,10 @@
 #include "InputManager.h"
-/*InputManager* InputManager::GetInstance() {
-	if (instance == nullptr) {
-		instance = new InputManager();
-	}
-	return instance;
-}*/
 
 InputManager* InputManager::instance = nullptr;
 
-void InputManager::PollEvents() {
-	SDL_Event event;
-
-	ClearStates();
-	while (SDL_PollEvent(&event))
-		UpdateStates(event);
-}
-
-void InputManager::ClearStates() {
-	for (int i = 0; i < END; i++) {
-		states[i] = false;
-	}
+InputManager::InputManager() { 
+	states[END] = {}; 
+	PollEvents(); 
 }
 
 void InputManager::UpdateStates(const SDL_Event& event) {
@@ -75,6 +60,20 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 	}
 }
 
+void InputManager::ClearStates() {
+	for (int i = 0; i < END; i++) {
+		states[i] = false;
+	}
+}
+
+void InputManager::PollEvents() {
+	SDL_Event event;
+
+	ClearStates();
+	while (SDL_PollEvent(&event))
+		UpdateStates(event);
+}
+
 bool InputManager::getAction1() {
 	return states[BTN_ACTION1];
 }
@@ -102,4 +101,9 @@ bool InputManager::getRight() {
 bool InputManager::getSpace()
 {
 	return states[BTN_SPACE];
+}
+
+bool InputManager::getEscape()
+{
+	return states[BTN_ESCAPE];
 }
