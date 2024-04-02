@@ -27,7 +27,7 @@ private:
 	//static Camera* cameraInstance;
 	Entity* camTarget;
 	Vector2D cameraPos = { 0,0 };
-	int limitX, limitY, tilesToStartMoving = 3; 
+	int limitX, limitY, tilesToStartMovingX, tilesToStartMovingY; 
 	int tileSize;
 	Vector2D screenSize; //IMPORTANTE en casillas
 	Vector2D lastTargetPosition;
