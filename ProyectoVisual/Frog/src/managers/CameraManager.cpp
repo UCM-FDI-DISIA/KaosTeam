@@ -36,9 +36,9 @@ void Camera::update() {
 			cameraPos.setX(cameraPos.getX() + actualTargetPos.getX() - lastTargetPosition.getX());
 		}
 			
-
-		if ((cameraPos.getY() > 0 || actualTargetPos.getY() > 2) &&				//si no te sales por arriba
-			(cameraPos.getY() < limitY - screenSize.getY() || actualTargetPos.getY() < limitY - 2)) //ni por abajo
+	
+		if ((cameraPos.getY() > 0 || actualTargetPos.getY() > tilesToStartMoving) &&				//si no te sales por arriba
+			(cameraPos.getY() < limitY - screenSize.getY() || actualTargetPos.getY() < limitY - tilesToStartMoving)) //ni por abajo
 		{
 			cameraPos.setY(cameraPos.getY() + actualTargetPos.getY() - lastTargetPosition.getY());  
 		}

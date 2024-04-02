@@ -14,7 +14,7 @@ using namespace std;
 typedef int gid;
 
 using uint = unsigned int;
-constexpr uint MAP_MULT = 8;
+constexpr uint MAP_MULT = 6;
 constexpr bool DEBUG = true;
 
 namespace
