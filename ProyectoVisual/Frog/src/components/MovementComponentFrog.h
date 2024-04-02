@@ -9,7 +9,8 @@ enum Directions
 	UP,
 	LEFT,
 	RIGHT,
-	DOWN
+	DOWN,
+	NONE //tonteria un poco, está aqui por si acaso
 };
 
 class MovementComponentFrog : public MovementComponent
@@ -21,7 +22,7 @@ private:
 	Directions actualDirection = DOWN; //empieza mirando al frente
 
 	//La idea es que este cooldown sea compartido por todos los componentes de accion de la rana como atacar y etc
-	Uint32 actionCooldown = 100, movementFrameRate = 50,
+	Uint32 actionCooldown = 100, movementFrameRate = 30,
 		framesPerJump = 6, framesMoved = 0;
 	bool jumping = false;
 	

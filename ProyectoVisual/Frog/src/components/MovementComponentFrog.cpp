@@ -9,7 +9,7 @@ void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string 
 		velocity = v;
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		jumping = true;
-		framesPerJump = 4 + v.magnitude()*3; //2 frames de despegue, 3 en cada casilla, 2 de aterrizaje
+		framesPerJump = 4 + v.magnitude()*6; //2 frames de despegue, 3 en cada casilla, 2 de aterrizaje
 	}
 
 	actualDirection = d;
@@ -33,7 +33,7 @@ void MovementComponentFrog::changePosFrog(Vector2D v)
 	}
 	else {
 		//Simplemente pasa a la otra casilla
-		changePos(velocity.normalize() + posCasilla);
+		posCasilla = velocity.normalize() + posCasilla;
 	}
 }
 
@@ -58,7 +58,13 @@ void MovementComponentFrog::update() {
 		if (offsetInCasilla.getX()*velocity.normalize().getX() >= t / 2 ||
 			offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
 		{
-			changePosFrog(velocity.normalize() + posCasilla);
+			//este chikiparrafo cambiará cuando tengamos las colisones
+			if (checkIfTileWalkable(velocity.normalize() + posCasilla))
+				changePosFrog(velocity.normalize() + posCasilla);
+			else
+				posCasilla = velocity.normalize() + posCasilla;
+
+
 			if (actualDirection == LEFT || actualDirection == RIGHT)
 				offsetInCasilla.setX(offsetInCasilla.getX() * -1);
 			else

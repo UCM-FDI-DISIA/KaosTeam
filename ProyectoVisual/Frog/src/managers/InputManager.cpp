@@ -22,6 +22,9 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_RIGHT:
 			states[BTN_RIGHT] = true;
 			break;
+		case SDLK_LSHIFT:
+			states[BTN_SHIFT] = true;
+			break;
 
 		//ahora para poder usar WASD
 		case SDLK_a:
@@ -36,6 +39,9 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_d:
 			states[BTN_RIGHT] = true;
 			break;
+		case SDLK_RSHIFT:
+			states[BTN_SHIFT] = true;
+			break;
 
 
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
@@ -43,9 +49,6 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 			break;
 		case SDLK_x:
 			states[BTN_ACTION2] = true;
-			break;
-		case SDLK_c:
-			states[BTN_ACTION3] = true;
 			break;
 		case SDLK_v:	// Escudo
 			states[BTN_ACTION4] = true;
@@ -80,8 +83,8 @@ bool InputManager::getAction1() {
 bool InputManager::getAction2() {
 	return states[BTN_ACTION2];
 }
-bool InputManager::getAction3() {
-	return states[BTN_ACTION3];
+bool InputManager::getShift() {
+	return states[BTN_SHIFT];
 }
 bool InputManager::getAction4() {
 	return states[BTN_ACTION4];
