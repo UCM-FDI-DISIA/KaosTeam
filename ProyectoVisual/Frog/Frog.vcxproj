@@ -162,14 +162,8 @@
     <ClCompile Include="src\components\AnimationComponent.cpp" />
     <ClCompile Include="src\components\ColliderComponent.cpp" />
     <ClCompile Include="src\components\DefenseComponent.cpp" />
-    <ClCompile Include="src\components\AnimationComponent.cpp" />
-    <ClCompile Include="src\managers\DialogManager.cpp" />
     <ClCompile Include="src\managers\LoadManager.cpp" />
     <ClCompile Include="src\managers\SceneManager.cpp" />
-    <ClCompile Include="src\game\GameOverState.cpp" />
-    <ClCompile Include="src\game\NewGameState.cpp" />
-    <ClCompile Include="src\game\PausedState.cpp" />
-    <ClCompile Include="src\game\RunningState.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
     <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFish.cpp" />
@@ -196,8 +190,6 @@
     <ClCompile Include="src\managers\DialogManager.cpp" />
     <ClCompile Include="src\managers\HUDManager.cpp" />
     <ClCompile Include="src\managers\InputManager.cpp" />
-    <ClCompile Include="src\managers\LoadManager.cpp" />
-    <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\scenes\Menu.cpp" />
     <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
@@ -218,12 +210,9 @@
     <ClInclude Include="src\components\AnimationComponent.h" />
     <ClInclude Include="src\components\ColliderComponent.h" />
     <ClInclude Include="src\components\DefenseComponent.h" />
-    <ClInclude Include="src\components\AnimationComponent.h" />
     <ClInclude Include="src\managers\DialogManager.h" />
     <ClInclude Include="src\managers\LoadManager.h" />
     <ClInclude Include="src\managers\SceneManager.h" />
-    <ClInclude Include="src\game\GameOverState.h" />
-    <ClInclude Include="src\game\NewGameState.h" />
     <ClInclude Include="src\game\PausedState.h" />
     <ClInclude Include="src\game\RunningState.h" />
     <ClInclude Include="src\components\AttackComponentFrog.h" />
@@ -241,8 +230,6 @@
     <ClInclude Include="src\game\GameOverState.h" />
     <ClInclude Include="src\game\GameState.h" />
     <ClInclude Include="src\game\NewGameState.h" />
-    <ClInclude Include="src\game\PausedState.h" />
-    <ClInclude Include="src\game\RunningState.h" />
     <ClInclude Include="src\managers\DataManager.h" />
     <ClInclude Include="src\ecs\Entity.h" />
     <ClInclude Include="src\ecs\Scene.h" />
@@ -251,11 +238,8 @@
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />
     <ClInclude Include="src\managers\CameraManager.h" />
-    <ClInclude Include="src\managers\DialogManager.h" />
     <ClInclude Include="src\managers\HUDManager.h" />
     <ClInclude Include="src\managers\InputManager.h" />
-    <ClInclude Include="src\managers\LoadManager.h" />
-    <ClInclude Include="src\managers\SceneManager.h" />
     <ClInclude Include="src\scenes\Menu.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\checkML.h" />
