@@ -4,17 +4,20 @@
 
 void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string animation)
 {
-	if (!jumping && checkIfTileWalkable(posCasilla + v))  //COLISIONES COMENTADAS PARA PROBAR LA TRANSICIÓON ENTRE ESCENAS
+	if (!jumping) 
 	{
-		velocity = v;
-		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-		jumping = true;
-		framesPerJump = 4 + v.magnitude()*6; //2 frames de despegue, 3 en cada casilla, 2 de aterrizaje
-	}
+		if (checkIfTileWalkable(posCasilla + v))
+		{
+			velocity = v;
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			jumping = true;
+			framesPerJump = 4 + v.magnitude() * 6; //2 frames de despegue, 3 en cada casilla, 2 de aterrizaje
 
-	actualDirection = d;
-	anim->playAnimation(animation);
-	
+		}
+		actualDirection = d;
+		anim->playAnimation(animation);
+		
+	}
 }
 
 void MovementComponentFrog::changeDirection(Directions d, string animation)

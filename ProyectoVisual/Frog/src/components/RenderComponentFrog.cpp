@@ -71,9 +71,7 @@ void RenderComponentFrog::render()
                 endAngle = -90.0f;
                 break;
             case Directions::DOWN:
-                frogAnimator->playAnimation("ATTACK_DOWN");
-                frogText->renderFrame(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol());
-
+                frogText->renderFrame(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol()); //se renderiza antes
 
                 tongueRect.y = frogRect.y + size / 2; 
                 tongueRect.x = frogRect.x - 5;
@@ -101,7 +99,8 @@ void RenderComponentFrog::render()
                     break;
                 case Directions::DOWN:
                     //la rana se renderiza antes en este caso particular
-
+                    frogAnimator->playAnimation("ATTACK_DOWN");
+                    
                     tongueText->renderFrameWithFlip(tongueRect, 0, 0, endFlip, endAngle);
                     tongueRect.y += tongueRect.h;
                     break;
