@@ -104,8 +104,8 @@ public:
 	Entity* createTransition(std::string objName, std::string nextMap);
 	Entity* createCrazyFrog(Vector2D pos);
 	Entity* createFish(Vector2D pos, int boundX);
-	Entity* createBlackAnt(Vector2D pos, Vector2D playerPosition);
-	Entity* createRedAnt(Vector2D pos, Vector2D playerPosition);
+	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
+	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
 };

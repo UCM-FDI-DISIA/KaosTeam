@@ -175,23 +175,30 @@ void MovementComponentBlackAnt::changeDirection() {
 	}
 }
 bool MovementComponentBlackAnt::isPlayerNear() {
-	if (playerPosition.getY() == posCasilla.getY() && playerPosition.getX() - posCasilla.getX() <= range) {
-		waitToAttack = true;
-		diff = playerPosition.getX() - posCasilla.getX();
-		if (diff > 0)
-			actualDirection = RIGHT;
-		else if (diff < 0)
-			actualDirection = LEFT;
-	}
-	else if (!waitToAttack && playerPosition.getX() == posCasilla.getX() && playerPosition.getY() - posCasilla.getY() <= range) {
-		waitToAttack = true;
-		isAtacking = true;
-		diff = playerPosition.getY() - posCasilla.getY();
-		if (diff > 0)
-			actualDirection = DOWN;
+	if (playerPosition.getY() == posCasilla.getY()) {
 
-		else if (diff < 0)
+		if (actualDirection != LEFT && playerPosition.getX() - posCasilla.getX() <= range) {
+			actualDirection = RIGHT;
+			diff = playerPosition.getX() - posCasilla.getX();
+			waitToAttack = true;
+		}
+		else if (!waitToAttack && actualDirection != RIGHT && posCasilla.getX() - playerPosition.getX() <= range) {
+			actualDirection = LEFT;
+			diff = playerPosition.getX() - posCasilla.getX();
+			waitToAttack = true;
+		}
+	}
+	else if (!waitToAttack && playerPosition.getX() == posCasilla.getX()) {
+		if (actualDirection != UP && playerPosition.getY() - posCasilla.getY() <= range) {
+			actualDirection = DOWN;
+			waitToAttack = true;
+			diff = playerPosition.getY() - posCasilla.getY();
+		}
+		else if (!waitToAttack && actualDirection != DOWN && posCasilla.getY() - playerPosition.getY() <= range) {
 			actualDirection = UP;
+			waitToAttack = true;
+			diff = playerPosition.getY() - posCasilla.getY();
+		}
 	}
 	return waitToAttack;
 }
