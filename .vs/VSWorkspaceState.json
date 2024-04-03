@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ProyectoVisual",
+    "\\ProyectoVisual\\Frog",
+    "\\ProyectoVisual\\Frog\\src",
+    "\\ProyectoVisual\\Frog\\src\\components"
   ],
-  "SelectedNode": "\\KaosTeamProyectos2.sln",
+  "SelectedNode": "\\ProyectoVisual\\Frog\\Frog.vcxproj",
   "PreviewInSolutionExplorer": true
 }

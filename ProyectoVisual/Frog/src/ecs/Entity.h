@@ -12,14 +12,16 @@ enum componentsEnum
 	ATTACK_COMPONENT,
 	ANIMATION_COMPONENT,
 	TRANSITION_COMPONENT,
-	INPUT_COMPONENT	
+	INPUT_COMPONENT,
+	IACOMPONENT,
+	TRANSFORM_COMPONENT,
+	COLLIDER_COMPONENT
 };
 class Component;
 class RenderComponent;
 class RenderComponentFrog;
 class AnimationComponent;
 class RoomScene;
-
 class Entity
 {
 private:
@@ -38,12 +40,9 @@ public:
 	virtual ~Entity();
 	void update();
 	void render();
-	/*float getX() { return pos.getX(); }
-	float getY() { return pos.getY(); }*/
-	float getX() { return 0; }
-	float getY() { return 0; }
 	Component* getComponent(componentsEnum) const;
 	RenderComponentFrog* getRenderComponentFrog() const { return renderComponentFrog; };
+	RenderComponent* getRenderComponent() const { return renderComponent; };
 	RoomScene* getScene() const;
 };
 

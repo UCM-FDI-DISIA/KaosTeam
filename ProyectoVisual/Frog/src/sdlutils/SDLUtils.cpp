@@ -184,7 +184,7 @@ void SDLUtils::loadReasources(std::string filename) {
 			throw "'images' is not an array in '" + filename + "'";
 		}
 	}
-
+	
 	// load messages
 	jValue = root["messages"];
 	if (jValue != nullptr) {
@@ -270,7 +270,7 @@ void SDLUtils::loadReasources(std::string filename) {
 			throw "'musics' is not an array";
 		}
 	}
-
+	
 	// load data
 	jValue = root["data"];
 	if (jValue != nullptr) {
@@ -296,7 +296,6 @@ void SDLUtils::loadReasources(std::string filename) {
 			throw "'data' is not an array";
 		}
 	}
-
 }
 
 

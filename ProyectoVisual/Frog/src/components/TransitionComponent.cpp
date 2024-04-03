@@ -3,5 +3,5 @@
 
 void TransitionComponent::changeMap()
 {
-	ent->getScene()->changeMap(nextMap, nextFlonk);
+	ent->getScene()->callForMapChange(nextMap, nextFlonk);
 }

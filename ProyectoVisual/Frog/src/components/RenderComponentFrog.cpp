@@ -14,16 +14,19 @@ void RenderComponentFrog::render()
     Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() //el offset el objeto
                     + Vector2D((t - size) / 2, (t - size) / 2);                                             //para que este centrado en la casilla
     Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
+    Directions d = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
    
     frogRect.x = pos.getX() * t + offset.getX() - cameraPos.getX();
     frogRect.y = pos.getY() * t + offset.getY() -cameraPos.getY();
+    frogRect.w = size;
+    frogRect.h = size;
 
     //la lengua 
     if (attacking) {
         int distanceMoved = static_cast<AttackComponentFrog*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
-        Directions d = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
+        
 
         if (distanceMoved < 0) { //Si el ataque acaba
             attacking = false;
@@ -68,6 +71,8 @@ void RenderComponentFrog::render()
                 endAngle = -90.0f;
                 break;
             case Directions::DOWN:
+                frogText->renderFrame(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol()); //se renderiza antes
+
                 tongueRect.y = frogRect.y + size / 2; 
                 tongueRect.x = frogRect.x - 5;
                 endAngle = 90.0f;
@@ -93,7 +98,9 @@ void RenderComponentFrog::render()
                     tongueRect.y -= tongueRect.h;
                     break;
                 case Directions::DOWN:
+                    //la rana se renderiza antes en este caso particular
                     frogAnimator->playAnimation("ATTACK_DOWN");
+                    
                     tongueText->renderFrameWithFlip(tongueRect, 0, 0, endFlip, endAngle);
                     tongueRect.y += tongueRect.h;
                     break;
@@ -106,16 +113,41 @@ void RenderComponentFrog::render()
         }
     }
 
-    //renderizamos la rana
-    frogRect.w = size;
-    frogRect.h = size;
+    //renderizamos la rana (depues de la lengua si no mira hacia abajo en el ataque)
+    if (d != DOWN || !attacking)
+    {
+        if (frogAnimator->getCurrentAnim().flip) //Si se tiene que flipear
+            frogText->renderFrameWithFlip(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
+        else
+            frogText->renderFrame(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol());
+    }
+    
 
-    if (frogAnimator->getCurrentAnim().flip) //Si se tiene que flipear
-        frogText->renderFrameWithFlip(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
-    else
-        frogText->renderFrame(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol());
+  
 }
 
 void RenderComponentFrog::AttackStart() {
     attacking = true;
+}
+
+//Necesario para el sistema de colisiones, una vez se refactorice la arquitectura, esto no estará aquí {diego m}
+SDL_Rect RenderComponentFrog::GetOnDisplayPosition() {
+
+    int t = ent->getScene()->getMapReader()->getTileSize();
+    int size = (int)t * scale;
+    SDL_Rect dest;
+
+    Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() //el offset el objeto
+        + Vector2D((t - size) / 2, (t - size) / 2);                                             //para que este centrado en la casilla
+    Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
+    Vector2D cameraPos = Camera::instance()->getCameraMovement();
+
+
+    dest.x = pos.getX() * t + offset.getX() - cameraPos.getX();
+    dest.y = pos.getY() * t + offset.getY() - cameraPos.getY();
+
+    dest.w = size;
+    dest.h = size;
+
+    return dest;
 }

@@ -22,5 +22,12 @@ public:
 	};
 	void render();
 	void AttackStart();
+	
+	Texture* getFrogText() {
+		return frogText;
+	}
+
+	//Esto está aquí de manera provisional
+	SDL_Rect GetOnDisplayPosition();
 };
 

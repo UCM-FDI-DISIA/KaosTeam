@@ -6,7 +6,6 @@
     <ClCompile Include="src\ecs\Component.cpp" />
     <ClCompile Include="src\ecs\Entity.cpp" />
     <ClCompile Include="src\managers\DataManager.cpp" />
-    <ClCompile Include="src\ecs\Scene.cpp" />
     <ClCompile Include="src\Frog.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\json\JSON.cpp" />
@@ -14,7 +13,7 @@
     <ClCompile Include="src\json\json_demo.cpp" />
     <ClCompile Include="src\managers\HUDManager.cpp" />
     <ClCompile Include="src\managers\InputManager.cpp" />
-    <ClCompile Include="src\scenes\MenuInicio.cpp" />
+    <ClCompile Include="src\scenes\Menu.cpp" />
     <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
@@ -35,12 +34,27 @@
     <ClCompile Include="src\components\RenderComponentFrog.cpp" />
     <ClCompile Include="src\components\DefenseComponent.cpp" />
     <ClCompile Include="src\components\AnimationComponent.cpp" />
+    <ClCompile Include="src\components\TransformComponent.cpp" />
+    <ClCompile Include="src\components\ColliderComponent.cpp" />
     <ClCompile Include="src\components\TransitionComponent.cpp" />
     <ClCompile Include="src\components\FrogInputComponent.cpp" />
     <ClCompile Include="src\components\ObjectLeverComponent.cpp" />
     <ClCompile Include="src\components\ObjectMoveableRockComponent.cpp" />
     <ClCompile Include="src\components\ObjectBreakableJarComponent.cpp" />
     <ClCompile Include="src\components\ObjectExplodingComponent.cpp" />
+    <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentFish.cpp" />
+    <ClCompile Include="src\scenes\Menu.cpp" />
+    <ClCompile Include="src\managers\SceneManager.cpp" />
+    <ClCompile Include="src\managers\LoadManager.cpp" />
+    <ClCompile Include="src\managers\DialogManager.cpp" />
+    <ClCompile Include="src\game\GameOverState.cpp" />
+    <ClCompile Include="src\game\NewGameState.cpp" />
+    <ClCompile Include="src\game\PausedState.cpp" />
+    <ClCompile Include="src\game\RunningState.cpp" />
+    <ClCompile Include="src\components\AnimationComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentBlackAnt.cpp" />
+    <ClCompile Include="src\components\MovementComponentRedAnt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -55,7 +69,7 @@
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />
     <ClInclude Include="src\managers\HUDManager.h" />
-    <ClInclude Include="src\scenes\MenuInicio.h" />
+    <ClInclude Include="src\scenes\Menu.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
     <ClInclude Include="src\sdlutils\InputHandler.h" />
@@ -84,12 +98,29 @@
     <ClInclude Include="src\components\RenderComponentFrog.h" />
     <ClInclude Include="src\components\DefenseComponent.h" />
     <ClInclude Include="src\components\AnimationComponent.h" />
+    <ClInclude Include="src\components\ColliderComponent.h" />
     <ClInclude Include="src\components\TransitionComponent.h" />
     <ClInclude Include="src\components\FrogInputComponent.h" />
     <ClInclude Include="src\components\ObjectLeverComponent.h" />
     <ClInclude Include="src\components\ObjectMoveableRockComponent.h" />
     <ClInclude Include="src\components\ObjectBreakableJarComponent.h" />
     <ClInclude Include="src\components\ObjectExplodingComponent.h" />
+    <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
+    <ClInclude Include="src\components\MovementComponentFish.h" />
+    <ClInclude Include="src\sdlutils\checkML.h" />
+    <ClInclude Include="src\scenes\Menu.h" />
+    <ClInclude Include="src\managers\SceneManager.h" />
+    <ClInclude Include="src\managers\LoadManager.h" />
+    <ClInclude Include="src\managers\DialogManager.h" />
+    <ClInclude Include="src\game\RunningState.h" />
+    <ClInclude Include="src\game\GameOverState.h" />
+    <ClInclude Include="src\game\GameState.h" />
+    <ClInclude Include="src\game\NewGameState.h" />
+    <ClInclude Include="src\game\PausedState.h" />
+    <ClInclude Include="src\components\TransformComponent.h" />
+    <ClInclude Include="src\components\AnimationComponent.h" />
+    <ClInclude Include="src\components\MovementComponentBlackAnt.h" />
+    <ClInclude Include="src\components\MovementComponentRedAnt.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
@@ -126,9 +157,6 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\assets.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\scenes\MenuInicio.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\components\LifeComponent.cpp">
@@ -204,5 +232,21 @@
     <None Include="src\sdlutils\RAEDME.md" />
     <None Include="resources\maps\tileMap_Prueba.tmx" />
     <None Include="src\sdlutils\RAEDME.md" />
+    <None Include="zlib1.dll" />
+    <None Include=".gitignore" />
+    <None Include="libFLAC-8.dll" />
+    <None Include="libfreetype-6.dll" />
+    <None Include="libmodplug-1.dll" />
+    <None Include="libmpg123-0.dll" />
+    <None Include="libogg-0.dll" />
+    <None Include="libtiff-5.dll" />
+    <None Include="libvorbis-0.dll" />
+    <None Include="libvorbisfile-3.dll" />
+    <None Include="libwebp-7.dll" />
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="SDL2_mixer.dll" />
+    <None Include="SDL2_ttf.dll" />
+    <None Include="src\json\RAEDME.md" />
   </ItemGroup>
 </Project>
