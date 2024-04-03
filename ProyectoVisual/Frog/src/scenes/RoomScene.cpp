@@ -196,7 +196,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaLocaSpritesheet.png", 4, 4);
 
 	AnimationComponent* animSnake = new AnimationComponent();
-	RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1.5, animSnake);
+	RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1, animSnake);
 
 	renderSnake->setContext(snake);
 
@@ -207,6 +207,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 	snake->addRenderComponent(renderSnake);
 	snake->addComponent(ANIMATION_COMPONENT, animSnake);
+	animSnake->setContext(snake);
 
 	MovementComponentSnake* mvmSnake = new MovementComponentSnake(pos, animSnake);
 	mvmSnake->setContext(snake);

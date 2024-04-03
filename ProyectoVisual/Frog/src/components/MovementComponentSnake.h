@@ -7,23 +7,28 @@
 class MovementComponentSnake : public MovementComponent {
 private:
 	enum Direction { DOWN, LEFT, UP, RIGHT };
+	AnimationComponent* anim;
 	Uint32 coolDownTime, //Tiempo de espera entre acciones
-		lastTimeAction;  //
+		lastTimeAction;  //Tiempo de la ultima accion
 	Direction currentDirection;
 	bool isRotate, isAttack;
-	AnimationComponent* anim;
+	int attackDistance;
+	Vector2D* playerPos = nullptr;
+
 	void rotateSnake();
+	void searchFrog();
 public:
 	MovementComponentSnake(Vector2D pos, AnimationComponent* a) :
-		MovementComponent(pos), lastTimeAction(DataManager::GetInstance()->getFrameTime()), anim(a) {
-		isRotate = true;  //
-		isAttack = false;
-		currentDirection = DOWN;
-		coolDownTime = 10000;  
-
-	};
+		MovementComponent(pos), anim(a),
+		lastTimeAction(DataManager::GetInstance()->getFrameTime()), coolDownTime(1000),
+		isRotate(true), isAttack(false),
+		currentDirection(DOWN), attackDistance(2) {
+		//isRotate = true;  //Empieza rotando
+		//isAttack = false;
+		//currentDirection = DOWN;
+		//coolDownTime = 1000;  
+		//attackDistance = 2;
+	}
 	void update() override;
-
-
 };
 

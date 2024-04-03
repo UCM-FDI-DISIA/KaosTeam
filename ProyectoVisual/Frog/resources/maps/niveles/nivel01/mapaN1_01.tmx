@@ -62,7 +62,7 @@
    </properties>
    <point/>
   </object>
-  <object id="10" name="Snake" type="Enemigo" x="39.6667" y="92.3333">
+  <object id="10" name="Snake" type="Enemigo" x="71.3334" y="75.3333">
    <point/>
   </object>
  </objectgroup>
