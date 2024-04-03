@@ -30,21 +30,21 @@ void MovementComponentSnake::update()
 void MovementComponentSnake::rotateSnake() {
 	//Cambiamos dirección de rotación
 	switch (currentDirection) {
-	case DOWN:
-		currentDirection = LEFT;
-		anim->playAnimation("LEFT_ROTATION");
-		break;
+	//case DOWN:
+	//	currentDirection = LEFT;
+	//	anim->playAnimation("LEFT_ROTATION");
+	//	break;
 	case LEFT:
-		currentDirection = UP;
-		anim->playAnimation("UP_ROTATION");
-		break;
-	case UP:
 		currentDirection = RIGHT;
 		anim->playAnimation("RIGHT_ROTATION");
 		break;
+	/*case UP:
+		currentDirection = RIGHT;
+		anim->playAnimation("RIGHT_ROTATION");
+		break;*/
 	case RIGHT:
-		currentDirection = DOWN;
-		anim->playAnimation("DOWN_ROTATION");
+		currentDirection = LEFT;
+		anim->playAnimation("LEFT_ROTATION");
 		break;
 	}
 }

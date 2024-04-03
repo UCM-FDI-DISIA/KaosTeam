@@ -6,7 +6,8 @@
 
 class MovementComponentSnake : public MovementComponent {
 private:
-	enum Direction { DOWN, LEFT, UP, RIGHT };
+	//enum Direction { DOWN, LEFT, UP, RIGHT };
+	enum Direction { LEFT, RIGHT };
 	AnimationComponent* anim;
 	Uint32 coolDownTime, //Tiempo de espera entre acciones
 		lastTimeAction;  //Tiempo de la ultima accion
@@ -22,7 +23,7 @@ public:
 		MovementComponent(pos), anim(a),
 		lastTimeAction(DataManager::GetInstance()->getFrameTime()), coolDownTime(1000),
 		isRotate(true), isAttack(false),
-		currentDirection(DOWN), attackDistance(2) {
+		currentDirection(RIGHT), attackDistance(2) {
 		//isRotate = true;  //Empieza rotando
 		//isAttack = false;
 		//currentDirection = DOWN;

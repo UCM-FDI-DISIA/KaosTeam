@@ -193,17 +193,17 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 }
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this);
-	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaLocaSpritesheet.png", 4, 4);
+	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/snakeSpriteSheet.png", 3, 2);
 
 	AnimationComponent* animSnake = new AnimationComponent();
 	RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1, animSnake);
 
 	renderSnake->setContext(snake);
 
-	animSnake->addAnimation("DOWN_ROTATION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false));
-	animSnake->addAnimation("UP_ROTATION", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false));
-	animSnake->addAnimation("RIGHT_ROTATION", Animation({ Vector2D(2,0), Vector2D(2,1) }, false, false));
-	animSnake->addAnimation("LEFT_ROTATION", Animation({ Vector2D(2,0), Vector2D(2,1) }, true, false));
+	//animSnake->addAnimation("DOWN_ROTATION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false));
+	//animSnake->addAnimation("UP_ROTATION", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false));
+	animSnake->addAnimation("RIGHT_ROTATION", Animation({ Vector2D(0,0) }, true, false));
+	animSnake->addAnimation("LEFT_ROTATION", Animation({ Vector2D(0,0) }, false, false));
 
 	snake->addRenderComponent(renderSnake);
 	snake->addComponent(ANIMATION_COMPONENT, animSnake);
