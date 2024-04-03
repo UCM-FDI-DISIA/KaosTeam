@@ -13,6 +13,10 @@
 #include "../components/ColliderComponent.h"
 #include "../components/MovementComponentFish.h"
 #include "../managers/HUDManager.h"
+#include "../components/MovementComponentFish.h";
+#include "../components/MovementComponentBlackAnt.h";
+#include "../components/MovementComponentRedAnt.h"
+
 class RoomScene : public Scene
 {
 private:
@@ -92,8 +96,8 @@ public:
 
 		//entityList.push_back(flyToPlayer);
 		//createFish(Vector2D(0, 3), 4);
+		entityList.push_back(flyToPlayer);
 
-		
 
 #pragma endregion
 
@@ -116,7 +120,8 @@ public:
 	Entity* createTransition(std::string objName, std::string nextMap);
 	Entity* createCrazyFrog(Vector2D pos);
 	Entity* createFish(Vector2D pos, int boundX);
-
+	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
+	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
 };

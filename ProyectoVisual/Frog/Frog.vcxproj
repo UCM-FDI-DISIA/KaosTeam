@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -166,12 +166,14 @@
     <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
     <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentBlackAnt.cpp" />
     <ClCompile Include="src\components\MovementComponentFish.cpp" />
     <ClCompile Include="src\components\MovementComponentFly.cpp" />
     <ClCompile Include="src\components\LifeComponent.cpp" />
     <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\MovementComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFrog.cpp" />
+    <ClCompile Include="src\components\MovementComponentRedAnt.cpp" />
     <ClCompile Include="src\components\RenderComponent.cpp" />
     <ClCompile Include="src\components\RenderComponentFrog.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
@@ -217,12 +219,14 @@
     <ClInclude Include="src\game\RunningState.h" />
     <ClInclude Include="src\components\AttackComponentFrog.h" />
     <ClInclude Include="src\components\FollowPlayerComponent.h" />
+    <ClInclude Include="src\components\MovementComponentBlackAnt.h" />
     <ClInclude Include="src\components\MovementComponentFish.h" />
     <ClInclude Include="src\components\MovementComponentFly.h" />
     <ClInclude Include="src\components\LifeComponent.h" />
     <ClInclude Include="src\components\MoneyComponent.h" />
     <ClInclude Include="src\components\MovementComponent.h" />
     <ClInclude Include="src\components\MovementComponentFrog.h" />
+    <ClInclude Include="src\components\MovementComponentRedAnt.h" />
     <ClInclude Include="src\components\RenderComponent.h" />
     <ClInclude Include="src\components\RenderComponentFrog.h" />
     <ClInclude Include="src\components\TransformComponent.h" />

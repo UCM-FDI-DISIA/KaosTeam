@@ -49,6 +49,8 @@
     <ClCompile Include="src\game\PausedState.cpp" />
     <ClCompile Include="src\game\RunningState.cpp" />
     <ClCompile Include="src\components\AnimationComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentBlackAnt.cpp" />
+    <ClCompile Include="src\components\MovementComponentRedAnt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -109,6 +111,8 @@
     <ClInclude Include="src\game\PausedState.h" />
     <ClInclude Include="src\components\TransformComponent.h" />
     <ClInclude Include="src\components\AnimationComponent.h" />
+    <ClInclude Include="src\components\MovementComponentBlackAnt.h" />
+    <ClInclude Include="src\components\MovementComponentRedAnt.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

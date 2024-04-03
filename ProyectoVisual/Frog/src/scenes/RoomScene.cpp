@@ -193,6 +193,48 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	AddEntity(fish);
 	return fish;	
 }
+Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
+	Entity* blackAnt = new Entity(this);
+	//textura cambiar
+	Texture* txtBlackAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+
+	AnimationComponent* animBlackAnt = new AnimationComponent();
+	RenderComponent* renderBlackAnt = new RenderComponent(txtBlackAnt, 1, 3, 0.5, animBlackAnt);
+
+	renderBlackAnt->setContext(blackAnt);
+	//animaciones
+
+	blackAnt->addRenderComponent(renderBlackAnt);
+	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
+	
+	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(pos, animBlackAnt,playerMvmCmp);
+	mvm->setContext(blackAnt);
+	blackAnt->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AddEntity(blackAnt);
+	return blackAnt;
+}
+Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
+	Entity* redAnt = new Entity(this);
+	//textura cambiar
+	Texture* txtRedAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+
+	AnimationComponent* animRedAnt = new AnimationComponent();
+	RenderComponent* renderRedAnt = new RenderComponent(txtRedAnt, 1, 3, 0.5, animRedAnt);
+
+	renderRedAnt->setContext(redAnt);
+	//animaciones
+
+	redAnt->addRenderComponent(renderRedAnt);
+	redAnt->addComponent(ANIMATION_COMPONENT, animRedAnt);
+
+	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(pos, animRedAnt, playerMvmCmp);
+	mvm->setContext(redAnt);
+	redAnt->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AddEntity(redAnt);
+	return redAnt;
+}
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
@@ -202,6 +244,20 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	else if (objName == "Pez") { 
 		c = createFish(pos, objProps[0].getIntValue());
+	}
+	else if (objName == "Black ant") {
+		if (player != nullptr) {
+			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+			c = createBlackAnt(pos, mvmPlayer);
+		}
+		
+	}
+	else if (objName == "Red ant") {
+		if (player != nullptr) {
+			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+			c = createRedAnt(pos, mvmPlayer);
+		}
+
 	}
 	/*
 	else if ()......
