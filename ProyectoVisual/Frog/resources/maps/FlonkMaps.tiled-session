@@ -22,33 +22,33 @@
             "expandedObjectLayers": [
                 5
             ],
-            "scale": 4,
+            "scale": 2,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 88.375,
-                "y": 7.875
+                "x": 151.75,
+                "y": 72.75
             }
         },
         "niveles/nivel01/mapaN1_02.tmx": {
             "expandedObjectLayers": [
                 5
             ],
-            "scale": 3,
+            "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 103.5,
-                "y": 59.833333333333314
+                "x": 119.75,
+                "y": 92.25
             }
         },
         "niveles/nivel01/mapaN1_03.tmx": {
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 2,
-            "selectedLayer": 0,
+            "scale": 3,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 119.75,
-                "y": 142.75
+                "x": 130.16666666666666,
+                "y": 117.83333333333331
             }
         },
         "niveles/nivel01/mapaN1_04.tmx": {
@@ -58,16 +58,16 @@
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 184.75,
-                "y": 163.25
+                "x": 177.75,
+                "y": 170.75
             }
         },
         "niveles/nivel01/mapaN1_05.tmx": {
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 119.25,
-                "y": 191.25
+                "x": 118.75,
+                "y": 190.75
             }
         },
         "niveles/nivel01/mapaN1_06.tmx": {
@@ -77,8 +77,8 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 162.75,
-                "y": 163.75
+                "x": 162.25,
+                "y": 163.25
             }
         },
         "niveles/nivel01/mapaN1_07-2.tmx": {
@@ -88,8 +88,8 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 135.75,
-                "y": 162.75
+                "x": 135.25,
+                "y": 162.25
             }
         },
         "niveles/nivel01/mapaN1_07.tmx": {
@@ -99,8 +99,8 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 146.75,
-                "y": 151.25
+                "x": 146.25,
+                "y": 150.75
             }
         },
         "niveles/nivel01/mapaN1_08-2.tmx": {
@@ -110,8 +110,8 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 146.75,
-                "y": 174.25
+                "x": 146.25,
+                "y": 173.75
             }
         },
         "niveles/nivel01/mapaN1_08.tmx": {
@@ -121,8 +121,8 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 163.75,
-                "y": 177.75
+                "x": 163.25,
+                "y": 177.25
             }
         },
         "niveles/nivel01/mapaN1_09.tmx": {
@@ -132,20 +132,36 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 102.75,
-                "y": 161.75
+                "x": 102.25,
+                "y": 161.25
             }
         },
         "niveles/nivel01/mapaN1_10.tmx": {
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 129.25,
-                "y": 177.25
+                "x": 128.75,
+                "y": 176.75
             }
         },
         "niveles/nivel01/tileset/H01_tileset.tsx": {
             "scaleInDock": 1
+        },
+        "niveles/nivel03/mapaN3_01.tmx": {
+            "scale": 3.570982142857143,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 112.15401925240654,
+                "y": 112.15401925240654
+            }
+        },
+        "niveles/nivel03/mapaN3_04.tmx": {
+            "scale": 2.7075,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 128.3471837488458,
+                "y": 160.1108033240997
+            }
         },
         "tileset/H01_tileset.tsx": {
             "scaleInDock": 2,
@@ -177,8 +193,10 @@
         "niveles/nivel01/mapaN1_10.tmx"
     ],
     "project": "FlonkMaps.tiled-project",
-    "property.type": "string",
+    "property.type": "int",
     "recentFiles": [
+        "niveles/nivel03/mapaN3_04.tmx",
+        "niveles/nivel03/mapaN3_01.tmx",
         "niveles/nivel01/mapaN1_01.tmx",
         "niveles/nivel01/mapaN1_02.tmx",
         "niveles/nivel01/mapaN1_03.tmx",
@@ -188,9 +206,7 @@
         "niveles/nivel01/mapaN1_08.tmx",
         "niveles/nivel01/mapaN1_07-2.tmx",
         "niveles/nivel01/mapaN1_07.tmx",
-        "niveles/nivel01/mapaN1_06.tmx",
-        "niveles/nivel01/mapaN1_05.tmx",
-        "niveles/nivel01/mapaN1_04.tmx"
+        "niveles/nivel01/mapaN1_06.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

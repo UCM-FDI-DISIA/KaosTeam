@@ -23,6 +23,9 @@ private:
 	int id;
 	Entity* player = nullptr;
 	flonkOrig playerOrig = S;
+	bool needMapChange = false;
+	std::string nextMap;
+	flonkOrig nextFlonk;
 
 	//Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
 	void CheckColisions();
@@ -87,8 +90,8 @@ public:
 		collider->setContext(flyToPlayer);
 		flyToPlayer->addComponent(COLLIDER_COMPONENT, collider);
 
-		entityList.push_back(flyToPlayer);
-		createFish(Vector2D(0, 3), 4);
+		//entityList.push_back(flyToPlayer);
+		//createFish(Vector2D(0, 3), 4);
 
 		
 
@@ -102,7 +105,8 @@ public:
 	virtual ~RoomScene();
 
 	MapManager* getMapReader() { return mapReader; };
-	void changeMap(std::string nextMap, flonkOrig nextFlonk);
+	void changeMap();
+	void callForMapChange(std::string nextMap, flonkOrig nextFlonk){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
 
 	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps);
 

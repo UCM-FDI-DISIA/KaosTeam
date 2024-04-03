@@ -18,6 +18,8 @@ void RoomScene::update() {
 	}
 
 	cameraManager->update();
+	if (needMapChange)
+		changeMap();
 	//comrpueba las colisiones con la rana
 
 }
@@ -198,18 +200,8 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	if (objName == "Crazy frog"){
 		c = createCrazyFrog(pos);
 	}
-	else if (objName == "Fish") { 
-		for (const auto& prop : objProps) {
-			if (prop.getName() == "object") //revisar esto
-			{
-				if (prop.getType() == tmx::Property::Type::Int) {
-					int boundX = prop.getIntValue();
-					c = createFish(pos, boundX);
-					//c = createFish(pos, 4);
-					break;
-				}
-			}
-		}
+	else if (objName == "Pez") { 
+		c = createFish(pos, objProps[0].getIntValue());
 	}
 	/*
 	else if ()......
@@ -298,7 +290,7 @@ RoomScene::~RoomScene() {
 	delete cameraManager;
 }
 
-void RoomScene::changeMap(std::string nextMap, flonkOrig nextFlonk)
+void RoomScene::changeMap()
 {
 	playerOrig = nextFlonk;
 
@@ -313,4 +305,6 @@ void RoomScene::changeMap(std::string nextMap, flonkOrig nextFlonk)
 	mapReader->loadObj(nextMap);
 
 	cameraManager->setTarget(player);
+
+	needMapChange = false;
 }

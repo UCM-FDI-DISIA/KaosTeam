@@ -251,24 +251,10 @@ void MapManager::loadObj(const std::string& path)
 
                 Entity* ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
                 if (ent != nullptr) {
-                    walkableTiles[x][y]->objInTile = ent;
-                    std::cout << "Anadida entidad a tile: " << object.getName() << std::endl;
-
-/*
-                    if (prop.getName() == "TexPath") {
-                        texPath = prop.getStringValue();
+                    if (walkableTiles[x][y] != nullptr) {
+                        walkableTiles[x][y]->objInTile = ent;
+                        std::cout << "Anadida entidad a tile: " << object.getName() << std::endl;
                     }
-
-                    //Abstraerlo para que se llame a metodo de Crear Entidades y que de ahi se gestione que es lo que se crea
-                    if (prop.getName() == "isPlayer") {
-                        if (prop.getBoolValue()) {
-                            Vector2D pos;
-                            pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
-                            pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
-                            room->createPlayer(texPath, pos, cols, rows);
-                        }
-                    }*/
-
                 }
 
                 if (!object.getTilesetName().empty())

@@ -40,7 +40,8 @@ Entity::update() {
 	
 	for (auto it = componentes.begin(); it != componentes.end(); ++it)
 	{
-		it->second->update();
+		if (it->second != nullptr)
+			it->second->update();
 	}
 }
 
