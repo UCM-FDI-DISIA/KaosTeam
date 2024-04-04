@@ -20,7 +20,8 @@ void MovementComponent::changePos(Vector2D v)
 void MovementComponent::resetPos(Vector2D v)
 {
 	posCasilla = v;
-	ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = ent;
+	if(checkIfTileWalkable(v))
+		ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = ent;
 }
 
 void MovementComponent::initComponent()
