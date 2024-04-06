@@ -7,6 +7,7 @@
         { "id" : "flySheet", "file" : "resources/Sprites/moscaSpritesheet.png", "rows" : 1, "cols" : 3},
         { "id" : "flyLifeSheet", "file" : "resources/Sprites/moscaVidaSpritesheet.png", "rows" : 1, "cols" : 3},
         { "id" : "frogSheet", "file" : "resources/Sprites/ranaSpritesheet.png", "rows" : 4, "cols" : 4},
+        { "id" : "crazyFrogSheet", "file" : "resources/Sprites/ranaLocaSpritesheet.png", "rows" : 4, "cols" : 4},
         { "id" : "TongueSheet", "file" : "resources/Sprites/spritesheetTongue.png", "rows" : 3, "cols" : 1},
         { "id" : "frog", "file" : "resources/Sprites/unFrameDeRana.png", "rows" : 1, "cols" : 1},
         { "id" : "worm", "file" : "resources/Sprites/wormHUD.png", "rows" : 1, "cols" : 1},
@@ -16,6 +17,13 @@
         { "id" : "fireflySheet", "file" : "resources/Sprites/LuciernagaSheet.png", "rows" : 1, "cols" : 2},
         { "id" : "birdSheet", "file" : "resources/Sprites/PajaroSheet.png", "rows" : 1, "cols" : 4},
         { "id" : "grasshopperSheet", "file" : "resources/Sprites/SaltamontesSheet.png", "rows" : 1, "cols" : 2},
+        { "id" : "bag", "file" : "resources/Sprites/Bolsa.png", "rows" : 1, "cols" : 1},
+        { "id" : "hook", "file" : "resources/Sprites/Gancho.png", "rows" : 1, "cols" : 1},
+        { "id" : "explosionSheet", "file" : "resources/Sprites/ExplosionSpritesheet.png", "rows" : 1, "cols" : 2},
+        { "id" : "eggSheet", "file" : "resources/Sprites/HuevoSheet.png", "rows" : 1, "cols" : 2},
+        { "id" : "snakeSheet", "file" : "resources/Sprites/SnakeSpritesheet.png", "rows" : 1, "cols" : 2},
+        { "id" : "fishSheet", "file" : "resources/Sprites/spritesheetFish.png", "rows" : 1, "cols" : 3},
+
 
         { "id" : "MenuInicio", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
         { "id" : "GameOver", "file" : "resources/Menus/MenuGameOver.png", "rows" : 1, "cols" : 1},
