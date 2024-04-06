@@ -49,6 +49,7 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
 	renderFrog->setContext(player);
+	renderFrog->initComponent();
 
 	animFrog->addAnimation("IDLE_DOWN", Animation({ Vector2D(0,0) }, false, false));
 	animFrog->addAnimation("IDLE_UP", Animation({ Vector2D(1,0) }, false, false));
