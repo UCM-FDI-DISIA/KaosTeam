@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="15" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="12">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="15" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="17">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="15" height="18">
   <data encoding="csv">
@@ -53,6 +53,13 @@
    </properties>
    <point/>
   </object>
+  <object id="14" name="FlonkE" type="Player" x="215.283" y="123.956">
+   <properties>
+    <property name="TexPath" value="../Frog/resources/sprites/unFrameDeRana.png"/>
+    <property name="isPlayer" type="bool" value="true"/>
+   </properties>
+   <point/>
+  </object>
   <object id="3" name="Crazy frog" type="Enemigo" x="90.2569" y="156.321">
    <point/>
   </object>
@@ -78,6 +85,30 @@
    <point/>
   </object>
   <object id="11" name="Jarron" x="88.6691" y="28.4196">
+   <point/>
+  </object>
+  <object id="12" name="TransitionE" type="Transition" x="230.767" y="107.426">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_06.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="16" name="TransitionE" type="Transition" x="231.904" y="124.478">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_06.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="13" name="TransitionS" type="Transition" x="104.016" y="284.196">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_04.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="15" name="TransitionS" type="Transition" x="121.067" y="283.627">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_04.tmx"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

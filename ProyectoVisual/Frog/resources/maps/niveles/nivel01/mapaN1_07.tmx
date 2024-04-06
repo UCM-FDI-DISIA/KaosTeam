@@ -96,11 +96,5 @@
    </properties>
    <point/>
   </object>
-  <object id="19" name="TransitionP" type="Transition" x="41" y="218">
-   <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_10.tmx"/>
-   </properties>
-   <point/>
-  </object>
  </objectgroup>
 </map>

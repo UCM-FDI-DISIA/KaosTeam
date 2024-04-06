@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="18">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="19">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <tileset firstgid="421" source="../../tileset/H01_tileset.tsx"/>
  <layer id="1" name="Walk" width="16" height="16">
@@ -8,7 +8,7 @@
 34,34,35,34,34,34,7,34,34,34,7,34,35,34,34,34,
 34,34,34,7,34,34,34,34,35,34,34,34,34,34,7,34,
 34,34,34,34,0,0,34,34,34,34,34,0,34,34,34,34,
-170,170,170,170,170,170,170,34,254,254,254,254,254,254,254,254,
+170,170,170,170,170,170,170,34,170,170,170,170,170,170,170,254,
 34,34,34,34,34,34,34,34,34,7,34,34,34,34,34,34,
 34,34,34,7,7,34,34,0,7,34,34,34,34,7,34,34,
 7,34,35,34,34,34,34,34,34,34,34,34,34,34,7,34,
@@ -18,7 +18,7 @@
 34,34,34,34,34,7,34,34,34,34,34,34,34,34,35,34,
 34,34,7,34,34,34,34,34,34,34,0,34,34,0,0,34,
 34,34,34,34,35,34,34,170,170,170,170,170,170,170,170,170,
-34,35,34,34,34,441,441,441,441,441,34,7,34,34,34,34,
+34,35,34,34,34,34,34,34,34,34,34,7,34,34,34,34,
 34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34
 </data>
  </layer>
@@ -28,7 +28,7 @@
 365,0,0,0,0,0,0,0,0,0,0,0,0,0,0,367,
 393,0,0,0,0,0,0,0,0,0,0,0,0,0,0,395,
 226,226,226,226,226,226,226,226,226,226,226,226,226,226,226,226,
-337,0,0,0,0,0,0,169,170,170,170,170,170,170,170,339,
+337,0,0,0,0,0,0,169,0,0,0,0,0,0,0,339,
 365,0,0,0,0,0,0,197,0,0,0,0,0,0,0,367,
 393,0,0,0,0,0,0,197,0,0,0,0,0,0,0,395,
 0,0,0,0,0,0,0,197,0,0,0,0,0,0,0,0,
@@ -52,13 +52,19 @@
   <object id="3" name="Crazy frog" type="Enemigo" x="169" y="122">
    <point/>
   </object>
-  <object id="4" name="Pez" type="Enemigo" x="248" y="55.5">
+  <object id="4" name="Pez" type="Enemigo" x="40" y="62">
    <properties>
     <property name="mov" type="int" value="4"/>
    </properties>
    <point/>
   </object>
-  <object id="5" name="Pez" type="Enemigo" x="249.5" y="197.5">
+  <object id="18" name="Pez" type="Enemigo" x="151.5" y="62">
+   <properties>
+    <property name="mov" type="int" value="4"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="5" name="Pez" type="Enemigo" x="153.5" y="203">
    <properties>
     <property name="mov" type="int" value="4"/>
    </properties>
