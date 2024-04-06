@@ -50,7 +50,7 @@
 435,380,380,380,380,380,380,380,381,0,0,379,380,380,380,380,380,380,380,437
 </data>
  </layer>
- <objectgroup id="3" name="Obj" visible="0">
+ <objectgroup id="3" name="Obj">
   <object id="5" name="Crazy frog" type="Enemigo" x="56" y="124.667">
    <point/>
   </object>
