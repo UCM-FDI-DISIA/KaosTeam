@@ -41,6 +41,10 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
+	TransformComponent* transform = new TransformComponent(pos);
+	player->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(player);
+
 	AnimationComponent* animFrog = new AnimationComponent();
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
@@ -127,6 +131,10 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaLocaSpritesheet.png", 4, 4);
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
+	TransformComponent* transform = new TransformComponent(pos);
+	frog->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(frog);
+
 	AnimationComponent* animFrog = new AnimationComponent();
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
@@ -168,6 +176,10 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	Entity* fish = new Entity(this);
 	Texture* txtFish = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	fish->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(fish);
 
 	AnimationComponent* animFish = new AnimationComponent();
 	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 0.5, animFish);
@@ -283,7 +295,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 
 void RoomScene::movePlayer(Vector2D pos)
 {
-	static_cast<MovementComponent*>(player->getComponent(MOVEMENT_COMPONENT))->resetPos(pos);
+	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
 }
 
 void RoomScene::AddEntity(Entity* entity) {

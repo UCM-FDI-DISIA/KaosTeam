@@ -4,7 +4,7 @@
 
 void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string animation)
 {
-	if (!jumping && checkIfTileWalkable(posCasilla + v))  //COLISIONES COMENTADAS PARA PROBAR LA TRANSICIÓON ENTRE ESCENAS
+	if (!jumping && checkIfTileWalkable(transform->getCasilla() + v))  //COLISIONES COMENTADAS PARA PROBAR LA TRANSICIÓON ENTRE ESCENAS
 	{
 		velocity = v;
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
@@ -26,14 +26,14 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 //CAMBIARÁ CUANDO TENGAMOS LAS COLISIONES!!!!
 void MovementComponentFrog::changePosFrog(Vector2D v)
 {	
-	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + posCasilla)->objInTile;
+	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + transform->getCasilla())->objInTile;
 	if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
 		//COLISION CON OBJETO DE TRANSICION
 		static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
 	}
 	else {
 		//Simplemente pasa a la otra casilla
-		changePos(velocity.normalize() + posCasilla);
+		transform->setCasilla(velocity.normalize() + transform->getCasilla());
 	}
 }
 
@@ -47,29 +47,29 @@ void MovementComponentFrog::update() {
 
 		if (actualDirection == LEFT || actualDirection == RIGHT)
 		{
-			offsetInCasilla.setX(offsetInCasilla.getX() + t / framesPerJump * velocity.getX());
-			offsetInCasilla.setY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
+			transform->setOffsetX(transform->getOffset().getX() + t / framesPerJump * velocity.getX());
+			transform->setOffsetY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
 		}
 		else
 		{
-			offsetInCasilla.setY(offsetInCasilla.getY() + t / framesPerJump * velocity.getY());
+			transform->setOffsetY(transform->getOffset().getY() + t / framesPerJump * velocity.getY());
 		}
 
-		if (offsetInCasilla.getX()*velocity.normalize().getX() >= t / 2 ||
-			offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
+		if (transform->getOffset().getX() * velocity.normalize().getX() >= t / 2 ||
+			transform->getOffset().getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
 		{
-			changePosFrog(velocity.normalize() + posCasilla);
+			changePosFrog(velocity.normalize() + transform->getCasilla());
 			if (actualDirection == LEFT || actualDirection == RIGHT)
-				offsetInCasilla.setX(offsetInCasilla.getX() * -1);
+				transform->setOffsetX(transform->getOffset().getX() * -1);
 			else
-				offsetInCasilla.setY(offsetInCasilla.getY() * -1);
+				transform->setOffsetY(transform->getOffset().getX() * -1);
 
 		}
 
 		if (framesMoved == framesPerJump) //para acabar el movimiento
 		{
 			//changePos(velocity.normalize() + posCasilla);
-			offsetInCasilla = {0,0};
+			transform->setOffset({ 0,0 });
 			framesMoved = 0;
 			jumping = false;
 		}

@@ -7,8 +7,8 @@
 void Camera::setTarget(Entity* target)
 {
 	camTarget = target;
-	camTargetMovementComp = dynamic_cast<MovementComponentFrog*>(camTarget->getComponent(MOVEMENT_COMPONENT));
-	lastTargetPosition = camTargetMovementComp->getPosition();
+	targetTransform = dynamic_cast<TransformComponent*>(camTarget->getComponent(TRANSFORM_COMPONENT));
+	lastTargetPosition = targetTransform->getCasilla();
 
 	tileSize = target->getScene()->getMapReader()->getTileSize();
 	screenSize = { round(WIN_WIDTH / (float)tileSize), round(WIN_HEIGHT / (float)tileSize) }; //calcular cuantas tiles hay en la pantalla
@@ -27,7 +27,7 @@ void Camera::setTarget(Entity* target)
 }
 void Camera::update() {
 
-	Vector2D actualTargetPos = camTargetMovementComp->getPosition();
+	Vector2D actualTargetPos = targetTransform->getCasilla();
 	if (lastTargetPosition.getX() != actualTargetPos.getX() || lastTargetPosition.getY() != actualTargetPos.getY()) {
 		
 		if ((cameraPos.getX() > 0 || actualTargetPos.getX() > tilesToStartMoving) &&				//si no te sales por la izquierda

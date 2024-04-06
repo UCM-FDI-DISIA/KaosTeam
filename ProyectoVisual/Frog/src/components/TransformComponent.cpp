@@ -1,4 +1,12 @@
 #include "TransformComponent.h"
+#include "../scenes/RoomScene.h"
+#include "../sdlutils/SDLUtils.h"
+
+TransformComponent::TransformComponent(Vector2D casilla) : casilla(casilla) {
+	width = 1.0;
+	height = 1.0;
+	offset = Vector2D(0, 0);
+}
 
 SDL_Rect TransformComponent::GetOnDisplayPosition() {
 	int t = ent->getScene()->getMapReader()->getTileSize();
@@ -16,4 +24,17 @@ SDL_Rect TransformComponent::GetOnDisplayPosition() {
 	dest.h = height;
 
 	return dest;
+}
+
+void TransformComponent::resetPos(Vector2D v)
+{
+	casilla = v;
+	ent->getScene()->getMapReader()->getTile(casilla)->objInTile = ent;
+}
+
+void TransformComponent::changePos(Vector2D v)
+{
+	ent->getScene()->getMapReader()->getTile(casilla)->objInTile = nullptr;
+	casilla = v;
+	ent->getScene()->getMapReader()->getTile(casilla)->objInTile = ent;
 }

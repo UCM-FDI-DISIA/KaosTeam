@@ -1,8 +1,8 @@
 #pragma once
 #include "../ecs/Component.h"
 #include "../utils/Vector2D.h"
-#include "../scenes/RoomScene.h"
 
+class SDL_Rect;
 //Define el tamaño y posición de la entidad (si tiene)
 class TransformComponent : public Component
 {
@@ -14,19 +14,19 @@ private:
 	Vector2D offset;
 
 public:
-	//Por hacer
-	TransformComponent(Vector2D casilla, float width, float height) : casilla(casilla), width(width), height(height) {}
-	//Crea un transform cuadrado con escala determinada en funcion al tamaño de las casillas
-	TransformComponent(Vector2D casilla, float scale) : casilla(casilla) {
-		int tam = ent->getScene()->getMapReader()->getTileSize();
-		width = tam;
-		height = tam;
-		offset = Vector2D(0, 0);
+	TransformComponent(Vector2D casilla, float width, float height) : casilla(casilla), width(width), height(height) {
+		offset = { 0,0 };
 	}
-
+	//Crea un transform cuadrado con escala determinada en funcion al tamaño de las casillas
+	TransformComponent(Vector2D casilla);
 	~TransformComponent() {};
 
-	Vector2D& getCasilla() {
+	SDL_Rect GetOnDisplayPosition();
+
+	void changePos(Vector2D v);
+	void resetPos(Vector2D v);
+
+	Vector2D getCasilla() {
 		return casilla;
 	}
 
@@ -42,6 +42,25 @@ public:
 		return height;
 	}
 
-	SDL_Rect GetOnDisplayPosition();
+	Vector2D getOffset() {
+		return offset;
+	}
+
+	void setOffset(Vector2D offset) {
+		this->offset = offset;
+	}
+
+	void setOffsetY(float y) {
+		this->offset.setY(y);
+	}
+
+	void setOffsetX(float x) {
+		this->offset.setX(x);
+	}
+
+
+	Vector2D* getCasillaPointer() {
+		return &casilla;
+	}
 };
 

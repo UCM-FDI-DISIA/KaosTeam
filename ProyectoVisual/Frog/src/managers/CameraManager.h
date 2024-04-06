@@ -34,7 +34,7 @@ private:
 	Vector2D additionalOffset;
 	Camera() {};
 	//ns si esta bien
-	MovementComponentFrog* camTargetMovementComp;
+	TransformComponent* targetTransform;
 	
 };
 #endif // !CAMERAMANAGER_H

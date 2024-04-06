@@ -13,3 +13,8 @@ void RenderComponent::render()
 		myTexture->renderFrame(transform->GetOnDisplayPosition(), myAnimator->getCurrentFil(), myAnimator->getCurrentCol());
 	}	
 }
+
+void RenderComponent::initComponent() {
+	transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+
+}
