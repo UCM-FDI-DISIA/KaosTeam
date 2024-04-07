@@ -16,12 +16,13 @@ bool ColliderComponent::CheckCollision(Entity* e) {
 	return false;
 }
 
-void ColliderComponent::AddCall(std::function<void()>* func) {
-	funcion = func;
+void ColliderComponent::AddCall(std::function<void(Entity*)>* func) {
+	funciones.push_back(func);
 }
 
-void ColliderComponent::OnCollision() {
-	//Esto llama a la funcion guardada 
-	if(funcion != nullptr)
-		(*funcion)();
+void ColliderComponent::OnCollision(Entity* e) {
+	//Esto llama a las funciones guardadas 
+	for (std::function<void(Entity*)>* func : funciones) {
+		(*func)(e);
+	}
 }

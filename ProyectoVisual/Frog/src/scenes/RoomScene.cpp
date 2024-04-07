@@ -22,16 +22,14 @@ void RoomScene::update() {
 }
 
 void RoomScene::CheckColisions() {
-	//Esto es provisional, en la version final se va a llamar a todas las colisiones de las entidades utilizando transform.
-	ColliderComponent* collRana = static_cast<ColliderComponent*>(player->getComponent(COLLIDER_COMPONENT));
-	for (Entity* e : entityList) {
-		//Problema: para que CheckColision funcione e tiene que tener ambos un movement component y un render component
-		//Por ahora, simplemente pondré una comprobación adicional de que tenga ColliderComponent
-		if (e != nullptr) {
-			ColliderComponent* coll = static_cast<ColliderComponent*>(e->getComponent(COLLIDER_COMPONENT));
-			if (coll != nullptr && collRana->CheckCollision(e))
-				coll->OnCollision();
-		}
+	for (Entity* e1 : entityList) {
+		ColliderComponent* coll1 = static_cast<ColliderComponent*>(e1->getComponent(COLLIDER_COMPONENT));
+		if (coll1 != nullptr)
+			for (Entity* e2 : entityList) {
+				ColliderComponent* coll2 = static_cast<ColliderComponent*>(e2->getComponent(COLLIDER_COMPONENT));
+				if (coll2 != nullptr && coll2->CheckCollision(e1))
+					coll2->OnCollision(e1);
+			}
 	}
 };
 
