@@ -20,8 +20,7 @@ protected:
 
 	TransformComponent* transform;
 public:
-	MovementComponent() {};
-	//importante!! usad este metodo para cambiar de casilla!!
+	MovementComponent() {}
 	void initComponent() override;
 
 	void setBoundX(int newBoundX) { boundX = newBoundX; }

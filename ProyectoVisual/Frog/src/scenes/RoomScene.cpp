@@ -71,6 +71,7 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
 	mvm->setContext(player);
+	mvm->initComponent();
 	player->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AttackComponentFrog* atck = new AttackComponentFrog();
@@ -162,7 +163,7 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
 	mvm->setContext(frog);
 	frog->addComponent(MOVEMENT_COMPONENT, mvm);
-
+	mvm->initComponent();
 	AttackComponentFrog* atck = new AttackComponentFrog();
 	frog->addComponent(ATTACK_COMPONENT, atck);
 	atck->setContext(frog);
@@ -199,6 +200,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	MovementComponentFish* mvm = new MovementComponentFish(pos, boundX, animFish);
 	mvm->setContext(fish);
 	fish->addComponent(MOVEMENT_COMPONENT, mvm);
+	mvm->initComponent();
 
 	AddEntity(fish);
 	return fish;	
