@@ -6,7 +6,7 @@
         { "id" : "fly", "file" : "resources/Sprites/unframedemoska.png", "rows" : 1, "cols" : 1},
         { "id" : "flySheet", "file" : "resources/Sprites/moscaSpritesheet.png", "rows" : 1, "cols" : 3},
         { "id" : "flyLifeSheet", "file" : "resources/Sprites/moscaVidaSpritesheet.png", "rows" : 1, "cols" : 3},
-        { "id" : "frogSheet", "file" : "resources/Sprites/ranaSpritesheet.png", "rows" : 4, "cols" : 4},
+        { "id" : "frogSheet", "file" : "resources/Sprites/ranaSpritesheet.png", "rows" : 4, "cols" : 5},
         { "id" : "crazyFrogSheet", "file" : "resources/Sprites/ranaLocaSpritesheet.png", "rows" : 4, "cols" : 4},
         { "id" : "TongueSheet", "file" : "resources/Sprites/spritesheetTongue.png", "rows" : 3, "cols" : 1},
         { "id" : "frog", "file" : "resources/Sprites/unFrameDeRana.png", "rows" : 1, "cols" : 1},
