@@ -15,6 +15,7 @@
         { "id" : "wormPinkSheet", "file" : "resources/Sprites/LombrizSpritesPink.png", "rows" : 1, "cols" : 2},
         { "id" : "wormPinkSheet", "file" : "resources/Sprites/LombrizSpritesPurple.png", "rows" : 1, "cols" : 2},
         { "id" : "fireflySheet", "file" : "resources/Sprites/LuciernagaSheet.png", "rows" : 1, "cols" : 2},
+        { "id" : "leverSheet", "file" : "resources/Sprites/PalancaSheet.png", "rows" : 1, "cols" : 2},
         { "id" : "birdSheet", "file" : "resources/Sprites/PajaroSheet.png", "rows" : 1, "cols" : 4},
         { "id" : "grasshopperSheet", "file" : "resources/Sprites/SaltamontesSheet.png", "rows" : 1, "cols" : 2},
         { "id" : "bag", "file" : "resources/Sprites/Bolsa.png", "rows" : 1, "cols" : 1},
