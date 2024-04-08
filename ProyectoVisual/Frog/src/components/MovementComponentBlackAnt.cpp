@@ -81,17 +81,8 @@ void MovementComponentBlackAnt::update() {
 		else {
 			offsetInCasilla.setY(offsetInCasilla.getY() + t / framesPerMove * velocity.getY());
 		}
-
-		if (offsetInCasilla.getX() * velocity.normalize().getX() >= t / 2 ||
-			offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2)
-		{
-			changePos(velocity.normalize() + posCasilla);
-			if (actualDirection == LEFT || actualDirection == RIGHT)
-				offsetInCasilla.setX(offsetInCasilla.getX() * -1);
-			else if (actualDirection == UP || actualDirection == DOWN)
-				offsetInCasilla.setY(offsetInCasilla.getY() * -1);
-		}
 		if (framesMoved == framesPerMove) {
+			posCasilla = posCasilla + velocity;
 			offsetInCasilla = { 0,0 };
 			framesMoved = 0;
 			isMoving = false;
@@ -138,10 +129,7 @@ void MovementComponentBlackAnt::changeDirection() {
 		  break;
 	case 1: {
 		Vector2D aux = posCasilla + Vector2D(-1, 0);
-		/*if (checkIfTileWalkable(aux)) {
-			actualDirection = LEFT;
-		}*/
-		if (aux.getX() >= 0) {
+		if (checkIfTileWalkable(aux)) {
 			actualDirection = LEFT;
 		}
 		else
@@ -150,10 +138,7 @@ void MovementComponentBlackAnt::changeDirection() {
 		  break;
 	case 2: {
 		Vector2D aux = posCasilla + Vector2D(0, -1);
-		/*if (checkIfTileWalkable(aux)) {
-			actualDirection = UP;
-		}*/
-		if (aux.getY() >= 0) {
+		if (checkIfTileWalkable(aux)) {
 			actualDirection = UP;
 		}
 		else
@@ -206,17 +191,10 @@ void MovementComponentBlackAnt::checkCollisionWall() {
 	//comprobar si da con la pared y si es asi waitToMove = true
 	if (actualDirection == RIGHT && !checkIfTileWalkable(posCasilla + Vector2D(1, 0)))
 		waitToMove = true;
-	else if (actualDirection == LEFT) {
-		Vector2D aux = posCasilla + Vector2D(-1, 0);
-		if (aux.getX() < 0)
+	else if (actualDirection == LEFT && !checkIfTileWalkable(posCasilla + Vector2D(-1, 0))) 
 			waitToMove = true;
-	} /* && !checkIfTileWalkable(posCasilla + Vector2D(-1, 0)))*/
 	else if (actualDirection == DOWN && !checkIfTileWalkable(posCasilla + Vector2D(0, 1)))
 		waitToMove = true;
-	else if (actualDirection == UP) {
-		Vector2D aux = posCasilla + Vector2D(0, -1);
-		if (aux.getY() < 0) {
+	else if (actualDirection == UP && !checkIfTileWalkable(posCasilla + Vector2D(0, -1))) 
 			waitToMove = true;
-		}
-	}/* && !checkIfTileWalkable(posCasilla + Vector2D(0, -1)))*/
 }

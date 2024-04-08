@@ -9,19 +9,28 @@ void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 		if (checkIfTileWalkable(aux)) {
 			velocity = Vector2D(1, 0);
 		}
+		else {
+			velocity = Vector2D(0, 0);
+		}
 	}
 	break;
 	case MovementComponentRedAnt::LEFT:
 	{
-		if (aux.getX() >= 0) {
+		if (checkIfTileWalkable(aux)) {
 			velocity = Vector2D(-1, 0);
+		}
+		else {
+			velocity = Vector2D(0, 0);
 		}
 	}
 	break;
 	case MovementComponentRedAnt::UP:
 	{
-		if (aux.getY() >= 0) {
+		if (checkIfTileWalkable(aux)) {
 			velocity = Vector2D(0, -1);
+		}
+		else {
+			velocity = Vector2D(0, 0);
 		}
 	}
 	break;
@@ -29,6 +38,9 @@ void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 	{
 		if (checkIfTileWalkable(aux)) {
 			velocity = Vector2D(0, 1);
+		}
+		else {
+			velocity = Vector2D(0, 0);
 		}
 	}
 	break;
@@ -42,11 +54,8 @@ void MovementComponentRedAnt::update() {
 		switch (actualDirection)
 		{
 		case RIGHT: {
-			//velocity = Vector2D(1, 0);
 			canMove(Vector2D(1, 0), RIGHT);
 			if (escape) {
-
-				//velocity = Vector2D(range, 0);
 				//anim->playAnimation("RIGHT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
@@ -58,10 +67,8 @@ void MovementComponentRedAnt::update() {
 				  break;
 		case LEFT:
 		{
-			//velocity = Vector2D(-1, 0);
 			canMove(Vector2D(-1, 0), LEFT);
 			if (escape) {
-				//velocity = Vector2D(-range, 0);
 				//anim->playAnimation("LEFT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
@@ -73,10 +80,8 @@ void MovementComponentRedAnt::update() {
 		break;
 		case UP:
 		{
-			//velocity = Vector2D(0, -1);
 			canMove(Vector2D(0, -1), UP);
 			if (escape) {
-				//velocity = Vector2D(0, -range);
 				//anim->playAnimation("LEFT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
@@ -88,10 +93,8 @@ void MovementComponentRedAnt::update() {
 		break;
 		case DOWN:
 		{
-			//velocity = Vector2D(0, 1);
 			canMove(Vector2D(0, 1), DOWN);
 			if (escape) {
-				//velocity = Vector2D(0, range);
 				//anim->playAnimation("LEFT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
@@ -116,17 +119,8 @@ void MovementComponentRedAnt::update() {
 		else {
 			offsetInCasilla.setY(offsetInCasilla.getY() + t / framesPerMove * velocity.getY());
 		}
-
-		if (offsetInCasilla.getX() * velocity.normalize().getX() >= t / 2 ||
-			offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2)
-		{
-			changePos(velocity.normalize() + posCasilla);
-			if (actualDirection == LEFT || actualDirection == RIGHT)
-				offsetInCasilla.setX(offsetInCasilla.getX() * -1);
-			else if (actualDirection == UP || actualDirection == DOWN)
-				offsetInCasilla.setY(offsetInCasilla.getY() * -1);
-		}
 		if (framesMoved == framesPerMove) {
+			posCasilla = posCasilla + velocity;
 			offsetInCasilla = { 0,0 };
 			framesMoved = 0;
 			isMoving = false;
@@ -155,10 +149,7 @@ void MovementComponentRedAnt::changeDirection() {
 		  break;
 	case 1: {
 		Vector2D aux = posCasilla + Vector2D(-1, 0);
-		/*if (checkIfTileWalkable(aux)) {
-			actualDirection = LEFT;
-		}*/
-		if (aux.getX() >= 0) {
+		if (checkIfTileWalkable(aux)) {
 			actualDirection = LEFT;
 		}
 		else
@@ -167,15 +158,11 @@ void MovementComponentRedAnt::changeDirection() {
 		  break;
 	case 2: {
 		Vector2D aux = posCasilla + Vector2D(0, -1);
-		/*if (checkIfTileWalkable(aux)) {
-			actualDirection = UP;
-		}*/
-		if (aux.getY() >= 0) {
+		if (checkIfTileWalkable(aux)) {
 			actualDirection = UP;
 		}
 		else
 			changeDirection();
-
 	}
 		  break;
 	case 3: {
