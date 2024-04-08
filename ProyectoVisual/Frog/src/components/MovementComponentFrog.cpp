@@ -16,7 +16,6 @@ void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string 
 		}
 		actualDirection = d;
 		anim->playAnimation(animation);
-		
 	}
 }
 
