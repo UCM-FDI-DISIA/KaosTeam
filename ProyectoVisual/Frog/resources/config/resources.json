@@ -19,6 +19,8 @@
         { "id" : "grasshopperSheet", "file" : "resources/Sprites/SaltamontesSheet.png", "rows" : 1, "cols" : 2},
         { "id" : "bag", "file" : "resources/Sprites/Bolsa.png", "rows" : 1, "cols" : 1},
         { "id" : "hook", "file" : "resources/Sprites/Gancho.png", "rows" : 1, "cols" : 1},
+        { "id" : "rock", "file" : "resources/Sprites/Roca.png", "rows" : 1, "cols" : 1},
+        { "id" : "pot", "file" : "resources/Sprites/Jarron.png", "rows" : 1, "cols" : 1},
         { "id" : "explosionSheet", "file" : "resources/Sprites/ExplosionSpritesheet.png", "rows" : 1, "cols" : 2},
         { "id" : "eggSheet", "file" : "resources/Sprites/HuevoSheet.png", "rows" : 1, "cols" : 2},
         { "id" : "snakeSheet", "file" : "resources/Sprites/SnakeSpritesheet.png", "rows" : 1, "cols" : 2},
