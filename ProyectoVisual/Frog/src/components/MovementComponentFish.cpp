@@ -14,12 +14,12 @@ void MovementComponentFish::update() {
 			case RIGHT:
 				if (!isJumping) {
 					isJumping = true;
-					transform->setCasilla(transform->getCasilla() + Vector2D(0.5, -1));
+					tr->setCasilla(tr->getCasilla() + Vector2D(0.5, -1));
 					anim->playAnimation("JUMP_RIGHT");
 				}
 				else if (isJumping) {
 					isJumping = false;
-					transform->setCasilla(transform->getCasilla() + Vector2D(0.5, 1));
+					tr->setCasilla(tr->getCasilla() + Vector2D(0.5, 1));
 					casillaActual++;
 					anim->playAnimation("RIGHT");
 				}
@@ -28,12 +28,12 @@ void MovementComponentFish::update() {
 			case LEFT:
 				if (!isJumping) {
 					isJumping = true;
-					transform->setCasilla(transform->getCasilla() + Vector2D(-0.5, -1));
+					tr->setCasilla(tr->getCasilla() + Vector2D(-0.5, -1));
 					anim->playAnimation("JUMP_LEFT");
 				}
 				else if (isJumping) {
 					isJumping = false;
-					transform->setCasilla(transform->getCasilla() + Vector2D(-0.5, 1));
+					tr->setCasilla(tr->getCasilla() + Vector2D(-0.5, 1));
 					casillaActual++;
 					anim->playAnimation("LEFT");
 				}
@@ -80,7 +80,7 @@ void MovementComponentFish::update() {
 		if (framesMoved == framesPerMove) {
 			
 			tr->setCasilla(tr->getCasilla() + velocity);
-			offsetInCasilla = { 0,0 };
+			tr->setOffset( {0,0} );
 			framesMoved = 0;
 			isMoving = false;
 			isJumping = false;

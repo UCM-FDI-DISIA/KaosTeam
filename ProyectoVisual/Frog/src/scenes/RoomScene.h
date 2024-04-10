@@ -102,7 +102,7 @@ public:
 
 		//entityList.push_back(flyToPlayer);
 		//createFish(Vector2D(0, 3), 4);
-		entityList.push_back(flyToPlayer);
+		//entityList.push_back(flyToPlayer);
 
 
 		createFish(Vector2D(0, 3), 4);
