@@ -6,7 +6,7 @@ void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string 
 {
 	if (!jumping) 
 	{
-		if (checkIfTileWalkable(posCasilla + v))
+		if (checkIfTileWalkable(tr->getCasilla() + velocity))
 		{
 			velocity = v;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
@@ -29,14 +29,14 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 void MovementComponentFrog::changePosFrog(Vector2D v)
 {	
 
-	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + transform->getCasilla())->objInTile;
+	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + tr->getCasilla())->objInTile;
 	if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
 		//COLISION CON OBJETO DE TRANSICION
 		static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
 	}
 	else {
 		//Simplemente pasa a la otra casilla
-		transform->setCasilla(velocity.normalize() + transform->getCasilla());
+		tr->setCasilla(velocity.normalize() + tr->getCasilla());
 	}
 }
 
@@ -50,12 +50,12 @@ void MovementComponentFrog::update() {
 
 		if (actualDirection == LEFT || actualDirection == RIGHT)
 		{
-			transform->setOffsetX(transform->getOffset().getX() + t / framesPerJump * velocity.getX());
-			transform->setOffsetY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
+			tr->setOffsetX(tr->getOffset().getX() + t / framesPerJump * velocity.getX());
+			tr->setOffsetY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
 		}
 		else
 		{
-			transform->setOffsetY(transform->getOffset().getY() + t / framesPerJump * velocity.getY());
+			tr->setOffsetY(tr->getOffset().getY() + t / framesPerJump * velocity.getY());
 		}
 
 		//como las colisiones ya no se hacen por casillas, esto no lo necesitamos
@@ -79,9 +79,9 @@ void MovementComponentFrog::update() {
 
 		if (framesMoved == framesPerJump) //para acabar el movimiento
 		{
-			changePosFrog(velocity + posCasilla);
+			changePosFrog(velocity + tr->getCasilla());
 			//changePos(velocity.normalize() + posCasilla);
-			transform->setOffset({ 0,0 });
+			tr->setOffset({ 0,0 });
 			framesMoved = 0;
 			jumping = false;
 		}
