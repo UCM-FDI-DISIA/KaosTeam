@@ -16,5 +16,6 @@ public:
 	void update() override;
 	int getDistanceMoved() { return distanceMoved; };
 	void attack();
+	void EndAttack();
 };
 
