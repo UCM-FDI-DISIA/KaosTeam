@@ -20,6 +20,7 @@ enum componentsEnum
 class Component;
 class RenderComponent;
 class RenderComponentFrog;
+class RenderComponentSnake;
 class AnimationComponent;
 class RoomScene;
 class Entity
@@ -30,6 +31,7 @@ private:
 	RoomScene* myScene;
 	RenderComponent* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
 	RenderComponentFrog* renderComponentFrog;
+	RenderComponentSnake* renderComponentSnake;
 	//AnimationComponent* animationComponent;
 public:
 //provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
@@ -37,11 +39,13 @@ public:
 	void addComponent(componentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
 	void addRenderComponent(RenderComponent* rnd);
 	void addRenderComponentFrog(RenderComponentFrog* rndF);
+	void addRenderComponentSnake(RenderComponentSnake* rndS);
 	virtual ~Entity();
 	void update();
 	void render();
 	Component* getComponent(componentsEnum) const;
 	RenderComponentFrog* getRenderComponentFrog() const { return renderComponentFrog; };
+	RenderComponentSnake* getRenderComponentSnake() const { return renderComponentSnake; }
 	RenderComponent* getRenderComponent() const { return renderComponent; };
 	RoomScene* getScene() const;
 };

@@ -193,25 +193,38 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 }
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this);
-	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/snakeSpriteSheet.png", 3, 2);
+	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheet.png", 4, 2);
+	Texture* txtNeck = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheetAttack.png", 2, 1);
 
 	AnimationComponent* animSnake = new AnimationComponent();
-	RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1, animSnake);
+	//RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1, animSnake);
+	//renderSnake->setContext(snake);
+	//RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
+
+	RenderComponentSnake* renderSnake = new RenderComponentSnake(txtSnake, txtNeck, animSnake);
 
 	renderSnake->setContext(snake);
 
-	//animSnake->addAnimation("DOWN_ROTATION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false));
-	//animSnake->addAnimation("UP_ROTATION", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false));
-	animSnake->addAnimation("RIGHT_ROTATION", Animation({ Vector2D(0,0) }, true, false));
-	animSnake->addAnimation("LEFT_ROTATION", Animation({ Vector2D(0,0) }, false, false));
+	animSnake->addAnimation("IDLE_RIGHT", Animation({ Vector2D(2,0) }, false, false));
+	animSnake->addAnimation("IDLE_LEFT", Animation({ Vector2D(2,0) }, true, false));
+	animSnake->addAnimation("IDLE_DOWN", Animation({ Vector2D(1,0) }, false, false));
+	animSnake->addAnimation("IDLE_UP", Animation({ Vector2D(0,0) }, false, false));
+	animSnake->addAnimation("ATTACK_RIGHT", Animation({ Vector2D(2,1) }, false, false));
+	animSnake->addAnimation("ATTACK_LEFT", Animation({ Vector2D(2,1) }, true, false));
+	animSnake->addAnimation("ATTACK_DOWN", Animation({ Vector2D(1,1) }, false, false));
+	animSnake->addAnimation("ATTACK_UP", Animation({ Vector2D(0,1) }, false, false));
 
-	snake->addRenderComponent(renderSnake);
 	snake->addComponent(ANIMATION_COMPONENT, animSnake);
 	animSnake->setContext(snake);
+	snake->addRenderComponentSnake(renderSnake);
 
 	MovementComponentSnake* mvmSnake = new MovementComponentSnake(pos, animSnake);
 	mvmSnake->setContext(snake);
 	snake->addComponent(MOVEMENT_COMPONENT, mvmSnake);
+
+	AttackComponentSnake* atckSnake = new AttackComponentSnake();
+	atckSnake->setContext(snake);
+	snake->addComponent(ATTACK_COMPONENT, atckSnake);
 
 	AddEntity(snake);
 	return snake;

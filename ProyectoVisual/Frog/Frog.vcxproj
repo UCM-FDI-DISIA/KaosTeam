@@ -156,6 +156,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\RenderComponentSnake.cpp" />
+    <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
     <ClCompile Include="src\components\FrogInputComponent.cpp" />
     <ClCompile Include="src\components\AnimationComponent.cpp" />
@@ -205,6 +207,8 @@
     <ClCompile Include="src\components\TransitionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\RenderComponentSnake.h" />
+    <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
     <ClInclude Include="src\components\FrogInputComponent.h" />
     <ClInclude Include="src\components\AnimationComponent.h" />
