@@ -60,20 +60,20 @@ void MovementComponentFrog::update() {
 
 		//como las colisiones ya no se hacen por casillas, esto no lo necesitamos
 
-		//if (offsetInCasilla.getX()*velocity.normalize().getX() >= t / 2 ||
-		//	offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
+		//if (tr->getOffset().getX() * velocity.normalize().getX() >= t / 2 ||
+		//	tr->getOffset().getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
 		//{
 		//	//este chikiparrafo cambiará cuando tengamos las colisones
-		//	if (checkIfTileWalkable(velocity.normalize() + posCasilla))
-		//		changePosFrog(velocity.normalize() + posCasilla);
+		//	if (checkIfTileWalkable(velocity.normalize() + tr->getCasilla()))
+		//		changePosFrog(velocity.normalize() + tr->getCasilla());
 		//	else
-		//		posCasilla = velocity.normalize() + posCasilla;
+		//		tr->getCasilla() = velocity.normalize() + tr->getCasilla();
 
 
 		//	if (actualDirection == LEFT || actualDirection == RIGHT)
-		//		offsetInCasilla.setX(offsetInCasilla.getX() * -1);
+		//		tr->getOffset().setX(tr->getOffset().getX() * -1);
 		//	else
-		//		offsetInCasilla.setY(offsetInCasilla.getY() * -1);
+		//		tr->getOffset().setY(tr->getOffset().getY() * -1);
 
 		//}
 

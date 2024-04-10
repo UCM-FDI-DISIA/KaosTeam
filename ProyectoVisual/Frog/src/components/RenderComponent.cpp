@@ -1,6 +1,5 @@
 #include "RenderComponent.h"
 #include "../scenes/RoomScene.h"
-#include "TransformComponent.h"
 
 void RenderComponent::render()
 {
@@ -16,5 +15,4 @@ void RenderComponent::render()
 
 void RenderComponent::initComponent() {
 	transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
-
 }

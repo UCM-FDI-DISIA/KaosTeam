@@ -3,6 +3,7 @@
 #include "AttackComponentSnake.h"
 #include "RenderComponentSnake.h"
 #include "AnimationComponent.h"
+#include "TransformComponent.h"
 
 void RenderComponentSnake::render() {
     int t = ent->getScene()->getMapReader()->getTileSize();
@@ -138,4 +139,8 @@ void RenderComponentSnake::render() {
 
 void RenderComponentSnake::AttackStart() {
     attacking = true;
+}
+
+void RenderComponentSnake::initComponent() {
+    transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }

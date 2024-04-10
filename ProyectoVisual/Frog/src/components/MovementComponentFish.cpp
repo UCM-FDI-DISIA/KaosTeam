@@ -1,6 +1,22 @@
 ﻿#include "MovementComponentFish.h"
 #include "../sdlutils/RandomNumberGenerator.h"
 #include "../scenes/RoomScene.h"
+#include "TransformComponent.h"
+
+MovementComponentFish::MovementComponentFish(int boundX, AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), limite(boundX), anim(a), rand_(sdlutils().rand())
+{
+	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	casillaSalto = rand_.nextInt(0, boundX - 1); //elegir aleatoriamente la casilla en la que va a saltar
+	actualDirection = RIGHT;
+	anim->playAnimation("RIGHT");
+	casillaActual = 0;
+	waitTime = 300;
+	movementFrameRate = 30;
+	framesPerMove = 6;
+	framesMoved = 0;
+	isJumping = false;
+	isMoving = false;
+};
 
 void MovementComponentFish::update() {
 	if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {

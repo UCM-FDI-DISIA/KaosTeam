@@ -188,6 +188,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 1, animFish);
 
 	renderFish->setContext(fish);
+	renderFish->initComponent();
 
 	animFish->addAnimation("RIGHT", Animation({ Vector2D(0,1), Vector2D(0,2) }, true, false));
 	animFish->addAnimation("LEFT", Animation({ Vector2D(0,1), Vector2D(0,2) }, false, false));
@@ -199,10 +200,10 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	animFish->setContext(fish);
 
 	//el limite tiene que ser una propiedad
-	MovementComponentFish* mvm = new MovementComponentFish(pos, boundX, animFish);
+	/*MovementComponentFish* mvm = new MovementComponentFish(boundX, animFish);
 	mvm->setContext(fish);
 	fish->addComponent(MOVEMENT_COMPONENT, mvm);
-	mvm->initComponent();
+	mvm->initComponent();*/
 
 	AddEntity(fish);
 	return fish;	
@@ -212,11 +213,16 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	//textura cambiar
 	Texture* txtBlackAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
 
+	TransformComponent* transform = new TransformComponent(pos);
+	blackAnt->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(blackAnt);
+
 	AnimationComponent* animBlackAnt = new AnimationComponent();
 	RenderComponent* renderBlackAnt = new RenderComponent(txtBlackAnt, 1, 3, 0.5, animBlackAnt);
 
 	renderBlackAnt->setContext(blackAnt);
-	//animaciones
+	renderBlackAnt->initComponent();
+
 
 	blackAnt->addRenderComponent(renderBlackAnt);
 	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
@@ -232,6 +238,10 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	Entity* redAnt = new Entity(this);
 	//textura cambiar
 	Texture* txtRedAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	redAnt->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(redAnt);
 
 	AnimationComponent* animRedAnt = new AnimationComponent();
 	RenderComponent* renderRedAnt = new RenderComponent(txtRedAnt, 1, 3, 0.5, animRedAnt);
@@ -255,6 +265,10 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheet.png", 4, 2);
 	Texture* txtNeck = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheetAttack.png", 2, 1);
 
+	TransformComponent* transform = new TransformComponent(pos);
+	snake->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(snake);
+
 	AnimationComponent* animSnake = new AnimationComponent();
 	//RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1, animSnake);
 	//renderSnake->setContext(snake);
@@ -263,6 +277,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	RenderComponentSnake* renderSnake = new RenderComponentSnake(txtSnake, txtNeck, animSnake);
 
 	renderSnake->setContext(snake);
+	renderSnake->initComponent();
 
 	animSnake->addAnimation("IDLE_RIGHT", Animation({ Vector2D(2,0) }, false, false));
 	animSnake->addAnimation("IDLE_LEFT", Animation({ Vector2D(2,0) }, true, false));

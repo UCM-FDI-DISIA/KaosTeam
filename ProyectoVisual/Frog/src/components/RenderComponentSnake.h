@@ -31,6 +31,7 @@ public:
 		return snakeText;
 	}
 
+	void initComponent() override;
 	//Esto está aquí de manera provisional
 	SDL_Rect GetOnDisplayPosition();
 };
