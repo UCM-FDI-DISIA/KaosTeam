@@ -1,6 +1,7 @@
 ﻿#include "MovementComponentBlackAnt.h"
 #include "../sdlutils/RandomNumberGenerator.h"
 #include "../scenes/RoomScene.h"
+#include "../components/TransformComponent.h"
 
 void MovementComponentBlackAnt::update() {
 

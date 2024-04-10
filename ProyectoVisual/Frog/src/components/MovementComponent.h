@@ -18,9 +18,9 @@ protected:
 	int boundX = 0;
 	int boundY = 0;
 
-	TransformComponent* transform;
+	TransformComponent* tr = nullptr;
 public:
-	MovementComponent() {}
+	MovementComponent() : tr(static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))) {}
 	void initComponent() override;
 
 	void setBoundX(int newBoundX) { boundX = newBoundX; }
