@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="18" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="41">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="18" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="42">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="18" height="18">
   <data encoding="csv">
@@ -117,13 +117,13 @@
   </object>
   <object id="29" name="TransitionW" type="Transition" x="8" y="134">
    <properties>
-    <property name="nextMap" value=""/>
+    <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_01_fuera.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="34" name="TransitionW" type="Transition" x="8" y="153">
+  <object id="41" name="TransitionW" type="Transition" x="8" y="153.5">
    <properties>
-    <property name="nextMap" value=""/>
+    <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_01_fuera.tmx"/>
    </properties>
    <point/>
   </object>
