@@ -3,6 +3,26 @@
 #include "../scenes/RoomScene.h"
 #include "../components/TransformComponent.h"
 
+MovementComponentBlackAnt::MovementComponentBlackAnt(AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
+{
+	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	actualDirection = RIGHT;
+	playerPosition = targetTransformComp->getCasilla();
+	//anim->playAnimation("RIGHT");
+	waitTime = 500;
+	movementFrameRate = 30;
+	framesPerMove = 6;
+	framesMoved = 0;
+	isAtacking = false;
+	isMoving = false;
+	waitTimeAttack = 1000;
+	immobileTime = 2000;
+	range = 3;
+	waitToAttack = false;
+	waitToMove = false;
+	diff = 0;
+};
+
 void MovementComponentBlackAnt::update() {
 
 	if (!waitToAttack && !waitToMove && !isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
