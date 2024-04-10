@@ -139,7 +139,7 @@ void MovementComponentRedAnt::changeDirection() {
 	switch (newDirection)
 	{
 	case 0: {
-		Vector2D aux = posCasilla + Vector2D(1, 0);
+		Vector2D aux = tr->getCasilla() + Vector2D(1, 0);
 		if (checkIfTileWalkable(aux)) {
 			actualDirection = RIGHT;
 		}
@@ -148,7 +148,7 @@ void MovementComponentRedAnt::changeDirection() {
 	}
 		  break;
 	case 1: {
-		Vector2D aux = posCasilla + Vector2D(-1, 0);
+		Vector2D aux = tr->getCasilla() + Vector2D(-1, 0);
 		if (checkIfTileWalkable(aux)) {
 			actualDirection = LEFT;
 		}
@@ -157,7 +157,7 @@ void MovementComponentRedAnt::changeDirection() {
 	}
 		  break;
 	case 2: {
-		Vector2D aux = posCasilla + Vector2D(0, -1);
+		Vector2D aux = tr->getCasilla() + Vector2D(0, -1);
 		if (checkIfTileWalkable(aux)) {
 			actualDirection = UP;
 		}
@@ -166,7 +166,7 @@ void MovementComponentRedAnt::changeDirection() {
 	}
 		  break;
 	case 3: {
-		Vector2D aux = posCasilla + Vector2D(0, 1);
+		Vector2D aux = tr->getCasilla() + Vector2D(0, 1);
 		if (checkIfTileWalkable(aux)) {
 			actualDirection = DOWN;
 		}
@@ -179,22 +179,22 @@ void MovementComponentRedAnt::changeDirection() {
 	}
 }
 void MovementComponentRedAnt::isPlayerNear() {
-	if (playerPosition.getY() == posCasilla.getY()) {
-		if (playerPosition.getX() - posCasilla.getX() <= range && playerPosition.getX() - posCasilla.getX() > 0) {
+	if (playerPosition.getY() == tr->getCasilla().getY()) {
+		if (playerPosition.getX() - tr->getCasilla().getX() <= range && playerPosition.getX() - tr->getCasilla().getX() > 0) {
 			if (actualDirection == RIGHT) actualDirection = LEFT;
 			escape = true;
 		}
-		else if (!escape && posCasilla.getX() - playerPosition.getX() <= range && posCasilla.getX() - playerPosition.getX() > 0) {
+		else if (!escape && tr->getCasilla().getX() - playerPosition.getX() <= range && tr->getCasilla().getX() - playerPosition.getX() > 0) {
 			if (actualDirection == LEFT) actualDirection = RIGHT;
 			escape = true;
 		}
 	}
-	else if (!escape && playerPosition.getX() == posCasilla.getX()) {
-		if (playerPosition.getY() - posCasilla.getY() <= range && playerPosition.getY() - posCasilla.getY() > 0) {
+	else if (!escape && playerPosition.getX() == tr->getCasilla().getX()) {
+		if (playerPosition.getY() - tr->getCasilla().getY() <= range && playerPosition.getY() - tr->getCasilla().getY() > 0) {
 			if (actualDirection == DOWN) actualDirection = UP;
 			escape = true;
 		}
-		else if (!escape && posCasilla.getY() - playerPosition.getY() <= range && posCasilla.getY() - playerPosition.getY() > 0) {
+		else if (!escape && tr->getCasilla().getY() - playerPosition.getY() <= range && tr->getCasilla().getY() - playerPosition.getY() > 0) {
 			if (actualDirection == UP) actualDirection = DOWN;
 			escape = true;
 		}

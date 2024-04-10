@@ -6,6 +6,7 @@
 #include "MovementComponentFrog.h"
 
 class TransformComponent;
+class RoomScene;
 
 class MovementComponentBlackAnt : public MovementComponent {
 private:
@@ -27,26 +28,6 @@ private:
 	bool isPlayerNear();
 	void checkCollisionWall();
 public:
-	MovementComponentBlackAnt(Vector2D casilla, AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
-	{
-		tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
-		targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
-		actualDirection = RIGHT;
-		playerPosition = targetTransformComp->getCasilla();
-		//anim->playAnimation("RIGHT");
-		waitTime =500;
-		movementFrameRate = 30;
-		framesPerMove = 6;
-		framesMoved = 0;
-		isAtacking = false;
-		isMoving = false;
-		waitTimeAttack = 1000;
-		immobileTime = 2000;
-		range = 3;
-		waitToAttack = false;
-		waitToMove = false;
-		diff = 0;
-	};
+	MovementComponentBlackAnt(AnimationComponent* a);
 	void update() override;
 };
-
