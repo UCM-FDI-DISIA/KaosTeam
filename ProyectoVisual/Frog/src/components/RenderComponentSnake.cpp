@@ -8,11 +8,11 @@ void RenderComponentSnake::render() {
     int t = ent->getScene()->getMapReader()->getTileSize();
     int size = (int)t * scale;
     SDL_Rect frogRect; // Rect de la rana
-    SDL_Rect tongueRect;
+    SDL_Rect tongueRect;                         
 
-    Vector2D offset = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getOffset() //el offset el objeto
-        + Vector2D((t - size) / 2, (t - size) / 2);                                             //para que este centrado en la casilla
-    Vector2D pos = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT))->getPosition();
+    Vector2D offset = transform->getOffset()                      //el offset el objeto
+                     + Vector2D((t - size) / 2, (t - size) / 2);  //para que este centrado en la casilla
+    Vector2D pos = transform->getCasilla();
     Direction d = static_cast<MovementComponentSnake*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
