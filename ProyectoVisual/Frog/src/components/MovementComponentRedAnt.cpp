@@ -1,6 +1,23 @@
 ﻿#include "MovementComponentRedAnt.h"
 #include "../sdlutils/RandomNumberGenerator.h"
 #include "../scenes/RoomScene.h"
+
+
+MovementComponentRedAnt::MovementComponentRedAnt(AnimationComponent* a, MovementComponentFrog* target) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
+{
+	actualDirection = RIGHT;
+	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	playerPosition = targetTransformComp->getCasilla();
+	//anim->playAnimation("RIGHT");
+	waitTime = 500;
+	movementFrameRate = 30;
+	framesPerMove = 6;
+	framesMoved = 0;
+	isMoving = false;
+	escape = false;
+	range = 2;
+};
+
 void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 	Vector2D aux = tr->getCasilla() + vel;
 	switch (dir) {
@@ -46,6 +63,7 @@ void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 	break;
 	}
 }
+
 void MovementComponentRedAnt::update() {
 
 	if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {

@@ -4,9 +4,7 @@
 #include "../managers/DataManager.h"
 #include "AnimationComponent.h"
 #include "MovementComponentFrog.h"
-
-class TransformComponent;
-class RoomScene;
+#include "TransformComponent.h"
 
 class MovementComponentRedAnt : public MovementComponent {
 private:
@@ -26,20 +24,7 @@ private:
 	void isPlayerNear();
 	void canMove(Vector2D vel, Direction dir);
 public:
-	MovementComponentRedAnt(AnimationComponent* a, MovementComponentFrog* target) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), targetMovementComp(target), rand_(sdlutils().rand())
-	{
-		actualDirection = RIGHT;
-		targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
-		playerPosition = targetTransformComp->getCasilla();
-		//anim->playAnimation("RIGHT");
-		waitTime = 500;
-		movementFrameRate = 30;
-		framesPerMove = 6;
-		framesMoved = 0;
-		isMoving = false;
-		escape = false;
-		range = 2;
-	};
+	MovementComponentRedAnt(AnimationComponent* a, MovementComponentFrog* target);
 	void update() override;
 };
 
