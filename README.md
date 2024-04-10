@@ -18,17 +18,17 @@ El movimiento del juego está basado en saltos de casilla en casilla en un table
 
 - **Movimientos básicos**
 
-  - **Movimiento basado en saltos** pequeños de una casilla o largos cuyo alcance depende de las mejoras previas y el input del jugador.
-  - **Ataque básico** con la lengua de la rana. Este afectaría a las casillas en la dirección que el jugador apunte/mire y su alcance dependerá de las mejoras.
+  - **Movimiento basado en saltos** de casilla en casilla que mejorará con la mejora del salto largo. Se diferenciarán por el input del jugador.
+  - **Ataque básico** con la lengua de la rana. Este afectaría a las casillas en la dirección que el jugador apunte/mire. El alcance inicial es de 3 casillas, aumentará con la mejora. El daño inicial que hace es de 1 golpe, aumentará con la mejora.
   - **Escudo** con el saco hinchable de la rana localizado en la parte inferior de su boca. Lo usará para defenderse y rechazar ataques que provengan de determinada dirección.
 - **Mejoras**
 
-  - **Saltamontes** que amplian el alcance del salto largo. 
+  - **Saltamontes** que amplian el alcance del salto. El salto largo aumenta el salto de tres en tres casillas.
   - **Moscas de la vida** que aumentan la vida máxima del jugador.
-  - **Por determinar**: Aumentan el ataque de los ataques básicos.
-  - **Por determinar**: Aumentan el alcance de los ataques básicos.
+  - **Avispas**: aumentan el daño de los ataques básicos a tres de daño.
+  - **Ciempiés**: aumentan el alcance del ataque de la lengua a seis casillas.
 - **Habilidades extras desbloqueables**
-  - **Gancho** de pesca atado a la lengua. Se podrá usar tanto en combate para atacar a los enemigos como para desplazarse más eficientemente y poder alcanzar lugares nuevos. Se desbloquea en la mazmorra principal del bosque (árbol del Ovi (nombre sin confirmar)) y será necesario conseguirlo para poder avanzar en las zonas posteriores.
+  - **Gancho** de pesca atado a la lengua. Se podrá usar tanto en combate para atacar a los enemigos como para desplazarse más eficientemente y poder alcanzar lugares nuevos. Se desbloquea en la mazmorra principal del bosque (árbol del Ovi (nombre sin confirmar)) y será necesario conseguirlo para poder avanzar en las zonas posteriores. Su alcance es de cinco casillas.
   - **Hormigas explosivas** rojas que se pueden usar como bombas contra enemigos, para acceder a sitios previamente inaccesibles rompiendo las paredes o necesarias para resolver puzzles.
    - **Saco de hormigas** desbloqueable en el hormiguero. Permitirá a la rana poder almacenar más de una hormiga roja y poder transportarlo y usarlo cuando quiera. 
   
@@ -55,11 +55,11 @@ A lo largo del juego, el jugador deberá hacer frente a distintos tipos de enemi
 Vida: 1 golpe
 Daño recibido: Media Mosca
 - **Ranas locas** 
-Son ranas las cuales, debido a la contaminación del Estanque traído por el chef, han perdido su cordura. Estas avanzaran lentamente de una casilla a otra intentando seguir a Flonk (como zombis) atacando con sus lenguas (las cuales tiene un rango melee a diferencia de Flonk debido a la contaminación). El movimiento de estas ranas tienen un tiempo de espera a definir antes de que se muevan a su siguiente casilla.
+Son ranas las cuales, debido a la contaminación del Estanque traído por el chef, han perdido su cordura. Estas avanzaran lentamente de una casilla a otra intentando seguir a Flonk (como zombis) atacando con sus lenguas (las cuales tiene un rango melee a diferencia de Flonk debido a la contaminación). El movimiento de estas ranas está limitado por un tiempo de espera antes de que se muevan a su siguiente casilla.
 
 Vida: 1 golpe
 Daño recibido: Media Mosca
-- **Peces** Estos nadan en los ríos del estanque siguiendo un camino fijo. Estos nadarán en el río y cada cierto tiempo específico saltarán del agua y caerán. Cuando terminan su recorrido, estos lo repetirán pero en el sentido contrario (irán de un lado para el otro en el río). Si a la hora de saltar sobre el río, Flonk se cruza en su salto con un pez, Flonk recibe daño y es enviado a la casilla donde estaba antes de saltar. 
+- **Peces** Estos nadan en los ríos del estanque siguiendo un camino fijo. A lo largo de su recorrido en un sitio específico saltarán del agua y caerán. Cuando terminan su recorrido, estos lo repetirán pero en el sentido contrario (irán de un lado para el otro en el río). Si a la hora de saltar sobre el río, Flonk se cruza en su salto con un pez, Flonk recibe daño y es enviado a la casilla donde estaba antes de saltar. 
 
 ### Bosque
 
@@ -67,14 +67,9 @@ Vida: 3 Golpes
 Daño recibido: 1 mosca
 - **Las serpientes** Actuan como torretas estaticas los cuales giran sobre su propio eje vigilando por si ven la rana. Si la serpiente detecta la rana, estos rápidamente extenderán sus cuellos para mordernos antes de volver a sus puestos. Si ha pasado suficiente tiempo sin que hayan mordido a Flonk, estos saltaran diagonalmente una casilla siendo esta casilla la más cercana posible a Flonk.
 
-Vida: 1 golpe 
-Daño recibido: Media mosca
-- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes. Su comportamieno es la de rápidamente seguir al jugador pero al mismo tiempo infligiendo poco daño.
-
 Vida: Depende del tamaño del cúmulo
 Daño recibido: Media Mosca
-- **Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. Estas, como las termitas, siguen al jugador y el cúmulo cuando sea lo suficientemente pequeño, al darles saldrán termitas normales.
-
+- **Cúmulo de termitas** Estas siguen al jugador, son rápidas pero poco resistentes. Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos. Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. 
 
 
 ### Hormiguero
@@ -226,10 +221,10 @@ Hay varios tipos de lombrices de uróboros con diferente valor siendo este ascen
 - Uróboro rosa: X
 - Uróboro dorado: X
 ### Mejoras
-- Más ataque (x precio): Flonk tendrá la capacidad de hacer (x daño) al atacar.
-- Saltamonte (x precio): en vez de saltar de casilla en casilla, Flonk tendrá la capacidad de saltar de dos en dos casillas.
-- Mosca de la vida (x precio): permite aumentar la vida máxima de Flonk.
-- Más alcance (x precio): con esto va a aumentar el alcance de ataque de Flonk.
+- Avispa (15 uróboros): Flonk tendrá la capacidad de hacer 3 golpes de daño al atacar.
+- Saltamonte (10 uróboros): en vez de saltar de casilla en casilla, Flonk tendrá la capacidad de saltar de tres en tres casillas.
+- Mosca de la vida (15 uróboros): permite aumentar la vida máxima de Flonk.
+- Ciempiés (20 uróboros): con esto va a aumentar el alcance de ataque de Flonk a seis casillas.
 ![](assets/imgGdd/image11.gif)
 ![](assets/imgGdd/image8.gif)
 
@@ -250,7 +245,9 @@ Esta interfaz consta de dos elementos muy sencillos.
 
 Por un lado tenemos en la esquina superior izquierda una barra con iconos de mosca que representan las vidas de nuestro personaje. La cantidad de moscas que posee la barra, coincide con el número de vidas totales que el jugador puede adquirir. Si una mosca está teñida de un tono claro, el jugador posee esa vida, de lo contrario, si está teñida de un tono más oscuro entonces no la posee.
 
-Por último, en la esquina superior derecha, se muestra un icono de una lombriz (que es como se representa el dinero en el juego) junto a un contador (que nos indica la cantidad de dinero en el juego). A medida que el jugador obtenga lombrices, dependiendo de su color, el contador aumenta una cantidad u otra.
+Además, en la esquina superior derecha, se muestra un icono de una lombriz (que es como se representa el dinero en el juego) junto a un contador (que nos indica la cantidad de dinero en el juego). A medida que el jugador obtenga lombrices, dependiendo de su color, el contador aumenta una cantidad u otra.
+
+Por último, debajo de las lombrices si se compra en la tienda alguna mejora permanente (o se obtiene de forma temporal) aparecerá el animal(avispa, ciempiés, saltamnonte) que representa esa mejora para recordar al jugador de que la tiene y puede usarla.
 
 </details>
 
@@ -268,19 +265,19 @@ El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de
 
 <summary>Menus de juego</summary>
 
-## Menús de juego y flujo de juego(por definir)
+## Menús de juego y flujo de juego
 
 **Menú principal:**
  El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar, un botón que le lleva al menú de ajustes y un botón para salir del juego.
 
-**Menú de ajustes:** (por definir)
+**Menú de ajustes:** 
  Este menú muestra los controles y permite ajustar características del juego.
 
 **Durante el juego:**
  En la pantalla se ve la interfaz descrita antes junto a un botón que permite ir al menú de pausa.
 ![](assets/imgGdd/image6.png)
 
-**Menú de pausa:** (por definir)
+**Menú de pausa:** 
 En el menú de pausa el jugador puede volver a la partida, ir al menú de ajustes o salir del juego.
 
 </details>
@@ -290,6 +287,8 @@ En el menú de pausa el jugador puede volver a la partida, ir al menú de ajuste
 <summary>Flujo de juego</summary>
 
 **Flujo de juego:** (por definir, que pasa cuando el jugador pierde todas las vidas)
+
+
 
 </details>
 
@@ -322,14 +321,6 @@ Objetos que tenemos en tiled segun la clase.
 | ObjInter | Jarron - Piedra - ... = Tipo de objeto interactuable.  | *** |
 
 ***Las propiedades especificas al objeto, y no a su clase o nombre, se pasarán al createEntity.
-
-</details>
-
-<details>
-
-<summary>Nice to have</summary>
-
-## Nice to have
 
 </details>
 
