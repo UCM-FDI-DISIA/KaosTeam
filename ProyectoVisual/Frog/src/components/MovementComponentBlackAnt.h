@@ -27,9 +27,8 @@ private:
 	bool isPlayerNear();
 	void checkCollisionWall();
 public:
-	MovementComponentBlackAnt(Vector2D casilla, AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
+	MovementComponentBlackAnt(AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
 	{
-		tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 		targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
 		actualDirection = RIGHT;
 		playerPosition = targetTransformComp->getCasilla();

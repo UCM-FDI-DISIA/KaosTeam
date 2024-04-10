@@ -221,7 +221,7 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	blackAnt->addRenderComponent(renderBlackAnt);
 	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
 	
-	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(pos, animBlackAnt,playerMvmCmp);
+	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(animBlackAnt);
 	mvm->setContext(blackAnt);
 	blackAnt->addComponent(MOVEMENT_COMPONENT, mvm);
 
@@ -291,11 +291,11 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
-		
+
 	if (objName == "Crazy frog") {
 		c = createCrazyFrog(pos);
 	}
-	else if (objName == "Pez") { 
+	else if (objName == "Pez") {
 		c = createFish(pos, objProps[0].getIntValue());
 	}
 	else if (objName == "Black ant") {
@@ -303,36 +303,36 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			c = createBlackAnt(pos, mvmPlayer);
 		}
-	}
-	else if (objName == "Fish") {
-		for (const auto& prop : objProps) {
-			if (prop.getName() == "object") //revisar esto
-			{
-				if (prop.getType() == tmx::Property::Type::Int) {
-					int boundX = prop.getIntValue();
-					c = createFish(pos, boundX);
-					//c = createFish(pos, 4);
-					break;
+		else if (objName == "Fish") {
+			for (const auto& prop : objProps) {
+				if (prop.getName() == "object") //revisar esto
+				{
+					if (prop.getType() == tmx::Property::Type::Int) {
+						int boundX = prop.getIntValue();
+						c = createFish(pos, boundX);
+						//c = createFish(pos, 4);
+						break;
+					}
 				}
 			}
-		}
-		
-	}
-	else if (objName == "Red ant") {
-		if (player != nullptr) {
-			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
-			c = createRedAnt(pos, mvmPlayer);
-		}
 
-	}
-	else if (objName == "Snake") {
-		c = createSnake(pos);
-	}
-	/*
-	else if ()......
-	*/
+		}
+		else if (objName == "Red ant") {
+			if (player != nullptr) {
+				MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+				c = createRedAnt(pos, mvmPlayer);
+			}
 
-	return c;
+		}
+		else if (objName == "Snake") {
+			c = createSnake(pos);
+		}
+		/*
+		else if ()......
+		*/
+
+		return c;
+	}
 }
 
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
