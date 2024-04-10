@@ -5,6 +5,8 @@
 #include "AnimationComponent.h"
 #include "MovementComponentFrog.h"
 
+class TransformComponent;
+
 class MovementComponentBlackAnt : public MovementComponent {
 private:
 	enum Direction { RIGHT, LEFT, UP, DOWN };											
@@ -17,7 +19,7 @@ private:
 	bool waitToMove;
 	int range;
 	float diff;
-	MovementComponentFrog* targetMovementComp;
+	TransformComponent* targetTransformComp;
 	Vector2D playerPosition;
 	AnimationComponent* anim;
 	RandomNumberGenerator& rand_;	//generador de numeros random
@@ -25,10 +27,12 @@ private:
 	bool isPlayerNear();
 	void checkCollisionWall();
 public:
-	MovementComponentBlackAnt(Vector2D casilla, AnimationComponent* a, MovementComponentFrog* target) : MovementComponent(casilla), lastTimeMoved(SDL_GetTicks()), anim(a), targetMovementComp(target), rand_(sdlutils().rand())
+	MovementComponentBlackAnt(Vector2D casilla, AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
 	{
+		tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+		targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
 		actualDirection = RIGHT;
-		playerPosition = targetMovementComp->getPosition();
+		playerPosition = targetTransformComp->getCasilla();
 		//anim->playAnimation("RIGHT");
 		waitTime =500;
 		movementFrameRate = 30;

@@ -73,13 +73,13 @@ void MovementComponentFish::update() {
 	
 		int t = ent->getScene()->getMapReader()->getTileSize();
 		framesMoved++;
-		offsetInCasilla.setX(offsetInCasilla.getX() + t / framesPerMove * velocity.getX());
+		tr->setOffsetX(tr->getOffset().getX() + t / framesPerMove * velocity.getX());
 		if (isJumping) {
-			offsetInCasilla.setY(-t / 2 * sin(3.14 / framesPerMove * framesMoved));
+			tr->setOffsetY(-t / 2 * sin(3.14 / framesPerMove * framesMoved));
 		}
 		if (framesMoved == framesPerMove) {
 			
-			posCasilla = posCasilla + velocity;
+			tr->setCasilla(tr->getCasilla() + velocity);
 			offsetInCasilla = { 0,0 };
 			framesMoved = 0;
 			isMoving = false;

@@ -1,12 +1,13 @@
 ﻿#include "MovementComponentBlackAnt.h"
 #include "../sdlutils/RandomNumberGenerator.h"
 #include "../scenes/RoomScene.h"
+#include "../components/TransformComponent.h"
 
 void MovementComponentBlackAnt::update() {
 
 	if (!waitToAttack && !waitToMove && !isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-		playerPosition = targetMovementComp->getPosition();
+		playerPosition = targetTransformComp->getCasilla();
 		switch (actualDirection)
 		{
 		case RIGHT: {
@@ -76,14 +77,14 @@ void MovementComponentBlackAnt::update() {
 		framesMoved++;
 
 		if (actualDirection == RIGHT || actualDirection == LEFT) {
-			offsetInCasilla.setX(offsetInCasilla.getX() + t / framesPerMove * velocity.getX());
+			tr->setOffsetX(tr->getOffset().getX() + t / framesPerMove * velocity.getX());
 		}
 		else {
-			offsetInCasilla.setY(offsetInCasilla.getY() + t / framesPerMove * velocity.getY());
+			tr->setOffsetY(tr->getOffset().getY() + t / framesPerMove * velocity.getY());
 		}
 		if (framesMoved == framesPerMove) {
-			posCasilla = posCasilla + velocity;
-			offsetInCasilla = { 0,0 };
+			tr->setCasilla(tr->getCasilla() + velocity);
+			tr->setOffset({ 0,0 });
 			framesMoved = 0;
 			isMoving = false;
 			if (isAtacking) {
@@ -119,7 +120,7 @@ void MovementComponentBlackAnt::changeDirection() {
 	switch (newDirection)
 	{
 	case 0: {
-		Vector2D aux = posCasilla + Vector2D(1, 0);
+		Vector2D aux = tr->getCasilla() + Vector2D(1, 0);
 		if (checkIfTileWalkable(aux)) {
 			actualDirection = RIGHT;
 		}
@@ -128,7 +129,7 @@ void MovementComponentBlackAnt::changeDirection() {
 	}
 		  break;
 	case 1: {
-		Vector2D aux = posCasilla + Vector2D(-1, 0);
+		Vector2D aux = tr->getCasilla() + Vector2D(-1, 0);
 		if (checkIfTileWalkable(aux)) {
 			actualDirection = LEFT;
 		}
@@ -137,7 +138,7 @@ void MovementComponentBlackAnt::changeDirection() {
 	}
 		  break;
 	case 2: {
-		Vector2D aux = posCasilla + Vector2D(0, -1);
+		Vector2D aux = tr->getCasilla() + Vector2D(0, -1);
 		if (checkIfTileWalkable(aux)) {
 			actualDirection = UP;
 		}
@@ -147,7 +148,7 @@ void MovementComponentBlackAnt::changeDirection() {
 	}
 		  break;
 	case 3: {
-		Vector2D aux = posCasilla + Vector2D(0, 1);
+		Vector2D aux = tr->getCasilla() + Vector2D(0, 1);
 		if (checkIfTileWalkable(aux)) {
 			actualDirection = DOWN;
 		}
@@ -160,41 +161,41 @@ void MovementComponentBlackAnt::changeDirection() {
 	}
 }
 bool MovementComponentBlackAnt::isPlayerNear() {
-	if (playerPosition.getY() == posCasilla.getY()) {
+	if (playerPosition.getY() == tr->getCasilla().getY()) {
 
-		if (actualDirection != LEFT && playerPosition.getX() - posCasilla.getX() <= range) {
+		if (actualDirection != LEFT && playerPosition.getX() - tr->getCasilla().getX() <= range) {
 			actualDirection = RIGHT;
-			diff = playerPosition.getX() - posCasilla.getX();
+			diff = playerPosition.getX() - tr->getCasilla().getX();
 			waitToAttack = true;
 		}
-		else if (!waitToAttack && actualDirection != RIGHT && posCasilla.getX() - playerPosition.getX() <= range) {
+		else if (!waitToAttack && actualDirection != RIGHT && tr->getCasilla().getX() - playerPosition.getX() <= range) {
 			actualDirection = LEFT;
-			diff = playerPosition.getX() - posCasilla.getX();
+			diff = playerPosition.getX() - tr->getCasilla().getX();
 			waitToAttack = true;
 		}
 	}
-	else if (!waitToAttack && playerPosition.getX() == posCasilla.getX()) {
-		if (actualDirection != UP && playerPosition.getY() - posCasilla.getY() <= range) {
+	else if (!waitToAttack && playerPosition.getX() == tr->getCasilla().getX()) {
+		if (actualDirection != UP && playerPosition.getY() - tr->getCasilla().getY() <= range) {
 			actualDirection = DOWN;
 			waitToAttack = true;
-			diff = playerPosition.getY() - posCasilla.getY();
+			diff = playerPosition.getY() - tr->getCasilla().getY();
 		}
-		else if (!waitToAttack && actualDirection != DOWN && posCasilla.getY() - playerPosition.getY() <= range) {
+		else if (!waitToAttack && actualDirection != DOWN && tr->getCasilla().getY() - playerPosition.getY() <= range) {
 			actualDirection = UP;
 			waitToAttack = true;
-			diff = playerPosition.getY() - posCasilla.getY();
+			diff = playerPosition.getY() - tr->getCasilla().getY();
 		}
 	}
 	return waitToAttack;
 }
 void MovementComponentBlackAnt::checkCollisionWall() {
 	//comprobar si da con la pared y si es asi waitToMove = true
-	if (actualDirection == RIGHT && !checkIfTileWalkable(posCasilla + Vector2D(1, 0)))
+	if (actualDirection == RIGHT && !checkIfTileWalkable(tr->getCasilla() + Vector2D(1, 0)))
 		waitToMove = true;
-	else if (actualDirection == LEFT && !checkIfTileWalkable(posCasilla + Vector2D(-1, 0))) 
+	else if (actualDirection == LEFT && !checkIfTileWalkable(tr->getCasilla() + Vector2D(-1, 0)))
 			waitToMove = true;
-	else if (actualDirection == DOWN && !checkIfTileWalkable(posCasilla + Vector2D(0, 1)))
+	else if (actualDirection == DOWN && !checkIfTileWalkable(tr->getCasilla() + Vector2D(0, 1)))
 		waitToMove = true;
-	else if (actualDirection == UP && !checkIfTileWalkable(posCasilla + Vector2D(0, -1))) 
+	else if (actualDirection == UP && !checkIfTileWalkable(tr->getCasilla() + Vector2D(0, -1)))
 			waitToMove = true;
 }
