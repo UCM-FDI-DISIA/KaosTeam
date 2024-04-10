@@ -6,6 +6,7 @@
 #include "MovementComponentFrog.h"
 
 class TransformComponent;
+class RoomScene;
 
 class MovementComponentBlackAnt : public MovementComponent {
 private:
