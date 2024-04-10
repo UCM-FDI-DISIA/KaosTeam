@@ -5,6 +5,8 @@
 #include "AnimationComponent.h"
 #include "MovementComponentFrog.h"
 
+class TransformComponent;
+class RoomScene;
 
 class MovementComponentRedAnt : public MovementComponent {
 private:
@@ -15,7 +17,8 @@ private:
 	bool isMoving;
 	bool escape;
 	int range;
-	MovementComponentFrog* targetMovementComp;
+	//MovementComponentFrog* targetMovementComp;
+	TransformComponent* targetTransformComp;
 	Vector2D playerPosition;
 	AnimationComponent* anim;
 	RandomNumberGenerator& rand_;	//generador de numeros random
@@ -23,10 +26,11 @@ private:
 	void isPlayerNear();
 	void canMove(Vector2D vel, Direction dir);
 public:
-	MovementComponentRedAnt(Vector2D casilla, AnimationComponent* a, MovementComponentFrog* target) : MovementComponent(casilla), lastTimeMoved(SDL_GetTicks()), anim(a), targetMovementComp(target), rand_(sdlutils().rand())
+	MovementComponentRedAnt(AnimationComponent* a, MovementComponentFrog* target) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), targetMovementComp(target), rand_(sdlutils().rand())
 	{
 		actualDirection = RIGHT;
-		playerPosition = targetMovementComp->getPosition();
+		targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+		playerPosition = targetTransformComp->getCasilla();
 		//anim->playAnimation("RIGHT");
 		waitTime = 500;
 		movementFrameRate = 30;

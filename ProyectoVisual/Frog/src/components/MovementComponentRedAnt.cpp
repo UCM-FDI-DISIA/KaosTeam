@@ -50,7 +50,7 @@ void MovementComponentRedAnt::update() {
 
 	if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-		playerPosition = targetMovementComp->getPosition();
+		playerPosition = targetTransformComp->getCasilla();
 		switch (actualDirection)
 		{
 		case RIGHT: {
@@ -64,7 +64,7 @@ void MovementComponentRedAnt::update() {
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
-				  break;
+		break;
 		case LEFT:
 		{
 			canMove(Vector2D(-1, 0), LEFT);
@@ -121,7 +121,7 @@ void MovementComponentRedAnt::update() {
 		}
 		if (framesMoved == framesPerMove) {
 			tr->setCasilla(tr->getCasilla() + velocity);
-			offsetInCasilla  = { 0,0 };
+			tr->setOffset ({ 0,0 });
 			framesMoved = 0;
 			isMoving = false;
 			if (escape) escape = false;
