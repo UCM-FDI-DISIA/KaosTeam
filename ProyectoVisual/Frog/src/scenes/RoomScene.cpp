@@ -332,8 +332,9 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 		*/
 
 		return c;
+		}
 	}
-}
+
 
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
