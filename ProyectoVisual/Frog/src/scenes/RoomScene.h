@@ -3,7 +3,9 @@
 #include "../components/MovementComponentFly.h"
 #include "../components/RenderComponent.h"
 #include "../components/RenderComponentFrog.h"
+#include "../components/RenderComponentSnake.h"
 #include "../components/AttackComponentFrog.h"
+#include "../components/AttackComponentSnake.h"
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
 #include "../components/AnimationComponent.h"
@@ -16,6 +18,7 @@
 #include "../components/MovementComponentFish.h";
 #include "../components/MovementComponentBlackAnt.h";
 #include "../components/MovementComponentRedAnt.h"
+#include "../components/MovementComponentSnake.h"
 
 class RoomScene : public Scene
 {
@@ -102,6 +105,8 @@ public:
 		entityList.push_back(flyToPlayer);
 
 
+		createFish(Vector2D(0, 3), 4);
+		
 
 #pragma endregion
 
@@ -126,6 +131,8 @@ public:
 	Entity* createFish(Vector2D pos, int boundX);
 	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
+	Entity* createSnake(Vector2D pos);
+
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
 };

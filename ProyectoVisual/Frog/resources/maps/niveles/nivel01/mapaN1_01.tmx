@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="8">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="11">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="10" height="10">
   <data encoding="csv">
@@ -60,6 +60,9 @@
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_02.tmx"/>
    </properties>
+   <point/>
+  </object>
+  <object id="10" name="Snake" type="Enemigo" x="71.3334" y="75.3333">
    <point/>
   </object>
  </objectgroup>

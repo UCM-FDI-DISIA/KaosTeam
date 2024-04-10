@@ -27,6 +27,11 @@ void Entity::addRenderComponentFrog(RenderComponentFrog* rndF)
 	renderComponentFrog = rndF;
 }
 
+void Entity::addRenderComponentSnake(RenderComponentSnake* rndS)
+{
+	renderComponentSnake = rndS;
+}
+
 Entity::~Entity()
 {
 	for (auto it = componentes.begin(); it != componentes.end(); ++it)
@@ -51,7 +56,8 @@ void Entity::render()
 		renderComponent->render();
 	}
 	else if (renderComponentFrog != nullptr) renderComponentFrog->render(); //Sino, ejecutamos render de la rana (un render mas complejo)
-	else {} //hay entidades que no se renderizan los objetos de transición
+	else if (renderComponentSnake != nullptr) renderComponentSnake->render(); //hay entidades que no se renderizan los objetos de transición
+	//else {} //hay entidades que no se renderizan los objetos de transición
 }
 
 Component* Entity::getComponent(componentsEnum Identificator) const
