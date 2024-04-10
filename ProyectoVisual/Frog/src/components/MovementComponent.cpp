@@ -5,7 +5,7 @@
 
 void MovementComponent::initComponent()
 {
-	transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 
 bool MovementComponent::checkIfTileWalkable(Vector2D v)
