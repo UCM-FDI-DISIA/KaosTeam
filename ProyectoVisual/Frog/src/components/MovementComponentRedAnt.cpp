@@ -2,7 +2,7 @@
 #include "../sdlutils/RandomNumberGenerator.h"
 #include "../scenes/RoomScene.h"
 void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
-	Vector2D aux = posCasilla + vel;
+	Vector2D aux = tr->getCasilla() + vel;
 	switch (dir) {
 	case MovementComponentRedAnt::RIGHT:
 	{
@@ -114,14 +114,14 @@ void MovementComponentRedAnt::update() {
 		int t = ent->getScene()->getMapReader()->getTileSize();
 		framesMoved++;
 		if (actualDirection == RIGHT || actualDirection == LEFT) {
-			offsetInCasilla.setX(offsetInCasilla.getX() + t / framesPerMove * velocity.getX());
+			tr->setOffsetX(tr->getOffset().getX() + t / framesPerMove * velocity.getX());
 		}
 		else {
-			offsetInCasilla.setY(offsetInCasilla.getY() + t / framesPerMove * velocity.getY());
+			tr->setOffsetY(tr->getOffset().getY() + t / framesPerMove * velocity.getY());
 		}
 		if (framesMoved == framesPerMove) {
-			posCasilla = posCasilla + velocity;
-			offsetInCasilla = { 0,0 };
+			tr->setCasilla(tr->getCasilla() + velocity);
+			offsetInCasilla  = { 0,0 };
 			framesMoved = 0;
 			isMoving = false;
 			if (escape) escape = false;
