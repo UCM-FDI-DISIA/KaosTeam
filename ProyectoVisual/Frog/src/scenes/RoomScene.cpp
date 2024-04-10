@@ -242,7 +242,7 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	redAnt->addRenderComponent(renderRedAnt);
 	redAnt->addComponent(ANIMATION_COMPONENT, animRedAnt);
 
-	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(pos, animRedAnt, playerMvmCmp);
+	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(animRedAnt, playerMvmCmp);
 	mvm->setContext(redAnt);
 	redAnt->addComponent(MOVEMENT_COMPONENT, mvm);
 
@@ -277,7 +277,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	animSnake->setContext(snake);
 	snake->addRenderComponentSnake(renderSnake);
 
-	MovementComponentSnake* mvmSnake = new MovementComponentSnake(pos, animSnake);
+	MovementComponentSnake* mvmSnake = new MovementComponentSnake(animSnake);
 	mvmSnake->setContext(snake);
 	snake->addComponent(MOVEMENT_COMPONENT, mvmSnake);
 

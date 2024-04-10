@@ -3,6 +3,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../managers/DataManager.h"
 #include "AnimationComponent.h"
+#include "TransformComponent.h"
 
 class RandomNumberGenerator;
 class MovementComponentFish : public MovementComponent {
