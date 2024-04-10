@@ -23,7 +23,9 @@ private:
 	Entity* player = nullptr;
 	flonkOrig playerOrig = S;
 
-	//Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
+	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
+	Por tanto, hay dos OnCollision por cada colision.
+	*/
 	void CheckColisions();
 public:
 	RoomScene(int id) : Scene(true), id(id) {
