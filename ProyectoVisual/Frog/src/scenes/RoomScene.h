@@ -3,7 +3,9 @@
 #include "../components/MovementComponentFly.h"
 #include "../components/RenderComponent.h"
 #include "../components/RenderComponentFrog.h"
+#include "../components/RenderComponentSnake.h"
 #include "../components/AttackComponentFrog.h"
+#include "../components/AttackComponentSnake.h"
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
 #include "../components/AnimationComponent.h"
@@ -16,6 +18,7 @@
 #include "../components/MovementComponentFish.h";
 #include "../components/MovementComponentBlackAnt.h";
 #include "../components/MovementComponentRedAnt.h"
+#include "../components/MovementComponentSnake.h"
 
 class RoomScene : public Scene
 {
@@ -31,7 +34,9 @@ private:
 	std::string nextMap;
 	flonkOrig nextFlonk;
 
-	//Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
+	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
+	Por tanto, hay dos OnCollision por cada colision.
+	*/
 	void CheckColisions();
 public:
 	RoomScene(int id) : id(id) {
@@ -45,59 +50,63 @@ public:
 		HUD = HUDManager::GetInstance();
 
 #pragma region Cosas q vamos a borrar pronto
-		Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
+		//Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
 
-		Entity* fly = new Entity(this);
+		//Entity* fly = new Entity(this);
 
-		AnimationComponent* animFly = new AnimationComponent();
-		RenderComponent* rndrFly = new RenderComponent(textFly, 1, 3, 0.5, animFly);
+		//TransformComponent* transform = new TransformComponent();
+		//AnimationComponent* animFly = new AnimationComponent();
+		//RenderComponent* rndrFly = new RenderComponent(textFly, 1, 3, 0.5, animFly);
 
-		rndrFly->setContext(fly);
+		//rndrFly->setContext(fly);
 
-		Animation a; //Animaciones mosca
-		a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true);
-		animFly->addAnimation("FLY", a);
+		//Animation a; //Animaciones mosca
+		//a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true);
+		//animFly->addAnimation("FLY", a);
 
-		fly->addRenderComponent(rndrFly);
-		fly->addComponent(ANIMATION_COMPONENT, animFly);
+		//fly->addRenderComponent(rndrFly);
+		//fly->addComponent(ANIMATION_COMPONENT, animFly);
 
-		animFly->playAnimation("FLY");
-
-
-		MovementComponent* mvm = new MovementComponentFly(Vector2D(0, 3));
-		mvm->setContext(fly);
-		fly->addComponent(MOVEMENT_COMPONENT, mvm);
-
-		entityList.push_back(fly);
+		//animFly->playAnimation("FLY");
 
 
-		Entity* flyToPlayer = new Entity(this);
+		//MovementComponent* mvm = new MovementComponentFly(Vector2D(0, 3));
+		//mvm->setContext(fly);
+		//fly->addComponent(MOVEMENT_COMPONENT, mvm);
 
-		FollowPlayerComponent* fpc = new FollowPlayerComponent(Vector2D(0, 0));
-		fpc->setContext(flyToPlayer);
-		flyToPlayer->addComponent(MOVEMENT_COMPONENT, fpc);
+		//entityList.push_back(fly);
 
-		AnimationComponent* animFly2 = new AnimationComponent();
-		RenderComponent* rndrFly2 = new RenderComponent(textFly, 1, 3, 0.5, animFly2);
-		rndrFly2->setContext(flyToPlayer);
 
-		a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true);
-		animFly2->addAnimation("FLY", a);
+		//Entity* flyToPlayer = new Entity(this);
 
-		flyToPlayer->addRenderComponent(rndrFly2);
-		flyToPlayer->addComponent(ANIMATION_COMPONENT, animFly2);
+		//FollowPlayerComponent* fpc = new FollowPlayerComponent(Vector2D(0, 0));
+		//fpc->setContext(flyToPlayer);
+		//flyToPlayer->addComponent(MOVEMENT_COMPONENT, fpc);
 
-		animFly2->playAnimation("FLY");
+		//AnimationComponent* animFly2 = new AnimationComponent();
+		//RenderComponent* rndrFly2 = new RenderComponent(textFly, 1, 3, 0.5, animFly2);
+		//rndrFly2->setContext(flyToPlayer);
 
-		//Collider al flyToPlayer para probar las colisiones
-		ColliderComponent* collider = new ColliderComponent();
-		collider->setContext(flyToPlayer);
-		flyToPlayer->addComponent(COLLIDER_COMPONENT, collider);
+		//a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true);
+		//animFly2->addAnimation("FLY", a);
+
+		//flyToPlayer->addRenderComponent(rndrFly2);
+		//flyToPlayer->addComponent(ANIMATION_COMPONENT, animFly2);
+
+		//animFly2->playAnimation("FLY");
+
+		////Collider al flyToPlayer para probar las colisiones
+		//ColliderComponent* collider = new ColliderComponent();
+		//collider->setContext(flyToPlayer);
+		//flyToPlayer->addComponent(COLLIDER_COMPONENT, collider);
 
 		//entityList.push_back(flyToPlayer);
 		//createFish(Vector2D(0, 3), 4);
 		entityList.push_back(flyToPlayer);
 
+
+		createFish(Vector2D(0, 3), 4);
+		
 
 #pragma endregion
 
@@ -122,6 +131,8 @@ public:
 	Entity* createFish(Vector2D pos, int boundX);
 	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
+	Entity* createSnake(Vector2D pos);
+
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
 };

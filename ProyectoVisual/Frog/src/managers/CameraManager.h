@@ -35,7 +35,7 @@ private:
 	Directions direction;
 	Camera() {};
 	//ns si esta bien
-	MovementComponentFrog* camTargetMovementComp;
+	TransformComponent* targetTransform;
 	
 };
 #endif // !CAMERAMANAGER_H

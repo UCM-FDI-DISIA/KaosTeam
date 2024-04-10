@@ -28,14 +28,15 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 //CAMBIARÁ CUANDO TENGAMOS LAS COLISIONES!!!!
 void MovementComponentFrog::changePosFrog(Vector2D v)
 {	
-	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(v)->objInTile;
+
+	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + transform->getCasilla())->objInTile;
 	if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
 		//COLISION CON OBJETO DE TRANSICION
 		static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
 	}
 	else {
 		//Simplemente pasa a la otra casilla
-		posCasilla = v;
+		transform->setCasilla(velocity.normalize() + transform->getCasilla());
 	}
 }
 
@@ -49,12 +50,12 @@ void MovementComponentFrog::update() {
 
 		if (actualDirection == LEFT || actualDirection == RIGHT)
 		{
-			offsetInCasilla.setX(offsetInCasilla.getX() + t / framesPerJump * velocity.getX());
-			offsetInCasilla.setY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
+			transform->setOffsetX(transform->getOffset().getX() + t / framesPerJump * velocity.getX());
+			transform->setOffsetY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
 		}
 		else
 		{
-			offsetInCasilla.setY(offsetInCasilla.getY() + t / framesPerJump * velocity.getY());
+			transform->setOffsetY(transform->getOffset().getY() + t / framesPerJump * velocity.getY());
 		}
 
 		//como las colisiones ya no se hacen por casillas, esto no lo necesitamos
@@ -79,7 +80,8 @@ void MovementComponentFrog::update() {
 		if (framesMoved == framesPerJump) //para acabar el movimiento
 		{
 			changePosFrog(velocity + posCasilla);
-			offsetInCasilla = {0,0};
+			//changePos(velocity.normalize() + posCasilla);
+			transform->setOffset({ 0,0 });
 			framesMoved = 0;
 			jumping = false;
 		}

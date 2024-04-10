@@ -3,29 +3,9 @@
 #include "../scenes/Roomscene.h"
 #include <iostream>
 
-MovementComponent::MovementComponent(Vector2D casilla): posCasilla(casilla)
-{}
-
-Vector2D MovementComponent::getPosition() {
-	return posCasilla;
-}
-
-void MovementComponent::changePos(Vector2D v)
-{
-	ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = nullptr;
-	posCasilla = v;
-	ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = ent;
-}
-
-void MovementComponent::resetPos(Vector2D v)
-{
-	posCasilla = v;
-	if(checkIfTileWalkable(v))
-		ent->getScene()->getMapReader()->getTile(posCasilla)->objInTile = ent;
-}
-
 void MovementComponent::initComponent()
 {
+	transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 
 bool MovementComponent::checkIfTileWalkable(Vector2D v)

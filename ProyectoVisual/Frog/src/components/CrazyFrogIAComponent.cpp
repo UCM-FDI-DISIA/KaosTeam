@@ -3,6 +3,7 @@
 #include "MovementComponentFrog.h"
 #include "../scenes/RoomScene.h"
 #include "../ecs/Entity.h"
+#include "TransformComponent.h"
 
 void CrazyFrogIAComponent::update()
 {
@@ -10,11 +11,11 @@ void CrazyFrogIAComponent::update()
 	{
 		//solo se hace una vez. Podemos hacerlo en el init. Pero por ahora lo tengo aqui
 		if (playerPos == nullptr)
-			playerPos = static_cast<MovementComponent*>(ent->getScene()->getPlayer()->getComponent(MOVEMENT_COMPONENT))->getPosPointer();
+			playerPos = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasillaPointer();
 
 		cout << "actualizando rana";
 
-		Vector2D aux = *playerPos - movement->getPosition();
+		Vector2D aux = *playerPos - static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla();
 		
 		//calculamos en que dirección deberiamos movernos
 		Vector2D speed; Directions direction; string animation;

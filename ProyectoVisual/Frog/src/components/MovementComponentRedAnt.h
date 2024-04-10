@@ -28,8 +28,8 @@ public:
 		actualDirection = RIGHT;
 		playerPosition = targetMovementComp->getPosition();
 		//anim->playAnimation("RIGHT");
-		waitTime = 1000;
-		movementFrameRate = 50;
+		waitTime = 500;
+		movementFrameRate = 30;
 		framesPerMove = 6;
 		framesMoved = 0;
 		isMoving = false;

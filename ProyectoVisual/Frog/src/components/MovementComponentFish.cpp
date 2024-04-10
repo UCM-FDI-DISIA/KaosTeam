@@ -7,6 +7,40 @@ void MovementComponentFish::update() {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		if (casillaActual == casillaSalto) {
 			isJumping = true;
+			switch (actualDirection)
+			{
+			//se mueve media casilla hacia arriba y media casilla hacia abajo en la direccion correspondiente
+			//cuando ha terminado de saltar es cuando termina el movimiento completo (casillaActual++)
+			case RIGHT:
+				if (!isJumping) {
+					isJumping = true;
+					transform->setCasilla(transform->getCasilla() + Vector2D(0.5, -1));
+					anim->playAnimation("JUMP_RIGHT");
+				}
+				else if (isJumping) {
+					isJumping = false;
+					transform->setCasilla(transform->getCasilla() + Vector2D(0.5, 1));
+					casillaActual++;
+					anim->playAnimation("RIGHT");
+				}
+				
+				break;
+			case LEFT:
+				if (!isJumping) {
+					isJumping = true;
+					transform->setCasilla(transform->getCasilla() + Vector2D(-0.5, -1));
+					anim->playAnimation("JUMP_LEFT");
+				}
+				else if (isJumping) {
+					isJumping = false;
+					transform->setCasilla(transform->getCasilla() + Vector2D(-0.5, 1));
+					casillaActual++;
+					anim->playAnimation("LEFT");
+				}
+				break;
+			default:
+				break;
+			}
 		}
 		switch (actualDirection)
 		{
@@ -50,6 +84,7 @@ void MovementComponentFish::update() {
 			framesMoved = 0;
 			isMoving = false;
 			isJumping = false;
+
 			casillaActual++;
 			if (casillaActual == limite - 1)  changeDirection();
 		}
