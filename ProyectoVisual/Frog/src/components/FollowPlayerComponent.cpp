@@ -3,7 +3,7 @@
 #include "../ecs/Entity.h"
 
 FollowPlayerComponent::FollowPlayerComponent(Vector2D pos)
-	:MovementComponent(pos), vel(0, 0), lastTimeMoved(SDL_GetTicks())
+	: MovementComponent(), vel(0, 0), lastTimeMoved(SDL_GetTicks())
 {}
 
 FollowPlayerComponent::~FollowPlayerComponent() {
@@ -12,11 +12,12 @@ FollowPlayerComponent::~FollowPlayerComponent() {
 
 void FollowPlayerComponent::update() {
 	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
+		TransformComponent* transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 		RoomScene* sc = ent->getScene();// coje la pocision del player
 		Entity* pl = sc->getPlayer();
-		MovementComponent* pmc = static_cast<MovementComponent*>(pl->getComponent(MOVEMENT_COMPONENT));
-		Vector2D playerPos = pmc->getPosition();
-		Vector2D aux = playerPos - posCasilla;
+		TransformComponent* pmt = static_cast<TransformComponent*>(pl->getComponent(TRANSFORM_COMPONENT));
+		Vector2D playerPos = pmt->getCasilla();
+		Vector2D aux = playerPos - transform->getCasilla();
 		//sacar X e Y y comparar
 		float ax = aux.getX();
 		float ay = aux.getY();
@@ -62,7 +63,7 @@ void FollowPlayerComponent::update() {
 			}
 		}
 		//aplicar movimiento
-		posCasilla = posCasilla + vel;
+		transform->setCasilla(transform->getCasilla() + vel);
 
 		lastTimeMoved = SDL_GetTicks();
 	}

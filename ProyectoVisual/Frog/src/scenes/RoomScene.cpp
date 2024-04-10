@@ -25,16 +25,14 @@ void RoomScene::update() {
 }
 
 void RoomScene::CheckColisions() {
-	//Esto es provisional, en la version final se va a llamar a todas las colisiones de las entidades utilizando transform.
-	ColliderComponent* collRana = static_cast<ColliderComponent*>(player->getComponent(COLLIDER_COMPONENT));
-	for (Entity* e : entityList) {
-		//Problema: para que CheckColision funcione e tiene que tener ambos un movement component y un render component
-		//Por ahora, simplemente pondré una comprobación adicional de que tenga ColliderComponent
-		if (e != nullptr) {
-			ColliderComponent* coll = static_cast<ColliderComponent*>(e->getComponent(COLLIDER_COMPONENT));
-			if (coll != nullptr && collRana->CheckCollision(e))
-				coll->OnCollision();
-		}
+	for (Entity* e1 : entityList) {
+		ColliderComponent* coll1 = static_cast<ColliderComponent*>(e1->getComponent(COLLIDER_COMPONENT));
+		if (coll1 != nullptr)
+			for (Entity* e2 : entityList) {
+				ColliderComponent* coll2 = static_cast<ColliderComponent*>(e2->getComponent(COLLIDER_COMPONENT));
+				if (coll2 != nullptr && coll2->CheckCollision(e1))
+					coll2->OnCollision(e1);
+			}
 	}
 };
 
@@ -44,10 +42,15 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 5);
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
+	TransformComponent* transform = new TransformComponent(pos);
+	player->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(player);
+
 	AnimationComponent* animFrog = new AnimationComponent();
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
 	renderFrog->setContext(player);
+	renderFrog->initComponent();
 
 	animFrog->addAnimation("IDLE_DOWN", Animation({ Vector2D(0,0) }, false, false));
 	animFrog->addAnimation("IDLE_UP", Animation({ Vector2D(1,0) }, false, false));
@@ -69,6 +72,7 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
 	mvm->setContext(player);
+	mvm->initComponent();
 	player->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AttackComponentFrog* atck = new AttackComponentFrog();
@@ -130,6 +134,10 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaLocaSpritesheet.png", 4, 4);
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
+	TransformComponent* transform = new TransformComponent(pos);
+	frog->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(frog);
+
 	AnimationComponent* animFrog = new AnimationComponent();
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
@@ -156,7 +164,7 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
 	mvm->setContext(frog);
 	frog->addComponent(MOVEMENT_COMPONENT, mvm);
-
+	mvm->initComponent();
 	AttackComponentFrog* atck = new AttackComponentFrog();
 	frog->addComponent(ATTACK_COMPONENT, atck);
 	atck->setContext(frog);
@@ -171,6 +179,10 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	Entity* fish = new Entity(this);
 	Texture* txtFish = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	fish->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(fish);
 
 	AnimationComponent* animFish = new AnimationComponent();
 	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 1, animFish);
@@ -189,6 +201,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	MovementComponentFish* mvm = new MovementComponentFish(pos, boundX, animFish);
 	mvm->setContext(fish);
 	fish->addComponent(MOVEMENT_COMPONENT, mvm);
+	mvm->initComponent();
 
 	AddEntity(fish);
 	return fish;	
@@ -332,7 +345,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 
 void RoomScene::movePlayer(Vector2D pos)
 {
-	static_cast<MovementComponent*>(player->getComponent(MOVEMENT_COMPONENT))->resetPos(pos);
+	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
 }
 
 void RoomScene::AddEntity(Entity* entity) {
