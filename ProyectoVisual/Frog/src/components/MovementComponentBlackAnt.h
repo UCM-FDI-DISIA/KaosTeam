@@ -17,18 +17,20 @@ private:
 	bool waitToMove;
 	int range;
 	float diff;
-	MovementComponentFrog* targetMovementComp;
+	TransformComponent* targetTransformComp;
 	Vector2D playerPosition;
 	AnimationComponent* anim;
+	TransformComponent* tr;
 	RandomNumberGenerator& rand_;	//generador de numeros random
 	void changeDirection();
 	bool isPlayerNear();
 	void checkCollisionWall();
 public:
-	MovementComponentBlackAnt(Vector2D casilla, AnimationComponent* a, MovementComponentFrog* target) : MovementComponent(casilla), lastTimeMoved(SDL_GetTicks()), anim(a), targetMovementComp(target), rand_(sdlutils().rand())
+	MovementComponentBlackAnt(Vector2D casilla, AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
 	{
+		tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 		actualDirection = RIGHT;
-		playerPosition = targetMovementComp->getPosition();
+		playerPosition = targetTransformComp->getCasilla();
 		//anim->playAnimation("RIGHT");
 		waitTime =500;
 		movementFrameRate = 30;
