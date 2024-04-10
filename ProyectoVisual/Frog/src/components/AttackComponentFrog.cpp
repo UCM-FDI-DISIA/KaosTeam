@@ -29,3 +29,9 @@ void AttackComponentFrog::attack()
 	distanceMoved = 0;
 	static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->AttackStart();
 }
+
+void AttackComponentFrog::EndAttack()
+{
+	state = 2;
+
+}

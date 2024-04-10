@@ -248,6 +248,8 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 
 	AddEntity(redAnt);
 	return redAnt;
+}
+
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this);
 	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheet.png", 4, 2);
@@ -300,6 +302,8 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 		if (player != nullptr) {
 			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			c = createBlackAnt(pos, mvmPlayer);
+		}
+	}
 	else if (objName == "Fish") {
 		for (const auto& prop : objProps) {
 			if (prop.getName() == "object") //revisar esto
