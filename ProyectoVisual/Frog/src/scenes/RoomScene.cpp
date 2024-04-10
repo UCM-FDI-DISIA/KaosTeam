@@ -8,6 +8,7 @@ void RoomScene::render() {
 		if (e != nullptr)
 			e->render();
 	}
+	HUD->render();
 }
 
 void RoomScene::update() {
@@ -17,6 +18,8 @@ void RoomScene::update() {
 	}
 
 	cameraManager->update();
+	if (needMapChange)
+		changeMap();
 	//comrpueba las colisiones con la rana
 
 }
@@ -36,7 +39,7 @@ void RoomScene::CheckColisions() {
 Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 {
 	player = new Entity(this);
-	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 4);
+	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 5);
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
 	TransformComponent* transform = new TransformComponent(pos);
@@ -182,7 +185,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	transform->setContext(fish);
 
 	AnimationComponent* animFish = new AnimationComponent();
-	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 0.5, animFish);
+	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 1, animFish);
 
 	renderFish->setContext(fish);
 
@@ -203,6 +206,48 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	AddEntity(fish);
 	return fish;	
 }
+Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
+	Entity* blackAnt = new Entity(this);
+	//textura cambiar
+	Texture* txtBlackAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+
+	AnimationComponent* animBlackAnt = new AnimationComponent();
+	RenderComponent* renderBlackAnt = new RenderComponent(txtBlackAnt, 1, 3, 0.5, animBlackAnt);
+
+	renderBlackAnt->setContext(blackAnt);
+	//animaciones
+
+	blackAnt->addRenderComponent(renderBlackAnt);
+	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
+	
+	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(pos, animBlackAnt,playerMvmCmp);
+	mvm->setContext(blackAnt);
+	blackAnt->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AddEntity(blackAnt);
+	return blackAnt;
+}
+Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
+	Entity* redAnt = new Entity(this);
+	//textura cambiar
+	Texture* txtRedAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+
+	AnimationComponent* animRedAnt = new AnimationComponent();
+	RenderComponent* renderRedAnt = new RenderComponent(txtRedAnt, 1, 3, 0.5, animRedAnt);
+
+	renderRedAnt->setContext(redAnt);
+	//animaciones
+
+	redAnt->addRenderComponent(renderRedAnt);
+	redAnt->addComponent(ANIMATION_COMPONENT, animRedAnt);
+
+	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(pos, animRedAnt, playerMvmCmp);
+	mvm->setContext(redAnt);
+	redAnt->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AddEntity(redAnt);
+	return redAnt;
+}
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
@@ -210,18 +255,22 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	if (objName == "Crazy frog"){
 		c = createCrazyFrog(pos);
 	}
-	else if (objName == "Fish") { 
-		for (const auto& prop : objProps) {
-			if (prop.getName() == "object") //revisar esto
-			{
-				if (prop.getType() == tmx::Property::Type::Int) {
-					int boundX = prop.getIntValue();
-					c = createFish(pos, boundX);
-					//c = createFish(pos, 4);
-					break;
-				}
-			}
+	else if (objName == "Pez") { 
+		c = createFish(pos, objProps[0].getIntValue());
+	}
+	else if (objName == "Black ant") {
+		if (player != nullptr) {
+			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+			c = createBlackAnt(pos, mvmPlayer);
 		}
+		
+	}
+	else if (objName == "Red ant") {
+		if (player != nullptr) {
+			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+			c = createRedAnt(pos, mvmPlayer);
+		}
+
 	}
 	/*
 	else if ()......
@@ -310,7 +359,7 @@ RoomScene::~RoomScene() {
 	delete cameraManager;
 }
 
-void RoomScene::changeMap(std::string nextMap, flonkOrig nextFlonk)
+void RoomScene::changeMap()
 {
 	playerOrig = nextFlonk;
 
@@ -325,4 +374,6 @@ void RoomScene::changeMap(std::string nextMap, flonkOrig nextFlonk)
 	mapReader->loadObj(nextMap);
 
 	cameraManager->setTarget(player);
+
+	needMapChange = false;
 }

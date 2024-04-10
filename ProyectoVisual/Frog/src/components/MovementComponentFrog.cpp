@@ -4,17 +4,19 @@
 
 void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string animation)
 {
-	if (!jumping && checkIfTileWalkable(transform->getCasilla() + v))  //COLISIONES COMENTADAS PARA PROBAR LA TRANSICIÓON ENTRE ESCENAS
+	if (!jumping) 
 	{
-		velocity = v;
-		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-		jumping = true;
-		framesPerJump = 4 + v.magnitude()*3; //2 frames de despegue, 3 en cada casilla, 2 de aterrizaje
-	}
+		if (checkIfTileWalkable(posCasilla + v))
+		{
+			velocity = v;
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			jumping = true;
+			framesPerJump = 4 + v.magnitude() * 6; //2 frames de despegue, 3 en cada casilla, 2 de aterrizaje
 
-	actualDirection = d;
-	anim->playAnimation(animation);
-	
+		}
+		actualDirection = d;
+		anim->playAnimation(animation);
+	}
 }
 
 void MovementComponentFrog::changeDirection(Directions d, string animation)
@@ -26,6 +28,7 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 //CAMBIARÁ CUANDO TENGAMOS LAS COLISIONES!!!!
 void MovementComponentFrog::changePosFrog(Vector2D v)
 {	
+
 	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + transform->getCasilla())->objInTile;
 	if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
 		//COLISION CON OBJETO DE TRANSICION
@@ -55,19 +58,28 @@ void MovementComponentFrog::update() {
 			transform->setOffsetY(transform->getOffset().getY() + t / framesPerJump * velocity.getY());
 		}
 
-		if (transform->getOffset().getX() * velocity.normalize().getX() >= t / 2 ||
-			transform->getOffset().getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
-		{
-			changePosFrog(velocity.normalize() + transform->getCasilla());
-			if (actualDirection == LEFT || actualDirection == RIGHT)
-				transform->setOffsetX(transform->getOffset().getX() * -1);
-			else
-				transform->setOffsetY(transform->getOffset().getX() * -1);
+		//como las colisiones ya no se hacen por casillas, esto no lo necesitamos
 
-		}
+		//if (offsetInCasilla.getX()*velocity.normalize().getX() >= t / 2 ||
+		//	offsetInCasilla.getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
+		//{
+		//	//este chikiparrafo cambiará cuando tengamos las colisones
+		//	if (checkIfTileWalkable(velocity.normalize() + posCasilla))
+		//		changePosFrog(velocity.normalize() + posCasilla);
+		//	else
+		//		posCasilla = velocity.normalize() + posCasilla;
+
+
+		//	if (actualDirection == LEFT || actualDirection == RIGHT)
+		//		offsetInCasilla.setX(offsetInCasilla.getX() * -1);
+		//	else
+		//		offsetInCasilla.setY(offsetInCasilla.getY() * -1);
+
+		//}
 
 		if (framesMoved == framesPerJump) //para acabar el movimiento
 		{
+			changePosFrog(velocity + posCasilla);
 			//changePos(velocity.normalize() + posCasilla);
 			transform->setOffset({ 0,0 });
 			framesMoved = 0;

@@ -1,25 +1,10 @@
 #include "InputManager.h"
-/*InputManager* InputManager::GetInstance() {
-	if (instance == nullptr) {
-		instance = new InputManager();
-	}
-	return instance;
-}*/
 
 InputManager* InputManager::instance = nullptr;
 
-void InputManager::PollEvents() {
-	SDL_Event event;
-
-	ClearStates();
-	while (SDL_PollEvent(&event))
-		UpdateStates(event);
-}
-
-void InputManager::ClearStates() {
-	for (int i = 0; i < END; i++) {
-		states[i] = false;
-	}
+InputManager::InputManager() { 
+	states[END] = {}; 
+	PollEvents(); 
 }
 
 void InputManager::UpdateStates(const SDL_Event& event) {
@@ -37,6 +22,9 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_RIGHT:
 			states[BTN_RIGHT] = true;
 			break;
+		case SDLK_LSHIFT:
+			btnShift = true;
+			break;
 
 		//ahora para poder usar WASD
 		case SDLK_a:
@@ -51,6 +39,9 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_d:
 			states[BTN_RIGHT] = true;
 			break;
+		case SDLK_RSHIFT:
+			btnShift = true;
+			break;
 
 
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
@@ -58,9 +49,6 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 			break;
 		case SDLK_x:
 			states[BTN_ACTION2] = true;
-			break;
-		case SDLK_c:
-			states[BTN_ACTION3] = true;
 			break;
 		case SDLK_v:	// Escudo
 			states[BTN_ACTION4] = true;
@@ -73,6 +61,25 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 			break;
 		}
 	}
+	else if (event.type == SDL_KEYUP)
+	{
+		if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
+			btnShift = false;
+	}
+}
+
+void InputManager::ClearStates() {
+	for (int i = 0; i < END; i++) {
+		states[i] = false;
+	}
+}
+
+void InputManager::PollEvents() {
+	SDL_Event event;
+
+	ClearStates();
+	while (SDL_PollEvent(&event))
+		UpdateStates(event);
 }
 
 bool InputManager::getAction1() {
@@ -81,8 +88,8 @@ bool InputManager::getAction1() {
 bool InputManager::getAction2() {
 	return states[BTN_ACTION2];
 }
-bool InputManager::getAction3() {
-	return states[BTN_ACTION3];
+bool InputManager::getShift() {
+	return btnShift;
 }
 bool InputManager::getAction4() {
 	return states[BTN_ACTION4];
@@ -102,4 +109,9 @@ bool InputManager::getRight() {
 bool InputManager::getSpace()
 {
 	return states[BTN_SPACE];
+}
+
+bool InputManager::getEscape()
+{
+	return states[BTN_ESCAPE];
 }

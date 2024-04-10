@@ -248,10 +248,13 @@ void MapManager::loadObj(const std::string& path)
 
                 std::cout << "Object " << object.getName() << ", in posX = " << x << " , posY = " << y << std::endl;
 
+
                 Entity* ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
                 if (ent != nullptr) {
-                    walkableTiles[x][y]->objInTile = ent;
-                    std::cout << "Anadida entidad a tile: " << object.getName() << std::endl;
+                    if (walkableTiles[x][y] != nullptr) {
+                        walkableTiles[x][y]->objInTile = ent;
+                        std::cout << "Anadida entidad a tile: " << object.getName() << std::endl;
+                    }
                 }
 
                 if (!object.getTilesetName().empty())

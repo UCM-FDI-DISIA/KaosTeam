@@ -17,7 +17,7 @@ public:
 
 	void setTarget(Entity* target);
 	void update();
-	Vector2D getCameraMovement() { return cameraPos * tileSize /*+ additionalOffset*/; }
+	Vector2D getCameraMovement() { return cameraPos;} 
 
 	//para hacer el movimiento fluido
 	Vector2D GetAdditionalOffset();
@@ -27,11 +27,12 @@ private:
 	//static Camera* cameraInstance;
 	Entity* camTarget;
 	Vector2D cameraPos = { 0,0 };
-	int limitX, limitY, tilesToStartMoving = 3; 
+	int limitX, limitY, tilesToStartMovingX, tilesToStartMovingY; 
 	int tileSize;
 	Vector2D screenSize; //IMPORTANTE en casillas
-	Vector2D lastTargetPosition;
+	Vector2D targetPosition;
 	Vector2D additionalOffset;
+	Directions direction;
 	Camera() {};
 	//ns si esta bien
 	TransformComponent* targetTransform;
