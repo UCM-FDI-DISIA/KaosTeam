@@ -20,7 +20,7 @@ protected:
 
 	TransformComponent* tr = nullptr;
 public:
-	MovementComponent() : tr(static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))) {}
+	MovementComponent() {};
 	void initComponent() override;
 
 	void setBoundX(int newBoundX) { boundX = newBoundX; }
