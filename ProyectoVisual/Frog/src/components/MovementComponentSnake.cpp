@@ -57,15 +57,15 @@ void MovementComponentSnake::searchFrog() {
 		playerPos = static_cast<MovementComponent*>(ent->getScene()->getPlayer()->getComponent(MOVEMENT_COMPONENT))->getPosPointer();
 
 	//calculamos distancia
-	Vector2D distance = *playerPos - getPosition();
+	Vector2D distance = *playerPos - tr->getCasilla();
 
 	std::cout << "(" << playerPos->getX() << " , " << playerPos->getY() << ")" << "PlayerPosition" << std::endl;
-	std::cout << "(" << getPosition().getX() << " , " << getPosition().getY() << ")" << "SnakePosition" << std::endl;
+	std::cout << "(" << tr->getCasilla().getX() << " , " << tr->getCasilla().getY() << ")" << "SnakePosition" << std::endl;
 	std::cout << "(" << distance.getX() << " , " << distance.getY() << ")" << "DISTANCE" << std::endl;
 	std::cout << " " << std::endl;
 
 	//Identificamos la col/fil en la que esta la serpiente y la rana 
-	if (getPosition().getX() == playerPos->getX()) {
+	if (tr->getCasilla().getX() == playerPos->getX()) {
 		////Comprobamos si la direccion es valida
 		if (currentDirection == DOWN_ROT) {
 			if ((distance.getY() <= attackDistance) && (distance.getY() > 0)) { //Si esta en el rango de ataque...
@@ -80,7 +80,7 @@ void MovementComponentSnake::searchFrog() {
 			}
 		}
 	}
-	else if (getPosition().getY() == playerPos->getY()) {
+	else if (tr->getCasilla().getY() == playerPos->getY()) {
 		if (currentDirection == RIGHT_ROT) {
 			if ((distance.getX() <= attackDistance) && (distance.getX() > 0)) {
 				std::cout << "SNAKE ATACA derecha" << std::endl;
