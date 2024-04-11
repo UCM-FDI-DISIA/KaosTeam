@@ -142,6 +142,7 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
 	renderFrog->setContext(frog);
+	renderFrog->initComponent();
 
 	animFrog->addAnimation("IDLE_DOWN", Animation({ Vector2D(0,0) }, false, false));
 	animFrog->addAnimation("IDLE_UP", Animation({ Vector2D(1,0) }, false, false));
@@ -163,8 +164,9 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 
 	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
 	mvm->setContext(frog);
-	frog->addComponent(MOVEMENT_COMPONENT, mvm);
 	mvm->initComponent();
+	frog->addComponent(MOVEMENT_COMPONENT, mvm);
+
 	AttackComponentFrog* atck = new AttackComponentFrog();
 	frog->addComponent(ATTACK_COMPONENT, atck);
 	atck->setContext(frog);
@@ -200,10 +202,10 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	animFish->setContext(fish);
 
 	//el limite tiene que ser una propiedad
-	/*MovementComponentFish* mvm = new MovementComponentFish(boundX, animFish);
+	MovementComponentFish* mvm = new MovementComponentFish(boundX, animFish);
 	mvm->setContext(fish);
+	mvm->initComponent();
 	fish->addComponent(MOVEMENT_COMPONENT, mvm);
-	mvm->initComponent();*/
 
 	AddEntity(fish);
 	return fish;	
@@ -254,6 +256,7 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 
 	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(animRedAnt, playerMvmCmp);
 	mvm->setContext(redAnt);
+	mvm->initComponent();
 	redAnt->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AddEntity(redAnt);
@@ -290,11 +293,12 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 	snake->addComponent(ANIMATION_COMPONENT, animSnake);
 	animSnake->setContext(snake);
+
 	snake->addRenderComponentSnake(renderSnake);
 
 	MovementComponentSnake* mvmSnake = new MovementComponentSnake(animSnake);
 	mvmSnake->setContext(snake);
-	mvmSnake->initComponent();
+	mvmSnake->initComponent(); //INICIALIZAMOS LOS TRANSFORM (DE LO CONTARIO, PETARÍA)
 	snake->addComponent(MOVEMENT_COMPONENT, mvmSnake);
 
 	AttackComponentSnake* atckSnake = new AttackComponentSnake();

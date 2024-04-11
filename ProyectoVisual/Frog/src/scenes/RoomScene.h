@@ -105,7 +105,7 @@ public:
 		//entityList.push_back(flyToPlayer);
 
 
-		//createFish(Vector2D(0, 3), 4);
+		createFish(Vector2D(0, 3), 4);
 		
 
 #pragma endregion

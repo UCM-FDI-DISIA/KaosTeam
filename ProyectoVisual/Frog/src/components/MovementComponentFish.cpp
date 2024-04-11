@@ -5,7 +5,7 @@
 
 MovementComponentFish::MovementComponentFish(int boundX, AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), limite(boundX), anim(a), rand_(sdlutils().rand())
 {
-	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	//tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 	casillaSalto = rand_.nextInt(0, boundX - 1); //elegir aleatoriamente la casilla en la que va a saltar
 	actualDirection = RIGHT;
 	anim->playAnimation("RIGHT");
@@ -18,6 +18,9 @@ MovementComponentFish::MovementComponentFish(int boundX, AnimationComponent* a) 
 	isMoving = false;
 };
 
+void MovementComponentFish::initComponent() {
+	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+}
 void MovementComponentFish::update() {
 	if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();

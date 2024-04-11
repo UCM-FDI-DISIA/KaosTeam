@@ -22,5 +22,6 @@ private:
 public:
 	MovementComponentFish(int boundX, AnimationComponent* a);
 	void update() override;
+	void initComponent() override;
 };
 

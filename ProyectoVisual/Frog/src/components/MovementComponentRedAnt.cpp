@@ -6,8 +6,6 @@
 MovementComponentRedAnt::MovementComponentRedAnt(AnimationComponent* a, MovementComponentFrog* target) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
 {
 	actualDirection = RIGHT;
-	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
-	playerPosition = targetTransformComp->getCasilla();
 	//anim->playAnimation("RIGHT");
 	waitTime = 500;
 	movementFrameRate = 30;
@@ -17,6 +15,11 @@ MovementComponentRedAnt::MovementComponentRedAnt(AnimationComponent* a, Movement
 	escape = false;
 	range = 2;
 };
+
+void MovementComponentRedAnt::initComponent() {
+	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	playerPosition = targetTransformComp->getCasilla();
+}
 
 void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 	Vector2D aux = tr->getCasilla() + vel;

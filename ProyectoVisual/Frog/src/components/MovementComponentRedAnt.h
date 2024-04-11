@@ -26,5 +26,6 @@ private:
 public:
 	MovementComponentRedAnt(AnimationComponent* a, MovementComponentFrog* target);
 	void update() override;
+	void initComponent() override; 
 };
 
