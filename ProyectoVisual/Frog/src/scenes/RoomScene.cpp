@@ -188,7 +188,6 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 
 	AnimationComponent* animFish = new AnimationComponent();
 	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 1, animFish);
-
 	renderFish->setContext(fish);
 	renderFish->initComponent();
 
@@ -197,9 +196,10 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	animFish->addAnimation("JUMP_RIGHT", Animation({ Vector2D(0,0) }, true, false));
 	animFish->addAnimation("JUMP_LEFT", Animation({ Vector2D(0,0) }, false, false));
 
-	fish->addRenderComponent(renderFish);
 	fish->addComponent(ANIMATION_COMPONENT, animFish);
 	animFish->setContext(fish);
+
+	fish->addRenderComponent(renderFish);
 
 	//el limite tiene que ser una propiedad
 	MovementComponentFish* mvm = new MovementComponentFish(boundX, animFish);
