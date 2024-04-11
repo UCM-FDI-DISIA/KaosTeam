@@ -28,7 +28,7 @@ private:
 	void searchFrog();
 public:
 	MovementComponentSnake(AnimationComponent* a);
-		
+	void initComponent() override;
 	Direction getDirection() const { return currentDirection; };
 	void update() override;
 };

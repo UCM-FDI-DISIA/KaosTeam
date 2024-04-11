@@ -10,7 +10,6 @@ MovementComponentSnake::MovementComponentSnake(AnimationComponent* a) :
 	lastTimeAction(DataManager::GetInstance()->getFrameTime()), coolDownTime(1000),
 	isRotate(true), isAttack(false),
 	currentDirection(Direction::RIGHT_ROT), attackDistance(2) {
-	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
 }
 
 void MovementComponentSnake::update()
@@ -25,6 +24,7 @@ void MovementComponentSnake::update()
 		if (isRotate) {
 			rotateSnake(); // Rotamos serpiente
 			searchFrog();  // Buscamos a la rana en la dir de rotacion
+			std::cout << "ROTANDO" << std::endl;
 		}
 			
 
@@ -37,6 +37,7 @@ void MovementComponentSnake::update()
 		//Vuelve a su posicion original y desactivamos ataque
 	}
 }
+
 
 void MovementComponentSnake::rotateSnake() {
 	//Cambiamos dirección de rotación
@@ -102,5 +103,10 @@ void MovementComponentSnake::searchFrog() {
 			}
 		}
 	}
+}
+
+void MovementComponentSnake::initComponent() {
+	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 

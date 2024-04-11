@@ -294,6 +294,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 	MovementComponentSnake* mvmSnake = new MovementComponentSnake(animSnake);
 	mvmSnake->setContext(snake);
+	mvmSnake->initComponent();
 	snake->addComponent(MOVEMENT_COMPONENT, mvmSnake);
 
 	AttackComponentSnake* atckSnake = new AttackComponentSnake();
@@ -318,37 +319,37 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			c = createBlackAnt(pos, mvmPlayer);
 		}
-		else if (objName == "Fish") {
-			for (const auto& prop : objProps) {
-				if (prop.getName() == "object") //revisar esto
-				{
-					if (prop.getType() == tmx::Property::Type::Int) {
-						int boundX = prop.getIntValue();
-						c = createFish(pos, boundX);
-						//c = createFish(pos, 4);
-						break;
-					}
+	}
+	else if (objName == "Fish") {
+		for (const auto& prop : objProps) {
+			if (prop.getName() == "object") //revisar esto
+			{
+				if (prop.getType() == tmx::Property::Type::Int) {
+					int boundX = prop.getIntValue();
+					c = createFish(pos, boundX);
+					//c = createFish(pos, 4);
+					break;
 				}
 			}
+		}
 
-		}
-		else if (objName == "Red ant") {
-			if (player != nullptr) {
-				MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
-				c = createRedAnt(pos, mvmPlayer);
-			}
-
-		}
-		else if (objName == "Snake") {
-			c = createSnake(pos);
-		}
-		/*
-		else if ()......
-		*/
-
-		return c;
-		}
 	}
+	else if (objName == "Red ant") {
+		if (player != nullptr) {
+			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+			c = createRedAnt(pos, mvmPlayer);
+		}
+
+	}
+	else if (objName == "Snake") {
+		c = createSnake(pos);
+	}
+	/*
+	else if ()......
+	*/
+
+	return c;
+}
 
 
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
