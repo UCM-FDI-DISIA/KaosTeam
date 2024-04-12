@@ -123,6 +123,7 @@ public:
 
 	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps);
 
+	Entity* createFrancois();
 	Entity* createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createPlayer(Vector2D pos, int boundX, int boundY);
