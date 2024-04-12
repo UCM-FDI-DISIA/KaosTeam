@@ -156,6 +156,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\AttackComponentFrançois.cpp" />
+    <ClCompile Include="src\components\MovementComponentFrançois.cpp" />
+    <ClCompile Include="src\components\ShadowDetection.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
@@ -209,6 +212,9 @@
     <ClCompile Include="src\components\TransitionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\AttackComponentFrançois.h" />
+    <ClInclude Include="src\components\MovementComponentFrançois.h" />
+    <ClInclude Include="src\components\ShadowDetection.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
