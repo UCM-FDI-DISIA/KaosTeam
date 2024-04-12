@@ -6,7 +6,7 @@ void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string 
 {
 	if (!jumping) 
 	{
-		if (checkIfTileWalkable(tr->getCasilla() + velocity))
+		if (checkIfTileWalkable(tr->getCasilla() + v))
 		{
 			velocity = v;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
