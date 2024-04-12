@@ -8,110 +8,88 @@ InputManager::InputManager() {
 }
 
 void InputManager::UpdateStates(const SDL_Event& event) {
-	if (event.key.type == SDL_KEYDOWN) {
+	if (event.type == SDL_KEYDOWN) {
 		switch (event.key.keysym.sym) {
 		case SDLK_UP:
-			buttons[BTN_UP].keyDOWN = true;
+			DowntiCheck(BTN_UP);
 			break;
 		case SDLK_DOWN:
-			buttons[BTN_DOWN].keyDOWN = true;
+			DowntiCheck(BTN_DOWN);
 			break;
 		case SDLK_LEFT:
-			buttons[BTN_LEFT].keyDOWN = true;
+			DowntiCheck(BTN_LEFT);
 			break;
 		case SDLK_RIGHT:
-			buttons[BTN_RIGHT].keyDOWN = true;
+			DowntiCheck(BTN_RIGHT);
 			break;
 		//case SDLK_LSHIFT:
 		//	btnShift = true;
 		//	break;
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
-			buttons[BTN_ACTION1].keyDOWN = true;
+			DowntiCheck(BTN_ACTION1);
 			break;
 		case SDLK_x:
-			buttons[BTN_ACTION2].keyDOWN = true;
+			DowntiCheck(BTN_ACTION2);
 			break;
 		case SDLK_v:	// Escudo
-			buttons[BTN_ACTION4].keyDOWN = true;
+			DowntiCheck(BTN_ACTION4);
 			break;
 		case SDLK_ESCAPE:
-			buttons[BTN_ESCAPE].keyDOWN = true;
+			DowntiCheck(BTN_ESCAPE);
 			break;
 		case SDLK_SPACE:
-			buttons[BTN_SPACE].keyDOWN = true;
+			DowntiCheck(BTN_SPACE);
 			break;
 		}
 	}
-	else if (event.key.type == SDL_KEYUP)
+	else if (event.type == SDL_KEYUP)
 	{
 	/*	if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
-			btnShift = false;*/
+	//btnShift = false;*/
 		switch (event.key.keysym.sym) {
 		case SDLK_UP:
-			buttons[BTN_UP].keyUP = true;
+			UptiCheck(BTN_UP);
 			break;
 		case SDLK_DOWN:
-			buttons[BTN_DOWN].keyUP = true;
+			UptiCheck(BTN_DOWN);
 			break;
 		case SDLK_LEFT:
-			buttons[BTN_LEFT].keyUP = true;
+			UptiCheck(BTN_LEFT);
 			break;
 		case SDLK_RIGHT:
-			buttons[BTN_RIGHT].keyUP = true;
+			UptiCheck(BTN_RIGHT);
 			break;
 		//case SDLK_LSHIFT:
 		//	btnShift = true;
 		//	break;
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
-			buttons[BTN_ACTION1].keyUP = true;
+			UptiCheck(BTN_ACTION1);
 			break;
 		case SDLK_x:
-			buttons[BTN_ACTION2].keyUP = true;
+			UptiCheck(BTN_ACTION2);
 			break;
 		case SDLK_v:	// Escudo
-			buttons[BTN_ACTION4].keyUP = true;
+			UptiCheck(BTN_ACTION4);
 			break;
 		case SDLK_ESCAPE:
-			buttons[BTN_ESCAPE].keyUP = true;
+			UptiCheck(BTN_ESCAPE);
 			break;
 		case SDLK_SPACE:
-			buttons[BTN_SPACE].keyUP = true;
+			UptiCheck(BTN_SPACE);
 			break;
 		}
 	}
-	else if (event.key.state == SDL_PRESSED) {
-		switch (event.key.keysym.sym) {
-		case SDLK_UP:
-			buttons[BTN_UP].pressed = true;
-			break;
-		case SDLK_DOWN:
-			buttons[BTN_DOWN].pressed = true;
-			break;
-		case SDLK_LEFT:
-			buttons[BTN_LEFT].pressed = true;
-			break;
-		case SDLK_RIGHT:
-			buttons[BTN_RIGHT].pressed = true;
-			break;
-			//case SDLK_LSHIFT:
-			//	btnShift = true;
-			//	break;
-		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
-			buttons[BTN_ACTION1].pressed = true;
-			break;
-		case SDLK_x:
-			buttons[BTN_ACTION2].pressed = true;
-			break;
-		case SDLK_v:	// Escudo
-			buttons[BTN_ACTION4].pressed = true;
-			break;
-		case SDLK_ESCAPE:
-			buttons[BTN_ESCAPE].pressed = true;
-			break;
-		case SDLK_SPACE:
-			buttons[BTN_SPACE].pressed = true;
-			break;
-		}
+}
+
+void InputManager::UptiCheck(btnEnum btn) {
+	buttons[btn].keyUP = true;
+	buttons[btn].pressed = false;
+}
+
+void InputManager::DowntiCheck(btnEnum btn) {
+	if (!buttons[btn].pressed) {
+		buttons[btn].keyDOWN = true;
+		buttons[btn].pressed = true;
 	}
 }
 
@@ -119,8 +97,8 @@ void InputManager::ClearStates() {
 	for (int i = 0; i < END; i++) {
 		buttons[i].keyDOWN = false;
 		buttons[i].keyUP = false;
-		buttons[i].pressed = false;
-
+		//El pressed (que esta activo mientras este pulsado el boton) no se restablece aqui
+		//Sino en el propio evento del key up
 	}
 }
 

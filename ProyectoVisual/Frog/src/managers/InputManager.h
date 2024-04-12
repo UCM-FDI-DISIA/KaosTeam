@@ -13,7 +13,7 @@ struct InputButton {
     ya se ha implementado InputManager
     */
     operator bool() {
-        return pressed;
+        return keyDOWN;
     }
 };
 
@@ -75,6 +75,8 @@ public:
     InputButton getRight();
     InputButton getSpace();
     InputButton getEscape();
+    void UptiCheck(btnEnum btn);
+    void DowntiCheck(btnEnum btn);
 };
 
 inline InputManager& im() {
