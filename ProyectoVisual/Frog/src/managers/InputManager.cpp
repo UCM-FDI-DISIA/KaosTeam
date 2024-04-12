@@ -3,74 +3,124 @@
 InputManager* InputManager::instance = nullptr;
 
 InputManager::InputManager() { 
-	states[END] = {}; 
+	buttons[END] = {}; 
 	PollEvents(); 
 }
 
 void InputManager::UpdateStates(const SDL_Event& event) {
-	if (event.type == SDL_KEYDOWN) {
+	if (event.key.type == SDL_KEYDOWN) {
 		switch (event.key.keysym.sym) {
 		case SDLK_UP:
-			states[BTN_UP] = true;
+			buttons[BTN_UP].keyDOWN = true;
 			break;
 		case SDLK_DOWN:
-			states[BTN_DOWN] = true;
+			buttons[BTN_DOWN].keyDOWN = true;
 			break;
 		case SDLK_LEFT:
-			states[BTN_LEFT] = true;
+			buttons[BTN_LEFT].keyDOWN = true;
 			break;
 		case SDLK_RIGHT:
-			states[BTN_RIGHT] = true;
+			buttons[BTN_RIGHT].keyDOWN = true;
 			break;
-		case SDLK_LSHIFT:
-			btnShift = true;
-			break;
-
-		//ahora para poder usar WASD
-		case SDLK_a:
-			states[BTN_LEFT] = true;
-			break;
-		case SDLK_w:
-			states[BTN_UP] = true;
-			break;
-		case SDLK_s:
-			states[BTN_DOWN] = true;
-			break;
-		case SDLK_d:
-			states[BTN_RIGHT] = true;
-			break;
-		case SDLK_RSHIFT:
-			btnShift = true;
-			break;
-
-
+		//case SDLK_LSHIFT:
+		//	btnShift = true;
+		//	break;
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
-			states[BTN_ACTION1] = true;
+			buttons[BTN_ACTION1].keyDOWN = true;
 			break;
 		case SDLK_x:
-			states[BTN_ACTION2] = true;
+			buttons[BTN_ACTION2].keyDOWN = true;
 			break;
 		case SDLK_v:	// Escudo
-			states[BTN_ACTION4] = true;
+			buttons[BTN_ACTION4].keyDOWN = true;
 			break;
 		case SDLK_ESCAPE:
-			states[BTN_ESCAPE] = true;
+			buttons[BTN_ESCAPE].keyDOWN = true;
 			break;
 		case SDLK_SPACE:
-			states[BTN_SPACE] = true;
+			buttons[BTN_SPACE].keyDOWN = true;
 			break;
 		}
 	}
-	else if (event.type == SDL_KEYUP)
+	else if (event.key.type == SDL_KEYUP)
 	{
-		if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
-			btnShift = false;
+	/*	if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
+			btnShift = false;*/
+		switch (event.key.keysym.sym) {
+		case SDLK_UP:
+			buttons[BTN_UP].keyUP = true;
+			break;
+		case SDLK_DOWN:
+			buttons[BTN_DOWN].keyUP = true;
+			break;
+		case SDLK_LEFT:
+			buttons[BTN_LEFT].keyUP = true;
+			break;
+		case SDLK_RIGHT:
+			buttons[BTN_RIGHT].keyUP = true;
+			break;
+		//case SDLK_LSHIFT:
+		//	btnShift = true;
+		//	break;
+		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
+			buttons[BTN_ACTION1].keyUP = true;
+			break;
+		case SDLK_x:
+			buttons[BTN_ACTION2].keyUP = true;
+			break;
+		case SDLK_v:	// Escudo
+			buttons[BTN_ACTION4].keyUP = true;
+			break;
+		case SDLK_ESCAPE:
+			buttons[BTN_ESCAPE].keyUP = true;
+			break;
+		case SDLK_SPACE:
+			buttons[BTN_SPACE].keyUP = true;
+			break;
+		}
+	}
+	else if (event.key.state == SDL_PRESSED) {
+		switch (event.key.keysym.sym) {
+		case SDLK_UP:
+			buttons[BTN_UP].pressed = true;
+			break;
+		case SDLK_DOWN:
+			buttons[BTN_DOWN].pressed = true;
+			break;
+		case SDLK_LEFT:
+			buttons[BTN_LEFT].pressed = true;
+			break;
+		case SDLK_RIGHT:
+			buttons[BTN_RIGHT].pressed = true;
+			break;
+			//case SDLK_LSHIFT:
+			//	btnShift = true;
+			//	break;
+		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
+			buttons[BTN_ACTION1].pressed = true;
+			break;
+		case SDLK_x:
+			buttons[BTN_ACTION2].pressed = true;
+			break;
+		case SDLK_v:	// Escudo
+			buttons[BTN_ACTION4].pressed = true;
+			break;
+		case SDLK_ESCAPE:
+			buttons[BTN_ESCAPE].pressed = true;
+			break;
+		case SDLK_SPACE:
+			buttons[BTN_SPACE].pressed = true;
+			break;
+		}
 	}
 }
 
 void InputManager::ClearStates() {
 	for (int i = 0; i < END; i++) {
-		states[i] = false;
+		buttons[i].keyDOWN = false;
+		buttons[i].keyUP = false;
+		buttons[i].pressed = false;
+
 	}
 }
 
@@ -82,36 +132,35 @@ void InputManager::PollEvents() {
 		UpdateStates(event);
 }
 
-bool InputManager::getAction1() {
-	return states[BTN_ACTION1];
+InputButton InputManager::getAction1() {
+	return buttons[BTN_ACTION1];
 }
-bool InputManager::getAction2() {
-	return states[BTN_ACTION2];
+InputButton InputManager::getAction2() {
+	return buttons[BTN_ACTION2];
 }
-bool InputManager::getShift() {
-	return btnShift;
+//InputButton InputManager::getShift() {
+//	return btnShift;
+//}
+InputButton InputManager::getAction4() {
+	return buttons[BTN_ACTION4];
 }
-bool InputManager::getAction4() {
-	return states[BTN_ACTION4];
+InputButton InputManager::getUp() {
+	return buttons[BTN_UP];
 }
-bool InputManager::getUp() {
-	return states[BTN_UP];
+InputButton InputManager::getDown() {
+	return buttons[BTN_DOWN];
 }
-bool InputManager::getDown() {
-	return states[BTN_DOWN];
+InputButton InputManager::getLeft() {
+	return buttons[BTN_LEFT];
 }
-bool InputManager::getLeft() {
-	return states[BTN_LEFT];
+InputButton InputManager::getRight() {
+	return buttons[BTN_RIGHT];
 }
-bool InputManager::getRight() {
-	return states[BTN_RIGHT];
-}
-bool InputManager::getSpace()
+InputButton InputManager::getSpace()
 {
-	return states[BTN_SPACE];
+	return buttons[BTN_SPACE];
 }
-
-bool InputManager::getEscape()
+InputButton InputManager::getEscape()
 {
-	return states[BTN_ESCAPE];
+	return buttons[BTN_ESCAPE];
 }

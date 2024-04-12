@@ -1,5 +1,22 @@
 #pragma once
 #include <SDL.h>
+
+/*Struct con los datos de input de un botón específico*/
+struct InputButton {
+    bool keyDOWN; //True en el momento que el botón es pulsado
+    bool pressed; //True 
+    bool keyUP;
+
+    InputButton() : keyDOWN(false), pressed(false), keyUP(false) {};
+
+    /*Esta conversión debería mantener el comportamiento anterior para las clases en las que
+    ya se ha implementado InputManager
+    */
+    operator bool() {
+        return pressed;
+    }
+};
+
 /*
 * Encargado de capturar los eventos de entrada de controles del juego y enviarlas a las entidades pertinentes.
 * 
@@ -10,9 +27,8 @@ class InputManager
 {
 private:
 
-    bool btnShift = false; //shift, al ser una tecla especial, cambia todo;
     //Definen los distintos botones que pueden estar pulsados o no
-    enum state {
+    enum btnEnum {
         BTN_ACTION1,
         BTN_ACTION2,
         BTN_ACTION4,
@@ -25,9 +41,8 @@ private:
         END //Para tener un valor con el que crear y utilizar el array
     };
 
-    bool states[];
+    InputButton buttons[];
     static InputManager* instance;
-
 
     //Constructor vacio privado para poder instanciar desde dentro
     InputManager();
@@ -50,16 +65,16 @@ public:
     };
 
     void PollEvents();
-    bool getAction1();
-    bool getAction2();
-    bool getShift();
-    bool getAction4();
-    bool getUp();
-    bool getDown();
-    bool getLeft();
-    bool getRight();
-    bool getSpace();
-    bool getEscape();
+    InputButton getAction1();
+    InputButton getAction2();
+    //InputButton getShift();
+    InputButton getAction4();
+    InputButton getUp();
+    InputButton getDown();
+    InputButton getLeft();
+    InputButton getRight();
+    InputButton getSpace();
+    InputButton getEscape();
 };
 
 inline InputManager& im() {
