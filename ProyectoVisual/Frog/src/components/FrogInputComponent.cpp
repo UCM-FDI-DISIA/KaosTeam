@@ -12,7 +12,7 @@ void FrogInputComponent::update()
 {
 	//mover shortJump y LngJump al movemente despues del hito
 	int JumpSize = shortJump;
-	if (input->getShift())
+	if (input->getAction2())
 	{
 		preparingJump = true;
 		cyclesJumpPrepared++;
