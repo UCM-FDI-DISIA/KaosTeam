@@ -53,6 +53,8 @@ private:
     void UpdateStates(const SDL_Event& event);
     //Establece todos los estados a false
     void ClearStates();
+    void UptiCheck(btnEnum btn);
+    void DowntiCheck(btnEnum btn);
 public:
     //Gestion para hacer singleton de InputManager
     InputManager(InputManager&) = delete;
@@ -75,8 +77,6 @@ public:
     InputButton getRight();
     InputButton getSpace();
     InputButton getEscape();
-    void UptiCheck(btnEnum btn);
-    void DowntiCheck(btnEnum btn);
 };
 
 inline InputManager& im() {
