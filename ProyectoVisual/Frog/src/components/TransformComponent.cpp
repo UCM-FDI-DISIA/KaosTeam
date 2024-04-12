@@ -19,7 +19,6 @@ SDL_Rect TransformComponent::GetOnDisplayPosition() {
 	//Calcula la posición real en pantalla
 	dest.x = casilla.getX() * t + mOffset.getX() - cameraPos.getX();
 	dest.y = casilla.getY() * t + mOffset.getY() - cameraPos.getY();
-
 	
 	dest.w = size;
 	dest.h = size;
