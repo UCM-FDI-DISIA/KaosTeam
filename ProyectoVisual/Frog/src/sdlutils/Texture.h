@@ -16,7 +16,6 @@ public:
 	// cannot copy textures
 	Texture(const Texture&) = delete;
 	Texture& operator=(const Texture&) = delete;
-
 	// can be moved
 	Texture& operator=(Texture &&other) noexcept;
 	Texture(Texture &&other) noexcept;
@@ -124,7 +123,7 @@ public:
 		//render(srcRect, destRect, angle);
 		SDL_RenderCopyEx(renderer_, texture_, &srcRect, &destRect, angle, 0, flip);
 	}
-
+	SDL_Texture* getTexture() const { return texture_; }
 private:
 
 	// Construct from text

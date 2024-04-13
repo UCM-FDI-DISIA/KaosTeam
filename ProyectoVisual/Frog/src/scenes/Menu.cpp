@@ -4,7 +4,7 @@
 #include "../sdlutils/Texture.h"
 #include "../managers/InputManager.h"
 #include "../game/GameState.h"
-
+#include "SDL.h"
 
 Menu::Menu(Game* g, GameState* gs, Texture * path1, Texture * path2, int menu):
 		Scene(), //
@@ -19,7 +19,8 @@ Menu::Menu(Game* g, GameState* gs, Texture * path1, Texture * path2, int menu):
 	menuToRender(menu); //Define que menu se renderizara
 	SDL_Rect button1Dest, button2Dest; //Posiciones de botones en pantalla
 	initButtons(button1Dest, button2Dest, path1, path2, menu);
-
+	bgEffect = &sdlutils().images().at("shadow");
+	SDL_SetTextureAlphaMod(bgEffect->getTexture(), 3);
 	selecDest.w = currSelec.width();
 	selecDest.h = currSelec.height();
 	selecDest.x = button1Dest.x - offset - selecDest.w / 2;
@@ -34,6 +35,7 @@ Menu::~Menu()
 }
 
 void Menu::render() {
+	bgEffect->render(bgDest);
 	bg->render(bgDest); 
 	currSelec.render(selecDest);
 	for (auto it : menuButton)
@@ -119,7 +121,7 @@ void Menu::menuToRender(int menu)
 		bg = &sdlutils().images().at("MenuInicio");
 		break;
 	case PAUSA:
-		bg = &sdlutils().images().at("shadow");
+		bg = &sdlutils().images().at("Pausa");	
 		break;
 	case GAMEOVER:
 		bg = &sdlutils().images().at("GameOver");
