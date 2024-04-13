@@ -1,19 +1,21 @@
-#include "BossSystem.h"
-#include "../components/AttackComponentFrançois.h"
-#include"../components/MovementComponentFrançois.h"
-#include "../components/ShadowDetection.h"
+#include "BossManager.h"
 #include "../utils/Vector2D.h"
 
-BossSystem::BossSystem(Entity* fran):boss(fran)
+BossManager::BossManager(Entity* fran):boss(fran)
 {
-	initSystem();
+	init();
 }
 
-BossSystem::~BossSystem()
+BossManager::~BossManager()
 {
+	boss = nullptr;
+	attak = nullptr;
+	franTrans = nullptr;
+	move = nullptr;
+	detec = nullptr;
 }
 
-void BossSystem::initSystem()
+void BossManager::init()
 {
 	attak = new AttackComponentFrançois();
 	franTrans = new TransformComponent(new Vector2D(0, 0), BOSS_W, BOSS_H);
@@ -25,15 +27,15 @@ void BossSystem::initSystem()
 	boss->addComponent(TRANSFORM_COMPONENT, franTrans);
 }
 
-void BossSystem::update()
+void BossManager::update()
 {
 }
 
-void BossSystem::render()
+void BossManager::render()
 {
 }
 
-void BossSystem::changeDirection(int direction)
+void BossManager::changeDirection(int direction)
 {
 	move->changeDirection(direction);
 }
