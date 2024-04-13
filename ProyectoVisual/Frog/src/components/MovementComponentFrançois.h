@@ -1,9 +1,9 @@
 #pragma once
 #include "../ecs/Component.h"
+#include "../components/TransformComponent.h"
 class MovementComponentFrançois:public Component
 {
 private:
-	bool active;
 	int speed; //velocidad de fracois
 public:
 };
