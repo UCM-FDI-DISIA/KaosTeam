@@ -1,7 +1,6 @@
 #pragma once
-#include "../ecs/Component.h"
-#include "../components/TransformComponent.h"
-class MovementComponentFrançois:public Component
+#include "MovementComponent.h"
+class MovementComponentFrançois:public MovementComponent
 {
 private:
 	int speed; //velocidad de fracois
@@ -10,6 +9,6 @@ public:
 	MovementComponentFrançois(TransformComponent* transform);
 	void initComponent();
 	void update();
-	void setDirection(int direction);
+	void changeDirection(int direction);
 };
 
