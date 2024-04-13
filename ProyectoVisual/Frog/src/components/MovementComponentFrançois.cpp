@@ -1,11 +1,12 @@
 #include "MovementComponentFrançois.h"
 
-MovementComponentFrançois::MovementComponentFrançois(TransformComponent* transform):trans(transform)
+MovementComponentFrançois::MovementComponentFrançois():trans(nullptr)
 {
 }
 
 void MovementComponentFrançois::initComponent()
 {
+	trans = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 
 void MovementComponentFrançois::update()
