@@ -11,6 +11,8 @@ private:
 	std::vector<Entity*> cubiertos;
 
 public:
+	void initComponent();
+	void update();
 	
 };
 
