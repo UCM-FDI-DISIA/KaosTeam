@@ -6,17 +6,21 @@
 #include"../components/MovementComponentFrançois.h"
 #include "../components/ShadowDetection.h"
 #include "../components/TransformComponent.h"
+#include "../components/RenderComponent.h"
 
 const float BOSS_W = 10.0;
 const float BOSS_H = 10.0;
 class BossManager
 {
 private:
+	SDL_Rect shadowDest;
 	Entity* boss;
 	AttackComponentFrançois* attak;
 	TransformComponent* franTrans;
 	MovementComponentFrançois* move;
 	ShadowDetection* detec;
+	RenderComponent* renderer;
+	Texture* shadow;
 public:
 	BossManager(Entity* fran);
 	~BossManager();

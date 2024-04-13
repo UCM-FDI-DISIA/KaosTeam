@@ -19,10 +19,12 @@
 #include "../components/MovementComponentBlackAnt.h";
 #include "../components/MovementComponentRedAnt.h"
 #include "../components/MovementComponentSnake.h"
+#include "../managers/BossManager.h"
 
 class RoomScene : public Scene
 {
 private:
+	BossManager* francois;
 	Camera* cameraManager = nullptr;
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
@@ -48,6 +50,7 @@ public:
 		cameraManager = Camera::instance();
 		cameraManager->setTarget(player);
 		HUD = HUDManager::GetInstance();
+		francois = new BossManager(new Entity (this));
 
 #pragma region Cosas q vamos a borrar pronto
 		//Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
@@ -109,7 +112,6 @@ public:
 		
 
 #pragma endregion
-
 		
 	};
 	void AddEntity(Entity* entity);
@@ -122,8 +124,6 @@ public:
 	void callForMapChange(std::string nextMap, flonkOrig nextFlonk){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
 
 	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps);
-
-	Entity* createFrancois();
 	Entity* createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createPlayer(Vector2D pos, int boundX, int boundY);
@@ -133,7 +133,8 @@ public:
 	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createSnake(Vector2D pos);
-
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
+
+	void createFrancois();
 };

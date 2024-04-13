@@ -8,6 +8,7 @@ void RoomScene::render() {
 		if (e != nullptr)
 			e->render();
 	}
+	francois->render();
 	HUD->render();
 }
 
@@ -308,20 +309,6 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	AddEntity(snake);
 	return snake;
 }
-Entity* RoomScene::createFrancois()
-{
-	Entity* francois = new Entity(this);
-
-	//Componentes
-	Vector2D pos = new Vector2D(0, 0);
-	TransformComponent* transform = new TransformComponent(pos);
-	francois->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(francois);
-
-
-	return nullptr;
-}
-
 
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
@@ -438,6 +425,11 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 void RoomScene::movePlayer(Vector2D pos)
 {
 	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
+}
+
+void RoomScene::createFrancois()
+{
+	francois = new BossManager(new Entity(this));
 }
 
 void RoomScene::AddEntity(Entity* entity) {

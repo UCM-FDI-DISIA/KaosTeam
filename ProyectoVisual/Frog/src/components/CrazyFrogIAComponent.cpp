@@ -13,8 +13,6 @@ void CrazyFrogIAComponent::update()
 		if (playerPos == nullptr)
 			playerPos = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasillaPointer();
 
-		cout << "actualizando rana";
-
 		Vector2D aux = *playerPos - static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla();
 		
 		//calculamos en que dirección deberiamos movernos
