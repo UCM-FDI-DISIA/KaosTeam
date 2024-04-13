@@ -1,6 +1,26 @@
 ﻿#include "MovementComponentRedAnt.h"
 #include "../sdlutils/RandomNumberGenerator.h"
 #include "../scenes/RoomScene.h"
+
+
+MovementComponentRedAnt::MovementComponentRedAnt(AnimationComponent* a, MovementComponentFrog* target) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
+{
+	actualDirection = RIGHT;
+	//anim->playAnimation("RIGHT");
+	waitTime = 500;
+	movementFrameRate = 30;
+	framesPerMove = 6;
+	framesMoved = 0;
+	isMoving = false;
+	escape = false;
+	range = 2;
+};
+
+void MovementComponentRedAnt::initComponent() {
+	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	playerPosition = targetTransformComp->getCasilla();
+}
+
 void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 	Vector2D aux = tr->getCasilla() + vel;
 	switch (dir) {
@@ -46,11 +66,12 @@ void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 	break;
 	}
 }
+
 void MovementComponentRedAnt::update() {
 
 	if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-		playerPosition = targetMovementComp->getPosition();
+		playerPosition = targetTransformComp->getCasilla();
 		switch (actualDirection)
 		{
 		case RIGHT: {
@@ -64,7 +85,7 @@ void MovementComponentRedAnt::update() {
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
-				  break;
+		break;
 		case LEFT:
 		{
 			canMove(Vector2D(-1, 0), LEFT);
@@ -121,7 +142,7 @@ void MovementComponentRedAnt::update() {
 		}
 		if (framesMoved == framesPerMove) {
 			tr->setCasilla(tr->getCasilla() + velocity);
-			offsetInCasilla  = { 0,0 };
+			tr->setOffset ({ 0,0 });
 			framesMoved = 0;
 			isMoving = false;
 			if (escape) escape = false;

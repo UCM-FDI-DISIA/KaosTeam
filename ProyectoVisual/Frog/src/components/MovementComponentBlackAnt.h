@@ -30,4 +30,5 @@ private:
 public:
 	MovementComponentBlackAnt(AnimationComponent* a);
 	void update() override;
+	void initComponent() override;
 };

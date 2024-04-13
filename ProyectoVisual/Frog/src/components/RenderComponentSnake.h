@@ -4,11 +4,15 @@
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../components/MovementComponentFrog.h"
+
+class TransformComponent;
+
 class RenderComponentSnake : public Component {
 private:
 	Texture* snakeText = nullptr;
 	Texture* tongueText = nullptr;
 	AnimationComponent* snakeAnimator = nullptr;
+	TransformComponent* transform = nullptr;
 	float scale;
 	bool attacking = false;
 public:
@@ -27,6 +31,7 @@ public:
 		return snakeText;
 	}
 
+	void initComponent() override;
 	//Esto está aquí de manera provisional
 	SDL_Rect GetOnDisplayPosition();
 };

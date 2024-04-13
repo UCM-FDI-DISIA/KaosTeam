@@ -21,6 +21,7 @@ class Component;
 class RenderComponent;
 class RenderComponentFrog;
 class RenderComponentSnake;
+class TransformComponent;
 class AnimationComponent;
 class RoomScene;
 class Entity

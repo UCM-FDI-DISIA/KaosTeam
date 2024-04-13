@@ -5,9 +5,7 @@
 
 MovementComponentBlackAnt::MovementComponentBlackAnt(AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
 {
-	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
 	actualDirection = RIGHT;
-	playerPosition = targetTransformComp->getCasilla();
 	//anim->playAnimation("RIGHT");
 	waitTime = 500;
 	movementFrameRate = 30;
@@ -22,6 +20,12 @@ MovementComponentBlackAnt::MovementComponentBlackAnt(AnimationComponent* a) : Mo
 	waitToMove = false;
 	diff = 0;
 };
+
+
+void MovementComponentBlackAnt::initComponent() {
+	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	playerPosition = targetTransformComp->getCasilla();
+}
 
 void MovementComponentBlackAnt::update() {
 

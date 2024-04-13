@@ -11,7 +11,7 @@ void CrazyFrogIAComponent::update()
 	{
 		//solo se hace una vez. Podemos hacerlo en el init. Pero por ahora lo tengo aqui
 		if (playerPos == nullptr)
-			playerPos = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasillaPointer();
+			playerPos = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT))->getCasillaPointer();
 
 		cout << "actualizando rana";
 

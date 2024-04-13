@@ -142,6 +142,7 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
 	renderFrog->setContext(frog);
+	renderFrog->initComponent();
 
 	animFrog->addAnimation("IDLE_DOWN", Animation({ Vector2D(0,0) }, false, false));
 	animFrog->addAnimation("IDLE_UP", Animation({ Vector2D(1,0) }, false, false));
@@ -163,8 +164,9 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 
 	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
 	mvm->setContext(frog);
-	frog->addComponent(MOVEMENT_COMPONENT, mvm);
 	mvm->initComponent();
+	frog->addComponent(MOVEMENT_COMPONENT, mvm);
+
 	AttackComponentFrog* atck = new AttackComponentFrog();
 	frog->addComponent(ATTACK_COMPONENT, atck);
 	atck->setContext(frog);
@@ -186,23 +188,24 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 
 	AnimationComponent* animFish = new AnimationComponent();
 	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 1, animFish);
-
 	renderFish->setContext(fish);
+	renderFish->initComponent();
 
 	animFish->addAnimation("RIGHT", Animation({ Vector2D(0,1), Vector2D(0,2) }, true, false));
 	animFish->addAnimation("LEFT", Animation({ Vector2D(0,1), Vector2D(0,2) }, false, false));
 	animFish->addAnimation("JUMP_RIGHT", Animation({ Vector2D(0,0) }, true, false));
 	animFish->addAnimation("JUMP_LEFT", Animation({ Vector2D(0,0) }, false, false));
 
-	fish->addRenderComponent(renderFish);
 	fish->addComponent(ANIMATION_COMPONENT, animFish);
 	animFish->setContext(fish);
 
+	fish->addRenderComponent(renderFish);
+
 	//el limite tiene que ser una propiedad
-	MovementComponentFish* mvm = new MovementComponentFish(pos, boundX, animFish);
+	MovementComponentFish* mvm = new MovementComponentFish(boundX, animFish);
 	mvm->setContext(fish);
-	fish->addComponent(MOVEMENT_COMPONENT, mvm);
 	mvm->initComponent();
+	fish->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AddEntity(fish);
 	return fish;	
@@ -212,11 +215,16 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	//textura cambiar
 	Texture* txtBlackAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
 
+	TransformComponent* transform = new TransformComponent(pos);
+	blackAnt->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(blackAnt);
+
 	AnimationComponent* animBlackAnt = new AnimationComponent();
 	RenderComponent* renderBlackAnt = new RenderComponent(txtBlackAnt, 1, 3, 0.5, animBlackAnt);
 
 	renderBlackAnt->setContext(blackAnt);
-	//animaciones
+	renderBlackAnt->initComponent();
+
 
 	blackAnt->addRenderComponent(renderBlackAnt);
 	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
@@ -233,6 +241,10 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	//textura cambiar
 	Texture* txtRedAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
 
+	TransformComponent* transform = new TransformComponent(pos);
+	redAnt->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(redAnt);
+
 	AnimationComponent* animRedAnt = new AnimationComponent();
 	RenderComponent* renderRedAnt = new RenderComponent(txtRedAnt, 1, 3, 0.5, animRedAnt);
 
@@ -242,8 +254,9 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	redAnt->addRenderComponent(renderRedAnt);
 	redAnt->addComponent(ANIMATION_COMPONENT, animRedAnt);
 
-	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(pos, animRedAnt, playerMvmCmp);
+	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(animRedAnt, playerMvmCmp);
 	mvm->setContext(redAnt);
+	mvm->initComponent();
 	redAnt->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AddEntity(redAnt);
@@ -255,6 +268,10 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheet.png", 4, 2);
 	Texture* txtNeck = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheetAttack.png", 2, 1);
 
+	TransformComponent* transform = new TransformComponent(pos);
+	snake->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(snake);
+
 	AnimationComponent* animSnake = new AnimationComponent();
 	//RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1, animSnake);
 	//renderSnake->setContext(snake);
@@ -263,6 +280,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	RenderComponentSnake* renderSnake = new RenderComponentSnake(txtSnake, txtNeck, animSnake);
 
 	renderSnake->setContext(snake);
+	renderSnake->initComponent();
 
 	animSnake->addAnimation("IDLE_RIGHT", Animation({ Vector2D(2,0) }, false, false));
 	animSnake->addAnimation("IDLE_LEFT", Animation({ Vector2D(2,0) }, true, false));
@@ -275,10 +293,12 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 	snake->addComponent(ANIMATION_COMPONENT, animSnake);
 	animSnake->setContext(snake);
+
 	snake->addRenderComponentSnake(renderSnake);
 
-	MovementComponentSnake* mvmSnake = new MovementComponentSnake(pos, animSnake);
+	MovementComponentSnake* mvmSnake = new MovementComponentSnake(animSnake);
 	mvmSnake->setContext(snake);
+	mvmSnake->initComponent(); //INICIALIZAMOS LOS TRANSFORM (DE LO CONTARIO, PETARÍA)
 	snake->addComponent(MOVEMENT_COMPONENT, mvmSnake);
 
 	AttackComponentSnake* atckSnake = new AttackComponentSnake();
@@ -303,37 +323,37 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			c = createBlackAnt(pos, mvmPlayer);
 		}
-		else if (objName == "Fish") {
-			for (const auto& prop : objProps) {
-				if (prop.getName() == "object") //revisar esto
-				{
-					if (prop.getType() == tmx::Property::Type::Int) {
-						int boundX = prop.getIntValue();
-						c = createFish(pos, boundX);
-						//c = createFish(pos, 4);
-						break;
-					}
+	}
+	else if (objName == "Fish") {
+		for (const auto& prop : objProps) {
+			if (prop.getName() == "object") //revisar esto
+			{
+				if (prop.getType() == tmx::Property::Type::Int) {
+					int boundX = prop.getIntValue();
+					c = createFish(pos, boundX);
+					//c = createFish(pos, 4);
+					break;
 				}
 			}
+		}
 
-		}
-		else if (objName == "Red ant") {
-			if (player != nullptr) {
-				MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
-				c = createRedAnt(pos, mvmPlayer);
-			}
-
-		}
-		else if (objName == "Snake") {
-			c = createSnake(pos);
-		}
-		/*
-		else if ()......
-		*/
-
-		return c;
-		}
 	}
+	else if (objName == "Red ant") {
+		if (player != nullptr) {
+			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+			c = createRedAnt(pos, mvmPlayer);
+		}
+
+	}
+	else if (objName == "Snake") {
+		c = createSnake(pos);
+	}
+	/*
+	else if ()......
+	*/
+
+	return c;
+}
 
 
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
