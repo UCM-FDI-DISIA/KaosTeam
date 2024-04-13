@@ -26,7 +26,9 @@
         { "id" : "eggSheet", "file" : "resources/Sprites/HuevoSheet.png", "rows" : 1, "cols" : 2},
         { "id" : "snakeSheet", "file" : "resources/Sprites/SnakeSpritesheet.png", "rows" : 1, "cols" : 2},
         { "id" : "fishSheet", "file" : "resources/Sprites/spritesheetFish.png", "rows" : 1, "cols" : 3},
-
+        { "id" : "shadow", "file" : "resources/Sprites/sombraNormal.png", "rows" : 1, "cols" : 1},
+        { "id" : "darkShadow", "file" : "resources/Sprites/sombraOscura.png", "rows" : 1, "cols" : 1},
+        { "id" : "darkestShadow", "file" : "resources/Sprites/sombraMuyOscura.png", "rows" : 1, "cols" : 1},
 
         { "id" : "MenuInicio", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
         { "id" : "GameOver", "file" : "resources/Menus/MenuGameOver.png", "rows" : 1, "cols" : 1},

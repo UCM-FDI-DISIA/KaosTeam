@@ -5,7 +5,7 @@ class BossSystem
 	private:
 		Entity* boss;
 public:
-	BossSystem();
+	BossSystem(Entity* fran);
 	~BossSystem();
 	void initSystem();
 	void update();

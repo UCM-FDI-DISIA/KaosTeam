@@ -119,7 +119,7 @@ void Menu::menuToRender(int menu)
 		bg = &sdlutils().images().at("MenuInicio");
 		break;
 	case PAUSA:
-		bg = &sdlutils().images().at("Pausa");
+		bg = &sdlutils().images().at("shadow");
 		break;
 	case GAMEOVER:
 		bg = &sdlutils().images().at("GameOver");

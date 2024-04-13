@@ -204,6 +204,7 @@
     <ClCompile Include="src\sdlutils\sdlutils_game.cpp" />
     <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
     <ClCompile Include="src\sdlutils\Texture.cpp" />
+    <ClCompile Include="src\System\BossSystem.cpp" />
     <ClCompile Include="src\utils\assets.cpp" />
     <ClCompile Include="src\managers\MapManager.cpp" />
     <ClCompile Include="src\utils\Button.cpp" />
@@ -270,6 +271,7 @@
     <ClInclude Include="src\sdlutils\SoundEffect.h" />
     <ClInclude Include="src\sdlutils\Texture.h" />
     <ClInclude Include="src\sdlutils\VirtualTimer.h" />
+    <ClInclude Include="src\System\BossSystem.h" />
     <ClInclude Include="src\utils\assets.h" />
     <ClInclude Include="src\managers\MapManager.h" />
     <ClInclude Include="src\utils\Button.h" />
