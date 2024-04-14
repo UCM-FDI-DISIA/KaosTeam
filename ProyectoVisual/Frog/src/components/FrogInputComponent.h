@@ -1,7 +1,7 @@
 #pragma once
 #include "../ecs/Component.h"
 #include "../managers/InputManager.h"
-#include "MovementComponentFrog.h";
+#include "MovementComponentFrog.h"
 class AttackComponentFrog;
 class FrogInputComponent : public Component
 {

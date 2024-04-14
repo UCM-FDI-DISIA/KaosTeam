@@ -15,7 +15,8 @@ enum componentsEnum
 	INPUT_COMPONENT,
 	IACOMPONENT,
 	TRANSFORM_COMPONENT,
-	COLLIDER_COMPONENT
+	COLLIDER_COMPONENT,
+	MONEY_COMPONENT
 };
 class Component;
 class RenderComponent;

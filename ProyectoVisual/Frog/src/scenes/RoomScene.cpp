@@ -18,6 +18,7 @@ void RoomScene::update() {
 	}
 
 	cameraManager->update();
+	if (insideShop) shopManager->update();
 	if (needMapChange)
 		changeMap();
 	//comrpueba las colisiones con la rana
@@ -88,6 +89,10 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	ColliderComponent* coll = new ColliderComponent();
 	coll->setContext(player);
 	player->addComponent(COLLIDER_COMPONENT, coll);
+
+	MoneyComponent* moneyComp = new MoneyComponent();
+	moneyComp->setContext(player);
+	player->addComponent(MONEY_COMPONENT, moneyComp);
 	
 	AddEntity(player);
 
@@ -434,6 +439,7 @@ RoomScene::~RoomScene() {
 		delete* it;
 	}
 	delete cameraManager;
+	delete shopManager;
 }
 
 void RoomScene::changeMap()

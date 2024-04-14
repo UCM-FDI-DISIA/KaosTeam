@@ -15,10 +15,12 @@
 #include "../components/ColliderComponent.h"
 #include "../components/MovementComponentFish.h"
 #include "../managers/HUDManager.h"
-#include "../components/MovementComponentFish.h";
-#include "../components/MovementComponentBlackAnt.h";
+#include "../components/MovementComponentFish.h"
+#include "../components/MovementComponentBlackAnt.h"
 #include "../components/MovementComponentRedAnt.h"
 #include "../components/MovementComponentSnake.h"
+#include "../components/MoneyComponent.h"
+#include"../managers/ShopManager.h"
 
 class RoomScene : public Scene
 {
@@ -33,6 +35,8 @@ private:
 	bool needMapChange = false;
 	std::string nextMap;
 	flonkOrig nextFlonk;
+	Shop* shopManager = nullptr;
+	bool insideShop = false; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
 
 	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
 	Por tanto, hay dos OnCollision por cada colision.
@@ -48,6 +52,8 @@ public:
 		cameraManager = Camera::instance();
 		cameraManager->setTarget(player);
 		HUD = HUDManager::GetInstance();
+		shopManager = Shop::instance();
+		shopManager->setPlayer(player);
 
 #pragma region Cosas q vamos a borrar pronto
 		//Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
