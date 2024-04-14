@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="8">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="9">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="16" height="16">
   <data encoding="csv">
 47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,
 47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,
-47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,
+47,47,47,47,47,47,47,47,47,47,47,65,47,47,47,47,
 47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,
 47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,
 47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,
@@ -25,7 +25,7 @@
   <data encoding="csv">
 92,92,92,92,92,92,92,92,92,92,8,9,10,92,384,385,
 120,120,120,120,120,120,120,120,120,120,36,37,38,120,384,385,
-92,0,0,0,0,0,0,0,0,0,64,65,66,0,384,385,
+92,0,0,0,0,0,0,0,0,0,64,0,66,0,384,385,
 120,0,0,0,0,0,0,0,0,0,0,0,0,0,384,385,
 92,0,0,0,0,0,0,0,0,0,0,0,0,0,384,385,
 120,0,0,0,0,0,0,0,0,0,0,0,0,0,384,385,
@@ -43,6 +43,9 @@
  </layer>
  <objectgroup id="3" name="Obj">
   <object id="1" name="FlonkS" type="Player" x="104.667" y="230.667">
+   <point/>
+  </object>
+  <object id="8" name="FlonkP" type="Player" x="185.167" y="60.667">
    <point/>
   </object>
   <object id="2" name="FlonkW" type="Player" x="24.6667" y="121.333">
@@ -74,7 +77,7 @@
   </object>
   <object id="5" name="TransitionP" type="Transition" x="184.667" y="44">
    <properties>
-    <property name="nextMap" value=""/>
+    <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_01_dentro.tmx"/>
    </properties>
    <point/>
   </object>

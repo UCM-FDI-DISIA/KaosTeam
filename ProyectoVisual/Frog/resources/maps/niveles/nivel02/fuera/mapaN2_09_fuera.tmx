@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="14" tileheight="14" infinite="0" nextlayerid="4" nextobjectid="14">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="16">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="12" height="12">
   <data encoding="csv">
@@ -34,43 +34,52 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="TransitionP" type="Transition" x="161.667" y="75.6667">
+  <object id="1" name="TransitionP" type="Transition" x="184.667" y="91.6667">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_02_fuera.tmx"/>
+   </properties>
    <point/>
   </object>
-  <object id="2" name="FlonkP" type="Player" x="147.333" y="77.3333">
+  <object id="15" name="TransitionP" type="Transition" x="184.167" y="106.667">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_02_fuera.tmx"/>
+   </properties>
    <point/>
   </object>
-  <object id="3" name="Enemigo" x="51" y="147">
+  <object id="2" name="FlonkP" type="Player" x="167.833" y="105.833">
    <point/>
   </object>
-  <object id="5" name="Enemigo" x="119.333" y="151.333">
+  <object id="3" name="Enemigo" x="58" y="155">
+   <point/>
+  </object>
+  <object id="5" name="Enemigo" x="119.333" y="154.333">
    <point/>
   </object>
   <object id="6" name="Enemigo" x="147.333" y="133">
    <point/>
   </object>
-  <object id="7" name="Enemigo" x="148" y="40.6667">
+  <object id="7" name="Enemigo" x="150.5" y="42.1667">
    <point/>
   </object>
-  <object id="8" name="Enemigo" x="101" y="24.6667">
+  <object id="8" name="Enemigo" x="103" y="27.1667">
    <point/>
   </object>
-  <object id="9" name="Enemigo" x="35.3333" y="24.6667">
+  <object id="9" name="Enemigo" x="40.8333" y="25.6667">
    <point/>
   </object>
   <object id="10" name="Enemigo" x="21.6667" y="123.667">
    <point/>
   </object>
-  <object id="13" name="Enemigo" x="21.6667" y="66">
+  <object id="13" name="Enemigo" x="22.6667" y="61.5">
    <point/>
   </object>
   <object id="11" name="Enemigo" x="90" y="63.3333">
    <point/>
   </object>
-  <object id="12" name="Enemigo" x="88.3333" y="106.667">
+  <object id="12" name="Enemigo" x="106.333" y="124.667">
    <point/>
   </object>
-  <object id="4" name="Recompensa" x="77.3333" y="92">
+  <object id="4" name="Recompensa" x="87.3333" y="106.5">
    <point/>
   </object>
  </objectgroup>

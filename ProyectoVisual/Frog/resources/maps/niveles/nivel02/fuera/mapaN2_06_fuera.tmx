@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="18" height="50" tilewidth="14" tileheight="14" infinite="0" nextlayerid="4" nextobjectid="15">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="18" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="15">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="18" height="50">
   <data encoding="csv">
@@ -110,55 +110,55 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Enganche" x="119.333" y="203.667">
+  <object id="1" name="Enganche" x="137" y="234">
    <point/>
   </object>
-  <object id="2" name="Enganche" x="119" y="286.333">
+  <object id="2" name="Enganche" x="134.667" y="330">
    <point/>
   </object>
-  <object id="3" name="Enganche" x="149" y="344.333">
+  <object id="3" name="Enganche" x="169.333" y="395.666">
    <point/>
   </object>
-  <object id="4" name="Enganche" x="147" y="430.333">
+  <object id="4" name="Enganche" x="169.333" y="490">
    <point/>
   </object>
-  <object id="5" name="Enganche" x="232" y="428.333">
+  <object id="5" name="Enganche" x="265.333" y="492.666">
    <point/>
   </object>
-  <object id="6" name="Enganche" x="231.667" y="499.667">
+  <object id="6" name="Enganche" x="264.334" y="574.334">
    <point/>
   </object>
-  <object id="8" name="Enganche" x="188.667" y="527">
+  <object id="8" name="Enganche" x="215.667" y="588.667">
    <point/>
   </object>
-  <object id="9" name="Enganche" x="105" y="526">
+  <object id="9" name="Enganche" x="120.667" y="586">
    <point/>
   </object>
-  <object id="7" name="FlonkE" type="Player" x="231.25" y="62">
+  <object id="7" name="FlonkE" type="Player" x="263.583" y="72.6667">
    <point/>
   </object>
-  <object id="10" name="FlonkW" type="Player" x="20.75" y="526.25">
+  <object id="10" name="FlonkW" type="Player" x="25" y="602.75">
    <point/>
   </object>
-  <object id="11" name="TransitionE" type="Transition" x="246.25" y="61.5">
+  <object id="11" name="TransitionE" type="Transition" x="279.25" y="72.8333">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_05_fuera.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="13" name="TransitionE" type="Transition" x="246.5" y="75.5">
+  <object id="13" name="TransitionE" type="Transition" x="280.167" y="89.1667">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_05_fuera.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="12" name="TransitionE" type="Transition" x="7.25" y="513">
+  <object id="12" name="TransitionE" type="Transition" x="7.5" y="584.75">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_07_fuera.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="14" name="TransitionE" type="Transition" x="6.5" y="525.75">
+  <object id="14" name="TransitionE" type="Transition" x="7.5" y="602">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_07_fuera.tmx"/>
    </properties>
