@@ -55,6 +55,7 @@
     <ClCompile Include="src\components\DestructibleComponent.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
+    <ClCompile Include="src\components\RenderComponentDestructible.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -121,6 +122,7 @@
     <ClInclude Include="src\components\DestructibleComponent.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
+    <ClInclude Include="src\components\RenderComponentDestructible.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

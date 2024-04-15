@@ -372,7 +372,7 @@ Entity* RoomScene::createDestructible(Vector2D pos, int type)
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
 	transform->setContext(destructible);
 
-	//destructible->addRenderComponent(destructible);
+	AnimationComponent* animDestructible = new AnimationComponent();
 
 	return destructible;
 }
