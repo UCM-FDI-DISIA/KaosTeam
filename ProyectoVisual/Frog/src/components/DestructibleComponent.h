@@ -4,13 +4,12 @@
 class DestructibleComponent
 {
 private:
-	LifeComponent life;
+	LifeComponent life = LifeComponent(1,1);
 
 	void selfDestruct();
 
 public:
 	DestructibleComponent();
 	void update();
-
 };
 

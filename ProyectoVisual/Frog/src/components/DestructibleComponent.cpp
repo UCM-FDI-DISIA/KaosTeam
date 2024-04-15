@@ -3,18 +3,18 @@
 
 
 
-
-void update()
+DestructibleComponent::DestructibleComponent()
 {
-	if(LifeComponent::GetActual() < 1)
-	{
-		
-	}
+	
+	//life = LifeComponent(1, 1);
 
 }
 
-DestructibleComponent::DestructibleComponent()
+void update()
 {
-
+	//if (life.getactual() < 1)
+	//{
+	//	//destroy
+	//}
 
 }
