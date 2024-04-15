@@ -308,6 +308,34 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	AddEntity(snake);
 	return snake;
 }
+Entity* RoomScene::createBomb(Vector2D pos) {
+	Entity* bomb = new Entity(this);
+	Texture* textBomb = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/HuevoSheet.png", 1, 2);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	bomb->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(bomb);
+
+	AnimationComponent* animBomb = new AnimationComponent();
+	RenderComponent* renderBomb = new RenderComponent(textBomb, 1, 3, 0.5, animBomb);
+	renderBomb->setContext(bomb);
+	renderBomb->initComponent();
+
+	animBomb->addAnimation("BOMB_IDLE", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false));
+	
+	bomb->addRenderComponent(renderBomb);
+	bomb->addComponent(ANIMATION_COMPONENT, animBomb);
+
+	MovementComponentBomb* moveBomb = new MovementComponentBomb();
+	bomb->addComponent(MOVEMENT_COMPONENT, moveBomb);
+	moveBomb->setContext(bomb);
+	moveBomb->initComponent();
+
+	AddEntity(bomb);
+	return bomb;
+}
+
+
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
