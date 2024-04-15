@@ -262,7 +262,6 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	AddEntity(redAnt);
 	return redAnt;
 }
-
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this);
 	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheet.png", 4, 2);
@@ -355,10 +354,41 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	return c;
 }
 
+Entity* RoomScene::createDestructible(Vector2D pos, int type)
+{
+	Entity* destructible = new Entity(this);
+	//textura cambiar
+	if(type = 0)
+	{
+		Texture* txtRompible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
+		// hay que añadirle luego un sprite siendo destruido
+	}
+	else if (type = 1)
+	{
+		// texturas del arbusto
+	}
 
+	TransformComponent* transform = new TransformComponent(pos);
+	destructible->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(destructible);
+
+	destructible->addRenderComponentSnake(destructible);
+
+	return destructible;
+}
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
+
+	
+	if (objName == "Jarron"){
+		c = createDestructible(pos, 0);
+	}
+	else if (objName == "Arbusto")
+	{
+		c = createDestructible(pos, 1);
+	}
+	//else if ()......
 
 	/*
 	if (objName == "Nombre que le quieras poner a tu objeto"){

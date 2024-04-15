@@ -32,6 +32,7 @@ void Entity::addRenderComponentSnake(RenderComponentSnake* rndS)
 	renderComponentSnake = rndS;
 }
 
+
 Entity::~Entity()
 {
 	for (auto it = componentes.begin(); it != componentes.end(); ++it)

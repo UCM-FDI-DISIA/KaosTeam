@@ -1,9 +1,16 @@
 #pragma once
-#include "../components/TransformComponent.h"
+//#include "../components/TransformComponent.h"
+#include "../components/LifeComponent.h"
 class DestructibleComponent
 {
 private:
-	int tipo;
+	LifeComponent life;
+
+	void selfDestruct();
+
+public:
+	DestructibleComponent();
+	void update();
 
 };
 

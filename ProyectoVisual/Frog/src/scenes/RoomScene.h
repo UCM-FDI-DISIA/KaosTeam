@@ -132,6 +132,7 @@ public:
 	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createSnake(Vector2D pos);
+	Entity* createDestructible(Vector2D pos, int type);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
