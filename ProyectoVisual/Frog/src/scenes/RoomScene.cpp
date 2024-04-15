@@ -361,9 +361,11 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 }
 
 
-Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
+Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;
+
+	//int objIntID: id que necesita cada obj para acceder a su pos en el vector del data manager d objetos interactuables
 
 	/*
 	if (objName == "Nombre que le quieras poner a tu objeto"){
@@ -375,7 +377,7 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	return c;
 }
 
-Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps)
+Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;
 	if (objClass == "Enemigo") {
@@ -417,7 +419,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	}
 
 	else if (objClass == "ObjInteract") {
-		c = createObjInteract(pos, objName, objProps);
+		c = createObjInteract(pos, objName, objProps, objIntID, objInteracted);
 	}
 	else if (objClass == "Transition") {		
 		c = createTransition(objName, objProps[0].getStringValue());
