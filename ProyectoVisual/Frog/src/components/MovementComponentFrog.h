@@ -1,5 +1,5 @@
 #pragma once
-#include "MovementComponent.h";
+#include "MovementComponent.h"
 #include "../managers/DataManager.h"
 #include "AnimationComponent.h"
 #include <iostream>
