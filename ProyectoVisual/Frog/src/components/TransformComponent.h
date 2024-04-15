@@ -1,27 +1,17 @@
 #pragma once
 #include "../ecs/Component.h"
 #include "../utils/Vector2D.h"
+#include "../utils/Box.h"
 
 class SDL_Rect;
 //Define el tamaño y posición de la entidad (si tiene)
-class TransformComponent : public Component
+class TransformComponent : public Component, public Box
 {
-private:
-	Vector2D casilla;
-	float width;
-	float height;
-	//El offset dentro de la casilla
-	Vector2D offset;
-
 public:
-	TransformComponent(Vector2D casilla, float width, float height) : casilla(casilla), width(width), height(height) {
-		offset = { 0,0 };
-	}
+	TransformComponent(Vector2D casilla, float width, float height);
 	//Crea un transform cuadrado con escala determinada en funcion al tamaño de las casillas
 	TransformComponent(Vector2D casilla);
 	~TransformComponent() {};
-
-	SDL_Rect GetOnDisplayPosition();
 
 	void changePos(Vector2D v);
 	void resetPos(Vector2D v);
