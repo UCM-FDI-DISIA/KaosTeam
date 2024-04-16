@@ -321,7 +321,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	renderBomb->setContext(bomb);
 	renderBomb->initComponent();
 
-	animBomb->addAnimation("BOMB_IDLE", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false));
+	animBomb->addAnimation("BOMB_IDLE", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
 	
 	bomb->addRenderComponent(renderBomb);
 	bomb->addComponent(ANIMATION_COMPONENT, animBomb);

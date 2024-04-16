@@ -11,9 +11,11 @@ private:
 	MovementComponentFrog* moveFrog  = nullptr; //para acceder a la dirección a la que mira FLonk en ese instante
 	AnimationComponent* animator = nullptr;   //para acceder a su animador
 	TransformComponent* tr = nullptr;
+	Vector2D velocity = Vector2D(0, 0);
 	bool isLaunched;				//Booleano para indicar si la bomba se ha lanzado
 
-	void moveBomb(Directions dir);
+	void moveBomb();
+	void checkShock();
 
 public:
 	MovementComponentBomb();

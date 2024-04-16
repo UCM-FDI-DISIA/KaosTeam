@@ -7,44 +7,57 @@ MovementComponentBomb::MovementComponentBomb() : isLaunched(true), direction(NON
 }
 
 void MovementComponentBomb::initComponent() {
-	//Obtenemos componentes
+	//Obtenemos componentes necesarios
 	moveFrog = static_cast<MovementComponentFrog*>(ent->getScene()->getPlayer()->getComponent(MOVEMENT_COMPONENT));
 	animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	tr = static_cast<TransformComponent*> (ent->getComponent(TRANSFORM_COMPONENT));
 }
 
 //Mueve la bomba en la direccion dada:
-void MovementComponentBomb::moveBomb(Directions dir) {
-	switch (dir) {
+void MovementComponentBomb::moveBomb() {
+	switch (direction) {
 	case Directions::DOWN:
-		tr->setCasilla(tr->getCasilla() + Vector2D(0, 0.005));
+		velocity = Vector2D(0, 0.005);
+		tr->setCasilla(tr->getCasilla() + velocity);
 		std::cout << "BOMBA SE ABAJO" << std::endl;
 		break;
 	case Directions::UP:
-		tr->setCasilla(tr->getCasilla() + Vector2D(0, -0.005));
+		velocity = Vector2D(0, -0.005);
+		tr->setCasilla(tr->getCasilla() + velocity);
 		std::cout << "BOMBA SE ARRIBA" << std::endl;
 		break;
 	case Directions::LEFT:
-		tr->setCasilla(tr->getCasilla() + Vector2D(-0.005, 0));
+		velocity = Vector2D(-0.005, 0);
+		tr->setCasilla(tr->getCasilla() + velocity);
 		std::cout << "BOMBA SE IZQDA" << std::endl;
 		break;
 	case Directions::RIGHT:
-		tr->setCasilla(tr->getCasilla() + Vector2D(0.005, 0));
+		velocity = Vector2D(0.005, 0);
+		tr->setCasilla(tr->getCasilla() + velocity);
 		std::cout << "BOMBA SE DERECHA" << std::endl;
 		break;
 	default:
 		break;
 	}
-	isLaunched = false;
-	animator->playAnimation("BOMB_IDLE");
+}
+
+//En este metodo se comprueba si la bomba choca con alguna entidad que puede dañar o con las paredes intraspasables del mapa
+void MovementComponentBomb::checkShock() {
+	if (!checkIfTileWalkable(tr->getCasilla() + velocity))
+		velocity = Vector2D(0, 0);
+	//else if()//
+	else
+		moveBomb(); //Movemos la bomba si no choca con nada
 }
 
 
 void MovementComponentBomb::update() {
-	if (isLaunched) { //Si se activa la flag de que se ha lanzado la bomba
+	if (isLaunched) { //Aqui habria que detectar el input del player -> o llamar a un metodo que cambie este booleano
 		direction = moveFrog->getDirection(); //Obtenemos direccion a la que mira la rana
+		isLaunched = false;
+		animator->playAnimation("BOMB_IDLE");
 	}
-	moveBomb(direction); //movemos bomba en la dirección dada
+	checkShock();
 }
 
 
