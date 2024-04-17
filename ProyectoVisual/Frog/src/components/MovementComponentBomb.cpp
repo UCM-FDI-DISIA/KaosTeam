@@ -14,8 +14,8 @@ void MovementComponentBomb::initComponent() {
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
 
 	 // Aquí envolvemos la función checkEntityShock en un objeto std::function
-    std::function<void(Entity*)> shockCallback = std::bind(&checkEntityShock, this, std::placeholders::_1);
-	coll->AddCall(&shockCallback);
+    //std::function<void(Entity*)> shockCallback = std::bind(&checkEntityShock, this, std::placeholders::_1);
+	//coll->AddCall(&shockCallback);
 }
 
 //está función, se llamará en cada iteracción del update para detectar con que entity colisiona y hacer las correspondientes acciones

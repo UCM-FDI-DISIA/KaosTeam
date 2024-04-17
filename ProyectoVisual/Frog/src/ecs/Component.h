@@ -7,7 +7,7 @@
 */
 class Component
 { 
-	componentsEnum ID;
+	ComponentsEnum ID;
 
 public:
 	Component();
