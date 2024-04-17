@@ -21,6 +21,7 @@
 #include "../components/MovementComponentSnake.h"
 #include "../components/MoneyComponent.h"
 #include"../managers/ShopManager.h"
+#include "../components/MovementComponentBomb.h"
 
 class RoomScene : public Scene
 {
@@ -112,7 +113,7 @@ public:
 
 
 		//createFish(Vector2D(0, 3), 4);
-		
+		createBomb(Vector2D(2, 3));
 
 #pragma endregion
 
@@ -138,6 +139,7 @@ public:
 	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createSnake(Vector2D pos);
+	Entity* createBomb(Vector2D pos);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
