@@ -157,9 +157,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\components\BossComponent.cpp" />
-    <ClCompile Include="src\components\AttackComponentFrançois.cpp" />
-    <ClCompile Include="src\components\MovementComponentFrançois.cpp" />
-    <ClCompile Include="src\components\ShadowDetection.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
@@ -205,7 +202,6 @@
     <ClCompile Include="src\sdlutils\sdlutils_game.cpp" />
     <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
     <ClCompile Include="src\sdlutils\Texture.cpp" />
-    <ClCompile Include="src\managers\BossManager.cpp" />
     <ClCompile Include="src\utils\assets.cpp" />
     <ClCompile Include="src\managers\MapManager.cpp" />
     <ClCompile Include="src\utils\Button.cpp" />
@@ -215,9 +211,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\BossComponent.h" />
-    <ClInclude Include="src\components\AttackComponentFrançois.h" />
-    <ClInclude Include="src\components\MovementComponentFrançois.h" />
-    <ClInclude Include="src\components\ShadowDetection.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
@@ -273,7 +266,6 @@
     <ClInclude Include="src\sdlutils\SoundEffect.h" />
     <ClInclude Include="src\sdlutils\Texture.h" />
     <ClInclude Include="src\sdlutils\VirtualTimer.h" />
-    <ClInclude Include="src\managers\BossManager.h" />
     <ClInclude Include="src\utils\assets.h" />
     <ClInclude Include="src\managers\MapManager.h" />
     <ClInclude Include="src\utils\Button.h" />
