@@ -30,6 +30,6 @@ public:
 	void AddCall(std::function<void(Entity* e)>* func);
 private:
 	//Lista de colliders gestionados por este componente
-	std::list<Collider> colliders; 
+	std::list<Collider> colliders;
 };
 
