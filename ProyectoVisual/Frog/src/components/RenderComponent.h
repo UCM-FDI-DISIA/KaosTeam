@@ -20,6 +20,7 @@ public:
 	//Constructora sin animador
 	RenderComponent(Texture* tex, int wframes, int hframes, float sc) : myTexture(tex), scale(sc) {};
 	RenderComponent(Texture* t, float sc = 1) : myTexture(t), scale(sc) { };
+	virtual ~RenderComponent();
 	Texture* GetTexture() { return myTexture; };
     void render();
 	void initComponent() override;

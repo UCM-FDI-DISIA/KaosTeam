@@ -2,7 +2,7 @@
 //
 
 #include "game/Game.h"
-
+#include <SDL_config.h>
 #include <iostream>
 #include <array>
 #include <string>

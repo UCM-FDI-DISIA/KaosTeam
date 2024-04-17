@@ -476,8 +476,8 @@ RoomScene::~RoomScene() {
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;
 	}
-	delete cameraManager;
-	delete shopManager;
+	//delete cameraManager;
+	//delete shopManager;
 }
 
 void RoomScene::changeMap()
