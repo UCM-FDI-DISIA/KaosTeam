@@ -8,7 +8,6 @@ void RoomScene::render() {
 		if (e != nullptr)
 			e->render();
 	}
-	francois->render();
 	HUD->render();
 }
 
@@ -427,10 +426,6 @@ void RoomScene::movePlayer(Vector2D pos)
 	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
 }
 
-void RoomScene::createFrancois()
-{
-	francois = new BossManager(new Entity(this));
-}
 
 void RoomScene::AddEntity(Entity* entity) {
 	entityList.push_back(entity);

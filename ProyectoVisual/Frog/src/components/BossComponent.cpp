@@ -24,7 +24,7 @@ void BossComponent::update()
 		detect();
 		break;
 	case ATTACK:
-		attack;
+		attack();
 		break;
 	default:
 		break;
