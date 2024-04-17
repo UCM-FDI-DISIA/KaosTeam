@@ -22,7 +22,7 @@ void RoomScene::update() {
 	if (needMapChange)
 		changeMap();
 	//comrpueba las colisiones con la rana
-
+	CheckColisions();
 }
 
 void RoomScene::CheckColisions() {
