@@ -238,6 +238,21 @@ void MapManager::loadObj(const std::string& path)
         if (layer->getType() == Layer::Type::Object) {
             const auto& objects = layer->getLayerAs<ObjectGroup>().getObjects();
             std::cout << "Found " << objects.size() << " objects in layer" << std::endl;
+
+            bool roomVisited = false;
+            bool objVisited = false;
+            int i = 0; //indice para recorrer el vector cuando los obj sean interactuables
+            vector<bool> interactObj;
+            auto DM = DataManager::GetInstance();
+            if (DM->getInteractObj(path).empty()) {
+                //NO SE HA REGISTRADO TODAVIA LA SALA
+                //roomVisited queda false y se actuará al respecto
+            }
+            else {
+                roomVisited = true;
+                interactObj = DM->getInteractObj(path);
+            }
+
             for (const auto& object : objects)
             {
                 int x = (int)object.getPosition().x / tiled_map.getTileSize().x;
@@ -248,27 +263,22 @@ void MapManager::loadObj(const std::string& path)
 
                 std::cout << "Object " << object.getName() << ", in posX = " << x << " , posY = " << y << std::endl;
 
-
-                Entity* ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
-                if (ent != nullptr) {
-                    walkableTiles[x][y]->objInTile = ent;
-                    std::cout << "Anadida entidad a tile: " << object.getName() << std::endl;
-
-/*
-                    if (prop.getName() == "TexPath") {
-                        texPath = prop.getStringValue();
+                if (object.getClass() == "ObjInteract") {
+                    if (!roomVisited) {
+                        //si no se ha visitado la sala los obj estarán a false
+                        //objVisited se mantiene a false
                     }
-
-                    //Abstraerlo para que se llame a metodo de Crear Entidades y que de ahi se gestione que es lo que se crea
-                    if (prop.getName() == "isPlayer") {
-                        if (prop.getBoolValue()) {
-                            Vector2D pos;
-                            pos.setX((int)object.getPosition().x / tiled_map.getTileSize().x);
-                            pos.setY((int)object.getPosition().y / tiled_map.getTileSize().y);
-                            room->createPlayer(texPath, pos, cols, rows);
-                        }
-                    }*/
-
+                    else {
+                        objVisited = interactObj[i];
+                        ++i;
+                    }
+                }
+                Entity* ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties(), --i, objVisited);
+                if (ent != nullptr) {
+                    if (walkableTiles[x][y] != nullptr) {
+                        walkableTiles[x][y]->objInTile = ent;
+                        std::cout << "Anadida entidad a tile: " << object.getName() << std::endl;
+                    }
                 }
 
                 if (!object.getTilesetName().empty())
@@ -276,13 +286,6 @@ void MapManager::loadObj(const std::string& path)
                     std::cout << "Object uses template tile set " << object.getTilesetName() << "\n";
                 }
             }
-        }
-        const auto& properties = layer->getProperties();
-        //std::cout << properties.size() << " Layer Properties:" << std::endl;
-        for (const auto& prop : properties)
-        {
-            std::cout << "Found property: " << prop.getName() << std::endl;
-            std::cout << "Type: " << int(prop.getType()) << std::endl;
         }
     }
 }

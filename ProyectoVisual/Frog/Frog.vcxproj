@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -156,22 +156,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-
+    <ClCompile Include="src\components\MovementComponentBomb.cpp" />
+    <ClCompile Include="src\components\RenderComponentSnake.cpp" />
+    <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
     <ClCompile Include="src\components\FrogInputComponent.cpp" />
     <ClCompile Include="src\components\AnimationComponent.cpp" />
     <ClCompile Include="src\components\ColliderComponent.cpp" />
     <ClCompile Include="src\components\DefenseComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentSnake.cpp" />
     <ClCompile Include="src\managers\LoadManager.cpp" />
     <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
     <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentBlackAnt.cpp" />
     <ClCompile Include="src\components\MovementComponentFish.cpp" />
     <ClCompile Include="src\components\MovementComponentFly.cpp" />
     <ClCompile Include="src\components\LifeComponent.cpp" />
     <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\MovementComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFrog.cpp" />
+    <ClCompile Include="src\components\MovementComponentRedAnt.cpp" />
     <ClCompile Include="src\components\RenderComponent.cpp" />
     <ClCompile Include="src\components\RenderComponentFrog.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
@@ -190,6 +195,7 @@
     <ClCompile Include="src\managers\DialogManager.cpp" />
     <ClCompile Include="src\managers\HUDManager.cpp" />
     <ClCompile Include="src\managers\InputManager.cpp" />
+    <ClCompile Include="src\managers\ShopManager.cpp" />
     <ClCompile Include="src\scenes\Menu.cpp" />
     <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
@@ -205,11 +211,15 @@
     <ClCompile Include="src\components\TransitionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\MovementComponentBomb.h" />
+    <ClInclude Include="src\components\RenderComponentSnake.h" />
+    <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
     <ClInclude Include="src\components\FrogInputComponent.h" />
     <ClInclude Include="src\components\AnimationComponent.h" />
     <ClInclude Include="src\components\ColliderComponent.h" />
     <ClInclude Include="src\components\DefenseComponent.h" />
+    <ClInclude Include="src\components\MovementComponentSnake.h" />
     <ClInclude Include="src\managers\DialogManager.h" />
     <ClInclude Include="src\managers\LoadManager.h" />
     <ClInclude Include="src\managers\SceneManager.h" />
@@ -217,12 +227,14 @@
     <ClInclude Include="src\game\RunningState.h" />
     <ClInclude Include="src\components\AttackComponentFrog.h" />
     <ClInclude Include="src\components\FollowPlayerComponent.h" />
+    <ClInclude Include="src\components\MovementComponentBlackAnt.h" />
     <ClInclude Include="src\components\MovementComponentFish.h" />
     <ClInclude Include="src\components\MovementComponentFly.h" />
     <ClInclude Include="src\components\LifeComponent.h" />
     <ClInclude Include="src\components\MoneyComponent.h" />
     <ClInclude Include="src\components\MovementComponent.h" />
     <ClInclude Include="src\components\MovementComponentFrog.h" />
+    <ClInclude Include="src\components\MovementComponentRedAnt.h" />
     <ClInclude Include="src\components\RenderComponent.h" />
     <ClInclude Include="src\components\RenderComponentFrog.h" />
     <ClInclude Include="src\components\TransformComponent.h" />
@@ -240,6 +252,7 @@
     <ClInclude Include="src\managers\CameraManager.h" />
     <ClInclude Include="src\managers\HUDManager.h" />
     <ClInclude Include="src\managers\InputManager.h" />
+    <ClInclude Include="src\managers\ShopManager.h" />
     <ClInclude Include="src\scenes\Menu.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\checkML.h" />

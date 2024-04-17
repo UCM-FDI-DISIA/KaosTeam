@@ -49,6 +49,12 @@
     <ClCompile Include="src\game\PausedState.cpp" />
     <ClCompile Include="src\game\RunningState.cpp" />
     <ClCompile Include="src\components\AnimationComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentBlackAnt.cpp" />
+    <ClCompile Include="src\components\MovementComponentRedAnt.cpp" />
+    <ClCompile Include="src\components\MovementComponentSnake.cpp" />
+    <ClCompile Include="src\components\RenderComponentSnake.cpp" />
+    <ClCompile Include="src\components\AttackComponentSnake.cpp" />
+    <ClCompile Include="src\managers\ShopManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -109,6 +115,12 @@
     <ClInclude Include="src\game\PausedState.h" />
     <ClInclude Include="src\components\TransformComponent.h" />
     <ClInclude Include="src\components\AnimationComponent.h" />
+    <ClInclude Include="src\components\MovementComponentBlackAnt.h" />
+    <ClInclude Include="src\components\MovementComponentRedAnt.h" />
+    <ClInclude Include="src\components\MovementComponentSnake.h" />
+    <ClInclude Include="src\components\RenderComponentSnake.h" />
+    <ClInclude Include="src\components\AttackComponentSnake.h" />
+    <ClInclude Include="src\managers\ShopManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
@@ -207,9 +219,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\assets.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scenes\MenuInicio.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\components\LifeComponent.h">

@@ -4,7 +4,7 @@
 */
 #include <map>
 //Enum de componentes provisional. Meted los componentes que neceisteis
-enum componentsEnum
+enum ComponentsEnum
 {
 	MOVEMENT_COMPONENT,
 	LIFE_COMPONENT,
@@ -15,34 +15,52 @@ enum componentsEnum
 	INPUT_COMPONENT,
 	IACOMPONENT,
 	TRANSFORM_COMPONENT,
-	COLLIDER_COMPONENT
+	COLLIDER_COMPONENT,
+	MONEY_COMPONENT
 };
+//Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
+//Si no es relevante, el valor será 0 (UNAMED)
+enum EntityName {
+	UNAMED_ENTITY,
+	FROG_ENTITY,
+	BOMB_ENTITY,
+	BREAKEABLE_DOOR_ENTITY
+};
+
 class Component;
 class RenderComponent;
 class RenderComponentFrog;
+class RenderComponentSnake;
+class TransformComponent;
 class AnimationComponent;
 class RoomScene;
+
 class Entity
 {
 private:
 	//Vector2D pos;
-	std::map<componentsEnum, Component*> componentes;
+	std::map<ComponentsEnum, Component*> componentes;
 	RoomScene* myScene;
 	RenderComponent* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
 	RenderComponentFrog* renderComponentFrog;
+	RenderComponentSnake* renderComponentSnake;
+	EntityName name;
 	//AnimationComponent* animationComponent;
 public:
-//provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
-	Entity(/*int, int*/RoomScene* scn);
-	void addComponent(componentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
+	//provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
+	Entity(RoomScene* scn);
+	Entity(RoomScene* scn, EntityName name);
+	void addComponent(ComponentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
 	void addRenderComponent(RenderComponent* rnd);
 	void addRenderComponentFrog(RenderComponentFrog* rndF);
+	void addRenderComponentSnake(RenderComponentSnake* rndS);
 	virtual ~Entity();
 	void update();
 	void render();
-	Component* getComponent(componentsEnum) const;
+	Component* getComponent(ComponentsEnum) const;
 	RenderComponentFrog* getRenderComponentFrog() const { return renderComponentFrog; };
+	RenderComponentSnake* getRenderComponentSnake() const { return renderComponentSnake; }
 	RenderComponent* getRenderComponent() const { return renderComponent; };
 	RoomScene* getScene() const;
+	EntityName getName() const;
 };
-

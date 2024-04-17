@@ -3,7 +3,16 @@
 InputManager* InputManager::instance = nullptr;
 
 InputManager::InputManager() { 
-	states[END] = {}; 
+	//buttons[END] = {}; 
+
+	for (int i = 0; i < END; i++) {
+		InputButton b;
+		b.keyDOWN = false;
+		b.keyUP = false;
+		buttons.push_back(b);
+		//El pressed (que esta activo mientras este pulsado el boton) no se restablece aqui
+		//Sino en el propio evento del key up
+	}
 	PollEvents(); 
 }
 
@@ -11,66 +20,98 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 	if (event.type == SDL_KEYDOWN) {
 		switch (event.key.keysym.sym) {
 		case SDLK_UP:
-			states[BTN_UP] = true;
+			DowntiCheck(BTN_UP);
 			break;
 		case SDLK_DOWN:
-			states[BTN_DOWN] = true;
+			DowntiCheck(BTN_DOWN);
 			break;
 		case SDLK_LEFT:
-			states[BTN_LEFT] = true;
+			DowntiCheck(BTN_LEFT);
 			break;
 		case SDLK_RIGHT:
-			states[BTN_RIGHT] = true;
+			DowntiCheck(BTN_RIGHT);
 			break;
-		case SDLK_LSHIFT:
-			btnShift = true;
-			break;
-
-		//ahora para poder usar WASD
-		case SDLK_a:
-			states[BTN_LEFT] = true;
-			break;
-		case SDLK_w:
-			states[BTN_UP] = true;
-			break;
-		case SDLK_s:
-			states[BTN_DOWN] = true;
-			break;
-		case SDLK_d:
-			states[BTN_RIGHT] = true;
-			break;
-		case SDLK_RSHIFT:
-			btnShift = true;
-			break;
-
-
+		//case SDLK_LSHIFT:
+		//	btnShift = true;
+		//	break;
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
-			states[BTN_ACTION1] = true;
+			DowntiCheck(BTN_ACTION1);
 			break;
 		case SDLK_x:
-			states[BTN_ACTION2] = true;
+			DowntiCheck(BTN_ACTION2);
 			break;
 		case SDLK_v:	// Escudo
-			states[BTN_ACTION4] = true;
+			DowntiCheck(BTN_ACTION4);
 			break;
 		case SDLK_ESCAPE:
-			states[BTN_ESCAPE] = true;
+			DowntiCheck(BTN_ESCAPE);
 			break;
 		case SDLK_SPACE:
-			states[BTN_SPACE] = true;
+			DowntiCheck(BTN_SPACE);
 			break;
 		}
 	}
 	else if (event.type == SDL_KEYUP)
 	{
-		if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
-			btnShift = false;
+	/*	if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
+	//btnShift = false;*/
+		switch (event.key.keysym.sym) {
+		case SDLK_UP:
+			UptiCheck(BTN_UP);
+			break;
+		case SDLK_DOWN:
+			UptiCheck(BTN_DOWN);
+			break;
+		case SDLK_LEFT:
+			UptiCheck(BTN_LEFT);
+			break;
+		case SDLK_RIGHT:
+			UptiCheck(BTN_RIGHT);
+			break;
+		//case SDLK_LSHIFT:
+		//	btnShift = true;
+		//	break;
+		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
+			UptiCheck(BTN_ACTION1);
+			break;
+		case SDLK_x:
+			UptiCheck(BTN_ACTION2);
+			break;
+		case SDLK_v:	// Escudo
+			UptiCheck(BTN_ACTION4);
+			break;
+		case SDLK_ESCAPE:
+			UptiCheck(BTN_ESCAPE);
+			break;
+		case SDLK_SPACE:
+			UptiCheck(BTN_SPACE);
+			break;
+		}
+	}
+}
+
+void InputManager::UptiCheck(btnEnum btn) {
+	buttons[btn].keyUP = true;
+	buttons[btn].pressed = false;
+}
+
+void InputManager::DowntiCheck(btnEnum btn) {
+	if (!buttons[btn].pressed) {
+		buttons[btn].keyDOWN = true;
+		buttons[btn].pressed = true;
 	}
 }
 
 void InputManager::ClearStates() {
+
+	for (auto& b : buttons) {
+		b.keyDOWN = false;
+	}
 	for (int i = 0; i < END; i++) {
-		states[i] = false;
+		buttons[i].keyDOWN = false;
+		buttons[i].keyUP = false;
+		//El pressed (que esta activo mientras este pulsado el boton) no se restablece aqui
+		//Sino en el propio evento del key up
 	}
 }
 
@@ -82,36 +123,35 @@ void InputManager::PollEvents() {
 		UpdateStates(event);
 }
 
-bool InputManager::getAction1() {
-	return states[BTN_ACTION1];
+InputButton InputManager::getAction1() {
+	return buttons[BTN_ACTION1];
 }
-bool InputManager::getAction2() {
-	return states[BTN_ACTION2];
+InputButton InputManager::getAction2() {
+	return buttons[BTN_ACTION2];
 }
-bool InputManager::getShift() {
-	return btnShift;
+//InputButton InputManager::getShift() {
+//	return btnShift;
+//}
+InputButton InputManager::getAction4() {
+	return buttons[BTN_ACTION4];
 }
-bool InputManager::getAction4() {
-	return states[BTN_ACTION4];
+InputButton InputManager::getUp() {
+	return buttons[BTN_UP];
 }
-bool InputManager::getUp() {
-	return states[BTN_UP];
+InputButton InputManager::getDown() {
+	return buttons[BTN_DOWN];
 }
-bool InputManager::getDown() {
-	return states[BTN_DOWN];
+InputButton InputManager::getLeft() {
+	return buttons[BTN_LEFT];
 }
-bool InputManager::getLeft() {
-	return states[BTN_LEFT];
+InputButton InputManager::getRight() {
+	return buttons[BTN_RIGHT];
 }
-bool InputManager::getRight() {
-	return states[BTN_RIGHT];
-}
-bool InputManager::getSpace()
+InputButton InputManager::getSpace()
 {
-	return states[BTN_SPACE];
+	return buttons[BTN_SPACE];
 }
-
-bool InputManager::getEscape()
+InputButton InputManager::getEscape()
 {
-	return states[BTN_ESCAPE];
+	return buttons[BTN_ESCAPE];
 }

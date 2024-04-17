@@ -4,17 +4,13 @@
 //include rendercomponent()
 
 
-Entity::Entity(/*int x, int y*/RoomScene* scn) /*: pos(x, y)*/
-{
-	if (scn == nullptr) {
-		std::cout << "scn null";
-	}
-	myScene = scn;
-}
+Entity::Entity(RoomScene* scn) : name(UNAMED_ENTITY), myScene(scn) {};
 
-void Entity::addComponent(componentsEnum id, Component* component)
+Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn) {};
+
+void Entity::addComponent(ComponentsEnum id, Component* component)
 {
-	componentes.insert(std::pair<componentsEnum, Component*>(id, component));
+	componentes.insert(std::pair<ComponentsEnum, Component*>(id, component));
 }
 
 void Entity::addRenderComponent(RenderComponent* rnd)
@@ -25,6 +21,11 @@ void Entity::addRenderComponent(RenderComponent* rnd)
 void Entity::addRenderComponentFrog(RenderComponentFrog* rndF)
 {
 	renderComponentFrog = rndF;
+}
+
+void Entity::addRenderComponentSnake(RenderComponentSnake* rndS)
+{
+	renderComponentSnake = rndS;
 }
 
 Entity::~Entity()
@@ -40,7 +41,8 @@ Entity::update() {
 	
 	for (auto it = componentes.begin(); it != componentes.end(); ++it)
 	{
-		it->second->update();
+		if (it->second != nullptr)
+			it->second->update();
 	}
 }
 
@@ -50,10 +52,11 @@ void Entity::render()
 		renderComponent->render();
 	}
 	else if (renderComponentFrog != nullptr) renderComponentFrog->render(); //Sino, ejecutamos render de la rana (un render mas complejo)
-	else {} //hay entidades que no se renderizan los objetos de transición
+	else if (renderComponentSnake != nullptr) renderComponentSnake->render(); //hay entidades que no se renderizan los objetos de transición
+	//else {} //hay entidades que no se renderizan los objetos de transición
 }
 
-Component* Entity::getComponent(componentsEnum Identificator) const
+Component* Entity::getComponent(ComponentsEnum Identificator) const
 {
 	if (componentes.count(Identificator) > 0)
 		return componentes.at(Identificator);
@@ -64,4 +67,9 @@ Component* Entity::getComponent(componentsEnum Identificator) const
 RoomScene* Entity::getScene() const
 {
 	return myScene;
+}
+
+EntityName Entity::getName() const
+{
+	return name;
 }
