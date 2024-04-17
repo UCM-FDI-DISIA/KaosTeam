@@ -1,7 +1,13 @@
 #include "ShopManager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../managers/InputManager.h"
-Shop::Shop() : imngr(im()) {
+#include "../sdlutils/Texture.h"
+
+
+Shop::Shop() : imngr(im()), grasshoperTex(sdlutils().images().at("grasshopperSheet")),
+							waspTex(sdlutils().images().at("avispa")),
+							flyTex(sdlutils().images().at("fly")),
+							centipedeTex(sdlutils().images().at("ciempies")) {
 	selectedPowerUp = GRASSHOPER;
 	actualDirection = RIGHT;
 }
@@ -10,18 +16,20 @@ void Shop::setPlayer(Entity* player_) {
 	playerMoney = dynamic_cast<MoneyComponent*>(player->getComponent(MONEY_COMPONENT));
 }
 void Shop::render() {
-	/*for (auto it : buttons)
-		it->render();*/
+	//grasshoperTex.render(SDL_Rect{250,Y,300,300});
+	waspTex.render(SDL_Rect{ 330,0,65, 65 });
+	flyTex.render(SDL_Rect{ 430,0,flyTex.width(), flyTex.height()});
+	centipedeTex.render(SDL_Rect{ 480,0,65, 38 });
 }
 void Shop::update() {
-	if (imngr.getActionBuy()){ BuyPowerUp(selectedPowerUp); }
+	if (imngr.getActionBuy()){ buyPowerUp(selectedPowerUp); }
 	else if (imngr.getActionRightShop()) { changeButton(RIGHT); }
 	else if (imngr.getActionLeftShop()){ changeButton(LEFT); }
 		
 
 }
 //este metodo se llamara cuando del input se reciba la tecla comprar y se pasa la mejora seleccionada en ese momento
-void Shop::BuyPowerUp(PowerUps powerUp) {
+void Shop::buyPowerUp(PowerUps powerUp) {
 	switch (powerUp) {
 		case Shop::GRASSHOPER: 
 		{	

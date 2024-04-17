@@ -7,6 +7,7 @@
 #include "../utils/Singleton.h"
 
 class InputManager;
+class Texture;
 class Shop : public Singleton<Shop> {
 
 	friend Singleton<Shop>;
@@ -33,10 +34,16 @@ private:
 	//Texture& currSelec; //Textura que apunta al boton seleccionado
 	//SDL_Rect selecDest; 
 	InputManager& imngr;
+	//revisar & o *
+	Texture& grasshoperTex;
+	Texture& waspTex;
+	Texture& flyTex;
+	Texture& centipedeTex;
+	//	std::vector <Texture*> textures;
 
 	//metodos
 	Shop();
-	void BuyPowerUp(PowerUps powerUp);
+	void buyPowerUp(PowerUps powerUp);
 	void changeButton(ButtonDirection dir);
 };
 #endif // !SHOPMANAGER_H
