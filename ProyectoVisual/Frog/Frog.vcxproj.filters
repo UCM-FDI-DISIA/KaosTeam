@@ -54,7 +54,7 @@
     <ClCompile Include="src\components\MovementComponentSnake.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
-    <ClCompile Include="CollisionMessage.cpp" />
+    <ClCompile Include="src\managers\ShopManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -120,7 +120,7 @@
     <ClInclude Include="src\components\MovementComponentSnake.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
-    <ClInclude Include="CollisionMessage.h" />
+    <ClInclude Include="src\managers\ShopManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

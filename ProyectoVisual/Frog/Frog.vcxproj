@@ -194,6 +194,7 @@
     <ClCompile Include="src\managers\DialogManager.cpp" />
     <ClCompile Include="src\managers\HUDManager.cpp" />
     <ClCompile Include="src\managers\InputManager.cpp" />
+    <ClCompile Include="src\managers\ShopManager.cpp" />
     <ClCompile Include="src\scenes\Menu.cpp" />
     <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="src\managers\CameraManager.h" />
     <ClInclude Include="src\managers\HUDManager.h" />
     <ClInclude Include="src\managers\InputManager.h" />
+    <ClInclude Include="src\managers\ShopManager.h" />
     <ClInclude Include="src\scenes\Menu.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\checkML.h" />

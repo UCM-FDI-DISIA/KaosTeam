@@ -64,6 +64,8 @@ void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 		}
 	}
 	break;
+	default:
+		break;
 	}
 }
 

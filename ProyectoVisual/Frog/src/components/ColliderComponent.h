@@ -5,7 +5,8 @@
 #include "TransformComponent.h"
 
 class Collider {
-	Collider(Box box) : funciones(std::list<std::function<void(Entity*)>*>()), box(box) {};
+	Collider(Box box) : funciones(std::list<std::function<void(Entity*)>*>()), box(box) {
+	};
 	Box box; //La caja que define el tamaño y posicion del collider
 	std::list<std::function<void(Entity*)>*> funciones; //Las funciones a llamar en caso de colision
 
