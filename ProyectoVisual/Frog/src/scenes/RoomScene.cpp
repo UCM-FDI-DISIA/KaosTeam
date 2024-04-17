@@ -36,7 +36,23 @@ void RoomScene::CheckColisions() {
 					coll2->OnCollision(e1);
 			}
 	}
-};
+}
+
+//Falta implementar la lógica de cada una de las cosas
+void RoomScene::CheckCollisionsBomb(Entity* ent) {
+	if (ent->getName() == EntityName::BREAKABLE_DOOR_ENTITY) {
+		//Destruimos la puerta: ent-> MetodoAlQueLlamar(); 
+		std::cout << "PUERTA DESTRUIDA" << std::endl;
+	}
+	else if (ent->getName() == EntityName::INTERRUPTOR_ENTITY) {
+		//Activamos interruptor
+		std::cout << "INTERRUPTOR ACTIVADO" << std::endl;
+	}
+	else if (ent->getName() == EntityName::SNAKE_ENTITY) {
+		//Quitariamos vida a la serpiente
+		std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
+	}
+}
 
 Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 {
@@ -270,7 +286,7 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 }
 
 Entity* RoomScene::createSnake(Vector2D pos) {
-	Entity* snake = new Entity(this);
+	Entity* snake = new Entity(this, EntityName::SNAKE_ENTITY);
 	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheet.png", 4, 2);
 	Texture* txtNeck = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheetAttack.png", 2, 1);
 
@@ -301,6 +317,10 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	animSnake->setContext(snake);
 
 	snake->addRenderComponentSnake(renderSnake);
+
+	ColliderComponent* collSnake = new ColliderComponent();
+	collSnake->setContext(snake);
+	snake->addComponent(COLLIDER_COMPONENT, collSnake);
 
 	MovementComponentSnake* mvmSnake = new MovementComponentSnake(animSnake);
 	mvmSnake->setContext(snake);
@@ -334,6 +354,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 
 	ColliderComponent* collBomb = new ColliderComponent();
 	collBomb->setContext(bomb);
+	collBomb->AddCall([this](Entity* e) {CheckCollisionsBomb(e); }); //Añadimos callback
 	bomb->addComponent(COLLIDER_COMPONENT, collBomb);
 
 
@@ -342,7 +363,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	moveBomb->setContext(bomb);
 	moveBomb->initComponent();
 
-
+	
 
 	AddEntity(bomb);
 	return bomb;

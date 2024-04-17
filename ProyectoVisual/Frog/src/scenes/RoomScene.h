@@ -43,6 +43,9 @@ private:
 	Por tanto, hay dos OnCollision por cada colision.
 	*/
 	void CheckColisions();
+
+	//Metodos callback para las colisiones
+	void CheckCollisionsBomb(Entity* ent);
 public:
 	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
@@ -52,9 +55,12 @@ public:
 		//Create player desde el mapa
 		cameraManager = Camera::instance();
 		cameraManager->setTarget(player);
+		//HUD
 		HUD = HUDManager::GetInstance();
+		//Tienda
 		shopManager = Shop::instance();
 		shopManager->setPlayer(player);
+
 
 #pragma region Cosas q vamos a borrar pronto
 		//Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
@@ -113,7 +119,7 @@ public:
 
 
 		//createFish(Vector2D(0, 3), 4);
-		createBomb(Vector2D(2, 3));
+		createBomb(Vector2D(4, 1));
 
 #pragma endregion
 
