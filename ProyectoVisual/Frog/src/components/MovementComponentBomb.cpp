@@ -11,28 +11,41 @@ void MovementComponentBomb::initComponent() {
 	moveFrog = static_cast<MovementComponentFrog*>(ent->getScene()->getPlayer()->getComponent(MOVEMENT_COMPONENT));
 	animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	tr = static_cast<TransformComponent*> (ent->getComponent(TRANSFORM_COMPONENT));
+	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
+
+	 // Aquí envolvemos la función checkEntityShock en un objeto std::function
+    std::function<void(Entity*)> shockCallback = std::bind(&checkEntityShock, this, std::placeholders::_1);
+	coll->AddCall(&shockCallback);
+}
+
+//está función, se llamará en cada iteracción del update para detectar con que entity colisiona y hacer las correspondientes acciones
+void MovementComponentBomb::checkEntityShock(Entity* ent) {
+	/*if (ent.getName()) {
+	* 
+	* 
+	}*/
 }
 
 //Mueve la bomba en la direccion dada:
 void MovementComponentBomb::moveBomb() {
 	switch (direction) {
 	case Directions::DOWN:
-		velocity = Vector2D(0, 0.005);
+		velocity = Vector2D(0, 0.01);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		std::cout << "BOMBA SE ABAJO" << std::endl;
 		break;
 	case Directions::UP:
-		velocity = Vector2D(0, -0.005);
+		velocity = Vector2D(0, -0.01);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		std::cout << "BOMBA SE ARRIBA" << std::endl;
 		break;
 	case Directions::LEFT:
-		velocity = Vector2D(-0.005, 0);
+		velocity = Vector2D(-0.01, 0);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		std::cout << "BOMBA SE IZQDA" << std::endl;
 		break;
 	case Directions::RIGHT:
-		velocity = Vector2D(0.005, 0);
+		velocity = Vector2D(0.01, 0);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		std::cout << "BOMBA SE DERECHA" << std::endl;
 		break;
@@ -49,7 +62,6 @@ void MovementComponentBomb::checkShock() {
 	else
 		moveBomb(); //Movemos la bomba si no choca con nada
 }
-
 
 void MovementComponentBomb::update() {
 	if (isLaunched) { //Aqui habria que detectar el input del player -> o llamar a un metodo que cambie este booleano

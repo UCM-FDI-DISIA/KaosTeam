@@ -21,6 +21,7 @@ void RoomScene::update() {
 	if (needMapChange)
 		changeMap();
 	//comrpueba las colisiones con la rana
+	CheckColisions();
 
 }
 
@@ -326,10 +327,17 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	bomb->addRenderComponent(renderBomb);
 	bomb->addComponent(ANIMATION_COMPONENT, animBomb);
 
+	ColliderComponent* collBomb = new ColliderComponent();
+	collBomb->setContext(bomb);
+	bomb->addComponent(COLLIDER_COMPONENT, collBomb);
+
+
 	MovementComponentBomb* moveBomb = new MovementComponentBomb();
 	bomb->addComponent(MOVEMENT_COMPONENT, moveBomb);
 	moveBomb->setContext(bomb);
 	moveBomb->initComponent();
+
+
 
 	AddEntity(bomb);
 	return bomb;
