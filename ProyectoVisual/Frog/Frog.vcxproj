@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\BossComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentFrançois.cpp" />
     <ClCompile Include="src\components\MovementComponentFrançois.cpp" />
     <ClCompile Include="src\components\ShadowDetection.cpp" />
@@ -213,6 +214,7 @@
     <ClCompile Include="src\components\TransitionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\BossComponent.h" />
     <ClInclude Include="src\components\AttackComponentFrançois.h" />
     <ClInclude Include="src\components\MovementComponentFrançois.h" />
     <ClInclude Include="src\components\ShadowDetection.h" />

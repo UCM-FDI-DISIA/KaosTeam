@@ -11,6 +11,7 @@ TransformComponent::TransformComponent(Vector2D casilla) : casilla(casilla) {
 SDL_Rect TransformComponent::GetOnDisplayPosition() {
 	int t = ent->getScene()->getMapReader()->getTileSize();
 	int size = (int)t;
+
 	SDL_Rect dest;
 
 	Vector2D mOffset = offset + Vector2D((t - size) / 2, (t - size) / 2);//para que este centrado en la casilla

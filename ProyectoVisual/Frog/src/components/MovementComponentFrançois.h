@@ -4,8 +4,7 @@
 class MovementComponentFrançois:public MovementComponent
 {
 private:
-	int speed; //velocidad de fracois
-	TransformComponent* trans;
+	
 public:
 	MovementComponentFrançois();
 	void initComponent();

@@ -5,7 +5,7 @@ class ShadowDetection:public Component
 {
 private:
 	bool active;
-	int timer; //para saber cuanto tiempo ha pasado en la sombra
+	
 public:
 	void initComponent();
 	void update();

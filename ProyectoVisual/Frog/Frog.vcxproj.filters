@@ -57,7 +57,8 @@
     <ClCompile Include="src\components\ShadowDetection.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
-    <ClCompile Include="src\System\BossSystem.cpp" />
+    <ClCompile Include="src\managers\BossManager.cpp" />
+    <ClCompile Include="src\components\BossComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -126,7 +127,8 @@
     <ClInclude Include="src\components\ShadowDetection.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
-    <ClInclude Include="src\System\BossSystem.h" />
+    <ClInclude Include="src\managers\BossManager.h" />
+    <ClInclude Include="src\components\BossComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

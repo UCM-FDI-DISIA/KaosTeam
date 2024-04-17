@@ -6,9 +6,7 @@
 class AttackComponentFrançois:public Component
 {
 private:
-	bool active;
-	bool detected; //para cuando detecte a Flonk
-	std::vector<Entity*> cubiertos;
+	
 
 public:
 	void initComponent();

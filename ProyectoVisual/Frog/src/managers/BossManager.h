@@ -8,8 +8,7 @@
 #include "../components/TransformComponent.h"
 #include "../components/RenderComponent.h"
 
-const float BOSS_W = 10.0;
-const float BOSS_H = 10.0;
+
 class BossManager
 {
 private:
