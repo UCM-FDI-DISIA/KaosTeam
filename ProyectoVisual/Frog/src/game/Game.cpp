@@ -19,9 +19,9 @@ Game::Game() : //
 
 Game::~Game()
 {
-	delete pausedState;
-	delete newgameState;
-	delete gameOverState;
+	//delete pausedState;
+	//delete newgameState;
+	//delete gameOverState;
 	delete runningState;
 }
 

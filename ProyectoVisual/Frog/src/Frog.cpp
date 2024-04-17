@@ -9,8 +9,10 @@
 
 int main(int ac, char** av)
 {
-    Game* game = new Game();
-    game->init();
+    Game game = Game();
+    game.init();
+
+    //delete game;
 
     return 0;
 }

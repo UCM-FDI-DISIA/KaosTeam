@@ -1,6 +1,11 @@
 #include "RenderComponent.h"
 #include "../scenes/RoomScene.h"
 
+RenderComponent::~RenderComponent()
+{
+	delete myTexture;
+}
+
 void RenderComponent::render()
 {
 	//segun si necesita flip o no la textura
