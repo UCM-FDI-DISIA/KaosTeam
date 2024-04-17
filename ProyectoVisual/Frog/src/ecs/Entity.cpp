@@ -4,13 +4,9 @@
 //include rendercomponent()
 
 
-Entity::Entity(/*int x, int y*/RoomScene* scn) /*: pos(x, y)*/
-{
-	if (scn == nullptr) {
-		std::cout << "scn null";
-	}
-	myScene = scn;
-}
+Entity::Entity(RoomScene* scn) : name(UNAMED_ENTITY), myScene(scn) {};
+
+Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn) {};
 
 void Entity::addComponent(componentsEnum id, Component* component)
 {

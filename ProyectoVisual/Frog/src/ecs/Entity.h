@@ -18,6 +18,13 @@ enum componentsEnum
 	COLLIDER_COMPONENT,
 	MONEY_COMPONENT
 };
+//Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
+//Si no es relevante, el valor será 0 (UNAMED)
+enum EntityName {
+	UNAMED_ENTITY,
+	FROG_ENTITY
+};
+
 class Component;
 class RenderComponent;
 class RenderComponentFrog;
@@ -25,6 +32,7 @@ class RenderComponentSnake;
 class TransformComponent;
 class AnimationComponent;
 class RoomScene;
+
 class Entity
 {
 private:
@@ -34,10 +42,12 @@ private:
 	RenderComponent* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
 	RenderComponentFrog* renderComponentFrog;
 	RenderComponentSnake* renderComponentSnake;
+	EntityName name;
 	//AnimationComponent* animationComponent;
 public:
 //provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
-	Entity(/*int, int*/RoomScene* scn);
+	Entity(RoomScene* scn);
+	Entity(RoomScene* scn, EntityName name);
 	void addComponent(componentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
 	void addRenderComponent(RenderComponent* rnd);
 	void addRenderComponentFrog(RenderComponentFrog* rndF);
