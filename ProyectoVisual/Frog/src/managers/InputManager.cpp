@@ -3,7 +3,16 @@
 InputManager* InputManager::instance = nullptr;
 
 InputManager::InputManager() { 
-	buttons[END] = {}; 
+	//buttons[END] = {}; 
+
+	for (int i = 0; i < END; i++) {
+		InputButton b;
+		b.keyDOWN = false;
+		b.keyUP = false;
+		buttons.push_back(b);
+		//El pressed (que esta activo mientras este pulsado el boton) no se restablece aqui
+		//Sino en el propio evento del key up
+	}
 	PollEvents(); 
 }
 
@@ -94,6 +103,10 @@ void InputManager::DowntiCheck(btnEnum btn) {
 }
 
 void InputManager::ClearStates() {
+
+	for (auto& b : buttons) {
+		b.keyDOWN = false;
+	}
 	for (int i = 0; i < END; i++) {
 		buttons[i].keyDOWN = false;
 		buttons[i].keyUP = false;
