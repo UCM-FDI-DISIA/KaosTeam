@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#include <vector>
 
 /*Struct con los datos de input de un botón específico*/
 struct InputButton {
@@ -41,7 +42,8 @@ private:
         END //Para tener un valor con el que crear y utilizar el array
     };
 
-    InputButton buttons[];
+    //InputButton buttons[];
+       std::vector<InputButton> buttons;
     static InputManager* instance;
 
     //Constructor vacio privado para poder instanciar desde dentro
