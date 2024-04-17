@@ -11,11 +11,12 @@ const int MAX_TIME_ON_SHADOW = 3;
 const int MAX_CUBIERTOS = 7;
 
 enum bossState { MOVE, DETECT, ATTACK };
-typedef int bossState;
+enum tipoCubierto { TENEDOR, CUCHILLO };
 struct Cubierto {
 	Entity* tipo;
 	TransformComponent* tr;
-	Texture* tex;
+	Texture* tex; //Imagen del cubierto (tenerdor o cuchillo)
+	int spawnTime; //Tiempo en spawnear tras iniciar el ataque del Boss
 };
 
 class BossComponent: public Component
@@ -43,7 +44,11 @@ public:
 	void attack();
 
 	void darkenShadow();
+	void createCutlery(); //Crear cubiertos
+	void moveCutlery(); //Mover cubiertos
 
 	bool isFlonkOnShadow() const;
+	bool hasCrashed() const; //Comprueba si un cubierto ha chocado contra otro objeto
+	bool isOutOfScreen() const; //Comprueba si un cubierto se ha salido de la pantalla
 };
 

@@ -58,7 +58,8 @@ void BossComponent::detect()
 void BossComponent::attack()
 {
 	darkenShadow();
-
+	createCutlery();
+	moveCutlery();
 }
 
 void BossComponent::darkenShadow()
@@ -66,8 +67,34 @@ void BossComponent::darkenShadow()
 	//Lógica de cambiar de la textura por la más oscura
 }
 
+void BossComponent::createCutlery()
+{
+	/* Lógica de crear los cubiertos.
+		Usar randoms para la aparicion de cada uno, otro para decidir si se crea cuchillo o tenedor, otro para 
+		la fila en la que spawnea, y otro para la velocidad que tendrá. */
+}
+
+void BossComponent::moveCutlery()
+{
+	//Lógica para mover los cubiertos que estén activos en la pool de cubiertos
+
+	if(hasCrashed() || isOutOfScreen())
+}
+
 bool BossComponent::isFlonkOnShadow() const
 {
 	//Lógica de comprobar si Flonk esta en cualquiera de las casillas que ocupa la sombra
+	return false;
+}
+
+bool BossComponent::hasCrashed() const
+{
+	//Lógica de colision con otras entidades de la sala
+	return false;
+}
+
+bool BossComponent::isOutOfScreen() const
+{
+	//Lógica para obtener la posicion del cubierto y ver si está fuera de la pantalla
 	return false;
 }
