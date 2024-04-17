@@ -68,3 +68,8 @@ RoomScene* Entity::getScene() const
 {
 	return myScene;
 }
+
+EntityName Entity::getName() const
+{
+	return name;
+}

@@ -22,7 +22,9 @@ enum componentsEnum
 //Si no es relevante, el valor será 0 (UNAMED)
 enum EntityName {
 	UNAMED_ENTITY,
-	FROG_ENTITY
+	FROG_ENTITY,
+	BOMB_ENTITY,
+	BREAKEABLE_DOOR_ENTITY
 };
 
 class Component;
@@ -45,7 +47,7 @@ private:
 	EntityName name;
 	//AnimationComponent* animationComponent;
 public:
-//provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
+	//provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
 	Entity(RoomScene* scn);
 	Entity(RoomScene* scn, EntityName name);
 	void addComponent(componentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
@@ -60,5 +62,5 @@ public:
 	RenderComponentSnake* getRenderComponentSnake() const { return renderComponentSnake; }
 	RenderComponent* getRenderComponent() const { return renderComponent; };
 	RoomScene* getScene() const;
+	EntityName getName() const;
 };
-
