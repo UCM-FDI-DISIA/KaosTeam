@@ -99,7 +99,7 @@
   <object id="16" name="Termita" x="105.333" y="26.6667">
    <point/>
   </object>
-  <object id="8" name="FlonkE" type="Player" x="233.333" y="139.333">
+  <object id="8" name="FlonkE" type="Player" x="234" y="140">
    <point/>
   </object>
   <object id="9" name="FlonkN" type="Player" x="120.667" y="29.3333">
