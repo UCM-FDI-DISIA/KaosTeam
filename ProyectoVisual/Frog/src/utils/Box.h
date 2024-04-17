@@ -9,7 +9,7 @@ public:
 	Box(Vector2D casilla, float width, float height);
 	Box(Vector2D casilla);
 
-	SDL_Rect GetOnDisplayPosition();
+	SDL_Rect GetOnDisplayPosition() const;
 protected:
 	Vector2D casilla;
 	float width;

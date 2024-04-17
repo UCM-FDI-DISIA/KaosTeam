@@ -5,11 +5,18 @@
 #include "TransformComponent.h"
 
 class Collider {
+public:
 	Collider(Box box) : funciones(std::list<std::function<void(Entity*)>*>()), box(box) {
-	};
-	Box box; //La caja que define el tamaño y posicion del collider
-	std::list<std::function<void(Entity*)>*> funciones; //Las funciones a llamar en caso de colision
 
+	};
+	std::list<std::function<void(Entity*)>*> funciones; //Las funciones a llamar en caso de colision
+	//Añade una funcion al collider que quieras
+	void AddCall(std::function<void(Entity* e)>* func);
+	//Comprueba la colision con un collider, si hay colision llama a OnCollision
+	void OnCollision(Entity* e);
+	bool Collides(Collider*);
+private:
+	Box box; //La caja que define el tamaño y posicion del collider
 };
 
 //Comprueba colisiones de objetos, y envía un mensaje con la información relevante a los componentes suscritos
@@ -18,19 +25,15 @@ class Collider {
 class ColliderComponent : public Component
 {
 public:
-	ColliderComponent() : colliders(std::list<Collider>()) {};
-	~ColliderComponent() {
-		//No hay que eliminar function porque pertenece al objeto llamado
-	};
+	ColliderComponent() : colliders(std::list<Collider*>()) {};
+	~ColliderComponent() {};
 	//Comprueba la colisión de los colliders de este componente con los de la otra entidad
-	bool CheckCollision(Entity* e);
-	//A llamar en caso de colisión, como parametro la entidad colisionada
-	void OnCollision(Entity* e);
-
-	//Añade una funciona al collider que quieras
-	void AddCall(std::function<void(Entity* e)>* func);
+	void CheckCollision(Entity* e);
+	//Añade un collider a este componente
+	void AddCollider(Collider* c);
+	std::list<Collider*> GetColliders() const;
 private:
 	//Lista de colliders gestionados por este componente
-	std::list<Collider> colliders;
+	std::list<Collider*> colliders;
 };
 

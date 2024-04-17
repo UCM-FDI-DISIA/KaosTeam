@@ -14,7 +14,7 @@ Box::Box(Vector2D casilla) : casilla(casilla) {
 	height = TILE_SIZE;
 };
 
-SDL_Rect Box::GetOnDisplayPosition() {
+SDL_Rect Box::GetOnDisplayPosition() const{
 	SDL_Rect dest;
 
 	Vector2D mOffset = offset + Vector2D(width / 2, height / 2);//para que este centrado en la casilla

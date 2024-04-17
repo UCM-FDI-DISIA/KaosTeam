@@ -272,7 +272,6 @@
     <ClInclude Include="src\managers\MapManager.h" />
     <ClInclude Include="src\utils\Box.h" />
     <ClInclude Include="src\utils\Button.h" />
-    <ClInclude Include="src\utils\CollisionMessage.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\TransitionComponent.h" />

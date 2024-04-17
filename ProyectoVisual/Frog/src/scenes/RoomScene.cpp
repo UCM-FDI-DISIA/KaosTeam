@@ -30,9 +30,7 @@ void RoomScene::CheckColisions() {
 		ColliderComponent* coll1 = static_cast<ColliderComponent*>(e1->getComponent(COLLIDER_COMPONENT));
 		if (coll1 != nullptr)
 			for (Entity* e2 : entityList) {
-				ColliderComponent* coll2 = static_cast<ColliderComponent*>(e2->getComponent(COLLIDER_COMPONENT));
-				if (coll2 != nullptr && coll2->CheckCollision(e1))
-					coll2->OnCollision(e1);
+				coll1->CheckCollision(e2);
 			}
 	}
 };
