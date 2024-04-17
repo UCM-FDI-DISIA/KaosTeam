@@ -124,6 +124,9 @@ public:
 		//render(srcRect, destRect, angle);
 		SDL_RenderCopyEx(renderer_, texture_, &srcRect, &destRect, angle, 0, flip);
 	}
+	void setAlphaMod(Uint8 alpha) {
+		SDL_SetTextureAlphaMod(texture_, alpha);
+	}
 
 private:
 

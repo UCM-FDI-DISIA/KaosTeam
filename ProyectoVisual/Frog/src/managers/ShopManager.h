@@ -28,8 +28,8 @@ private:
 	int flyValue = 15; //mosca
 	int centipedeValue = 20; //ciempies
 
-	Entity* player;
-	MoneyComponent* playerMoney;
+	Entity* player = nullptr;
+	MoneyComponent* playerMoney = nullptr;
 
 	//Texture& currSelec; //Textura que apunta al boton seleccionado
 	//SDL_Rect selecDest; 
@@ -39,11 +39,12 @@ private:
 	Texture& waspTex;
 	Texture& flyTex;
 	Texture& centipedeTex;
-	//	std::vector <Texture*> textures;
+	//Texture& selectedTexture;
 
 	//metodos
 	Shop();
 	void buyPowerUp(PowerUps powerUp);
 	void changeButton(ButtonDirection dir);
+	void setOppacity();
 };
 #endif // !SHOPMANAGER_H

@@ -4,28 +4,74 @@
 #include "../sdlutils/Texture.h"
 
 
-Shop::Shop() : imngr(im()), grasshoperTex(sdlutils().images().at("grasshopperSheet")),
+Shop::Shop() : imngr(im()), grasshoperTex(sdlutils().images().at("saltamontes")),
 							waspTex(sdlutils().images().at("avispa")),
 							flyTex(sdlutils().images().at("fly")),
-							centipedeTex(sdlutils().images().at("ciempies")) {
+							centipedeTex(sdlutils().images().at("ciempies"))/*,selectedTexture(grasshoperTex)*/ {
 	selectedPowerUp = GRASSHOPER;
 	actualDirection = RIGHT;
+	setOppacity();
 }
 void Shop::setPlayer(Entity* player_) {
 	player = player_;
 	playerMoney = dynamic_cast<MoneyComponent*>(player->getComponent(MONEY_COMPONENT));
 }
+void Shop::setOppacity() {
+	switch (selectedPowerUp) {
+	case Shop::GRASSHOPER:
+	{
+		grasshoperTex.setAlphaMod(255);
+		waspTex.setAlphaMod(200);
+		flyTex.setAlphaMod(200);
+		centipedeTex.setAlphaMod(200);
+	}
+	break;
+	case Shop::WASP:
+	{
+		grasshoperTex.setAlphaMod(200);
+		waspTex.setAlphaMod(255);
+		flyTex.setAlphaMod(200);
+		centipedeTex.setAlphaMod(200);
+	}
+	break;
+	case Shop::FLY:
+	{
+		grasshoperTex.setAlphaMod(200);
+		waspTex.setAlphaMod(200);
+		flyTex.setAlphaMod(255);
+		centipedeTex.setAlphaMod(200);
+	}
+	break;
+	case Shop::CENTIPEDE:
+	{
+		grasshoperTex.setAlphaMod(200);
+		waspTex.setAlphaMod(200);
+		flyTex.setAlphaMod(200);
+		centipedeTex.setAlphaMod(255);
+	}
+	break;
+	default:
+		break;
+	}
+}
 void Shop::render() {
-	//grasshoperTex.render(SDL_Rect{250,Y,300,300});
-	waspTex.render(SDL_Rect{ 330,0,65, 65 });
-	flyTex.render(SDL_Rect{ 430,0,flyTex.width(), flyTex.height()});
-	centipedeTex.render(SDL_Rect{ 480,0,65, 38 });
+	
+	//selectedTexture.setAlphaMod(255);
+
+	//grasshoperTex.setAlphaMod(255);
+	//waspTex.setAlphaMod(200);
+	//flyTex.setAlphaMod(200);
+	//centipedeTex.setAlphaMod(200);
+	grasshoperTex.render(SDL_Rect{ 250,300,65,65 });
+	waspTex.render(SDL_Rect{ 330,300,65, 65 });
+	flyTex.render(SDL_Rect{ 410,300,flyTex.width(), flyTex.height() });
+	centipedeTex.render(SDL_Rect{ 480,300,65, 65 });
+	
 }
 void Shop::update() {
 	if (imngr.getActionBuy()){ buyPowerUp(selectedPowerUp); }
 	else if (imngr.getActionRightShop()) { changeButton(RIGHT); }
 	else if (imngr.getActionLeftShop()){ changeButton(LEFT); }
-		
 
 }
 //este metodo se llamara cuando del input se reciba la tecla comprar y se pasa la mejora seleccionada en ese momento
@@ -93,6 +139,7 @@ void Shop::changeButton(ButtonDirection dir)
 		break;
 	}
 	selectedPowerUp = static_cast<PowerUps>(p);
+	setOppacity();
 	////Modifico la pos de la seleccion actual (mosca)
 	//selecDest.x = menuButton[currButton]->getRect().x - offset - selecDest.w / 2;
 	//selecDest.y = menuButton[currButton]->getRect().y + menuButton[currButton]->getRect().h / 2

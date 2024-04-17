@@ -28,6 +28,7 @@
         { "id" : "fishSheet", "file" : "resources/Sprites/spritesheetFish.png", "rows" : 1, "cols" : 3},
         { "id" : "avispa", "file" : "resources/cristinaPrueba/avispa.png", "rows" : 1, "cols" : 1},
         { "id" : "ciempies", "file" : "resources/cristinaPrueba/ciempies.png", "rows" : 1, "cols" : 1},
+        { "id" : "saltamontes", "file" : "resources/cristinaPrueba/saltamonte.png", "rows" : 1, "cols" : 1},
 
 
 
