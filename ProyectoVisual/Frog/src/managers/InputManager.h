@@ -38,6 +38,9 @@ private:
         BTN_RIGHT,
         BTN_ESCAPE,
         BTN_SPACE,
+        BTN_ACTIONBUY,
+        BTN_RIGHTSHOP,
+        BTN_LEFTSHOP,
         END //Para tener un valor con el que crear y utilizar el array
     };
 
@@ -71,6 +74,9 @@ public:
     InputButton getAction2();
     //InputButton getShift();
     InputButton getAction4();
+    InputButton getActionBuy();
+    InputButton getActionRightShop();
+    InputButton getActionLeftShop();
     InputButton getUp();
     InputButton getDown();
     InputButton getLeft();

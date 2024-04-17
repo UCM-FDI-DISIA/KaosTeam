@@ -6,6 +6,7 @@
 #include "../components/MoneyComponent.h"
 #include "../utils/Singleton.h"
 
+class InputManager;
 class Shop : public Singleton<Shop> {
 
 	friend Singleton<Shop>;
@@ -13,16 +14,29 @@ public:
 	void render();
 	void update();
 	void setPlayer(Entity* player);
+	//void enterShop();
+	//void leaveShop();
 private:
-	enum PowerUps { GRASSHOPER, WASP, FLY, CENTIPEDE };
+	enum PowerUps { GRASSHOPER, WASP, FLY, CENTIPEDE, TOTAL };
 	PowerUps selectedPowerUp;
+	enum ButtonDirection { RIGHT, LEFT };
+	ButtonDirection actualDirection;
+
 	int grasshoperValue = 10; //saltamones
 	int waspValue = 15; //avispa
 	int flyValue = 15; //mosca
 	int centipedeValue = 20; //ciempies
+
 	Entity* player;
 	MoneyComponent* playerMoney;
-	Shop() {};
+
+	//Texture& currSelec; //Textura que apunta al boton seleccionado
+	//SDL_Rect selecDest; 
+	InputManager& imngr;
+
+	//metodos
+	Shop();
 	void BuyPowerUp(PowerUps powerUp);
+	void changeButton(ButtonDirection dir);
 };
 #endif // !SHOPMANAGER_H

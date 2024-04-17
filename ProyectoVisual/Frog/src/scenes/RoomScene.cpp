@@ -9,20 +9,22 @@ void RoomScene::render() {
 			e->render();
 	}
 	HUD->render();
+	if (insideShop) shopManager->render();
 }
 
 void RoomScene::update() {
-	for (Entity* e : entityList) {
-		if (e != nullptr)
-		e->update();
-	}
-
+	if (insideShop)
+		shopManager->update();
+	
+		for (Entity* e : entityList) {
+			if (e != nullptr)
+				e->update();
+		}
 	cameraManager->update();
-	if (insideShop) shopManager->update();
+	
 	if (needMapChange)
 		changeMap();
 	//comrpueba las colisiones con la rana
-
 }
 
 void RoomScene::CheckColisions() {
@@ -403,7 +405,10 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 				if (objName == "FlonkW") placeHere = true;
 				break;
 			case P:
-				if (objName == "FlonkP") placeHere = true;
+				if (objName == "FlonkP") { 
+					placeHere = true;
+					insideShop = true;
+				}
 				break;
 			default:
 				break;

@@ -40,7 +40,17 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_SPACE:
 			DowntiCheck(BTN_SPACE);
 			break;
+		case SDLK_b:	//comprar
+			DowntiCheck(BTN_ACTIONBUY);
+			break;
+		case SDLK_a:	//izq en tienda
+			DowntiCheck(BTN_LEFTSHOP);
+			break;
+		case SDLK_d:	//derecha en tienda
+			DowntiCheck(BTN_RIGHTSHOP);
+			break;
 		}
+		
 	}
 	else if (event.type == SDL_KEYUP)
 	{
@@ -76,6 +86,15 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 			break;
 		case SDLK_SPACE:
 			UptiCheck(BTN_SPACE);
+			break;
+		case SDLK_b:	
+			UptiCheck(BTN_ACTIONBUY);
+			break;
+		case SDLK_a:	
+			UptiCheck(BTN_LEFTSHOP);
+			break;
+		case SDLK_d:	
+			UptiCheck(BTN_RIGHTSHOP);
 			break;
 		}
 	}
@@ -121,6 +140,15 @@ InputButton InputManager::getAction2() {
 //}
 InputButton InputManager::getAction4() {
 	return buttons[BTN_ACTION4];
+}
+InputButton InputManager::getActionBuy() {
+	return buttons[BTN_ACTIONBUY];
+}
+InputButton InputManager::getActionRightShop() {
+	return buttons[BTN_RIGHTSHOP];
+}
+InputButton InputManager::getActionLeftShop() {
+	return buttons[BTN_LEFTSHOP];
 }
 InputButton InputManager::getUp() {
 	return buttons[BTN_UP];
