@@ -5,6 +5,7 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../components/TransformComponent.h"
 
 
 const int MAX_TIME_ON_SHADOW = 3;
