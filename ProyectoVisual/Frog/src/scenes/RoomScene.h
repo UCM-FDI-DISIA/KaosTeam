@@ -52,7 +52,7 @@ public:
 		//Create player desde el mapa
 		cameraManager = Camera::instance();
 		cameraManager->setTarget(player);
-		HUD = HUDManager::GetInstance();
+		HUD = HUDManager::instance();
 		shopManager = Shop::instance();
 		shopManager->setPlayer(player);
 

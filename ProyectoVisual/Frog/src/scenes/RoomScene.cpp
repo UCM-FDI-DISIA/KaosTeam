@@ -476,8 +476,10 @@ RoomScene::~RoomScene() {
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;
 	}
-	//delete cameraManager;
-	//delete shopManager;
+
+	//NO BORREIS LO SINGLETONS, Q SE BORRAN SOLOS
+
+	delete mapReader;
 }
 
 void RoomScene::changeMap()

@@ -20,7 +20,7 @@ Game::Game() : //
 Game::~Game()
 {
 	sdlutils().close();
-	//delete pausedState;
+	delete pausedState;
 	//delete newgameState;
 	//delete gameOverState;
 	delete runningState;
