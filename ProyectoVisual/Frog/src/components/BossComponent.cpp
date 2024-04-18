@@ -1,6 +1,7 @@
 #include "BossComponent.h"
 
-BossComponent::BossComponent()
+BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), speed(1.5), multiplier(0.2),
+		pos(Vector2D(0, 0))
 {
 	initComponent();
 }
@@ -11,7 +12,7 @@ BossComponent::~BossComponent()
 
 void BossComponent::initComponent()
 {
-
+	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 
 void BossComponent::update()

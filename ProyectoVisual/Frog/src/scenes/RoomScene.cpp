@@ -309,6 +309,17 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	return snake;
 }
 
+Entity* RoomScene::createFrancois(Vector2D pos)
+{
+	Entity* fran = new Entity(this);
+	TransformComponent* tr = new TransformComponent(pos);
+	fran->addComponent(TRANSFORM_COMPONENT, tr);
+	tr->setContext(fran);
+	AddEntity(fran);
+
+	return fran;
+}
+
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
@@ -348,6 +359,9 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	else if (objName == "Snake") {
 		c = createSnake(pos);
+	}
+	else if (objName == "Francois") {
+		c = createFrancois(pos);
 	}
 	/*
 	else if ()......

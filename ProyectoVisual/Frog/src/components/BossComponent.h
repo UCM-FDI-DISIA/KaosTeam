@@ -24,14 +24,17 @@ class BossComponent: public Component
 private:
 	bossState currState;
 	std::vector<Cubierto*> cubiertos;
-	std::vector<std::pair<Cubierto*, bool>> poolCubiertos;
+	std::vector<std::pair<Cubierto*, bool>> poolCubiertos; //El numero de cubiertos max instanciados depende de la zona
 
 	int shadowTimer; //para saber cuanto tiempo ha pasado en la sombra
 	int postAttackTimer; //para evitar que empiece a detectar tras un ataque
-	int speed; //velocidad de fracois
 
-	TransformComponent* tr;
+	float multiplier; //Se usa para reducir la velocidad de la sombra
+	float speed; //Velocidad de la sombra
+	Vector2D pos; //Posicion de la sombra
 	Texture* sombra;
+	TransformComponent* tr;
+
 public:
 	BossComponent();
 	~BossComponent();
