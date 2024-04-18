@@ -1,10 +1,10 @@
-#include <functional>
+#include "../sdlutils/VirtualTimer.h"
 #include "MovementComponentBomb.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Component.h"
 #include "../scenes/RoomScene.h"
 
-MovementComponentBomb::MovementComponentBomb() : isLaunched(true), direction(NONE) {
+MovementComponentBomb::MovementComponentBomb() : shockEntity(false), direction(NONE) {
 }
 
 void MovementComponentBomb::initComponent() {
@@ -14,6 +14,10 @@ void MovementComponentBomb::initComponent() {
 	tr = static_cast<TransformComponent*> (ent->getComponent(TRANSFORM_COMPONENT));
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
 	rndr = static_cast<RenderComponent*>(ent->getComponent(RENDER_COMPONENT));
+
+	//Inicilaizamos valores que vaa tener en cuanto la bomba se instancie
+	direction = moveFrog->getDirection();
+	animator->playAnimation("BOMB_IDLE");
 
 	// Aquí envolvemos la función checkEntityShock en un objeto std::function
 	coll->AddCall([this](Entity* e) {checkCollisionsBomb(e); }); //Añadimos callback
@@ -39,20 +43,6 @@ void MovementComponentBomb::checkCollisionsBomb(Entity* ent) {
 		explodeBomb();
 		std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
 		break;
-	//case EntityName::FISH_ENTITY:
-	//		//Quitariamos vida a la serpiente...
-	//		ent->getScene()->removeEntity(ent);
-	//		//Eliminamos a la bomba
-	//		ent->getScene()->removeEntity(this->ent);
-	//		std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
-	//		break;
-	//case EntityName::CRAZY_FROG_ENTITY:
-	//	//Quitariamos vida a la serpiente...
-	//	ent->getScene()->removeEntity(ent);
-	//	//Eliminamos a la bomba
-	//	ent->getScene()->removeEntity(this->ent);
-	//	std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
-	//	break;
 	}
 }
 
@@ -82,8 +72,8 @@ void MovementComponentBomb::moveBomb() {
 
 //En este metodo se comprueba si la bomba choca con alguna entidad que puede dañar o con las paredes intraspasables del mapa
 void MovementComponentBomb::checkShock() {
-	if (!checkIfTileWalkable(tr->getCasilla() + velocity))
-		velocity = Vector2D(0, 0);
+	if (!checkIfTileWalkable(tr->getCasilla() + velocity) || shockEntity)
+		explodeBomb();
 	else
 		moveBomb(); //Movemos la bomba si no choca con nada
 }
@@ -91,19 +81,22 @@ void MovementComponentBomb::checkShock() {
 //Este metodo se ejecuta en caso de que la bomba choque con algo
 //Simplemente haría la animación de explosión y su sonido, y una vez hecho eso, elimina la bomba de la escena de la escena
 void MovementComponentBomb::explodeBomb() {
+	animator->stopAnimation(); //Paramos animacion actual
+	animator->removeAnimations(); //Quitamos animaciones existentes
 	rndr->ChangeTexture(explosionText); //cambiamos la textura del objeto (al spriteSheet de la explosion)
-	animator->removeAnimations(); //Quitamos animaciones exxistentes
 	animator->addAnimation("EXPLOSION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
-	animator->playAnimation("EXPLOSION");
+	animator->playAnimation("EXPLOSION"); //Reproducimos explosión
 
+	shockEntity = true;
 	velocity = Vector2D(0, 0);
+
+	timerForDelete.reset(); //reseteamos timer
 }
 
 void MovementComponentBomb::update() {
-	if (isLaunched) { //Aqui habria que detectar el input del player -> o llamar a un metodo que cambie este booleano
-		direction = moveFrog->getDirection(); //Obtenemos direccion a la que mira la rana
-		isLaunched = false;
-		animator->playAnimation("BOMB_IDLE");
+	// Si ha pasado un tiempo suficiente desde la explosión, eliminamos la entidad
+	if (timerForDelete.currTime() >= 2000 && shockEntity) { // explosionDuration es el tiempo en milisegundos
+		ent->getScene()->removeEntity(this->ent);
 	}
 	checkShock();
 }

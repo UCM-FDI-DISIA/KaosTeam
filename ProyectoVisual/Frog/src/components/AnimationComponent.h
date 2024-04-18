@@ -52,6 +52,7 @@ public:
 	void addAnimation(const std::string& name, const Animation& anim);
 	void playAnimation(const std::string& name);
 	void removeAnimations();
+	void stopAnimation();
 	int getCurrentFil() const { return currentFrameR; };
 	int getCurrentCol() const { return currentFrameC; };
 	Animation getCurrentAnim() const { return currentAnim; };

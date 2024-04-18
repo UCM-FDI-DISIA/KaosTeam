@@ -4,6 +4,7 @@
 #include "TransformComponent.h"
 #include "ColliderComponent.h"
 #include "RenderComponent.h"
+#include "../sdlutils/VirtualTimer.h"
 
 class AnimationComponent;
 class Texture;
@@ -17,9 +18,10 @@ private:
 	ColliderComponent* coll = nullptr;
 	RenderComponent* rndr = nullptr;
 	Texture* explosionText = new Texture(sdlutils().renderer(), "../Frog/resources/Sprites/ExplosionSpritesheet.png", 1, 2);
+	VirtualTimer timerForDelete;
 
 	Vector2D velocity = Vector2D(0, 0);
-	bool isLaunched;				//Booleano para indicar si la bomba se ha lanzado
+	bool shockEntity;				//Booleano que indica si ha chocado con una entidad (NO CON LOS LIMITES DEL MAPA)
 
 	void moveBomb();
 	void checkShock();
