@@ -6,17 +6,18 @@
 
 class Collider {
 public:
-	Collider(Box box) : funciones(std::list<std::function<void(Entity*)>*>()), box(box) {
-
+	Collider(Box* box) : funciones(std::list<std::function<void(Entity*)>>()), box(box) {
+		
 	};
-	std::list<std::function<void(Entity*)>*> funciones; //Las funciones a llamar en caso de colision
 	//Añade una funcion al collider que quieras
-	void AddCall(std::function<void(Entity* e)>* func);
+	void AddCall(std::function<void(Entity* e)> func);
 	//Comprueba la colision con un collider, si hay colision llama a OnCollision
 	void OnCollision(Entity* e);
-	bool Collides(Collider*);
+	bool Collides(Collider) const;
 private:
-	Box box; //La caja que define el tamaño y posicion del collider
+	Box* box; //La caja que define el tamaño y posicion del collider
+	//El box tiene que ser gestionado por el creador del box
+	std::list<std::function<void(Entity*)>> funciones; //Las funciones a llamar en caso de colision
 };
 
 //Comprueba colisiones de objetos, y envía un mensaje con la información relevante a los componentes suscritos
@@ -25,15 +26,17 @@ private:
 class ColliderComponent : public Component
 {
 public:
-	ColliderComponent() : colliders(std::list<Collider*>()) {};
-	~ColliderComponent() {};
+	ColliderComponent() : colliders(std::list<Collider>()) {};
+	ColliderComponent(TransformComponent* tr) : colliders(std::list<Collider>()) {
+		AddCollider(Collider(tr));
+	};
 	//Comprueba la colisión de los colliders de este componente con los de la otra entidad
 	void CheckCollision(Entity* e);
 	//Añade un collider a este componente
-	void AddCollider(Collider* c);
-	std::list<Collider*> GetColliders() const;
+	void AddCollider(Collider c);
+	std::list<Collider> GetColliders() const;
 private:
 	//Lista de colliders gestionados por este componente
-	std::list<Collider*> colliders;
+	std::list<Collider> colliders;
 };
 

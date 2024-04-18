@@ -11,38 +11,38 @@ void ColliderComponent::CheckCollision(Entity* e) {
 	if (e != ent) {
 		ColliderComponent* coll2 = static_cast<ColliderComponent*>(e->getComponent(COLLIDER_COMPONENT));
 		if (coll2 != nullptr) {
-			std::list<Collider*> colliders2 = coll2->GetColliders();
-			for (Collider* collider : colliders) {
-				for (Collider* collider2 : colliders2) {
-					if (collider->Collides(collider2))
-						collider2->OnCollision(ent);
+			std::list<Collider> colliders2 = coll2->GetColliders();
+			for (Collider collider : colliders) {
+				for (Collider collider2 : colliders2) {
+					if (collider.Collides(collider2))
+						collider2.OnCollision(ent);
 				}
 			}
 		}
 	}
 }
 
-void ColliderComponent::AddCollider(Collider* c) {
+void ColliderComponent::AddCollider(Collider c) {
 	colliders.push_back(c);
 }
 
-std::list<Collider*> ColliderComponent::GetColliders() const {
+std::list<Collider> ColliderComponent::GetColliders() const {
 	return colliders;
 }
-void Collider::AddCall(std::function<void(Entity*)>* func) {
+void Collider::AddCall(std::function<void(Entity*)> func) {
 	funciones.push_back(func);
 }
 
 void Collider::OnCollision(Entity* e) {
-	//Esto llama a las funciones guardadas 
-	for (std::function<void(Entity*)>* func : funciones) {
-		(*func)(e);
+	//Esto llama a las funciones guardadas
+	for (std::function<void(Entity*)> func : funciones) {
+		(func)(e);
 	}
 }
 
-bool Collider::Collides(Collider* c) {
-	SDL_Rect suRect = c->box.GetOnDisplayPosition();
-	SDL_Rect miRect = box.GetOnDisplayPosition();
+bool Collider::Collides(Collider c) const{
+	SDL_Rect suRect = c.box->GetOnDisplayPosition();
+	SDL_Rect miRect = box->GetOnDisplayPosition();
 
 	return SDL_HasIntersection(&miRect, &suRect);
 }
