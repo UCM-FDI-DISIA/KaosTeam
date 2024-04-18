@@ -17,7 +17,7 @@ gente que ha estado haciendo enemigos puede hacer su método onCollision y meterl
 class ColliderComponent : public Component
 {
 public:
-	ColliderComponent() : funciones(std::list<std::function<void(Entity*)>*>()) {};
+	ColliderComponent() : funciones(std::list<std::function<void(Entity*)>>()) {};
 	~ColliderComponent() {
 		//No hay que eliminar function porque pertenece al objeto llamado
 	};
@@ -28,10 +28,10 @@ public:
 
 	//Añade la funcion a llamar cuando hay colision
 	//En el futuro molaria poder almacenas muchas funciones y llamar a todas
-	void AddCall(std::function<void(Entity* e)>* func);
+	void AddCall(std::function<void(Entity* e)> func);
 	
 private:
 	//Lista de funciones a llamar cuando se detecta la colisión
-	std::list<std::function<void(Entity*)>*> funciones;
+	std::list<std::function<void(Entity*)>> funciones;
 };
 

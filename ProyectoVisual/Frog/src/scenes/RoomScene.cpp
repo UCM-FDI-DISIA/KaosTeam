@@ -22,6 +22,7 @@ void RoomScene::update() {
 	if (needMapChange)
 		changeMap();
 	//comrpueba las colisiones con la rana
+	CheckColisions();
 
 }
 
@@ -35,7 +36,23 @@ void RoomScene::CheckColisions() {
 					coll2->OnCollision(e1);
 			}
 	}
-};
+}
+
+//Falta implementar la lógica de cada una de las cosas
+void RoomScene::CheckCollisionsBomb(Entity* ent) {
+	if (ent->getName() == EntityName::BREAKABLE_DOOR_ENTITY) {
+		//Destruimos la puerta: ent-> MetodoAlQueLlamar(); 
+		std::cout << "PUERTA DESTRUIDA" << std::endl;
+	}
+	else if (ent->getName() == EntityName::INTERRUPTOR_ENTITY) {
+		//Activamos interruptor
+		std::cout << "INTERRUPTOR ACTIVADO" << std::endl;
+	}
+	else if (ent->getName() == EntityName::SNAKE_ENTITY) {
+		//Quitariamos vida a la serpiente
+		std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
+	}
+}
 
 Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 {
@@ -269,7 +286,7 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 }
 
 Entity* RoomScene::createSnake(Vector2D pos) {
-	Entity* snake = new Entity(this);
+	Entity* snake = new Entity(this, EntityName::SNAKE_ENTITY);
 	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheet.png", 4, 2);
 	Texture* txtNeck = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheetAttack.png", 2, 1);
 
@@ -301,6 +318,10 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 	snake->addRenderComponentSnake(renderSnake);
 
+	ColliderComponent* collSnake = new ColliderComponent();
+	collSnake->setContext(snake);
+	snake->addComponent(COLLIDER_COMPONENT, collSnake);
+
 	MovementComponentSnake* mvmSnake = new MovementComponentSnake(animSnake);
 	mvmSnake->setContext(snake);
 	mvmSnake->initComponent(); //INICIALIZAMOS LOS TRANSFORM (DE LO CONTARIO, PETARÍA)
@@ -313,6 +334,42 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	AddEntity(snake);
 	return snake;
 }
+Entity* RoomScene::createBomb(Vector2D pos) {
+	Entity* bomb = new Entity(this);
+	Texture* textBomb = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/HuevoSheet.png", 1, 2);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	bomb->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(bomb);
+
+	AnimationComponent* animBomb = new AnimationComponent();
+	RenderComponent* renderBomb = new RenderComponent(textBomb, 1, 3, 0.5, animBomb);
+	renderBomb->setContext(bomb);
+	renderBomb->initComponent();
+
+	animBomb->addAnimation("BOMB_IDLE", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
+	
+	bomb->addRenderComponent(renderBomb);
+	bomb->addComponent(ANIMATION_COMPONENT, animBomb);
+
+	ColliderComponent* collBomb = new ColliderComponent();
+	collBomb->setContext(bomb);
+	collBomb->AddCall([this](Entity* e) {CheckCollisionsBomb(e); }); //Añadimos callback
+	bomb->addComponent(COLLIDER_COMPONENT, collBomb);
+
+
+	MovementComponentBomb* moveBomb = new MovementComponentBomb();
+	bomb->addComponent(MOVEMENT_COMPONENT, moveBomb);
+	moveBomb->setContext(bomb);
+	moveBomb->initComponent();
+
+	
+
+	AddEntity(bomb);
+	return bomb;
+}
+
+
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
