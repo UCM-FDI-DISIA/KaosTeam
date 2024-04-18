@@ -45,7 +45,15 @@ public:
 	virtual ~Entity();
 	void update();
 	void render();
-	Component* getComponent(componentsEnum) const;
+	template<class T>
+	T* getComponent(componentsEnum) const {
+		if (componentes.count(Identificator) > 0) {
+
+			return static_cast<T*>(componentes.at(Identificator));
+		}
+		else
+			return nullptr;
+	};
 	RenderComponentFrog* getRenderComponentFrog() const { return renderComponentFrog; };
 	RenderComponentSnake* getRenderComponentSnake() const { return renderComponentSnake; }
 	RenderComponent* getRenderComponent() const { return renderComponent; };

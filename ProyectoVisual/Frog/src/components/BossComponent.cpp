@@ -12,7 +12,7 @@ BossComponent::~BossComponent()
 
 void BossComponent::initComponent()
 {
-	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 }
 
 void BossComponent::update()
