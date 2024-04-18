@@ -79,7 +79,10 @@ void BossComponent::moveCutlery()
 {
 	//Lógica para mover los cubiertos que estén activos en la pool de cubiertos
 
-	if(hasCrashed() || isOutOfScreen())
+	if (hasCrashed() || isOutOfScreen())
+	{
+
+	}
 }
 
 bool BossComponent::isFlonkOnShadow() const
