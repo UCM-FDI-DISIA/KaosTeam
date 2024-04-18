@@ -20,8 +20,8 @@ private:
 
 	enum PowerUps { GRASSHOPER, WASP, FLY, CENTIPEDE, TOTAL };
 	PowerUps selectedPowerUp;
-	enum ButtonDirection { RIGHT, LEFT };
-	ButtonDirection actualDirection;
+	enum Direction { RIGHT, LEFT };
+	Direction actualDirection;
 
 	int grasshoperValue = 10; //saltamones
 	int waspValue = 15; //avispa
@@ -47,7 +47,7 @@ private:
 	//metodos
 	Shop();
 	void buyPowerUp(PowerUps powerUp);
-	void changeButton(ButtonDirection dir);
+	void changeAnimal(Direction dir);
 	void setOppacity();
 	void setSelectd();
 	void initShopEntitys();

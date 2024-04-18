@@ -85,8 +85,8 @@ void Shop::render() {
 void Shop::update() {
 	if (imngr.getActionBuy())
 	{ buyPowerUp(selectedPowerUp); }
-	else if (imngr.getActionRightShop()) { changeButton(RIGHT); }
-	else if (imngr.getActionLeftShop()){ changeButton(LEFT); }
+	else if (imngr.getActionRightShop()) { changeAnimal(RIGHT); }
+	else if (imngr.getActionLeftShop()){ changeAnimal(LEFT); }
 
 }
 //este metodo se llamara cuando del input se reciba la tecla comprar y se pasa la mejora seleccionada en ese momento
@@ -159,9 +159,23 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 	}
 	setOppacity();
 }
-void Shop::changeButton(ButtonDirection dir)
+void Shop::changeAnimal(Direction dir)
 {
-	int p = 0;
+	int step = (dir == RIGHT) ? 1 : -1;
+	int next = (static_cast<int>(selectedPowerUp) + step + TOTAL) % TOTAL;
+
+	int numSteps = 0;
+	while (animals[next]->getShopComponent()->isBuy()) {
+		next = (next + step + TOTAL) % TOTAL;
+		numSteps++;
+		if (numSteps >= TOTAL) {
+			return;
+		}
+	}
+	selectedPowerUp = static_cast<PowerUps>(next);
+	setSelectd();
+	setOppacity();
+	/*int p = 0;
 	switch (dir) {
 		case Shop::RIGHT: {
 			p = ((int)selectedPowerUp + 1) % (int)TOTAL;
@@ -181,5 +195,5 @@ void Shop::changeButton(ButtonDirection dir)
 	}
 	selectedPowerUp = static_cast<PowerUps>(p);
 	setSelectd();
-	setOppacity();
+	setOppacity();*/
 }
