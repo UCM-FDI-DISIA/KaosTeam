@@ -55,6 +55,10 @@
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\managers\ShopManager.cpp" />
+    <ClCompile Include="src\components\MovementComponentBomb.cpp" />
+    <ClCompile Include="src\scenes\MenuInicio.cpp" />
+    <ClCompile Include="src\scenes\MenuPausa.cpp" />
+    <ClCompile Include="src\scenes\MenuGameOver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -121,6 +125,10 @@
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\managers\ShopManager.h" />
+    <ClInclude Include="src\components\MovementComponentBomb.h" />
+    <ClInclude Include="src\scenes\MenuInicio.h" />
+    <ClInclude Include="src\scenes\MenuPausa.h" />
+    <ClInclude Include="src\scenes\MenuGameOver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
