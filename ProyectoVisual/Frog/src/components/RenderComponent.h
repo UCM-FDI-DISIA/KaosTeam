@@ -20,7 +20,9 @@ public:
 	//Constructora sin animador
 	RenderComponent(Texture* tex, int wframes, int hframes, float sc) : myTexture(tex), scale(sc) {};
 	RenderComponent(Texture* t, float sc = 1) : myTexture(t), scale(sc) { };
-	Texture* GetTexture() { return myTexture; };
+	Texture* GetTexture() const { return myTexture; };
+	//Por si queremos cambiar la textura a un objeto
+	void ChangeTexture(Texture* newText) { myTexture = newText; };
     void render();
 	void initComponent() override;
 };

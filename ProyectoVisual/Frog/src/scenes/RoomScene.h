@@ -44,12 +44,10 @@ private:
 	*/
 	void CheckColisions();
 
-	//Metodos callback para las colisiones
-	void CheckCollisionsBomb(Entity* ent);
 public:
 	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		std::string initMapPath = "resources/maps/niveles/nivelFinal/mapaNF.tmx";
+		std::string initMapPath = "resources/maps/niveles/nivel01/mapaN1_01.tmx";
 		mapReader = new MapManager(initMapPath, this);
 		mapReader->loadObj(initMapPath);
 
@@ -128,6 +126,7 @@ public:
 	};
 
 	void AddEntity(Entity* entity);
+	void removeEntity(Entity* entity);
 	void render() override;
 	void update() override;
 	virtual ~RoomScene();

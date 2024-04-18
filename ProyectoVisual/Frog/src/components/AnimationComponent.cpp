@@ -50,6 +50,10 @@ void AnimationComponent::playAnimation(const std::string& name)
 	}	
 }
 
+void AnimationComponent::removeAnimations() {
+	animationSet.clear();
+}
+
 /* Mueve al siguiente frame de animacion */
 void AnimationComponent::updateAnimation(const Animation& currenAnim, int index)
 {
