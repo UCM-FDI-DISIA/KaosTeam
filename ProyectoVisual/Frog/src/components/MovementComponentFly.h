@@ -14,7 +14,7 @@ private:
 	int status = 0;
 	
 public:
-	MovementComponentFly(Vector2D pos) : MovementComponent(pos), lastTimeMoved(SDL_GetTicks()) { };
+	MovementComponentFly(Vector2D pos) : MovementComponent(), lastTimeMoved(SDL_GetTicks()) { };
 	void update() override;
 };
 

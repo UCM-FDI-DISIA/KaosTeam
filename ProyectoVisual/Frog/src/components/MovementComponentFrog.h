@@ -1,5 +1,5 @@
 #pragma once
-#include "MovementComponent.h";
+#include "MovementComponent.h"
 #include "../managers/DataManager.h"
 #include "AnimationComponent.h"
 #include <iostream>
@@ -28,7 +28,7 @@ private:
 	
 
 public:
-	MovementComponentFrog(Vector2D casilla, AnimationComponent* a) : MovementComponent(casilla), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()), 
+	MovementComponentFrog(Vector2D casilla, AnimationComponent* a) : MovementComponent(), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()), 
 	anim(a), actualDirection(Directions::DOWN) {};
 	Directions getDirection() { return actualDirection; }
 	void update() override;

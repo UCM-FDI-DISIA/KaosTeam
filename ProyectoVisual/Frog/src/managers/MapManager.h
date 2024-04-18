@@ -2,6 +2,7 @@
 #include "../sdlutils/Texture.h"
 #include "../utils/assets.h"
 #include "../ecs/Entity.h"
+#include "DataManager.h"
 
 #include <tmxlite/Map.hpp>
 #include <tmxlite/ObjectGroup.hpp>

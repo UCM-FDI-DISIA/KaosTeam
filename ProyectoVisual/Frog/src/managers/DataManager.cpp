@@ -9,3 +9,17 @@ void DataManager::UpdateFrameTime() {
 Uint32 DataManager::getFrameTime() {
 	return frameTime;
 }
+
+std::vector<bool> DataManager::getInteractObj(const std::string& path)
+{
+	if (interactedObjects.find(path) == interactedObjects.end())
+		return {};
+	else
+		return interactedObjects[path];
+}
+
+void DataManager::addObjs(const std::string& path, const std::vector<bool>& interactObj)
+{
+	interactedObjects[path] = interactObj;
+}
+
