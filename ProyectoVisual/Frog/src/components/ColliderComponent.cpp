@@ -29,7 +29,7 @@ void ColliderComponent::AddCollider(Collider c) {
 std::list<Collider> ColliderComponent::GetColliders() const {
 	return colliders;
 }
-void Collider::AddCall(std::function<void(Entity*)> func) {
+void Collider::AddCall(void(*func)(Entity*)) {
 	funciones.push_back(func);
 }
 
