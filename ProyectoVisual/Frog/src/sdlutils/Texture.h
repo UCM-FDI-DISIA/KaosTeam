@@ -46,6 +46,10 @@ public:
 	inline int height() const {
 		return height_;
 	}
+	void setFrames(int row, int col) {
+		row_ = row;
+		column_ = col;
+	}
 
 	// This rendering method corresponds to method SDL_RenderCopyEx.
 	//

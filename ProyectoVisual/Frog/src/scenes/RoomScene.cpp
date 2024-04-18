@@ -41,7 +41,8 @@ void RoomScene::CheckColisions() {
 Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 {
 	player = new Entity(this);
-	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 5);
+
+	Texture* txtFrog = &sdlutils().images().at("frogSheet");
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
 	TransformComponent* transform = new TransformComponent(pos);
@@ -137,7 +138,7 @@ Entity* RoomScene::createTransition(std::string objName, std::string nextMap) {
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
 	Entity* frog = new Entity(this);
-	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaLocaSpritesheet.png", 4, 4);
+	Texture* txtFrog = &sdlutils().images().at("crazyFrogSheet");
 	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
 	TransformComponent* transform = new TransformComponent(pos);

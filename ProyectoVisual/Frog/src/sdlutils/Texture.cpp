@@ -21,6 +21,8 @@ Texture::Texture(Texture &&other) noexcept {
 	other.renderer_ = nullptr;
 	width_ = other.width_;
 	height_ = other.height_;
+	column_ = other.column_;
+	row_ = other.row_;
 }
 
 Texture::Texture(SDL_Renderer *renderer, const std::string &fileName, int row, int col) {

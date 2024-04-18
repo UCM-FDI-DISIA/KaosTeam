@@ -9,18 +9,18 @@ HUDManager::HUDManager() : vidasActuales(10), vidasMax(10), wormsActuales(0), re
 {
 	font = &sdlutils().fonts().at("COMICSANS");
 	textFly = &sdlutils().images().at("flyLifeSheet");
+
 	rectFly.y = yInicial;
 	rectFly.w = textFly->width() / textFly->getCol();
 	rectFly.h = textFly->height() / textFly->getRow();
-
-	textWorm = &sdlutils().images().at("worm");//new Texture(sdlutils().renderer(), "resources/Sprites/wormHUD.png", 1, 3);
+	
+	textWorm = &sdlutils().images().at("worm");
 	textNumWorms = new Texture(sdlutils().renderer(), to_string(wormsActuales), *font, colorFont);
 }
 
 HUDManager::~HUDManager()
 {
 	delete textNumWorms;
-	//destroyTexture(textNumWorms);
 	game = nullptr;
 }
 

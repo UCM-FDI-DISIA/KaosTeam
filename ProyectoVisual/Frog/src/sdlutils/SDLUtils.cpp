@@ -172,9 +172,10 @@ void SDLUtils::loadReasources(std::string filename) {
 					int rows = vObj["rows"]->AsNumber();
 					int cols = vObj["cols"]->AsNumber();
 #ifdef _DEBUG
-					std::cout << "Loading image with id: " << key << std::endl;
+					std::cout << "Loading image with id: " << key << " cols:" << cols << " rows:" << rows << std::endl;
 #endif
 					images_.emplace(key, Texture(renderer(), file, rows, cols));
+				
 				} else {
 					throw "'images' array in '" + filename
 							+ "' includes and invalid value";

@@ -22,7 +22,7 @@ public:
 	};
 	~RenderComponentFrog() {
 		delete tongueText;
-		delete frogText;
+		//delete frogText;
 	};
 	void render();
 	void AttackStart();
