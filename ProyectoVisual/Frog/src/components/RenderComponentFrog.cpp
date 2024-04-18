@@ -15,7 +15,7 @@ void RenderComponentFrog::render()
     Vector2D offset = transform->getOffset() //el offset el objeto
                     + Vector2D((t - size) / 2, (t - size) / 2);                                             //para que este centrado en la casilla
     Vector2D pos = transform->getCasilla();
-    Directions d = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
+    Directions d = ent->getComponent<MovementComponentFrog>(MOVEMENT_COMPONENT)->getDirection(); //Obtenemos direccion actual
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
    
@@ -26,7 +26,7 @@ void RenderComponentFrog::render()
 
     //la lengua 
     if (attacking) {
-        int distanceMoved = static_cast<AttackComponentFrog*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
+        int distanceMoved = ent->getComponent<AttackComponentFrog>(ATTACK_COMPONENT)->getDistanceMoved();
         
 
         if (distanceMoved < 0) { //Si el ataque acaba
@@ -129,5 +129,5 @@ void RenderComponentFrog::AttackStart() {
 }
 
 void RenderComponentFrog::initComponent() {
-    transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+    transform = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 }

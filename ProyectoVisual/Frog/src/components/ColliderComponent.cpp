@@ -8,8 +8,8 @@
 bool ColliderComponent::CheckCollision(Entity* e) {
 	//Habra que cambiar cosas cuando esté el transform
 	if (e != ent) {
-		SDL_Rect suRect = static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->GetOnDisplayPosition();
-		SDL_Rect miRect = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->GetOnDisplayPosition();
+		SDL_Rect suRect = e->getComponent<TransformComponent>(TRANSFORM_COMPONENT)->GetOnDisplayPosition();
+		SDL_Rect miRect = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT)->GetOnDisplayPosition();
 
 		return SDL_HasIntersection(&miRect, &suRect);
 	}

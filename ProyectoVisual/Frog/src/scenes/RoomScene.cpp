@@ -26,10 +26,10 @@ void RoomScene::update() {
 
 void RoomScene::CheckColisions() {
 	for (Entity* e1 : entityList) {
-		ColliderComponent* coll1 = static_cast<ColliderComponent*>(e1->getComponent(COLLIDER_COMPONENT));
+		ColliderComponent* coll1 = e1->getComponent<ColliderComponent>(COLLIDER_COMPONENT);
 		if (coll1 != nullptr)
 			for (Entity* e2 : entityList) {
-				ColliderComponent* coll2 = static_cast<ColliderComponent*>(e2->getComponent(COLLIDER_COMPONENT));
+				ColliderComponent* coll2 = e2->getComponent<ColliderComponent>(COLLIDER_COMPONENT);
 				if (coll2 != nullptr && coll2->CheckCollision(e1))
 					coll2->OnCollision(e1);
 			}
@@ -332,7 +332,7 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	else if (objName == "Black ant") {
 		if (player != nullptr) {
-			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+			MovementComponentFrog* mvmPlayer = player->getComponent<MovementComponentFrog>(MOVEMENT_COMPONENT);
 			c = createBlackAnt(pos, mvmPlayer);
 		}
 	}
@@ -352,7 +352,7 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	else if (objName == "Red ant") {
 		if (player != nullptr) {
-			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+			MovementComponentFrog* mvmPlayer = player->getComponent<MovementComponentFrog>(MOVEMENT_COMPONENT);
 			c = createRedAnt(pos, mvmPlayer);
 		}
 
@@ -437,7 +437,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 
 void RoomScene::movePlayer(Vector2D pos)
 {
-	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
+	player->getComponent<TransformComponent>(TRANSFORM_COMPONENT)->resetPos(pos);
 }
 
 

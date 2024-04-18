@@ -79,13 +79,13 @@ void MovementComponentSnake::searchFrog() {
 		if (currentDirection == DOWN_ROT) {
 			if ((distance.getY() <= attackDistance) && (distance.getY() > 0)) { //Si esta en el rango de ataque...
 				std::cout << "SNAKE ATACA abajo" << std::endl;
-				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
+				ent->getComponent<AttackComponentSnake>(ATTACK_COMPONENT)->attack();
 			}
 		}
 		else if (currentDirection == UP_ROT) {
 			if ((distance.getY() >= -attackDistance) && (distance.getY() < 0)) {
 				std::cout << "SNAKE ATACA arriba" << std::endl;
-				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
+				ent->getComponent<AttackComponentSnake>(ATTACK_COMPONENT)->attack();
 			}
 		}
 	}
@@ -93,20 +93,20 @@ void MovementComponentSnake::searchFrog() {
 		if (currentDirection == RIGHT_ROT) {
 			if ((distance.getX() <= attackDistance) && (distance.getX() > 0)) {
 				std::cout << "SNAKE ATACA derecha" << std::endl;
-				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
+				ent->getComponent<AttackComponentSnake>(ATTACK_COMPONENT)->attack();
 			}
 		}
 		else if (currentDirection == LEFT_ROT) {
 			if ((distance.getX() >= -attackDistance) && (distance.getX() < 0)) {
 				std::cout << "SNAKE ATACA izquierda" << std::endl; 
-				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
+				ent->getComponent<AttackComponentSnake>(ATTACK_COMPONENT)->attack();
 			}
 		}
 	}
 }
 
 void MovementComponentSnake::initComponent() {
-	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
-	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	targetTransformComp = ent->getScene()->getPlayer()->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
+	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 }
 

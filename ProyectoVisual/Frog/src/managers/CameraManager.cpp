@@ -7,7 +7,7 @@
 void Camera::setTarget(Entity* target)
 {
 	camTarget = target;
-	targetTransform = dynamic_cast<TransformComponent*>(camTarget->getComponent(TRANSFORM_COMPONENT));
+	targetTransform = camTarget->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 	targetPosition = targetTransform->getCasilla() * tileSize;
 	
 

@@ -28,5 +28,5 @@ void RenderComponent::render()
 }
 
 void RenderComponent::initComponent() {
-	transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	transform = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 }

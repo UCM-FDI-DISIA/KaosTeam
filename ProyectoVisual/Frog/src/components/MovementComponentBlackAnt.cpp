@@ -23,7 +23,7 @@ MovementComponentBlackAnt::MovementComponentBlackAnt(AnimationComponent* a) : Mo
 
 
 void MovementComponentBlackAnt::initComponent() {
-	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	targetTransformComp = ent->getScene()->getPlayer()->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 	playerPosition = targetTransformComp->getCasilla();
 }
 

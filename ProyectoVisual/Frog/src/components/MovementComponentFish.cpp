@@ -19,7 +19,7 @@ MovementComponentFish::MovementComponentFish(int boundX, AnimationComponent* a) 
 };
 
 void MovementComponentFish::initComponent() {
-	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 }
 void MovementComponentFish::update() {
 	if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {

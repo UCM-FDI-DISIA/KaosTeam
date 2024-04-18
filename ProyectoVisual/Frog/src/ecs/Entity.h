@@ -46,9 +46,8 @@ public:
 	void update();
 	void render();
 	template<class T>
-	T* getComponent(componentsEnum) const {
+	T* getComponent(componentsEnum Identificator) const {
 		if (componentes.count(Identificator) > 0) {
-
 			return static_cast<T*>(componentes.at(Identificator));
 		}
 		else

@@ -17,7 +17,7 @@ MovementComponentRedAnt::MovementComponentRedAnt(AnimationComponent* a, Movement
 };
 
 void MovementComponentRedAnt::initComponent() {
-	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	targetTransformComp =  ent->getScene()->getPlayer()->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 	playerPosition = targetTransformComp->getCasilla();
 }
 

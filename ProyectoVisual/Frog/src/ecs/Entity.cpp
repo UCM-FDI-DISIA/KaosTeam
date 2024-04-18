@@ -60,14 +60,6 @@ void Entity::render()
 	//else {} //hay entidades que no se renderizan los objetos de transición
 }
 
-Component* Entity::getComponent(componentsEnum Identificator) const
-{
-	if (componentes.count(Identificator) > 0)
-		return componentes.at(Identificator);
-	else
-		return nullptr;
-}
-
 RoomScene* Entity::getScene() const
 {
 	return myScene;
