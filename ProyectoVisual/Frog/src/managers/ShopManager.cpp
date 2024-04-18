@@ -2,86 +2,106 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../managers/InputManager.h"
 #include "../sdlutils/Texture.h"
+#include "../components/ShopComponent.h"
+#include "../ecs/EntityShop.h"
 
 
 Shop::Shop() : imngr(im()), grasshoperTex(sdlutils().images().at("saltamontes")),
 							waspTex(sdlutils().images().at("avispa")),
 							flyTex(sdlutils().images().at("fly")),
-							centipedeTex(sdlutils().images().at("ciempies"))/*,selectedTexture(grasshoperTex)*/ {
+							centipedeTex(sdlutils().images().at("ciempies")) {
 	selectedPowerUp = GRASSHOPER;
 	actualDirection = RIGHT;
+	selected = grasshoper;
+	initShopEntitys();
 	setOppacity();
+}
+void Shop::initShopEntitys() {
+	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 250,300,65,65 });
+	grasshoper->addShopComponent(gShop);
+	animals.push_back(grasshoper);
+	ShopComponent* wShop = new ShopComponent(waspTex, SDL_Rect{ 330,300,65, 65 });
+	wasp->addShopComponent(wShop);
+	animals.push_back(wasp);
+	ShopComponent* fShop = new ShopComponent(flyTex, SDL_Rect{ 410,300,flyTex.width(), flyTex.height() });
+	fly->addShopComponent(fShop);
+	animals.push_back(fly);
+	ShopComponent* cShop = new ShopComponent(centipedeTex, SDL_Rect{ 480,300,65, 65 });
+	centipede->addShopComponent(cShop);
+	animals.push_back(centipede);
 }
 void Shop::setPlayer(Entity* player_) {
 	player = player_;
 	playerMoney = dynamic_cast<MoneyComponent*>(player->getComponent(MONEY_COMPONENT));
 }
-void Shop::setOppacity() {
+void Shop::setSelectd() {
+	ShopComponent* sC = selected->getShopComponent();
+	sC->quitSelectd();
 	switch (selectedPowerUp) {
 	case Shop::GRASSHOPER:
 	{
-		grasshoperTex.setAlphaMod(255);
-		waspTex.setAlphaMod(200);
-		flyTex.setAlphaMod(200);
-		centipedeTex.setAlphaMod(200);
+		ShopComponent* sC = grasshoper->getShopComponent();
+		sC->setSelected();
+		selected = grasshoper;
 	}
 	break;
 	case Shop::WASP:
 	{
-		grasshoperTex.setAlphaMod(200);
-		waspTex.setAlphaMod(255);
-		flyTex.setAlphaMod(200);
-		centipedeTex.setAlphaMod(200);
+		ShopComponent* sC = wasp->getShopComponent();
+		sC->setSelected();
+		selected = wasp;
 	}
 	break;
 	case Shop::FLY:
 	{
-		grasshoperTex.setAlphaMod(200);
-		waspTex.setAlphaMod(200);
-		flyTex.setAlphaMod(255);
-		centipedeTex.setAlphaMod(200);
+		ShopComponent* sC = fly->getShopComponent();
+		sC->setSelected();
+		selected = fly;
 	}
 	break;
 	case Shop::CENTIPEDE:
 	{
-		grasshoperTex.setAlphaMod(200);
-		waspTex.setAlphaMod(200);
-		flyTex.setAlphaMod(200);
-		centipedeTex.setAlphaMod(255);
+		ShopComponent* sC = centipede->getShopComponent();
+		sC->setSelected();
+		selected = centipede;
 	}
 	break;
 	default:
 		break;
 	}
 }
+void Shop::setOppacity() {
+	for (auto& a : animals) {
+		ShopComponent* sC = a->getShopComponent();
+		sC->setOppacity();
+	}
+}
 void Shop::render() {
-	
-	//selectedTexture.setAlphaMod(255);
-
-	//grasshoperTex.setAlphaMod(255);
-	//waspTex.setAlphaMod(200);
-	//flyTex.setAlphaMod(200);
-	//centipedeTex.setAlphaMod(200);
-	grasshoperTex.render(SDL_Rect{ 250,300,65,65 });
-	waspTex.render(SDL_Rect{ 330,300,65, 65 });
-	flyTex.render(SDL_Rect{ 410,300,flyTex.width(), flyTex.height() });
-	centipedeTex.render(SDL_Rect{ 480,300,65, 65 });
-	
+	for (auto& a : animals) {
+		ShopComponent* sC = a->getShopComponent();
+		sC->myRender();
+	}
 }
 void Shop::update() {
-	if (imngr.getActionBuy()){ buyPowerUp(selectedPowerUp); }
+	if (imngr.getActionBuy())
+	{ buyPowerUp(selectedPowerUp); }
 	else if (imngr.getActionRightShop()) { changeButton(RIGHT); }
 	else if (imngr.getActionLeftShop()){ changeButton(LEFT); }
 
 }
 //este metodo se llamara cuando del input se reciba la tecla comprar y se pasa la mejora seleccionada en ese momento
 void Shop::buyPowerUp(PowerUps powerUp) {
+	bool buy = false;
 	switch (powerUp) {
 		case Shop::GRASSHOPER: 
 		{	
-			if (playerMoney->TakeMoney(grasshoperValue)) {
+			ShopComponent* sC = grasshoper->getShopComponent();
+			if (!sC->isBuy() && playerMoney->TakeMoney(grasshoperValue)) {
 				//activar salto largo
-				std::cout << "puedes comprar \n";
+
+				
+				sC->setBuy();
+				
 			}
 			else {
 				std::cout << "no puedes comprar \n";
@@ -91,8 +111,13 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 		break;
 		case Shop::WASP:
 		{
-			if (playerMoney->TakeMoney(waspValue)) {
+			ShopComponent* sC = wasp->getShopComponent();
+			if (!sC->isBuy() && playerMoney->TakeMoney(waspValue)) {
 				//aumentar daño
+
+				
+				sC->setBuy();
+				
 			}
 			else {
 				//algo de dialogo
@@ -101,8 +126,13 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 		break;
 		case Shop::FLY:
 		{
-			if (playerMoney->TakeMoney(flyValue)) {
+			ShopComponent* sC = fly->getShopComponent();
+			if (!sC->isBuy() && playerMoney->TakeMoney(flyValue)) {
 				//aumentar vida
+				std::cout << "mosca \n";
+				
+				sC->setBuy();
+				
 			}
 			else {
 				//algo de dialogo
@@ -111,8 +141,13 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 		break;
 		case Shop::CENTIPEDE:
 		{
-			if (playerMoney->TakeMoney(centipedeValue)) {
+			ShopComponent* sC = centipede->getShopComponent();
+			if (!sC->isBuy() && playerMoney->TakeMoney(centipedeValue)) {
 				//aumentar alcance lengua
+				std::cout << "ciempies \n";
+				
+				sC->setBuy();
+				
 			}
 			else {
 				//algo de dialogo
@@ -122,26 +157,29 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 		default:
 			break;	
 	}
+	setOppacity();
 }
 void Shop::changeButton(ButtonDirection dir)
 {
 	int p = 0;
 	switch (dir) {
-	case Shop::RIGHT: {
-		p = ((int)selectedPowerUp + 1) % (int)TOTAL;
-	}
-	break;
-	case Shop::LEFT: {
-		p = ((int)selectedPowerUp - 1) % (int)TOTAL;
-	}
-	break;
-	default:
+		case Shop::RIGHT: {
+			p = ((int)selectedPowerUp + 1) % (int)TOTAL;
+		}
 		break;
+	case Shop::LEFT: {
+		if ((int)selectedPowerUp > 0) {
+			p = ((int)selectedPowerUp - 1) % (int)TOTAL;
+		}
+		else {
+			p = (int)TOTAL - 1;
+		}
+		}
+		break;
+	default:
+	break;
 	}
 	selectedPowerUp = static_cast<PowerUps>(p);
+	setSelectd();
 	setOppacity();
-	////Modifico la pos de la seleccion actual (mosca)
-	//selecDest.x = menuButton[currButton]->getRect().x - offset - selecDest.w / 2;
-	//selecDest.y = menuButton[currButton]->getRect().y + menuButton[currButton]->getRect().h / 2
-	//	- currSelec.height() / 2;
 }

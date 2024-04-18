@@ -55,6 +55,7 @@
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\managers\ShopManager.cpp" />
+    <ClCompile Include="src\ecs\EntityShop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -121,6 +122,8 @@
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\managers\ShopManager.h" />
+    <ClInclude Include="src\components\ShopComponent.h" />
+    <ClInclude Include="src\ecs\EntityShop.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

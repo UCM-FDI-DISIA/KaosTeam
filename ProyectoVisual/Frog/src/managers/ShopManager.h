@@ -2,9 +2,10 @@
 #ifndef SHOPMANAGER_H
 #define SHOPMANAGER_H
 
-#include "../ecs/Entity.h"
 #include "../components/MoneyComponent.h"
 #include "../utils/Singleton.h"
+#include <vector>
+#include "../ecs/EntityShop.h"
 
 class InputManager;
 class Texture;
@@ -15,9 +16,8 @@ public:
 	void render();
 	void update();
 	void setPlayer(Entity* player);
-	//void enterShop();
-	//void leaveShop();
 private:
+
 	enum PowerUps { GRASSHOPER, WASP, FLY, CENTIPEDE, TOTAL };
 	PowerUps selectedPowerUp;
 	enum ButtonDirection { RIGHT, LEFT };
@@ -30,21 +30,26 @@ private:
 
 	Entity* player = nullptr;
 	MoneyComponent* playerMoney = nullptr;
-
-	//Texture& currSelec; //Textura que apunta al boton seleccionado
-	//SDL_Rect selecDest; 
+ 
 	InputManager& imngr;
-	//revisar & o *
+
+	EntityShop* grasshoper = new EntityShop();
+	EntityShop* wasp = new EntityShop();
+	EntityShop* fly = new EntityShop();
+	EntityShop* centipede = new EntityShop();
+	EntityShop* selected = nullptr;
 	Texture& grasshoperTex;
 	Texture& waspTex;
 	Texture& flyTex;
 	Texture& centipedeTex;
-	//Texture& selectedTexture;
+	std::vector<EntityShop*> animals;
 
 	//metodos
 	Shop();
 	void buyPowerUp(PowerUps powerUp);
 	void changeButton(ButtonDirection dir);
 	void setOppacity();
+	void setSelectd();
+	void initShopEntitys();
 };
 #endif // !SHOPMANAGER_H
