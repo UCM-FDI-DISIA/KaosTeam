@@ -21,7 +21,14 @@ Menu::Menu(Game* g, GameState* gs, Texture * path1, Texture * path2):
 
 Menu::~Menu()
 {
+	game = nullptr;
+	gameState = nullptr;
+	bg = nullptr;
 
+	for (auto it : menuButton)
+	{
+		delete it;
+	}
 }
 
 void Menu::render() {

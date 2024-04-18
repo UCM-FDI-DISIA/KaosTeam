@@ -29,3 +29,8 @@ MenuInicio::MenuInicio(Game* g, GameState* gs, Texture* path1, Texture* path2): 
 	menuButton.push_back(new Button(path2, button2Dest));
 	menuButton[1]->connect([this]() { gameState->leave(); });
 }
+
+MenuInicio::~MenuInicio()
+{
+
+}

@@ -33,7 +33,7 @@ protected:
 	std::vector <Button*> menuButton;
 public:
 	Menu(Game* g, GameState* nGS, Texture * path1, Texture * path2);
-	~Menu();
+	virtual ~Menu();
 
 	void render() override;
 	void update() override;
