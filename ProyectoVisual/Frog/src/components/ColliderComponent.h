@@ -6,9 +6,7 @@
 
 class Collider {
 public:
-	Collider(Box* box) : funciones(std::list<void(*)(Entity*)>()), box(box) {
-		
-	};
+	Collider(Box* box) : funciones(std::list<void(*)(Entity*)>()), box(box) {};
 	//Añade una funcion al collider que quieras
 	void AddCall(void(*)(Entity*));
 	//Comprueba la colision con un collider, si hay colision llama a OnCollision

@@ -45,6 +45,10 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	player->addComponent(TRANSFORM_COMPONENT, transform);
 	transform->setContext(player);
 
+	ColliderComponent* collider = new ColliderComponent(transform);
+	player->addComponent(COLLIDER_COMPONENT, collider);
+	collider->setContext(player);
+
 	AnimationComponent* animFrog = new AnimationComponent();
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
@@ -274,6 +278,10 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	TransformComponent* transform = new TransformComponent(pos);
 	snake->addComponent(TRANSFORM_COMPONENT, transform);
 	transform->setContext(snake);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	snake->addComponent(COLLIDER_COMPONENT, collider);
+	collider->setContext(snake);
 
 	AnimationComponent* animSnake = new AnimationComponent();
 	//RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1, animSnake);
