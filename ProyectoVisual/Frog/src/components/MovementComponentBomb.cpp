@@ -1,10 +1,10 @@
-#include "../sdlutils/VirtualTimer.h"
 #include "MovementComponentBomb.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Component.h"
 #include "../scenes/RoomScene.h"
 
-MovementComponentBomb::MovementComponentBomb() : shockEntity(false), direction(NONE) {
+MovementComponentBomb::MovementComponentBomb() : shockEntity(false), direction(NONE), explosionTime(2000) {
+	timerForDelete.pause(); //pausamos timer de explosión (solo se activa cuando la bomba ha chocado con algo)
 }
 
 void MovementComponentBomb::initComponent() {
@@ -19,7 +19,6 @@ void MovementComponentBomb::initComponent() {
 	direction = moveFrog->getDirection();
 	animator->playAnimation("BOMB_IDLE");
 
-	// Aquí envolvemos la función checkEntityShock en un objeto std::function
 	coll->AddCall([this](Entity* e) {checkCollisionsBomb(e); }); //Añadimos callback
 }
 
@@ -43,6 +42,8 @@ void MovementComponentBomb::checkCollisionsBomb(Entity* ent) {
 		explodeBomb();
 		std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
 		break;
+
+	//...Mas casos
 	}
 }
 
@@ -50,7 +51,8 @@ void MovementComponentBomb::checkCollisionsBomb(Entity* ent) {
 void MovementComponentBomb::moveBomb() {
 	switch (direction) {
 	case Directions::DOWN:
-		velocity = Vector2D(0, 0.01);
+		//velocity = Vector2D(0, 0.01);
+		velocity = Vector2D(0, 0);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		break;
 	case Directions::UP:
@@ -70,17 +72,17 @@ void MovementComponentBomb::moveBomb() {
 	}
 }
 
-//En este metodo se comprueba si la bomba choca con alguna entidad que puede dañar o con las paredes intraspasables del mapa
+//En este metodo se comprueba si la bomba choca con las paredes intraspasables del mapa
+//las colisiones con entidades lo hace checkCollisionsBomb() que es un callback del collider que se llama en cada update de RoomScene
 void MovementComponentBomb::checkShock() {
-	if (!checkIfTileWalkable(tr->getCasilla() + velocity) || shockEntity)
+	if (!checkIfTileWalkable(tr->getCasilla() + velocity))
 		explodeBomb();
-	else
-		moveBomb(); //Movemos la bomba si no choca con nada
 }
 
 //Este metodo se ejecuta en caso de que la bomba choque con algo
-//Simplemente haría la animación de explosión y su sonido, y una vez hecho eso, elimina la bomba de la escena de la escena
+//Simplemente haría la animación de explosión y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
 void MovementComponentBomb::explodeBomb() {
+
 	animator->stopAnimation(); //Paramos animacion actual
 	animator->removeAnimations(); //Quitamos animaciones existentes
 	rndr->ChangeTexture(explosionText); //cambiamos la textura del objeto (al spriteSheet de la explosion)
@@ -90,15 +92,19 @@ void MovementComponentBomb::explodeBomb() {
 	shockEntity = true;
 	velocity = Vector2D(0, 0);
 
-	timerForDelete.reset(); //reseteamos timer
+	timerForDelete.resume(); //Activamos timer para eliminar la bomba despues de un cierto tiempo
 }
 
 void MovementComponentBomb::update() {
 	// Si ha pasado un tiempo suficiente desde la explosión, eliminamos la entidad
-	if (timerForDelete.currTime() >= 2000 && shockEntity) { // explosionDuration es el tiempo en milisegundos
+	if (timerForDelete.currTime() >= explosionTime) {
 		ent->getScene()->removeEntity(this->ent);
 	}
+	
 	checkShock();
+	
+	//Si no ha chocado con nada, movemos la bomba
+	if (!shockEntity) moveBomb();
 }
 
 

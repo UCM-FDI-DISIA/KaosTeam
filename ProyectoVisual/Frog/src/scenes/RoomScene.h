@@ -118,7 +118,8 @@ public:
 
 
 		//createFish(Vector2D(0, 3), 4);
-		createBomb(Vector2D(3, 3));
+		//createBomb(Vector2D(4, 2));
+		//createBomb(Vector2D(3, 2));
 
 #pragma endregion
 

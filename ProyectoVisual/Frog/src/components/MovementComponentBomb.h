@@ -18,6 +18,8 @@ private:
 	ColliderComponent* coll = nullptr;
 	RenderComponent* rndr = nullptr;
 	Texture* explosionText = new Texture(sdlutils().renderer(), "../Frog/resources/Sprites/ExplosionSpritesheet.png", 1, 2);
+
+	Uint32 explosionTime;
 	VirtualTimer timerForDelete;
 
 	Vector2D velocity = Vector2D(0, 0);
@@ -27,9 +29,9 @@ private:
 	void checkShock();
 	void explodeBomb();
 	void checkCollisionsBomb(Entity* ent);
+	void update() override;
 public:
 	MovementComponentBomb();
-	void update() override;
 	void initComponent() override;  //Aqui inicializamos los punteros a otros componentes que vayamos a utilizar
 };
 
