@@ -26,18 +26,24 @@ private:
 class ColliderComponent : public Component
 {
 public:
-	ColliderComponent() : colliders(std::list<Collider>()) {};
+	ColliderComponent() : colliders(std::list<Collider>()) {
+		transformCollider = nullptr;
+	};
 	ColliderComponent(TransformComponent* tr) : colliders(std::list<Collider>()) {
 		AddCollider(Collider(tr));
+		transformCollider = &colliders.front();
 	};
 	//Comprueba la colisión de los colliders de este componente con los de la otra entidad
 	void CheckCollision(Entity* e);
 	//Añade un collider a este componente
 	void AddCollider(Collider c);
 	std::list<Collider> GetColliders() const;
-	
+	Collider* GetTransofmCollider();
 private:
 	//Lista de colliders gestionados por este componente
 	std::list<Collider> colliders;
+	//El collider que tiene transform como Box.
+	//Si nullptr, no tiene.
+	Collider* transformCollider;
 };
 
