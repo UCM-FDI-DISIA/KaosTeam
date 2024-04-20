@@ -22,7 +22,8 @@ public:
 		scale(sc),attacking(false) {
 	};
 	~RenderComponentFrog() {
-		delete tongueText;
+		tongueText= nullptr;
+		frogText = nullptr;
 		//delete frogText;
 	};
 	void render();

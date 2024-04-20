@@ -21,8 +21,8 @@ public:
 		snakeAnimator(animSnake),
 		scale(sc),transform(nullptr){};
 	~RenderComponentSnake() {
-		delete tongueText;
-		delete snakeText;
+		tongueText=nullptr;
+		snakeText=nullptr;
 	};
 	void render();
 	void AttackStart();

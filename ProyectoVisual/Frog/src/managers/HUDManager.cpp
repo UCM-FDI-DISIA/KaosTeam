@@ -21,6 +21,8 @@ HUDManager::HUDManager() : vidasActuales(10), vidasMax(10), wormsActuales(0), re
 HUDManager::~HUDManager()
 {
 	delete textNumWorms;
+	textWorm = nullptr;
+	textFly = nullptr;
 	game = nullptr;
 }
 

@@ -3,7 +3,7 @@
 
 RenderComponent::~RenderComponent()
 {
-	delete myTexture;
+	myTexture= nullptr;
 }
 
 void RenderComponent::render()

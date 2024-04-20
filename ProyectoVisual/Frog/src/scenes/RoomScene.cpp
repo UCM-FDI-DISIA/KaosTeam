@@ -43,7 +43,7 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	player = new Entity(this);
 
 	Texture* txtFrog = &sdlutils().images().at("frogSheet");
-	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
+	Texture* txtTongue = &sdlutils().images().at("TongueSheet");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	player->addComponent(TRANSFORM_COMPONENT, transform);
@@ -139,7 +139,7 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
 	Entity* frog = new Entity(this);
 	Texture* txtFrog = &sdlutils().images().at("crazyFrogSheet");
-	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
+	Texture* txtTongue = &sdlutils().images().at("TongueSheet");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	frog->addComponent(TRANSFORM_COMPONENT, transform);
@@ -187,7 +187,7 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 }
 Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	Entity* fish = new Entity(this);
-	Texture* txtFish = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+	Texture* txtFish = &sdlutils().images().at("fishSheet");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	fish->addComponent(TRANSFORM_COMPONENT, transform);
@@ -220,7 +220,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
 	Entity* blackAnt = new Entity(this);
 	//textura cambiar
-	Texture* txtBlackAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+	Texture* txtBlackAnt = &sdlutils().images().at("fishSheet");//supongo que esto estaba de placeholder
 
 	TransformComponent* transform = new TransformComponent(pos);
 	blackAnt->addComponent(TRANSFORM_COMPONENT, transform);
@@ -246,7 +246,7 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
 	Entity* redAnt = new Entity(this);
 	//textura cambiar
-	Texture* txtRedAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
+	Texture* txtRedAnt = &sdlutils().images().at("fishSheet");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	redAnt->addComponent(TRANSFORM_COMPONENT, transform);
@@ -272,8 +272,8 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this);
-	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheet.png", 4, 2);
-	Texture* txtNeck = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheetAttack.png", 2, 1);
+	Texture* txtSnake = &sdlutils().images().at("snakeSheet");
+	Texture* txtNeck = &sdlutils().images().at("snakeAttackSheet");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	snake->addComponent(TRANSFORM_COMPONENT, transform);
@@ -317,7 +317,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 }
 Entity* RoomScene::createBomb(Vector2D pos) {
 	Entity* bomb = new Entity(this);
-	Texture* textBomb = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/HuevoSheet.png", 1, 2);
+	Texture* textBomb = &sdlutils().images().at("eggSheet");;
 
 	TransformComponent* transform = new TransformComponent(pos);
 	bomb->addComponent(TRANSFORM_COMPONENT, transform);
