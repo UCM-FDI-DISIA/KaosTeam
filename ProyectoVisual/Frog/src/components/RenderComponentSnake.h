@@ -9,17 +9,17 @@ class TransformComponent;
 
 class RenderComponentSnake : public Component {
 private:
-	Texture* snakeText = nullptr;
-	Texture* tongueText = nullptr;
-	AnimationComponent* snakeAnimator = nullptr;
-	TransformComponent* transform = nullptr;
+	Texture* snakeText;
+	Texture* tongueText;
+	AnimationComponent* snakeAnimator;
+	TransformComponent* transform;
 	float scale;
 	bool attacking = false;
 public:
 	RenderComponentSnake(Texture* ts, Texture* tt, AnimationComponent* animSnake, float sc = 1) :
 		snakeText(ts), tongueText(tt),
 		snakeAnimator(animSnake),
-		scale(sc){};
+		scale(sc),transform(nullptr){};
 	~RenderComponentSnake() {
 		delete tongueText;
 		delete snakeText;

@@ -26,17 +26,17 @@
 class RoomScene : public Scene
 {
 private:
-	Camera* cameraManager = nullptr;
+	Camera* cameraManager;
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
 	HUDManager* HUD;
 	int id;
-	Entity* player = nullptr;
+	Entity* player;
 	flonkOrig playerOrig = S;
 	bool needMapChange = false;
 	std::string nextMap;
 	flonkOrig nextFlonk;
-	Shop* shopManager = nullptr;
+	Shop* shopManager;
 	bool insideShop = false; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
 
 	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
@@ -44,7 +44,7 @@ private:
 	*/
 	void CheckColisions();
 public:
-	RoomScene(int id) : id(id) {
+	RoomScene(int id) : id(id), player(nullptr) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 		mapReader = new MapManager("resources/maps/niveles/nivel01/mapaN1_01.tmx", this);
 		mapReader->loadObj("resources/maps/niveles/nivel01/mapaN1_01.tmx");

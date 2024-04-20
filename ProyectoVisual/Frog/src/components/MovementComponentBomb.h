@@ -9,10 +9,10 @@ class AnimationComponent;
 class MovementComponentBomb : public MovementComponent {
 private:
 	Directions direction;
-	MovementComponentFrog* moveFrog  = nullptr; //para acceder a la dirección a la que mira FLonk en ese instante
-	AnimationComponent* animator = nullptr;   //para acceder a su animador
-	TransformComponent* tr = nullptr;
-	ColliderComponent* coll = nullptr;
+	MovementComponentFrog* moveFrog; //para acceder a la dirección a la que mira FLonk en ese instante
+	AnimationComponent* animator;   //para acceder a su animador
+	TransformComponent* tr;
+	ColliderComponent* coll;
 
 	Vector2D velocity = Vector2D(0, 0);
 	bool isLaunched;				//Booleano para indicar si la bomba se ha lanzado

@@ -3,7 +3,7 @@
 #include "../ecs/Component.h"
 #include "../scenes/RoomScene.h"
 
-MovementComponentBomb::MovementComponentBomb() : isLaunched(true), direction(NONE) {
+MovementComponentBomb::MovementComponentBomb() :moveFrog(nullptr),animator(nullptr),tr(nullptr),coll(nullptr), isLaunched(true), direction(NONE) {
 }
 
 void MovementComponentBomb::initComponent() {
