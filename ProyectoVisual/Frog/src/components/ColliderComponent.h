@@ -6,16 +6,16 @@
 
 class Collider {
 public:
-	Collider(Box* box) : funciones(std::list<void(*)(Entity*)>()), box(box) {};
+	Collider(Box* box) : funciones(std::list<std::function<void(Entity*)>>()), box(box) {};
 	//Añade una funcion al collider que quieras
-	void AddCall(void(*)(Entity*));
+	void AddCall(std::function<void(Entity*)> func);
 	//Comprueba la colision con un collider, si hay colision llama a OnCollision
 	void OnCollision(Entity* e);
 	bool Collides(Collider) const;
 private:
 	Box* box; //La caja que define el tamaño y posicion del collider
 	//El box tiene que ser gestionado por el creador del box
-	std::list<void(*)(Entity*)> funciones; //Las funciones a llamar en caso de colision
+	std::list<std::function<void(Entity*)>> funciones; //Las funciones a llamar en caso de colision
 };
 
 //Comprueba colisiones de objetos, y envía un mensaje con la información relevante a los componentes suscritos

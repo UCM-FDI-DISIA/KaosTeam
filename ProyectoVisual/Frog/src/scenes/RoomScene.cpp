@@ -281,9 +281,12 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	snake->addComponent(TRANSFORM_COMPONENT, transform);
 	transform->setContext(snake);
 
+	Box* boxSnake = new Box(pos);
+	Collider coll = Collider(boxSnake);
 	ColliderComponent* collider = new ColliderComponent(transform);
-	snake->addComponent(COLLIDER_COMPONENT, collider);
+	collider->AddCollider(coll);
 	collider->setContext(snake);
+	snake->addComponent(COLLIDER_COMPONENT, collider);
 
 	AnimationComponent* animSnake = new AnimationComponent();
 	//RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1, animSnake);
@@ -344,9 +347,12 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	bomb->addRenderComponent(renderBomb);
 	bomb->addComponent(ANIMATION_COMPONENT, animBomb);
 
+	Box* boxBomb = new Box(pos);
+	Collider coll = Collider(boxBomb);
 	ColliderComponent* collBomb = new ColliderComponent();
+
+	collBomb->AddCollider(coll);
 	collBomb->setContext(bomb);
-	//collBomb->AddCall([this](Entity* e) {CheckCollisionsBomb(e); }); //Añadimos callback
 	bomb->addComponent(COLLIDER_COMPONENT, collBomb);
 
 

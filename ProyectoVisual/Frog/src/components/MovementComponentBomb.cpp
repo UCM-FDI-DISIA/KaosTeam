@@ -7,6 +7,13 @@ MovementComponentBomb::MovementComponentBomb() : shockEntity(false), direction(N
 	timerForDelete.pause(); //pausamos timer de explosión (solo se activa cuando la bomba ha chocado con algo)
 }
 
+MovementComponentBomb::~MovementComponentBomb(){
+	delete explosionText;
+	moveFrog = nullptr;
+	animator = nullptr;
+
+}
+
 void MovementComponentBomb::initComponent() {
 	//Obtenemos componentes necesarios
 	moveFrog = static_cast<MovementComponentFrog*>(ent->getScene()->getPlayer()->getComponent(MOVEMENT_COMPONENT));
@@ -15,11 +22,15 @@ void MovementComponentBomb::initComponent() {
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
 	rndr = static_cast<RenderComponent*>(ent->getComponent(RENDER_COMPONENT));
 
+
 	//Inicilaizamos valores que vaa tener en cuanto la bomba se instancie
 	direction = moveFrog->getDirection();
 	animator->playAnimation("BOMB_IDLE");
 
-	coll->AddCall([this](Entity* e) {checkCollisionsBomb(e); }); //Añadimos callback
+
+	//Añadimos funcion de collider a la bomba
+	//std::list<Collider> listCol = coll->GetColliders(); //Accedemos a la lista de colliders
+	coll->GetColliders().front().AddCall([this](Entity* e) {checkCollisionsBomb(e); }); //Añadimos callback
 }
 
 // Esta función, se llamará en cada iteracción del update para detectar con que entity colisiona y hacer las correspondientes acciones
@@ -51,8 +62,8 @@ void MovementComponentBomb::checkCollisionsBomb(Entity* ent) {
 void MovementComponentBomb::moveBomb() {
 	switch (direction) {
 	case Directions::DOWN:
-		//velocity = Vector2D(0, 0.01);
-		velocity = Vector2D(0, 0);
+		velocity = Vector2D(0, 0.01);
+		//velocity = Vector2D(0, 0);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		break;
 	case Directions::UP:

@@ -32,6 +32,7 @@ private:
 	void update() override;
 public:
 	MovementComponentBomb();
+	virtual ~MovementComponentBomb();
 	void initComponent() override;  //Aqui inicializamos los punteros a otros componentes que vayamos a utilizar
 };
 
