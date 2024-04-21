@@ -4,7 +4,7 @@
 class DestructibleComponent
 {
 private:
-	LifeComponent life = LifeComponent(1,1);
+	LifeComponent life;
 
 	void selfDestruct();
 
