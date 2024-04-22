@@ -1,6 +1,8 @@
 #include "BossComponent.h"
+#include "../sdlutils/SDLUtils.h"
+#include "../scenes/RoomScene.h"
 
-BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), speed(BOSS_SPEED), 
+BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), speed(Vector2D(-ent->getScene()->getMapReader()->getTileSize()/5,0)), 
 	multiplier(0.2), pos(BOSS_INIT_POS)
 {
 	initComponent();
@@ -52,19 +54,20 @@ void BossComponent::detect()
 	if (isFlonkOnShadow()) {
 		shadowTimer++;
 		if (shadowTimer >= MAX_TIME_ON_SHADOW) {
+			darkenShadow();
 			currState = ATTACK;
 			shadowTimer = 0;
 		}
 	}
 	else {
 		currState = MOVE;
+		resetShadow();
 		shadowTimer = 0;
 	}
 }
 
 void BossComponent::attack()
 {
-	darkenShadow();
 	createCutlery();
 	moveCutlery();
 }
@@ -79,6 +82,10 @@ void BossComponent::darkenShadow()
 	//Lógica de cambiar de la textura por la más oscura
 }
 
+void BossComponent::resetShadow()
+{
+}
+
 void BossComponent::createCutlery()
 {
 	/* Lógica de crear los cubiertos.
@@ -91,6 +98,10 @@ void BossComponent::moveCutlery()
 	//Lógica para mover los cubiertos que estén activos en la pool de cubiertos
 	for (auto cubierto : poolCubiertos)
 		if(cubierto.second) cubierto.first->pos = cubierto.first->pos + cubierto.first->speed;
+}
+
+void BossComponent::changeRange()
+{
 }
 
 bool BossComponent::isFlonkOnShadow() const
@@ -108,13 +119,13 @@ bool BossComponent::hasCrashed() const
 bool BossComponent::isOutOfScreen(Vector2D pos) const
 {
 	//Lógica para obtener la posicion del cubierto y ver si está fuera de la pantalla
-	return pos.getY() >= ent->getScene()->getMapReader()->getTileSize()->getY();
+	return pos.getY() >= sdlutils().height();
 }
 
 bool BossComponent::isShadowAtSideLine(Vector2D pos) const
 {
 	return pos.getX() <= 0
-		|| pos.getX() - sombra->width() >= ent->getScene()->getMapReader()->getTileSize()->getX();
+		|| pos.getX() - sombra->width() >= sdlutils().width();
 }
 
 void BossComponent::setSpeed(Vector2D spd)

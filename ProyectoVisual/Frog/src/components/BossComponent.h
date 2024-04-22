@@ -1,5 +1,4 @@
 #pragma once
-
 #include <vector>
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
@@ -8,10 +7,10 @@
 #include "../components/TransformComponent.h"
 #include "../components/ColliderComponent.h"
 
+class RoomScene{};
 
 const int MAX_TIME_ON_SHADOW = 3;
 const int MAX_CUBIERTOS = 7;
-const Vector2D BOSS_SPEED = Vector2D(-2, 0);
 const Vector2D BOSS_INIT_POS = Vector2D(12, 0);
 
 enum bossState { MOVE, DETECT, ATTACK };
@@ -29,6 +28,7 @@ struct Cubierto {
 class BossComponent: public Component
 {	
 private:
+	std::pair<int, int> bossRange; //determina el rango de movimiento del boss
 	bossState currState;
 	std::vector<Cubierto*> cubiertos;
 	std::vector<std::pair<Cubierto*, bool>> poolCubiertos; //El numero de cubiertos max instanciados depende de la zona
@@ -55,8 +55,10 @@ public:
 
 	void checkDirection(); //Comrprueba choques con los limites del mapa y cambia la direccion
 	void darkenShadow();
+	void resetShadow(); // para que e
 	void createCutlery(); //Crear cubiertos
 	void moveCutlery(); //Mover cubiertos
+	void changeRange();
 
 	//Getters
 	bool isFlonkOnShadow() const;
