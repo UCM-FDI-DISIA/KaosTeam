@@ -13,15 +13,13 @@ void RoomScene::render() {
 }
 
 void RoomScene::update() {
+	for (Entity* e : entityList) {
+		if (e != nullptr)
+			e->update();
+	}
+	cameraManager->update();
 	if (insideShop)
 		shopManager->update();
-	
-		for (Entity* e : entityList) {
-			if (e != nullptr)
-				e->update();
-		}
-	cameraManager->update();
-	
 	if (needMapChange)
 		changeMap();
 	//comrpueba las colisiones con la rana
@@ -124,6 +122,9 @@ Entity* RoomScene::createTransition(std::string objName, std::string nextMap) {
 	}
 	else if (objName == "TransitionP") {
 		nextFlonk = P;
+	}
+	else if (objName == "TransitionT") {
+		nextFlonk = T;
 	}
 	else {
 		nextFlonk = S;
@@ -463,9 +464,12 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 				if (objName == "FlonkW") placeHere = true;
 				break;
 			case P:
-				if (objName == "FlonkP") { 
+				if (objName == "FlonkP") placeHere = true;
+				break;
+			case T: 
+				if (objName == "FlonkT") {
 					placeHere = true;
-					insideShop = true;
+					insideShop = !insideShop;
 				}
 				break;
 			default:

@@ -9,7 +9,8 @@ enum flonkOrig
 	S,
 	E,
 	W,
-	P //flonk extra para transiciones
+	P,
+	T//flonk extra para transiciones
 };
 
 class RoomScene;

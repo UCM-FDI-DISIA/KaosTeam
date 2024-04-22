@@ -37,7 +37,7 @@ private:
 	std::string nextMap;
 	flonkOrig nextFlonk;
 	Shop* shopManager = nullptr;
-	bool insideShop = true; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
+	bool insideShop = false; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
 
 	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
 	Por tanto, hay dos OnCollision por cada colision.

@@ -55,7 +55,6 @@ MapManager::~MapManager()
        for (int j = 0; j < walkableTiles[0].size(); j++)
        {
            delete walkableTiles[i][j];
-
        }
    }
  
