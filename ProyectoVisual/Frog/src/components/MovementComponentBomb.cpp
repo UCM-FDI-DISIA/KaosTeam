@@ -10,17 +10,16 @@ MovementComponentBomb::MovementComponentBomb() : shockEntity(false), direction(N
 MovementComponentBomb::~MovementComponentBomb(){
 	delete explosionText;
 	moveFrog = nullptr;
-	animator = nullptr;
 
 }
 
 void MovementComponentBomb::initComponent() {
 	//Obtenemos componentes necesarios
 	moveFrog = static_cast<MovementComponentFrog*>(ent->getScene()->getPlayer()->getComponent(MOVEMENT_COMPONENT));
-	animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
+	AnimationComponent* animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	tr = static_cast<TransformComponent*> (ent->getComponent(TRANSFORM_COMPONENT));
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
-	rndr = static_cast<RenderComponent*>(ent->getComponent(RENDER_COMPONENT));
+	//rndr = static_cast<RenderComponent*>(ent->getComponent(RENDER_COMPONENT));
 
 
 	//Inicilaizamos valores que vaa tener en cuanto la bomba se instancie
@@ -93,6 +92,9 @@ void MovementComponentBomb::checkShock() {
 //Este metodo se ejecuta en caso de que la bomba choque con algo
 //Simplemente har�a la animaci�n de explosi�n y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
 void MovementComponentBomb::explodeBomb() {
+	AnimationComponent* animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
+	RenderComponent* rndr = ent->getRenderComponent();
+
 
 	animator->stopAnimation(); //Paramos animacion actual
 	animator->removeAnimations(); //Quitamos animaciones existentes

@@ -91,10 +91,10 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	input->setContext(player);
 	player->addComponent(INPUT_COMPONENT, input);
 
-	//Sistema de colisiones
-	ColliderComponent* coll = new ColliderComponent();
-	coll->setContext(player);
-	player->addComponent(COLLIDER_COMPONENT, coll);
+	////Sistema de colisiones
+	//ColliderComponent* coll = new ColliderComponent();
+	//coll->setContext(player);
+	//player->addComponent(COLLIDER_COMPONENT, coll);
 
 	MoneyComponent* moneyComp = new MoneyComponent();
 	moneyComp->setContext(player);
@@ -314,9 +314,9 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 	snake->addRenderComponentSnake(renderSnake);
 
-	ColliderComponent* collSnake = new ColliderComponent();
+	/*ColliderComponent* collSnake = new ColliderComponent();
 	collSnake->setContext(snake);
-	snake->addComponent(COLLIDER_COMPONENT, collSnake);
+	snake->addComponent(COLLIDER_COMPONENT, collSnake);*/
 
 	MovementComponentSnake* mvmSnake = new MovementComponentSnake(animSnake);
 	mvmSnake->setContext(snake);
@@ -342,7 +342,6 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	RenderComponent* renderBomb = new RenderComponent(textBomb, 1, 3, 0.5, animBomb);
 	renderBomb->setContext(bomb);
 	renderBomb->initComponent();
-	bomb->addComponent(RENDER_COMPONENT,renderBomb);
 
 	animBomb->addAnimation("BOMB_IDLE", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
 	

@@ -1,11 +1,6 @@
 #include "RenderComponent.h"
 #include "../scenes/RoomScene.h"
 
-RenderComponent::~RenderComponent()
-{
-	myTexture= nullptr;
-}
-
 void RenderComponent::render()
 {
 	//segun si necesita flip o no la textura
