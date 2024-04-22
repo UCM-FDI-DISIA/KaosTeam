@@ -19,6 +19,8 @@
 #include "../components/MovementComponentBlackAnt.h";
 #include "../components/MovementComponentRedAnt.h"
 #include "../components/MovementComponentSnake.h"
+#include "../components/RenderComponentDestructible.h"
+
 
 class RoomScene : public Scene
 {

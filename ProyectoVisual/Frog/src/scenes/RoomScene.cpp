@@ -360,21 +360,23 @@ Entity* RoomScene::createDestructible(Vector2D pos, int type)
 	//textura cambiar
 	if(type = 0)
 	{
-		Texture* txtRompible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
+		Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
 		// hay que añadirle luego un sprite siendo destruido
+
+		TransformComponent* transform = new TransformComponent(pos);
+		destructible->addComponent(TRANSFORM_COMPONENT, transform);
+		transform->setContext(destructible);
+
+		AnimationComponent* animDestructible = new AnimationComponent();
+
+		RenderComponentDestructible* renderDestructible = new RenderComponentDestructible(txtDestructible, animDestructible);
+
+		return destructible;
 	}
 	else if (type = 1)
 	{
 		// texturas del arbusto
 	}
-
-	TransformComponent* transform = new TransformComponent(pos);
-	destructible->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(destructible);
-
-	AnimationComponent* animDestructible = new AnimationComponent();
-
-	return destructible;
 }
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {

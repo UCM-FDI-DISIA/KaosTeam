@@ -14,9 +14,9 @@ private:
 	float scale;
 	bool broken = false;
 public:
-	RenderComponentDestructible(Texture* ts, Texture* tt, AnimationComponent* animSnake, float sc = 1) :
+	RenderComponentDestructible(Texture* ts, AnimationComponent* animDestructible, float sc = 1) :
 		destrucText(ts),
-		destructAnimator(animSnake),
+		destructAnimator(animDestructible),
 		scale(sc) {};
 	~RenderComponentDestructible() {
 		delete destrucText;
