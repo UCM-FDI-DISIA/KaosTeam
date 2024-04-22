@@ -6,7 +6,9 @@
 #include "../ecs/EntityShop.h"
 
 
-Shop::Shop() : imngr(im()), grasshoperTex(sdlutils().images().at("saltamontes")),
+Shop::Shop() : imngr(im()), grasshoperValue(10), waspValue(15), flyValue(15), centipedeValue(20),
+							player(nullptr), playerMoney(nullptr), playerHUD(nullptr), playerInventory(nullptr),selected(nullptr),
+							grasshoperTex(sdlutils().images().at("saltamontes")),
 							waspTex(sdlutils().images().at("avispa")),
 							flyTex(sdlutils().images().at("fly")),
 							centipedeTex(sdlutils().images().at("ciempies")) {
@@ -16,6 +18,23 @@ Shop::Shop() : imngr(im()), grasshoperTex(sdlutils().images().at("saltamontes"))
 	initShopEntitys();
 	setOppacity();
 }
+//Shop::~Shop() {
+//	for (auto& a : animals) {
+//		delete a;
+//		a = nullptr;
+//	}
+//	delete selected;
+//	selected = nullptr;
+//	delete player;
+//	player = nullptr;
+//	delete playerMoney;
+//	playerMoney = nullptr;
+//	delete playerHUD;
+//	playerHUD = nullptr;
+//	delete playerInventory;
+//	playerInventory = nullptr;
+//
+//}
 void Shop::initShopEntitys() {
 	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 5,230,65,65 }, 1);
 	grasshoper->addShopComponent(gShop);
@@ -33,6 +52,7 @@ void Shop::initShopEntitys() {
 void Shop::setPlayer(Entity* player_) {
 	player = player_;
 	playerMoney = dynamic_cast<MoneyComponent*>(player->getComponent(MONEY_COMPONENT));
+	playerInventory = dynamic_cast<InventoryComponent*>(player->getComponent(INVENTORY_COMPONENT));
 }
 void Shop::setHUD(HUDManager* hud) {
 	playerHUD = hud;
@@ -102,7 +122,7 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 			if (!sC->isBuy() && playerMoney->TakeMoney(grasshoperValue)) {
 				//activar salto largo
 
-				
+				playerInventory->buyJumpUpgrade();
 				sC->setBuy();
 				
 			}
@@ -118,7 +138,7 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 			if (!sC->isBuy() && playerMoney->TakeMoney(waspValue)) {
 				//aumentar daño
 
-				
+				playerInventory->buyDamageUpgrade();
 				sC->setBuy();
 				
 			}
@@ -146,7 +166,7 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 			if (!sC->isBuy() && playerMoney->TakeMoney(centipedeValue)) {
 				//aumentar alcance lengua
 				std::cout << "ciempies \n";
-				
+				playerInventory->buyAttackUpgrade();
 				sC->setBuy();
 				
 			}

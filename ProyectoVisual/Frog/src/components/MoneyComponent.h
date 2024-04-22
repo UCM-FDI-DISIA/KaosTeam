@@ -5,7 +5,7 @@ class MoneyComponent:public Component
 private:
 	int money;
 public:
-	MoneyComponent() :money(100) {};
+	MoneyComponent() :money(0) {};
 	MoneyComponent(int n) :money(n) {};
 	~MoneyComponent() {};
 	int GetMoney(); 

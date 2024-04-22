@@ -3,7 +3,10 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/Game.h"
 #include <math.h>
-
+//Camera::~Camera() {
+//	delete camTarget;
+//	camTarget = nullptr;
+//}
 void Camera::setTarget(Entity* target)
 {
 	camTarget = target;

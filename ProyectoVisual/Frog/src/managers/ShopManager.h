@@ -3,6 +3,7 @@
 #define SHOPMANAGER_H
 
 #include "../components/MoneyComponent.h"
+#include "../components/InventoryComponent.h"
 #include "../utils/Singleton.h"
 #include <vector>
 #include "../ecs/EntityShop.h"
@@ -24,14 +25,15 @@ private:
 	enum Direction { RIGHT, LEFT };
 	Direction actualDirection;
 
-	int grasshoperValue = 10; //saltamones
-	int waspValue = 15; //avispa
-	int flyValue = 15; //mosca
-	int centipedeValue = 20; //ciempies
+	int grasshoperValue; //saltamones
+	int waspValue; //avispa
+	int flyValue; //mosca
+	int centipedeValue; //ciempies
 
-	Entity* player = nullptr;
-	MoneyComponent* playerMoney = nullptr;
-	HUDManager* playerHUD = nullptr;
+	Entity* player;
+	MoneyComponent* playerMoney;
+	HUDManager* playerHUD;
+	InventoryComponent* playerInventory;
  
 	InputManager& imngr;
 
@@ -39,7 +41,7 @@ private:
 	EntityShop* wasp = new EntityShop();
 	EntityShop* fly = new EntityShop();
 	EntityShop* centipede = new EntityShop();
-	EntityShop* selected = nullptr;
+	EntityShop* selected;
 	Texture& grasshoperTex;
 	Texture& waspTex;
 	Texture& flyTex;
@@ -48,6 +50,7 @@ private:
 
 	//metodos
 	Shop();
+	//~Shop();
 	void buyPowerUp(PowerUps powerUp);
 	void changeAnimal(Direction dir);
 	void setOppacity();

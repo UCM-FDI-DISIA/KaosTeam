@@ -34,7 +34,7 @@ private:
 	Vector2D additionalOffset;
 	Directions direction;
 	Camera() {};
-	//ns si esta bien
+	/*~Camera();*/
 	TransformComponent* targetTransform;
 	
 };

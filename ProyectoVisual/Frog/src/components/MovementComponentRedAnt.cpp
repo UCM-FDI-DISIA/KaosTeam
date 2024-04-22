@@ -15,7 +15,12 @@ MovementComponentRedAnt::MovementComponentRedAnt(AnimationComponent* a, Movement
 	escape = false;
 	range = 2;
 };
-
+MovementComponentRedAnt::~MovementComponentRedAnt() {
+	delete targetTransformComp;
+	targetTransformComp = nullptr;
+	delete anim;
+	anim = nullptr;
+}
 void MovementComponentRedAnt::initComponent() {
 	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
 	playerPosition = targetTransformComp->getCasilla();

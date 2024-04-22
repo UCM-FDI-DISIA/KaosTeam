@@ -4,7 +4,7 @@ class ShopComponent;
 class EntityShop
 {
 private:
-	ShopComponent* myShopComponent=nullptr;
+	ShopComponent* myShopComponent;
 public:
 	EntityShop();
 	void addShopComponent(ShopComponent* sC); 

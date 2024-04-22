@@ -85,8 +85,12 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	player->addComponent(ATTACK_COMPONENT, atck);
 	atck->setContext(player);
 
+	InventoryComponent* invComp = new InventoryComponent();
+	invComp->setContext(player);
+	player->addComponent(INVENTORY_COMPONENT, invComp);
+
 	FrogInputComponent* input = new FrogInputComponent();
-	input->setComponents(mvm, atck);
+	input->setComponents(mvm, atck, invComp);
 	input->setContext(player);
 	player->addComponent(INPUT_COMPONENT, input);
 
@@ -98,6 +102,8 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	MoneyComponent* moneyComp = new MoneyComponent();
 	moneyComp->setContext(player);
 	player->addComponent(MONEY_COMPONENT, moneyComp);
+
+	
 	
 	AddEntity(player);
 

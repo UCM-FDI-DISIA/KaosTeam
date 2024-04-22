@@ -1,10 +1,11 @@
 #include "EntityShop.h"
-EntityShop::EntityShop() {
+EntityShop::EntityShop() : myShopComponent(nullptr) {
 
 }
 EntityShop::~EntityShop()
 {
 	delete myShopComponent;
+	myShopComponent = nullptr;
 }
 ShopComponent* EntityShop::getShopComponent() 
 {

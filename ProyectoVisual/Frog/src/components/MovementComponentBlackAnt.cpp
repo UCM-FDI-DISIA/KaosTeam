@@ -21,7 +21,12 @@ MovementComponentBlackAnt::MovementComponentBlackAnt(AnimationComponent* a) : Mo
 	diff = 0;
 };
 
-
+MovementComponentBlackAnt::~MovementComponentBlackAnt() {
+	delete targetTransformComp;
+	targetTransformComp = nullptr;
+	delete anim;
+	anim = nullptr;
+}
 void MovementComponentBlackAnt::initComponent() {
 	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
 	playerPosition = targetTransformComp->getCasilla();

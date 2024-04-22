@@ -11,7 +11,7 @@ void AttackComponentFrog::update()
 
 		if (state == 1) {
 			distanceMoved++;
-			if (distanceMoved == attackDistance)
+			if (distanceMoved == distance)
 				state++;
 		}
 		else if (state == 2) {

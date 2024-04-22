@@ -22,22 +22,23 @@
 #include "../components/MoneyComponent.h"
 #include"../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
+#include "../components/InventoryComponent.h"
 
 class RoomScene : public Scene
 {
 private:
-	Camera* cameraManager = nullptr;
+	Camera* cameraManager;
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
 	HUDManager* HUD;
 	int id;
-	Entity* player = nullptr;
-	flonkOrig playerOrig = S;
-	bool needMapChange = false;
+	Entity* player;
+	flonkOrig playerOrig;
+	bool needMapChange;
 	std::string nextMap;
 	flonkOrig nextFlonk;
-	Shop* shopManager = nullptr;
-	bool insideShop = false; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
+	Shop* shopManager;
+	bool insideShop; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
 
 	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
 	Por tanto, hay dos OnCollision por cada colision.
@@ -45,7 +46,7 @@ private:
 	void CheckColisions();
 
 public:
-	RoomScene(int id) : id(id) {
+	RoomScene(int id) : id(id), cameraManager(nullptr), player(nullptr), playerOrig(S), needMapChange(false), insideShop(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 		std::string initMapPath = "resources/maps/niveles/nivel01/mapaN1_01.tmx";
 		mapReader = new MapManager(initMapPath, this);

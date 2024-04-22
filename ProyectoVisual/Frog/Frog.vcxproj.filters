@@ -56,7 +56,9 @@
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\managers\ShopManager.cpp" />
     <ClCompile Include="src\ecs\EntityShop.cpp" />
-    <ClCompile Include="src\components\InteractableComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentBomb.cpp" />
+    <ClCompile Include="src\utils\Box.cpp" />
+    <ClCompile Include="src\components\InventoryComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -125,7 +127,10 @@
     <ClInclude Include="src\managers\ShopManager.h" />
     <ClInclude Include="src\components\ShopComponent.h" />
     <ClInclude Include="src\ecs\EntityShop.h" />
-    <ClInclude Include="src\components\InteractableComponent.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\MovementComponentBomb.h" />
+    <ClInclude Include="src\utils\Box.h" />
+    <ClInclude Include="src\components\InventoryComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
