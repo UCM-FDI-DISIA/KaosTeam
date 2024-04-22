@@ -35,6 +35,7 @@ public:
 	ColliderComponent() : colliders(std::list<Collider>()) {
 		transformCollider = nullptr;
 	};
+	//Te crea un collider con el transform. Se puede pillar con GetTransformCollider
 	ColliderComponent(TransformComponent* tr) : colliders(std::list<Collider>()) {
 		AddCollider(Collider(tr));
 		transformCollider = &colliders.front();
