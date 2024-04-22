@@ -13,6 +13,13 @@ Box::Box(Vector2D casilla) : casilla(casilla) {
 	width = TILE_SIZE;
 	height = TILE_SIZE;
 };
+//Usar este constructor SOLO si aun no conoces al box
+Box::Box() {
+	casilla = { 0, 0 };
+	offset = { 0, 0 };
+	width = TILE_SIZE;
+	height = TILE_SIZE;
+};
 
 SDL_Rect Box::GetOnDisplayPosition() const{
 	SDL_Rect dest;
@@ -28,4 +35,28 @@ SDL_Rect Box::GetOnDisplayPosition() const{
 	dest.h = height;
 
 	return dest;
+}
+
+Vector2D Box::getCasilla() const {
+	return casilla;
+}
+
+float Box::getHeight() const {
+	return height;
+}
+
+float Box::getWidth() const {
+	return width;
+}
+
+void Box::setCasilla(Vector2D casilla) {
+	this->casilla = casilla;
+}
+
+void Box::setWidth(float width) {
+	this->width = width;
+}
+
+void Box::setHeight(float height) {
+	this->height = height;
 }

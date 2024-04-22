@@ -347,11 +347,8 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	bomb->addRenderComponent(renderBomb);
 	bomb->addComponent(ANIMATION_COMPONENT, animBomb);
 
-	Box* boxBomb = new Box(pos);
-	Collider coll = Collider(boxBomb);
-	ColliderComponent* collBomb = new ColliderComponent();
+	ColliderComponent* collBomb = new ColliderComponent(transform);
 
-	collBomb->AddCollider(coll);
 	collBomb->setContext(bomb);
 	bomb->addComponent(COLLIDER_COMPONENT, collBomb);
 

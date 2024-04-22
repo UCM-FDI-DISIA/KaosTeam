@@ -28,7 +28,7 @@ private:
 	void moveBomb();
 	void checkShock();
 	void explodeBomb();
-	void checkCollisionsBomb(Entity* ent);
+	void checkCollisionsBomb(Entity* ent, Collider c);
 	void update() override;
 public:
 	MovementComponentBomb();

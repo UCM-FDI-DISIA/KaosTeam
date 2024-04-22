@@ -30,13 +30,13 @@ void MovementComponentBomb::initComponent() {
 
 	//Añadimos funcion de collider a la bomba
 	//std::list<Collider> listCol = coll->GetColliders(); //Accedemos a la lista de colliders
-	coll->GetColliders().front().AddCall([this](Entity* e) {checkCollisionsBomb(e); }); //Añadimos callback
+	coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsBomb(e, c); }); //Añadimos callback
 }
 
 // Esta función, se llamará en cada iteracción del update para detectar con que entity colisiona y hacer las correspondientes acciones
 //(Mi idea era hacer el metodo aqui, sin embargo, no puedo acceder a la entidad contra la que colisiona
 // la bomba desde aquí, asi que no me queda mas remedio que hacerlo en la RoomScene...)
-void MovementComponentBomb::checkCollisionsBomb(Entity* ent) {
+void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
 	switch (ent->getName()) {
 	case EntityName::BREAKABLE_DOOR_ENTITY:
 		//Destruimos la puerta: ent-> MetodoAlQueLlamar(); 
