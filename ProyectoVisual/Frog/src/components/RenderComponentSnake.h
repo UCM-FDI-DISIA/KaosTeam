@@ -32,7 +32,7 @@ public:
 	}
 
 	void initComponent() override;
-	//Esto está aquí de manera provisional
+	//Esto estï¿½ aquï¿½ de manera provisional
 	SDL_Rect GetOnDisplayPosition();
 };
 

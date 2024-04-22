@@ -45,6 +45,7 @@ void HUDManager::addWorms(const int wormsToAdd)
 
 	delete textNumWorms;
 	textNumWorms = new Texture(sdlutils().renderer(), to_string(wormsActuales), *font, colorFont);
+	std::cout << "number of worms changed to: " << wormsActuales << std::endl;
 }
 
 void HUDManager::render()
