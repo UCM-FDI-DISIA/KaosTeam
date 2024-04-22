@@ -3,6 +3,22 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../managers/DataManager.h"
 #include "RenderComponentFrog.h"
+#include "../utils/Box.h"
+#include "ColliderComponent.h"
+
+AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()) {
+	attackDistance = 2;
+	distanceMoved = 0;
+	attackFrameTime = 100;
+	lastTimeChanged = 0;
+	attackCooldown = 250;
+
+	box = new Box();
+}
+
+AttackComponentFrog::~AttackComponentFrog() {
+	delete box;
+}
 
 void AttackComponentFrog::update()
 {
@@ -33,5 +49,5 @@ void AttackComponentFrog::attack()
 void AttackComponentFrog::EndAttack()
 {
 	state = 2;
-
 }
+
