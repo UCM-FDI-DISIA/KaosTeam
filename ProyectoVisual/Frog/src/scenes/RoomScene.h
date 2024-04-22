@@ -44,11 +44,13 @@ private:
 	Por tanto, hay dos OnCollision por cada colision.
 	*/
 	void CheckColisions();
+
 public:
 	RoomScene(int id) : id(id), player(nullptr) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		mapReader = new MapManager("resources/maps/niveles/nivel01/mapaN1_01.tmx", this);
-		mapReader->loadObj("resources/maps/niveles/nivel01/mapaN1_01.tmx");
+		std::string initMapPath = "resources/maps/niveles/nivel01/mapaN1_01.tmx";
+		mapReader = new MapManager(initMapPath, this);
+		mapReader->loadObj(initMapPath);
 
 		//Create player desde el mapa
 		cameraManager = Camera::instance();
@@ -56,6 +58,7 @@ public:
 		HUD = HUDManager::instance();
 		shopManager = Shop::instance();
 		shopManager->setPlayer(player);
+
 
 #pragma region Cosas q vamos a borrar pronto
 		//Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
@@ -114,13 +117,16 @@ public:
 
 
 		//createFish(Vector2D(0, 3), 4);
-		createBomb(Vector2D(2, 3));
+		createBomb(Vector2D(4, 2));
+		//createBomb(Vector2D(3, 2));
 
 #pragma endregion
 
 		
 	};
+
 	void AddEntity(Entity* entity);
+	void removeEntity(Entity* entity);
 	void render() override;
 	void update() override;
 	virtual ~RoomScene();

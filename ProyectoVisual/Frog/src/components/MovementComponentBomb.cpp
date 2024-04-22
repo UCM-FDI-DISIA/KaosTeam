@@ -3,7 +3,15 @@
 #include "../ecs/Component.h"
 #include "../scenes/RoomScene.h"
 
-MovementComponentBomb::MovementComponentBomb() :moveFrog(nullptr),animator(nullptr),tr(nullptr),coll(nullptr), isLaunched(true), direction(NONE) {
+MovementComponentBomb::MovementComponentBomb() : shockEntity(false), direction(NONE), explosionTime(2000) {
+	timerForDelete.pause(); //pausamos timer de explosiï¿½n (solo se activa cuando la bomba ha chocado con algo)
+}
+
+MovementComponentBomb::~MovementComponentBomb(){
+	delete explosionText;
+	moveFrog = nullptr;
+	animator = nullptr;
+
 }
 
 void MovementComponentBomb::initComponent() {
@@ -12,18 +20,42 @@ void MovementComponentBomb::initComponent() {
 	animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	tr = static_cast<TransformComponent*> (ent->getComponent(TRANSFORM_COMPONENT));
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
+	rndr = static_cast<RenderComponent*>(ent->getComponent(RENDER_COMPONENT));
 
-	 // Aquí envolvemos la función checkEntityShock en un objeto std::function
-    //std::function<void(Entity*)> shockCallback = std::bind(&checkEntityShock, this, std::placeholders::_1);
-	//coll->AddCall(&shockCallback);
+
+	//Inicilaizamos valores que vaa tener en cuanto la bomba se instancie
+	direction = moveFrog->getDirection();
+	animator->playAnimation("BOMB_IDLE");
+
+
+	//Aï¿½adimos funcion de collider a la bomba
+	//std::list<Collider> listCol = coll->GetColliders(); //Accedemos a la lista de colliders
+	coll->GetColliders().front().AddCall([this](Entity* e) {checkCollisionsBomb(e); }); //Aï¿½adimos callback
 }
 
-//está función, se llamará en cada iteracción del update para detectar con que entity colisiona y hacer las correspondientes acciones
-void MovementComponentBomb::checkEntityShock(Entity* ent) {
-	/*if (ent.getName()) {
-	* 
-	* 
-	}*/
+// Esta funciï¿½n, se llamarï¿½ en cada iteracciï¿½n del update para detectar con que entity colisiona y hacer las correspondientes acciones
+//(Mi idea era hacer el metodo aqui, sin embargo, no puedo acceder a la entidad contra la que colisiona
+// la bomba desde aquï¿½, asi que no me queda mas remedio que hacerlo en la RoomScene...)
+void MovementComponentBomb::checkCollisionsBomb(Entity* ent) {
+	switch (ent->getName()) {
+	case EntityName::BREAKABLE_DOOR_ENTITY:
+		//Destruimos la puerta: ent-> MetodoAlQueLlamar(); 
+		std::cout << "PUERTA DESTRUIDA" << std::endl;
+		break;
+	case EntityName::INTERRUPTOR_ENTITY:
+		//Activamos interruptor
+		std::cout << "INTERRUPTOR ACTIVADO" << std::endl;
+		break;
+	case EntityName::SNAKE_ENTITY:
+		//Quitariamos vida a la serpiente...
+		ent->getScene()->removeEntity(ent);
+		//Eliminamos a la bomba
+		explodeBomb();
+		std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
+		break;
+
+	//...Mas casos
+	}
 }
 
 //Mueve la bomba en la direccion dada:
@@ -31,45 +63,59 @@ void MovementComponentBomb::moveBomb() {
 	switch (direction) {
 	case Directions::DOWN:
 		velocity = Vector2D(0, 0.01);
+		//velocity = Vector2D(0, 0);
 		tr->setCasilla(tr->getCasilla() + velocity);
-		std::cout << "BOMBA SE ABAJO" << std::endl;
 		break;
 	case Directions::UP:
 		velocity = Vector2D(0, -0.01);
 		tr->setCasilla(tr->getCasilla() + velocity);
-		std::cout << "BOMBA SE ARRIBA" << std::endl;
 		break;
 	case Directions::LEFT:
 		velocity = Vector2D(-0.01, 0);
 		tr->setCasilla(tr->getCasilla() + velocity);
-		std::cout << "BOMBA SE IZQDA" << std::endl;
 		break;
 	case Directions::RIGHT:
 		velocity = Vector2D(0.01, 0);
 		tr->setCasilla(tr->getCasilla() + velocity);
-		std::cout << "BOMBA SE DERECHA" << std::endl;
 		break;
 	default:
 		break;
 	}
 }
 
-//En este metodo se comprueba si la bomba choca con alguna entidad que puede dañar o con las paredes intraspasables del mapa
+//En este metodo se comprueba si la bomba choca con las paredes intraspasables del mapa
+//las colisiones con entidades lo hace checkCollisionsBomb() que es un callback del collider que se llama en cada update de RoomScene
 void MovementComponentBomb::checkShock() {
 	if (!checkIfTileWalkable(tr->getCasilla() + velocity))
-		velocity = Vector2D(0, 0);
-	//else if()//
-	else
-		moveBomb(); //Movemos la bomba si no choca con nada
+		explodeBomb();
+}
+
+//Este metodo se ejecuta en caso de que la bomba choque con algo
+//Simplemente harï¿½a la animaciï¿½n de explosiï¿½n y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
+void MovementComponentBomb::explodeBomb() {
+
+	animator->stopAnimation(); //Paramos animacion actual
+	animator->removeAnimations(); //Quitamos animaciones existentes
+	rndr->ChangeTexture(explosionText); //cambiamos la textura del objeto (al spriteSheet de la explosion)
+	animator->addAnimation("EXPLOSION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
+	animator->playAnimation("EXPLOSION"); //Reproducimos explosiï¿½n
+
+	shockEntity = true;
+	velocity = Vector2D(0, 0);
+
+	timerForDelete.resume(); //Activamos timer para eliminar la bomba despues de un cierto tiempo
 }
 
 void MovementComponentBomb::update() {
-	if (isLaunched) { //Aqui habria que detectar el input del player -> o llamar a un metodo que cambie este booleano
-		direction = moveFrog->getDirection(); //Obtenemos direccion a la que mira la rana
-		isLaunched = false;
-		animator->playAnimation("BOMB_IDLE");
+	// Si ha pasado un tiempo suficiente desde la explosiï¿½n, eliminamos la entidad
+	if (timerForDelete.currTime() >= explosionTime) {
+		ent->getScene()->removeEntity(this->ent);
 	}
+	
 	checkShock();
+	
+	//Si no ha chocado con nada, movemos la bomba
+	if (!shockEntity) moveBomb();
 }
 
 

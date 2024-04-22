@@ -50,6 +50,19 @@ void AnimationComponent::playAnimation(const std::string& name)
 	}	
 }
 
+void AnimationComponent::removeAnimations() {
+	animationSet.clear();
+}
+
+void AnimationComponent::stopAnimation() {
+	currentFrameR = currentFrameC = 0;
+	finalFrameR = finalFrameC = 0,
+	lastChange = 0;
+	frameIndex = 0;
+	isPlaying = false;
+	currentAnimName = "";
+}
+
 /* Mueve al siguiente frame de animacion */
 void AnimationComponent::updateAnimation(const Animation& currenAnim, int index)
 {
