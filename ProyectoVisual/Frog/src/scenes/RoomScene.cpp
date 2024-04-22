@@ -196,18 +196,16 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	transform->setContext(fish);
 
 	AnimationComponent* animFish = new AnimationComponent();
-	RenderComponent* renderFish = new RenderComponent(txtFish, 1, 3, 1, animFish);
-	renderFish->setContext(fish);
-	renderFish->initComponent();
-
+	animFish->setContext(fish);
 	animFish->addAnimation("RIGHT", Animation({ Vector2D(0,1), Vector2D(0,2) }, true, false));
 	animFish->addAnimation("LEFT", Animation({ Vector2D(0,1), Vector2D(0,2) }, false, false));
 	animFish->addAnimation("JUMP_RIGHT", Animation({ Vector2D(0,0) }, true, false));
 	animFish->addAnimation("JUMP_LEFT", Animation({ Vector2D(0,0) }, false, false));
-
 	fish->addComponent(ANIMATION_COMPONENT, animFish);
-	animFish->setContext(fish);
 
+	RenderComponent* renderFish = new RenderComponent(txtFish);
+	renderFish->setContext(fish);
+	renderFish->initComponent();
 	fish->addRenderComponent(renderFish);
 
 	//el limite tiene que ser una propiedad
@@ -229,14 +227,13 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	transform->setContext(blackAnt);
 
 	AnimationComponent* animBlackAnt = new AnimationComponent();
-	RenderComponent* renderBlackAnt = new RenderComponent(txtBlackAnt, 1, 3, 0.5, animBlackAnt);
+	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
+	animBlackAnt->setContext(blackAnt);
 
+	RenderComponent* renderBlackAnt = new RenderComponent(txtBlackAnt);
 	renderBlackAnt->setContext(blackAnt);
 	renderBlackAnt->initComponent();
-
-
 	blackAnt->addRenderComponent(renderBlackAnt);
-	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
 	
 	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(animBlackAnt);
 	mvm->setContext(blackAnt);
@@ -255,13 +252,14 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	transform->setContext(redAnt);
 
 	AnimationComponent* animRedAnt = new AnimationComponent();
-	RenderComponent* renderRedAnt = new RenderComponent(txtRedAnt, 1, 3, 0.5, animRedAnt);
+	redAnt->addComponent(ANIMATION_COMPONENT, animRedAnt);
 
+	RenderComponent* renderRedAnt = new RenderComponent(txtRedAnt);
 	renderRedAnt->setContext(redAnt);
+	renderRedAnt->initComponent();
 	//animaciones
 
 	redAnt->addRenderComponent(renderRedAnt);
-	redAnt->addComponent(ANIMATION_COMPONENT, animRedAnt);
 
 	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(animRedAnt, playerMvmCmp);
 	mvm->setContext(redAnt);
@@ -289,10 +287,6 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	snake->addComponent(COLLIDER_COMPONENT, collider);
 
 	AnimationComponent* animSnake = new AnimationComponent();
-	//RenderComponent* renderSnake = new RenderComponent(txtSnake, 4, 4, 1, animSnake);
-	//renderSnake->setContext(snake);
-	//RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
-
 	RenderComponentSnake* renderSnake = new RenderComponentSnake(txtSnake, txtNeck, animSnake);
 
 	renderSnake->setContext(snake);
@@ -337,15 +331,14 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	transform->setContext(bomb);
 
 	AnimationComponent* animBomb = new AnimationComponent();
-	RenderComponent* renderBomb = new RenderComponent(textBomb, 1, 3, 0.5, animBomb);
+	animBomb->addAnimation("BOMB_IDLE", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
+	bomb->addComponent(ANIMATION_COMPONENT, animBomb);
+
+	RenderComponent* renderBomb = new RenderComponent(textBomb);
 	renderBomb->setContext(bomb);
 	renderBomb->initComponent();
-	bomb->addComponent(RENDER_COMPONENT,renderBomb);
-
-	animBomb->addAnimation("BOMB_IDLE", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
-	
+	bomb->addComponent(RENDER_COMPONENT, renderBomb);
 	bomb->addRenderComponent(renderBomb);
-	bomb->addComponent(ANIMATION_COMPONENT, animBomb);
 
 	ColliderComponent* collBomb = new ColliderComponent(transform);
 

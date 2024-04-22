@@ -9,20 +9,14 @@
 class RenderComponent :	public Component
 {
 protected:
-	Texture* myTexture = nullptr;
-	AnimationComponent* myAnimator = nullptr;
-	TransformComponent* transform = nullptr;
-	float scale;
+	Texture* myTexture;
+	AnimationComponent* myAnimator;
+	TransformComponent* transform;
 
 public: 
-	//Constructora con animador
-	RenderComponent(Texture* tex, int wframes, int hframes, float sc, AnimationComponent* anim) : myTexture(tex), scale(sc), myAnimator(anim) {};
-	//Constructora sin animador
-	RenderComponent(Texture* tex, int wframes, int hframes, float sc) : myTexture(tex), scale(sc) {};
-	RenderComponent(Texture* t, float sc = 1) : myTexture(t), scale(sc) { };
+	RenderComponent(Texture* tex) : myTexture(tex), myAnimator(nullptr), transform(nullptr) {};
 	Texture* GetTexture() const { return myTexture; };
-	//Por si queremos cambiar la textura a un objeto
-	void ChangeTexture(Texture* newText) { myTexture = newText; };
+	void ChangeTexture(Texture* newText) { myTexture = newText; }; //Por si queremos cambiar la textura a un objeto
     void render();
 	void initComponent() override;
 };
