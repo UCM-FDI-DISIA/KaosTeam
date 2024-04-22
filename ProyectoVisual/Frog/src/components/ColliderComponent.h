@@ -2,36 +2,46 @@
 #include "../ecs/Component.h"
 #include "../utils/Vector2D.h"
 #include <functional>
+#include "TransformComponent.h"
+
+class Collider {
+public:
+	Collider(Box* box) : funciones(std::list<std::function<void(Entity*)>>()), box(box) {};
+	//Añade una funcion al collider que quieras
+	void AddCall(std::function<void(Entity*)> func);
+	//Comprueba la colision con un collider, si hay colision llama a OnCollision
+	void OnCollision(Entity* e);
+	bool Collides(Collider) const;
+private:
+	Box* box; //La caja que define el tamaño y posicion del collider
+	//El box tiene que ser gestionado por el creador del box
+	std::list<std::function<void(Entity*)>> funciones; //Las funciones a llamar en caso de colision
+};
 
 //Comprueba colisiones de objetos, y envía un mensaje con la información relevante a los componentes suscritos
-//La llamada a comporbar colisiones debe hacerse en el update del room antes o después del update de las entidades
-
-/*Flonk tiene un collision component que en su update comprueba la interseccion de su SDLrect con el SDLrect de el resto de entidades colisionables.
-- Los SDLrects estos se crean en cada iteración cogiendo la posición en MovementComponent y el width y height de la Textura * en RenderComponent.Feo pero cuando tengamos un componente transform ya se gestionará mejor.
-- Las entidades colisionables son las que tengan un componente collideable(igual no se llama así), este componente recibe un método callback en su constructora al que se le llamará si Flonk detecta una collisión con el SDLrect de esta entidad.
-De esta manera, provisional para este hito 2, flonk va a ser el que gestione con qué entidad ha collisionado y 
-llamará al metodo callback que corresponda, es un for simplemente y así Diego implementa esto y la 
-gente que ha estado haciendo enemigos puede hacer su método onCollision y meterlo en las constructoras y fuera : )
-*/
-//Es decir, al refactorizar en el hito 3 van a cambiar muchas cosas
+//NUEVA VERSION: El collider component puede tener varios colliders. Uno siempre que va a estar establecido por el transform.
+//La entidad puede tener mas cajas de colisiones, que se deberán añadir desde otros componentes. Estas tienen una posición relativa al transform.
 class ColliderComponent : public Component
 {
 public:
-	ColliderComponent() : funciones(std::list<std::function<void(Entity*)>*>()) {};
-	~ColliderComponent() {
-		//No hay que eliminar function porque pertenece al objeto llamado
+	ColliderComponent() : colliders(std::list<Collider>()) {
+		transformCollider = nullptr;
 	};
-	//Comprueba la colisión con la estidad e
-	bool CheckCollision(Entity* e);
-	//A llamar en caso de colisión, como parametro la entidad colisionada
-	void OnCollision(Entity* e);
-
-	//Añade la funcion a llamar cuando hay colision
-	//En el futuro molaria poder almacenas muchas funciones y llamar a todas
-	void AddCall(std::function<void(Entity* e)>* func);
-	
+	ColliderComponent(TransformComponent* tr) : colliders(std::list<Collider>()) {
+		AddCollider(Collider(tr));
+		transformCollider = &colliders.front();
+	};
+	//Comprueba la colisión de los colliders de este componente con los de la otra entidad
+	void CheckCollision(Entity* e);
+	//Añade un collider a este componente
+	void AddCollider(Collider c);
+	std::list<Collider> GetColliders() const;
+	Collider* GetTransofmCollider();
 private:
-	//Lista de funciones a llamar cuando se detecta la colisión
-	std::list<std::function<void(Entity*)>*> funciones;
+	//Lista de colliders gestionados por este componente
+	std::list<Collider> colliders;
+	//El collider que tiene transform como Box.
+	//Si nullptr, no tiene.
+	Collider* transformCollider;
 };
 

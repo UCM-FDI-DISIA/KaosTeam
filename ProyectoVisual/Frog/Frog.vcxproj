@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\MovementComponentBomb.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
@@ -205,12 +206,15 @@
     <ClCompile Include="src\sdlutils\Texture.cpp" />
     <ClCompile Include="src\utils\assets.cpp" />
     <ClCompile Include="src\managers\MapManager.cpp" />
+    <ClCompile Include="src\utils\Box.cpp" />
     <ClCompile Include="src\utils\Button.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\components\TransformComponent.cpp" />
     <ClCompile Include="src\components\TransitionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\MovementComponentBomb.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
@@ -271,6 +275,7 @@
     <ClInclude Include="src\sdlutils\VirtualTimer.h" />
     <ClInclude Include="src\utils\assets.h" />
     <ClInclude Include="src\managers\MapManager.h" />
+    <ClInclude Include="src\utils\Box.h" />
     <ClInclude Include="src\utils\Button.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />

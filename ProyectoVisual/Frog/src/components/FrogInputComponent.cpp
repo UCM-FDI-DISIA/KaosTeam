@@ -58,7 +58,8 @@ void FrogInputComponent::update()
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 		}
-		
+		//else if (input->getAction2()) { //Pongo aquí un caso para lanzar bomba (Aunque habría que comprobar antes que la rana tenga la capacidad de guardar bombas)
+		//}
 	}
 
 }
