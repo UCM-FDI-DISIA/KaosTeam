@@ -36,6 +36,7 @@ SDLUtils::SDLUtils(std::string windowTitle, int width, int height,
 SDLUtils::~SDLUtils() {
 	closeSDLExtensions();
 	closeWindow();
+	std::cout << Texture::count << std::endl;
 }
 
 void SDLUtils::initWindow() {

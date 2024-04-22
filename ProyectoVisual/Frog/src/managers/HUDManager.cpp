@@ -13,17 +13,20 @@ HUDManager::HUDManager() : vidasActuales(10), vidasMax(10), wormsActuales(0), re
 	rectFly.y = yInicial;
 	rectFly.w = textFly->width() / textFly->getCol();
 	rectFly.h = textFly->height() / textFly->getRow();
-	
+
 	textWorm = &sdlutils().images().at("worm");
 	textNumWorms = new Texture(sdlutils().renderer(), to_string(wormsActuales), *font, colorFont);
+	std::cout << "HUD TEXTURE: " << textNumWorms << std::endl;
 }
 
 HUDManager::~HUDManager()
 {
 	delete textNumWorms;
+	std::cout << "HUD TEXTURE AFTER DELETE: " << textNumWorms << std::endl;
 	textWorm = nullptr;
 	textFly = nullptr;
 	game = nullptr;
+	std::cout << Texture::count << std::endl;
 }
 
 void HUDManager::ChangeLives(int vidasToAdd)
@@ -39,14 +42,16 @@ void HUDManager::ChangeMaxLife(int maxLifeToAdd)
 	vidasMax += maxLifeToAdd;
 }
 
-void HUDManager::addWorms(const int wormsToAdd)
-{
-	wormsActuales += wormsToAdd;
-
-	delete textNumWorms;
-	textNumWorms = new Texture(sdlutils().renderer(), to_string(wormsActuales), *font, colorFont);
-	std::cout << "number of worms changed to: " << wormsActuales << std::endl;
-}
+//void HUDManager::addWorms(const int wormsToAdd)
+//{
+//	wormsActuales += wormsToAdd;
+//
+//	delete textNumWorms;
+//	std::cout << "HUD TEXTURE AFTER DELETE: " << textNumWorms << std::endl;
+//	textNumWorms = new Texture(sdlutils().renderer(), to_string(wormsActuales), *font, colorFont);
+//	std::cout << "HUD TEXTURE AFTER UPDATE: " << textNumWorms << std::endl;
+//	std::cout << "number of worms changed to: " << wormsActuales << std::endl;
+//}
 
 void HUDManager::render()
 {
@@ -75,5 +80,6 @@ void HUDManager::render()
 	//y ahora la worm
 	textWorm->render(xInicialWorm, yInicial-10);
 	//y el numero de worms
-	textNumWorms->render(xInicialWorm + 50, yInicial + 30);
+	//textNumWorms->render(xInicialWorm + 50, yInicial + 30);
+	//texNumWormsNuevo.render(xInicialWorm + 50, yInicial + 30);
 }

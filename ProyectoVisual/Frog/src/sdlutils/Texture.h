@@ -35,6 +35,7 @@ public:
 	
 
 	virtual ~Texture() {
+		count--;
 		if (texture_ != nullptr)
 			SDL_DestroyTexture(texture_); // delete the SDL texture
 	}
@@ -146,4 +147,8 @@ private:
 	int column_ = 1;
 	int fw;
 	int fh;
+
+	public:
+
+	static int count;
 };

@@ -19,7 +19,7 @@ Game::Game() : //
 
 Game::~Game()
 {
-	sdlutils().close();
+	//sdlutils().close();
 	delete pausedState;
 	delete newgameState;
 	delete gameOverState;

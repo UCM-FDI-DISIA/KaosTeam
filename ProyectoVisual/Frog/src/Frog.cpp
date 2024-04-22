@@ -14,5 +14,6 @@ int main(int ac, char** av)
 
     //delete game;
 
+    //_CrtSetDbgFlag;
     return 0;
 }

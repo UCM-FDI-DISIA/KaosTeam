@@ -21,6 +21,7 @@ private:
 	Texture* textFly;
 	Texture* textWorm;
 	Texture* textNumWorms;
+	//Texture texNumWormsNuevo;
 	SDL_Rect rectFly;
 	Font* font;
 	SDL_Color colorFont = {255, 255, 255, 255};
