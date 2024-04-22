@@ -6,7 +6,7 @@
 #include "../utils/Singleton.h"
 #include <vector>
 #include "../ecs/EntityShop.h"
-
+#include "../managers/HUDManager.h"
 class InputManager;
 class Texture;
 class Shop : public Singleton<Shop> {
@@ -16,6 +16,7 @@ public:
 	void render();
 	void update();
 	void setPlayer(Entity* player);
+	void setHUD(HUDManager* hud);
 private:
 
 	enum PowerUps { GRASSHOPER, WASP, FLY, CENTIPEDE, TOTAL };
@@ -30,6 +31,7 @@ private:
 
 	Entity* player = nullptr;
 	MoneyComponent* playerMoney = nullptr;
+	HUDManager* playerHUD = nullptr;
  
 	InputManager& imngr;
 
@@ -51,5 +53,6 @@ private:
 	void setOppacity();
 	void setSelectd();
 	void initShopEntitys();
+
 };
 #endif // !SHOPMANAGER_H

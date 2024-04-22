@@ -17,22 +17,25 @@ Shop::Shop() : imngr(im()), grasshoperTex(sdlutils().images().at("saltamontes"))
 	setOppacity();
 }
 void Shop::initShopEntitys() {
-	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 5,230,65,65 });
+	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 5,230,65,65 }, 1);
 	grasshoper->addShopComponent(gShop);
 	animals.push_back(grasshoper);
-	ShopComponent* wShop = new ShopComponent(waspTex, SDL_Rect{87,155,65, 65 });
+	ShopComponent* wShop = new ShopComponent(waspTex, SDL_Rect{87,155,65, 65 }, 1);
 	wasp->addShopComponent(wShop);
 	animals.push_back(wasp);
-	ShopComponent* fShop = new ShopComponent(flyTex, SDL_Rect{ 170,180,flyTex.width(), flyTex.height() });
+	ShopComponent* fShop = new ShopComponent(flyTex, SDL_Rect{ 170,180,flyTex.width(), flyTex.height() }, 3);
 	fly->addShopComponent(fShop);
 	animals.push_back(fly);
-	ShopComponent* cShop = new ShopComponent(centipedeTex, SDL_Rect{ 245,230,65, 65 });
+	ShopComponent* cShop = new ShopComponent(centipedeTex, SDL_Rect{ 245,230,65, 65 }, 1);
 	centipede->addShopComponent(cShop);
 	animals.push_back(centipede);
 }
 void Shop::setPlayer(Entity* player_) {
 	player = player_;
 	playerMoney = dynamic_cast<MoneyComponent*>(player->getComponent(MONEY_COMPONENT));
+}
+void Shop::setHUD(HUDManager* hud) {
+	playerHUD = hud;
 }
 void Shop::setSelectd() {
 	ShopComponent* sC = selected->getShopComponent();
@@ -129,10 +132,8 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 			ShopComponent* sC = fly->getShopComponent();
 			if (!sC->isBuy() && playerMoney->TakeMoney(flyValue)) {
 				//aumentar vida
-				std::cout << "mosca \n";
-				
+				playerHUD->ChangeMaxLife(2);
 				sC->setBuy();
-				
 			}
 			else {
 				//algo de dialogo

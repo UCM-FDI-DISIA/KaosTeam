@@ -8,13 +8,17 @@ private:
 	bool selected;
 	Texture& texture;
 	SDL_Rect textureRect;
+	int uses;
 public:
-	ShopComponent(Texture& t, SDL_Rect rect) :texture(t), buy(false),textureRect(rect),selected(false) {
+	ShopComponent(Texture& t, SDL_Rect rect, int u) :texture(t), buy(false),textureRect(rect),selected(false), uses(u) {
 		texture.setAlphaMod(200);
 	};
 	~ShopComponent() {};
 	bool isBuy() { return buy; }
-	void setBuy() { buy = true; }
+	void setBuy() { 
+		uses--;
+		if(uses==0) buy = true;
+	}
 	void quitSelectd() { selected = false; }
 	void setSelected() { selected = true; }
 	void myRender() { texture.render(textureRect); }

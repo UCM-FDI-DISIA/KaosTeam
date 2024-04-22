@@ -59,6 +59,7 @@ public:
 		//Tienda
 		shopManager = Shop::instance();
 		shopManager->setPlayer(player);
+		shopManager->setHUD(HUD);
 
 
 #pragma region Cosas q vamos a borrar pronto

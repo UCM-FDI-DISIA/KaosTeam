@@ -31,9 +31,9 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_RIGHT:
 			DowntiCheck(BTN_RIGHT);
 			break;
-		//case SDLK_LSHIFT:
-		//	btnShift = true;
-		//	break;
+		case SDLK_LSHIFT:
+			DowntiCheck(BTN_SHIFT);
+			break;
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
 			DowntiCheck(BTN_ACTION1);
 			break;
@@ -78,9 +78,9 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_RIGHT:
 			UptiCheck(BTN_RIGHT);
 			break;
-		//case SDLK_LSHIFT:
-		//	btnShift = true;
-		//	break;
+		case SDLK_LSHIFT:
+			UptiCheck(BTN_SHIFT);
+			break;
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
 			UptiCheck(BTN_ACTION1);
 			break;
@@ -148,9 +148,9 @@ InputButton InputManager::getAction1() {
 InputButton InputManager::getAction2() {
 	return buttons[BTN_ACTION2];
 }
-//InputButton InputManager::getShift() {
-//	return btnShift;
-//}
+InputButton InputManager::getShift() {
+	return buttons[BTN_SHIFT];
+}
 InputButton InputManager::getAction4() {
 	return buttons[BTN_ACTION4];
 }
