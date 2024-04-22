@@ -315,8 +315,14 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 	TransformComponent* tr = new TransformComponent(pos);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);
 	tr->setContext(fran);
+	ColliderComponent* bossColl = new ColliderComponent();
+	fran->addComponent(COLLIDER_COMPONENT, bossColl);
+	bossColl->setContext(fran);
+	BossComponent* bossComp = new BossComponent();
+	fran->addComponent(BOSS_COMPONENT, bossComp);
+	bossComp->setContext(fran);
 	AddEntity(fran);
-
+	
 	return fran;
 }
 

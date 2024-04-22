@@ -1,7 +1,7 @@
 #include "BossComponent.h"
 
-BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), speed(1.5), multiplier(0.2),
-		pos(Vector2D(0, 0))
+BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), speed(BOSS_SPEED), 
+	multiplier(0.2), pos(BOSS_INIT_POS)
 {
 	initComponent();
 }
@@ -19,9 +19,11 @@ void BossComponent::update()
 {
 	switch (currState) {
 	case MOVE:
+		checkDirection();
 		move();
 		break;
 	case DETECT:
+		checkDirection();
 		detect();
 		break;
 	case ATTACK:
@@ -36,6 +38,10 @@ void BossComponent::move()
 {
 	if (isFlonkOnShadow()) {
 		currState = DETECT;
+		pos = pos + speed * multiplier;
+	}
+	else {
+		pos = pos + speed;
 	}
 	//Logica de mover a la sombra -> Mover el Transform de la entidad Boss en base a su velocidad
 
@@ -63,6 +69,11 @@ void BossComponent::attack()
 	moveCutlery();
 }
 
+void BossComponent::checkDirection()
+{
+	if (isShadowAtSideLine(pos)) speed = speed * -1;
+}
+
 void BossComponent::darkenShadow()
 {
 	//Lógica de cambiar de la textura por la más oscura
@@ -78,11 +89,8 @@ void BossComponent::createCutlery()
 void BossComponent::moveCutlery()
 {
 	//Lógica para mover los cubiertos que estén activos en la pool de cubiertos
-
-	if (hasCrashed() || isOutOfScreen())
-	{
-
-	}
+	for (auto cubierto : poolCubiertos)
+		if(cubierto.second) cubierto.first->pos = cubierto.first->pos + cubierto.first->speed;
 }
 
 bool BossComponent::isFlonkOnShadow() const
@@ -97,8 +105,19 @@ bool BossComponent::hasCrashed() const
 	return false;
 }
 
-bool BossComponent::isOutOfScreen() const
+bool BossComponent::isOutOfScreen(Vector2D pos) const
 {
 	//Lógica para obtener la posicion del cubierto y ver si está fuera de la pantalla
-	return false;
+	return pos.getY() >= ent->getScene()->getMapReader()->getTileSize()->getY();
+}
+
+bool BossComponent::isShadowAtSideLine(Vector2D pos) const
+{
+	return pos.getX() <= 0
+		|| pos.getX() - sombra->width() >= ent->getScene()->getMapReader()->getTileSize()->getX();
+}
+
+void BossComponent::setSpeed(Vector2D spd)
+{
+	speed = spd;
 }

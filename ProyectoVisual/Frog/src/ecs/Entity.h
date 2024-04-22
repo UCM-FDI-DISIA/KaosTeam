@@ -16,7 +16,7 @@ enum componentsEnum
 	IACOMPONENT,
 	TRANSFORM_COMPONENT,
 	COLLIDER_COMPONENT,
-	SHADOW_DETECTION
+	BOSS_COMPONENT
 };
 class Component;
 class RenderComponent;
