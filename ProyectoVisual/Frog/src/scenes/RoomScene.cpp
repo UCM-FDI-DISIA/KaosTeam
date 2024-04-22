@@ -354,11 +354,13 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	return c;
 }
 
-Entity* RoomScene::createDestructible(Vector2D pos, int type)
+Entity* RoomScene::createDestructible(Vector2D pos, int type, int loot)
 {
+	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
+
 	Entity* destructible = new Entity(this);
-	//textura cambiar
-	if(type = 0)
+
+	if(type = 0) // jarron
 	{
 		Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
 		// hay que añadirle luego un sprite siendo destruido
@@ -370,12 +372,13 @@ Entity* RoomScene::createDestructible(Vector2D pos, int type)
 		AnimationComponent* animDestructible = new AnimationComponent();
 
 		RenderComponentDestructible* renderDestructible = new RenderComponentDestructible(txtDestructible, animDestructible);
+		
 
 		return destructible;
 	}
-	else if (type = 1)
+	else if (type = 1)	// arbusto
 	{
-		// texturas del arbusto
+		// TO DO
 	}
 }
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
@@ -384,11 +387,11 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 
 	
 	if (objName == "Jarron"){
-		c = createDestructible(pos, objProps[0].getIntValue());
-	}
+		c = createDestructible(pos, 0, objProps[0].getIntValue());
+	}	
 	else if (objName == "Arbusto")
 	{
-		c = createDestructible(pos, 1);
+		c = createDestructible(pos, 1, objProps[1].getIntValue());
 	}
 	//else if ()......
 
