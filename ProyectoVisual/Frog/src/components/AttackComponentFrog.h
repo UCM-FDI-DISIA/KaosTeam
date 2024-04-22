@@ -18,4 +18,3 @@ public:
 	void attack();
 	void EndAttack();
 };
-
