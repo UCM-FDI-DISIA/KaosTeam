@@ -1,5 +1,4 @@
 #include "DestructibleComponent.h"
-//using namespace DestructibleComponent;
 
 
 DestructibleComponent::DestructibleComponent(int lootType) : loot(lootType)
