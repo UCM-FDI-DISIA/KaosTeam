@@ -9,7 +9,7 @@ MovementComponentSnake::MovementComponentSnake(AnimationComponent* a) :
 	MovementComponent(), anim(a),
 	lastTimeAction(DataManager::GetInstance()->getFrameTime()), coolDownTime(1000),
 	isRotate(true), isAttack(false),
-	currentDirection(Direction::RIGHT_ROT), attackDistance(2) {
+	currentDirection(Direction::RIGHT_ROT), attackDistance(2), targetTransformComp(nullptr) {
 }
 
 void MovementComponentSnake::update()

@@ -11,7 +11,6 @@
 #include "../components/MovementComponentFrog.h"
 #include "../components/FollowPlayerComponent.h"
 #include "../components/AnimationComponent.h"
-#include "../components/TransitionComponent.h"
 #include "../components/MovementComponentFish.h";
 #include "../components/MovementComponentBlackAnt.h";
 #include "../components/MovementComponentRedAnt.h"
@@ -44,7 +43,6 @@ RoomScene::~RoomScene() {
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;
 	}
-	delete cameraManager;
 	delete mapReader;
 }
 

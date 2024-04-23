@@ -1,8 +1,9 @@
 #include "Entity.h"
 #include "Component.h"
 #include "../scenes/RoomScene.h"
-//include rendercomponent()
-
+#include "../components/RenderComponent.h"
+#include "../components/RenderComponentFrog.h"
+#include "../components/RenderComponentSnake.h"
 
 Entity::Entity(/*int x, int y*/RoomScene* scn) /*: pos(x, y)*/
 {
