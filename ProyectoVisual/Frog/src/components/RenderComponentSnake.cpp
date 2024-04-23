@@ -1,7 +1,8 @@
+#include "RenderComponentSnake.h"
 #include "../scenes/RoomScene.h"
 #include "../managers/MapManager.h"
 #include "AttackComponentSnake.h"
-#include "RenderComponentSnake.h"
+#include "MovementComponentSnake.h"
 #include "AnimationComponent.h"
 #include "TransformComponent.h"
 

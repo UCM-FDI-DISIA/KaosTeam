@@ -5,6 +5,7 @@
 #include "../managers/CameraManager.h"
 #include "../managers/MapManager.h"
 #include "../ecs/Entity.h"
+#include "../components/TransitionComponent.h"
 #include <vector>
 
 class RoomScene : public Scene

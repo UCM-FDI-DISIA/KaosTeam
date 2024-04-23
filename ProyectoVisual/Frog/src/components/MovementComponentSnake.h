@@ -2,6 +2,7 @@
 #include "MovementComponent.h"
 #include "AnimationComponent.h"
 #include "../managers/DataManager.h"
+#include "TransformComponent.h"
 #include "../sdlutils/SDLUtils.h"
 
 class TransformComponent;
