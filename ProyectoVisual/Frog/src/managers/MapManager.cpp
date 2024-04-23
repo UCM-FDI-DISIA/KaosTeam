@@ -208,8 +208,15 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
                     tiles.push_back(*t);
 
                     //la añadimos a el mapa de tiles caminables
+                    if (walkableTiles[x][y] != nullptr)
+                    {
+                        delete walkableTiles[x][y];
+                    }
+
                     if (walkable)
+                    {
                         walkableTiles[x][y] = t;
+                    }
                     else
                     {
                         walkableTiles[x][y] = nullptr; //por si hay tiles no walkables sobre walkables
