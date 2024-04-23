@@ -2,7 +2,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
 
-BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), 
+BossComponent::BossComponent() :render(nullptr), currState(MOVE), shadowTimer(0), postAttackTimer(2), 
 	speed(Vector2D(-ent->getScene()->getMapReader()->getTileSize()/5,0)), 
 	multiplier(0.2), pos(BOSS_INIT_POS), lowerLimit(0), 
 	upperLimit(ent->getScene()->getMapReader()->getMapSize().getX())	
@@ -17,7 +17,7 @@ BossComponent::~BossComponent()
 void BossComponent::initComponent()
 {
 	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
-	//rend = ent->getComponent<RenderComponent>(RENDER_COMPONENT);
+	render = ent->getRenderComponent();
 }
 
 void BossComponent::update()

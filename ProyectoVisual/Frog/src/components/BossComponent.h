@@ -18,7 +18,6 @@ struct Cubierto {
 	Entity* tipo;
 	TransformComponent* tr;
 	ColliderComponent* coll;
-	RenderComponent* rend;
 	Vector2D speed; //Velocidad
 	Vector2D pos; //Posicion
 	Texture* tex; //Imagen del cubierto (tenerdor o cuchillo)
@@ -32,6 +31,7 @@ private:
 	short int lowerLimit; //Limite inferior de movimiento del Boss
 	short int upperLimit; //Limite superior de movimiento del Boss
 	bossState currState;
+	RenderComponent* render;
 	std::vector<Cubierto*> cubiertos;
 	std::vector<std::pair<Cubierto*, bool>> poolCubiertos; //El numero de cubiertos max instanciados depende de la zona
 
