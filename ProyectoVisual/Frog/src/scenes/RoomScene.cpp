@@ -339,7 +339,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	RenderComponent* renderBomb = new RenderComponent(textBomb);
 	renderBomb->setContext(bomb);
 	renderBomb->initComponent();
-	bomb->addComponent(RENDER_COMPONENT, renderBomb);
+	//bomb->addComponent(RENDER_COMPONENT, renderBomb); LUISJA NO HAGAS ESTO Q LUEGO CUANDO BORRAS TE CAGAS ENCIMA
 	bomb->addRenderComponent(renderBomb);
 
 	ColliderComponent* collBomb = new ColliderComponent(transform);
