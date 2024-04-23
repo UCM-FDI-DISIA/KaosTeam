@@ -18,6 +18,7 @@ BossComponent::~BossComponent()
 void BossComponent::initComponent()
 {
 	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
+	render = ent->getRenderComponent();
 }
 
 void BossComponent::update()
@@ -82,7 +83,7 @@ void BossComponent::checkDirection()
 
 void BossComponent::darkenShadow()
 {
-	//Lógica de cambiar de la textura por la más oscura
+	//Lï¿½gica de cambiar de la textura por la mï¿½s oscura
 }
 
 void BossComponent::resetShadow()
@@ -91,14 +92,14 @@ void BossComponent::resetShadow()
 
 void BossComponent::createCutlery()
 {
-	/* Lógica de crear los cubiertos.
+	/* Lï¿½gica de crear los cubiertos.
 		Usar randoms para la aparicion de cada uno, otro para decidir si se crea cuchillo o tenedor, otro para 
-		la fila en la que spawnea, y otro para la velocidad que tendrá. */
+		la fila en la que spawnea, y otro para la velocidad que tendrï¿½. */
 }
 
 void BossComponent::moveCutlery()
 {
-	//Lógica para mover los cubiertos que estén activos en la pool de cubiertos
+	//Lï¿½gica para mover los cubiertos que estï¿½n activos en la pool de cubiertos
 	for (auto cubierto : poolCubiertos)
 		if(cubierto.second) cubierto.first->pos = cubierto.first->pos + cubierto.first->speed;
 }
@@ -109,19 +110,19 @@ void BossComponent::changeRange()
 
 bool BossComponent::isFlonkOnShadow() const
 {
-	//Lógica de comprobar si Flonk esta en cualquiera de las casillas que ocupa la sombra
+	//Lï¿½gica de comprobar si Flonk esta en cualquiera de las casillas que ocupa la sombra
 	return false;
 }
 
 bool BossComponent::hasCrashed() const
 {
-	//Lógica de colision con otras entidades de la sala
+	//Lï¿½gica de colision con otras entidades de la sala
 	return false;
 }
 
 bool BossComponent::isOutOfScreen(Vector2D pos) const
 {
-	//Lógica para obtener la posicion del cubierto y ver si está fuera de la pantalla
+	//Lï¿½gica para obtener la posicion del cubierto y ver si estï¿½ fuera de la pantalla
 	return pos.getY() >= sdlutils().height();
 }
 

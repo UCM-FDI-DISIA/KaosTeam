@@ -6,6 +6,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../components/TransformComponent.h"
 #include "../components/ColliderComponent.h"
+#include"../components/RenderComponent.h"
 
 const int MAX_TIME_ON_SHADOW = 3;
 const int MAX_CUBIERTOS = 7;
@@ -29,6 +30,7 @@ private:
 	short int lowerLimit; //Limite inferior de movimiento del Boss
 	short int upperLimit; //Limite superior de movimiento del Boss
 	bossState currState;
+	RenderComponent* render;
 	std::vector<Cubierto*> cubiertos;
 	std::vector<std::pair<Cubierto*, bool>> poolCubiertos; //El numero de cubiertos max instanciados depende de la zona
 

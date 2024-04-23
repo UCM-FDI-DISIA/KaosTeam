@@ -27,6 +27,11 @@ void RenderComponent::render()
 	}
 }
 
+void RenderComponent::changeAlpha(int newAlpha)
+{
+	SDL_SetTextureAlphaMod(myTexture->getTexture(), newAlpha);
+}
+
 void RenderComponent::initComponent() {
 	transform = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 }
