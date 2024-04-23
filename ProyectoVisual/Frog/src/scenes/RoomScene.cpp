@@ -1,5 +1,6 @@
 #include "RoomScene.h"
 
+#pragma region includes
 #include "../components/CrazyFrogIAComponent.h"
 #include "../components/MovementComponentFly.h"
 #include "../components/RenderComponent.h"
@@ -19,6 +20,8 @@
 #include "../components/FrogInputComponent.h"
 #include "../components/ColliderComponent.h"
 #include "../components/MovementComponentFish.h"
+#include "../components/MovementComponentFrancois.h"
+#pragma endregion
 
 RoomScene::RoomScene(int id) : id(id), 
 				cameraManager(Camera::instance()), // 
@@ -33,6 +36,7 @@ RoomScene::RoomScene(int id) : id(id),
 	mapReader->loadObj("resources/maps/niveles/nivel01/mapaN1_01.tmx");
 	//Create player desde el mapa
 	cameraManager->setTarget(player);
+	createFrancois(Vector2D(0,0));
 };
 
 RoomScene::~RoomScene() {
@@ -364,6 +368,7 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 	ColliderComponent* bossColl = new ColliderComponent();
 	fran->addComponent(COLLIDER_COMPONENT, bossColl);
 	bossColl->setContext(fran);
+	MovementComponentFrancois* move = new MovementComponentFrancois();
 	BossComponent* bossComp = new BossComponent();
 	fran->addComponent(BOSS_COMPONENT, bossComp);
 	bossComp->setContext(fran);

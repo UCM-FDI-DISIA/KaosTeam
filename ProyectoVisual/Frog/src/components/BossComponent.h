@@ -7,6 +7,7 @@
 #include "../components/TransformComponent.h"
 #include "../components/ColliderComponent.h"
 #include"../components/RenderComponent.h"
+#include "../components/MovementComponentFrancois.h"
 
 const int MAX_TIME_ON_SHADOW = 3;
 const int MAX_CUBIERTOS = 7;
