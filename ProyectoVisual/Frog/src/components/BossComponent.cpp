@@ -2,12 +2,13 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
 
-BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), 
-	speed(Vector2D(-ent->getScene()->getMapReader()->getTileSize()/5,0)), 
-	multiplier(0.2), pos(BOSS_INIT_POS), lowerLimit(0), 
-	upperLimit(ent->getScene()->getMapReader()->getMapSize().getX())	
+BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), pos(BOSS_INIT_POS), //
+	speed(Vector2D(-ent->getScene()->getMapReader()->getTileSize()/5,0)), multiplier(0.2), //
+	lowerLimit(0), upperLimit(ent->getScene()->getMapReader()->getMapSize().getX())	//
+
 {
 	initComponent();
+	createCutlery();
 }
 
 BossComponent::~BossComponent()

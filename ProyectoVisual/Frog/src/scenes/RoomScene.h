@@ -1,25 +1,11 @@
 #pragma once
+
 #include "../ecs/Scene.h"
-#include "../components/MovementComponentFly.h"
-#include "../components/RenderComponent.h"
-#include "../components/RenderComponentFrog.h"
-#include "../components/RenderComponentSnake.h"
-#include "../components/AttackComponentFrog.h"
-#include "../components/AttackComponentSnake.h"
-#include "../components/MovementComponentFrog.h"
-#include "../components/FollowPlayerComponent.h"
-#include "../components/AnimationComponent.h"
-#include "../components/TransitionComponent.h"
-#include "../managers/CameraManager.h"
-#include "../components/FrogInputComponent.h"
-#include "../components/ColliderComponent.h"
-#include "../components/MovementComponentFish.h"
 #include "../managers/HUDManager.h"
-#include "../components/MovementComponentFish.h";
-#include "../components/MovementComponentBlackAnt.h";
-#include "../components/MovementComponentRedAnt.h"
-#include "../components/MovementComponentSnake.h"
-#include "../components/BossComponent.h"
+#include "../managers/CameraManager.h"
+#include "../managers/MapManager.h"
+#include "../ecs/Entity.h"
+#include <vector>
 
 class RoomScene : public Scene
 {
@@ -29,9 +15,9 @@ private:
 	MapManager* mapReader;
 	HUDManager* HUD;
 	int id;
-	Entity* player = nullptr;
-	flonkOrig playerOrig = S;
-	bool needMapChange = false;
+	Entity* player;
+	flonkOrig playerOrig; //Indica en que punto cardinal aparece Flonk al entrar en cada sala
+	bool needMapChange;
 	std::string nextMap;
 	flonkOrig nextFlonk;
 

@@ -1,11 +1,32 @@
 #include "RoomScene.h"
+
 #include "../components/CrazyFrogIAComponent.h"
+#include "../components/MovementComponentFly.h"
+#include "../components/RenderComponent.h"
+#include "../components/RenderComponentFrog.h"
+#include "../components/RenderComponentSnake.h"
+#include "../components/AttackComponentFrog.h"
+#include "../components/AttackComponentSnake.h"
+#include "../components/MovementComponentFrog.h"
+#include "../components/FollowPlayerComponent.h"
+#include "../components/AnimationComponent.h"
+#include "../components/TransitionComponent.h"
+#include "../components/MovementComponentFish.h";
+#include "../components/MovementComponentBlackAnt.h";
+#include "../components/MovementComponentRedAnt.h"
+#include "../components/MovementComponentSnake.h"
+#include "../components/BossComponent.h"
+#include "../components/FrogInputComponent.h"
+#include "../components/ColliderComponent.h"
+#include "../components/MovementComponentFish.h"
 
 RoomScene::RoomScene(int id) : id(id), 
 				cameraManager(Camera::instance()), // 
 				mapReader(new MapManager("resources/maps/niveles/nivel01/mapaN1_01.tmx", this)), //
-				HUD(HUDManager::GetInstance())
-
+				HUD(HUDManager::GetInstance()), //
+				player(nullptr), //
+				playerOrig(S), //
+				needMapChange(false) //
 {
 	//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap 
 	// y las entidades de la sala.
@@ -20,6 +41,7 @@ RoomScene::~RoomScene() {
 		delete* it;
 	}
 	delete cameraManager;
+	delete mapReader;
 }
 
 void RoomScene::render() {

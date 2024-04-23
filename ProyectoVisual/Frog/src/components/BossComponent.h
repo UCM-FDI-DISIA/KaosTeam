@@ -7,8 +7,6 @@
 #include "../components/TransformComponent.h"
 #include "../components/ColliderComponent.h"
 
-class RoomScene{};
-
 const int MAX_TIME_ON_SHADOW = 3;
 const int MAX_CUBIERTOS = 7;
 const Vector2D BOSS_INIT_POS = Vector2D(12, 0);
@@ -28,7 +26,6 @@ struct Cubierto {
 class BossComponent: public Component
 {	
 private:
-	std::pair<int, int> bossRange; //determina el rango de movimiento del boss
 	short int lowerLimit; //Limite inferior de movimiento del Boss
 	short int upperLimit; //Limite superior de movimiento del Boss
 	bossState currState;

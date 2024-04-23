@@ -6,8 +6,6 @@
 
 class Game;
 
-
-
 class HUDManager
 {
 private:

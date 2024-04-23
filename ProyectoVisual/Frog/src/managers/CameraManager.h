@@ -8,8 +8,6 @@
 #include "../components/MovementComponentFrog.h"
 #include "../utils/Singleton.h"
 
-
-
 class Camera: public Singleton<Camera> { 
 
 	friend Singleton<Camera>;
