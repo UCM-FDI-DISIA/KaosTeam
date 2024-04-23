@@ -1,30 +1,25 @@
 #include "LifeComponent.h"
 
-int LifeComponent::GetActual()
-{
+int LifeComponent::GetActual() {
 	return vidaActual;
 }
 
-int LifeComponent::GetMax()
-{
+int LifeComponent::GetMax() {
 	return vidaMaxima;
 }
 
-void LifeComponent::SetActual(int n)
-{
+void LifeComponent::SetActual(int n) {
 	vidaActual += n;
 	if (vidaActual > vidaMaxima)
-	{
 		vidaActual = vidaMaxima;
-	}
-}
 
-void LifeComponent::SetMax(int n)
-{
+	std::cout << "Vida de la entidad: " << vidaActual << std::endl;
+};
+
+void LifeComponent::SetMax(int n) {
 	vidaMaxima += n;
 }
 
-bool LifeComponent::alive()
-{
+bool LifeComponent::alive() {
 	return vidaActual > 0;
 }

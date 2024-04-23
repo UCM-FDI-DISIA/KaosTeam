@@ -47,10 +47,6 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	player->addComponent(TRANSFORM_COMPONENT, transform);
 	transform->setContext(player);
 
-	ColliderComponent* collider = new ColliderComponent(transform);
-	player->addComponent(COLLIDER_COMPONENT, collider);
-	collider->setContext(player);
-
 	AnimationComponent* animFrog = new AnimationComponent();
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
@@ -72,6 +68,8 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	animFrog->addAnimation("ATTACK_UP", Animation({ Vector2D(1,2) }, false, false));
 	animFrog->addAnimation("ATTACK_DOWN", Animation({ Vector2D(0,2) }, false, false));
 
+	animFrog->addAnimation("DEATH", Animation({ Vector2D(3,0) }, false, false));
+
 	player->addRenderComponentFrog(renderFrog);
 	player->addComponent(ANIMATION_COMPONENT, animFrog);
 
@@ -90,9 +88,14 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	player->addComponent(INPUT_COMPONENT, input);
 
 	//Sistema de colisiones
-	ColliderComponent* coll = new ColliderComponent();
+	ColliderComponent* coll = new ColliderComponent(transform);
 	coll->setContext(player);
 	player->addComponent(COLLIDER_COMPONENT, coll);
+
+	//Sistema de vidas
+	LifeComponent* life = new LifeComponent(2, 2);
+	life->setContext(player);
+	player->addComponent(LIFE_COMPONENT, life);
 
 	MoneyComponent* moneyComp = new MoneyComponent();
 	moneyComp->setContext(player);

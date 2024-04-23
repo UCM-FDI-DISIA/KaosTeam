@@ -34,28 +34,34 @@ void MovementComponentBomb::initComponent() {
 }
 
 // Esta función, se llamará en cada iteracción del update para detectar con que entity colisiona y hacer las correspondientes acciones
-//(Mi idea era hacer el metodo aqui, sin embargo, no puedo acceder a la entidad contra la que colisiona
-// la bomba desde aquí, asi que no me queda mas remedio que hacerlo en la RoomScene...)
 void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
-	switch (ent->getName()) {
-	case EntityName::BREAKABLE_DOOR_ENTITY:
-		//Destruimos la puerta: ent-> MetodoAlQueLlamar(); 
-		std::cout << "PUERTA DESTRUIDA" << std::endl;
-		break;
-	case EntityName::INTERRUPTOR_ENTITY:
-		//Activamos interruptor
-		std::cout << "INTERRUPTOR ACTIVADO" << std::endl;
-		break;
-	case EntityName::SNAKE_ENTITY:
-		//Quitariamos vida a la serpiente...
-		ent->getScene()->removeEntity(ent);
-		//Eliminamos a la bomba
-		explodeBomb();
-		std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
-		break;
-
-	//...Mas casos
+	if (!shockEntity) { //Comprobamos que ya 
+		switch (ent->getName()) {
+		case EntityName::BREAKABLE_DOOR_ENTITY:
+			//Destruimos la puerta: ent-> MetodoAlQueLlamar(); 
+			std::cout << "PUERTA DESTRUIDA" << std::endl;
+			break;
+		case EntityName::INTERRUPTOR_ENTITY:
+			//Activamos interruptor
+			std::cout << "INTERRUPTOR ACTIVADO" << std::endl;
+			break;
+		case EntityName::SNAKE_ENTITY:
+			//Quitariamos vida a la serpiente...
+			ent->getScene()->removeEntity(ent);
+			//Eliminamos a la bomba
+			explodeBomb();
+			std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
+			break;
+		case EntityName::FROG_ENTITY:
+			LifeComponent* lifeEntity = static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT));
+			lifeEntity->SetActual(-1); //bajamos vida de la entidad
+			lifeEntity = nullptr;
+			explodeBomb();
+			break;
+			//...Mas casos
+		}
 	}
+	
 }
 
 //Mueve la bomba en la direccion dada:

@@ -10,6 +10,7 @@
 #include "../components/FollowPlayerComponent.h"
 #include "../components/AnimationComponent.h"
 #include "../components/TransitionComponent.h"
+#include "../components/LifeComponent.h"
 #include "../managers/CameraManager.h"
 #include "../components/FrogInputComponent.h"
 #include "../components/ColliderComponent.h"
@@ -118,7 +119,8 @@ public:
 
 
 		//createFish(Vector2D(0, 3), 4);
-		createBomb(Vector2D(4, 2));
+		createBomb(Vector2D(5, 2));
+		createBomb(Vector2D(7, 2));
 		//createBomb(Vector2D(3, 2));
 
 #pragma endregion

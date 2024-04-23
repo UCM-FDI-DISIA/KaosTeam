@@ -6,7 +6,8 @@
 
 enum ColliderName {
 	UNAMED_COLLIDER,
-
+	ENEMY_COLLIDER,
+	FROG_COLLIDER
 };
 
 class Collider {
