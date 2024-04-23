@@ -4,6 +4,7 @@
 #include "../ecs/Component.h"
 #include <SDL.h>
 
+
 /* Constructor del animador */
 AnimationComponent::AnimationComponent() :
 	Component(),

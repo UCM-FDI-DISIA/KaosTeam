@@ -43,26 +43,31 @@ MapManager::MapManager(const std::string& path, RoomScene* room)
     : name(name), rows(0), cols(0), tile_width(16), tile_height(16), room(room){
         std::cout << path << std::endl;
         loadBg(path, sdlutils().renderer());
-        boundLeft = -((cols * tile_width)-(5*tile_width));
-        boundTop = -((rows * tile_height) - (3 * tile_height));
-        boundRight = cols * tile_width;
-        boundBottom = rows * tile_height;
+        
     }
 
 MapManager::~MapManager()
 {
-   for (int i = 0; i < cols; i++)
-   {
-       for (int j = 0; j < rows; j++)
-       {
-           delete walkableTiles[i][j];
-       }
-   }
-   for (auto ts : tilesets)
-   { 
-       SDL_DestroyTexture(ts.second);
-   }
+    clearMap();
  
+    for (auto ts : tilesets)
+    {
+        SDL_DestroyTexture(ts.second);
+    }
+ 
+}
+
+void MapManager::clearMap()
+{
+    tiles.clear();
+    for (int i = 0; i < cols; i++)
+    {
+        for (int j = 0; j < rows; j++)
+        {
+            delete walkableTiles[i][j];
+        }
+    }
+    
 }
 
 void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
@@ -77,6 +82,10 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
     auto map_dimensions = tiled_map.getTileCount();
     rows = map_dimensions.y;
     cols = map_dimensions.x;
+   /* boundLeft = -((cols * tile_width) - (5 * tile_width));
+    boundTop = -((rows * tile_height) - (3 * tile_height));
+    boundRight = cols * tile_width;
+    boundBottom = rows * tile_height;*/
 
     //it starts in the origin
     if (tiled_map.isInfinite())

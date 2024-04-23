@@ -519,7 +519,11 @@ void RoomScene::changeMap()
 		it = entityList.erase(it);
 	}
 
-	mapReader = new MapManager(nextMap, this);
+	//delete mapReader;
+
+	//mapReader = new MapManager(nextMap, this);
+	mapReader->clearMap();
+	mapReader->loadBg(nextMap, sdlutils().renderer());
 	mapReader->loadObj(nextMap);
 
 	cameraManager->setTarget(player);
