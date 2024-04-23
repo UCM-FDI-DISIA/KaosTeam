@@ -58,6 +58,10 @@ MapManager::~MapManager()
            delete walkableTiles[i][j];
        }
    }
+   for (auto ts : tilesets)
+   { 
+       SDL_DestroyTexture(ts.second);
+   }
  
 }
 

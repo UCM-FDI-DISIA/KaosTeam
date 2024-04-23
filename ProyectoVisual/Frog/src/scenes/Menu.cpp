@@ -6,6 +6,7 @@
 #include "../game/GameState.h"
 
 
+
 Menu::Menu(Game* g, GameState* gs, Texture * path1, Texture * path2):
 		Scene(), //
 		gameState(gs), //
