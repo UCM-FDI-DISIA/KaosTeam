@@ -17,6 +17,7 @@ BossComponent::~BossComponent()
 void BossComponent::initComponent()
 {
 	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
+	//rend = ent->getComponent<RenderComponent>(RENDER_COMPONENT);
 }
 
 void BossComponent::update()

@@ -22,6 +22,7 @@ public:
 	RenderComponent(Texture* tex, int wframes, int hframes, float sc);
 	RenderComponent(Texture* t, float);
 	Texture* GetTexture() { return myTexture; };
+	void changeAlpha(int newAlpha);
     void render();
 	void initComponent() override;
 };

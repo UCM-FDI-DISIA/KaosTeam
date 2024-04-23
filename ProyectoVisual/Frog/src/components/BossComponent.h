@@ -6,8 +6,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../components/TransformComponent.h"
 #include "../components/ColliderComponent.h"
-
-class RoomScene{};
+#include"../components/RenderComponent.h"
 
 const int MAX_TIME_ON_SHADOW = 3;
 const int MAX_CUBIERTOS = 7;
@@ -19,6 +18,7 @@ struct Cubierto {
 	Entity* tipo;
 	TransformComponent* tr;
 	ColliderComponent* coll;
+	RenderComponent* rend;
 	Vector2D speed; //Velocidad
 	Vector2D pos; //Posicion
 	Texture* tex; //Imagen del cubierto (tenerdor o cuchillo)
