@@ -2,8 +2,10 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
 
-BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), speed(Vector2D(-ent->getScene()->getMapReader()->getTileSize()/5,0)), 
-	multiplier(0.2), pos(BOSS_INIT_POS)
+BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), 
+	speed(Vector2D(-ent->getScene()->getMapReader()->getTileSize()/5,0)), 
+	multiplier(0.2), pos(BOSS_INIT_POS), lowerLimit(0), 
+	upperLimit(ent->getScene()->getMapReader()->getMapSize().getX())	
 {
 	initComponent();
 }
@@ -124,11 +126,16 @@ bool BossComponent::isOutOfScreen(Vector2D pos) const
 
 bool BossComponent::isShadowAtSideLine(Vector2D pos) const
 {
-	return pos.getX() <= 0
+	return pos.getX() <= lowerLimit
 		|| pos.getX() - sombra->width() >= sdlutils().width();
 }
 
 void BossComponent::setSpeed(Vector2D spd)
 {
 	speed = spd;
+}
+
+void BossComponent::setLowerLimit(short int limit)
+{
+	lowerLimit = limit;
 }

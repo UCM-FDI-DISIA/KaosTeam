@@ -1,6 +1,27 @@
 #include "RoomScene.h"
 #include "../components/CrazyFrogIAComponent.h"
 
+RoomScene::RoomScene(int id) : id(id), 
+				cameraManager(Camera::instance()), // 
+				mapReader(new MapManager("resources/maps/niveles/nivel01/mapaN1_01.tmx", this)), //
+				HUD(HUDManager::GetInstance())
+
+{
+	//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap 
+	// y las entidades de la sala.
+	mapReader->loadObj("resources/maps/niveles/nivel01/mapaN1_01.tmx");
+	//Create player desde el mapa
+	cameraManager->setTarget(player);
+};
+
+RoomScene::~RoomScene() {
+	//Eliminar la lista de entidades
+	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
+		delete* it;
+	}
+	delete cameraManager;
+}
+
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
 
@@ -441,21 +462,8 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	return c;
 }
 
-void RoomScene::movePlayer(Vector2D pos)
-{
-	player->getComponent<TransformComponent>(TRANSFORM_COMPONENT)->resetPos(pos);
-}
-
-
 void RoomScene::AddEntity(Entity* entity) {
 	entityList.push_back(entity);
-}
-RoomScene::~RoomScene() {
-	//Eliminar la lista de entidades
-	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
-		delete* it;
-	}
-	delete cameraManager;
 }
 
 void RoomScene::changeMap()
@@ -475,4 +483,14 @@ void RoomScene::changeMap()
 	cameraManager->setTarget(player);
 
 	needMapChange = false;
+}
+
+void RoomScene::callForMapChange(std::string nextMap, flonkOrig nextFlonk)
+{
+	this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true;
+}
+
+void RoomScene::movePlayer(Vector2D pos)
+{
+	player->getComponent<TransformComponent>(TRANSFORM_COMPONENT)->resetPos(pos);
 }

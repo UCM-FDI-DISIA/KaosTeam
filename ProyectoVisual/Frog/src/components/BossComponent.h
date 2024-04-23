@@ -29,6 +29,8 @@ class BossComponent: public Component
 {	
 private:
 	std::pair<int, int> bossRange; //determina el rango de movimiento del boss
+	short int lowerLimit; //Limite inferior de movimiento del Boss
+	short int upperLimit; //Limite superior de movimiento del Boss
 	bossState currState;
 	std::vector<Cubierto*> cubiertos;
 	std::vector<std::pair<Cubierto*, bool>> poolCubiertos; //El numero de cubiertos max instanciados depende de la zona
@@ -58,7 +60,7 @@ public:
 	void resetShadow(); // para que e
 	void createCutlery(); //Crear cubiertos
 	void moveCutlery(); //Mover cubiertos
-	void changeRange();
+	void changeRange(); 
 
 	//Getters
 	bool isFlonkOnShadow() const;
@@ -67,5 +69,6 @@ public:
 	bool isShadowAtSideLine(Vector2D pos) const; //Esta en el borde de la pantalla
 	//Setters
 	void setSpeed(Vector2D spd);
+	void setLowerLimit(short int limit);
 };
 
