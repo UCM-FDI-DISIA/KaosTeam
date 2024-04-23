@@ -357,6 +357,9 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 Entity* RoomScene::createFrancois(Vector2D pos)
 {
 	Entity* fran = new Entity(this);
+	MovementComponentFrancois* move = new MovementComponentFrancois();
+	fran->addComponent(MOVEMENT_COMPONENT, move);
+	move->setContext(fran);
 	TransformComponent* tr = new TransformComponent(pos);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);
 	tr->setContext(fran);
@@ -366,7 +369,6 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 	ColliderComponent* bossColl = new ColliderComponent();
 	fran->addComponent(COLLIDER_COMPONENT, bossColl);
 	bossColl->setContext(fran);
-	MovementComponentFrancois* move = new MovementComponentFrancois();
 	BossComponent* bossComp = new BossComponent();
 	fran->addComponent(BOSS_COMPONENT, bossComp);
 	bossComp->setContext(fran);
