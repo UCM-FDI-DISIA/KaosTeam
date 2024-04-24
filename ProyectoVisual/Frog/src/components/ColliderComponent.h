@@ -6,7 +6,7 @@
 
 enum ColliderName {
 	UNAMED_COLLIDER,
-
+	TRANSFORM_COLLIDER
 };
 
 class Collider {
@@ -37,7 +37,7 @@ public:
 	};
 	//Te crea un collider con el transform. Se puede pillar con GetTransformCollider
 	ColliderComponent(TransformComponent* tr) : colliders(std::list<Collider>()) {
-		AddCollider(Collider(tr));
+		AddCollider(Collider(tr, TRANSFORM_COLLIDER));
 		transformCollider = &colliders.front();
 	};
 	//Comprueba la colisión de los colliders de este componente con los de la otra entidad
