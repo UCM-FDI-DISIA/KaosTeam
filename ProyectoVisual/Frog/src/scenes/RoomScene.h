@@ -63,9 +63,6 @@ public:
 
 
 #pragma region Cosas q vamos a borrar pronto
-	
-		createBomb(Vector2D(4, 2));
-
 #pragma endregion
 
 		

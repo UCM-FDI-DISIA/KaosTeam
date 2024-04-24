@@ -418,10 +418,9 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	else if (objName == "Snake") {
 		c = createSnake(pos);
 	}
-	/*
-	else if ()......
-	*/
-
+	else if (objName == "Bomb") {
+		c = createBomb(pos);
+	}
 	return c;
 }
 
