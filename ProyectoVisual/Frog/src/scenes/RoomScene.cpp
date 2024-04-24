@@ -389,16 +389,20 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 	RenderComponent* rend = new RenderComponent(&sdlutils().images().at("shadow"));
 	rend->setContext(fran);
 	fran->addComponent(RENDER_COMPONENT, rend);
+
 	ColliderComponent* bossColl = new ColliderComponent();
 	bossColl->setContext(fran);
 	fran->addComponent(COLLIDER_COMPONENT, bossColl);
+
 	MovementComponentFrancois* move = new MovementComponentFrancois();
 	move->setContext(fran);
 	move->initComponent();
 	fran->addComponent(MOVEMENT_COMPONENT, move);
+
 	BossComponent* bossComp = new BossComponent();
 	bossComp->setContext(fran);
 	fran->addComponent(BOSS_COMPONENT, bossComp);
+
 	AddEntity(fran);
 	
 	return fran;
