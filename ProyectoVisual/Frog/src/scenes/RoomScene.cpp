@@ -357,6 +357,9 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 Entity* RoomScene::createFrancois(Vector2D pos)
 {
 	Entity* fran = new Entity(this);
+	MovementComponentFrancois* move = new MovementComponentFrancois();
+	fran->addComponent(MOVEMENT_COMPONENT, move);
+	move->setContext(fran);
 	TransformComponent* tr = new TransformComponent(pos);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);
 	tr->setContext(fran);
