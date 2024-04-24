@@ -15,7 +15,7 @@ void RenderComponentSnake::render() {
     Vector2D offset = transform->getOffset()                      //el offset el objeto
                      + Vector2D((t - size) / 2, (t - size) / 2);  //para que este centrado en la casilla
     Vector2D pos = transform->getCasilla();
-    Direction d = ent->getComponent<MovementComponentSnake>(MOVEMENT_COMPONENT)->getDirection(); //Obtenemos direccion actual
+    Direction d = static_cast<MovementComponentSnake*> (ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
 
@@ -26,7 +26,7 @@ void RenderComponentSnake::render() {
 
     //el cuello de la serpiente
     if (attacking) {
-        int distanceMoved = ent->getComponent<AttackComponentSnake>(ATTACK_COMPONENT)->getDistanceMoved();
+        int distanceMoved = static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
 
         if (distanceMoved < 0) { //Si el ataque acaba
             attacking = false;
@@ -143,5 +143,5 @@ void RenderComponentSnake::AttackStart() {
 }
 
 void RenderComponentSnake::initComponent() {
-    transform = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
+    transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }

@@ -16,7 +16,7 @@ void MovementComponentFrancois::initComponent()
 	speed = Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 5, 0);
 	upperLimit = ent->getScene()->getMapReader()->getMapSize().getX() 
 		- sdlutils().images().at("shadow").width();
-	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
+	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 
 void MovementComponentFrancois::checkDirection()

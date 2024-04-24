@@ -13,10 +13,10 @@ FollowPlayerComponent::~FollowPlayerComponent() {
 
 void FollowPlayerComponent::update() {
 	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
-		TransformComponent* transform = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
+		TransformComponent* transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 		RoomScene* sc = ent->getScene();// coje la pocision del player
 		Entity* pl = sc->getPlayer();
-		TransformComponent* pmt = pl->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
+		TransformComponent* pmt = static_cast<TransformComponent*>(pl->getComponent(TRANSFORM_COMPONENT));
 		Vector2D playerPos = pmt->getCasilla();
 		Vector2D aux = playerPos - transform->getCasilla();
 		//sacar X e Y y comparar

@@ -19,7 +19,7 @@ MovementComponentFish::MovementComponentFish(int boundX, AnimationComponent* a) 
 };
 
 void MovementComponentFish::initComponent() {
-	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
+	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 void MovementComponentFish::update() {
 	// ESTA FORMA ME DABA PROBLEMAS PARA EL TRANSFORM

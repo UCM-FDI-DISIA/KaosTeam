@@ -586,7 +586,6 @@ RoomScene::~RoomScene() {
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;
 	}
-
 	//NO BORREIS LO SINGLETONS, Q SE BORRAN SOLOS
 
 	delete mapReader;

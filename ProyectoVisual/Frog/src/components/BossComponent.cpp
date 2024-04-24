@@ -11,9 +11,9 @@ BossComponent::~BossComponent()
 
 void BossComponent::initComponent()
 {
-	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
+	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 	render = ent->getRenderComponent();
-	mov = ent->getComponent<MovementComponentFrancois>(MOVEMENT_COMPONENT);
+	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
 
 	//Creamos cubiertos
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {

@@ -13,7 +13,7 @@ void CrazyFrogIAComponent::update()
 		if (playerPos == nullptr)
 			playerPos = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT))->getCasillaPointer();
 
-		Vector2D aux = *playerPos - ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT)->getCasilla();
+		Vector2D aux = *playerPos - static_cast<TransformComponent * >(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla();
 		
 		//calculamos en que direcci�n deberiamos movernos
 		Vector2D speed; Directions direction; string animation;
