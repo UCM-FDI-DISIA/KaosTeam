@@ -106,8 +106,14 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	return player;
 }
 
-Entity* RoomScene::createTransition(std::string objName, std::string nextMap) {
+Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::string nextMap) {
 	Entity* c = new Entity(this);
+	TransformComponent* transform = new TransformComponent(pos);
+	c->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(c);
+	ColliderComponent* colliderComp = new ColliderComponent(transform);
+	c->addComponent(COLLIDER_COMPONENT, colliderComp);
+	colliderComp->setContext(c);
 
 	flonkOrig nextFlonk;
 	if (objName == "TransitionN") {
@@ -132,6 +138,7 @@ Entity* RoomScene::createTransition(std::string objName, std::string nextMap) {
 	TransitionComponent* trans = new TransitionComponent(nextMap, nextFlonk);
 	c->addComponent(TRANSITION_COMPONENT, trans);
 	trans->setContext(c);
+	trans->initComponent();
 
 	//entityList.push_back(c); add entity ya hace esto
 
@@ -470,7 +477,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 		c = createObjInteract(pos, objName, objProps, objIntID, objInteracted);
 	}
 	else if (objClass == "Transition") {		
-		c = createTransition(objName, objProps[0].getStringValue());
+		c = createTransition(pos, objName, objProps[0].getStringValue());
 	}
 	return c;
 }

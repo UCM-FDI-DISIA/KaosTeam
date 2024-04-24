@@ -22,6 +22,7 @@ AttackComponentFrog::~AttackComponentFrog() {
 
 void AttackComponentFrog::update()
 {
+	box->setCasilla(static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla());
 	if (state != 0 && (DataManager::GetInstance()->getFrameTime() - lastTimeChanged) > attackFrameTime) {
 		lastTimeChanged = DataManager::GetInstance()->getFrameTime();
 

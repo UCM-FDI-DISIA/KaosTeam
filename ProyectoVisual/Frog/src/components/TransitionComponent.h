@@ -29,16 +29,16 @@ struct flonkOrigMap : public std::map<std::string, flonkOrig>
     ~flonkOrigMap() {}
 };
 */
-
+class Collider;
 class TransitionComponent :public Component
 {
 private:
 	std::string nextMap;
 	flonkOrig nextFlonk;
-
+	void CheckMapChange(Entity* e, Collider c);
 public:
-	TransitionComponent(std::string nextMap, flonkOrig nextFlonk) : nextMap(nextMap), nextFlonk(nextFlonk) {};
+	TransitionComponent(std::string nextMap, flonkOrig nextFlonk);
 	void changeMap();
-
+	void initComponent() override;
 };
 
