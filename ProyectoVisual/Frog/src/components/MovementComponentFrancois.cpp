@@ -48,5 +48,5 @@ void MovementComponentFrancois::update()
 {
 	int t = ent->getScene()->getMapReader()->getTileSize();
 
-	tr->setOffsetX(tr->getOffset().getX() + t * velocity.getX());
+	tr->setOffsetX(tr->getOffset().getX() + t * speed.getX()*multiplier);
 }
