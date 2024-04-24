@@ -7,7 +7,7 @@
 #include "ColliderComponent.h"
 
 AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()) {
-	attackDistance = 2;
+	distance = 2;
 	distanceMoved = 0;
 	attackFrameTime = 100;
 	lastTimeChanged = 0;

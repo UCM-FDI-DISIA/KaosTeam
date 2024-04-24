@@ -8,8 +8,8 @@ class Entity;
 class AttackComponentFrog : public Component
 {
 private:
-	int distance = 2, distanceMoved = 0;
-	int attackFrameTime = 100, lastTimeChanged = 0, attackCooldown = 250;
+	int distance , distanceMoved ;
+	int attackFrameTime , lastTimeChanged, attackCooldown ;
 	//resting = 0, attacking = 1, retracting = 2
 	int state = 0;
 	InputManager* inputM;
