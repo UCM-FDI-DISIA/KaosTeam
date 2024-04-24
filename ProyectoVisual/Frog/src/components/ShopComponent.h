@@ -29,7 +29,7 @@ public:
 			if (selected)
 				texture.setAlphaMod(255);
 			else 
-				texture.setAlphaMod(200);
+				texture.setAlphaMod(170);
 		}
 			
 	}

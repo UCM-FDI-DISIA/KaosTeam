@@ -16,9 +16,7 @@ MovementComponentRedAnt::MovementComponentRedAnt(AnimationComponent* a, Movement
 	range = 2;
 };
 MovementComponentRedAnt::~MovementComponentRedAnt() {
-	delete targetTransformComp;
 	targetTransformComp = nullptr;
-	delete anim;
 	anim = nullptr;
 }
 void MovementComponentRedAnt::initComponent() {

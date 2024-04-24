@@ -18,7 +18,6 @@ MovementComponentFish::MovementComponentFish(int boundX, AnimationComponent* a) 
 	isMoving = false;
 };
 MovementComponentFish::~MovementComponentFish() {
-	delete anim;
 	anim = nullptr;
 }
 void MovementComponentFish::initComponent() {

@@ -9,11 +9,8 @@ FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackCom
 }
 FrogInputComponent::~FrogInputComponent()
 {
-	delete movementComponent;
 	movementComponent = nullptr;
-	delete attackComponent;
 	attackComponent = nullptr;
-	delete inventoryComponent;
 	inventoryComponent = nullptr;
 }
 void FrogInputComponent::update()

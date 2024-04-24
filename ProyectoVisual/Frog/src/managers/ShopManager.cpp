@@ -57,7 +57,7 @@ void Shop::setPlayer(Entity* player_) {
 void Shop::setHUD(HUDManager* hud) {
 	playerHUD = hud;
 }
-void Shop::setSelectd() {
+void Shop::setSelected() {
 	ShopComponent* sC = selected->getShopComponent();
 	sC->quitSelectd();
 	switch (selectedPowerUp) {
@@ -194,7 +194,7 @@ void Shop::changeAnimal(Direction dir)
 		}
 	}
 	selectedPowerUp = static_cast<PowerUps>(next);
-	setSelectd();
+	setSelected();
 	setOppacity();
 	/*int p = 0;
 	switch (dir) {

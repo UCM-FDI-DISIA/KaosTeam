@@ -22,9 +22,7 @@ MovementComponentBlackAnt::MovementComponentBlackAnt(AnimationComponent* a) : Mo
 };
 
 MovementComponentBlackAnt::~MovementComponentBlackAnt() {
-	delete targetTransformComp;
 	targetTransformComp = nullptr;
-	delete anim;
 	anim = nullptr;
 }
 void MovementComponentBlackAnt::initComponent() {

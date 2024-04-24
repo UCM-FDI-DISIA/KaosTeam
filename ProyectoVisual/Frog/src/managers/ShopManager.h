@@ -54,7 +54,7 @@ private:
 	void buyPowerUp(PowerUps powerUp);
 	void changeAnimal(Direction dir);
 	void setOppacity();
-	void setSelectd();
+	void setSelected();
 	void initShopEntitys();
 
 };
