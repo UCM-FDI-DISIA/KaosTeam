@@ -7,6 +7,7 @@ private:
 public:
 	LifeComponent() {};
 	LifeComponent(int actual, int maxima) :vidaActual(actual), vidaMaxima(maxima) {};
+	~LifeComponent() {};
 	int GetActual();
 	int GetMax();
 	void SetActual(int n);

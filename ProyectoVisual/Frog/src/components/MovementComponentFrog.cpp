@@ -7,7 +7,7 @@ void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string 
 {
 	if (!jumping) 
 	{
-		if (checkIfTileWalkable(tr->getCasilla() + velocity))
+		if (checkIfTileWalkable(tr->getCasilla() + v))
 		{
 			velocity = v;
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
@@ -36,7 +36,8 @@ void MovementComponentFrog::changePosFrog(Vector2D v)
 	}
 	else {
 		//Simplemente pasa a la otra casilla
-		tr->setCasilla(velocity.normalize() + tr->getCasilla());
+		tr->setCasilla(velocity + tr->getCasilla());
+		std::cout << "Rana Posicion: " << "(" << tr->getCasilla().getX() << " " << tr->getCasilla().getY() << ")" << std::endl;
 	}
 }
 
@@ -79,7 +80,7 @@ void MovementComponentFrog::update() {
 
 		if (framesMoved == framesPerJump) //para acabar el movimiento
 		{
-			changePosFrog(velocity + tr->getCasilla());
+			changePosFrog(velocity.normalize() + tr->getCasilla());
 			//changePos(velocity.normalize() + posCasilla);
 			tr->setOffset({ 0,0 });
 			framesMoved = 0;

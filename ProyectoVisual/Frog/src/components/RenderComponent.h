@@ -5,7 +5,7 @@
 #include "TransformComponent.h"
 #include "AnimationComponent.h"
 /*
-* Se encargará de renderizar cada entidad en la ubicación de la pantalla acorde al tilemap
+* Se encargarï¿½ de renderizar cada entidad en la ubicaciï¿½n de la pantalla acorde al tilemap
 */
 class RenderComponent :	public Component
 {
@@ -13,16 +13,11 @@ protected:
 	Texture* myTexture;
 	AnimationComponent* myAnimator;
 	TransformComponent* transform;
-	float scale;
 
 public: 
-	//Constructora con animador
-	RenderComponent(Texture* tex, int wframes, int hframes, float sc, AnimationComponent* anim);
-	//Constructora sin animador
-	RenderComponent(Texture* tex, int wframes, int hframes, float sc);
-	RenderComponent(Texture* t, float);
-	Texture* GetTexture() { return myTexture; };
-	void changeAlpha(int newAlpha);
+	RenderComponent(Texture* tex) : myTexture(tex), myAnimator(nullptr), transform(nullptr) {};
+	Texture* GetTexture() const { return myTexture; };
+	void ChangeTexture(Texture* newText) { myTexture = newText; }; //Por si queremos cambiar la textura a un objeto
     void render();
-	void initComponent() override;
+	virtual void initComponent() override;
 };
