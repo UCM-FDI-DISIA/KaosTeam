@@ -9,8 +9,8 @@ enum flonkOrig
 	S,
 	E,
 	W,
-	P,
-	T//flonk extra para transiciones
+	P, //flonk extra para transiciones
+	T  //flonk para la tienda
 };
 
 class RoomScene;

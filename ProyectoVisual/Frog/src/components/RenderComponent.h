@@ -4,25 +4,19 @@
 #include "../sdlutils/SDLUtils.h"
 #include "TransformComponent.h"
 /*
-* Se encargará de renderizar cada entidad en la ubicación de la pantalla acorde al tilemap
+* Se encargarï¿½ de renderizar cada entidad en la ubicaciï¿½n de la pantalla acorde al tilemap
 */
 class RenderComponent :	public Component
 {
 protected:
-	Texture* myTexture = nullptr;
-	AnimationComponent* myAnimator = nullptr;
-	TransformComponent* transform = nullptr;
-	float scale;
+	Texture* myTexture;
+	AnimationComponent* myAnimator;
+	TransformComponent* transform;
 
 public: 
-	//Constructora con animador
-	RenderComponent(Texture* tex, int wframes, int hframes, float sc, AnimationComponent* anim) : myTexture(tex), scale(sc), myAnimator(anim) {};
-	//Constructora sin animador
-	RenderComponent(Texture* tex, int wframes, int hframes, float sc) : myTexture(tex), scale(sc) {};
-	RenderComponent(Texture* t, float sc = 1) : myTexture(t), scale(sc) { };
+	RenderComponent(Texture* tex) : myTexture(tex), myAnimator(nullptr), transform(nullptr) {};
 	Texture* GetTexture() const { return myTexture; };
-	//Por si queremos cambiar la textura a un objeto
-	void ChangeTexture(Texture* newText) { myTexture = newText; };
+	void ChangeTexture(Texture* newText) { myTexture = newText; }; //Por si queremos cambiar la textura a un objeto
     void render();
-	void initComponent() override;
+	virtual void initComponent() override;
 };

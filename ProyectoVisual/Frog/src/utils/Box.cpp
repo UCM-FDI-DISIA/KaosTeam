@@ -12,12 +12,21 @@ Box::Box(Vector2D casilla) : casilla(casilla) {
 	offset = { 0, 0 };
 	width = TILE_SIZE;
 	height = TILE_SIZE;
+	scale = 1;
+};
+//Usar este constructor SOLO si aun no conoces al box
+Box::Box() {
+	casilla = { 0, 0 };
+	offset = { 0, 0 };
+	width = TILE_SIZE;
+	height = TILE_SIZE;
 };
 
 SDL_Rect Box::GetOnDisplayPosition() const{
 	SDL_Rect dest;
 
-	Vector2D mOffset = offset + Vector2D(width / 2, height / 2);//para que este centrado en la casilla
+	int size = TILE_SIZE * scale;
+	Vector2D mOffset = offset + Vector2D((width - size) / 2, (height - size) / 2);
 	Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
 	//Calcula la posición real en pantalla
@@ -28,4 +37,28 @@ SDL_Rect Box::GetOnDisplayPosition() const{
 	dest.h = height;
 
 	return dest;
+}
+
+Vector2D Box::getCasilla() const {
+	return casilla;
+}
+
+float Box::getHeight() const {
+	return height;
+}
+
+float Box::getWidth() const {
+	return width;
+}
+
+void Box::setCasilla(Vector2D casilla) {
+	this->casilla = casilla;
+}
+
+void Box::setWidth(float width) {
+	this->width = width;
+}
+
+void Box::setHeight(float height) {
+	this->height = height;
 }

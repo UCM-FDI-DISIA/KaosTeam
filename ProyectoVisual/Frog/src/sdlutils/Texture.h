@@ -35,6 +35,7 @@ public:
 	
 
 	virtual ~Texture() {
+		count--;
 		if (texture_ != nullptr)
 			SDL_DestroyTexture(texture_); // delete the SDL texture
 	}
@@ -45,6 +46,10 @@ public:
 
 	inline int height() const {
 		return height_;
+	}
+	void setFrames(int row, int col) {
+		row_ = row;
+		column_ = col;
 	}
 
 	// This rendering method corresponds to method SDL_RenderCopyEx.
@@ -145,4 +150,8 @@ private:
 	int column_ = 1;
 	int fw;
 	int fh;
+
+	public:
+
+	static int count;
 };

@@ -3,24 +3,25 @@
 #include "../ecs/Component.h"
 #include "../scenes/RoomScene.h"
 
+
+
 MovementComponentBomb::MovementComponentBomb() : shockEntity(false), direction(NONE), explosionTime(2000) {
-	timerForDelete.pause(); //pausamos timer de explosión (solo se activa cuando la bomba ha chocado con algo)
+	timerForDelete.pause(); //pausamos timer de explosiï¿½n (solo se activa cuando la bomba ha chocado con algo)
 }
 
 MovementComponentBomb::~MovementComponentBomb(){
 	delete explosionText;
 	moveFrog = nullptr;
-	animator = nullptr;
 
 }
 
 void MovementComponentBomb::initComponent() {
 	//Obtenemos componentes necesarios
 	moveFrog = static_cast<MovementComponentFrog*>(ent->getScene()->getPlayer()->getComponent(MOVEMENT_COMPONENT));
-	animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
+	AnimationComponent* animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	tr = static_cast<TransformComponent*> (ent->getComponent(TRANSFORM_COMPONENT));
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
-	rndr = static_cast<RenderComponent*>(ent->getComponent(RENDER_COMPONENT));
+	//rndr = static_cast<RenderComponent*>(ent->getComponent(RENDER_COMPONENT));
 
 
 	//Inicilaizamos valores que vaa tener en cuanto la bomba se instancie
@@ -28,15 +29,15 @@ void MovementComponentBomb::initComponent() {
 	animator->playAnimation("BOMB_IDLE");
 
 
-	//Añadimos funcion de collider a la bomba
+	//Aï¿½adimos funcion de collider a la bomba
 	//std::list<Collider> listCol = coll->GetColliders(); //Accedemos a la lista de colliders
-	coll->GetColliders().front().AddCall([this](Entity* e) {checkCollisionsBomb(e); }); //Añadimos callback
+	coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsBomb(e, c); }); //Aï¿½adimos callback
 }
 
-// Esta función, se llamará en cada iteracción del update para detectar con que entity colisiona y hacer las correspondientes acciones
+// Esta funciï¿½n, se llamarï¿½ en cada iteracciï¿½n del update para detectar con que entity colisiona y hacer las correspondientes acciones
 //(Mi idea era hacer el metodo aqui, sin embargo, no puedo acceder a la entidad contra la que colisiona
-// la bomba desde aquí, asi que no me queda mas remedio que hacerlo en la RoomScene...)
-void MovementComponentBomb::checkCollisionsBomb(Entity* ent) {
+// la bomba desde aquï¿½, asi que no me queda mas remedio que hacerlo en la RoomScene...)
+void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
 	switch (ent->getName()) {
 	case EntityName::BREAKABLE_DOOR_ENTITY:
 		//Destruimos la puerta: ent-> MetodoAlQueLlamar(); 
@@ -91,14 +92,17 @@ void MovementComponentBomb::checkShock() {
 }
 
 //Este metodo se ejecuta en caso de que la bomba choque con algo
-//Simplemente haría la animación de explosión y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
+//Simplemente harï¿½a la animaciï¿½n de explosiï¿½n y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
 void MovementComponentBomb::explodeBomb() {
+	AnimationComponent* animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
+	RenderComponent* rndr = ent->getRenderComponent();
+
 
 	animator->stopAnimation(); //Paramos animacion actual
 	animator->removeAnimations(); //Quitamos animaciones existentes
 	rndr->ChangeTexture(explosionText); //cambiamos la textura del objeto (al spriteSheet de la explosion)
 	animator->addAnimation("EXPLOSION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
-	animator->playAnimation("EXPLOSION"); //Reproducimos explosión
+	animator->playAnimation("EXPLOSION"); //Reproducimos explosiï¿½n
 
 	shockEntity = true;
 	velocity = Vector2D(0, 0);
@@ -107,7 +111,7 @@ void MovementComponentBomb::explodeBomb() {
 }
 
 void MovementComponentBomb::update() {
-	// Si ha pasado un tiempo suficiente desde la explosión, eliminamos la entidad
+	// Si ha pasado un tiempo suficiente desde la explosiï¿½n, eliminamos la entidad
 	if (timerForDelete.currTime() >= explosionTime) {
 		ent->getScene()->removeEntity(this->ent);
 	}

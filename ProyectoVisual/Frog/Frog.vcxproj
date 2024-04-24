@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\components\InventoryComponent.cpp" />
+    <ClCompile Include="src\components\InteractableComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentBomb.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
@@ -199,6 +200,9 @@
     <ClCompile Include="src\managers\InputManager.cpp" />
     <ClCompile Include="src\managers\ShopManager.cpp" />
     <ClCompile Include="src\scenes\Menu.cpp" />
+    <ClCompile Include="src\scenes\MenuGameOver.cpp" />
+    <ClCompile Include="src\scenes\MenuInicio.cpp" />
+    <ClCompile Include="src\scenes\MenuPausa.cpp" />
     <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
@@ -216,6 +220,7 @@
   <ItemGroup>
     <ClInclude Include="Box.h" />
     <ClInclude Include="src\components\InventoryComponent.h" />
+    <ClInclude Include="src\components\InteractableComponent.h" />
     <ClInclude Include="src\components\MovementComponentBomb.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
@@ -261,6 +266,9 @@
     <ClInclude Include="src\managers\InputManager.h" />
     <ClInclude Include="src\managers\ShopManager.h" />
     <ClInclude Include="src\scenes\Menu.h" />
+    <ClInclude Include="src\scenes\MenuGameOver.h" />
+    <ClInclude Include="src\scenes\MenuInicio.h" />
+    <ClInclude Include="src\scenes\MenuPausa.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\checkML.h" />
     <ClInclude Include="src\sdlutils\Font.h" />

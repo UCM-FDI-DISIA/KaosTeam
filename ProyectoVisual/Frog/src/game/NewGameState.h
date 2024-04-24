@@ -3,7 +3,7 @@
 #include "GameState.h"
 
 class Game;
-class Menu;
+class MenuInicio;
 
 class NewGameState : public GameState {
 public:
@@ -17,7 +17,7 @@ public:
 	Scene* getScene() const override { return &currScene; };
 private:
 	Game* game;
-	Menu* menu; //Puntero que gestiona la pantalla de MenuInicio
+	MenuInicio* menu; //Puntero que gestiona la pantalla de MenuInicio
 	Scene& currScene; //puede haber escenas d menu d opciones,etc.
 };
 

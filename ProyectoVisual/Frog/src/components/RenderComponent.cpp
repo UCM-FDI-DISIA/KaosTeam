@@ -1,6 +1,7 @@
 #include "RenderComponent.h"
 #include "../scenes/RoomScene.h"
 
+
 void RenderComponent::render()
 {
 	//segun si necesita flip o no la textura
@@ -14,4 +15,5 @@ void RenderComponent::render()
 
 void RenderComponent::initComponent() {
 	transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	myAnimator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 }

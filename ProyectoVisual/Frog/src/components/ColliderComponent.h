@@ -4,18 +4,26 @@
 #include <functional>
 #include "TransformComponent.h"
 
+enum ColliderName {
+	UNAMED_COLLIDER,
+
+};
+
 class Collider {
 public:
-	Collider(Box* box) : funciones(std::list<std::function<void(Entity*)>>()), box(box) {};
+	Collider(Box* box, ColliderName name) : funciones(std::list<std::function<void(Entity*, Collider)>>()), box(box), name(name) {};
+	Collider(Box* box) : funciones(std::list<std::function<void(Entity*, Collider)>>()), box(box), name(UNAMED_COLLIDER) {};
 	//Añade una funcion al collider que quieras
-	void AddCall(std::function<void(Entity*)> func);
+	void AddCall(std::function<void(Entity*, Collider)> func);
 	//Comprueba la colision con un collider, si hay colision llama a OnCollision
-	void OnCollision(Entity* e);
+	void OnCollision(Entity* e, Collider);
 	bool Collides(Collider) const;
+	ColliderName getName() const;
 private:
 	Box* box; //La caja que define el tamaño y posicion del collider
 	//El box tiene que ser gestionado por el creador del box
-	std::list<std::function<void(Entity*)>> funciones; //Las funciones a llamar en caso de colision
+	std::list<std::function<void(Entity*, Collider)>> funciones; //Las funciones a llamar en caso de colision
+	ColliderName name;
 };
 
 //Comprueba colisiones de objetos, y envía un mensaje con la información relevante a los componentes suscritos
@@ -27,6 +35,7 @@ public:
 	ColliderComponent() : colliders(std::list<Collider>()) {
 		transformCollider = nullptr;
 	};
+	//Te crea un collider con el transform. Se puede pillar con GetTransformCollider
 	ColliderComponent(TransformComponent* tr) : colliders(std::list<Collider>()) {
 		AddCollider(Collider(tr));
 		transformCollider = &colliders.front();
