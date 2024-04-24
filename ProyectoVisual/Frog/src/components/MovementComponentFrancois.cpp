@@ -40,5 +40,7 @@ bool MovementComponentFrancois::isShadowAtLimit(Vector2D pos) const
 
 void MovementComponentFrancois::update()
 {
+	int t = ent->getScene()->getMapReader()->getTileSize();
+
 	pos = pos + speed*multiplier;
 }

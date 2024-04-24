@@ -44,12 +44,6 @@ void BossComponent::move()
 		mov->setMultiplier(0.3);
 		/*pos = pos + speed * multiplier;*/
 	}
-	else {
-		mov->setMultiplier(1.0);
-		/*pos = pos + speed;*/
-	}
-	//Logica de mover a la sombra -> Mover el Transform de la entidad Boss en base a su velocidad
-
 }
 
 void BossComponent::detect()
@@ -59,12 +53,14 @@ void BossComponent::detect()
 		if (shadowTimer >= MAX_TIME_ON_SHADOW) {
 			darkenShadow();
 			currState = ATTACK;
+			mov->setMultiplier(0.0);
 			shadowTimer = 0;
 		}
 	}
 	else {
 		currState = MOVE;
 		resetShadow();
+		mov->setMultiplier(1.0);
 		shadowTimer = 0;
 	}
 }
