@@ -16,11 +16,14 @@ private:
 
 	TransformComponent* tr;
 public:
-	MovementComponentFrancois();
+	MovementComponentFrancois(int width);
 	~MovementComponentFrancois();
+
+	void initComponent() override;
 
  void update() override;
 
+ 
 	void checkDirection();
 	void setLowerLimit(short int newLimit);
 	void setSpeed(Vector2D newSpeed);

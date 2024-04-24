@@ -366,7 +366,7 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 	ColliderComponent* bossColl = new ColliderComponent();
 	fran->addComponent(COLLIDER_COMPONENT, bossColl);
 	bossColl->setContext(fran);
-	MovementComponentFrancois* move = new MovementComponentFrancois();
+	MovementComponentFrancois* move = new MovementComponentFrancois(sdlutils().images().at("shadow").width());
 	fran->addComponent(MOVEMENT_COMPONENT, move);
 	move->setContext(fran);
 	BossComponent* bossComp = new BossComponent();
