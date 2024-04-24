@@ -8,7 +8,10 @@ BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTime
 
 {
 	initComponent();
-	createCutlery();
+	
+	for (int i = 0; i < MAX_CUBIERTOS; i++) {
+		cubiertos[i]->tipo = new Entity(ent->getScene());
+	}
 }
 
 BossComponent::~BossComponent()
@@ -83,11 +86,12 @@ void BossComponent::checkDirection()
 
 void BossComponent::darkenShadow()
 {
-	//L�gica de cambiar de la textura por la m�s oscura
+	//L�gica de cambiar alpha de la textura por la m�s oscura
 }
 
 void BossComponent::resetShadow()
 {
+	//Logica de cambiar alpha de textura a algo mas claro
 }
 
 void BossComponent::createCutlery()

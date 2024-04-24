@@ -10,11 +10,11 @@
 #include "../components/MovementComponentFrancois.h"
 
 const int MAX_TIME_ON_SHADOW = 3;
-const int MAX_CUBIERTOS = 7;
+const int MAX_CUBIERTOS = 4;
 const Vector2D BOSS_INIT_POS = Vector2D(12, 0);
 
 enum bossState { MOVE, DETECT, ATTACK };
-enum tipoCubierto { TENEDOR, CUCHILLO };
+enum tipoCubierto { TENEDOR, CUCHILLO, CUCHARA, FORK };
 struct Cubierto {
 	Entity* tipo;
 	TransformComponent* tr;
@@ -42,6 +42,7 @@ private:
 	Vector2D speed; //Velocidad de la sombra
 	Vector2D pos; //Posicion de la sombra
 	Texture* sombra;
+	Texture* aviso; //Imagen aviso en que columna aparecera un cubierto
 	TransformComponent* tr;
 
 public:
