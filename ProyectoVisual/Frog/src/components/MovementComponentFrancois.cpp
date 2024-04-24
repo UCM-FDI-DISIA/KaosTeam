@@ -2,12 +2,10 @@
 #include"../ecs/Entity.h"
 #include"../scenes/RoomScene.h"
 
-MovementComponentFrancois::MovementComponentFrancois(int width):pos(BOSS_INIT_POS), //
-speed(Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 5, 0)), multiplier(0.2), //
-lowerLimit(0), upperLimit(ent->getScene()->getMapReader()->getMapSize().getX()-width)
-{
-	initComponent();
-}
+MovementComponentFrancois::MovementComponentFrancois():pos(BOSS_INIT_POS), //
+		multiplier(0.2), //
+		lowerLimit(0) //
+{}
 
 MovementComponentFrancois::~MovementComponentFrancois()
 {
@@ -15,6 +13,9 @@ MovementComponentFrancois::~MovementComponentFrancois()
 
 void MovementComponentFrancois::initComponent()
 {
+	speed = Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 5, 0);
+	upperLimit = ent->getScene()->getMapReader()->getMapSize().getX() 
+		- sdlutils().images().at("shadow").width();
 	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 }
 

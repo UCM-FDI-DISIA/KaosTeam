@@ -1,6 +1,9 @@
 #pragma once
 
-#include "../components/MovementComponent.h"
+#include "../utils/Vector2D.h"
+#include "TransformComponent.h"
+#include "MovementComponent.h"
+
 const Vector2D BOSS_INIT_POS = Vector2D(12, 0);
 
 class MovementComponentFrancois : public MovementComponent
@@ -16,7 +19,7 @@ private:
 
 	TransformComponent* tr;
 public:
-	MovementComponentFrancois(int width);
+	MovementComponentFrancois();
 	~MovementComponentFrancois();
 
 	void initComponent() override;

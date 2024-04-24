@@ -2,7 +2,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
 
-BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2)	//
+BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2) //
 {}
 
 BossComponent::~BossComponent()
