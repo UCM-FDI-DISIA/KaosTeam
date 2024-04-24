@@ -92,7 +92,7 @@ Daño recibido: Media Mosca
 
 Vida: inmortal
 Daño recibido: Media Mosca
-- **Cucarachas** Son inmortales pero cuando son atacadas estas se derrumban, dejándolas immóbiles pero en unos pocos segundos, estas se volverán a levantarse para atacarte. Para atacarte, estas te tiran su cabeza como proyectil. Después de atacarte, estas tendrán que ir a recuperar su cabeza dejándolas vulnerables.
+- **Cucarachas** No atacan, simplemente Flonk tiene que derrotarlas y estas al morir sueltan su cabeza que es lo que tiene que recoger Flonk.(Son inmortales pero cuando son atacadas estas se derrumban, dejándolas immóbiles pero en unos pocos segundos, estas se volverán a levantarse para atacarte. Para atacarte, estas te tiran su cabeza como proyectil. Después de atacarte, estas tendrán que ir a recuperar su cabeza dejándolas vulnerables.)
 
 </details>
 
