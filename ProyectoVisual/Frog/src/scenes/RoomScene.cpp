@@ -125,6 +125,9 @@ Entity* RoomScene::createTransition(std::string objName, std::string nextMap) {
 	else if (objName == "TransitionP") {
 		nextFlonk = P;
 	}
+	else if (objName == "TransitionT") {
+		nextFlonk = T;
+	}
 	else {
 		nextFlonk = S;
 	}
@@ -454,6 +457,9 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 				break;
 			case P:
 				if (objName == "FlonkP") placeHere = true;
+				break;
+			case T:
+				if (objName == "FlonkT") placeHere = true;
 				break;
 			default:
 				break;
