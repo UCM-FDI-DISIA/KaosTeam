@@ -3,6 +3,7 @@
 #include "../utils/Vector2D.h"
 #include "../managers/InputManager.h"
 
+
 /*
 * Clase base abstracta del componente que gestiona el movimiento de la entidad
 * 

@@ -3,17 +3,23 @@
 #include "../components/RenderComponentFrog.h"
 
 class Entity;
+class Box;
 class AttackComponentSnake : public Component {
 private:
-	int attackDistance = 2, distanceMoved = 0;
-	int attackFrameTime = 100, lastTimeChanged = 0, attackCooldown = 250;
+	int attackDistance, distanceMoved;
+	int attackFrameTime, lastTimeChanged, attackCooldown;
 	//resting = 0, attacking = 1, retracting = 2
-	int state = 0;
+	int state;
 	//InputManager* inputM;
+	Box* attackBox;
+	virtual ~AttackComponentSnake() {
+		delete attackBox;
+	};
 public:
-	AttackComponentSnake() {};
+	AttackComponentSnake();
 	void update() override;
 	int getDistanceMoved() { return distanceMoved; };
 	void attack();
+
 };
 

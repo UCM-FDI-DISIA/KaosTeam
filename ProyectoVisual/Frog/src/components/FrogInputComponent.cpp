@@ -3,29 +3,38 @@
 #include "MovementComponentFrog.h"
 #include "AttackComponentFrog.h"
 
-FrogInputComponent::FrogInputComponent()
+FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr)
 {
 	input = InputManager::GetInstance();
 }
-
+FrogInputComponent::~FrogInputComponent()
+{
+	movementComponent = nullptr;
+	attackComponent = nullptr;
+	inventoryComponent = nullptr;
+}
 void FrogInputComponent::update()
 {
-	//mover shortJump y LngJump al movemente despues del hito
-	int JumpSize = shortJump;
-	if (input->getAction2())
-	{
-		preparingJump = true;
-		cyclesJumpPrepared++;
-		if (cyclesJumpPrepared > cyclesToPrepareJump)
-			JumpSize = LongJump;
-	}
-	
-	else
-		cyclesJumpPrepared = 0;
+	////mover shortJump y LngJump al movemente despues del hito
+	//int JumpSize = shortJump;
+	//if (input->getAction2())
+	//{
+	//	preparingJump = true;
+	//	cyclesJumpPrepared++;
+	//	if (cyclesJumpPrepared > cyclesToPrepareJump)
+	//		JumpSize = longJump;
+	//}
+	//
+	//else
+	//	cyclesJumpPrepared = 0;
 		
-
+	int JumpSize = shortJump;
 	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > actionCoolDown) {
 		if (input->getDown()) {
+			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+				JumpSize = longJump;
+			}
+			else JumpSize = shortJump;
 			movementComponent->startMovement(DOWN, Vector2D(0, JumpSize), "DOWN");
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
@@ -33,6 +42,10 @@ void FrogInputComponent::update()
 
 		}
 		else if (input->getUp()) {
+			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+				JumpSize = longJump;
+			}
+			else JumpSize = shortJump;
 			movementComponent->startMovement(UP, Vector2D(0, -JumpSize), "UP");
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
@@ -40,6 +53,10 @@ void FrogInputComponent::update()
 
 		}
 		else if (input->getRight()) { 
+			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+				JumpSize = longJump;
+			}
+			else JumpSize = shortJump;
 			movementComponent->startMovement(RIGHT, Vector2D(JumpSize, 0), "RIGHT");
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
@@ -47,12 +64,20 @@ void FrogInputComponent::update()
 
 		}
 		else if (input->getLeft()) {
+			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+				JumpSize = longJump;
+			}
+			else JumpSize = shortJump;
 			movementComponent->startMovement(LEFT, Vector2D(-JumpSize, 0), "LEFT");
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 		}
 		else if (input->getSpace()) {
+			if (inventoryComponent->getAttackUpgrade() && input->getShift().pressed) {
+				attackComponent->setDistance(longTongue);
+			}
+			else attackComponent->setDistance(shortTongue);
 			attackComponent->attack();
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
@@ -64,8 +89,9 @@ void FrogInputComponent::update()
 
 }
 
-void FrogInputComponent::setComponents(MovementComponentFrog* mvm, AttackComponentFrog* atck)
+void FrogInputComponent::setComponents(MovementComponentFrog* mvm, AttackComponentFrog* atck,InventoryComponent* invComp )
 {
 	movementComponent = mvm;
 	attackComponent = atck;
+	inventoryComponent = invComp;
 }

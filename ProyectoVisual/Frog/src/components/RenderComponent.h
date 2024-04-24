@@ -4,7 +4,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "TransformComponent.h"
 /*
-* Se encargará de renderizar cada entidad en la ubicación de la pantalla acorde al tilemap
+* Se encargarï¿½ de renderizar cada entidad en la ubicaciï¿½n de la pantalla acorde al tilemap
 */
 class RenderComponent :	public Component
 {
@@ -18,5 +18,5 @@ public:
 	Texture* GetTexture() const { return myTexture; };
 	void ChangeTexture(Texture* newText) { myTexture = newText; }; //Por si queremos cambiar la textura a un objeto
     void render();
-	void initComponent() override;
+	virtual void initComponent() override;
 };
