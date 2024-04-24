@@ -542,9 +542,6 @@ void RoomScene::changeMap()
 		it = entityList.erase(it);
 	}
 
-	//delete mapReader;
-
-	//mapReader = new MapManager(nextMap, this);
 	mapReader->clearMap();
 	mapReader->loadBg(nextMap, sdlutils().renderer());
 	mapReader->loadObj(nextMap);
