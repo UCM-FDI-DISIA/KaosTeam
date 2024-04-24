@@ -2,6 +2,7 @@
 #include "../sdlutils/Texture.h"
 #include "../utils/assets.h"
 #include "../ecs/Entity.h"
+#include "DataManager.h"
 
 #include <tmxlite/Map.hpp>
 #include <tmxlite/ObjectGroup.hpp>
@@ -82,6 +83,7 @@ private:
 public:
     MapManager(const std::string& path, RoomScene* room);
     ~MapManager();
+    void clearMap();
     void loadBg(const std::string& path, SDL_Renderer* ren);
     void loadObj(const std::string& path);
     void draw(SDL_Renderer* ren);

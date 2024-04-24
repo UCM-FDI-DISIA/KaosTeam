@@ -5,31 +5,35 @@
 #include "../components/RenderComponentFrog.h"
 #include "../components/RenderComponentSnake.h"
 
-Entity::Entity(/*int x, int y*/RoomScene* scn) /*: pos(x, y)*/
-{
-	if (scn == nullptr) {
-		std::cout << "scn null";
-	}
-	myScene = scn;
-}
+Entity::Entity(RoomScene* scn) : name(UNAMED_ENTITY), myScene(scn) {};
 
-void Entity::addComponent(componentsEnum id, Component* component)
+Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn), renderComponent(), renderComponentFrog(),
+renderComponentSnake(){};
+
+void Entity::addComponent(ComponentsEnum id, Component* component)
 {
-	componentes.insert(std::pair<componentsEnum, Component*>(id, component));
+	if (componentes.count(id) > 0)
+	{
+		throw "ya hay un componente";
+	}
+	componentes.insert(std::pair<ComponentsEnum, Component*>(id, component));
 }
 
 void Entity::addRenderComponent(RenderComponent* rnd)
 {
+	assert(renderComponent == nullptr);
 	renderComponent = rnd;
 }
 
 void Entity::addRenderComponentFrog(RenderComponentFrog* rndF)
 {
+	assert(renderComponentFrog == nullptr);
 	renderComponentFrog = rndF;
 }
 
 void Entity::addRenderComponentSnake(RenderComponentSnake* rndS)
 {
+	assert(renderComponentSnake == nullptr);
 	renderComponentSnake = rndS;
 }
 
@@ -39,6 +43,9 @@ Entity::~Entity()
 	{
 		delete it->second;
 	}
+	delete renderComponent;
+	delete renderComponentFrog;
+	delete renderComponentSnake;
 }
 
 void
@@ -57,11 +64,24 @@ void Entity::render()
 		renderComponent->render();
 	}
 	else if (renderComponentFrog != nullptr) renderComponentFrog->render(); //Sino, ejecutamos render de la rana (un render mas complejo)
-	else if (renderComponentSnake != nullptr) renderComponentSnake->render(); //hay entidades que no se renderizan los objetos de transición
-	//else {} //hay entidades que no se renderizan los objetos de transición
+	else if (renderComponentSnake != nullptr) renderComponentSnake->render(); //hay entidades que no se renderizan los objetos de transiciï¿½n
+	//else {} //hay entidades que no se renderizan los objetos de transiciï¿½n
+}
+
+Component* Entity::getComponent(ComponentsEnum Identificator) const
+{
+	if (componentes.count(Identificator) > 0)
+		return componentes.at(Identificator);
+	else
+		return nullptr;
 }
 
 RoomScene* Entity::getScene() const
 {
 	return myScene;
+}
+
+EntityName Entity::getName() const
+{
+	return name;
 }

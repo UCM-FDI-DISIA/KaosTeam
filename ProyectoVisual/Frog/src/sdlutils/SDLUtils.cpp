@@ -36,6 +36,7 @@ SDLUtils::SDLUtils(std::string windowTitle, int width, int height,
 SDLUtils::~SDLUtils() {
 	closeSDLExtensions();
 	closeWindow();
+	std::cout << Texture::count << std::endl;
 }
 
 void SDLUtils::initWindow() {
@@ -172,9 +173,10 @@ void SDLUtils::loadReasources(std::string filename) {
 					int rows = vObj["rows"]->AsNumber();
 					int cols = vObj["cols"]->AsNumber();
 #ifdef _DEBUG
-					std::cout << "Loading image with id: " << key << std::endl;
+					std::cout << "Loading image with id: " << key << " cols:" << cols << " rows:" << rows << std::endl;
 #endif
 					images_.emplace(key, Texture(renderer(), file, rows, cols));
+				
 				} else {
 					throw "'images' array in '" + filename
 							+ "' includes and invalid value";

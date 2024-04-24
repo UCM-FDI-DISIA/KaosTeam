@@ -1,14 +1,6 @@
 #include "RenderComponent.h"
 #include "../scenes/RoomScene.h"
 
-RenderComponent::RenderComponent(Texture* tex, int wframes, int hframes, float sc, AnimationComponent* anim) :
-	myTexture(tex), scale(sc), myAnimator(anim), transform(nullptr) {};
-
-RenderComponent::RenderComponent(Texture* tex, int wframes, int hframes, float sc) :
-	myTexture(tex), scale(sc), myAnimator(nullptr), transform(nullptr) {};
-
-RenderComponent::RenderComponent(Texture* t, float sc = 1) :
-	myTexture(t), scale(sc), myAnimator(nullptr), transform(nullptr) { };
 
 void RenderComponent::render()
 {
@@ -33,5 +25,6 @@ void RenderComponent::changeAlpha(int newAlpha)
 }
 
 void RenderComponent::initComponent() {
-	transform = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
+	transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	myAnimator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 }

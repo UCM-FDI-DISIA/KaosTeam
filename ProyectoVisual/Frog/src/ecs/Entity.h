@@ -4,7 +4,7 @@
 */
 #include <map>
 //Enum de componentes provisional. Meted los componentes que neceisteis
-enum componentsEnum
+enum ComponentsEnum
 {
 	MOVEMENT_COMPONENT,
 	LIFE_COMPONENT,
@@ -17,7 +17,23 @@ enum componentsEnum
 	TRANSFORM_COMPONENT,
 	COLLIDER_COMPONENT,
 	BOSS_COMPONENT
+	MONEY_COMPONENT
 };
+//Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
+//Si no es relevante, el valor ser� 0 (UNAMED)
+enum EntityName {
+	UNAMED_ENTITY,
+	FROG_ENTITY,
+	CRAZY_FROG_ENTITY,
+	FISH_ENTITY,
+	BLACK_ANT_ENTITY,
+	RED_ANT_ENTITY,
+	SNAKE_ENTITY,
+	BOMB_ENTITY,
+	BREAKABLE_DOOR_ENTITY,
+	INTERRUPTOR_ENTITY,
+};
+
 class Component;
 class RenderComponent;
 class RenderComponentFrog;
@@ -25,37 +41,33 @@ class RenderComponentSnake;
 class TransformComponent;
 class AnimationComponent;
 class RoomScene;
+
 class Entity
 {
 private:
 	//Vector2D pos;
-	std::map<componentsEnum, Component*> componentes;
+	std::map<ComponentsEnum, Component*> componentes;
 	RoomScene* myScene;
 	RenderComponent* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
 	RenderComponentFrog* renderComponentFrog;
 	RenderComponentSnake* renderComponentSnake;
+	EntityName name;
 	//AnimationComponent* animationComponent;
 public:
-//provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
-	Entity(/*int, int*/RoomScene* scn);
-	void addComponent(componentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
+	//provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
+	Entity(RoomScene* scn);
+	Entity(RoomScene* scn, EntityName name);
+	void addComponent(ComponentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
 	void addRenderComponent(RenderComponent* rnd);
 	void addRenderComponentFrog(RenderComponentFrog* rndF);
 	void addRenderComponentSnake(RenderComponentSnake* rndS);
 	virtual ~Entity();
 	void update();
 	void render();
-	template<class T>
-	T* getComponent(componentsEnum Identificator) const {
-		if (componentes.count(Identificator) > 0) {
-			return static_cast<T*>(componentes.at(Identificator));
-		}
-		else
-			return nullptr;
-	};
+	Component* getComponent(ComponentsEnum) const;
 	RenderComponentFrog* getRenderComponentFrog() const { return renderComponentFrog; };
 	RenderComponentSnake* getRenderComponentSnake() const { return renderComponentSnake; }
 	RenderComponent* getRenderComponent() const { return renderComponent; };
 	RoomScene* getScene() const;
+	EntityName getName() const;
 };
-

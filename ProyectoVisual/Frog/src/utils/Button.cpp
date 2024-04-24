@@ -1,5 +1,10 @@
 #include"Button.h"
 
+Button::~Button()
+{
+	texture = nullptr;
+}
+
 void Button::connect(callBack call)
 {
 	callB = call;

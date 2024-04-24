@@ -11,11 +11,11 @@ void CrazyFrogIAComponent::update()
 	{
 		//solo se hace una vez. Podemos hacerlo en el init. Pero por ahora lo tengo aqui
 		if (playerPos == nullptr)
-			playerPos = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT)->getCasillaPointer();
+			playerPos = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT))->getCasillaPointer();
 
 		Vector2D aux = *playerPos - ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT)->getCasilla();
 		
-		//calculamos en que dirección deberiamos movernos
+		//calculamos en que direcciï¿½n deberiamos movernos
 		Vector2D speed; Directions direction; string animation;
 		if ((unsigned int)aux.getX() > (unsigned int)aux.getY())
 		{

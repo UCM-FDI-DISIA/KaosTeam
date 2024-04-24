@@ -4,6 +4,7 @@
 #include "../ecs/Component.h"
 #include <SDL.h>
 
+
 /* Constructor del animador */
 AnimationComponent::AnimationComponent() :
 	Component(),
@@ -48,6 +49,19 @@ void AnimationComponent::playAnimation(const std::string& name)
 		isPlaying = true;
 		frameIndex = 0;
 	}	
+}
+
+void AnimationComponent::removeAnimations() {
+	animationSet.clear();
+}
+
+void AnimationComponent::stopAnimation() {
+	currentFrameR = currentFrameC = 0;
+	finalFrameR = finalFrameC = 0,
+	lastChange = 0;
+	frameIndex = 0;
+	isPlaying = false;
+	currentAnimName = "";
 }
 
 /* Mueve al siguiente frame de animacion */
