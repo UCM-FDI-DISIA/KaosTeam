@@ -23,6 +23,7 @@
 #include "../components/MoneyComponent.h"
 #include"../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
+#include "../components/InventoryComponent.h"
 
 class RoomScene : public Scene
 {
@@ -33,12 +34,12 @@ private:
 	HUDManager* HUD;
 	int id;
 	Entity* player;
-	flonkOrig playerOrig = S;
-	bool needMapChange = false;
+	flonkOrig playerOrig;
+	bool needMapChange;
 	std::string nextMap;
 	flonkOrig nextFlonk;
 	Shop* shopManager;
-	bool insideShop = false; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
+	bool insideShop; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
 
 	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
 	Por tanto, hay dos OnCollision por cada colision.
@@ -46,7 +47,7 @@ private:
 	void CheckColisions();
 
 public:
-	RoomScene(int id) : id(id), player(nullptr) {
+	RoomScene(int id) : id(id), cameraManager(nullptr), player(nullptr), playerOrig(S), needMapChange(false), insideShop(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 		std::string initMapPath = "resources/maps/niveles/nivel01/mapaN1_01.tmx";
 		mapReader = new MapManager(initMapPath, this);
@@ -58,6 +59,7 @@ public:
 		HUD = HUDManager::instance();
 		shopManager = Shop::instance();
 		shopManager->setPlayer(player);
+		shopManager->setHUD(HUD);
 
 
 #pragma region Cosas q vamos a borrar pronto

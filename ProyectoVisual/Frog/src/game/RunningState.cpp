@@ -29,7 +29,7 @@ void RunningState::update()
 	{
 		game->setNextState(game->PAUSED);
 	}
-	currScene->update();
+	//currScene->update();
 }
 
 void RunningState::enter()

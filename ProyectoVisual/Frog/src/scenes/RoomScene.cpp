@@ -11,16 +11,17 @@ void RoomScene::render() {
 			e->render();
 	}
 	HUD->render();
+	if (insideShop) shopManager->render();
 }
 
 void RoomScene::update() {
 	for (Entity* e : entityList) {
 		if (e != nullptr)
-		e->update();
+			e->update();
 	}
-
 	cameraManager->update();
-	if (insideShop) shopManager->update();
+	if (insideShop)
+		shopManager->update();
 	if (needMapChange)
 		changeMap();
 	//comrpueba las colisiones con la rana
@@ -87,8 +88,12 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	player->addComponent(ATTACK_COMPONENT, atck);
 	atck->setContext(player);
 
+	InventoryComponent* invComp = new InventoryComponent();
+	invComp->setContext(player);
+	player->addComponent(INVENTORY_COMPONENT, invComp);
+
 	FrogInputComponent* input = new FrogInputComponent();
-	input->setComponents(mvm, atck);
+	input->setComponents(mvm, atck, invComp);
 	input->setContext(player);
 	player->addComponent(INPUT_COMPONENT, input);
 
@@ -100,6 +105,8 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	MoneyComponent* moneyComp = new MoneyComponent();
 	moneyComp->setContext(player);
 	player->addComponent(MONEY_COMPONENT, moneyComp);
+
+	
 	
 	AddEntity(player);
 
@@ -130,6 +137,9 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 	}
 	else if (objName == "TransitionP") {
 		nextFlonk = P;
+	}
+	else if (objName == "TransitionT") {
+		nextFlonk = T;
 	}
 	else {
 		nextFlonk = S;
@@ -461,6 +471,12 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 				break;
 			case P:
 				if (objName == "FlonkP") placeHere = true;
+				break;
+			case T: 
+				if (objName == "FlonkT") {
+					placeHere = true;
+					insideShop = !insideShop;
+				}
 				break;
 			default:
 				break;

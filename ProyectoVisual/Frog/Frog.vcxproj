@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\InventoryComponent.cpp" />
     <ClCompile Include="src\components\InteractableComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentBomb.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
@@ -166,6 +167,7 @@
     <ClCompile Include="src\components\ColliderComponent.cpp" />
     <ClCompile Include="src\components\DefenseComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentSnake.cpp" />
+    <ClCompile Include="src\ecs\EntityShop.cpp" />
     <ClCompile Include="src\managers\LoadManager.cpp" />
     <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
@@ -217,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\InventoryComponent.h" />
     <ClInclude Include="src\components\InteractableComponent.h" />
     <ClInclude Include="src\components\MovementComponentBomb.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
@@ -227,6 +230,8 @@
     <ClInclude Include="src\components\ColliderComponent.h" />
     <ClInclude Include="src\components\DefenseComponent.h" />
     <ClInclude Include="src\components\MovementComponentSnake.h" />
+    <ClInclude Include="src\components\ShopComponent.h" />
+    <ClInclude Include="src\ecs\EntityShop.h" />
     <ClInclude Include="src\managers\DialogManager.h" />
     <ClInclude Include="src\managers\LoadManager.h" />
     <ClInclude Include="src\managers\SceneManager.h" />

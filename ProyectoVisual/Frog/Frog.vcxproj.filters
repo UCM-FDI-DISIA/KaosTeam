@@ -55,6 +55,10 @@
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\managers\ShopManager.cpp" />
+    <ClCompile Include="src\ecs\EntityShop.cpp" />
+    <ClCompile Include="src\components\MovementComponentBomb.cpp" />
+    <ClCompile Include="src\utils\Box.cpp" />
+    <ClCompile Include="src\components\InventoryComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentBomb.cpp" />
     <ClCompile Include="src\scenes\MenuInicio.cpp" />
     <ClCompile Include="src\scenes\MenuPausa.cpp" />
@@ -126,6 +130,12 @@
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\managers\ShopManager.h" />
+    <ClInclude Include="src\components\ShopComponent.h" />
+    <ClInclude Include="src\ecs\EntityShop.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\MovementComponentBomb.h" />
+    <ClInclude Include="src\utils\Box.h" />
+    <ClInclude Include="src\components\InventoryComponent.h" />
     <ClInclude Include="src\components\MovementComponentBomb.h" />
     <ClInclude Include="src\scenes\MenuInicio.h" />
     <ClInclude Include="src\scenes\MenuPausa.h" />
