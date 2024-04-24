@@ -1,22 +1,24 @@
 #pragma once
 #include "../components/LifeComponent.h"
+#include "../sdlutils/SDLUtils.h"
 
 
-enum LootEnum { LOOT_RANDOM,LOOT_VIDA, LOOT_DINERO};
+enum LootEnum { LOOT_RANDOM, LOOT_VIDA, LOOT_DINERO};
 
 class DestructibleComponent
 {
 private:
-	LifeComponent life;
-	int loot;	// probabilidad de que caiga tal 
-							// cosa con el loot random sobre 100
 	const int RandomLifeProb = 20, RandomMoneyProb = 20;
-	void DestructAndLoot();
-	
+	LifeComponent life;
+	int loot;	// Guarda lo que va a soltar cuando sea destruido
+	RandomNumberGenerator& rand_;	//generador de numeros random
+	Vector2D position;
 
-public:
-	DestructibleComponent(int lootType);
+	void DestroySelf();
+	void SpawnLoot(int lootType);
 	
+public:
+	DestructibleComponent(int lootType, Vector2D pos);
 	void update();
 };
 

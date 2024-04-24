@@ -391,7 +391,7 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	}	
 	else if (objName == "Arbusto")
 	{
-		c = createDestructible(pos, 1, objProps[1].getIntValue());
+		c = createDestructible(pos, 1, objProps[0].getIntValue());
 	}
 	//else if ()......
 
