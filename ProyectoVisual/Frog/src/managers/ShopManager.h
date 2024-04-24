@@ -18,6 +18,7 @@ public:
 	void update();
 	void setPlayer(Entity* player);
 	void setHUD(HUDManager* hud);
+	virtual ~Shop();
 private:
 
 	enum PowerUps { GRASSHOPER, WASP, FLY, CENTIPEDE, TOTAL };
@@ -50,7 +51,7 @@ private:
 
 	//metodos
 	Shop();
-	//~Shop();
+	
 	void buyPowerUp(PowerUps powerUp);
 	void changeAnimal(Direction dir);
 	void setOppacity();

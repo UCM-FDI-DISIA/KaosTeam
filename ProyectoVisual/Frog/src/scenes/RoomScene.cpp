@@ -526,7 +526,12 @@ RoomScene::~RoomScene() {
 		delete* it;
 	}
 	delete cameraManager;
+	cameraManager = nullptr;
 	delete shopManager;
+	shopManager = nullptr;
+	delete mapReader;
+	mapReader = nullptr;
+	HUD = nullptr;
 }
 
 void RoomScene::changeMap()

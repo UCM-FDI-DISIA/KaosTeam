@@ -18,23 +18,18 @@ Shop::Shop() : imngr(im()), grasshoperValue(10), waspValue(15), flyValue(15), ce
 	initShopEntitys();
 	setOppacity();
 }
-//Shop::~Shop() {
-//	for (auto& a : animals) {
-//		delete a;
-//		a = nullptr;
-//	}
-//	delete selected;
-//	selected = nullptr;
-//	delete player;
-//	player = nullptr;
-//	delete playerMoney;
-//	playerMoney = nullptr;
-//	delete playerHUD;
-//	playerHUD = nullptr;
-//	delete playerInventory;
-//	playerInventory = nullptr;
-//
-//}
+Shop::~Shop() {
+	for (auto& a : animals) {
+		delete a;
+		a = nullptr;
+	}
+	selected = nullptr;
+	player = nullptr;
+	playerMoney = nullptr;
+	playerHUD = nullptr;
+	playerInventory = nullptr;
+
+}
 void Shop::initShopEntitys() {
 	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 5,230,65,65 }, 1);
 	grasshoper->addShopComponent(gShop);
@@ -196,25 +191,4 @@ void Shop::changeAnimal(Direction dir)
 	selectedPowerUp = static_cast<PowerUps>(next);
 	setSelected();
 	setOppacity();
-	/*int p = 0;
-	switch (dir) {
-		case Shop::RIGHT: {
-			p = ((int)selectedPowerUp + 1) % (int)TOTAL;
-		}
-		break;
-	case Shop::LEFT: {
-		if ((int)selectedPowerUp > 0) {
-			p = ((int)selectedPowerUp - 1) % (int)TOTAL;
-		}
-		else {
-			p = (int)TOTAL - 1;
-		}
-		}
-		break;
-	default:
-	break;
-	}
-	selectedPowerUp = static_cast<PowerUps>(p);
-	setSelectd();
-	setOppacity();*/
 }
