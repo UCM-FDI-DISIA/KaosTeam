@@ -44,7 +44,7 @@ void MovementComponentFrog::update() {
 	if (jumping && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate)
 	{
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-		int t = ent->getScene()->getMapReader()->getTileSize();
+		int t = ent->getScene()->getMapReader()->getTileSize(); //No se porque est ose llama en todos los frames en lugar de uno
 			
 		framesMoved++;
 

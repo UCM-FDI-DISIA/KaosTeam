@@ -35,7 +35,7 @@ RoomScene::RoomScene(int id) : id(id),
 	mapReader->loadObj("resources/maps/niveles/nivel01/mapaN1_01.tmx");
 	//Create player desde el mapa
 	cameraManager->setTarget(player);
-	createFrancois(Vector2D(0,0));
+	createFrancois(Vector2D(2, 2));
 };
 
 RoomScene::~RoomScene() {
@@ -360,19 +360,24 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 	TransformComponent* tr = new TransformComponent(pos);
 	tr->setContext(fran);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);
-	RenderComponent* rend = new RenderComponent(&sdlutils().images().at("shadow"),1);
+
+	RenderComponent* rend = new RenderComponent(&sdlutils().images().at("worm"),10);
 	rend->setContext(fran);
 	fran->addComponent(RENDER_COMPONENT, rend);
+
 	ColliderComponent* bossColl = new ColliderComponent();
 	bossColl->setContext(fran);
 	fran->addComponent(COLLIDER_COMPONENT, bossColl);
+
 	MovementComponentFrancois* move = new MovementComponentFrancois();
 	move->setContext(fran);
 	move->initComponent();
 	fran->addComponent(MOVEMENT_COMPONENT, move);
+
 	BossComponent* bossComp = new BossComponent();
 	bossComp->setContext(fran);
 	fran->addComponent(BOSS_COMPONENT, bossComp);
+
 	AddEntity(fran);
 	
 	return fran;
