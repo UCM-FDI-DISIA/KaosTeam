@@ -3,12 +3,11 @@
 
 DestructibleComponent::DestructibleComponent(int lootType) : loot(lootType)
 {
-	//life = LifeComponent(1, 1);
-	const int RandomLifeProb = 20, RandomMoneyProb = 20;
+	life = LifeComponent(1, 1);
 
 }
 
-void update()
+void DestructibleComponent::update()
 {
 	//if (life.getactual() < 1)
 	//{
@@ -17,7 +16,7 @@ void update()
 
 }
 
-void destructAndLoot()
+void DestructibleComponent::DestructAndLoot()
 {
 	switch (loot)
 	{

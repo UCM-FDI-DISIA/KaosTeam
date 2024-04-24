@@ -9,12 +9,14 @@ class DestructibleComponent
 private:
 	LifeComponent life;
 	int loot;	// probabilidad de que caiga tal 
-				// cosa con el loot random sobre 100
-
+							// cosa con el loot random sobre 100
+	const int RandomLifeProb = 20, RandomMoneyProb = 20;
 	void DestructAndLoot();
+	
 
 public:
-	DestructibleComponent(int lootType) : loot(lootType) {};
+	DestructibleComponent(int lootType);
+	
 	void update();
 };
 
