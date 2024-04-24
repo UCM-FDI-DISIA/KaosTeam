@@ -3,13 +3,7 @@
 #include "../scenes/RoomScene.h"
 
 BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2)	//
-{
-	initComponent();
-	
-	for (int i = 0; i < MAX_CUBIERTOS; i++) {
-		cubiertos[i]->tipo = new Entity(ent->getScene());
-	}
-}
+{}
 
 BossComponent::~BossComponent()
 {
@@ -20,7 +14,11 @@ void BossComponent::initComponent()
 	tr = ent->getComponent<TransformComponent>(TRANSFORM_COMPONENT);
 	render = ent->getRenderComponent();
 	mov = ent->getComponent<MovementComponentFrancois>(MOVEMENT_COMPONENT);
-	
+
+	//Creamos cubiertos
+	for (int i = 0; i < MAX_CUBIERTOS; i++) {
+		cubiertos[i]->tipo = new Entity(ent->getScene());
+	}
 }
 
 void BossComponent::update()
