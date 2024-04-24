@@ -25,6 +25,7 @@ public:
 
 	void setBoundX(int newBoundX) { boundX = newBoundX; }
 	void setBoundY(int newBoundY) { boundY = newBoundY; }
+	void setVelocity(const Vector2D& v) { velocity = Vector2D(0, 0); }
 	bool checkIfTileWalkable(Vector2D);
 };
 

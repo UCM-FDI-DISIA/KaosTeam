@@ -95,6 +95,7 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	//Sistema de vidas
 	LifeComponent* life = new LifeComponent(2, 2);
 	life->setContext(player);
+	life->initComponent();
 	player->addComponent(LIFE_COMPONENT, life);
 
 	MoneyComponent* moneyComp = new MoneyComponent();
@@ -344,17 +345,13 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	bomb->addRenderComponent(renderBomb);
 
 	ColliderComponent* collBomb = new ColliderComponent(transform);
-
 	collBomb->setContext(bomb);
 	bomb->addComponent(COLLIDER_COMPONENT, collBomb);
-
 
 	MovementComponentBomb* moveBomb = new MovementComponentBomb();
 	bomb->addComponent(MOVEMENT_COMPONENT, moveBomb);
 	moveBomb->setContext(bomb);
 	moveBomb->initComponent();
-
-	
 
 	AddEntity(bomb);
 	return bomb;

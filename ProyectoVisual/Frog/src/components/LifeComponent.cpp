@@ -1,5 +1,13 @@
 #include "LifeComponent.h"
 
+void LifeComponent::initComponent() {
+	animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
+	move = static_cast<MovementComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+}
+LifeComponent::~LifeComponent() {
+	animator = nullptr;
+	move = nullptr;
+}
 int LifeComponent::GetActual() {
 	return vidaActual;
 }
@@ -22,4 +30,10 @@ void LifeComponent::SetMax(int n) {
 
 bool LifeComponent::alive() {
 	return vidaActual > 0;
+}
+
+void LifeComponent::update() {
+	if (!alive()) {
+		animator->playAnimation("DEATH");
+	}
 }
