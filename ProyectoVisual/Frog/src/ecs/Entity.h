@@ -16,7 +16,7 @@ enum ComponentsEnum
 	IACOMPONENT,
 	TRANSFORM_COMPONENT,
 	COLLIDER_COMPONENT,
-	BOSS_COMPONENT
+	BOSS_COMPONENT,
 	MONEY_COMPONENT
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.

@@ -6,6 +6,7 @@
 #include "../managers/MapManager.h"
 #include "../ecs/Entity.h"
 #include "../components/TransitionComponent.h"
+#include "../managers/ShopManager.h"
 #include <vector>
 
 class RoomScene : public Scene
@@ -51,6 +52,7 @@ public:
 	Entity* createFrancois(Vector2D pos);
 	
 	void AddEntity(Entity* entity);
+	void removeEntity(Entity* entity);
 	void changeMap();
 	void callForMapChange(std::string nextMap, flonkOrig nextFlonk);
 	void movePlayer(Vector2D pos);

@@ -20,22 +20,28 @@
 #include "../components/ColliderComponent.h"
 #include "../components/MovementComponentFish.h"
 #include "../components/MovementComponentFrancois.h"
+#include "../components/MovementComponentBomb.h"
 #pragma endregion
 
-RoomScene::RoomScene(int id) : id(id), 
-				cameraManager(Camera::instance()), // 
-				mapReader(new MapManager("resources/maps/niveles/nivel01/mapaN1_01.tmx", this)), //
-				HUD(HUDManager::GetInstance()), //
-				player(nullptr), //
-				playerOrig(S), //
-				needMapChange(false) //
-{
-	//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap 
-	// y las entidades de la sala.
-	mapReader->loadObj("resources/maps/niveles/nivel01/mapaN1_01.tmx");
+RoomScene::RoomScene(int id) : id(id), player(nullptr) {
+	//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y 
+	// las entidades de la sala.
+	std::string initMapPath = "resources/maps/niveles/nivel01/mapaN1_01.tmx";
+	mapReader = new MapManager(initMapPath, this);
+	mapReader->loadObj(initMapPath);
+
 	//Create player desde el mapa
+	cameraManager = Camera::instance();
 	cameraManager->setTarget(player);
-	createFrancois(Vector2D(0,0));
+	HUD = HUDManager::instance();
+	shopManager = Shop::instance();
+	shopManager->setPlayer(player);
+
+	createFrancois(Vector2D(0, 0));
+
+#pragma region Cosas q vamos a borrar pronto
+	createBomb(Vector2D(4, 2));
+#pragma endregion
 };
 
 RoomScene::~RoomScene() {
@@ -75,7 +81,7 @@ void RoomScene::update() {
 
 void RoomScene::CheckColisions() {
 	for (Entity* e1 : entityList) {
-		ColliderComponent* coll1 = e1->getComponent<ColliderComponent>(COLLIDER_COMPONENT);
+		ColliderComponent* coll1 = static_cast<ColliderComponent*>(e1->getComponent(COLLIDER_COMPONENT));
 		if (coll1 != nullptr)
 			for (Entity* e2 : entityList) {
 				coll1->CheckCollision(e2);
@@ -380,7 +386,7 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 	TransformComponent* tr = new TransformComponent(pos);
 	tr->setContext(fran);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);
-	RenderComponent* rend = new RenderComponent(&sdlutils().images().at("shadow"),1);
+	RenderComponent* rend = new RenderComponent(&sdlutils().images().at("shadow"));
 	rend->setContext(fran);
 	fran->addComponent(RENDER_COMPONENT, rend);
 	ColliderComponent* bossColl = new ColliderComponent();
@@ -446,7 +452,7 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	else if (objName == "Black ant") {
 		if (player != nullptr) {
-			MovementComponentFrog* mvmPlayer = player->getComponent<MovementComponentFrog>(MOVEMENT_COMPONENT);
+			MovementComponentFrog* mvmPlayer = static_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			c = createBlackAnt(pos, mvmPlayer);
 		}
 	}
@@ -466,7 +472,7 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	else if (objName == "Red ant") {
 		if (player != nullptr) {
-			MovementComponentFrog* mvmPlayer = player->getComponent<MovementComponentFrog>(MOVEMENT_COMPONENT);
+			MovementComponentFrog* mvmPlayer = static_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			c = createRedAnt(pos, mvmPlayer);
 		}
 
@@ -612,5 +618,5 @@ void RoomScene::callForMapChange(std::string nextMap, flonkOrig nextFlonk)
 
 void RoomScene::movePlayer(Vector2D pos)
 {
-	player->getComponent<TransformComponent>(TRANSFORM_COMPONENT)->resetPos(pos);
+	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
 }
