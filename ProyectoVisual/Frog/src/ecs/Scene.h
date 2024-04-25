@@ -2,7 +2,6 @@
 #include "../managers/MapManager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Entity.h"
-//#include "../sdlutils/checkML.h"
 //#include "../managers/DataManager.h"
 
 /**

@@ -1,9 +1,9 @@
 #include "NewGameState.h"
 #include "Game.h"
-#include "../scenes/MenuInicio.h"
+#include "../scenes/Menu.h"
 
-NewGameState::NewGameState(Game* g): game(g), menu(new MenuInicio(g, this, &sdlutils().images().at("BotonJuego"), 
-				&sdlutils().images().at("BotonSalir"))), currScene(*menu)
+NewGameState::NewGameState(Game* g): game(g), menu(new Menu(g, this, &sdlutils().images().at("BotonJuego"), 
+				&sdlutils().images().at("BotonSalir"), INICIO)), currScene(*menu)
 {
 }
 

@@ -3,16 +3,16 @@
 * Encargada de gestionar el HUD en el juego. Incluye los diálogos.
 */
 #include "../sdlutils/Texture.h"
-#include "../utils/Singleton.h"
 
 class Game;
 
-class HUDManager: public Singleton<HUDManager>
-{
-	friend Singleton<HUDManager>;
 
+
+class HUDManager
+{
 private:
 	Game* game; //por ahora está aqui, aunq no sé para q se va a usar.
+	static HUDManager* instance;
 
 	int vidasActuales, vidasMax, wormsActuales;
 	int xInicialFly = 15;
@@ -21,28 +21,25 @@ private:
 	Texture* textFly;
 	Texture* textWorm;
 	Texture* textNumWorms;
-	//Texture texNumWormsNuevo;
-	SDL_Rect rectFly;
-	Font* font;
+	SDL_Rect* rectFly;
+	Font font = Font("resources/fonts/COMIC.ttf", 30);
 	SDL_Color colorFont = {255, 255, 255, 255};
-
-	//Constructora
-	HUDManager();
     
 public:
-	
+	//Constructora
+	HUDManager(); 
 	//Destructora
-	virtual ~HUDManager(); 
+	~HUDManager(); 
 	
-	////Gestion para hacer singleton de HUDManager
-	//HUDManager(HUDManager&) = delete;
-	//void operator=(const HUDManager&) = delete;
-	//static HUDManager* GetInstance() {
-	//	if (instance == nullptr) {
-	//		instance = new HUDManager();
-	//	}
-	//	return instance;
-	//};
+	//Gestion para hacer singleton de HUDManager
+	HUDManager(HUDManager&) = delete;
+	void operator=(const HUDManager&) = delete;
+	static HUDManager* GetInstance() {
+		if (instance == nullptr) {
+			instance = new HUDManager();
+		}
+		return instance;
+	};
 
 	void ChangeLives(int);
 	void ChangeMaxLife(int);
@@ -51,8 +48,8 @@ public:
 	void render();
 	void update() {}; //por ahora no tiene nada
 };
-//inline HUDManager& hud() {
-//	return *HUDManager::GetInstance();
-//}
+inline HUDManager& hud() {
+	return *HUDManager::GetInstance();
+}
 
 

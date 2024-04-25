@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="24">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="21">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="20" height="20">
   <data encoding="csv">
@@ -111,15 +111,6 @@
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_08_fuera.tmx"/>
    </properties>
-   <point/>
-  </object>
-  <object id="21" name="Snake" type="Enemigo" x="185.333" y="268">
-   <point/>
-  </object>
-  <object id="23" name="Snake" type="Enemigo" x="56" y="300.667">
-   <point/>
-  </object>
-  <object id="22" name="Snake" type="Enemigo" x="184" y="74">
    <point/>
   </object>
  </objectgroup>

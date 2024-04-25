@@ -8,27 +8,23 @@ Trabajo para Proyectos II de Kaos Team, un grupo de estudiantes de segundo del G
 
 _Flonk!_ es un juego de aventuras de estilo clásico en el que Flonk, la rana deberá salir del charco para salvar a su hermana del malvado chef francés que planea hacer un guiso con ella.
 
-<details>
-
-<summary>Mecánicas del jugador</summary>
-
 ## Mecánicas del jugador
 
 El movimiento del juego está basado en saltos de casilla en casilla en un tablero donde se desarrollará la acción . También tendrá un set de habilidades iniciales que luego serán mejoradas con mejoras que aumentarán la fuerza y utilidad de estas y se podrá ampliar el repertorio de habilidades disponibles con otras mejoras obtenidas durante la partida.
 
 - **Movimientos básicos**
 
-  - **Movimiento basado en saltos** de casilla en casilla que mejorará con la mejora del salto largo. Se diferenciarán por el input del jugador.
-  - **Ataque básico** con la lengua de la rana. Este afectaría a las casillas en la dirección que el jugador apunte/mire. El alcance inicial es de 3 casillas, aumentará con la mejora. El daño inicial que hace es de 1 golpe, aumentará con la mejora.
+  - **Movimiento basado en saltos** pequeños de una casilla o largos cuyo alcance depende de las mejoras previas y el input del jugador.
+  - **Ataque básico** con la lengua de la rana. Este afectaría a las casillas en la dirección que el jugador apunte/mire y su alcance dependerá de las mejoras.
   - **Escudo** con el saco hinchable de la rana localizado en la parte inferior de su boca. Lo usará para defenderse y rechazar ataques que provengan de determinada dirección.
 - **Mejoras**
 
-  - **Saltamontes** que amplian el alcance del salto. El salto largo aumenta el salto de tres en tres casillas.
+  - **Saltamontes** que amplian el alcance del salto largo. 
   - **Moscas de la vida** que aumentan la vida máxima del jugador.
-  - **Avispas**: aumentan el daño de los ataques básicos a tres de daño.
-  - **Ciempiés**: aumentan el alcance del ataque de la lengua a seis casillas.
+  - **Por determinar**: Aumentan el ataque de los ataques básicos.
+  - **Por determinar**: Aumentan el alcance de los ataques básicos.
 - **Habilidades extras desbloqueables**
-  - **Gancho** de pesca atado a la lengua. Se podrá usar tanto en combate para atacar a los enemigos como para desplazarse más eficientemente y poder alcanzar lugares nuevos. Se desbloquea en la mazmorra principal del bosque (árbol del Ovi (nombre sin confirmar)) y será necesario conseguirlo para poder avanzar en las zonas posteriores. Su alcance es de cinco casillas.
+  - **Gancho** de pesca atado a la lengua. Se podrá usar tanto en combate para atacar a los enemigos como para desplazarse más eficientemente y poder alcanzar lugares nuevos. Se desbloquea en la mazmorra principal del bosque (árbol del Ovi (nombre sin confirmar)) y será necesario conseguirlo para poder avanzar en las zonas posteriores.
   - **Hormigas explosivas** rojas que se pueden usar como bombas contra enemigos, para acceder a sitios previamente inaccesibles rompiendo las paredes o necesarias para resolver puzzles.
    - **Saco de hormigas** desbloqueable en el hormiguero. Permitirá a la rana poder almacenar más de una hormiga roja y poder transportarlo y usarlo cuando quiera. 
   
@@ -40,26 +36,21 @@ Al romper objetos o matar enemigos, podrán aparecer aleatoriamente power ups qu
   - **Luciérnagas** que hacen brillar al jugador, iluminando la oscuridad a su alrededor.
   - Por desarrollar…
 
-</details>
-
-<details>
-
-<summary>Enemigos</summary>
-
 ## Enemigos
 
 A lo largo del juego, el jugador deberá hacer frente a distintos tipos de enemigos distribuidos por las diferentes zonas:
 
 ### Estanque
 
-Vida: 1 golpe
-Daño recibido: Media Mosca
+**En desarrollo**: probablemente contendrá algunos enemigos con patrones de ataque y movimiento sencillos ya que se trata de la primera zona y actúa como tutorial.
 - **Ranas locas** 
-Son ranas las cuales, debido a la contaminación del Estanque traído por el chef, han perdido su cordura. Estas avanzaran lentamente de una casilla a otra intentando seguir a Flonk (como zombis) atacando con sus lenguas (las cuales tiene un rango melee a diferencia de Flonk debido a la contaminación). El movimiento de estas ranas está limitado por un tiempo de espera antes de que se muevan a su siguiente casilla.
-
 Vida: 1 golpe
 Daño recibido: Media Mosca
-- **Peces** Estos nadan en los ríos del estanque siguiendo un camino fijo. A lo largo de su recorrido en un sitio específico saltarán del agua y caerán. Cuando terminan su recorrido, estos lo repetirán pero en el sentido contrario (irán de un lado para el otro en el río). Si a la hora de saltar sobre el río, Flonk se cruza en su salto con un pez, Flonk recibe daño y es enviado a la casilla donde estaba antes de saltar. 
+Son ranas las cuales, debido a la contaminación del Estanque traído por el chef, han perdido su cordura. Estas avanzaran lentamente de una casilla a otra intentando seguir a Flonk (como zombis) atacando con sus lenguas (las cuales tiene un rango melee a diferencia de Flonk debido a la contaminación). El movimiento de estas ranas tienen un tiempo de espera a definir antes de que se muevan a su siguiente casilla.
+- **Peces**
+Vida: 1 golpe
+Daño recibido: Media Mosca
+ Estos nadan en los ríos del estanque siguiendo un camino fijo. Estos nadarán en el río y cada cierto tiempo específico saltarán del agua y caerán. Cuando terminan su recorrido, estos lo repetirán pero en el sentido contrario (irán de un lado para el otro en el río). Si a la hora de saltar sobre el río, Flonk se cruza en su salto con un pez, Flonk recibe daño y es enviado a la casilla donde estaba antes de saltar. 
 
 ### Bosque
 
@@ -67,9 +58,14 @@ Vida: 3 Golpes
 Daño recibido: 1 mosca
 - **Las serpientes** Actuan como torretas estaticas los cuales giran sobre su propio eje vigilando por si ven la rana. Si la serpiente detecta la rana, estos rápidamente extenderán sus cuellos para mordernos antes de volver a sus puestos. Si ha pasado suficiente tiempo sin que hayan mordido a Flonk, estos saltaran diagonalmente una casilla siendo esta casilla la más cercana posible a Flonk.
 
+Vida: 1 golpe 
+Daño recibido: Media mosca
+- **Las termitas** suelen ir en grupos de 4, pero pueden aparecer en más cantidades. Son muy rápidas pero poco resistentes. Su comportamieno es la de rápidamente seguir al jugador pero al mismo tiempo infligiendo poco daño.
+
 Vida: Depende del tamaño del cúmulo
 Daño recibido: Media Mosca
-- **Cúmulo de termitas** Estas siguen al jugador, son rápidas pero poco resistentes. Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos. Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. 
+-**Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. Estas, como las termitas, siguen al jugador y el cúmulo cuando sea lo suficientemente pequeño, al darles saldrán termitas normales.
+
 
 
 ### Hormiguero
@@ -86,31 +82,19 @@ Daño recibido: Media mosca
 
 Vida: Depende del tamaño del cúmulo
 Daño recibido: Media Mosca
-- **Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. Estas, como las termitas, siguen al jugador y el cúmulo cuando sea lo suficientemente pequeño, al darles saldrán termitas normales.
+-**Cúmulo de termitas** Van en grupos que actúan como una sola entidad, al ser golpeanas se dividen por la mitad y se vuelven más rápidos.  Estas solo se mueren cuando su tamaño llega al mínimo y cada uno de sus miembros son eliminados. Estas, como las termitas, siguen al jugador y el cúmulo cuando sea lo suficientemente pequeño, al darles saldrán termitas normales.
 
 ### Zona de la cocina del chef francés
 
 Vida: inmortal
 Daño recibido: Media Mosca
-- **Cucarachas** Son inmortales pero cuando son atacadas estas se derrumban, dejándolas immóbiles pero en unos pocos segundos, estas se volverán a levantarse para atacarte. Para atacarte, estas te tiran su cabeza como proyectil. Después de atacarte, estas tendrán que ir a recuperar su cabeza dejándolas vulnerables.
-
-</details>
-
-<details>
-
-<summary>Cámara</summary>
+- **Cucarachas** Son inmortales pero cuansdo son atacadas estas se derrumban, dejándolas immóbiles pero en unos pocos segundos, estas se volverán a levantarse para atacarte. Para atacarte, estas te tiran su cabeza como proyectil. Después de atacarte, estas tendrán que ir a recuperar su cabeza dejándolas vulnerables.
 
 ## Cámara
 
 El juego es 2D top down, por tanto la cámara al moverse lo hará de forma scroll lateral. Cuando el tamaño de la sala sea igual o menor al de la pantalla de juego, la cámara se quedará fija. Cuando el tamaño de la sala sea mayor, si el jugador está en el área central de la cámara, esta no se moverá, pero si se desplaza más a la derecha, izquierda, por encima o por debajo de ese área, la cámara "seguirá" al jugador.
 ![](assets/imgGdd/camara.png)
 Cuando el jugador supere el límite del tamaño de la cámara en cualquiera de las direcciones, la cámara seguirá al jugador con este en el centro hasta los límites de la sala.
-
-</details>
-
-<details>
-
-<summary>Mecánicas del escenario</summary>
 
 ## Mecánicas del escenario
 
@@ -138,12 +122,6 @@ Cuando el jugador supere el límite del tamaño de la cámara en cualquiera de l
 
 ![](assets/imgGdd/image5-6.jpg)
 
-</details>
-
-<details>
-
-<summary>Diseño de los niveles</summary>
-
 ## Diseño de niveles
 
 Nuestro juego está dividido en diferentes zonas, donde habrá enemigos y objetos, diferentes.
@@ -154,13 +132,15 @@ Nuestro juego está dividido en diferentes zonas, donde habrá enemigos y objeto
 
 ![](assets/imgGdd/image5.jpg)
 
-El estanque es la zona inicial y la que conecta a las otras tres zonas, conectando con el bosque por la izquierda, el hormiguero por arriba donde se necesita el gancho para entrar y la cocina por la derecha donde se necesita bombas para continuar.
+Diseño inicial sin finalizar
+
+El estanque es la zona inicial y la que conecta a las otras tres zonas, conectando con el bosque por la derecha estando bloqueada por piedras movibles, el hormiguero por arriba donde se necesita el gancho para entrar y la cocina por la derecha donde se necesita bombas para continuar.
 
 La zona actúa de tutorial en el que el jugador encontrará los primeros enemigos.
 
 También hay objetos rompibles y explotables (para los que se necesitarán hormigas rojas) y los primeros huecos (para los que necesitas una mejora de salto). De esta forma el jugador es incentivado a volver a los lugares por donde ya ha pasado.
 
-En el centro, se encuentra la tienda, en la que podrá entrar pero no tendrá suficiente dinero para comprar. Al estar en la zona central el jugador podrá regresar y comprar objetos en cada paso de su aventura. (Más adelante se explica con detalle el funcionamiento de la tienda).
+En la parte superior y al casi al final del recorrido inicial del jugador, se encuentra la tienda, en la que podrá entrar pero no tendrá suficiente dinero para comprar. Al estar en la zona central el jugador podrá regresar y comprar objetos en cada paso de su aventura. (Más adelante se explica con detalle el funcionamiento de la tienda).
 
 ### Bosque
 
@@ -214,26 +194,14 @@ Las salas 1, 2, 3 y 5 ocupan el tamaño de la pantalla, por lo tanto la cámara 
 
 ## Tienda
 
-Durante la aventura, el jugador encontrará lombrices de uróboros que podrá intercambiar con un curioso pájaro por mejoras en la tienda. Estas lombrices se podrán encontrar al romper objetos o matar enemigos.
-Hay varios tipos de lombrices de uróboros con diferente valor siendo este ascendente dependiendo de su rareza.
+Durante la aventura, el jugador encontrará lombrices de uróboros que podrá intercambiar con un curioso pájaro por mejoras en la tienda.
 
-### Valores de uróboros
-- Uróboro rosa: X
-- Uróboro dorado: X
-### Mejoras
-- Avispa (15 uróboros): Flonk tendrá la capacidad de hacer 3 golpes de daño al atacar.
-- Saltamonte (10 uróboros): en vez de saltar de casilla en casilla, Flonk tendrá la capacidad de saltar de tres en tres casillas.
-- Mosca de la vida (15 uróboros): permite aumentar la vida máxima de Flonk.
-- Ciempiés (20 uróboros): con esto va a aumentar el alcance de ataque de Flonk a seis casillas.
+El precio de las mejoras será relativamente alto, por lo que el jugador no podrá adquirirlas de buenas a primeras.
+
+Las lombrices se pueden encontrar por todo el juego al romper objetos o al matar enemigos. Hay varios tipos de lombrices de uróboros con un valor ascendente según su rareza.
+
 ![](assets/imgGdd/image11.gif)
 ![](assets/imgGdd/image8.gif)
-
-
-</details>
-
-<details>
-
-<summary>HUD</summary>
 
 ## HUD
 
@@ -245,56 +213,28 @@ Esta interfaz consta de dos elementos muy sencillos.
 
 Por un lado tenemos en la esquina superior izquierda una barra con iconos de mosca que representan las vidas de nuestro personaje. La cantidad de moscas que posee la barra, coincide con el número de vidas totales que el jugador puede adquirir. Si una mosca está teñida de un tono claro, el jugador posee esa vida, de lo contrario, si está teñida de un tono más oscuro entonces no la posee.
 
-Además, en la esquina superior derecha, se muestra un icono de una lombriz (que es como se representa el dinero en el juego) junto a un contador (que nos indica la cantidad de dinero en el juego). A medida que el jugador obtenga lombrices, dependiendo de su color, el contador aumenta una cantidad u otra.
-
-Por último, debajo de las lombrices si se compra en la tienda alguna mejora permanente (o se obtiene de forma temporal) aparecerá el animal(avispa, ciempiés, saltamnonte) que representa esa mejora para recordar al jugador de que la tiene y puede usarla.
-
-</details>
-
-<details>
-
-<summary>Estética y Visual</summary>
+Por último, en la esquina superior derecha, se muestra un icono de una lombriz (que es como se representa el dinero en el juego) junto a un contador (que nos indica la cantidad de dinero en el juego). A medida que el jugador obtenga lombrices, dependiendo de su color, el contador aumenta una cantidad u otra.
 
 ## Estética y Visual
 
 El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de Paper Mario y "garabato vivo" al de Ed, Edd & Eddy. Y los animales tendrán tamaño y aspecto "realistas" hasta cierto punto. No serán 100% similares a sus contrapartes reales y se tomarán libertades creativas pero tendrá cierto grado de realismo. Como que la mayoría de los enemigos sean depredadores naturales de las ranas y la mejoras sean presas naturales o al menos factibles.
 
-</details>
+## Menús de juego y flujo de juego(por definir)
 
-<details>
+**Menú principal**
+El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar, un botón que le lleva al menú de ajustes y un botón para salir del juego.
 
-<summary>Menus de juego</summary>
+**Menú de ajustes**(por definir)
+Este menú muestra los controles y permite ajustar características del juego.
 
-## Menús de juego y flujo de juego
-
-**Menú principal:**
- El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar, un botón que le lleva al menú de ajustes y un botón para salir del juego.
-
-**Menú de ajustes:** 
- Este menú muestra los controles y permite ajustar características del juego.
-
-**Durante el juego:**
- En la pantalla se ve la interfaz descrita antes junto a un botón que permite ir al menú de pausa.
+**Durante el juego**
+En la pantalla se ve la interfaz descrita antes junto a un botón que permite ir al menú de pausa.
 ![](assets/imgGdd/image6.png)
 
-**Menú de pausa:** 
+**Menú de pausa**(por definir)
 En el menú de pausa el jugador puede volver a la partida, ir al menú de ajustes o salir del juego.
 
-</details>
-
-<details>
-
-<summary>Flujo de juego</summary>
-
-**Flujo de juego:** (por definir, que pasa cuando el jugador pierde todas las vidas)
-
-
-
-</details>
-
-<details>
-
-<summary>Historia</summary>
+**Flujo de juego** (por definir, que pasa cuando el jugador pierde todas las vidas)
 
 ## Historia (seguramente se puede contar mejor y falten cosas)
 
@@ -305,33 +245,10 @@ atravesar el hormiguero hasta llegar a la cocina del chef.
 Durante el camino, no solo habrá animales que atacaran a Flonk, habrá otros que le servirán de ayuda para superar el camino hasta la cocina.
 Con las ayudas que obtenga por el camino, finalmente se deberá enfrentar al malvado chef francés para tratar de recuperar a su hermana.
 
-</details>
-
-<details>
-
-<summary>Resources</summary>
-
-## Resources
-**Mapas de tiled:**
-Objetos que tenemos en tiled segun la clase.
-| Class | Names | Otras propiedades |
-| :--- | :--- | :--- |
-| Player | N - S - E - O = Segun la entrada por la que accedas a la sala. | *** |
-| Enemigo | RanaLoca - Hormiga - ... = Tipo de enemigo.  | *** |
-| ObjInter | Jarron - Piedra - ... = Tipo de objeto interactuable.  | *** |
-
-***Las propiedades especificas al objeto, y no a su clase o nombre, se pasarán al createEntity.
-
-</details>
-
-<details>
-
-<summary>Referencias</summary>
+## Nice to have
 
 ## Referencias
 
 Hemos obtenido referencias de _The Legend of Zelda: A Link to the Past_ en cuanto a las mecánica, dinámica y escenarios. 
-En cuanto a la estética, nos hemos inspirado en el estilo de _Paper Mario_ en cuanto al entorno tridimensional y
+En cuanto a la estética, nos hemos inspirado en el estilo de _Paper Mario_ en cuanto al entorno tridimensioanl y
 de _Ed, Edd & Eddy_ la idea del "garabato vivo".
-
-</details>

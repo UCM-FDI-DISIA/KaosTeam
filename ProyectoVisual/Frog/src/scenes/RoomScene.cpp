@@ -1,8 +1,6 @@
 #include "RoomScene.h"
 #include "../components/CrazyFrogIAComponent.h"
 
-
-
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
 
@@ -11,17 +9,16 @@ void RoomScene::render() {
 			e->render();
 	}
 	HUD->render();
-	if (insideShop) shopManager->render();
 }
 
 void RoomScene::update() {
 	for (Entity* e : entityList) {
 		if (e != nullptr)
-			e->update();
+		e->update();
 	}
+
 	cameraManager->update();
-	if (insideShop)
-		shopManager->update();
+	if (insideShop) shopManager->update();
 	if (needMapChange)
 		changeMap();
 	//comrpueba las colisiones con la rana
@@ -43,9 +40,8 @@ void RoomScene::CheckColisions() {
 Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 {
 	player = new Entity(this, FROG_ENTITY);
-
-	Texture* txtFrog = &sdlutils().images().at("frogSheet");
-	Texture* txtTongue = &sdlutils().images().at("TongueSheet");
+	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaSpritesheet.png", 4, 5);
+	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
 	TransformComponent* transform = new TransformComponent(pos);
 	player->addComponent(TRANSFORM_COMPONENT, transform);
@@ -86,17 +82,13 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	player->addComponent(ATTACK_COMPONENT, atck);
 	atck->setContext(player);
 
-	InventoryComponent* invComp = new InventoryComponent();
-	invComp->setContext(player);
-	player->addComponent(INVENTORY_COMPONENT, invComp);
-
 	FrogInputComponent* input = new FrogInputComponent();
-	input->setComponents(mvm, atck, invComp);
+	input->setComponents(mvm, atck);
 	input->setContext(player);
 	player->addComponent(INPUT_COMPONENT, input);
 
 	//Sistema de colisiones
-	ColliderComponent* coll = new ColliderComponent();
+	ColliderComponent* coll = new ColliderComponent(transform);
 	coll->setContext(player);
 	player->addComponent(COLLIDER_COMPONENT, coll);
 
@@ -109,22 +101,14 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	MoneyComponent* moneyComp = new MoneyComponent();
 	moneyComp->setContext(player);
 	player->addComponent(MONEY_COMPONENT, moneyComp);
-
-	
 	
 	AddEntity(player);
 
 	return player;
 }
 
-Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::string nextMap) {
+Entity* RoomScene::createTransition(std::string objName, std::string nextMap) {
 	Entity* c = new Entity(this);
-	TransformComponent* transform = new TransformComponent(pos);
-	c->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(c);
-	ColliderComponent* colliderComp = new ColliderComponent(transform);
-	c->addComponent(COLLIDER_COMPONENT, colliderComp);
-	colliderComp->setContext(c);
 
 	flonkOrig nextFlonk;
 	if (objName == "TransitionN") {
@@ -142,9 +126,6 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 	else if (objName == "TransitionP") {
 		nextFlonk = P;
 	}
-	else if (objName == "TransitionT") {
-		nextFlonk = T;
-	}
 	else {
 		nextFlonk = S;
 	}
@@ -152,7 +133,6 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 	TransitionComponent* trans = new TransitionComponent(nextMap, nextFlonk);
 	c->addComponent(TRANSITION_COMPONENT, trans);
 	trans->setContext(c);
-	trans->initComponent();
 
 	//entityList.push_back(c); add entity ya hace esto
 
@@ -164,8 +144,8 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
 	Entity* frog = new Entity(this, CRAZY_FROG_ENTITY);
-	Texture* txtFrog = &sdlutils().images().at("crazyFrogSheet");
-	Texture* txtTongue = &sdlutils().images().at("TongueSheet");
+	Texture* txtFrog = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/ranaLocaSpritesheet.png", 4, 4);
+	Texture* txtTongue = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetTongue.png", 3, 1);
 
 	TransformComponent* transform = new TransformComponent(pos);
 	frog->addComponent(TRANSFORM_COMPONENT, transform);
@@ -213,7 +193,7 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 }
 Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	Entity* fish = new Entity(this, FISH_ENTITY);
-	Texture* txtFish = &sdlutils().images().at("fishSheet");
+	Texture* txtFish = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
 
 	TransformComponent* transform = new TransformComponent(pos);
 	fish->addComponent(TRANSFORM_COMPONENT, transform);
@@ -244,7 +224,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
 	Entity* blackAnt = new Entity(this,BLACK_ANT_ENTITY);
 	//textura cambiar
-	Texture* txtBlackAnt = &sdlutils().images().at("fishSheet");//supongo que esto estaba de placeholder
+	Texture* txtBlackAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
 
 	TransformComponent* transform = new TransformComponent(pos);
 	blackAnt->addComponent(TRANSFORM_COMPONENT, transform);
@@ -269,7 +249,7 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
 	Entity* redAnt = new Entity(this,RED_ANT_ENTITY);
 	//textura cambiar
-	Texture* txtRedAnt = &sdlutils().images().at("fishSheet");
+	Texture* txtRedAnt = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/spritesheetFish.png", 1, 3);
 
 	TransformComponent* transform = new TransformComponent(pos);
 	redAnt->addComponent(TRANSFORM_COMPONENT, transform);
@@ -296,8 +276,8 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this, SNAKE_ENTITY);
-	Texture* txtSnake = &sdlutils().images().at("snakeSheet");
-	Texture* txtNeck = &sdlutils().images().at("snakeAttackSheet");
+	Texture* txtSnake = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheet.png", 4, 2);
+	Texture* txtNeck = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/SnakeSpriteSheetAttack.png", 2, 1);
 
 	TransformComponent* transform = new TransformComponent(pos);
 	snake->addComponent(TRANSFORM_COMPONENT, transform);
@@ -330,9 +310,9 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 	snake->addRenderComponentSnake(renderSnake);
 
-	/*ColliderComponent* collSnake = new ColliderComponent();
+	ColliderComponent* collSnake = new ColliderComponent();
 	collSnake->setContext(snake);
-	snake->addComponent(COLLIDER_COMPONENT, collSnake);*/
+	snake->addComponent(COLLIDER_COMPONENT, collSnake);
 
 	MovementComponentSnake* mvmSnake = new MovementComponentSnake(animSnake);
 	mvmSnake->setContext(snake);
@@ -348,7 +328,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 }
 Entity* RoomScene::createBomb(Vector2D pos) {
 	Entity* bomb = new Entity(this, BOMB_ENTITY);
-	Texture* textBomb = &sdlutils().images().at("eggSheet");;
+	Texture* textBomb = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/HuevoSheet.png", 1, 2);
 
 	TransformComponent* transform = new TransformComponent(pos);
 	bomb->addComponent(TRANSFORM_COMPONENT, transform);
@@ -361,7 +341,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	RenderComponent* renderBomb = new RenderComponent(textBomb);
 	renderBomb->setContext(bomb);
 	renderBomb->initComponent();
-	//bomb->addComponent(RENDER_COMPONENT, renderBomb); LUISJA NO HAGAS ESTO Q LUEGO CUANDO BORRAS TE CAGAS ENCIMA
+	bomb->addComponent(RENDER_COMPONENT, renderBomb);
 	bomb->addRenderComponent(renderBomb);
 
 	ColliderComponent* collBomb = new ColliderComponent(transform);
@@ -418,9 +398,10 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	else if (objName == "Snake") {
 		c = createSnake(pos);
 	}
-	else if (objName == "Bomb") {
-		c = createBomb(pos);
-	}
+	/*
+	else if ()......
+	*/
+
 	return c;
 }
 
@@ -471,12 +452,6 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 			case P:
 				if (objName == "FlonkP") placeHere = true;
 				break;
-			case T: 
-				if (objName == "FlonkT") {
-					placeHere = true;
-					insideShop = !insideShop;
-				}
-				break;
 			default:
 				break;
 			}
@@ -492,7 +467,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 		c = createObjInteract(pos, objName, objProps, objIntID, objInteracted);
 	}
 	else if (objClass == "Transition") {		
-		c = createTransition(pos, objName, objProps[0].getStringValue());
+		c = createTransition(objName, objProps[0].getStringValue());
 	}
 	return c;
 }
@@ -524,10 +499,8 @@ RoomScene::~RoomScene() {
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;
 	}
-
-	//NO BORREIS LO SINGLETONS, Q SE BORRAN SOLOS
-
-	delete mapReader;
+	delete cameraManager;
+	delete shopManager;
 }
 
 void RoomScene::changeMap()
@@ -541,8 +514,7 @@ void RoomScene::changeMap()
 		it = entityList.erase(it);
 	}
 
-	mapReader->clearMap();
-	mapReader->loadBg(nextMap, sdlutils().renderer());
+	mapReader = new MapManager(nextMap, this);
 	mapReader->loadObj(nextMap);
 
 	cameraManager->setTarget(player);

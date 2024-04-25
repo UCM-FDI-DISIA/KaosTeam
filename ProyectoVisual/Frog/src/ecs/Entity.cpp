@@ -6,33 +6,25 @@
 
 Entity::Entity(RoomScene* scn) : name(UNAMED_ENTITY), myScene(scn) {};
 
-Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn), renderComponent(), renderComponentFrog(),
-renderComponentSnake(){};
+Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn) {};
 
 void Entity::addComponent(ComponentsEnum id, Component* component)
 {
-	if (componentes.count(id) > 0)
-	{
-		throw "ya hay un componente";
-	}
 	componentes.insert(std::pair<ComponentsEnum, Component*>(id, component));
 }
 
 void Entity::addRenderComponent(RenderComponent* rnd)
 {
-	assert(renderComponent == nullptr);
 	renderComponent = rnd;
 }
 
 void Entity::addRenderComponentFrog(RenderComponentFrog* rndF)
 {
-	assert(renderComponentFrog == nullptr);
 	renderComponentFrog = rndF;
 }
 
 void Entity::addRenderComponentSnake(RenderComponentSnake* rndS)
 {
-	assert(renderComponentSnake == nullptr);
 	renderComponentSnake = rndS;
 }
 
@@ -42,9 +34,6 @@ Entity::~Entity()
 	{
 		delete it->second;
 	}
-	delete renderComponent;
-	delete renderComponentFrog;
-	delete renderComponentSnake;
 }
 
 void

@@ -52,21 +52,21 @@
   <object id="3" name="Crazy frog" type="Enemigo" x="169" y="122">
    <point/>
   </object>
-  <object id="4" name="Pez" type="Enemigo" x="8" y="57.6364">
+  <object id="4" name="Pez" type="Enemigo" x="40" y="62">
    <properties>
-    <property name="boundX" type="int" value="6"/>
+    <property name="mov" type="int" value="4"/>
    </properties>
    <point/>
   </object>
-  <object id="18" name="Pez" type="Enemigo" x="120" y="57.8182">
+  <object id="18" name="Pez" type="Enemigo" x="151.5" y="62">
    <properties>
-    <property name="boundX" type="int" value="8"/>
+    <property name="mov" type="int" value="4"/>
    </properties>
    <point/>
   </object>
-  <object id="5" name="Pez" type="Enemigo" x="120" y="205">
+  <object id="5" name="Pez" type="Enemigo" x="153.5" y="203">
    <properties>
-    <property name="boundX" type="int" value="8"/>
+    <property name="mov" type="int" value="4"/>
    </properties>
    <point/>
   </object>

@@ -4,37 +4,35 @@
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../components/MovementComponentFrog.h"
-#include "RenderComponent.h";
 
 class TransformComponent;
 
-class RenderComponentSnake : public RenderComponent {
+class RenderComponentSnake : public Component {
 private:
-	//Texture* snakeText; vamos a usar la generica de render component
-	Texture* tongueText;
-	AnimationComponent* snakeAnimator;
-	TransformComponent* transform;
+	Texture* snakeText = nullptr;
+	Texture* tongueText = nullptr;
+	AnimationComponent* snakeAnimator = nullptr;
+	TransformComponent* transform = nullptr;
 	float scale;
 	bool attacking = false;
 public:
 	RenderComponentSnake(Texture* ts, Texture* tt, AnimationComponent* animSnake, float sc = 1) :
-		RenderComponent(ts), tongueText(tt),
+		snakeText(ts), tongueText(tt),
 		snakeAnimator(animSnake),
-		scale(sc),transform(nullptr){};
+		scale(sc){};
 	~RenderComponentSnake() {
-		tongueText=nullptr;
-		myTexture=nullptr;
+		delete tongueText;
+		delete snakeText;
 	};
 	void render();
 	void AttackStart();
 
 	Texture* getFrogText() {
-		return myTexture;
+		return snakeText;
 	}
 
-
 	void initComponent() override;
-	//Esto estï¿½ aquï¿½ de manera provisional
+	//Esto está aquí de manera provisional
 	SDL_Rect GetOnDisplayPosition();
 };
 

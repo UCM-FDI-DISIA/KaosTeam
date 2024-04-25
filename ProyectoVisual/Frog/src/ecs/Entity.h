@@ -16,8 +16,7 @@ enum ComponentsEnum
 	IACOMPONENT,
 	TRANSFORM_COMPONENT,
 	COLLIDER_COMPONENT,
-	MONEY_COMPONENT,
-	INVENTORY_COMPONENT
+	MONEY_COMPONENT
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
 //Si no es relevante, el valor será 0 (UNAMED)

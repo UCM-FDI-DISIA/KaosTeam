@@ -17,9 +17,7 @@ MovementComponentFish::MovementComponentFish(int boundX, AnimationComponent* a) 
 	isJumping = false;
 	isMoving = false;
 };
-MovementComponentFish::~MovementComponentFish() {
-	anim = nullptr;
-}
+
 void MovementComponentFish::initComponent() {
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }

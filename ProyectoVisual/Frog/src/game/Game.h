@@ -26,7 +26,7 @@ public:
 		RUNNING, PAUSED, NEWGAME, GAMEOVER
 	};
 	Game();
-	virtual ~Game();
+	~Game();
 	void init();
 	void gameLoop();
 	void render();

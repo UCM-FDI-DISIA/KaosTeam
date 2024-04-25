@@ -8,23 +8,21 @@ class TransformComponent;
 class RenderComponentFrog : public Component
 {
 private:
-	Texture* frogText ;
-	Texture* tongueText ;
-	AnimationComponent* frogAnimator ;
-	TransformComponent* transform;
+	Texture* frogText = nullptr;
+	Texture* tongueText = nullptr;
+	AnimationComponent* frogAnimator = nullptr;
+	TransformComponent* transform = nullptr;
 	float scale;
-	bool attacking;
+	bool attacking = false;
 public:
 	RenderComponentFrog(Texture* tf, Texture* tt, AnimationComponent* animFrog, float sc = 1) :
 		frogText(tf), tongueText(tt), 
 		frogAnimator(animFrog), 
-		transform(nullptr),
-		scale(sc),attacking(false) {
+		scale(sc) {
 	};
 	~RenderComponentFrog() {
-		tongueText= nullptr;
-		frogText = nullptr;
-		//delete frogText;
+		delete tongueText;
+		delete frogText;
 	};
 	void render();
 	void AttackStart();

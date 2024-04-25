@@ -7,7 +7,7 @@
 #include "ColliderComponent.h"
 
 AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()) {
-	distance = 2;
+	attackDistance = 2;
 	distanceMoved = 0;
 	attackFrameTime = 100;
 	lastTimeChanged = 0;
@@ -22,13 +22,12 @@ AttackComponentFrog::~AttackComponentFrog() {
 
 void AttackComponentFrog::update()
 {
-	box->setCasilla(static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla());
 	if (state != 0 && (DataManager::GetInstance()->getFrameTime() - lastTimeChanged) > attackFrameTime) {
 		lastTimeChanged = DataManager::GetInstance()->getFrameTime();
 
 		if (state == 1) {
 			distanceMoved++;
-			if (distanceMoved == distance)
+			if (distanceMoved == attackDistance)
 				state++;
 		}
 		else if (state == 2) {

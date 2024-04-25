@@ -2,18 +2,15 @@
 //
 
 #include "game/Game.h"
-#include <SDL_config.h>
+
 #include <iostream>
 #include <array>
 #include <string>
 
 int main(int ac, char** av)
 {
-    Game game = Game();
-    game.init();
+    Game* game = new Game();
+    game->init();
 
-    //delete game;
-
-    //_CrtSetDbgFlag;
     return 0;
 }

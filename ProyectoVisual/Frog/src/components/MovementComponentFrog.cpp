@@ -28,16 +28,16 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 //CAMBIARÁ CUANDO TENGAMOS LAS COLISIONES!!!!
 void MovementComponentFrog::changePosFrog(Vector2D v)
 {	
-	//Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + tr->getCasilla())->objInTile;
-	//if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
-	//	//COLISION CON OBJETO DE TRANSICION
-	//	static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
-	//}
-	//else {
-	//	//Simplemente pasa a la otra casilla
-	tr->setCasilla(velocity + tr->getCasilla());
-	//	std::cout << "Rana Posicion: " << "(" << tr->getCasilla().getX() << " " << tr->getCasilla().getY() << ")" << std::endl;
-	//}
+	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + tr->getCasilla())->objInTile;
+	if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
+		//COLISION CON OBJETO DE TRANSICION
+		static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
+	}
+	else {
+		//Simplemente pasa a la otra casilla
+		tr->setCasilla(velocity + tr->getCasilla());
+		std::cout << "Rana Posicion: " << "(" << tr->getCasilla().getX() << " " << tr->getCasilla().getY() << ")" << std::endl;
+	}
 }
 
 void MovementComponentFrog::update() {

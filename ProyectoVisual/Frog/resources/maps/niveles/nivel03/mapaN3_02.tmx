@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="33">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="25">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="14" height="14">
   <data encoding="csv">
@@ -41,25 +41,25 @@
   <object id="1" name="GeneradorDeBombas" x="23" y="54.5">
    <point/>
   </object>
-  <object id="2" name="FlonkE" type="Player" x="24.5" y="123.5">
+  <object id="2" name="Flonk" x="9" y="123">
    <point/>
   </object>
-  <object id="25" name="FlonkN" type="Player" x="121" y="26">
+  <object id="3" name="Flonk" x="121.5" y="11">
    <point/>
   </object>
   <object id="5" name="Puerta" x="103" y="41.5">
    <point/>
   </object>
-  <object id="6" name="Black ant" type="Enemigo" x="168.5" y="75">
+  <object id="6" name="HormigaNegra" x="169" y="76">
    <point/>
   </object>
-  <object id="30" name="Black ant" type="Enemigo" x="135.5" y="107">
+  <object id="7" name="HormigaNegra" x="168" y="170">
    <point/>
   </object>
-  <object id="31" name="Black ant" type="Enemigo" x="137.5" y="138">
+  <object id="8" name="HormigaNegra" x="136.5" y="142">
    <point/>
   </object>
-  <object id="32" name="Black ant" type="Enemigo" x="167.5" y="171">
+  <object id="9" name="HormigaNegra" x="136" y="108">
    <point/>
   </object>
   <object id="10" name="CintaTransportadora" x="200.5" y="214">
@@ -99,30 +99,6 @@
    <point/>
   </object>
   <object id="22" name="Interruptor" x="6.5" y="216">
-   <point/>
-  </object>
-  <object id="26" name="TransitionE" type="Transition" x="8.5" y="137.5">
-   <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_01.tmx"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="27" name="TransitionE" type="Transition" x="9" y="124">
-   <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_01.tmx"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="28" name="TransitionN" type="Transition" x="103.5" y="12">
-   <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_03.tmx"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="29" name="TransitionN" type="Transition" x="120.5" y="12">
-   <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_03.tmx"/>
-   </properties>
    <point/>
   </object>
  </objectgroup>

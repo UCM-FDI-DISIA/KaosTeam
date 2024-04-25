@@ -4,7 +4,7 @@
 
 GameOverState::GameOverState(Game* g): game(g), menu(new Menu(g, this, 
 				&sdlutils().images().at("BotonJuego"/*Reintentar*/), //
-				&sdlutils().images().at("BotonSalir"/*VolverMenuInicial*/))), //
+				&sdlutils().images().at("BotonSalir"/*VolverMenuInicial*/), GAMEOVER)), //
 				currScene(*menu) //
 {}
 

@@ -104,7 +104,7 @@
   <object id="18" name="Enganche" x="57.3333" y="43.3333">
    <point/>
   </object>
-  <object id="19" name="Snake" type="Enemigo" x="152" y="170">
+  <object id="19" name="Serpiente" x="152" y="170">
    <point/>
   </object>
   <object id="20" name="FlonkE" type="Player" x="23.3333" y="156">
