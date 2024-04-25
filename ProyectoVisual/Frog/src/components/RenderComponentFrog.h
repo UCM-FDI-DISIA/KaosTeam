@@ -14,6 +14,8 @@ private:
 	TransformComponent* transform;
 	float scale;
 	bool attacking;
+	int tongueTipSheetId = 1; //La punta default (sin gancho)
+
 public:
 	RenderComponentFrog(Texture* tf, Texture* tt, AnimationComponent* animFrog, float sc = 1) :
 		frogText(tf), tongueText(tt), 
@@ -27,7 +29,7 @@ public:
 		//delete frogText;
 	};
 	void render();
-	void AttackStart();
+	void AttackStart(bool withHook = false);
 	
 	Texture* getFrogText() {
 		return frogText;

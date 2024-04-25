@@ -58,6 +58,9 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_d:	//derecha en tienda
 			DowntiCheck(BTN_RIGHTSHOP);
 			break;
+		case SDLK_m:
+			DowntiCheck(BTN_M);
+			break;
 		}
 		
 	}
@@ -104,6 +107,9 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 			break;
 		case SDLK_d:	
 			UptiCheck(BTN_RIGHTSHOP);
+			break;
+		case SDLK_m:	
+			UptiCheck(BTN_M);
 			break;
 		}
 	}
@@ -182,4 +188,8 @@ InputButton InputManager::getSpace()
 InputButton InputManager::getEscape()
 {
 	return buttons[BTN_ESCAPE];
+}
+InputButton InputManager::getM()
+{
+	return buttons[BTN_M];
 }

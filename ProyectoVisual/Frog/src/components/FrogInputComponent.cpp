@@ -35,7 +35,7 @@ void FrogInputComponent::update()
 				JumpSize = longJump;
 			}
 			else JumpSize = shortJump;
-			movementComponent->startMovement(DOWN, Vector2D(0, JumpSize), "DOWN");
+			movementComponent->startMovement(DOWN, Vector2D(0, JumpSize));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared= 0;
@@ -46,7 +46,7 @@ void FrogInputComponent::update()
 				JumpSize = longJump;
 			}
 			else JumpSize = shortJump;
-			movementComponent->startMovement(UP, Vector2D(0, -JumpSize), "UP");
+			movementComponent->startMovement(UP, Vector2D(0, -JumpSize));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
@@ -57,7 +57,7 @@ void FrogInputComponent::update()
 				JumpSize = longJump;
 			}
 			else JumpSize = shortJump;
-			movementComponent->startMovement(RIGHT, Vector2D(JumpSize, 0), "RIGHT");
+			movementComponent->startMovement(RIGHT, Vector2D(JumpSize, 0));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
@@ -68,7 +68,7 @@ void FrogInputComponent::update()
 				JumpSize = longJump;
 			}
 			else JumpSize = shortJump;
-			movementComponent->startMovement(LEFT, Vector2D(-JumpSize, 0), "LEFT");
+			movementComponent->startMovement(LEFT, Vector2D(-JumpSize, 0));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
@@ -79,6 +79,16 @@ void FrogInputComponent::update()
 			}
 			else attackComponent->setDistance(shortTongue);
 			attackComponent->attack();
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			preparingJump = false;
+			cyclesJumpPrepared = 0;
+		}
+		else if (input->getM()) { //ATAQUE CON HOOK DECIDIR CÓMO LO VAMOS A HACER
+			if (inventoryComponent->getAttackUpgrade() && input->getShift().pressed) {
+				attackComponent->setDistance(longTongue);
+			}
+			else attackComponent->setDistance(shortTongue+1);
+			attackComponent->attack(true);
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;

@@ -14,6 +14,7 @@ private:
 	//resting = 0, attacking = 1, retracting = 2
 	int state = 0;
 	InputManager* inputM;
+	bool hasHook;
 	Box* box;
 
 public:
@@ -21,10 +22,11 @@ public:
 	virtual ~AttackComponentFrog();
 	void update() override;
 	int getDistanceMoved() { return distanceMoved; };
-	void attack();
+	void attack(bool withHook = false);
 	void EndAttack();
 	void tongueTouch(Entity* ent, Collider c);
 	void UpdateBox(Vector2D casilla, int w, int h);
 	void setDistance(int d) { distance = d; }
+	bool attackHasHook() { return hasHook; };
 };
 

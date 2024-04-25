@@ -63,6 +63,7 @@
     <ClCompile Include="src\scenes\MenuGameOver.cpp" />
     <ClCompile Include="src\scenes\MenuInicio.cpp" />
     <ClCompile Include="src\scenes\MenuPausa.cpp" />
+    <ClCompile Include="src\components\TongueHookComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -139,6 +140,7 @@
     <ClInclude Include="src\scenes\MenuGameOver.h" />
     <ClInclude Include="src\scenes\MenuInicio.h" />
     <ClInclude Include="src\scenes\MenuPausa.h" />
+    <ClInclude Include="src\components\TongueHookComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

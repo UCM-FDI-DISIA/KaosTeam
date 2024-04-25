@@ -17,7 +17,7 @@ enum ComponentsEnum
 	TRANSFORM_COMPONENT,
 	COLLIDER_COMPONENT,
 	MONEY_COMPONENT,
-	TONGUEPUSH_COMPONENT,
+	TONGUEINTERACT_COMPONENT,
 	INVENTORY_COMPONENT
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
@@ -34,6 +34,7 @@ enum EntityName {
 	BREAKABLE_DOOR_ENTITY,
 	INTERRUPTOR_ENTITY,
 	PIEDRAMOV_ENTITY,
+	ENGANCHE_ENTITY
 };
 
 class Component;

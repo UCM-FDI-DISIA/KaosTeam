@@ -397,13 +397,44 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos)
 	piedra->addComponent(COLLIDER_COMPONENT, collPiedra);
 	
 	TonguePushComponent* tongueInteract = new TonguePushComponent();
-	piedra->addComponent(TONGUEPUSH_COMPONENT, tongueInteract);
+	piedra->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
 	tongueInteract->setContext(piedra);
 	tongueInteract->initComponent();
 	
 
 	AddEntity(piedra);
 	return piedra;
+}
+
+Entity* RoomScene::createEnganche(Vector2D pos)
+{
+	Entity* enganche = new Entity(this, ENGANCHE_ENTITY);
+	Texture* textEnganche = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/EngancheProv.png", 1, 1);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	enganche->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(enganche);
+
+	RenderComponent* renderEnganche = new RenderComponent(textEnganche);
+	renderEnganche->setContext(enganche);
+	renderEnganche->initComponent();
+	enganche->addComponent(RENDER_COMPONENT, renderEnganche);
+	enganche->addRenderComponent(renderEnganche);
+
+	Box* boxEnganche = new Box(pos);
+	Collider coll = Collider(boxEnganche);
+	ColliderComponent* collEnganche = new ColliderComponent(transform);
+	collEnganche->AddCollider(coll);
+	collEnganche->setContext(enganche);
+	enganche->addComponent(COLLIDER_COMPONENT, collEnganche);
+
+	TongueHookComponent* tongueInteract = new TongueHookComponent();
+	enganche->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
+	tongueInteract->setContext(enganche);
+	tongueInteract->initComponent();
+
+	AddEntity(enganche);
+	return enganche;
 }
 
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
@@ -463,6 +494,9 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	if (objName == "PiedraMovible"){
 		c = createPiedraMovible(pos);
 	}	
+	else if (objName == "Enganche") {
+		c = createEnganche(pos);
+	}
 
 	return c;
 }

@@ -14,8 +14,6 @@ AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance())
 	attackCooldown = 250;
 
 	box = new Box();
-
-	//std::cout << "Attack Component Frog created " << std::endl;
 }
 
 AttackComponentFrog::~AttackComponentFrog() {
@@ -25,14 +23,6 @@ AttackComponentFrog::~AttackComponentFrog() {
 void AttackComponentFrog::tongueTouch(Entity* ent, Collider c)
 {
 	//std::cout << "TongueTouch ";	
-	switch (ent->getName()) {
-	case EntityName::PIEDRAMOV_ENTITY:
-		//Destruimos la puerta: ent-> MetodoAlQueLlamar();
-		//std::cout << "Empujar piedra" << std::endl;
-		break;
-	//...Mas casos
-	}
-	//std::cout << ent->getName() << std::endl;
 }
 
 void AttackComponentFrog::UpdateBox(Vector2D casilla, int w, int h)
@@ -67,12 +57,13 @@ void AttackComponentFrog::update()
 	}
 }
 
-void AttackComponentFrog::attack()
+void AttackComponentFrog::attack(bool withHook)
 {
 	lastTimeChanged = DataManager::GetInstance()->getFrameTime();
 	state = 1;
 	distanceMoved = 0;
-	static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->AttackStart();
+	hasHook = withHook;
+	static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->AttackStart(withHook);
 	
 	Collider c = Collider(box, TONGUE_COLLIDER);
 	c.AddCall([this](Entity* e, Collider c) {tongueTouch(e, c); });
@@ -82,5 +73,6 @@ void AttackComponentFrog::attack()
 void AttackComponentFrog::EndAttack()
 {
 	state = 2;
+	hasHook = false;
 }
 

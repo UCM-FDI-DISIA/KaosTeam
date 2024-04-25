@@ -116,7 +116,7 @@ void RenderComponentFrog::render()
 
             static_cast<AttackComponentFrog*>(ent->getComponent(ATTACK_COMPONENT))->UpdateBox(tongueEndPos, tongueRect.w, tongueRect.h);
             //Renderizamos punta de la lengua
-            tongueText->renderFrameWithFlip(tongueRect, 1, 0, endFlip, endAngle);
+            tongueText->renderFrameWithFlip(tongueRect, tongueTipSheetId, 0, endFlip, endAngle);
         }
     }
 
@@ -130,8 +130,14 @@ void RenderComponentFrog::render()
     }
 }
 
-void RenderComponentFrog::AttackStart() {
+void RenderComponentFrog::AttackStart(bool withHook) {
     attacking = true;
+    if (withHook) {
+        tongueTipSheetId = 2;
+    }
+    else {
+        tongueTipSheetId = 1;
+    }
 }
 
 void RenderComponentFrog::initComponent() {

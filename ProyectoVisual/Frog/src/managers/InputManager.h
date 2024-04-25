@@ -43,6 +43,7 @@ private:
         BTN_RIGHTSHOP,
         BTN_LEFTSHOP,
         BTN_SHIFT, 
+        BTN_M,
         END //Para tener un valor con el que crear y utilizar el array
     };
 
@@ -86,6 +87,7 @@ public:
     InputButton getRight();
     InputButton getSpace();
     InputButton getEscape();
+    InputButton getM();
 };
 
 inline InputManager& im() {
