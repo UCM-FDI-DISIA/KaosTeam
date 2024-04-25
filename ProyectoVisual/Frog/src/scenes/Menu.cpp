@@ -33,7 +33,7 @@ Menu::~Menu()
 }
 
 void Menu::render() {
-	bgEffect->render(bgDest);
+	//bgEffect->render(bgDest);
 	bg->render(bgDest); 
 	currSelec.render(selecDest);
 	for (auto it : menuButton)

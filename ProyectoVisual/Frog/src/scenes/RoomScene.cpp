@@ -37,7 +37,7 @@ RoomScene::RoomScene(int id) : id(id), player(nullptr) {
 	shopManager = Shop::instance();
 	shopManager->setPlayer(player);
 
-	createFrancois(Vector2D(0, 0));
+///	createFrancois(Vector2D(0, 0));
 
 #pragma region Cosas q vamos a borrar pronto
 	createBomb(Vector2D(4, 2));
@@ -49,10 +49,9 @@ RoomScene::~RoomScene() {
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;
 	}
+	//NO BORREIS LO SINGLETONS, Q SE BORRAN SOLOS
 	delete mapReader;
 }
-
-
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
@@ -299,6 +298,7 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	AddEntity(blackAnt);
 	return blackAnt;
 }
+
 Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
 	Entity* redAnt = new Entity(this,RED_ANT_ENTITY);
 	//textura cambiar
@@ -580,15 +580,6 @@ void RoomScene::removeEntity(Entity* entity) {
 		else it++;
 	}
 
-}
-RoomScene::~RoomScene() {
-	//Eliminar la lista de entidades
-	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
-		delete* it;
-	}
-	//NO BORREIS LO SINGLETONS, Q SE BORRAN SOLOS
-
-	delete mapReader;
 }
 
 void RoomScene::changeMap()

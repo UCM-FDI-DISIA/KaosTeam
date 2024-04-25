@@ -19,7 +19,7 @@ class Menu : public Scene
 {
 protected:
 	Texture* bg; //Textura de fondo del menu
-	Texture* bgEffect; //Efecto para darle más personalidad a los menus
+	//Texture* bgEffect; //Efecto para darle más personalidad a los menus
 	Texture& currSelec; //Textura que apunta al boton seleccionado
 	SDL_Rect selecDest; //resize de la mosca
 	SDL_Rect bgDest; //resize del fondo
