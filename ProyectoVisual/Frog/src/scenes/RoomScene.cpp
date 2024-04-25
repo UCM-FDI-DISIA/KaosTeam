@@ -36,7 +36,6 @@ void RoomScene::CheckColisions() {
 	}
 }
 
-
 Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 {
 	player = new Entity(this, FROG_ENTITY);
@@ -351,12 +350,41 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	moveBomb->setContext(bomb);
 	moveBomb->initComponent();
 
-	
-
 	AddEntity(bomb);
 	return bomb;
 }
 
+Entity* RoomScene::createPiedraMovible(Vector2D pos)
+{
+	Entity* piedra = new Entity(this, PIEDRAMOV_ENTITY);
+	Texture* textBomb = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PiedraMovible.png", 1, 1);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	piedra->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(piedra);
+
+	RenderComponent* renderPiedra = new RenderComponent(textBomb);
+	renderPiedra->setContext(piedra);
+	renderPiedra->initComponent();
+	piedra->addComponent(RENDER_COMPONENT, renderPiedra);
+	piedra->addRenderComponent(renderPiedra);
+
+	Box* boxPiedra = new Box(pos);
+	Collider coll = Collider(boxPiedra);
+	ColliderComponent* collPiedra = new ColliderComponent(transform);
+	collPiedra->AddCollider(coll);
+	collPiedra->setContext(piedra);
+	piedra->addComponent(COLLIDER_COMPONENT, collPiedra);
+	
+	TongueInteract* tongueInteract = new TongueInteract();
+	piedra->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
+	tongueInteract->setContext(piedra);
+	tongueInteract->initComponent();
+	
+
+	AddEntity(piedra);
+	return piedra;
+}
 
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
@@ -412,12 +440,10 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 
 	//int objIntID: id que necesita cada obj para acceder a su pos en el vector del data manager d objetos interactuables
 
-	/*
-	if (objName == "Nombre que le quieras poner a tu objeto"){
-		c = createLoqsea(objProps[0].getStringValue(), objProps[1].getIntValue()); POR EJEMPLO
-	}
-	else if ()......
-	*/
+	
+	if (objName == "PiedraMovible"){
+		c = createPiedraMovible(pos);
+	}	
 
 	return c;
 }

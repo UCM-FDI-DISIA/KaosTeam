@@ -164,28 +164,28 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Enganche" x="137" y="234">
+  <object id="1" name="Enganche" type="ObjInteract" x="137" y="234">
    <point/>
   </object>
-  <object id="2" name="Enganche" x="134.667" y="330">
+  <object id="2" name="Enganche" type="ObjInteract" x="134.667" y="330">
    <point/>
   </object>
-  <object id="3" name="Enganche" x="169.333" y="395.666">
+  <object id="3" name="Enganche" type="ObjInteract" x="169.333" y="395.666">
    <point/>
   </object>
-  <object id="4" name="Enganche" x="169.333" y="490">
+  <object id="4" name="Enganche" type="ObjInteract" x="169.333" y="490">
    <point/>
   </object>
-  <object id="5" name="Enganche" x="265.333" y="492.666">
+  <object id="5" name="Enganche" type="ObjInteract" x="265.333" y="492.666">
    <point/>
   </object>
-  <object id="6" name="Enganche" x="264.334" y="574.334">
+  <object id="6" name="Enganche" type="ObjInteract" x="264.334" y="574.334">
    <point/>
   </object>
-  <object id="8" name="Enganche" x="215.667" y="588.667">
+  <object id="8" name="Enganche" type="ObjInteract" x="215.667" y="588.667">
    <point/>
   </object>
-  <object id="9" name="Enganche" x="120.667" y="586">
+  <object id="9" name="Enganche" type="ObjInteract" x="120.667" y="586">
    <point/>
   </object>
   <object id="7" name="FlonkE" type="Player" x="263.583" y="72.6667">

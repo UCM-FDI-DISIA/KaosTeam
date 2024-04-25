@@ -68,6 +68,7 @@
    </properties>
    <point/>
   </object>
+<<<<<<< Updated upstream
   <object id="7" name="Jarron" x="24.5" y="26.5">
    <point/>
   </object>
@@ -90,6 +91,30 @@
    <point/>
   </object>
   <object id="14" name="Jarron" x="41" y="203">
+=======
+  <object id="7" name="Jarron" type="ObjInteract" x="8.5" y="10.5">
+   <point/>
+  </object>
+  <object id="8" name="Jarron" type="ObjInteract" x="24" y="10">
+   <point/>
+  </object>
+  <object id="9" name="Jarron" type="ObjInteract" x="41" y="9">
+   <point/>
+  </object>
+  <object id="10" name="Jarron" type="ObjInteract" x="40.5" y="26.5">
+   <point/>
+  </object>
+  <object id="11" name="Jarron" type="ObjInteract" x="26" y="26">
+   <point/>
+  </object>
+  <object id="12" name="Jarron" type="ObjInteract" x="9" y="25.5">
+   <point/>
+  </object>
+  <object id="13" name="Jarron" type="ObjInteract" x="9" y="185">
+   <point/>
+  </object>
+  <object id="14" name="Jarron" type="ObjInteract" x="25" y="187">
+>>>>>>> Stashed changes
    <point/>
   </object>
  </objectgroup>

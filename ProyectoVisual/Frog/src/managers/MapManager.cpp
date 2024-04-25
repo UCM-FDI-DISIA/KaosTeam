@@ -294,7 +294,7 @@ void MapManager::draw(SDL_Renderer* ren) {
     //Dibujamos cada tile
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
     for (int i = 0; i < tiles.size(); i++ ) {
-        tiles[i].draw(ren, i, cameraPos);
+        //tiles[i].draw(ren, i, cameraPos);
     }
 }
 

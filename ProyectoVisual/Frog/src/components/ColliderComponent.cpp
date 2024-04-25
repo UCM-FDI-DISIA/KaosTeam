@@ -1,6 +1,8 @@
 #include "ColliderComponent.h"
 #include <SDL.h>
 #include "TransformComponent.h"
+#include <iostream>
+#include "../sdlutils/SDLUtils.h"
 /*
 	Comprueba si tiene colisión con la entidad e.
 	En caso de que le entidad tenga collider, no sea ella misma y se esté tocando devuelve true.
@@ -13,9 +15,10 @@ void ColliderComponent::CheckCollision(Entity* e) {
 		if (coll2 != nullptr) {
 			std::list<Collider> colliders2 = coll2->GetColliders();
 			for (Collider collider : colliders) {
-				for (Collider collider2 : colliders2) {
-					if (collider.Collides(collider2))
+   				for (Collider collider2 : colliders2) {
+					if (collider.Collides(collider2)) {
 						collider2.OnCollision(ent, collider);
+					}
 				}
 			}
 		}

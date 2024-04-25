@@ -19,6 +19,8 @@ public:
 	void OnCollision(Entity* e, Collider);
 	bool Collides(Collider) const;
 	ColliderName getName() const;
+	Box* GetBox() const { return box; };
+
 private:
 	Box* box; //La caja que define el tamaño y posicion del collider
 	//El box tiene que ser gestionado por el creador del box

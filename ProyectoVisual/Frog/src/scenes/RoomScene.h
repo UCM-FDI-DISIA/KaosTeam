@@ -22,6 +22,7 @@
 #include "../components/MoneyComponent.h"
 #include"../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
+#include "../components/TongueInteract.h"
 
 class RoomScene : public Scene
 {
@@ -47,7 +48,7 @@ private:
 public:
 	RoomScene(int id) : id(id) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		std::string initMapPath = "resources/maps/niveles/nivel01/mapaN1_01.tmx";
+		std::string initMapPath = "resources/maps/niveles/nivel02/fuera/mapaN2_08_fuera.tmx";
 		mapReader = new MapManager(initMapPath, this);
 		mapReader->loadObj(initMapPath);
 
@@ -148,6 +149,7 @@ public:
 	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createSnake(Vector2D pos);
 	Entity* createBomb(Vector2D pos);
+	Entity* createPiedraMovible(Vector2D pos);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);

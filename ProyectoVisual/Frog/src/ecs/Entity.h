@@ -16,7 +16,8 @@ enum ComponentsEnum
 	IACOMPONENT,
 	TRANSFORM_COMPONENT,
 	COLLIDER_COMPONENT,
-	MONEY_COMPONENT
+	MONEY_COMPONENT,
+	TONGUEINTERACT_COMPONENT
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
 //Si no es relevante, el valor será 0 (UNAMED)
@@ -31,6 +32,7 @@ enum EntityName {
 	BOMB_ENTITY,
 	BREAKABLE_DOOR_ENTITY,
 	INTERRUPTOR_ENTITY,
+	PIEDRAMOV_ENTITY,
 };
 
 class Component;

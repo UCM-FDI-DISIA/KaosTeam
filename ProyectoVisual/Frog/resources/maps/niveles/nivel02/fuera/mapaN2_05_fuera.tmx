@@ -74,10 +74,10 @@
    </properties>
    <point/>
   </object>
-  <object id="6" name="Enganche" x="72" y="38.1667">
+  <object id="6" name="Enganche" type="ObjInteract" x="72" y="38.1667">
    <point/>
   </object>
-  <object id="7" name="Enganche" x="168" y="40.5">
+  <object id="7" name="Enganche" type="ObjInteract" x="168" y="40.5">
    <point/>
   </object>
  </objectgroup>
