@@ -106,6 +106,8 @@ void RenderComponentSnake::render() {
                 }
             }
             //Renderizamos punta de la lengua
+            static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->UpdateBox(tongueEndPos, tongueRect.w, tongueRect.h);
+
             tongueText->renderFrameWithFlip(tongueRect, 1, 0, endFlip, endAngle);
         }
     }
