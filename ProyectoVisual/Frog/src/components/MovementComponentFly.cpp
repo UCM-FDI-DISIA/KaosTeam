@@ -3,7 +3,7 @@
 
 void MovementComponentFly::update()
 {
-	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime)
+	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime && canMove)
 	{
 		tr->setCasilla(tr->getCasilla() + directions[status]);
 

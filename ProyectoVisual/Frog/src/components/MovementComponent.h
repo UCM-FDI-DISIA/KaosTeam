@@ -18,14 +18,16 @@ protected:
 	int boundX = 0;
 	int boundY = 0;
 
+	bool canMove;  //Booleano que indica si se puede mover o no (si la entidad muere, esto impide que se mueva) por defecto es true
+
 	TransformComponent* tr = nullptr;
 public:
-	MovementComponent() {};
+	MovementComponent(): canMove(true) {};
 	void initComponent() override;
 
 	void setBoundX(int newBoundX) { boundX = newBoundX; }
 	void setBoundY(int newBoundY) { boundY = newBoundY; }
-	void setVelocity(const Vector2D& v) { velocity = Vector2D(0, 0); }
+	void setStatic() { canMove = false; };
 	bool checkIfTileWalkable(Vector2D);
 };
 

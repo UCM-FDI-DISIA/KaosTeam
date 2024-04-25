@@ -4,7 +4,7 @@
 
 void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string animation)
 {
-	if (!jumping) 
+	if (!jumping && canMove) 
 	{
 		if (checkIfTileWalkable(tr->getCasilla() + v))
 		{

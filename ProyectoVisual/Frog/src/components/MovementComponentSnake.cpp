@@ -14,27 +14,14 @@ MovementComponentSnake::MovementComponentSnake(AnimationComponent* a) :
 
 void MovementComponentSnake::update()
 {
-	if (DataManager::GetInstance()->getFrameTime() - lastTimeAction > coolDownTime) {
+	if (DataManager::GetInstance()->getFrameTime() - lastTimeAction > coolDownTime && canMove) {
 
 		lastTimeAction = DataManager::GetInstance()->getFrameTime(); //Actualizamos tiempo de acción
-
-		//La serpeinte va a estar rotando constantemente
-		//... Lógica de rotación aquí
-		//Primero comprobamos si está rotando la serpiente o no
 		if (isRotate) {
 			rotateSnake(); // Rotamos serpiente
 			searchFrog();  // Buscamos a la rana en la dir de rotacion
 			//std::cout << "ROTANDO" << std::endl;
 		}
-			
-
-		//En el momento que la rana este en el área de visión la serpiente ataca
-		// desactivamos rotación y activamos ataque
-
-
-		//Estiramos serpiente hasta la posición de la rana y atacamos
-
-		//Vuelve a su posicion original y desactivamos ataque
 	}
 }
 

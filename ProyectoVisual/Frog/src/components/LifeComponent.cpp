@@ -2,7 +2,7 @@
 
 void LifeComponent::initComponent() {
 	animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
-	move = static_cast<MovementComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	move = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
 }
 LifeComponent::~LifeComponent() {
 	animator = nullptr;
@@ -21,6 +21,13 @@ void LifeComponent::SetActual(int n) {
 	if (vidaActual > vidaMaxima)
 		vidaActual = vidaMaxima;
 
+	//Si ya no tiene vida
+	if (!alive()) {
+		move->setStatic(); //Paramos a la entidad
+		animator->stopAnimation();
+		animator->playAnimation("DEATH"); //Reproducimos animacion de muerte (si la tiene)
+	}
+
 	std::cout << "Vida de la entidad: " << vidaActual << std::endl;
 };
 
@@ -33,7 +40,5 @@ bool LifeComponent::alive() {
 }
 
 void LifeComponent::update() {
-	if (!alive()) {
-		animator->playAnimation("DEATH");
-	}
+
 }

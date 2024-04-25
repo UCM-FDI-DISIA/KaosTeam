@@ -113,15 +113,17 @@ void MovementComponentBomb::explodeBomb() {
 }
 
 void MovementComponentBomb::update() {
-	// Si ha pasado un tiempo suficiente desde la explosión, eliminamos la entidad
-	if (timerForDelete.currTime() >= explosionTime) {
-		ent->getScene()->removeEntity(this->ent);
+	if (canMove) {
+		// Si ha pasado un tiempo suficiente desde la explosión, eliminamos la entidad
+		if (timerForDelete.currTime() >= explosionTime) {
+			ent->getScene()->removeEntity(this->ent);
+		}
+
+		checkShock();
+
+		//Si no ha chocado con nada, movemos la bomba
+		if (!shockEntity) moveBomb();
 	}
-	
-	checkShock();
-	
-	//Si no ha chocado con nada, movemos la bomba
-	if (!shockEntity) moveBomb();
 }
 
 

@@ -109,7 +109,7 @@ void MovementComponentFish::update() {
 	//		if (casillaActual == limite - 1)  changeDirection();
 	//	}
 	//}
-	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime)
+	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime && canMove)
 	{
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		//si la casilla actual es donde debe saltar

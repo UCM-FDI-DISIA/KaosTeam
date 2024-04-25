@@ -71,7 +71,7 @@ void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 
 void MovementComponentRedAnt::update() {
 
-	if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
+	if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime && MovementComponent::canMove) {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		playerPosition = targetTransformComp->getCasilla();
 		switch (actualDirection)
