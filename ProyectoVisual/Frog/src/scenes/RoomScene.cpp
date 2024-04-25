@@ -348,10 +348,17 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	collBomb->setContext(bomb);
 	bomb->addComponent(COLLIDER_COMPONENT, collBomb);
 
+	LifeComponent* lifeBomb = new LifeComponent(1, 1); //La bomba solo tiene una vida
+	bomb->addComponent(LIFE_COMPONENT, lifeBomb);
+	lifeBomb->setContext(bomb);
+	lifeBomb->initComponent();
+
 	MovementComponentBomb* moveBomb = new MovementComponentBomb();
 	bomb->addComponent(MOVEMENT_COMPONENT, moveBomb);
 	moveBomb->setContext(bomb);
 	moveBomb->initComponent();
+
+	
 
 	AddEntity(bomb);
 	return bomb;

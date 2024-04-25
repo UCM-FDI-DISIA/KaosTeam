@@ -4,6 +4,7 @@
 #include "TransformComponent.h"
 #include "ColliderComponent.h"
 #include "RenderComponent.h"
+#include "LifeComponent.h"
 #include "../sdlutils/VirtualTimer.h"
 
 class AnimationComponent;
@@ -17,6 +18,7 @@ private:
 	TransformComponent* tr = nullptr;
 	ColliderComponent* coll = nullptr;
 	RenderComponent* rndr = nullptr;
+	LifeComponent* lf = nullptr;
 	Texture* explosionText = new Texture(sdlutils().renderer(), "../Frog/resources/Sprites/ExplosionSpritesheet.png", 1, 2);
 
 	Uint32 explosionTime;
