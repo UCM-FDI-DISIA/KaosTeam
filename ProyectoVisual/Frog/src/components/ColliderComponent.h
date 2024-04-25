@@ -6,6 +6,7 @@
 
 enum ColliderName {
 	UNAMED_COLLIDER,
+	TONGUE_COLLIDER,
 	TRANSFORM_COLLIDER
 };
 

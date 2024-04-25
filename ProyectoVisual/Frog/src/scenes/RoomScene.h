@@ -23,7 +23,7 @@
 #include "../components/MoneyComponent.h"
 #include"../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
-#include "../components/TongueInteract.h"
+#include "../components/TonguePushComponent.h"
 #include "../components/InventoryComponent.h"
 
 class RoomScene : public Scene

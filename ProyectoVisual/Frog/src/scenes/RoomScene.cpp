@@ -396,8 +396,8 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos)
 	collPiedra->setContext(piedra);
 	piedra->addComponent(COLLIDER_COMPONENT, collPiedra);
 	
-	TongueInteract* tongueInteract = new TongueInteract();
-	piedra->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
+	TonguePushComponent* tongueInteract = new TonguePushComponent();
+	piedra->addComponent(TONGUEPUSH_COMPONENT, tongueInteract);
 	tongueInteract->setContext(piedra);
 	tongueInteract->initComponent();
 	

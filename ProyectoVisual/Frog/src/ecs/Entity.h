@@ -17,7 +17,7 @@ enum ComponentsEnum
 	TRANSFORM_COMPONENT,
 	COLLIDER_COMPONENT,
 	MONEY_COMPONENT,
-	TONGUEINTERACT_COMPONENT,
+	TONGUEPUSH_COMPONENT,
 	INVENTORY_COMPONENT
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.

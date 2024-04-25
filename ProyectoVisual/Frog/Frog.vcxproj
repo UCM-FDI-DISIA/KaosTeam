@@ -215,7 +215,7 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\components\TransformComponent.cpp" />
     <ClCompile Include="src\components\TransitionComponent.cpp" />
-    <ClCompile Include="src\components\TongueInteract.cpp" />
+    <ClCompile Include="src\components\TonguePushComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
@@ -289,7 +289,7 @@
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\TransitionComponent.h" />
-    <ClInclude Include="src\components\TongueInteract.h" />
+    <ClInclude Include="src\components\TonguePushComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
