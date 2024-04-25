@@ -59,6 +59,7 @@ void AttackComponentSnake::initComponent() {
 	c.AddCall([this](Entity* e, Collider c) {
 		checkHit(e, c);
 		});
+	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->AddCollider(c);
 }
 
 void AttackComponentSnake::checkHit(Entity* e, Collider c) {

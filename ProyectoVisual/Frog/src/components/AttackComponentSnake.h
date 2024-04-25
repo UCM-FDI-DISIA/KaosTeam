@@ -2,6 +2,7 @@
 #include "../ecs/Component.h"
 #include "../components/RenderComponentFrog.h"
 
+class Collider;
 class Entity;
 class Box;
 class AttackComponentSnake : public Component {
