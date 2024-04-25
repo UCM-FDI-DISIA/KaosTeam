@@ -337,6 +337,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	AttackComponentSnake* atckSnake = new AttackComponentSnake();
 	atckSnake->setContext(snake);
 	snake->addComponent(ATTACK_COMPONENT, atckSnake);
+	atckSnake->initComponent();
 
 	AddEntity(snake);
 	return snake;

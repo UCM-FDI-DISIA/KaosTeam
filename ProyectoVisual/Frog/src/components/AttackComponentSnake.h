@@ -2,6 +2,7 @@
 #include "../ecs/Component.h"
 #include "../components/RenderComponentFrog.h"
 
+class Collider;
 class Entity;
 class Box;
 class AttackComponentSnake : public Component {
@@ -12,14 +13,14 @@ private:
 	int state;
 	//InputManager* inputM;
 	Box* attackBox;
-	virtual ~AttackComponentSnake() {
-		delete attackBox;
-	};
+	virtual ~AttackComponentSnake();
+	void checkHit(Entity*, Collider);
 public:
 	AttackComponentSnake();
 	void update() override;
 	int getDistanceMoved() { return distanceMoved; };
 	void attack();
-
+	void UpdateBox(Vector2D casilla, float w, float h);
+	void initComponent() override;
 };
 
