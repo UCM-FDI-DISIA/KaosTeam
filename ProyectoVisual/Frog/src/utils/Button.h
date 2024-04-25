@@ -7,12 +7,12 @@ using callBack = std::function<void(void)>;
 class Button
 {
 private:
-	Texture* texture = nullptr;
+	Texture* texture;
 	callBack callB;
 	SDL_Rect dest;
 public:
 	Button() {};
-	~Button() {};
+	~Button();
 	Button(Texture* tex, SDL_Rect dst) :texture(tex), dest(dst) {};
 	
 	void connect(callBack call);

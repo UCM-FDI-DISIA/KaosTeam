@@ -38,7 +38,7 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Serpiente" x="87.5" y="88">
+  <object id="1" name="Snake" type="Enemigo" x="87.5" y="88">
    <point/>
   </object>
   <object id="2" name="Termita" x="152" y="92.5">

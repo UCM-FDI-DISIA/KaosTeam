@@ -7,7 +7,7 @@
 #include "ColliderComponent.h"
 
 AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()) {
-	attackDistance = 2;
+	distance = 2;
 	distanceMoved = 0;
 	attackFrameTime = 100;
 	lastTimeChanged = 0;
@@ -48,11 +48,12 @@ void AttackComponentFrog::UpdateBox(Vector2D casilla, int w, int h)
 void AttackComponentFrog::update()
 {
 	//std::cout << " attack box is in casilla.x " << box->getCasilla().getX() << " and casilla.y " << box->getCasilla().getY() << std::endl;
+	box->setCasilla(static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla());
 	if (state != 0 && (DataManager::GetInstance()->getFrameTime() - lastTimeChanged) > attackFrameTime) {
 		lastTimeChanged = DataManager::GetInstance()->getFrameTime();
 		if (state == 1) {
 			distanceMoved++;
-			if (distanceMoved == attackDistance) {
+			if (distanceMoved == distance)
 				state++;
 			}
 		}
@@ -75,10 +76,10 @@ void AttackComponentFrog::attack()
 	static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->AttackStart();
 
 	//std::cout << std::endl << "colliders BASE: " << static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->GetColliders().size();
-	//al llegar al máximo de ataque se añade su box a la escena para calcular sus colisiones
+	//al llegar al mï¿½ximo de ataque se aï¿½ade su box a la escena para calcular sus colisiones
 	Collider c = Collider(box);
 	//std::cout << " attack coll box created in casilla.x " << box->getCasilla().getX() << " and casilla.y " << box->getCasilla().getY() << std::endl;
-	c.AddCall([this](Entity* e, Collider c) {tongueTouch(e, c); }); //Añadimos callback
+	c.AddCall([this](Entity* e, Collider c) {tongueTouch(e, c); }); //Aï¿½adimos callback
 	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->AddCollider(c);
 	//std::cout << std::endl << "COLLIDER FOR LENGUA " << static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->GetColliders().size();
 	SDL_Rect collRect = box->GetOnDisplayPosition();

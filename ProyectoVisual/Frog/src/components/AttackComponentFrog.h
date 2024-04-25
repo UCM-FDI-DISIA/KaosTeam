@@ -9,8 +9,8 @@ class Entity;
 class AttackComponentFrog : public Component
 {
 private:
-	int attackDistance, distanceMoved;
-	int attackFrameTime, lastTimeChanged, attackCooldown;
+	int distance , distanceMoved ;
+	int attackFrameTime , lastTimeChanged, attackCooldown ;
 	//resting = 0, attacking = 1, retracting = 2
 	int state = 0;
 	InputManager* inputM;
@@ -25,4 +25,6 @@ public:
 	void EndAttack();
 	void tongueTouch(Entity* ent, Collider c);
 	void UpdateBox(Vector2D casilla, int w, int h);
+	void setDistance(int d) { distance = d; }
 };
+
