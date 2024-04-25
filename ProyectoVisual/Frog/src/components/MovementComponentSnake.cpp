@@ -24,7 +24,7 @@ void MovementComponentSnake::update()
 		if (isRotate) {
 			rotateSnake(); // Rotamos serpiente
 			searchFrog();  // Buscamos a la rana en la dir de rotacion
-			std::cout << "ROTANDO" << std::endl;
+			//std::cout << "ROTANDO" << std::endl;
 		}
 			
 
@@ -68,23 +68,23 @@ void MovementComponentSnake::searchFrog() {
 	//calculamos distancia
 	Vector2D distance = playerPos - tr->getCasilla();
 
-	std::cout << "(" << playerPos.getX() << " , " << playerPos.getY() << ")" << "PlayerPosition" << std::endl;
+	/*std::cout << "(" << playerPos.getX() << " , " << playerPos.getY() << ")" << "PlayerPosition" << std::endl;
 	std::cout << "(" << tr->getCasilla().getX() << " , " << tr->getCasilla().getY() << ")" << "SnakePosition" << std::endl;
 	std::cout << "(" << distance.getX() << " , " << distance.getY() << ")" << "DISTANCE" << std::endl;
-	std::cout << " " << std::endl;
+	std::cout << " " << std::endl;*/
 
 	//Identificamos la col/fil en la que esta la serpiente y la rana 
 	if (tr->getCasilla().getX() == playerPos.getX()) {
 		////Comprobamos si la direccion es valida
 		if (currentDirection == DOWN_ROT) {
 			if ((distance.getY() <= attackDistance) && (distance.getY() > 0)) { //Si esta en el rango de ataque...
-				std::cout << "SNAKE ATACA abajo" << std::endl;
+				//std::cout << "SNAKE ATACA abajo" << std::endl;
 				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
 			}
 		}
 		else if (currentDirection == UP_ROT) {
 			if ((distance.getY() >= -attackDistance) && (distance.getY() < 0)) {
-				std::cout << "SNAKE ATACA arriba" << std::endl;
+				//std::cout << "SNAKE ATACA arriba" << std::endl;
 				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
 			}
 		}
@@ -92,13 +92,13 @@ void MovementComponentSnake::searchFrog() {
 	else if (tr->getCasilla().getY() == playerPos.getY()) {
 		if (currentDirection == RIGHT_ROT) {
 			if ((distance.getX() <= attackDistance) && (distance.getX() > 0)) {
-				std::cout << "SNAKE ATACA derecha" << std::endl;
+				//std::cout << "SNAKE ATACA derecha" << std::endl;
 				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
 			}
 		}
 		else if (currentDirection == LEFT_ROT) {
 			if ((distance.getX() >= -attackDistance) && (distance.getX() < 0)) {
-				std::cout << "SNAKE ATACA izquierda" << std::endl; 
+				//std::cout << "SNAKE ATACA izquierda" << std::endl; 
 				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
 			}
 		}

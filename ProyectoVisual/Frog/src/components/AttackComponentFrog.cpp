@@ -32,7 +32,7 @@ void AttackComponentFrog::tongueTouch(Entity* ent, Collider c)
 		break;
 	//...Mas casos
 	}
-	std::cout << ent->getName() << std::endl;
+	//std::cout << ent->getName() << std::endl;
 }
 
 void AttackComponentFrog::UpdateBox(Vector2D casilla, int w, int h)
@@ -47,23 +47,25 @@ void AttackComponentFrog::UpdateBox(Vector2D casilla, int w, int h)
 
 void AttackComponentFrog::update()
 {
-	//std::cout << " attack box is in casilla.x " << box->getCasilla().getX() << " and casilla.y " << box->getCasilla().getY() << std::endl;
-	box->setCasilla(static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+	/*
+	Hacer aquí set casilla no tiene sentido por q desde el transform no se puede coger la pos de la lengua.
+	RenderComponentFrog llama al UpdateBox d esta clase para pasarle la pos d la lengua en cada iteracion con attacking a true
+	//box->setCasilla(static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+	*/
 	if (state != 0 && (DataManager::GetInstance()->getFrameTime() - lastTimeChanged) > attackFrameTime) {
 		lastTimeChanged = DataManager::GetInstance()->getFrameTime();
 		if (state == 1) {
 			distanceMoved++;
 			if (distanceMoved == distance)
 				state++;
-			}
 		}
-		else if (state == 2) {
-			distanceMoved--;
-			if (distanceMoved < 0) {
-				state = 0;
-				box->setWidth(0);
-				box->setHeight(0);
-			}
+	}
+	else if (state == 2) {
+		distanceMoved--;
+		if (distanceMoved < 0) {
+			state = 0;
+			box->setWidth(0);
+			box->setHeight(0);
 		}
 	}
 }

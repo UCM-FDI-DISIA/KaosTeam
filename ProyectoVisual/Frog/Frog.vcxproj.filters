@@ -58,6 +58,11 @@
     <ClCompile Include="src\components\MovementComponentBomb.cpp" />
     <ClCompile Include="src\utils\Box.cpp" />
     <ClCompile Include="src\components\TongueInteract.cpp" />
+    <ClCompile Include="src\components\InventoryComponent.cpp" />
+    <ClCompile Include="src\ecs\EntityShop.cpp" />
+    <ClCompile Include="src\scenes\MenuGameOver.cpp" />
+    <ClCompile Include="src\scenes\MenuInicio.cpp" />
+    <ClCompile Include="src\scenes\MenuPausa.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -128,6 +133,12 @@
     <ClInclude Include="src\components\MovementComponentBomb.h" />
     <ClInclude Include="src\utils\Box.h" />
     <ClInclude Include="src\components\TongueInteract.h" />
+    <ClInclude Include="src\components\InventoryComponent.h" />
+    <ClInclude Include="src\components\ShopComponent.h" />
+    <ClInclude Include="src\ecs\EntityShop.h" />
+    <ClInclude Include="src\scenes\MenuGameOver.h" />
+    <ClInclude Include="src\scenes\MenuInicio.h" />
+    <ClInclude Include="src\scenes\MenuPausa.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
