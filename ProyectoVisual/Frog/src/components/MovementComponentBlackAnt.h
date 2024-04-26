@@ -29,6 +29,7 @@ private:
 	void checkCollisionWall();
 public:
 	MovementComponentBlackAnt(AnimationComponent* a);
+	~MovementComponentBlackAnt();
 	void update() override;
 	void initComponent() override;
 };

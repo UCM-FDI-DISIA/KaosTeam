@@ -2,6 +2,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
 #include "CameraManager.h"
+#include "../sdlutils/checkML.h"
 
 tile::tile(SDL_Texture* tset, int x, int y, int tx, int ty, int w, int h, bool walkable, bool theresObj, Entity* objInTile)
 : sheet(tset), x(x), y(y), tx(tx), ty(ty), width(w), height(h), walkable(walkable), theresObj(theresObj), objInTile(objInTile){}
@@ -42,10 +43,7 @@ MapManager::MapManager(const std::string& path, RoomScene* room)
     : name(name), rows(0), cols(0), tile_width(16), tile_height(16), room(room){
         std::cout << path << std::endl;
         loadBg(path, sdlutils().renderer());
-        boundLeft = -((cols * tile_width)-(5*tile_width));
-        boundTop = -((rows * tile_height) - (3 * tile_height));
-        boundRight = cols * tile_width;
-        boundBottom = rows * tile_height;
+        
     }
 
 MapManager::~MapManager()
@@ -55,10 +53,28 @@ MapManager::~MapManager()
        for (int j = 0; j < walkableTiles[0].size(); j++)
        {
            delete walkableTiles[i][j];
-
        }
    }
+    clearMap();
  
+    for (auto ts : tilesets)
+    {
+        SDL_DestroyTexture(ts.second);
+    }
+ 
+}
+
+void MapManager::clearMap()
+{
+    tiles.clear();
+    for (int i = 0; i < cols; i++)
+    {
+        for (int j = 0; j < rows; j++)
+        {
+            delete walkableTiles[i][j];
+        }
+    }
+    
 }
 
 void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
@@ -73,6 +89,10 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
     auto map_dimensions = tiled_map.getTileCount();
     rows = map_dimensions.y;
     cols = map_dimensions.x;
+   /* boundLeft = -((cols * tile_width) - (5 * tile_width));
+    boundTop = -((rows * tile_height) - (3 * tile_height));
+    boundRight = cols * tile_width;
+    boundBottom = rows * tile_height;*/
 
     //it starts in the origin
     if (tiled_map.isInfinite())
@@ -204,13 +224,25 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
                     // Phew, all done. 
                     tile* t = new tile(tilesets[tset_gid], x_pos, y_pos,
                         region_x, region_y, tile_width, tile_height, walkable);
+                    //std::cout << "TILE POS: " << x << y << "TILE NUMBER: " << t << std::endl;
                     tiles.push_back(*t);
 
                     //la añadimos a el mapa de tiles caminables
+                    if (walkableTiles[x][y] != nullptr)
+                    {
+                        delete walkableTiles[x][y];
+                    }
+
                     if (walkable)
+                    {
                         walkableTiles[x][y] = t;
-                    else 
+                    }
+                    else
+                    {
                         walkableTiles[x][y] = nullptr; //por si hay tiles no walkables sobre walkables
+                        delete t;
+                    }
+                        
                 }
             }
             std::cout << "Tile vector size: " << tiles.size() << std::endl;
@@ -238,6 +270,21 @@ void MapManager::loadObj(const std::string& path)
         if (layer->getType() == Layer::Type::Object) {
             const auto& objects = layer->getLayerAs<ObjectGroup>().getObjects();
             std::cout << "Found " << objects.size() << " objects in layer" << std::endl;
+
+            bool roomVisited = false;
+            bool objVisited = false;
+            int i = 0; //indice para recorrer el vector cuando los obj sean interactuables
+            vector<bool> interactObj;
+            auto DM = DataManager::GetInstance();
+            if (DM->getInteractObj(path).empty()) {
+                //NO SE HA REGISTRADO TODAVIA LA SALA
+                //roomVisited queda false y se actuará al respecto
+            }
+            else {
+                roomVisited = true;
+                interactObj = DM->getInteractObj(path);
+            }
+
             for (const auto& object : objects)
             {
                 int x = (int)object.getPosition().x / tiled_map.getTileSize().x;
@@ -248,8 +295,17 @@ void MapManager::loadObj(const std::string& path)
 
                 std::cout << "Object " << object.getName() << ", in posX = " << x << " , posY = " << y << std::endl;
 
-
-                Entity* ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties());
+                if (object.getClass() == "ObjInteract") {
+                    if (!roomVisited) {
+                        //si no se ha visitado la sala los obj estarán a false
+                        //objVisited se mantiene a false
+                    }
+                    else {
+                        objVisited = interactObj[i];
+                        ++i;
+                    }
+                }
+                Entity* ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties(), --i, objVisited);
                 if (ent != nullptr) {
                     if (walkableTiles[x][y] != nullptr) {
                         walkableTiles[x][y]->objInTile = ent;
@@ -262,13 +318,6 @@ void MapManager::loadObj(const std::string& path)
                     std::cout << "Object uses template tile set " << object.getTilesetName() << "\n";
                 }
             }
-        }
-        const auto& properties = layer->getProperties();
-        //std::cout << properties.size() << " Layer Properties:" << std::endl;
-        for (const auto& prop : properties)
-        {
-            std::cout << "Found property: " << prop.getName() << std::endl;
-            std::cout << "Type: " << int(prop.getType()) << std::endl;
         }
     }
 }

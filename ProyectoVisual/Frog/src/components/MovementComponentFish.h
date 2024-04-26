@@ -21,6 +21,7 @@ private:
 	void changeDirection();
 public:
 	MovementComponentFish(int boundX, AnimationComponent* a);
+	~MovementComponentFish();
 	void update() override;
 	void initComponent() override;
 };

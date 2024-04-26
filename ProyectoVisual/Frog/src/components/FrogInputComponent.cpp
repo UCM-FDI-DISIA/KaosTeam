@@ -3,68 +3,105 @@
 #include "MovementComponentFrog.h"
 #include "AttackComponentFrog.h"
 
-FrogInputComponent::FrogInputComponent()
+FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr)
 {
 	input = InputManager::GetInstance();
 }
-
+FrogInputComponent::~FrogInputComponent()
+{
+	movementComponent = nullptr;
+	attackComponent = nullptr;
+	inventoryComponent = nullptr;
+}
 void FrogInputComponent::update()
 {
-	//mover shortJump y LngJump al movemente despues del hito
-	int JumpSize = shortJump;
-	if (input->getAction2())
-	{
-		preparingJump = true;
-		cyclesJumpPrepared++;
-		if (cyclesJumpPrepared > cyclesToPrepareJump)
-			JumpSize = LongJump;
-	}
-	
-	else
-		cyclesJumpPrepared = 0;
+	////mover shortJump y LngJump al movemente despues del hito
+	//int JumpSize = shortJump;
+	//if (input->getAction2())
+	//{
+	//	preparingJump = true;
+	//	cyclesJumpPrepared++;
+	//	if (cyclesJumpPrepared > cyclesToPrepareJump)
+	//		JumpSize = longJump;
+	//}
+	//
+	//else
+	//	cyclesJumpPrepared = 0;
 		
-
+	int JumpSize = shortJump;
 	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > actionCoolDown) {
 		if (input->getDown()) {
-			movementComponent->startMovement(DOWN, Vector2D(0, JumpSize), "DOWN");
+			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+				JumpSize = longJump;
+			}
+			else JumpSize = shortJump;
+			movementComponent->startMovement(DOWN, Vector2D(0, JumpSize));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared= 0;
 
 		}
 		else if (input->getUp()) {
-			movementComponent->startMovement(UP, Vector2D(0, -JumpSize), "UP");
+			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+				JumpSize = longJump;
+			}
+			else JumpSize = shortJump;
+			movementComponent->startMovement(UP, Vector2D(0, -JumpSize));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 
 		}
 		else if (input->getRight()) { 
-			movementComponent->startMovement(RIGHT, Vector2D(JumpSize, 0), "RIGHT");
+			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+				JumpSize = longJump;
+			}
+			else JumpSize = shortJump;
+			movementComponent->startMovement(RIGHT, Vector2D(JumpSize, 0));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 
 		}
 		else if (input->getLeft()) {
-			movementComponent->startMovement(LEFT, Vector2D(-JumpSize, 0), "LEFT");
+			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+				JumpSize = longJump;
+			}
+			else JumpSize = shortJump;
+			movementComponent->startMovement(LEFT, Vector2D(-JumpSize, 0));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 		}
 		else if (input->getSpace()) {
+			if (inventoryComponent->getAttackUpgrade() && input->getShift().pressed) {
+				attackComponent->setDistance(longTongue);
+			}
+			else attackComponent->setDistance(shortTongue);
 			attackComponent->attack();
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 		}
-		
+		else if (input->getM()) { //ATAQUE CON HOOK DECIDIR CÓMO LO VAMOS A HACER
+			if (inventoryComponent->getAttackUpgrade() && input->getShift().pressed) {
+				attackComponent->setDistance(longTongue);
+			}
+			else attackComponent->setDistance(shortTongue+1);
+			attackComponent->attack(true);
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			preparingJump = false;
+			cyclesJumpPrepared = 0;
+		}
+		//else if (input->getAction2()) { //Pongo aquí un caso para lanzar bomba (Aunque habría que comprobar antes que la rana tenga la capacidad de guardar bombas)
+		//}
 	}
 
 }
 
-void FrogInputComponent::setComponents(MovementComponentFrog* mvm, AttackComponentFrog* atck)
+void FrogInputComponent::setComponents(MovementComponentFrog* mvm, AttackComponentFrog* atck,InventoryComponent* invComp )
 {
 	movementComponent = mvm;
 	attackComponent = atck;
+	inventoryComponent = invComp;
 }

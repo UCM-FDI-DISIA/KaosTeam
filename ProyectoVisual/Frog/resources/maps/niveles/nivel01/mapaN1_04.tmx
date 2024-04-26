@@ -67,10 +67,16 @@
   <object id="11" name="Jarron" x="57" y="265.5">
    <point/>
   </object>
-  <object id="12" name="Pez" x="279.5" y="56">
+  <object id="12" name="Pez" type="Enemigo" x="56" y="60">
+   <properties>
+    <property name="boundX" type="int" value="14"/>
+   </properties>
    <point/>
   </object>
-  <object id="13" name="Pez" x="6.5" y="234">
+  <object id="13" name="Pez" type="Enemigo" x="6.5" y="234">
+   <properties>
+    <property name="boundX" type="int" value="14"/>
+   </properties>
    <point/>
   </object>
   <object id="14" name="Piedra" x="135" y="249">

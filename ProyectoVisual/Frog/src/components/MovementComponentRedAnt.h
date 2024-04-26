@@ -25,6 +25,7 @@ private:
 	void canMove(Vector2D vel, Direction dir);
 public:
 	MovementComponentRedAnt(AnimationComponent* a, MovementComponentFrog* target);
+	~MovementComponentRedAnt();
 	void update() override;
 	void initComponent() override; 
 };

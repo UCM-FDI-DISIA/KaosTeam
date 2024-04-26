@@ -3,7 +3,16 @@
 InputManager* InputManager::instance = nullptr;
 
 InputManager::InputManager() { 
-	buttons[END] = {}; 
+	//buttons[END] = {}; 
+
+	for (int i = 0; i < END; i++) {
+		InputButton b;
+		b.keyDOWN = false;
+		b.keyUP = false;
+		buttons.push_back(b);
+		//El pressed (que esta activo mientras este pulsado el boton) no se restablece aqui
+		//Sino en el propio evento del key up
+	}
 	PollEvents(); 
 }
 
@@ -22,9 +31,9 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_RIGHT:
 			DowntiCheck(BTN_RIGHT);
 			break;
-		//case SDLK_LSHIFT:
-		//	btnShift = true;
-		//	break;
+		case SDLK_LSHIFT:
+			DowntiCheck(BTN_SHIFT);
+			break;
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
 			DowntiCheck(BTN_ACTION1);
 			break;
@@ -40,7 +49,20 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_SPACE:
 			DowntiCheck(BTN_SPACE);
 			break;
+		case SDLK_b:	//comprar
+			DowntiCheck(BTN_ACTIONBUY);
+			break;
+		case SDLK_a:	//izq en tienda
+			DowntiCheck(BTN_LEFTSHOP);
+			break;
+		case SDLK_d:	//derecha en tienda
+			DowntiCheck(BTN_RIGHTSHOP);
+			break;
+		case SDLK_m:
+			DowntiCheck(BTN_M);
+			break;
 		}
+		
 	}
 	else if (event.type == SDL_KEYUP)
 	{
@@ -59,9 +81,9 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_RIGHT:
 			UptiCheck(BTN_RIGHT);
 			break;
-		//case SDLK_LSHIFT:
-		//	btnShift = true;
-		//	break;
+		case SDLK_LSHIFT:
+			UptiCheck(BTN_SHIFT);
+			break;
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
 			UptiCheck(BTN_ACTION1);
 			break;
@@ -76,6 +98,18 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 			break;
 		case SDLK_SPACE:
 			UptiCheck(BTN_SPACE);
+			break;
+		case SDLK_b:	
+			UptiCheck(BTN_ACTIONBUY);
+			break;
+		case SDLK_a:	
+			UptiCheck(BTN_LEFTSHOP);
+			break;
+		case SDLK_d:	
+			UptiCheck(BTN_RIGHTSHOP);
+			break;
+		case SDLK_m:	
+			UptiCheck(BTN_M);
 			break;
 		}
 	}
@@ -94,6 +128,10 @@ void InputManager::DowntiCheck(btnEnum btn) {
 }
 
 void InputManager::ClearStates() {
+
+	for (auto& b : buttons) {
+		b.keyDOWN = false;
+	}
 	for (int i = 0; i < END; i++) {
 		buttons[i].keyDOWN = false;
 		buttons[i].keyUP = false;
@@ -116,11 +154,20 @@ InputButton InputManager::getAction1() {
 InputButton InputManager::getAction2() {
 	return buttons[BTN_ACTION2];
 }
-//InputButton InputManager::getShift() {
-//	return btnShift;
-//}
+InputButton InputManager::getShift() {
+	return buttons[BTN_SHIFT];
+}
 InputButton InputManager::getAction4() {
 	return buttons[BTN_ACTION4];
+}
+InputButton InputManager::getActionBuy() {
+	return buttons[BTN_ACTIONBUY];
+}
+InputButton InputManager::getActionRightShop() {
+	return buttons[BTN_RIGHTSHOP];
+}
+InputButton InputManager::getActionLeftShop() {
+	return buttons[BTN_LEFTSHOP];
 }
 InputButton InputManager::getUp() {
 	return buttons[BTN_UP];
@@ -141,4 +188,8 @@ InputButton InputManager::getSpace()
 InputButton InputManager::getEscape()
 {
 	return buttons[BTN_ESCAPE];
+}
+InputButton InputManager::getM()
+{
+	return buttons[BTN_M];
 }

@@ -15,7 +15,10 @@ MovementComponentRedAnt::MovementComponentRedAnt(AnimationComponent* a, Movement
 	escape = false;
 	range = 2;
 };
-
+MovementComponentRedAnt::~MovementComponentRedAnt() {
+	targetTransformComp = nullptr;
+	anim = nullptr;
+}
 void MovementComponentRedAnt::initComponent() {
 	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
 	playerPosition = targetTransformComp->getCasilla();
@@ -64,6 +67,8 @@ void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 		}
 	}
 	break;
+	default:
+		break;
 	}
 }
 

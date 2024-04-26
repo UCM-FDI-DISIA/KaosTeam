@@ -3,6 +3,7 @@
 #include "../scenes/Roomscene.h"
 #include <iostream>
 
+
 void MovementComponent::initComponent()
 {
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));

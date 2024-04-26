@@ -26,6 +26,7 @@ void RenderComponentSnake::render() {
     //el cuello de la serpiente
     if (attacking) {
         int distanceMoved = static_cast<AttackComponentFrog*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
+        Vector2D tongueEndPos = pos;
 
         if (distanceMoved < 0) { //Si el ataque acaba
             attacking = false;
@@ -60,21 +61,25 @@ void RenderComponentSnake::render() {
             case Direction::LEFT_ROT:
                 tongueRect.x = frogRect.x - size / 2;
                 endFlip = SDL_FLIP_HORIZONTAL;
+                tongueEndPos.setX(tongueEndPos.getX() - distanceMoved);
                 break;
             case Direction::RIGHT_ROT:
                 tongueRect.x = frogRect.x + size / 2;
+                tongueEndPos.setX(tongueEndPos.getX() + distanceMoved);
                 break;
             case Direction::UP_ROT:
                 tongueRect.y = frogRect.y - size / 2;
                 tongueRect.x = frogRect.x + 5;
                 endAngle = -90.0f;
+                tongueEndPos.setY(tongueEndPos.getY() - distanceMoved);
                 break;
             case Direction::DOWN_ROT:
                 snakeAnimator->playAnimation("ATTACK_DOWN");
-                snakeText->renderFrame(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol());
+                myTexture->renderFrame(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol());
                 tongueRect.y = frogRect.y + size / 2;
                 tongueRect.x = frogRect.x - 5;
                 endAngle = 90.0f;
+                tongueEndPos.setY(tongueEndPos.getY() + distanceMoved);
                 break;
             default:
                 break;
@@ -106,6 +111,8 @@ void RenderComponentSnake::render() {
                 }
             }
             //Renderizamos punta de la lengua
+            static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->UpdateBox(tongueEndPos, tongueRect.w, tongueRect.h);
+
             tongueText->renderFrameWithFlip(tongueRect, 1, 0, endFlip, endAngle);
         }
     }
@@ -131,9 +138,9 @@ void RenderComponentSnake::render() {
     //if (d != DOWN || !attacking)
     //{
     if (snakeAnimator->getCurrentAnim().flip) //Si se tiene que flipear
-        snakeText->renderFrameWithFlip(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
+        myTexture->renderFrameWithFlip(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
     else
-        snakeText->renderFrame(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol());
+        myTexture->renderFrame(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol());
     //}
 }
 
