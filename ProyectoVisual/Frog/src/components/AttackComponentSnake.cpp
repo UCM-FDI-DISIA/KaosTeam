@@ -4,6 +4,8 @@
 #include "ColliderComponent.h"
 #include "../utils/Box.h"
 #include "../utils/Vector2D.h"
+#include "LifeComponent.h"
+#include "../components/RenderComponentFrog.h"
 
 AttackComponentSnake::AttackComponentSnake() {
 	attackDistance = 2;
@@ -12,7 +14,8 @@ AttackComponentSnake::AttackComponentSnake() {
 	lastTimeChanged = 0;
 	attackCooldown = 250;
 	state = 0;
-
+	hitted = false;
+	damage = 1;
 }
 
 void AttackComponentSnake::update() {
@@ -30,6 +33,7 @@ void AttackComponentSnake::update() {
 				state = 0;
 				attackBox->setWidth(0);
 				attackBox->setHeight(0);
+				hitted = false;
 			}
 		}
 	}
@@ -62,8 +66,10 @@ void AttackComponentSnake::initComponent() {
 	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->AddCollider(c);
 }
 
+//Comprueba colisión con la rana, hace daño solo si no ha hecho daño en este atque (variable hitted)
 void AttackComponentSnake::checkHit(Entity* e, Collider c) {
-	if (e->getName() == FROG_ENTITY) {
-		cout << "detecta la rana";
+	if (!hitted && e->getName() == FROG_ENTITY) {
+		static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(damage);
+		hitted = true;
 	}
 }

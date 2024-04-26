@@ -16,6 +16,8 @@ void Entity::addComponent(ComponentsEnum id, Component* component)
 		throw "ya hay un componente";
 	}
 	componentes.insert(std::pair<ComponentsEnum, Component*>(id, component));
+	component->setContext(this);
+	component->initComponent();
 }
 
 void Entity::addRenderComponent(RenderComponent* rnd)

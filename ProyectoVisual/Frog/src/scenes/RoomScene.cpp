@@ -1,7 +1,6 @@
 #include "RoomScene.h"
 #include "../components/CrazyFrogIAComponent.h"
-
-
+#include "../components/LifeComponent.h"
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
@@ -96,13 +95,15 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	input->setContext(player);
 	player->addComponent(INPUT_COMPONENT, input);
 
+	LifeComponent* lc = new LifeComponent();
+	lc->setContext(player);
+	player->addComponent(LIFE_COMPONENT, lc);
 	////Sistema de colisiones
 	//ColliderComponent* coll = new ColliderComponent();
 	//coll->setContext(player);
 	//player->addComponent(COLLIDER_COMPONENT, coll);
 
 	MoneyComponent* moneyComp = new MoneyComponent();
-	moneyComp->setContext(player);
 	player->addComponent(MONEY_COMPONENT, moneyComp);
 
 	
