@@ -36,6 +36,5 @@ public:
 	void startMovement(Directions d, Vector2D v);
 	void cancelMovement();
 	void changeDirection(Directions d, string animation);
-	void changePosFrog(Vector2D v);
 	void hookAttract(Vector2D newPos);
 };

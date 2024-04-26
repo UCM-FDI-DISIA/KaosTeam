@@ -53,12 +53,6 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 	anim->playAnimation("IDLE_" + animation);
 }
 
-//CAMBIARÁ CUANDO TENGAMOS LAS COLISIONES!!!!
-void MovementComponentFrog::changePosFrog(Vector2D v)
-{	
-	tr->setCasilla(velocity + tr->getCasilla());
-}
-
 void MovementComponentFrog::hookAttract(Vector2D newPos)
 {
 	startMovement(actualDirection, newPos - tr->getCasilla());
@@ -84,8 +78,7 @@ void MovementComponentFrog::update() {
 
 		if (framesMoved == framesPerJump) //para acabar el movimiento
 		{
-			changePosFrog(velocity.normalize() + tr->getCasilla());
-			//changePos(velocity.normalize() + posCasilla);
+			tr->setCasilla(velocity + tr->getCasilla());
 			tr->setOffset({ 0,0 });
 			framesMoved = 0;
 			jumping = false;
