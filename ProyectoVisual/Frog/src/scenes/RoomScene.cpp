@@ -47,17 +47,14 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 	TransformComponent* transform = new TransformComponent(pos);
 	player->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(player);
 
 	ColliderComponent* collider = new ColliderComponent(transform);
 	player->addComponent(COLLIDER_COMPONENT, collider);
-	collider->setContext(player);
 
 	AnimationComponent* animFrog = new AnimationComponent();
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
+	player->addRenderComponentFrog(renderFrog);
 
-	renderFrog->setContext(player);
-	renderFrog->initComponent();
 
 	animFrog->addAnimation("IDLE_DOWN", Animation({ Vector2D(0,0) }, false, false));
 	animFrog->addAnimation("IDLE_UP", Animation({ Vector2D(1,0) }, false, false));
@@ -74,39 +71,26 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	animFrog->addAnimation("ATTACK_UP", Animation({ Vector2D(1,2) }, false, false));
 	animFrog->addAnimation("ATTACK_DOWN", Animation({ Vector2D(0,2) }, false, false));
 
-	player->addRenderComponentFrog(renderFrog);
 	player->addComponent(ANIMATION_COMPONENT, animFrog);
 
 	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
-	mvm->setContext(player);
-	mvm->initComponent();
 	player->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AttackComponentFrog* atck = new AttackComponentFrog();
 	player->addComponent(ATTACK_COMPONENT, atck);
-	atck->setContext(player);
 
 	InventoryComponent* invComp = new InventoryComponent();
-	invComp->setContext(player);
 	player->addComponent(INVENTORY_COMPONENT, invComp);
 
 	FrogInputComponent* input = new FrogInputComponent();
 	input->setComponents(mvm, atck, invComp);
-	input->setContext(player);
 	player->addComponent(INPUT_COMPONENT, input);
 
 	LifeComponent* lc = new LifeComponent();
-	lc->setContext(player);
 	player->addComponent(LIFE_COMPONENT, lc);
-	////Sistema de colisiones
-	//ColliderComponent* coll = new ColliderComponent();
-	//coll->setContext(player);
-	//player->addComponent(COLLIDER_COMPONENT, coll);
 
 	MoneyComponent* moneyComp = new MoneyComponent();
 	player->addComponent(MONEY_COMPONENT, moneyComp);
-
-	
 	
 	AddEntity(player);
 
@@ -115,12 +99,12 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::string nextMap) {
 	Entity* c = new Entity(this);
+
 	TransformComponent* transform = new TransformComponent(pos);
 	c->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(c);
+
 	ColliderComponent* colliderComp = new ColliderComponent(transform);
 	c->addComponent(COLLIDER_COMPONENT, colliderComp);
-	colliderComp->setContext(c);
 
 	flonkOrig nextFlonk;
 	if (objName == "TransitionN") {
@@ -147,10 +131,6 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 
 	TransitionComponent* trans = new TransitionComponent(nextMap, nextFlonk);
 	c->addComponent(TRANSITION_COMPONENT, trans);
-	trans->setContext(c);
-	trans->initComponent();
-
-	//entityList.push_back(c); add entity ya hace esto
 
 	AddEntity(c);
 
@@ -160,18 +140,15 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
 	Entity* frog = new Entity(this, CRAZY_FROG_ENTITY);
+
 	Texture* txtFrog = &sdlutils().images().at("crazyFrogSheet");
 	Texture* txtTongue = &sdlutils().images().at("TongueSheet");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	frog->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(frog);
 
 	AnimationComponent* animFrog = new AnimationComponent();
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
-
-	renderFrog->setContext(frog);
-	renderFrog->initComponent();
 
 	animFrog->addAnimation("IDLE_DOWN", Animation({ Vector2D(0,0) }, false, false));
 	animFrog->addAnimation("IDLE_UP", Animation({ Vector2D(1,0) }, false, false));
@@ -192,28 +169,24 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	frog->addComponent(ANIMATION_COMPONENT, animFrog);
 
 	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
-	mvm->setContext(frog);
-	mvm->initComponent();
 	frog->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AttackComponentFrog* atck = new AttackComponentFrog();
 	frog->addComponent(ATTACK_COMPONENT, atck);
-	atck->setContext(frog);
 
 	CrazyFrogIAComponent* IA = new CrazyFrogIAComponent(mvm, atck);
 	frog->addComponent(IACOMPONENT, IA);
-	IA->setContext(frog);
 
 	AddEntity(frog);
 	return frog;
 }
+
 Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	Entity* fish = new Entity(this, FISH_ENTITY);
 	Texture* txtFish = &sdlutils().images().at("fishSheet");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	fish->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(fish);
 
 	AnimationComponent* animFish = new AnimationComponent();
 	animFish->setContext(fish);
@@ -224,14 +197,10 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	fish->addComponent(ANIMATION_COMPONENT, animFish);
 
 	RenderComponent* renderFish = new RenderComponent(txtFish);
-	renderFish->setContext(fish);
-	renderFish->initComponent();
 	fish->addRenderComponent(renderFish);
 
 	//el limite tiene que ser una propiedad
 	MovementComponentFish* mvm = new MovementComponentFish(boundX, animFish);
-	mvm->setContext(fish);
-	mvm->initComponent();
 	fish->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AddEntity(fish);
@@ -244,19 +213,14 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 
 	TransformComponent* transform = new TransformComponent(pos);
 	blackAnt->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(blackAnt);
 
 	AnimationComponent* animBlackAnt = new AnimationComponent();
 	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
-	animBlackAnt->setContext(blackAnt);
 
 	RenderComponent* renderBlackAnt = new RenderComponent(txtBlackAnt);
-	renderBlackAnt->setContext(blackAnt);
-	renderBlackAnt->initComponent();
 	blackAnt->addRenderComponent(renderBlackAnt);
 	
 	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(animBlackAnt);
-	mvm->setContext(blackAnt);
 	blackAnt->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AddEntity(blackAnt);
@@ -269,21 +233,14 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 
 	TransformComponent* transform = new TransformComponent(pos);
 	redAnt->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(redAnt);
 
 	AnimationComponent* animRedAnt = new AnimationComponent();
 	redAnt->addComponent(ANIMATION_COMPONENT, animRedAnt);
 
 	RenderComponent* renderRedAnt = new RenderComponent(txtRedAnt);
-	renderRedAnt->setContext(redAnt);
-	renderRedAnt->initComponent();
-	//animaciones
-
 	redAnt->addRenderComponent(renderRedAnt);
 
 	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(animRedAnt, playerMvmCmp);
-	mvm->setContext(redAnt);
-	mvm->initComponent();
 	redAnt->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AddEntity(redAnt);
@@ -297,20 +254,15 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 	TransformComponent* transform = new TransformComponent(pos);
 	snake->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(snake);
 
 	Box* boxSnake = new Box(pos);
 	Collider coll = Collider(boxSnake);
 	ColliderComponent* collider = new ColliderComponent(transform);
 	collider->AddCollider(coll);
-	collider->setContext(snake);
 	snake->addComponent(COLLIDER_COMPONENT, collider);
 
 	AnimationComponent* animSnake = new AnimationComponent();
-	RenderComponentSnake* renderSnake = new RenderComponentSnake(txtSnake, txtNeck, animSnake);
-
-	renderSnake->setContext(snake);
-	renderSnake->initComponent();
+	snake->addComponent(ANIMATION_COMPONENT, animSnake);
 
 	animSnake->addAnimation("IDLE_RIGHT", Animation({ Vector2D(2,0) }, false, false));
 	animSnake->addAnimation("IDLE_LEFT", Animation({ Vector2D(2,0) }, true, false));
@@ -321,24 +273,14 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	animSnake->addAnimation("ATTACK_DOWN", Animation({ Vector2D(1,1) }, false, false));
 	animSnake->addAnimation("ATTACK_UP", Animation({ Vector2D(0,1) }, false, false));
 
-	snake->addComponent(ANIMATION_COMPONENT, animSnake);
-	animSnake->setContext(snake);
-
+	RenderComponentSnake* renderSnake = new RenderComponentSnake(txtSnake, txtNeck, animSnake);
 	snake->addRenderComponentSnake(renderSnake);
 
-	/*ColliderComponent* collSnake = new ColliderComponent();
-	collSnake->setContext(snake);
-	snake->addComponent(COLLIDER_COMPONENT, collSnake);*/
-
 	MovementComponentSnake* mvmSnake = new MovementComponentSnake(animSnake);
-	mvmSnake->setContext(snake);
-	mvmSnake->initComponent(); //INICIALIZAMOS LOS TRANSFORM (DE LO CONTARIO, PETARÍA)
 	snake->addComponent(MOVEMENT_COMPONENT, mvmSnake);
 
 	AttackComponentSnake* atckSnake = new AttackComponentSnake();
-	atckSnake->setContext(snake);
 	snake->addComponent(ATTACK_COMPONENT, atckSnake);
-	atckSnake->initComponent();
 
 	AddEntity(snake);
 	return snake;
@@ -349,28 +291,19 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 
 	TransformComponent* transform = new TransformComponent(pos);
 	bomb->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(bomb);
 
 	AnimationComponent* animBomb = new AnimationComponent();
 	animBomb->addAnimation("BOMB_IDLE", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
 	bomb->addComponent(ANIMATION_COMPONENT, animBomb);
 
 	RenderComponent* renderBomb = new RenderComponent(textBomb);
-	renderBomb->setContext(bomb);
-	renderBomb->initComponent();
-	//bomb->addComponent(RENDER_COMPONENT, renderBomb); LUISJA NO HAGAS ESTO Q LUEGO CUANDO BORRAS TE CAGAS ENCIMA
 	bomb->addRenderComponent(renderBomb);
 
 	ColliderComponent* collBomb = new ColliderComponent(transform);
-
-	collBomb->setContext(bomb);
 	bomb->addComponent(COLLIDER_COMPONENT, collBomb);
-
 
 	MovementComponentBomb* moveBomb = new MovementComponentBomb();
 	bomb->addComponent(MOVEMENT_COMPONENT, moveBomb);
-	moveBomb->setContext(bomb);
-	moveBomb->initComponent();
 
 	AddEntity(bomb);
 	return bomb;
@@ -383,26 +316,18 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos)
 
 	TransformComponent* transform = new TransformComponent(pos);
 	piedra->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(piedra);
 
 	RenderComponent* renderPiedra = new RenderComponent(textBomb);
-	renderPiedra->setContext(piedra);
-	renderPiedra->initComponent();
 	piedra->addComponent(RENDER_COMPONENT, renderPiedra);
 	piedra->addRenderComponent(renderPiedra);
 
 	Box* boxPiedra = new Box(pos);
 	Collider coll = Collider(boxPiedra);
 	ColliderComponent* collPiedra = new ColliderComponent(transform);
-	collPiedra->AddCollider(coll);
-	collPiedra->setContext(piedra);
 	piedra->addComponent(COLLIDER_COMPONENT, collPiedra);
 	
 	TonguePushComponent* tongueInteract = new TonguePushComponent();
-	piedra->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
-	tongueInteract->setContext(piedra);
-	tongueInteract->initComponent();
-	
+	piedra->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);	
 
 	AddEntity(piedra);
 	return piedra;
@@ -415,25 +340,18 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 
 	TransformComponent* transform = new TransformComponent(pos);
 	enganche->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(enganche);
 
 	RenderComponent* renderEnganche = new RenderComponent(textEnganche);
-	renderEnganche->setContext(enganche);
-	renderEnganche->initComponent();
 	enganche->addComponent(RENDER_COMPONENT, renderEnganche);
 	enganche->addRenderComponent(renderEnganche);
 
 	Box* boxEnganche = new Box(pos);
 	Collider coll = Collider(boxEnganche);
 	ColliderComponent* collEnganche = new ColliderComponent(transform);
-	collEnganche->AddCollider(coll);
-	collEnganche->setContext(enganche);
 	enganche->addComponent(COLLIDER_COMPONENT, collEnganche);
 
 	TongueHookComponent* tongueInteract = new TongueHookComponent();
 	enganche->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
-	tongueInteract->setContext(enganche);
-	tongueInteract->initComponent();
 
 	AddEntity(enganche);
 	return enganche;
