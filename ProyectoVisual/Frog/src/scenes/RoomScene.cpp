@@ -430,7 +430,8 @@ Entity* RoomScene::createDestructible(Vector2D pos, int type, int loot)
 		// TO DO
 	}
 }
-Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
+
+Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;
 
@@ -443,17 +444,17 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 		c = createDestructible(pos, 1, objProps[0].getIntValue());
 	}
 	//else if ()......
-
-	if (objName == "Nombre que le quieras poner a tu objeto"){
-		c = createLoqsea(objProps[0].getStringValue(), objProps[1].getIntValue()); POR EJEMPLO
-Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
-{
-	Entity* c = nullptr;
+//
+//	if (objName == "Nombre que le quieras poner a tu objeto"){
+//		c = createLoqsea(objProps[0].getStringValue(), objProps[1].getIntValue()); POR EJEMPLO
+//Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
+//{
+	//Entity* c = nullptr;
 
 	//int objIntID: id que necesita cada obj para acceder a su pos en el vector del data manager d objetos interactuables
 
 	
-	if (objName == "PiedraMovible"){
+	else if (objName == "PiedraMovible"){
 		c = createPiedraMovible(pos);
 	}	
 	else if (objName == "Enganche") {
