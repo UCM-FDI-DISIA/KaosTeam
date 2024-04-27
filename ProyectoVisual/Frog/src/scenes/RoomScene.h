@@ -23,6 +23,7 @@
 #include "../components/MoneyComponent.h"
 #include"../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
+#include "../components/ExploitableComponent.h"
 
 class RoomScene : public Scene
 {

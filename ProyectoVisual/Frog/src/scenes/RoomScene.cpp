@@ -304,6 +304,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	animSnake->addAnimation("ATTACK_LEFT", Animation({ Vector2D(2,1) }, true, false));
 	animSnake->addAnimation("ATTACK_DOWN", Animation({ Vector2D(1,1) }, false, false));
 	animSnake->addAnimation("ATTACK_UP", Animation({ Vector2D(0,1) }, false, false));
+	animSnake->addAnimation("DEATH", Animation({ Vector2D(3,0) }, false, true));
 
 	snake->addComponent(ANIMATION_COMPONENT, animSnake);
 	animSnake->setContext(snake);
@@ -322,6 +323,16 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	AttackComponentSnake* atckSnake = new AttackComponentSnake();
 	atckSnake->setContext(snake);
 	snake->addComponent(ATTACK_COMPONENT, atckSnake);
+
+	LifeComponent* lfSnake = new LifeComponent(1, 1);
+	lfSnake->setContext(snake);
+	lfSnake->initComponent();
+	snake->addComponent(LIFE_COMPONENT, lfSnake);
+
+	ExploitableComponent* exp = new ExploitableComponent();
+	exp->setContext(snake);
+	exp->initComponent();
+	snake->addComponent(EXPLOITABLE_COMPONENT, exp);
 
 	AddEntity(snake);
 	return snake;

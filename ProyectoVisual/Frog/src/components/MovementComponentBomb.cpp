@@ -46,13 +46,13 @@ void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
 			//Activamos interruptor
 			std::cout << "INTERRUPTOR ACTIVADO" << std::endl;
 			break;
-		case EntityName::SNAKE_ENTITY:
-			//Quitariamos vida a la serpiente...
-			ent->getScene()->removeEntity(ent);
-			//Eliminamos a la bomba
-			explodeBomb();
-			std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
-			break;
+		//case EntityName::SNAKE_ENTITY:
+		//	//Quitariamos vida a la serpiente...
+		//	ent->getScene()->removeEntity(ent);
+		//	//Eliminamos a la bomba
+		//	explodeBomb();
+		//	std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
+		//	break;
 		case EntityName::FROG_ENTITY:
 			lifeEntity->SetActual(-1); //bajamos vida de la entidad con la que choca
 			explodeBomb();

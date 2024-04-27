@@ -29,10 +29,10 @@ private:
 
 	void moveBomb();
 	void checkShock();
-	void explodeBomb();
 	void checkCollisionsBomb(Entity* ent, Collider c);
 	void update() override;
 public:
+	void explodeBomb();
 	MovementComponentBomb();
 	virtual ~MovementComponentBomb();
 	void initComponent() override;  //Aqui inicializamos los punteros a otros componentes que vayamos a utilizar
