@@ -409,19 +409,18 @@ Entity* RoomScene::createDestructible(Vector2D pos, int type, int loot)
 
 	Entity* destructible = new Entity(this);
 
-	if(type = 0) // jarron
+	if(type == 0) // jarron
 	{
 		Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
 		// hay que añadirle luego un sprite siendo destruido
 
 		TransformComponent* transform = new TransformComponent(pos);
 		destructible->addComponent(TRANSFORM_COMPONENT, transform);
-		transform->setContext(destructible);
 
 		AnimationComponent* animDestructible = new AnimationComponent();
+		//destructible->addComponent(ANIMATION_COMPONENT, animDestructible);
 
 		RenderComponentDestructible* renderDestructible = new RenderComponentDestructible(txtDestructible, animDestructible);
-		
 
 		return destructible;
 	}
@@ -437,7 +436,8 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 
 	
 	if (objName == "Jarron"){
-		c = createDestructible(pos, 0, objProps[0].getIntValue());
+		//Comentado para que el juego no reviente
+	//	c = createDestructible(pos, 0, objProps[0].getIntValue());
 	}	
 	else if (objName == "Arbusto")
 	{
