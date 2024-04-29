@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="13">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="20">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="15" height="15">
   <data encoding="csv">
@@ -43,31 +43,58 @@
   <object id="1" name="FlonkP" type="Player" x="120.666" y="218">
    <point/>
   </object>
-  <object id="2" name="Jarron" type="ObjInteract" x="120" y="139.333">
+  <object id="4" name="Jarron" type="ObjInteract" x="120.667" y="155.333">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
-  <object id="4" name="Jarron" type="ObjInteract" x="120.667" y="155.333">
+  <object id="15" name="Jarron" type="ObjInteract" x="120" y="140">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="16" name="Jarron" type="ObjInteract" x="136" y="140">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="17" name="Jarron" type="ObjInteract" x="135.334" y="121.333">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="18" name="Jarron" type="ObjInteract" x="120.606" y="120.303">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="19" name="Jarron" type="ObjInteract" x="102.546" y="119.272">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
   <object id="5" name="Jarron" type="ObjInteract" x="104" y="156.667">
+   <properties>
+    <property name="loot" type="int" value="2"/>
+   </properties>
    <point/>
   </object>
-  <object id="6" name="Jarron" type="ObjInteract" x="136.667" y="156.667">
+  <object id="13" name="Jarron" type="ObjInteract" x="136" y="155.334">
+   <properties>
+    <property name="loot" type="int" value="2"/>
+   </properties>
    <point/>
   </object>
-  <object id="7" name="Jarron" type="ObjInteract" x="136" y="138">
-   <point/>
-  </object>
-  <object id="8" name="Jarron" type="ObjInteract" x="103.333" y="137.333">
-   <point/>
-  </object>
-  <object id="9" name="Jarron" type="ObjInteract" x="102.667" y="120.667">
-   <point/>
-  </object>
-  <object id="10" name="Jarron" type="ObjInteract" x="135.333" y="121.333">
-   <point/>
-  </object>
-  <object id="3" name="Jarron" type="ObjInteract" x="120" y="121.333">
+  <object id="14" name="Jarron" type="ObjInteract" x="102.667" y="138.667">
+   <properties>
+    <property name="loot" type="int" value="2"/>
+   </properties>
    <point/>
   </object>
   <object id="12" name="TransitionP" type="Transition" x="119.333" y="232">
