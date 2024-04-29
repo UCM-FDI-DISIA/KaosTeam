@@ -1,7 +1,7 @@
 ﻿#include "MovementComponentBlackAnt.h"
 #include "../sdlutils/RandomNumberGenerator.h"
 #include "../scenes/RoomScene.h"
-#include "../components/TransformComponent.h"
+#include "TransformComponent.h"
 
 MovementComponentBlackAnt::MovementComponentBlackAnt(AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
 {
@@ -28,6 +28,7 @@ MovementComponentBlackAnt::~MovementComponentBlackAnt() {
 void MovementComponentBlackAnt::initComponent() {
 	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
 	playerPosition = targetTransformComp->getCasilla();
+	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 
 void MovementComponentBlackAnt::update() {
