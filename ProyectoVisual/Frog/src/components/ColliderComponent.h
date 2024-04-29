@@ -6,7 +6,8 @@
 
 enum ColliderName {
 	UNAMED_COLLIDER,
-
+	TONGUE_COLLIDER,
+	TRANSFORM_COLLIDER
 };
 
 class Collider {
@@ -19,6 +20,8 @@ public:
 	void OnCollision(Entity* e, Collider);
 	bool Collides(Collider) const;
 	ColliderName getName() const;
+	Box* GetBox() const { return box; };
+
 private:
 	Box* box; //La caja que define el tamaño y posicion del collider
 	//El box tiene que ser gestionado por el creador del box
@@ -37,7 +40,7 @@ public:
 	};
 	//Te crea un collider con el transform. Se puede pillar con GetTransformCollider
 	ColliderComponent(TransformComponent* tr) : colliders(std::list<Collider>()) {
-		AddCollider(Collider(tr));
+		AddCollider(Collider(tr, TRANSFORM_COLLIDER));
 		transformCollider = &colliders.front();
 	};
 	//Comprueba la colisión de los colliders de este componente con los de la otra entidad

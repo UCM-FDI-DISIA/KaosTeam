@@ -16,23 +16,23 @@ void MovementComponentSnake::update()
 {
 	if (DataManager::GetInstance()->getFrameTime() - lastTimeAction > coolDownTime) {
 
-		lastTimeAction = DataManager::GetInstance()->getFrameTime(); //Actualizamos tiempo de acción
+		lastTimeAction = DataManager::GetInstance()->getFrameTime(); //Actualizamos tiempo de acciï¿½n
 
 		//La serpeinte va a estar rotando constantemente
-		//... Lógica de rotación aquí
-		//Primero comprobamos si está rotando la serpiente o no
+		//... Lï¿½gica de rotaciï¿½n aquï¿½
+		//Primero comprobamos si estï¿½ rotando la serpiente o no
 		if (isRotate) {
 			rotateSnake(); // Rotamos serpiente
 			searchFrog();  // Buscamos a la rana en la dir de rotacion
-			std::cout << "ROTANDO" << std::endl;
+			//std::cout << "ROTANDO" << std::endl;
 		}
 			
 
-		//En el momento que la rana este en el área de visión la serpiente ataca
-		// desactivamos rotación y activamos ataque
+		//En el momento que la rana este en el ï¿½rea de visiï¿½n la serpiente ataca
+		// desactivamos rotaciï¿½n y activamos ataque
 
 
-		//Estiramos serpiente hasta la posición de la rana y atacamos
+		//Estiramos serpiente hasta la posiciï¿½n de la rana y atacamos
 
 		//Vuelve a su posicion original y desactivamos ataque
 	}
@@ -40,7 +40,7 @@ void MovementComponentSnake::update()
 
 
 void MovementComponentSnake::rotateSnake() {
-	//Cambiamos dirección de rotación
+	//Cambiamos direcciï¿½n de rotaciï¿½n
 	switch (currentDirection) {
 	case Direction::DOWN_ROT:
 		currentDirection = Direction::LEFT_ROT;
@@ -68,23 +68,23 @@ void MovementComponentSnake::searchFrog() {
 	//calculamos distancia
 	Vector2D distance = playerPos - tr->getCasilla();
 
-	std::cout << "(" << playerPos.getX() << " , " << playerPos.getY() << ")" << "PlayerPosition" << std::endl;
+	/*std::cout << "(" << playerPos.getX() << " , " << playerPos.getY() << ")" << "PlayerPosition" << std::endl;
 	std::cout << "(" << tr->getCasilla().getX() << " , " << tr->getCasilla().getY() << ")" << "SnakePosition" << std::endl;
 	std::cout << "(" << distance.getX() << " , " << distance.getY() << ")" << "DISTANCE" << std::endl;
-	std::cout << " " << std::endl;
+	std::cout << " " << std::endl;*/
 
 	//Identificamos la col/fil en la que esta la serpiente y la rana 
 	if (tr->getCasilla().getX() == playerPos.getX()) {
 		////Comprobamos si la direccion es valida
 		if (currentDirection == DOWN_ROT) {
 			if ((distance.getY() <= attackDistance) && (distance.getY() > 0)) { //Si esta en el rango de ataque...
-				std::cout << "SNAKE ATACA abajo" << std::endl;
+				//std::cout << "SNAKE ATACA abajo" << std::endl;
 				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
 			}
 		}
 		else if (currentDirection == UP_ROT) {
 			if ((distance.getY() >= -attackDistance) && (distance.getY() < 0)) {
-				std::cout << "SNAKE ATACA arriba" << std::endl;
+				//std::cout << "SNAKE ATACA arriba" << std::endl;
 				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
 			}
 		}
@@ -92,14 +92,14 @@ void MovementComponentSnake::searchFrog() {
 	else if (tr->getCasilla().getY() == playerPos.getY()) {
 		if (currentDirection == RIGHT_ROT) {
 			if ((distance.getX() <= attackDistance) && (distance.getX() > 0)) {
-				std::cout << "SNAKE ATACA derecha" << std::endl;
+				//std::cout << "SNAKE ATACA derecha" << std::endl;
 				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
 			}
 		}
 		else if (currentDirection == LEFT_ROT) {
 			if ((distance.getX() >= -attackDistance) && (distance.getX() < 0)) {
-				std::cout << "SNAKE ATACA izquierda" << std::endl; 
-				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT)) ->attack();
+				//std::cout << "SNAKE ATACA izquierda" << std::endl; 
+				static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->attack();
 			}
 		}
 	}

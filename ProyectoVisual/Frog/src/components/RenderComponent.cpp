@@ -4,24 +4,18 @@
 
 void RenderComponent::render()
 {
-	if (myAnimator == nullptr)//si no tiene animator
-	{
-		myTexture->render(transform->GetOnDisplayPosition());
-	}
-	else {
-		//segun si necesita flip o no la textura
+	//segun si necesita flip o no la textura
+	if (myAnimator != nullptr) {
 		if (myAnimator->getCurrentAnim().flip) {
 			myTexture->renderFrameWithFlip(transform->GetOnDisplayPosition(), myAnimator->getCurrentFil(), myAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
 		}
 		else {
 			myTexture->renderFrame(transform->GetOnDisplayPosition(), myAnimator->getCurrentFil(), myAnimator->getCurrentCol());
-		}
+		}	
 	}
-}
-
-void RenderComponent::changeAlpha(int newAlpha)
-{
-	SDL_SetTextureAlphaMod(myTexture->getTexture(), newAlpha);
+	else {
+		myTexture->render(transform->GetOnDisplayPosition());
+	}
 }
 
 void RenderComponent::initComponent() {

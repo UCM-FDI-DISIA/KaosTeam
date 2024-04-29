@@ -57,7 +57,7 @@ void CrazyFrogIAComponent::update()
 		}
 		else
 		{
-			movement->startMovement(direction, speed, animation);
+			movement->startMovement(direction, speed);
 		}
 			
 

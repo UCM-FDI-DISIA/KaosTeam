@@ -7,7 +7,9 @@
 #include "../ecs/Entity.h"
 #include "../components/TransitionComponent.h"
 #include "../managers/ShopManager.h"
+#include "../components/MovementComponentFrog.h"
 #include <vector>
+
 
 class RoomScene : public Scene
 {
@@ -23,7 +25,7 @@ private:
 	std::string nextMap;
 	flonkOrig nextFlonk;
 	Shop* shopManager;
-	bool insideShop = false; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
+	bool insideShop; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
 
 	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
 	Por tanto, hay dos OnCollision por cada colision.
@@ -42,14 +44,17 @@ public:
 	Entity* createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted = false);
 	Entity* createPlayer(Vector2D pos, int boundX, int boundY);
-	Entity* createTransition(std::string objName, std::string nextMap);
+	Entity* createTransition(Vector2D pos, std::string objName, std::string nextMap);
 	Entity* createCrazyFrog(Vector2D pos);
 	Entity* createFish(Vector2D pos, int boundX);
 	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createSnake(Vector2D pos);
+	Entity* createDestructible(Vector2D pos, int type, int loot);
 	Entity* createBomb(Vector2D pos);
 	Entity* createFrancois(Vector2D pos);
+	Entity* createPiedraMovible(Vector2D pos);
+	Entity* createEnganche(Vector2D pos);
 	
 	void AddEntity(Entity* entity);
 	void removeEntity(Entity* entity);

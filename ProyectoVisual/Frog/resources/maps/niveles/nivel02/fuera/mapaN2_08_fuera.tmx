@@ -71,9 +71,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,417,
 0,0,0,0,0,0,0,0,0,356,357,357,357,357,357,358,417,417,
 357,358,0,0,0,0,0,0,356,385,385,385,385,385,385,414,417,417,
-385,385,357,357,358,417,417,417,384,385,385,385,385,385,386,0,0,0,
+385,385,357,357,358,0,0,0,384,385,385,385,385,385,386,0,0,0,
 385,385,385,385,414,0,0,0,412,413,385,385,385,385,385,386,0,0,
-385,413,413,414,417,0,0,0,0,0,412,413,413,413,414,417,417,417,
+385,413,413,414,417,0,0,0,0,0,412,413,413,413,414,417,0,0,
 414,0,417,417,417,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,417,417,417,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,417,356,357,357,358,0,0,0,0,0,0,0,0,0,
@@ -89,14 +89,14 @@
 0,0,0,0,0,0,417,417,0,356,357,358,0,0,0,356,357,358,
 0,0,0,0,0,0,417,417,0,384,385,386,0,0,0,384,385,386,
 0,0,0,0,0,0,417,417,0,412,413,414,0,0,0,412,413,414,
-0,0,0,0,0,0,417,417,0,0,0,0,417,417,0,0,0,0,
-357,357,357,358,0,0,417,417,0,0,0,417,0,0,417,0,0,0,
-385,385,385,385,357,358,417,417,417,417,0,417,0,0,417,356,357,357,
-385,385,385,385,385,385,358,417,417,0,417,0,0,356,357,384,384,384,
+0,0,0,0,0,0,417,417,0,0,0,0,0,0,0,0,0,0,
+357,357,357,358,0,0,417,417,0,0,0,0,0,0,0,0,0,0,
+385,385,385,385,357,358,417,417,417,0,0,0,0,0,417,356,357,357,
+385,385,385,385,385,385,358,417,417,0,0,0,0,356,357,384,384,384,
 385,385,385,385,385,385,385,357,358,417,0,417,356,384,384,384,384,384,
 385,385,385,385,385,385,385,385,414,417,0,417,384,384,384,384,384,384,
 385,385,385,385,385,385,413,414,417,417,0,0,384,384,384,384,384,384,
-385,385,385,413,413,414,0,417,417,417,417,0,412,384,384,384,384,384,
+385,385,385,413,413,414,0,417,417,417,0,0,412,384,384,384,384,384,
 385,385,414,0,0,0,0,417,417,0,0,0,0,412,413,413,384,384,
 413,414,0,0,0,0,0,417,417,0,0,0,0,417,417,0,412,413,
 0,0,0,0,0,0,0,417,417,0,0,0,0,417,417,0,0,0,
@@ -110,52 +110,52 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Recompensa" x="248" y="234.5">
+  <object id="1" name="Recompensa" type="ObjInteract" x="248" y="234.5">
    <point/>
   </object>
-  <object id="17" name="Recompensa" x="244" y="9">
+  <object id="17" name="Recompensa" type="ObjInteract" x="244" y="9">
    <point/>
   </object>
-  <object id="2" name="Recompensa" x="184.333" y="746.167">
+  <object id="2" name="Recompensa" type="ObjInteract" x="184.333" y="746.167">
    <point/>
   </object>
-  <object id="3" name="PiedraMovible" x="88" y="234.5">
+  <object id="3" name="PiedraMovible" type="ObjInteract" x="88" y="234.5">
    <point/>
   </object>
-  <object id="4" name="PiedraMovible" x="104.5" y="231.5">
+  <object id="4" name="PiedraMovible" type="ObjInteract" x="104.5" y="231.5">
    <point/>
   </object>
-  <object id="5" name="PiedraMovible" x="120.5" y="233">
+  <object id="5" name="PiedraMovible" type="ObjInteract" x="214.5" y="154">
    <point/>
   </object>
-  <object id="6" name="PiedraMovible" x="266.5" y="266">
+  <object id="6" name="PiedraMovible" type="ObjInteract" x="266.5" y="266">
    <point/>
   </object>
-  <object id="7" name="PiedraMovible" x="279.5" y="265">
+  <object id="7" name="PiedraMovible" type="ObjInteract" x="279.5" y="265">
    <point/>
   </object>
-  <object id="8" name="PiedraMovible" x="200.5" y="522.667">
+  <object id="8" name="PiedraMovible" type="ObjInteract" x="200.5" y="522.667">
    <point/>
   </object>
-  <object id="9" name="PiedraMovible" x="216.667" y="520.667">
+  <object id="9" name="PiedraMovible" type="ObjInteract" x="216.667" y="520.667">
    <point/>
   </object>
-  <object id="10" name="PiedraMovible" x="232" y="538.833">
+  <object id="10" name="PiedraMovible" type="ObjInteract" x="232" y="538.833">
    <point/>
   </object>
-  <object id="11" name="PiedraMovible" x="152.833" y="554.167">
+  <object id="11" name="PiedraMovible" type="ObjInteract" x="152.833" y="554.167">
    <point/>
   </object>
-  <object id="12" name="PiedraMovible" x="169.167" y="570.333">
+  <object id="12" name="PiedraMovible" type="ObjInteract" x="169.167" y="570.333">
    <point/>
   </object>
-  <object id="13" name="PiedraMovible" x="183.333" y="537.167">
+  <object id="13" name="PiedraMovible" type="ObjInteract" x="183.333" y="537.167">
    <point/>
   </object>
-  <object id="14" name="PiedraMovible" x="183.5" y="553.5">
+  <object id="14" name="PiedraMovible" type="ObjInteract" x="183.5" y="553.5">
    <point/>
   </object>
-  <object id="15" name="PiedraMovible" x="167.167" y="633.5">
+  <object id="15" name="PiedraMovible" type="ObjInteract" x="167.167" y="633.5">
    <point/>
   </object>
   <object id="16" name="FlonkE" type="Player" x="264.667" y="171.833">

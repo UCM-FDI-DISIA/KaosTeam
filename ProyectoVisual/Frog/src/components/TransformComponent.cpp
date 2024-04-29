@@ -14,7 +14,9 @@ void TransformComponent::resetPos(Vector2D v)
 
 void TransformComponent::changePos(Vector2D v)
 {
-	ent->getScene()->getMapReader()->getTile(casilla)->objInTile = nullptr;
-	casilla = v;
-	ent->getScene()->getMapReader()->getTile(casilla)->objInTile = ent;
+	if (ent->getScene()->getMapReader()->isTileWalkable(v)) {
+		ent->getScene()->getMapReader()->getTile(casilla)->objInTile = nullptr;
+		casilla = v;
+		ent->getScene()->getMapReader()->getTile(casilla)->objInTile = ent;
+	}
 }

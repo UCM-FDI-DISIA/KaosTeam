@@ -89,6 +89,7 @@ public:
     void draw(SDL_Renderer* ren);
 
     Vector2D getMapSize();
+
     //la matriz para gestionar colisiones etc
     vector<vector<tile*>> walkableTiles;
     bool isTileWalkable(Vector2D);

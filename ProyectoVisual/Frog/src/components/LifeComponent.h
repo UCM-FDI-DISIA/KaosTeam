@@ -1,5 +1,6 @@
 #pragma once
-class LifeComponent
+#include "../ecs/Component.h"
+class LifeComponent : public Component
 {
 private:
 	int vidaActual = 0; //Un  punto es media mosca
@@ -13,5 +14,7 @@ public:
 	void SetActual(int n);
 	void SetMax(int n);
 	bool alive();
+	//A llamar cuando se daña a la entidad
+	void hit(int damage);
 };
 

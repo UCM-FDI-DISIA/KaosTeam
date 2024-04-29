@@ -91,6 +91,10 @@ public:
 		return *this;
 	}
 
+	inline bool operator!=(const Vector2D&& v) {
+		return (x_ != v.x_ || y_ != v.y_);
+	}
+
 	// ** various operations
 
 	// length of the vector

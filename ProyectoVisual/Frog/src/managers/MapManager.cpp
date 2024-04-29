@@ -48,6 +48,13 @@ MapManager::MapManager(const std::string& path, RoomScene* room)
 
 MapManager::~MapManager()
 {
+   for (int i = 0; i < walkableTiles.size(); i++)
+   {
+       for (int j = 0; j < walkableTiles[0].size(); j++)
+       {
+           delete walkableTiles[i][j];
+       }
+   }
     clearMap();
  
     for (auto ts : tilesets)
@@ -217,7 +224,7 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
                     // Phew, all done. 
                     tile* t = new tile(tilesets[tset_gid], x_pos, y_pos,
                         region_x, region_y, tile_width, tile_height, walkable);
-                    std::cout << "TILE POS: " << x << y << "TILE NUMBER: " << t << std::endl;
+                    //std::cout << "TILE POS: " << x << y << "TILE NUMBER: " << t << std::endl;
                     tiles.push_back(*t);
 
                     //la añadimos a el mapa de tiles caminables

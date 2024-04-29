@@ -28,3 +28,7 @@ bool LifeComponent::alive()
 {
 	return vidaActual > 0;
 }
+
+void LifeComponent::hit(int damage) {
+	vidaActual -= damage;
+}
