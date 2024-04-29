@@ -42,10 +42,10 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Enganche" x="71" y="124">
+  <object id="1" name="Enganche" type="ObjInteract" x="71" y="124">
    <point/>
   </object>
-  <object id="5" name="Enganche" x="168.5" y="122">
+  <object id="5" name="Enganche" type="ObjInteract" x="168.5" y="122">
    <point/>
   </object>
   <object id="2" name="FlonkE" type="Player" x="231.5" y="138.5">

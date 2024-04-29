@@ -50,16 +50,16 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Enganche" x="153" y="204.5">
+  <object id="1" name="Enganche" type="ObjInteract" x="153" y="204.5">
    <point/>
   </object>
-  <object id="5" name="Enganche" x="154.5" y="106.5">
+  <object id="5" name="Enganche" type="ObjInteract" x="153.167" y="107.167">
    <point/>
   </object>
-  <object id="6" name="Enganche" x="138" y="267">
+  <object id="6" name="Enganche" type="ObjInteract" x="138" y="267">
    <point/>
   </object>
-  <object id="7" name="Enganche" x="39.5" y="267.5">
+  <object id="7" name="Enganche" type="ObjInteract" x="39.5" y="267.5">
    <point/>
   </object>
   <object id="2" name="Termita" x="168.5" y="237">
