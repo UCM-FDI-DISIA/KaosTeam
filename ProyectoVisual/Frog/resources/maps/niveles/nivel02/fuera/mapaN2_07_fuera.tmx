@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="5">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="5">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
+ <layer id="4" name="Fondo" width="14" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,359,359,359,359,359,
+0,0,0,0,0,0,0,0,359,0,0,0,0,0,
+0,0,0,0,0,0,359,359,0,0,0,0,0,0,
+0,0,0,0,0,359,0,0,0,0,0,0,0,0,
+0,0,0,0,0,359,0,0,0,0,0,0,0,0,
+0,0,0,0,0,359,0,0,0,0,0,0,0,0,
+0,0,0,0,0,359,359,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,359,359,359,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,359,359,359,359,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
  <layer id="1" name="Walk" width="14" height="14">
   <data encoding="csv">
 47,47,47,47,47,47,47,47,47,47,47,47,47,47,

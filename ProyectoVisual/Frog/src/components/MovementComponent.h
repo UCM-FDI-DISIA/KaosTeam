@@ -3,6 +3,7 @@
 #include "../utils/Vector2D.h"
 #include "../managers/InputManager.h"
 
+
 /*
 * Clase base abstracta del componente que gestiona el movimiento de la entidad
 * 
@@ -18,16 +19,13 @@ protected:
 	int boundX = 0;
 	int boundY = 0;
 
-	bool canMove;  //Booleano que indica si se puede mover o no (si la entidad muere, esto impide que se mueva) por defecto es true
-
 	TransformComponent* tr = nullptr;
 public:
-	MovementComponent(): canMove(true) {};
+	MovementComponent() {};
 	void initComponent() override;
 
 	void setBoundX(int newBoundX) { boundX = newBoundX; }
 	void setBoundY(int newBoundY) { boundY = newBoundY; }
-	void setStatic() { canMove = false; };
 	bool checkIfTileWalkable(Vector2D);
 };
 

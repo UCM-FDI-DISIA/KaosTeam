@@ -65,8 +65,5 @@
   <object id="10" name="Snake" type="Enemigo" x="71.3334" y="75.3333">
    <point/>
   </object>
-  <object id="12" name="Snake" type="Enemigo" x="120" y="106.25">
-   <point/>
-  </object>
  </objectgroup>
 </map>

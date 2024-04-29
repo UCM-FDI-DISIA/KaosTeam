@@ -1,51 +1,34 @@
 #include "LifeComponent.h"
-#include "../scenes/RoomScene.h"
 
-void LifeComponent::initComponent() {
-	animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
-}
-LifeComponent::~LifeComponent() {
-	animator = nullptr;
-	move = nullptr;
-}
-int LifeComponent::GetActual() {
+int LifeComponent::GetActual()
+{
 	return vidaActual;
 }
 
-int LifeComponent::GetMax() {
+int LifeComponent::GetMax()
+{
 	return vidaMaxima;
 }
 
-void LifeComponent::SetActual(int n) {
+void LifeComponent::SetActual(int n)
+{
 	vidaActual += n;
 	if (vidaActual > vidaMaxima)
+	{
 		vidaActual = vidaMaxima;
-
-	//Si ya no tiene vidas (lo compruebo aqui para no tener que hacerlo todo el rato en el update)
-	if (!alive()) {
-		move = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
-		move->setStatic(); //Paramos a la entidad
-		animator->stopAnimation(); //Paramos la animaci�n que estuviese haciendo
-		animator->playAnimation("DEATH"); //Reproducimos animacion de muerte (si la tiene)
-		timerforDelete.resume(); //Ponemos contador en marcha
 	}
+}
 
-	//std::cout << "Vida de la entidad: " << vidaActual << std::endl;
-};
-
-void LifeComponent::SetMax(int n) {
+void LifeComponent::SetMax(int n)
+{
 	vidaMaxima += n;
 }
 
-bool LifeComponent::alive() {
+bool LifeComponent::alive()
+{
 	return vidaActual > 0;
 }
 
 void LifeComponent::hit(int damage) {
 	vidaActual -= damage;
 }
-void LifeComponent::update() {
-	if (timerforDelete.currTime() >= aliveTime) {
-		ent->getScene()->removeEntity(this->ent); //Quitamos la entidad si esta ha muerto
-	}
-};

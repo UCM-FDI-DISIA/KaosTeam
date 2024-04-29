@@ -2,15 +2,15 @@
 #include <SDL.h>
 #include <vector>
 
-/*Struct con los datos de input de un botï¿½n especï¿½fico*/
+/*Struct con los datos de input de un botón específico*/
 struct InputButton {
-    bool keyDOWN; //True en el momento que el botï¿½n es pulsado
+    bool keyDOWN; //True en el momento que el botón es pulsado
     bool pressed; //True 
     bool keyUP;
 
     InputButton() : keyDOWN(false), pressed(false), keyUP(false) {};
 
-    /*Esta conversiï¿½n deberï¿½a mantener el comportamiento anterior para las clases en las que
+    /*Esta conversión debería mantener el comportamiento anterior para las clases en las que
     ya se ha implementado InputManager
     */
     operator bool() {
@@ -48,7 +48,7 @@ private:
     };
 
     //InputButton buttons[];
-       std::vector<InputButton> buttons;
+    std::vector<InputButton> buttons;
     static InputManager* instance;
 
     //Constructor vacio privado para poder instanciar desde dentro
@@ -76,8 +76,11 @@ public:
     void PollEvents();
     InputButton getAction1();
     InputButton getAction2();
-    //InputButton getShift();
+    InputButton getShift();
     InputButton getAction4();
+    InputButton getActionBuy();
+    InputButton getActionRightShop();
+    InputButton getActionLeftShop();
     InputButton getUp();
     InputButton getDown();
     InputButton getLeft();
