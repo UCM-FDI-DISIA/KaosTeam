@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\DestructibleComponent.cpp" />
     <ClCompile Include="src\components\InventoryComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentBomb.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
@@ -220,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\DestructibleComponent.h" />
     <ClInclude Include="src\components\InventoryComponent.h" />
     <ClInclude Include="src\components\MovementComponentBomb.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />

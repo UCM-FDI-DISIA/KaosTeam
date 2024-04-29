@@ -357,6 +357,56 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	return enganche;
 }
 
+Entity* RoomScene::createJarron(Vector2D pos, int loot)
+{
+	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
+	
+
+
+	Entity* destructible = new Entity(this);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	destructible->addComponent(TRANSFORM_COMPONENT, transform);
+
+		Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
+		// hay que añadirle luego un sprite siendo destruido
+
+		//Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
+		// hay que añadirle luego un sprite siendo destruido
+
+
+	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
+
+
+
+	return destructible;
+}
+
+Entity* RoomScene::createArbusto(Vector2D pos, int loot)
+{
+	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
+
+
+
+	Entity* destructible = new Entity(this);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	destructible->addComponent(TRANSFORM_COMPONENT, transform);
+
+	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
+	// hay que añadirle luego un sprite siendo destruido
+
+	//Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
+	// hay que añadirle luego un sprite siendo destruido
+
+
+	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
+
+
+
+	return destructible;
+}
+
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
@@ -403,33 +453,6 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	return c;
 }
 
-Entity* RoomScene::createDestructible(Vector2D pos, int type, int loot)
-{
-	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
-
-	Entity* destructible = new Entity(this);
-
-	if(type == 0) // jarron
-	{
-		Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
-		// hay que añadirle luego un sprite siendo destruido
-
-		TransformComponent* transform = new TransformComponent(pos);
-		destructible->addComponent(TRANSFORM_COMPONENT, transform);
-
-		AnimationComponent* animDestructible = new AnimationComponent();
-		//destructible->addComponent(ANIMATION_COMPONENT, animDestructible);
-
-		RenderComponentDestructible* renderDestructible = new RenderComponentDestructible(txtDestructible, animDestructible);
-
-		return destructible;
-	}
-	else if (type = 1)	// arbusto
-	{
-		// TO DO
-	}
-}
-
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;
@@ -437,12 +460,20 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	
 	if (objName == "Jarron"){
 		//Comentado para que el juego no reviente
-	//	c = createDestructible(pos, 0, objProps[0].getIntValue());
+		c = createJarron(pos, objProps[0].getIntValue());
 	}	
 	else if (objName == "Arbusto")
 	{
-		c = createDestructible(pos, 1, objProps[0].getIntValue());
+		c = createArbusto(pos, objProps[0].getIntValue());
 	}
+
+	else if (objName == "PiedraMovible") {
+		c = createPiedraMovible(pos);
+	}
+	else if (objName == "Enganche") {
+		c = createEnganche(pos);
+	}
+
 	//else if ()......
 //
 //	if (objName == "Nombre que le quieras poner a tu objeto"){
@@ -452,14 +483,6 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	//Entity* c = nullptr;
 
 	//int objIntID: id que necesita cada obj para acceder a su pos en el vector del data manager d objetos interactuables
-
-	
-	else if (objName == "PiedraMovible"){
-		c = createPiedraMovible(pos);
-	}	
-	else if (objName == "Enganche") {
-		c = createEnganche(pos);
-	}
 
 	return c;
 }
