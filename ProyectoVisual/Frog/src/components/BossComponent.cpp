@@ -21,8 +21,6 @@ void BossComponent::initComponent()
 		cubiertos[i]->tr = new TransformComponent(Vector2D(0, -3)); //Añadimos transform al cubierto
 		cubiertos[i]->tr->setContext(cubiertos[i]->tipo);
 		cubiertos[i]->tipo->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
-
-
 	}
 }
 

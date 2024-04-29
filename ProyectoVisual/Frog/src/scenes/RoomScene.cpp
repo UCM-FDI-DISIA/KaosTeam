@@ -246,7 +246,6 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	fish->addComponent(TRANSFORM_COMPONENT, transform);
 
 	AnimationComponent* animFish = new AnimationComponent();
-	animFish->setContext(fish);
 	animFish->addAnimation("RIGHT", Animation({ Vector2D(0,1), Vector2D(0,2) }, true, false));
 	animFish->addAnimation("LEFT", Animation({ Vector2D(0,1), Vector2D(0,2) }, false, false));
 	animFish->addAnimation("JUMP_RIGHT", Animation({ Vector2D(0,0) }, true, false));
@@ -347,23 +346,18 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 {
 	Entity* fran = new Entity(this);
 	TransformComponent* tr = new TransformComponent(pos);
-	tr->setContext(fran);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);
 	RenderComponent* rend = new RenderComponent(&sdlutils().images().at("shadow"));
-	rend->setContext(fran);
 	fran->addComponent(RENDER_COMPONENT, rend);
 
 	ColliderComponent* bossColl = new ColliderComponent();
-	bossColl->setContext(fran);
 	fran->addComponent(COLLIDER_COMPONENT, bossColl);
 
 	MovementComponentFrancois* move = new MovementComponentFrancois();
-	move->setContext(fran);
 	move->initComponent();
 	fran->addComponent(MOVEMENT_COMPONENT, move);
 
 	BossComponent* bossComp = new BossComponent();
-	bossComp->setContext(fran);
 	fran->addComponent(BOSS_COMPONENT, bossComp);
 
 	AddEntity(fran);
@@ -507,7 +501,6 @@ Entity* RoomScene::createDestructible(Vector2D pos, int type, int loot)
 
 		TransformComponent* transform = new TransformComponent(pos);
 		destructible->addComponent(TRANSFORM_COMPONENT, transform);
-		transform->setContext(destructible);
 
 		AnimationComponent* animDestructible = new AnimationComponent();
 
