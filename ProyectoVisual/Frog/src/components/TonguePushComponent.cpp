@@ -5,9 +5,9 @@ void TonguePushComponent::checkCollisionsTongue(Entity* ent, Collider c)
 {
     if (ent->getName() == FROG_ENTITY) {
         MovementComponentFrog* frogMov = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT));
-        if (c.getName() == TONGUE_COLLIDER) {
             Directions d = frogMov->getDirection();
             TransformComponent* t = static_cast<TransformComponent*>(this->ent->getComponent(TRANSFORM_COMPONENT));
+        if (c.getName() == TONGUE_COLLIDER) {
             switch (d) { //Se configura como se empieza a renderizar la lengua
             case Directions::LEFT:
                 t->changePos({ t->getCasilla().getX() - 1, t->getCasilla().getY() });
@@ -26,7 +26,31 @@ void TonguePushComponent::checkCollisionsTongue(Entity* ent, Collider c)
             }
         }
         else { //está collisionando con el cuerpo de la rana
-            frogMov->cancelMovement();
+            TransformComponent* tFrog = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+            switch (d) { //Se configura como se empieza a renderizar la lengua
+            case Directions::LEFT:
+                if (tFrog->getCasilla().getX() > t->getCasilla().getX() && tFrog->getCasilla().getY() == t->getCasilla().getY()) {
+                    frogMov->cancelMovement();
+                }
+                break;
+            case Directions::RIGHT:
+                if (tFrog->getCasilla().getX() < t->getCasilla().getX() && tFrog->getCasilla().getY() == t->getCasilla().getY()) {
+                    frogMov->cancelMovement();
+                }
+                break;
+            case Directions::UP:
+                if (tFrog->getCasilla().getY() > t->getCasilla().getY() && tFrog->getCasilla().getX() == t->getCasilla().getX()) {
+                    frogMov->cancelMovement();
+                }
+                break;
+            case Directions::DOWN:
+                if (tFrog->getCasilla().getY() < t->getCasilla().getY() && tFrog->getCasilla().getX() == t->getCasilla().getX()) {
+                    frogMov->cancelMovement();
+                }
+                break;
+            default:
+                break;
+            }
         }
 	}
 }
