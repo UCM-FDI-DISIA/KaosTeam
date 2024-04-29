@@ -156,11 +156,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\DestructibleComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFrancois.cpp" />
     <ClCompile Include="src\components\BossComponent.cpp" />
-    <ClCompile Include="src\components\InteractableComponent.cpp" />
     <ClCompile Include="src\components\InventoryComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentBomb.cpp" />
+    <ClCompile Include="src\components\RenderComponentDestructible.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
@@ -222,11 +223,13 @@
     <ClCompile Include="src\components\TongueHookComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\DestructibleComponent.h" />
     <ClInclude Include="src\components\MovementComponentFrancois.h" />
     <ClInclude Include="src\components\BossComponent.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="src\components\InventoryComponent.h" />
     <ClInclude Include="src\components\MovementComponentBomb.h" />
+    <ClInclude Include="src\components\RenderComponentDestructible.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
