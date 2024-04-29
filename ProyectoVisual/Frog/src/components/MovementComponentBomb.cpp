@@ -37,19 +37,20 @@ void MovementComponentBomb::initComponent() {
 void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
 	if (!shockEntity) { //Comprobamos que ya 
 		LifeComponent* lifeEntity = static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT));
-		switch (ent->getName()) {
-		case EntityName::EXPLOITABLE_ENTITY:
-			explodeBomb();
-			break;
-		case EntityName::FROG_ENTITY:
+		if (lifeEntity != nullptr) {
+			//Dañar a la entidad en uno
 			lifeEntity->SetActual(-1); //bajamos vida de la entidad con la que choca
-			explodeBomb();
-			break;
-			//...Mas casos
 		}
+		else if (ent->getName() == EntityName::EXPLOITABLE_ENTITY) {
+			//Destruyes el objeto explotable
+			ExploitableComponent* exp = static_cast<ExploitableComponent*>(ent->getComponent(EXPLOITABLE_COMPONENT));
+			//Metodo a llamar
+
+		}
+		explodeBomb(); //En ambos casos la bomba explota
 	}
-	
 }
+
 
 //Mueve la bomba en la direccion dada:
 void MovementComponentBomb::moveBomb() {

@@ -329,10 +329,10 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	lfSnake->initComponent();
 	snake->addComponent(LIFE_COMPONENT, lfSnake);*/
 
-	/*ExploitableComponent* exp = new ExploitableComponent();
-	exp->setContext(snake);
-	exp->initComponent();
-	snake->addComponent(EXPLOITABLE_COMPONENT, exp);*/
+	//ExploitableComponent* exp = new ExploitableComponent();
+	//exp->setContext(snake);
+	//exp->initComponent();
+	//snake->addComponent(EXPLOITABLE_COMPONENT, exp);
 
 	AddEntity(snake);
 	return snake;
