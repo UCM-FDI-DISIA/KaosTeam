@@ -3,10 +3,14 @@
 #include "../scenes/RoomScene.h"
 
 BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2) //
-{}
+{
+	cubiertos.reserve(MAX_CUBIERTOS);
+}
 
 BossComponent::~BossComponent()
 {
+	for (auto a : cubiertos)
+		delete a;
 }
 
 void BossComponent::initComponent()
@@ -14,12 +18,14 @@ void BossComponent::initComponent()
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 	render = ent->getRenderComponent();
 	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
-
 	//Creamos cubiertos
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {
-		cubiertos[i]->tipo = new Entity(ent->getScene()); //Creamos entidad cubierto
-		cubiertos[i]->tr = new TransformComponent(Vector2D(0, -3)); //Añadimos transform al cubierto
-		cubiertos[i]->tipo->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
+		std::cout << "Hola";
+		Cubierto* aux= new Cubierto;
+		aux->tipo = new Entity(ent->getScene()); //Creamos entidad cubierto
+		aux->tr = new TransformComponent(Vector2D(0, -3)); //Añadimos transform al cubierto
+		aux->tipo->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
+		cubiertos.emplace_back(aux);
 	}
 }
 
