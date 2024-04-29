@@ -1,7 +1,6 @@
 #include "DataManager.h"
 
-//DataManager* DataManager::instance = nullptr;
-std::unique_ptr<DataManager> DataManager::instance;
+DataManager* DataManager::instance = nullptr;
 
 void DataManager::UpdateFrameTime() {
 	frameTime = SDL_GetTicks();

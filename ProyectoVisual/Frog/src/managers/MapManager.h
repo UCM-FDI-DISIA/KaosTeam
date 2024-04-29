@@ -83,7 +83,6 @@ private:
 public:
     MapManager(const std::string& path, RoomScene* room);
     ~MapManager();
-    void clearMap();
     void loadBg(const std::string& path, SDL_Renderer* ren);
     void loadObj(const std::string& path);
     void draw(SDL_Renderer* ren);

@@ -9,38 +9,25 @@ MovementComponentSnake::MovementComponentSnake(AnimationComponent* a) :
 	MovementComponent(), anim(a),
 	lastTimeAction(DataManager::GetInstance()->getFrameTime()), coolDownTime(1000),
 	isRotate(true), isAttack(false),
-	currentDirection(Direction::RIGHT_ROT), attackDistance(2) {
+	currentDirection(Direction::RIGHT_ROT), attackDistance(2), targetTransformComp(nullptr) {
 }
 
 void MovementComponentSnake::update()
 {
-	if (DataManager::GetInstance()->getFrameTime() - lastTimeAction > coolDownTime) {
+	if (DataManager::GetInstance()->getFrameTime() - lastTimeAction > coolDownTime && canMove) {
 
-		lastTimeAction = DataManager::GetInstance()->getFrameTime(); //Actualizamos tiempo de acción
-
-		//La serpeinte va a estar rotando constantemente
-		//... Lógica de rotación aquí
-		//Primero comprobamos si está rotando la serpiente o no
+		lastTimeAction = DataManager::GetInstance()->getFrameTime(); //Actualizamos tiempo de acciï¿½n
 		if (isRotate) {
 			rotateSnake(); // Rotamos serpiente
 			searchFrog();  // Buscamos a la rana en la dir de rotacion
 			//std::cout << "ROTANDO" << std::endl;
 		}
-			
-
-		//En el momento que la rana este en el área de visión la serpiente ataca
-		// desactivamos rotación y activamos ataque
-
-
-		//Estiramos serpiente hasta la posición de la rana y atacamos
-
-		//Vuelve a su posicion original y desactivamos ataque
 	}
 }
 
 
 void MovementComponentSnake::rotateSnake() {
-	//Cambiamos dirección de rotación
+	//Cambiamos direcciï¿½n de rotaciï¿½n
 	switch (currentDirection) {
 	case Direction::DOWN_ROT:
 		currentDirection = Direction::LEFT_ROT;

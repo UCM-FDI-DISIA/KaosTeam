@@ -1,7 +1,6 @@
 #include "RenderComponent.h"
 #include "../scenes/RoomScene.h"
 
-
 void RenderComponent::render()
 {
 	//segun si necesita flip o no la textura

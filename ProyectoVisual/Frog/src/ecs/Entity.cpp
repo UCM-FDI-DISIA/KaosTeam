@@ -6,15 +6,10 @@
 
 Entity::Entity(RoomScene* scn) : name(UNAMED_ENTITY), myScene(scn) {};
 
-Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn), renderComponent(), renderComponentFrog(),
-renderComponentSnake(){};
+Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn) {};
 
 void Entity::addComponent(ComponentsEnum id, Component* component)
 {
-	if (componentes.count(id) > 0)
-	{
-		throw "ya hay un componente";
-	}
 	componentes.insert(std::pair<ComponentsEnum, Component*>(id, component));
 	component->setContext(this);
 	component->initComponent();
@@ -51,9 +46,6 @@ Entity::~Entity()
 	{
 		delete it->second;
 	}
-	delete renderComponent;
-	delete renderComponentFrog;
-	delete renderComponentSnake;
 }
 
 void
@@ -72,8 +64,8 @@ void Entity::render()
 		renderComponent->render();
 	}
 	else if (renderComponentFrog != nullptr) renderComponentFrog->render(); //Sino, ejecutamos render de la rana (un render mas complejo)
-	else if (renderComponentSnake != nullptr) renderComponentSnake->render(); //hay entidades que no se renderizan los objetos de transición
-	//else {} //hay entidades que no se renderizan los objetos de transición
+	else if (renderComponentSnake != nullptr) renderComponentSnake->render(); //hay entidades que no se renderizan los objetos de transiciï¿½n
+	//else {} //hay entidades que no se renderizan los objetos de transiciï¿½n
 }
 
 Component* Entity::getComponent(ComponentsEnum Identificator) const

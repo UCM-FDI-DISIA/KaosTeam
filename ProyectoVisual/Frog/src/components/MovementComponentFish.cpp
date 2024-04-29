@@ -17,9 +17,7 @@ MovementComponentFish::MovementComponentFish(int boundX, AnimationComponent* a) 
 	isJumping = false;
 	isMoving = false;
 };
-MovementComponentFish::~MovementComponentFish() {
-	anim = nullptr;
-}
+
 void MovementComponentFish::initComponent() {
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
@@ -111,7 +109,7 @@ void MovementComponentFish::update() {
 	//		if (casillaActual == limite - 1)  changeDirection();
 	//	}
 	//}
-	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime)
+	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime && canMove)
 	{
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		//si la casilla actual es donde debe saltar

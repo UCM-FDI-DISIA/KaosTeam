@@ -1,13 +1,13 @@
 #include "PausedState.h"
-#include "../scenes/MenuPausa.h"
+#include "../scenes/Menu.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../managers/InputManager.h"
 #include "../managers/HUDManager.h"
 #include"Game.h"
 
 PausedState::PausedState(Game* g): game(g), imngr(im()), 
-				menu(new MenuPausa(g, this, &sdlutils().images().at("BotonSeguirPausa"), 
-				&sdlutils().images().at("BotonSalirPausa"))), currScene(*menu)
+				menu(new Menu(g, this, &sdlutils().images().at("BotonSeguirPausa"), 
+				&sdlutils().images().at("BotonSalirPausa"), PAUSA)), currScene(*menu)
 {
 }
 PausedState::~PausedState()

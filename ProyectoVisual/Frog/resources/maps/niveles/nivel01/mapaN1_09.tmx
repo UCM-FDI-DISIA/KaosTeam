@@ -47,10 +47,7 @@
   <object id="3" name="Crazy frog" type="Enemigo" x="184" y="141">
    <point/>
   </object>
-  <object id="4" name="Pez" type="Enemigo" x="8" y="106.861">
-   <properties>
-    <property name="boundX" type="int" value="13"/>
-   </properties>
+  <object id="4" name="Pez" type="Enemigo" x="104.5" y="106">
    <point/>
   </object>
   <object id="8" name="FlonkN" type="Player" x="118.334" y="26.167">

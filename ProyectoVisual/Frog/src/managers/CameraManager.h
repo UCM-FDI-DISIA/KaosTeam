@@ -8,6 +8,8 @@
 #include "../components/MovementComponentFrog.h"
 #include "../utils/Singleton.h"
 
+
+
 class Camera: public Singleton<Camera> { 
 
 	friend Singleton<Camera>;
@@ -19,7 +21,7 @@ public:
 
 	//para hacer el movimiento fluido
 	Vector2D GetAdditionalOffset();
-	virtual ~Camera();
+
 
 private:
 	//static Camera* cameraInstance;
@@ -32,7 +34,7 @@ private:
 	Vector2D additionalOffset;
 	Directions direction;
 	Camera() {};
-	
+	//ns si esta bien
 	TransformComponent* targetTransform;
 	
 };

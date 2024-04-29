@@ -9,7 +9,7 @@ class PausedState:public GameState
 {
 public:
 	PausedState(Game* game);
-	virtual ~PausedState();
+	~PausedState();
 	void enter() override;
 	void leave() override;
 	void update() override;

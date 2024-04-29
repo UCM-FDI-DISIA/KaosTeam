@@ -66,7 +66,7 @@ void AttackComponentSnake::initComponent() {
 	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->AddCollider(c);
 }
 
-//Comprueba colisión con la rana, hace daño solo si no ha hecho daño en este atque (variable hitted)
+//Comprueba colisiï¿½n con la rana, hace daï¿½o solo si no ha hecho daï¿½o en este atque (variable hitted)
 void AttackComponentSnake::checkHit(Entity* e, Collider c) {
 	if (!hitted && e->getName() == FROG_ENTITY) {
 		static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(damage);

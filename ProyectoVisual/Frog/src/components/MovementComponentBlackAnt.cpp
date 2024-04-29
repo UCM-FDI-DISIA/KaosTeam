@@ -21,122 +21,120 @@ MovementComponentBlackAnt::MovementComponentBlackAnt(AnimationComponent* a) : Mo
 	diff = 0;
 };
 
-MovementComponentBlackAnt::~MovementComponentBlackAnt() {
-	targetTransformComp = nullptr;
-	anim = nullptr;
-}
+
 void MovementComponentBlackAnt::initComponent() {
 	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
 	playerPosition = targetTransformComp->getCasilla();
 }
 
 void MovementComponentBlackAnt::update() {
-
-	if (!waitToAttack && !waitToMove && !isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
-		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-		playerPosition = targetTransformComp->getCasilla();
-		switch (actualDirection)
-		{
-		case RIGHT: {
-			if (isAtacking) {
-				velocity = Vector2D(diff, 0);
-				//anim->playAnimation("RIGHT");
-				framesPerMove = 2 + velocity.magnitude() * 3;
+	if (canMove) {
+		if (!waitToAttack && !waitToMove && !isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			playerPosition = targetTransformComp->getCasilla();
+			switch (actualDirection)
+			{
+			case RIGHT: {
+				if (isAtacking) {
+					velocity = Vector2D(diff, 0);
+					//anim->playAnimation("RIGHT");
+					framesPerMove = 2 + velocity.magnitude() * 3;
+				}
+				else {
+					velocity = Vector2D(1, 0);
+					//anim->playAnimation("RIGHT");
+					framesPerMove = 4 + velocity.magnitude() * 3;
+				}
 			}
-			else {
-				velocity = Vector2D(1, 0);
-				//anim->playAnimation("RIGHT");
-				framesPerMove = 4 + velocity.magnitude() * 3;
+					  break;
+			case LEFT:
+			{
+				if (isAtacking) {
+					velocity = Vector2D(diff, 0);
+					//anim->playAnimation("LEFT");
+					framesPerMove = 2 + velocity.magnitude() * 3;
+				}
+				else {
+					velocity = Vector2D(-1, 0);
+					//anim->playAnimation("LEFT");
+					framesPerMove = 4 + velocity.magnitude() * 3;
+				}
 			}
-		}
-		break;
-		case LEFT:
-		{
-			if (isAtacking) {
-				velocity = Vector2D(diff, 0);
-				//anim->playAnimation("LEFT");
-				framesPerMove = 2 + velocity.magnitude() * 3;
-			}
-			else {
-				velocity = Vector2D(-1, 0);
-				//anim->playAnimation("LEFT");
-				framesPerMove = 4 + velocity.magnitude() * 3;
-			}
-		}
-		break;
-		case UP:
-		{
-			if (isAtacking) {
-				velocity = Vector2D(0, diff);
-				//anim->playAnimation("LEFT");
-				framesPerMove = 2 + velocity.magnitude() * 3;
-			}
-			else {
-				velocity = Vector2D(0, -1);
-				//anim->playAnimation("LEFT");
-				framesPerMove = 4 + velocity.magnitude() * 3;
-			}
-		}
-		break;
-		case DOWN:
-		{
-			if (isAtacking) {
-				velocity = Vector2D(0, diff);
-				//anim->playAnimation("LEFT");
-				framesPerMove = 4 + velocity.magnitude() * 3;;
-			}
-			else {
-				velocity = Vector2D(0, 1);
-				//anim->playAnimation("LEFT");
-				framesPerMove = 4 + velocity.magnitude() * 3;
-			}
-		}
-		break;
-		default:
 			break;
-		}
-		isMoving = true;
-	}
-	else if (isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate)
-	{
-		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
-		int t = ent->getScene()->getMapReader()->getTileSize();
-		framesMoved++;
-
-		if (actualDirection == RIGHT || actualDirection == LEFT) {
-			tr->setOffsetX(tr->getOffset().getX() + t / framesPerMove * velocity.getX());
-		}
-		else {
-			tr->setOffsetY(tr->getOffset().getY() + t / framesPerMove * velocity.getY());
-		}
-		if (framesMoved == framesPerMove) {
-			tr->setCasilla(tr->getCasilla() + velocity);
-			tr->setOffset({ 0,0 });
-			framesMoved = 0;
-			isMoving = false;
-			if (isAtacking) {
-				diff = 0;
-				isAtacking = false;
-				checkCollisionWall();
+			case UP:
+			{
+				if (isAtacking) {
+					velocity = Vector2D(0, diff);
+					//anim->playAnimation("LEFT");
+					framesPerMove = 2 + velocity.magnitude() * 3;
+				}
+				else {
+					velocity = Vector2D(0, -1);
+					//anim->playAnimation("LEFT");
+					framesPerMove = 4 + velocity.magnitude() * 3;
+				}
 			}
-			bool attack = isPlayerNear();
-			if (!attack)
-				changeDirection();
+			break;
+			case DOWN:
+			{
+				if (isAtacking) {
+					velocity = Vector2D(0, diff);
+					//anim->playAnimation("LEFT");
+					framesPerMove = 4 + velocity.magnitude() * 3;;
+				}
+				else {
+					velocity = Vector2D(0, 1);
+					//anim->playAnimation("LEFT");
+					framesPerMove = 4 + velocity.magnitude() * 3;
+				}
+			}
+			break;
+			default:
+				break;
+			}
+			isMoving = true;
 		}
-	}
-	else if (waitToAttack) {
-		Uint32 currentTime = DataManager::GetInstance()->getFrameTime();
-		if ((currentTime - lastTimeMoved) > waitTimeAttack) {
-			isAtacking = true;
-			waitToAttack = false;
-			lastTimeMoved = currentTime;
+		else if (isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate)
+		{
+			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+			int t = ent->getScene()->getMapReader()->getTileSize();
+			framesMoved++;
+
+			if (actualDirection == RIGHT || actualDirection == LEFT) {
+				tr->setOffsetX(tr->getOffset().getX() + t / framesPerMove * velocity.getX());
+			}
+			else {
+				tr->setOffsetY(tr->getOffset().getY() + t / framesPerMove * velocity.getY());
+			}
+			if (framesMoved == framesPerMove) {
+				tr->setCasilla(tr->getCasilla() + velocity);
+				tr->setOffset({ 0,0 });
+				framesMoved = 0;
+				isMoving = false;
+				if (isAtacking) {
+					diff = 0;
+					isAtacking = false;
+					checkCollisionWall();
+				}
+				bool attack = isPlayerNear();
+				if (!attack)
+					changeDirection();
+			}
 		}
-	}
-	else if (waitToMove) {
-		Uint32 currentTime = DataManager::GetInstance()->getFrameTime();
-		if ((currentTime - lastTimeMoved) > immobileTime) {
-			waitToMove = false;
-			lastTimeMoved = currentTime;
+		else if (waitToAttack) {
+			Uint32 currentTime = DataManager::GetInstance()->getFrameTime();
+			if ((currentTime - lastTimeMoved) > waitTimeAttack) {
+				isAtacking = true;
+				waitToAttack = false;
+				lastTimeMoved = currentTime;
+			}
+		}
+		else if (waitToMove) {
+			Uint32 currentTime = DataManager::GetInstance()->getFrameTime();
+			if ((currentTime - lastTimeMoved) > immobileTime) {
+				waitToMove = false;
+				lastTimeMoved = currentTime;
+			}
 		}
 	}
 }

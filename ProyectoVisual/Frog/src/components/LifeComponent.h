@@ -1,20 +1,40 @@
 #pragma once
+
 #include "../ecs/Component.h"
-class LifeComponent : public Component
-{
+#include "AnimationComponent.h"
+#include "MovementComponent.h"
+#include "../sdlutils/VirtualTimer.h"
+#include <iostream>
+
+class LifeComponent : public Component {
 private:
-	int vidaActual = 0; //Un  punto es media mosca
-	int vidaMaxima = 0;
+	int vidaActual; //Un  punto es media mosca
+	int vidaMaxima;
+
+	AnimationComponent* animator;
+	MovementComponent* move;
+
+	VirtualTimer timerforDelete; //Timer para borrar la entidad pasado cada cierto tiempo
+	Uint32 aliveTime;			 //Tiempo de vida antes de que la entidad se elimine
 public:
-	LifeComponent() {};
-	LifeComponent(int actual, int maxima) :vidaActual(actual), vidaMaxima(maxima) {};
-	~LifeComponent() {};
+	LifeComponent() : vidaActual(0), vidaMaxima(0), 
+					  animator(nullptr), move(nullptr), aliveTime(2000) {
+		timerforDelete.pause();
+	};
+	LifeComponent(int actual, int maxima) :vidaActual(actual), vidaMaxima(maxima), 
+										   animator(nullptr), move(nullptr), aliveTime(2000){
+		timerforDelete.pause();
+	};
+	~LifeComponent();
 	int GetActual();
 	int GetMax();
 	void SetActual(int n);
 	void SetMax(int n);
 	bool alive();
-	//A llamar cuando se daña a la entidad
+	//A llamar cuando se daï¿½a a la entidad
 	void hit(int damage);
+
+	void initComponent() override;
+	void update() override;
 };
 
