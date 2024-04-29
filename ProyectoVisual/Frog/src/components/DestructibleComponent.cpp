@@ -8,12 +8,6 @@ DestructibleComponent::DestructibleComponent(int lootType, Vector2D pos) : loot(
 
 }
 
-void DestructibleComponent::update()
-{
-
-
-}
-
 void DestructibleComponent::DestroySelf()
 {
 	int auxprob = rand_.nextInt(0, 100);

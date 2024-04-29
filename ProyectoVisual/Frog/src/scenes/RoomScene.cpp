@@ -360,49 +360,44 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 Entity* RoomScene::createJarron(Vector2D pos, int loot)
 {
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
-	
-
-
-	Entity* destructible = new Entity(this);
+	Entity* destructible = new Entity(this, JARRON_ENTITY);
+	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
+	// hay que animarlo
 
 	TransformComponent* transform = new TransformComponent(pos);
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
 
-		Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
-		// hay que añadirle luego un sprite siendo destruido
-
-		//Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
-		// hay que añadirle luego un sprite siendo destruido
-
-
 	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
+	destructible->addComponent(RENDER_COMPONENT, renderDestructible);
+	destructible->addRenderComponent(renderDestructible);
 
+	Box* boxdestructible = new Box(pos);
+	Collider coll = Collider(boxdestructible);
+	ColliderComponent* colldestructible = new ColliderComponent(transform);
+	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
 
-
+	AddEntity(destructible);
 	return destructible;
 }
 
 Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 {
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
-
-
-
-	Entity* destructible = new Entity(this);
+	Entity* destructible = new Entity(this,ARBUSTO_ENTITY);
+	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
+	// hay que animarlo
 
 	TransformComponent* transform = new TransformComponent(pos);
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
 
-	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
-	// hay que añadirle luego un sprite siendo destruido
-
-	//Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
-	// hay que añadirle luego un sprite siendo destruido
-
-
 	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
+	destructible->addComponent(RENDER_COMPONENT, renderDestructible);
+	destructible->addRenderComponent(renderDestructible);
 
-
+	Box* boxdestructible = new Box(pos);
+	Collider coll = Collider(boxdestructible);
+	ColliderComponent* colldestructible = new ColliderComponent(transform);
+	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
 
 	return destructible;
 }
@@ -435,14 +430,12 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 				}
 			}
 		}
-
 	}
 	else if (objName == "Red ant") {
 		if (player != nullptr) {
 			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			c = createRedAnt(pos, mvmPlayer);
 		}
-
 	}
 	else if (objName == "Snake") {
 		c = createSnake(pos);
@@ -460,13 +453,12 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	
 	if (objName == "Jarron"){
 		//Comentado para que el juego no reviente
-		c = createJarron(pos, objProps[0].getIntValue());
+		c = createJarron(pos, 0);
 	}	
 	else if (objName == "Arbusto")
 	{
-		c = createArbusto(pos, objProps[0].getIntValue());
+		c = createArbusto(pos, 0);
 	}
-
 	else if (objName == "PiedraMovible") {
 		c = createPiedraMovible(pos);
 	}
@@ -563,7 +555,6 @@ void RoomScene::removeEntity(Entity* entity) {
 		}
 		else it++;
 	}
-
 }
 RoomScene::~RoomScene() {
 	//Eliminar la lista de entidades

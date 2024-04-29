@@ -19,6 +19,5 @@ private:
 	
 public:
 	DestructibleComponent(int lootType, Vector2D pos);
-	void update();
 };
 
