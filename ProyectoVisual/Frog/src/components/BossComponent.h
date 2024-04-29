@@ -8,6 +8,7 @@
 #include "../components/ColliderComponent.h"
 #include"../components/RenderComponent.h"
 #include "../components/MovementComponentFrancois.h"
+#include <vector>
 
 const int MAX_TIME_ON_SHADOW = 3;
 const int MAX_CUBIERTOS = 4;

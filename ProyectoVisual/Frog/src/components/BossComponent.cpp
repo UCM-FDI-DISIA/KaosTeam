@@ -2,8 +2,11 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
 
+
 BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2) //
-{}
+{
+	cubiertos.reserve(MAX_CUBIERTOS);
+}
 
 BossComponent::~BossComponent()
 {
@@ -17,6 +20,7 @@ void BossComponent::initComponent()
 
 	//Creamos cubiertos
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {
+		cubiertos.push_back(new Cubierto);
 		cubiertos[i]->tipo = new Entity(ent->getScene()); //Creamos entidad cubierto
 		cubiertos[i]->tr = new TransformComponent(Vector2D(0, -3)); //Añadimos transform al cubierto
 		cubiertos[i]->tipo->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
