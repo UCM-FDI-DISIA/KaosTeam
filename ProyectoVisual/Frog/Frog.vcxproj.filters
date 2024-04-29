@@ -64,6 +64,8 @@
     <ClCompile Include="src\scenes\MenuInicio.cpp" />
     <ClCompile Include="src\scenes\MenuPausa.cpp" />
     <ClCompile Include="src\components\TongueHookComponent.cpp" />
+    <ClCompile Include="src\components\MapShiftComponent.cpp" />
+    <ClCompile Include="src\ecs\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -141,6 +143,7 @@
     <ClInclude Include="src\scenes\MenuInicio.h" />
     <ClInclude Include="src\scenes\MenuPausa.h" />
     <ClInclude Include="src\components\TongueHookComponent.h" />
+    <ClInclude Include="src\components\MapShiftComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

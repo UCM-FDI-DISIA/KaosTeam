@@ -125,7 +125,7 @@
   <object id="4" name="PiedraMovible" type="ObjInteract" x="104.75" y="233.75">
    <point/>
   </object>
-  <object id="28" name="PiedraMovible" type="ObjInteract" x="120.75" y="233.75">
+  <object id="5" name="PiedraMovible" type="ObjInteract" x="118.167" y="228.333">
    <point/>
   </object>
   <object id="6" name="PiedraMovible" type="ObjInteract" x="266.5" y="266">

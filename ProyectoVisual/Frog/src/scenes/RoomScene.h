@@ -27,7 +27,9 @@
 #include "../components/MovementComponentBomb.h"
 #include "../components/TonguePushComponent.h"
 #include "../components/TongueHookComponent.h"
+#include "../components/MapShiftComponent.h"
 #include "../components/InventoryComponent.h"
+#include "../components/MovementComponentCockroach.h"
 
 class RoomScene : public Scene
 {
@@ -53,7 +55,7 @@ private:
 public:
 	RoomScene(int id) : id(id), cameraManager(nullptr), player(nullptr), playerOrig(S), needMapChange(false), insideShop(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		std::string initMapPath = "resources/maps/niveles/nivel02/fuera/mapaN2_05_fuera.tmx";
+		std::string initMapPath = "resources/maps/niveles/nivel01/mapaN1_06.tmx";
 		mapReader = new MapManager(initMapPath, this);
 		mapReader->loadObj(initMapPath);
 
@@ -80,7 +82,7 @@ public:
 
 	MapManager* getMapReader() { return mapReader; };
 	void changeMap();
-	void callForMapChange(std::string nextMap, flonkOrig nextFlonk){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
+	void callForMapChange(std::string nextMap, flonkOrig nextFlonk = S){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
 
 	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted = false);
 
@@ -97,6 +99,8 @@ public:
 	Entity* createBomb(Vector2D pos);
 	Entity* createPiedraMovible(Vector2D pos);
 	Entity* createEnganche(Vector2D pos);
+	Entity* createPalanca(Vector2D pos, bool pushed, string nextMap);
+	Entity* createCockroach(Vector2D pos);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
