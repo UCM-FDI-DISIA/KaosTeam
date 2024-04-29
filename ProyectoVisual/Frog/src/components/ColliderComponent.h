@@ -12,6 +12,7 @@ enum ColliderName {
 
 class Collider {
 public:
+	Collider() {};
 	Collider(Box* box, ColliderName name) : funciones(std::list<std::function<void(Entity*, Collider)>>()), box(box), name(name) {};
 	Collider(Box* box) : funciones(std::list<std::function<void(Entity*, Collider)>>()), box(box), name(UNAMED_COLLIDER) {};
 	//Añade una funcion al collider que quieras

@@ -1,13 +1,14 @@
 #pragma once
-#include <vector>
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../components/TransformComponent.h"
-#include "../components/ColliderComponent.h"
-#include"../components/RenderComponent.h"
-#include "../components/MovementComponentFrancois.h"
+#include "TransformComponent.h"
+#include "../utils/Box.h"
+#include "ColliderComponent.h"
+#include "RenderComponent.h"
+#include "MovementComponent.h"
+#include "MovementComponentFrancois.h"
 #include <vector>
 
 const int MAX_TIME_ON_SHADOW = 3;
@@ -15,13 +16,16 @@ const int MAX_CUBIERTOS = 4;
 
 enum bossState { MOVE, DETECT, ATTACK };
 enum tipoCubierto { TENEDOR, CUCHILLO, CUCHARA, SPORK };
+
 struct Cubierto {
 	Entity* tipo;
 	TransformComponent* tr;
-	ColliderComponent* coll;
-	Vector2D speed; //Velocidad
-	Vector2D pos; //Posicion
-	Texture* tex; //Imagen del cubierto (tenerdor o cuchillo)
+	Box* box;
+	Collider coll;
+	ColliderComponent* collCmp;
+	Vector2D pos;
+	Vector2D speed;
+	Texture* tex; //Imagen del cubierto
 	int spawnTime; //Tiempo en spawnear tras iniciar el ataque del Boss
 };
 

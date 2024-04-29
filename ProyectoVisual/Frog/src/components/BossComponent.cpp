@@ -20,8 +20,11 @@ void BossComponent::initComponent()
 	render = ent->getRenderComponent();
 	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
 	//Creamos cubiertos
+
+	Cubierto aux;
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {
-		cubiertos.push_back(new Cubierto);
+		Cubierto* c = &aux;
+		cubiertos.push_back(c);
 		cubiertos[i]->tipo = new Entity(ent->getScene()); //Creamos entidad cubierto
 		cubiertos[i]->tr = new TransformComponent(Vector2D(0, -3)); //Añadimos transform al cubierto
 		cubiertos[i]->tipo->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
