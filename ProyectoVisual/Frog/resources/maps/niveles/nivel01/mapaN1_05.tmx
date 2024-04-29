@@ -69,10 +69,10 @@
   <object id="4" name="Crazy frog" type="Enemigo" x="152.78" y="252.379">
    <point/>
   </object>
-  <object id="6" name="Jarron" x="24.4408" y="267.712">
+  <object id="6" name="Jarron" type="ObjInteract" x="24.4408" y="267.712">
    <point/>
   </object>
-  <object id="7" name="Jarron" x="40.3558" y="267.144">
+  <object id="7" name="Jarron" type="ObjInteract" x="40.3558" y="267.144">
    <point/>
   </object>
   <object id="8" name="Jarron" x="184.727" y="26.7144">
@@ -81,10 +81,10 @@
   <object id="9" name="Jarron" x="201.779" y="27.2828">
    <point/>
   </object>
-  <object id="10" name="Jarron" x="72.7541" y="27.8512">
+  <object id="10" name="Jarron" type="ObjInteract" x="72.7541" y="27.8512">
    <point/>
   </object>
-  <object id="11" name="Jarron" x="88.6691" y="28.4196">
+  <object id="11" name="Jarron" type="ObjInteract" x="88.6691" y="28.4196">
    <point/>
   </object>
   <object id="12" name="TransitionE" type="Transition" x="230.767" y="107.426">

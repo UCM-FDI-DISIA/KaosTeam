@@ -43,31 +43,31 @@
   <object id="1" name="FlonkP" type="Player" x="120.666" y="218">
    <point/>
   </object>
-  <object id="2" name="Jarron" x="120" y="139.333">
+  <object id="2" name="Jarron" type="ObjInteract" x="120" y="139.333">
    <point/>
   </object>
-  <object id="4" name="Jarron" x="120.667" y="155.333">
+  <object id="4" name="Jarron" type="ObjInteract" x="120.667" y="155.333">
    <point/>
   </object>
-  <object id="5" name="Jarron" x="104" y="156.667">
+  <object id="5" name="Jarron" type="ObjInteract" x="104" y="156.667">
    <point/>
   </object>
-  <object id="6" name="Jarron" x="136.667" y="156.667">
+  <object id="6" name="Jarron" type="ObjInteract" x="136.667" y="156.667">
    <point/>
   </object>
-  <object id="7" name="Jarron" x="136" y="138">
+  <object id="7" name="Jarron" type="ObjInteract" x="136" y="138">
    <point/>
   </object>
-  <object id="8" name="Jarron" x="103.333" y="137.333">
+  <object id="8" name="Jarron" type="ObjInteract" x="103.333" y="137.333">
    <point/>
   </object>
-  <object id="9" name="Jarron" x="102.667" y="120.667">
+  <object id="9" name="Jarron" type="ObjInteract" x="102.667" y="120.667">
    <point/>
   </object>
-  <object id="10" name="Jarron" x="135.333" y="121.333">
+  <object id="10" name="Jarron" type="ObjInteract" x="135.333" y="121.333">
    <point/>
   </object>
-  <object id="3" name="Jarron" x="120" y="121.333">
+  <object id="3" name="Jarron" type="ObjInteract" x="120" y="121.333">
    <point/>
   </object>
   <object id="12" name="TransitionP" type="Transition" x="119.333" y="232">

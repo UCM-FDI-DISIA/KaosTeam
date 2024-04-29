@@ -55,16 +55,16 @@
   <object id="3" name="Crazy frog" type="Enemigo" x="87" y="267">
    <point/>
   </object>
-  <object id="8" name="Jarron" x="248.5" y="24.5">
+  <object id="8" name="Jarron" type="ObjInteract" x="248.5" y="24.5">
    <point/>
   </object>
-  <object id="9" name="Jarron" x="232.5" y="25.5">
+  <object id="9" name="Jarron" type="ObjInteract" x="232.5" y="25.5">
    <point/>
   </object>
-  <object id="10" name="Jarron" x="39" y="267.5">
+  <object id="10" name="Jarron" type="ObjInteract" x="39" y="267.5">
    <point/>
   </object>
-  <object id="11" name="Jarron" x="57" y="265.5">
+  <object id="11" name="Jarron" type="ObjInteract" x="57" y="265.5">
    <point/>
   </object>
   <object id="12" name="Pez" type="Enemigo" x="56" y="60">

@@ -62,13 +62,13 @@
   <object id="8" name="Crazy frog" type="Enemigo" x="246.667" y="214.667">
    <point/>
   </object>
-  <object id="9" name="Jarron" x="88" y="104.667">
+  <object id="9" name="Jarron" type="ObjInteract" x="88" y="104.667">
    <point/>
   </object>
-  <object id="10" name="Jarron" x="104.667" y="105.333">
+  <object id="10" name="Jarron" type="ObjInteract" x="104.667" y="105.333">
    <point/>
   </object>
-  <object id="11" name="Jarron" x="120.667" y="106">
+  <object id="11" name="Jarron" type="ObjInteract" x="120.667" y="106">
    <point/>
   </object>
   <object id="12" name="Palanca" x="56.6667" y="38.6667">

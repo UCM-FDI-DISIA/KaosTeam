@@ -41,82 +41,82 @@
   <object id="1" name="FlonkW" type="Player" x="22.9167" y="74">
    <point/>
   </object>
-  <object id="8" name="Baguette" x="71.6667" y="91">
+  <object id="8" name="Baguette" type="ObjInteract" x="71.6667" y="91">
    <point/>
   </object>
-  <object id="32" name="Baguette" x="776.333" y="91">
+  <object id="32" name="Baguette" type="ObjInteract" x="776.333" y="91">
    <point/>
   </object>
-  <object id="12" name="Baguette" x="200" y="10">
+  <object id="12" name="Baguette" type="ObjInteract" x="200" y="10">
    <point/>
   </object>
-  <object id="9" name="Aceituna" x="72" y="24.6667">
+  <object id="9" name="Aceituna" type="ObjInteract" x="72" y="24.6667">
    <point/>
   </object>
-  <object id="10" name="Vino" x="152.333" y="42">
+  <object id="10" name="Vino" type="ObjInteract" x="152.333" y="42">
    <point/>
   </object>
-  <object id="21" name="Vino" x="455.333" y="11">
+  <object id="21" name="Vino" type="ObjInteract" x="455.333" y="11">
    <point/>
   </object>
-  <object id="27" name="Vino" x="583.333" y="26">
+  <object id="27" name="Vino" type="ObjInteract" x="583.333" y="26">
    <point/>
   </object>
-  <object id="11" name="Cerveza" x="184.333" y="41.6667">
+  <object id="11" name="Cerveza" type="ObjInteract" x="184.333" y="41.6667">
    <point/>
   </object>
-  <object id="14" name="Cerveza" x="311.333" y="90.3333">
+  <object id="14" name="Cerveza" type="ObjInteract" x="311.333" y="90.3333">
    <point/>
   </object>
-  <object id="15" name="Cerveza" x="327.667" y="91">
+  <object id="15" name="Cerveza" type="ObjInteract" x="327.667" y="91">
    <point/>
   </object>
-  <object id="16" name="Cerveza" x="345" y="91">
+  <object id="16" name="Cerveza" type="ObjInteract" x="345" y="91">
    <point/>
   </object>
-  <object id="20" name="Cerveza" x="440" y="26">
+  <object id="20" name="Cerveza" type="ObjInteract" x="440" y="26">
    <point/>
   </object>
-  <object id="25" name="Cerveza" x="503.667" y="11.6667">
+  <object id="25" name="Cerveza" type="ObjInteract" x="503.667" y="11.6667">
    <point/>
   </object>
-  <object id="26" name="Cerveza" x="536.667" y="9.66667">
+  <object id="26" name="Cerveza" type="ObjInteract" x="536.667" y="9.66667">
    <point/>
   </object>
-  <object id="33" name="Cerveza" x="872" y="60">
+  <object id="33" name="Cerveza" type="ObjInteract" x="872" y="60">
    <point/>
   </object>
-  <object id="34" name="Cerveza" x="872" y="42.6667">
+  <object id="34" name="Cerveza" type="ObjInteract" x="872" y="42.6667">
    <point/>
   </object>
-  <object id="13" name="Manzana" x="280.333" y="41.6667">
+  <object id="13" name="Manzana" type="ObjInteract" x="280.333" y="41.6667">
    <point/>
   </object>
-  <object id="17" name="Manzana" x="391.667" y="74.6667">
+  <object id="17" name="Manzana" type="ObjInteract" x="391.667" y="74.6667">
    <point/>
   </object>
-  <object id="18" name="Manzana" x="456.333" y="91.3333">
+  <object id="18" name="Manzana" type="ObjInteract" x="456.333" y="91.3333">
    <point/>
   </object>
-  <object id="30" name="Manzana" x="711" y="59.6667">
+  <object id="30" name="Manzana" type="ObjInteract" x="711" y="59.6667">
    <point/>
   </object>
-  <object id="31" name="Manzana" x="728" y="90.3333">
+  <object id="31" name="Manzana" type="ObjInteract" x="728" y="90.3333">
    <point/>
   </object>
-  <object id="19" name="Salero" x="375.333" y="25">
+  <object id="19" name="Salero" type="ObjInteract" x="375.333" y="25">
    <point/>
   </object>
-  <object id="28" name="Salero" x="631.333" y="73.6667">
+  <object id="28" name="Salero" type="ObjInteract" x="631.333" y="73.6667">
    <point/>
   </object>
-  <object id="29" name="Salero" x="664.333" y="74">
+  <object id="29" name="Salero" type="ObjInteract" x="664.333" y="74">
    <point/>
   </object>
-  <object id="22" name="Queso" x="504" y="40.6667">
+  <object id="22" name="Queso" type="ObjInteract" x="504" y="40.6667">
    <point/>
   </object>
-  <object id="35" name="Cereza" x="920" y="9.33333">
+  <object id="35" name="Cereza" type="ObjInteract" x="920" y="9.33333">
    <point/>
   </object>
  </objectgroup>

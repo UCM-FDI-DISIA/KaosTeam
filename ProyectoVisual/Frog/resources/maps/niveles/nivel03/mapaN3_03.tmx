@@ -43,16 +43,16 @@
   <object id="1" name="FlonkS" type="Player" x="105" y="220">
    <point/>
   </object>
-  <object id="4" name="Jarron" x="24.5" y="105.5">
+  <object id="4" name="Jarron" type="ObjInteract" x="24.5" y="105.5">
    <point/>
   </object>
-  <object id="5" name="Jarron" x="24.5" y="170">
+  <object id="5" name="Jarron" type="ObjInteract" x="24.5" y="170">
    <point/>
   </object>
-  <object id="6" name="Jarron" x="200.5" y="174.5">
+  <object id="6" name="Jarron" type="ObjInteract" x="200.5" y="174.5">
    <point/>
   </object>
-  <object id="7" name="Jarron" x="201.5" y="107.5">
+  <object id="7" name="Jarron" type="ObjInteract" x="201.5" y="107.5">
    <point/>
   </object>
   <object id="8" name="Orbe" x="24.5" y="57">

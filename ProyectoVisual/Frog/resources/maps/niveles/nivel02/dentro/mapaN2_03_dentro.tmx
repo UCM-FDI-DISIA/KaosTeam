@@ -78,10 +78,10 @@
   <object id="3" name="LLave" x="136" y="231.5">
    <point/>
   </object>
-  <object id="4" name="Jarron" x="230" y="233">
+  <object id="4" name="Jarron" type="ObjInteract" x="230" y="233">
    <point/>
   </object>
-  <object id="5" name="Jarron" x="229" y="218">
+  <object id="5" name="Jarron" type="ObjInteract" x="229" y="218">
    <point/>
   </object>
   <object id="16" name="TransitionN" type="Transition" x="136" y="10.5">
