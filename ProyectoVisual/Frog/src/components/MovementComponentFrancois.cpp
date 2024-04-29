@@ -14,9 +14,10 @@ MovementComponentFrancois::~MovementComponentFrancois()
 
 void MovementComponentFrancois::initComponent()
 {
-	velocity = Vector2D(1, 0);
-	upperLimit = ent->getScene()->getMapReader()->getMapSize().getX();
+	velocity = Vector2D(1.0/10, 0);
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+
+	upperLimit = ent->getScene()->getMapReader()->getMapSize().getX() - tr->getWidth()/TILE_SIZE;
 }
 
 void MovementComponentFrancois::checkDirection()

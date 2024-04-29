@@ -3,7 +3,6 @@
 #include "../managers/CameraManager.h"
 
 //El tamaño en pixeles de la casilla
-const int TILE_SIZE = 80;
 
 Box::Box(Vector2D casilla, float width, float height) : casilla(casilla), width(width), height(height) {
 	offset = { 0,0 };

@@ -372,7 +372,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	Entity* bomb = new Entity(this, BOMB_ENTITY);
 	Texture* textBomb = &sdlutils().images().at("eggSheet");;
 
-	TransformComponent* transform = new TransformComponent(pos);
+	TransformComponent* transform = new TransformComponent(pos,TILE_SIZE,TILE_SIZE);
 	bomb->addComponent(TRANSFORM_COMPONENT, transform);
 
 	AnimationComponent* animBomb = new AnimationComponent();

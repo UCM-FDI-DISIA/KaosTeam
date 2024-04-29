@@ -1,6 +1,6 @@
 #pragma once
 #include "Vector2D.h"
-
+const int TILE_SIZE = 80;
 class SDL_Rect;
 //Representa una caja en el espacio con tamaño
 class Box
