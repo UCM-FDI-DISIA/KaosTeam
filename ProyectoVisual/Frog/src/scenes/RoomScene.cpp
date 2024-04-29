@@ -246,6 +246,26 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	AddEntity(redAnt);
 	return redAnt;
 }
+Entity* RoomScene::createCockroach(Vector2D pos) {
+	Entity* cockroach = new Entity(this, COCKROACH_ENTITY);
+	//textura cambiar
+	Texture* txtcockroach = &sdlutils().images().at("fishSheet");//supongo que esto estaba de placeholder
+
+	TransformComponent* transform = new TransformComponent(pos);
+	cockroach->addComponent(TRANSFORM_COMPONENT, transform);
+
+	AnimationComponent* animcockroach = new AnimationComponent();
+	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
+
+	RenderComponent* renderanimcockroach = new RenderComponent(txtcockroach);
+	cockroach->addRenderComponent(renderanimcockroach);
+
+	MovementComponentCockroach* mvm = new MovementComponentCockroach(animcockroach);
+	cockroach->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AddEntity(cockroach);
+	return cockroach;
+}
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this, SNAKE_ENTITY);
 	Texture* txtSnake = &sdlutils().images().at("snakeSheet");
@@ -436,6 +456,9 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	else if (objName == "Bomb") {
 		c = createBomb(pos);
+	}
+	else if (objName == "Cockroach") {
+		c = createCockroach(pos);
 	}
 	return c;
 }

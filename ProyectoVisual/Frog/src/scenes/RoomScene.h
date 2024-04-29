@@ -29,6 +29,7 @@
 #include "../components/TongueHookComponent.h"
 #include "../components/MapShiftComponent.h"
 #include "../components/InventoryComponent.h"
+#include "../components/MovementComponentCockroach.h"
 
 class RoomScene : public Scene
 {
@@ -99,6 +100,7 @@ public:
 	Entity* createPiedraMovible(Vector2D pos);
 	Entity* createEnganche(Vector2D pos);
 	Entity* createPalanca(Vector2D pos, bool pushed, string nextMap);
+	Entity* createCockroach(Vector2D pos);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);

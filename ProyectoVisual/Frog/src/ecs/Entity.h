@@ -36,6 +36,7 @@ enum EntityName {
 	PIEDRAMOV_ENTITY,
 	ENGANCHE_ENTITY,
 	PALANCA_ENTITY
+	COCKROACH_ENTITY
 };
 
 class Component;

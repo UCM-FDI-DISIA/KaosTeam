@@ -159,6 +159,7 @@
     <ClCompile Include="src\components\MapShiftComponent.cpp" />
     <ClCompile Include="src\components\InventoryComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentBomb.cpp" />
+    <ClCompile Include="src\components\MovementComponentCockroach.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
@@ -225,6 +226,7 @@
     <ClInclude Include="src\components\MapShiftComponent.h" />
     <ClInclude Include="src\components\InventoryComponent.h" />
     <ClInclude Include="src\components\MovementComponentBomb.h" />
+    <ClInclude Include="src\components\MovementComponentCockroach.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
