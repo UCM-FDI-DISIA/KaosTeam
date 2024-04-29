@@ -5,7 +5,6 @@
 
 BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2) //
 {
-	cubiertos.reserve(MAX_CUBIERTOS);
 }
 
 BossComponent::~BossComponent()

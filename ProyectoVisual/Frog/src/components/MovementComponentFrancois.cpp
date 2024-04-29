@@ -2,10 +2,11 @@
 #include"../ecs/Entity.h"
 #include"../scenes/RoomScene.h"
 
-MovementComponentFrancois::MovementComponentFrancois():pos(BOSS_INIT_POS), //
-		multiplier(0.2), //
-		lowerLimit(0) //
-{}
+MovementComponentFrancois::MovementComponentFrancois() :pos(BOSS_INIT_POS), //
+multiplier(0.2), //
+lowerLimit(0)
+{
+}
 
 MovementComponentFrancois::~MovementComponentFrancois()
 {
@@ -13,15 +14,14 @@ MovementComponentFrancois::~MovementComponentFrancois()
 
 void MovementComponentFrancois::initComponent()
 {
-	speed = Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 5, 0);
-	upperLimit = ent->getScene()->getMapReader()->getMapSize().getX() 
-		- sdlutils().images().at("shadow").width();
+	velocity = Vector2D(1, 0);
+	upperLimit = ent->getScene()->getMapReader()->getMapSize().getX();
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 
 void MovementComponentFrancois::checkDirection()
 {
-	if (isShadowAtLimit(pos)) speed = speed * -1;
+	if (isShadowAtLimit(pos)) velocity = velocity * -1;
 }
 
 void MovementComponentFrancois::setLowerLimit(short int newLimit)
@@ -31,7 +31,7 @@ void MovementComponentFrancois::setLowerLimit(short int newLimit)
 
 void MovementComponentFrancois::setSpeed(Vector2D newSpeed)
 {
-	speed = newSpeed;
+	velocity = newSpeed;
 }
 
 void MovementComponentFrancois::setMultiplier(float newMultiplier)
@@ -41,15 +41,15 @@ void MovementComponentFrancois::setMultiplier(float newMultiplier)
 
 bool MovementComponentFrancois::isShadowAtLimit(Vector2D pos) const
 {
-	return pos.getX() <= lowerLimit
-		|| pos.getX() >= upperLimit;
+	return  tr->getCasilla().getX() <= lowerLimit
+		|| tr->getCasilla().getX() >= upperLimit;
 }
 
 void MovementComponentFrancois::update()
 {
-
-	int t = ent->getScene()->getMapReader()->getTileSize();
-
-	tr->setOffsetX(tr->getOffset().getX() + t/10000 * speed.getX());
-	cout<<tr->getCasilla();
+	checkDirection();
+	tr->setOffsetX(tr->getOffset().getX()+velocity.getX());
+	tr->setCasilla(velocity + tr->getCasilla());
+	tr->setOffset({ 0,0 });
+	cout << tr->getCasilla();
 }

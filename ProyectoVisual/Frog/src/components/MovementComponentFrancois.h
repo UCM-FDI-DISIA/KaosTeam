@@ -14,7 +14,6 @@ private:
 
 	float multiplier;
 
-	Vector2D speed; //Velocidad de la sombra
 	Vector2D pos; //Posicion de la sombra
 
 	TransformComponent* tr;
