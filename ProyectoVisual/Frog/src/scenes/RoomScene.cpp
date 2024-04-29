@@ -500,7 +500,7 @@ Entity* RoomScene::createDestructible(Vector2D pos, int type, int loot)
 
 	Entity* destructible = new Entity(this);
 
-	if(type = 0) // jarron
+	if(type == 0) // jarron
 	{
 		Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
 		// hay que añadirle luego un sprite siendo destruido
@@ -516,8 +516,8 @@ Entity* RoomScene::createDestructible(Vector2D pos, int type, int loot)
 
 		return destructible;
 	}
-	else if (type = 1)	// arbusto
-	{
+	else if (type == 1)	// arbusto
+	{	
 		// TO DO
 	}
 }
