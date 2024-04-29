@@ -19,7 +19,6 @@ void BossComponent::initComponent()
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {
 		cubiertos[i]->tipo = new Entity(ent->getScene()); //Creamos entidad cubierto
 		cubiertos[i]->tr = new TransformComponent(Vector2D(0, -3)); //Añadimos transform al cubierto
-		cubiertos[i]->tr->setContext(cubiertos[i]->tipo);
 		cubiertos[i]->tipo->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
 	}
 }
