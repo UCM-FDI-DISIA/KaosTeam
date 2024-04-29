@@ -10,6 +10,8 @@ BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTime
 
 BossComponent::~BossComponent()
 {
+	for (auto a : cubiertos)
+		delete a;
 }
 
 void BossComponent::initComponent()
@@ -17,7 +19,6 @@ void BossComponent::initComponent()
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 	render = ent->getRenderComponent();
 	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
-
 	//Creamos cubiertos
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {
 		cubiertos.push_back(new Cubierto);

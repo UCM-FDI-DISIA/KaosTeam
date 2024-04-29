@@ -43,7 +43,7 @@ RoomScene::RoomScene(int id) : id(id), player(nullptr),needMapChange(false),insi
 	shopManager = Shop::instance();
 	shopManager->setPlayer(player);
 
-	createFrancois(Vector2D(0, 0));
+	createFrancois(Vector2D(2, 2));
 
 #pragma region Cosas q vamos a borrar pronto
 	createBomb(Vector2D(4, 2));
@@ -345,8 +345,10 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 Entity* RoomScene::createFrancois(Vector2D pos)
 {
 	Entity* fran = new Entity(this);
+
 	TransformComponent* tr = new TransformComponent(pos);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);
+
 	RenderComponent* rend = new RenderComponent(&sdlutils().images().at("shadow"));
 	fran->addComponent(RENDER_COMPONENT, rend);
 
