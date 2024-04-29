@@ -438,6 +438,43 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	return enganche;
 }
 
+Entity* RoomScene::createPalanca(Vector2D pos, bool pushed, string nextMap)
+{
+	
+	Entity* palanca = new Entity(this, PALANCA_ENTITY);
+	Texture* textP = nullptr;
+	if (pushed)
+		textP = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PalancaA.png", 1, 1);
+	else
+		textP = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PalancaB.png", 1, 1);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	palanca->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(palanca);
+
+	RenderComponent* renderPalanca = new RenderComponent(textP);
+	renderPalanca->setContext(palanca);
+	renderPalanca->initComponent();
+	palanca->addComponent(RENDER_COMPONENT, renderPalanca);
+	palanca->addRenderComponent(renderPalanca);
+
+	Box* boxPalanca = new Box(pos);
+	Collider coll = Collider(boxPalanca);
+	ColliderComponent* collPalanca = new ColliderComponent(transform);
+	collPalanca->AddCollider(coll);
+	collPalanca->setContext(palanca);
+	palanca->addComponent(COLLIDER_COMPONENT, collPalanca);
+
+	MapShiftComponent* tongueInteract = new MapShiftComponent(nextMap);
+	palanca->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
+	tongueInteract->setContext(palanca);
+	tongueInteract->initComponent();
+	
+
+	AddEntity(palanca);
+	return palanca;
+}
+
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
@@ -497,6 +534,9 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	}	
 	else if (objName == "Enganche") {
 		c = createEnganche(pos);
+	}
+	else if (objName == "Palanca") {
+		c = createPalanca(pos, objProps[1].getBoolValue(), objProps[0].getStringValue());
 	}
 
 	return c;
@@ -561,6 +601,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 void RoomScene::movePlayer(Vector2D pos)
 {
 	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
+	cameraManager->setTarget(player);
 }
 
 void RoomScene::AddEntity(Entity* entity) {
@@ -587,7 +628,6 @@ RoomScene::~RoomScene() {
 	}
 
 	//NO BORREIS LO SINGLETONS, Q SE BORRAN SOLOS
-
 	delete mapReader;
 }
 

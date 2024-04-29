@@ -25,7 +25,7 @@ private:
 	Uint32 actionCooldown = 100, movementFrameRate = 30,
 		framesPerJump = 6, framesMoved = 0;
 	bool jumping = false;
-	
+	bool arrastrado = false;
 
 public:
 	MovementComponentFrog(Vector2D casilla, AnimationComponent* a) : MovementComponent(), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()), 

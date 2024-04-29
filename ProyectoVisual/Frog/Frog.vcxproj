@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\MapShiftComponent.cpp" />
     <ClCompile Include="src\components\InventoryComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentBomb.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="src\components\DefenseComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentSnake.cpp" />
     <ClCompile Include="src\ecs\EntityShop.cpp" />
+    <ClCompile Include="src\ecs\Scene.cpp" />
     <ClCompile Include="src\managers\LoadManager.cpp" />
     <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
@@ -220,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\MapShiftComponent.h" />
     <ClInclude Include="src\components\InventoryComponent.h" />
     <ClInclude Include="src\components\MovementComponentBomb.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
