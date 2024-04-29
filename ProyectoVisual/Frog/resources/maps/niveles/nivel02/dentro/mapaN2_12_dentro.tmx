@@ -65,43 +65,43 @@
   <object id="5" name="Enganche" x="40" y="265.333">
    <point/>
   </object>
-  <object id="6" name="Enganche" x="40" y="265.333">
+  <object id="6" name="Enganche" type="ObjInteract" x="40" y="265.333">
    <point/>
   </object>
-  <object id="7" name="Enganche" x="40.6667" y="173.333">
+  <object id="7" name="Enganche" type="ObjInteract" x="40.6667" y="173.333">
    <point/>
   </object>
-  <object id="8" name="Enganche" x="153.333" y="298.667">
+  <object id="8" name="Enganche" type="ObjInteract" x="153.333" y="298.667">
    <point/>
   </object>
-  <object id="11" name="Enganche" x="55.3333" y="298.667">
+  <object id="11" name="Enganche" type="ObjInteract" x="55.3333" y="298.667">
    <point/>
   </object>
   <object id="9" name="Enganche" x="168" y="267.333">
    <point/>
   </object>
-  <object id="10" name="Enganche" x="263.333" y="265.333">
+  <object id="10" name="Enganche" type="ObjInteract" x="263.333" y="265.333">
    <point/>
   </object>
-  <object id="12" name="Enganche" x="263.333" y="170">
+  <object id="12" name="Enganche" type="ObjInteract" x="263.333" y="170">
    <point/>
   </object>
-  <object id="13" name="Enganche" x="294" y="154.667">
+  <object id="13" name="Enganche" type="ObjInteract" x="294" y="154.667">
    <point/>
   </object>
-  <object id="14" name="Enganche" x="298" y="57.3333">
+  <object id="14" name="Enganche" type="ObjInteract" x="298" y="57.3333">
    <point/>
   </object>
-  <object id="15" name="Enganche" x="264.667" y="56">
+  <object id="15" name="Enganche" type="ObjInteract" x="264.667" y="56">
    <point/>
   </object>
-  <object id="16" name="Enganche" x="180.667" y="58.6667">
+  <object id="16" name="Enganche" type="ObjInteract" x="180.667" y="58.6667">
    <point/>
   </object>
-  <object id="17" name="Enganche" x="132.667" y="44">
+  <object id="17" name="Enganche" type="ObjInteract" x="132.667" y="44">
    <point/>
   </object>
-  <object id="18" name="Enganche" x="57.3333" y="43.3333">
+  <object id="18" name="Enganche" type="ObjInteract" x="57.3333" y="43.3333">
    <point/>
   </object>
   <object id="19" name="Snake" type="Enemigo" x="152" y="170">

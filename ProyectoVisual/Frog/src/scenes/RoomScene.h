@@ -20,6 +20,8 @@
 #include "../components/MovementComponentBlackAnt.h"
 #include "../components/MovementComponentRedAnt.h"
 #include "../components/MovementComponentSnake.h"
+#include "../components/RenderComponentDestructible.h"
+#include "../components/DestructibleComponent.h"
 #include "../components/MoneyComponent.h"
 #include"../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
@@ -92,6 +94,7 @@ public:
 	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createSnake(Vector2D pos);
+	Entity* createDestructible(Vector2D pos, int type, int loot);
 	Entity* createBomb(Vector2D pos);
 	Entity* createPiedraMovible(Vector2D pos);
 	Entity* createEnganche(Vector2D pos);

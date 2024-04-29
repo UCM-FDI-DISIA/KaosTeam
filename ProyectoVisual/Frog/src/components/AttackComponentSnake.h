@@ -1,6 +1,5 @@
 #pragma once
 #include "../ecs/Component.h"
-#include "../components/RenderComponentFrog.h"
 
 class Collider;
 class Entity;
@@ -15,6 +14,8 @@ private:
 	Box* attackBox;
 	virtual ~AttackComponentSnake();
 	void checkHit(Entity*, Collider);
+	bool hitted;
+	int damage;
 public:
 	AttackComponentSnake();
 	void update() override;
