@@ -346,11 +346,13 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 {
 	Entity* fran = new Entity(this);
 
+	Texture* txtFran = &sdlutils().images().at("frog");
+
 	TransformComponent* tr = new TransformComponent(pos);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);
 
-	RenderComponent* rend = new RenderComponent(&sdlutils().images().at("shadow"));
-	fran->addComponent(RENDER_COMPONENT, rend);
+	RenderComponent* renderRedAnt = new RenderComponent(txtFran);
+	fran->addRenderComponent(renderRedAnt);
 
 	ColliderComponent* bossColl = new ColliderComponent();
 	fran->addComponent(COLLIDER_COMPONENT, bossColl);
@@ -370,7 +372,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	Entity* bomb = new Entity(this, BOMB_ENTITY);
 	Texture* textBomb = &sdlutils().images().at("eggSheet");;
 
-	TransformComponent* transform = new TransformComponent(pos);
+	TransformComponent* transform = new TransformComponent(pos,TILE_SIZE,TILE_SIZE);
 	bomb->addComponent(TRANSFORM_COMPONENT, transform);
 
 	AnimationComponent* animBomb = new AnimationComponent();
