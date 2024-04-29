@@ -4,9 +4,7 @@
 #include "../scenes/RoomScene.h"
 
 DestructibleComponent::DestructibleComponent(int lootType, Vector2D pos) : loot(lootType), rand_(sdlutils().rand()), position(pos)
-{
-
-}
+{}
 
 void DestructibleComponent::DestroySelf()
 {
