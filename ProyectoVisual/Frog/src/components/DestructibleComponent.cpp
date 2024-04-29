@@ -1,6 +1,6 @@
 #include "DestructibleComponent.h"
 #include "../sdlutils/RandomNumberGenerator.h"
-#include "../sdlutils/SDLUtils.h"
+//#include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
 
 DestructibleComponent::DestructibleComponent(int lootType, Vector2D pos) : loot(lootType), rand_(sdlutils().rand()), position(pos)
@@ -36,6 +36,6 @@ void DestructibleComponent::DestroySelf()
 }
 
 void DestructibleComponent::SpawnLoot(int loot)
-	{
-		
-	}
+{
+	//TODO todo :)
+}

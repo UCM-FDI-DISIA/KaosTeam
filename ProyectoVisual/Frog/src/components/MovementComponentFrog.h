@@ -20,7 +20,7 @@ private:
 	AnimationComponent* anim;
 	Uint32 lastTimeMoved;
 	Directions actualDirection = DOWN; //empieza mirando al frente
-
+	
 	//La idea es que este cooldown sea compartido por todos los componentes de accion de la rana como atacar y etc
 	Uint32 actionCooldown = 100, movementFrameRate = 30,
 		framesPerJump = 6, framesMoved = 0;

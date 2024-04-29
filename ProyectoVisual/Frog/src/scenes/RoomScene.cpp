@@ -449,7 +449,6 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;
-
 	
 	if (objName == "Jarron"){
 		//Comentado para que el juego no reviente
@@ -466,15 +465,15 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 		c = createEnganche(pos);
 	}
 
-	//else if ()......
+//	else if ()......
 //
 //	if (objName == "Nombre que le quieras poner a tu objeto"){
 //		c = createLoqsea(objProps[0].getStringValue(), objProps[1].getIntValue()); POR EJEMPLO
 //Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 //{
-	//Entity* c = nullptr;
-
-	//int objIntID: id que necesita cada obj para acceder a su pos en el vector del data manager d objetos interactuables
+//	Entity* c = nullptr;
+//
+//	int objIntID: id que necesita cada obj para acceder a su pos en el vector del data manager d objetos interactuables
 
 	return c;
 }
