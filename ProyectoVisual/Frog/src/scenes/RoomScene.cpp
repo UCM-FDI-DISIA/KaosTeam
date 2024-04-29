@@ -137,6 +137,27 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 	return c;
 }
 
+Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps) {
+	Entity* c = new Entity(this, COGIBLE_ENTITY);
+
+	//Configura primero comportamiento de objeto cogible general.
+	TransformComponent* transform = new TransformComponent(pos);
+	c->addComponent(TRANSFORM_COMPONENT, transform);
+	
+	ColliderComponent* collider = new ColliderComponent(transform);
+	c->addComponent(COLLIDER_COMPONENT, collider);
+
+	//Agrega componente que define el comportamiento específico de ese objeto cogible a través
+	//De un switch (parece que para c++ no hay switch con strings).
+	if (objName == "gancho") {
+		Texture* texture = &sdlutils().images().at("hook");
+		RenderComponent* render = new RenderComponent(texture);
+		//Añade la funcionalidad espcífica de este objeto.
+	}
+	AddEntity(c);
+}
+
+
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
 	Entity* frog = new Entity(this, CRAZY_FROG_ENTITY);
@@ -516,6 +537,9 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	}
 	else if (objClass == "Transition") {		
 		c = createTransition(pos, objName, objProps[0].getStringValue());
+	}
+	else if (objClass == "ObjCogible") {
+		c = createCogible(pos, objName, objProps);
 	}
 	return c;
 }
