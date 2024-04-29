@@ -29,7 +29,7 @@
 #include "../components/InventoryComponent.h"
 #pragma endregion
 
-RoomScene::RoomScene(int id) : id(id), player(nullptr) {
+RoomScene::RoomScene(int id) : id(id), player(nullptr),needMapChange(false),insideShop(false) {
 	//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y 
 	// las entidades de la sala.
 	std::string initMapPath = "resources/maps/niveles/nivel01/mapaN1_01.tmx";

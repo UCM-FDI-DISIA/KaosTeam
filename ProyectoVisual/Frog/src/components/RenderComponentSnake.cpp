@@ -2,6 +2,7 @@
 #include "../scenes/RoomScene.h"
 #include "../managers/MapManager.h"
 #include "AttackComponentSnake.h"
+#include "AttackComponentFrog.h"
 #include "MovementComponentSnake.h"
 #include "AnimationComponent.h"
 #include "TransformComponent.h"
