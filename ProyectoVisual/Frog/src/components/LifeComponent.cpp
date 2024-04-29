@@ -23,8 +23,6 @@ void LifeComponent::SetActual(int n) {
 
 	//Si ya no tiene vidas (lo compruebo aqui para no tener que hacerlo todo el rato en el update)
 	if (!alive()) {
-		move = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
-		move->setStatic(); //Paramos a la entidad
 		animator->stopAnimation(); //Paramos la animación que estuviese haciendo
 		animator->playAnimation("DEATH"); //Reproducimos animacion de muerte (si la tiene)
 		timerforDelete.resume(); //Ponemos contador en marcha

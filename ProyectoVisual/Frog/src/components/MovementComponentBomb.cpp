@@ -38,28 +38,15 @@ void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
 	if (!shockEntity) { //Comprobamos que ya 
 		LifeComponent* lifeEntity = static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT));
 		switch (ent->getName()) {
-		case EntityName::BREAKABLE_DOOR_ENTITY:
-			//Destruimos la puerta: ent-> MetodoAlQueLlamar(); 
-			std::cout << "PUERTA DESTRUIDA" << std::endl;
+		case EntityName::EXPLOITABLE_ENTITY:
+			explodeBomb();
 			break;
-		case EntityName::INTERRUPTOR_ENTITY:
-			//Activamos interruptor
-			std::cout << "INTERRUPTOR ACTIVADO" << std::endl;
-			break;
-		//case EntityName::SNAKE_ENTITY:
-		//	//Quitariamos vida a la serpiente...
-		//	ent->getScene()->removeEntity(ent);
-		//	//Eliminamos a la bomba
-		//	explodeBomb();
-		//	std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
-		//	break;
 		case EntityName::FROG_ENTITY:
 			lifeEntity->SetActual(-1); //bajamos vida de la entidad con la que choca
 			explodeBomb();
 			break;
 			//...Mas casos
 		}
-		lifeEntity = nullptr;
 	}
 	
 }
@@ -98,7 +85,7 @@ void MovementComponentBomb::checkShock() {
 //Este metodo se ejecuta en caso de que la bomba choque con algo
 //Simplemente haría la animación de explosión y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
 void MovementComponentBomb::explodeBomb() {
-
+	setStatic();
 	animator->stopAnimation(); //Paramos animacion actual
 	animator->removeAnimations(); //Quitamos animaciones existentes
 	rndr->ChangeTexture(explosionText); //cambiamos la textura del objeto (al spriteSheet de la explosion)

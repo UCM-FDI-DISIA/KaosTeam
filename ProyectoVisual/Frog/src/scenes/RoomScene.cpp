@@ -324,15 +324,15 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	atckSnake->setContext(snake);
 	snake->addComponent(ATTACK_COMPONENT, atckSnake);
 
-	LifeComponent* lfSnake = new LifeComponent(1, 1);
+	/*LifeComponent* lfSnake = new LifeComponent(1, 1);
 	lfSnake->setContext(snake);
 	lfSnake->initComponent();
-	snake->addComponent(LIFE_COMPONENT, lfSnake);
+	snake->addComponent(LIFE_COMPONENT, lfSnake);*/
 
-	ExploitableComponent* exp = new ExploitableComponent();
+	/*ExploitableComponent* exp = new ExploitableComponent();
 	exp->setContext(snake);
 	exp->initComponent();
-	snake->addComponent(EXPLOITABLE_COMPONENT, exp);
+	snake->addComponent(EXPLOITABLE_COMPONENT, exp);*/
 
 	AddEntity(snake);
 	return snake;
