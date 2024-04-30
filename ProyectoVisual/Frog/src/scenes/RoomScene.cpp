@@ -346,7 +346,7 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 {
 	Entity* fran = new Entity(this);
 
-	Texture* txtFran = &sdlutils().images().at("frog");
+	Texture* txtFran = &sdlutils().images().at("darkShadow");
 
 	TransformComponent* tr = new TransformComponent(pos);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);

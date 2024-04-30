@@ -19,6 +19,5 @@ public:
 	Texture* GetTexture() const { return myTexture; };
 	void ChangeTexture(Texture* newText) { myTexture = newText; }; //Por si queremos cambiar la textura a un objeto
     void render();
-	void changeAlpha(int);
 	virtual void initComponent() override;
 };

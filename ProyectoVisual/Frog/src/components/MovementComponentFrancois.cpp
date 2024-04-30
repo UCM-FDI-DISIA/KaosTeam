@@ -52,5 +52,4 @@ void MovementComponentFrancois::update()
 	tr->setOffsetX(tr->getOffset().getX()+velocity.getX());
 	tr->setCasilla(velocity + tr->getCasilla());
 	tr->setOffset({ 0,0 });
-	cout << tr->getCasilla();
 }
