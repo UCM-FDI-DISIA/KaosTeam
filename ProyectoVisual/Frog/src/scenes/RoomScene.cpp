@@ -149,12 +149,15 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 
 	//Agrega componente que define el comportamiento específico de ese objeto cogible a través
 	//De un switch (parece que para c++ no hay switch con strings).
-	if (objName == "gancho") {
+	if (objName == "Gancho") {
 		Texture* texture = &sdlutils().images().at("hook");
 		RenderComponent* render = new RenderComponent(texture);
+		c->addRenderComponent(render);
 		//Añade la funcionalidad espcífica de este objeto.
 	}
 	AddEntity(c);
+
+	return c;
 }
 
 
