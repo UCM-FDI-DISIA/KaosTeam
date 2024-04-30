@@ -43,7 +43,7 @@ RoomScene::RoomScene(int id) : id(id), player(nullptr),needMapChange(false),insi
 	shopManager = Shop::instance();
 	shopManager->setPlayer(player);
 
-	createFrancois(Vector2D(2, 2));
+	createFrancois(Vector2D(0, 0));
 
 #pragma region Cosas q vamos a borrar pronto
 	createBomb(Vector2D(4, 2));
