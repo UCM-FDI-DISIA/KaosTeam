@@ -17,7 +17,7 @@ void MovementComponentFrancois::initComponent()
 	velocity = Vector2D(1.0/10, 0);
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 
-	upperLimit = ent->getScene()->getMapReader()->getMapSize().getX() - tr->getWidth()/TILE_SIZE;
+	upperLimit = ent->getScene()->getMapReader()->getMapSize().getX() - (tr->getWidth()/TILE_SIZE);
 }
 
 void MovementComponentFrancois::checkDirection()
@@ -52,4 +52,5 @@ void MovementComponentFrancois::update()
 	tr->setOffsetX(tr->getOffset().getX()+velocity.getX());
 	tr->setCasilla(velocity + tr->getCasilla());
 	tr->setOffset({ 0,0 });
+	cout << tr->getCasilla();
 }
