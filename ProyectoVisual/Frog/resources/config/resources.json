@@ -27,14 +27,12 @@
         { "id" : "snakeSheet", "file" : "resources/Sprites/SnakeSpritesheet.png", "rows" : 4, "cols" : 2},
         { "id" : "snakeAttackSheet", "file" : "resources/Sprites/SnakeSpritesheetAttack.png", "rows" : 2, "cols" : 1},
         { "id" : "fishSheet", "file" : "resources/Sprites/spritesheetFish.png", "rows" : 1, "cols" : 3},
-        { "id" : "shadow", "file" : "resources/Sprites/sombraNormal.png", "rows" : 1, "cols" : 1},
-        { "id" : "darkShadow", "file" : "resources/Sprites/sombraOscura.png", "rows" : 1, "cols" : 1},
-        { "id" : "darkestShadow", "file" : "resources/Sprites/sombraMuyOscura.png", "rows" : 1, "cols" : 1},
         { "id" : "avispa", "file" : "resources/cristinaPrueba/avispa.png", "rows" : 1, "cols" : 1},
         { "id" : "ciempies", "file" : "resources/cristinaPrueba/ciempies.png", "rows" : 1, "cols" : 1},
         { "id" : "saltamontes", "file" : "resources/cristinaPrueba/saltamonte.png", "rows" : 1, "cols" : 1},
 
-
+        { "id" : "darkShadow", "file" : "resources/Sprites/sombraOscura.png", "rows" : 1, "cols" : 1},
+        { "id" : "cubiertos", "file" :  "resources/Sprites/cubiertosSpritesheet.png", "rows" :  1, "cols" : 4},
 
         { "id" : "MenuInicio", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
         { "id" : "GameOver", "file" : "resources/Menus/MenuGameOver.png", "rows" : 1, "cols" : 1},
