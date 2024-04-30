@@ -12,7 +12,7 @@
 
 class Texture {
 public:
-
+	Texture() {};
 	// cannot copy textures
 	Texture(const Texture&) = delete;
 	Texture& operator=(const Texture&) = delete;

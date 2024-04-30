@@ -32,7 +32,11 @@
         { "id" : "saltamontes", "file" : "resources/cristinaPrueba/saltamonte.png", "rows" : 1, "cols" : 1},
 
         { "id" : "darkShadow", "file" : "resources/Sprites/sombraOscura.png", "rows" : 1, "cols" : 1},
-        { "id" : "cubiertos", "file" :  "resources/Sprites/cubiertosSpritesheet.png", "rows" :  1, "cols" : 4},
+        { "id" : "cuchara", "file" :  "resources/Sprites/Cuchara.png", "rows" :  1, "cols" : 1},
+        { "id" : "cuchilloCarnicero", "file" :  "resources/Sprites/Cuchillo_Carnicero.png", "rows" :  1, "cols" : 1},
+        { "id" : "cuchillo", "file" :  "resources/Sprites/Cuchillo.png", "rows" :  1, "cols" : 1},
+        { "id" : "tenedor", "file" :  "resources/Sprites/Tenedor.png", "rows" :  1, "cols" : 1},
+
 
         { "id" : "MenuInicio", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
         { "id" : "GameOver", "file" : "resources/Menus/MenuGameOver.png", "rows" : 1, "cols" : 1},

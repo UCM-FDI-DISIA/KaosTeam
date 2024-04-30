@@ -5,6 +5,11 @@
 
 BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2) //
 {
+	texturasCubiertos = new Texture*[MAX_CUBIERTOS];
+	texturasCubiertos[0] = &sdlutils().images().at("cuchara"); //Sprite cuchara
+	texturasCubiertos[1] = &sdlutils().images().at("cuchilloCarnicero");//Sprite cuchillo carnicero
+	texturasCubiertos[2] = &sdlutils().images().at("cuchillo"); //Sprite cuchillo 
+	texturasCubiertos[3] = &sdlutils().images().at("tenedor"); //Sprite tenedor
 }
 
 BossComponent::~BossComponent()
@@ -20,15 +25,7 @@ void BossComponent::initComponent()
 	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
 
 	//Creamos cubiertos
-	Cubierto aux;
-	for (int i = 0; i < MAX_CUBIERTOS; i++) {
-		Cubierto* c = &aux;
-		cubiertos.push_back(c);
-		cubiertos[i]->ent = new Entity(ent->getScene()); //Creamos entidad cubierto
-		cubiertos[i]->tr = new TransformComponent(Vector2D(i, 2)); //Añadimos transform al cubierto
-		cubiertos[i]->ent->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
-
-	}
+	
 }
 
 void BossComponent::update()
@@ -98,6 +95,18 @@ void BossComponent::createCutlery()
 	/* L�gica de crear los cubiertos.
 		Usar randoms para la aparicion de cada uno, otro para decidir si se crea cuchillo o tenedor, otro para 
 		la fila en la que spawnea, y otro para la velocidad que tendr�. */
+	Cubierto aux;
+	Cubierto* c = &aux;
+	for (int i = 0; i < MAX_CUBIERTOS; i++) {
+		cubiertos.push_back(c);
+		cubiertos[i]->tipo = (tipoCubierto)i; //Asignamos id con el tipo de cubierto
+		cubiertos[i]->ent = new Entity(ent->getScene()); //Creamos entidad cubierto
+		cubiertos[i]->tr = new TransformComponent(Vector2D(i, 2)); //Añadimos transform al cubierto
+		cubiertos[i]->ent->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
+		cubiertos[i]->render = new RenderComponent(texturasCubiertos[i]); //Añadimos la textura pertinente al render
+		cubiertos[i]->ent->addRenderComponent(render);
+
+	}
 }
 
 void BossComponent::moveCutlery()
