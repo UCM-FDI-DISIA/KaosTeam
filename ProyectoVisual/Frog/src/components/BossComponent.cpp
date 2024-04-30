@@ -24,8 +24,7 @@ void BossComponent::initComponent()
 	render = ent->getRenderComponent();
 	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
 
-	//Creamos cubiertos
-	
+	createCutlery(); //Creamos cubiertos
 }
 
 void BossComponent::update()
@@ -99,13 +98,15 @@ void BossComponent::createCutlery()
 	Cubierto* c = &aux;
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {
 		cubiertos.push_back(c);
-		cubiertos[i]->tipo = (tipoCubierto)i; //Asignamos id con el tipo de cubierto
-		cubiertos[i]->ent = new Entity(ent->getScene()); //Creamos entidad cubierto
-		cubiertos[i]->tr = new TransformComponent(Vector2D(i, 2)); //Añadimos transform al cubierto
-		cubiertos[i]->ent->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
-		cubiertos[i]->render = new RenderComponent(texturasCubiertos[i]); //Añadimos la textura pertinente al render
-		cubiertos[i]->ent->addRenderComponent(render);
-
+		cubiertos[i]->tipo_ = (tipoCubierto)i; //Asignamos id con el tipo de cubierto
+		cubiertos[i]->ent_ = new Entity(ent->getScene()); //Creamos entidad cubierto
+		cubiertos[i]->tr_ = new TransformComponent(Vector2D(i + 3, 5)); //Añadimos transform al cubierto
+		cubiertos[i]->ent_->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr_);
+		cubiertos[i]->coll_ = new ColliderComponent(cubiertos[i]->tr_);
+		cubiertos[i]->ent_->addComponent(COLLIDER_COMPONENT, cubiertos[i]->coll_);
+		cubiertos[i]->render_ = new RenderComponent(texturasCubiertos[i]); //Añadimos la textura pertinente al render
+		cubiertos[i]->ent_->addRenderComponent(cubiertos[i]->render_);
+		ent->getScene()->AddEntity(cubiertos[i]->ent_);
 	}
 }
 
@@ -113,7 +114,7 @@ void BossComponent::moveCutlery()
 {
 	//L�gica para mover los cubiertos que est�n activos en la pool de cubiertos
 	for (auto cubierto : poolCubiertos)
-		if(cubierto.second) cubierto.first->pos = cubierto.first->pos + cubierto.first->speed;
+		if(cubierto.second) cubierto.first->pos_ = cubierto.first->pos_ + cubierto.first->speed_;
 }
 
 bool BossComponent::isFlonkOnShadow() const

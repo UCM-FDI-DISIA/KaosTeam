@@ -16,14 +16,7 @@ public:
 	void changePos(Vector2D v);
 	void resetPos(Vector2D v);
 
-	Vector2D getCasilla() {
-		return casilla;
-	}
-
-	void setCasilla(Vector2D casilla) {
-		this->casilla = casilla;
-	}
-
+	//Getters
 	float getWidth() {
 		return width;
 	}
@@ -36,6 +29,19 @@ public:
 		return offset;
 	}
 
+	Vector2D getCasilla() {
+		return casilla;
+	}
+
+	Vector2D* getCasillaPointer() {
+		return &casilla;
+	}
+
+	//Setters
+	void setCasilla(Vector2D casilla) {
+		this->casilla = casilla;
+	}
+
 	void setOffset(Vector2D offset) {
 		this->offset = offset;
 	}
@@ -46,10 +52,5 @@ public:
 
 	void setOffsetX(float x) {
 		this->offset.setX(x);
-	}
-
-
-	Vector2D* getCasillaPointer() {
-		return &casilla;
 	}
 };

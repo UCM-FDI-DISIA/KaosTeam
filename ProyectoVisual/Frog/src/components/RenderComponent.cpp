@@ -11,7 +11,7 @@ void RenderComponent::render()
 		}
 		else {
 			myTexture->renderFrame(transform->GetOnDisplayPosition(), myAnimator->getCurrentFil(), myAnimator->getCurrentCol());
-		}	
+		}
 	}
 	else {
 		myTexture->render(transform->GetOnDisplayPosition());

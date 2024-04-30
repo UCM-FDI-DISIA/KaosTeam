@@ -17,16 +17,14 @@ const int MAX_CUBIERTOS = 4;
 enum bossState { MOVE, DETECT, ATTACK };
 enum tipoCubierto { CUCHARA, CUCHILLO, CUCHILLO_CARNICERO, TENEDOR };
 struct Cubierto {
-	Entity* ent;
-	tipoCubierto tipo;
-	TransformComponent* tr;
-	RenderComponent* render;
-	Box* box;
-	Collider coll;
-	ColliderComponent* collCmp;
-	Vector2D pos;
-	Vector2D speed;
-	int spawnTime; //Tiempo en spawnear tras iniciar el ataque del Boss
+	Entity* ent_;
+	tipoCubierto tipo_;
+	TransformComponent* tr_;
+	RenderComponent* render_;
+	ColliderComponent* coll_;
+	Vector2D pos_;
+	Vector2D speed_;
+	int spawnTime_; //Tiempo en spawnear tras iniciar el ataque del Boss
 };
 
 class BossComponent: public Component
@@ -36,12 +34,11 @@ private:
 	RenderComponent* render;
 	std::vector<Cubierto*> cubiertos;
 	std::vector<std::pair<Cubierto*, bool>> poolCubiertos; //El numero de cubiertos max instanciados depende de la zona
-	Texture** texturasCubiertos; //Sprite tenedor
+	Texture** texturasCubiertos; //Array de texturas de los cubiertos
 
 	int shadowTimer; //para saber cuanto tiempo ha pasado en la sombra
 	int postAttackTimer; //para evitar que empiece a detectar tras un ataque
 
-	Texture* sombra;
 	Texture* aviso; //Imagen aviso en que columna aparecera un cubierto
 	TransformComponent* tr;
 	MovementComponentFrancois* mov;
