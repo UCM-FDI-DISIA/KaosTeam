@@ -3,8 +3,7 @@
 #include "../scenes/RoomScene.h"
 
 
-BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), //
-					tex(&sdlutils().images().at("cubiertos")) //
+BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2) //
 {
 }
 

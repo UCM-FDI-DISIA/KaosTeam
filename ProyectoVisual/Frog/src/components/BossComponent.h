@@ -16,6 +16,10 @@ const int MAX_CUBIERTOS = 4;
 
 enum bossState { MOVE, DETECT, ATTACK };
 enum tipoCubierto { CUCHARA, CUCHILLO, CUCHILLO_CARNICERO, TENEDOR };
+Texture* texturasCubiertos[MAX_CUBIERTOS] = { &sdlutils().images().at("cuchara"), //Sprite cuchara
+											&sdlutils().images().at("cuchilloCarnicero"), //Sprite cuchillo carnicero
+											&sdlutils().images().at("cuchillo"), //Sprite cuchillo 
+											&sdlutils().images().at("tenedor") }; //Sprite tenedor
 
 struct Cubierto {
 	Entity* ent;
