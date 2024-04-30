@@ -348,7 +348,7 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 
 	Texture* txtFran = &sdlutils().images().at("darkShadow");
 
-	TransformComponent* tr = new TransformComponent(pos);
+	TransformComponent* tr = new TransformComponent(pos,800,640);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);
 
 	RenderComponent* renderRedAnt = new RenderComponent(txtFran);
