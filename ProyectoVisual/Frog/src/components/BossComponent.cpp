@@ -3,7 +3,8 @@
 #include "../scenes/RoomScene.h"
 
 
-BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2) //
+BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), //
+					tex(&sdlutils().images().at("cubiertos")) //
 {
 }
 
@@ -18,15 +19,16 @@ void BossComponent::initComponent()
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 	render = ent->getRenderComponent();
 	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
-	//Creamos cubiertos
 
+	//Creamos cubiertos
 	Cubierto aux;
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {
 		Cubierto* c = &aux;
 		cubiertos.push_back(c);
-		cubiertos[i]->tipo = new Entity(ent->getScene()); //Creamos entidad cubierto
-		cubiertos[i]->tr = new TransformComponent(Vector2D(0, -3)); //Añadimos transform al cubierto
-		cubiertos[i]->tipo->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
+		cubiertos[i]->ent = new Entity(ent->getScene()); //Creamos entidad cubierto
+		cubiertos[i]->tr = new TransformComponent(Vector2D(i, 2)); //Añadimos transform al cubierto
+		cubiertos[i]->ent->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr);
+
 	}
 }
 

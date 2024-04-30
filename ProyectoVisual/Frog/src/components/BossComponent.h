@@ -15,17 +15,18 @@ const int MAX_TIME_ON_SHADOW = 3;
 const int MAX_CUBIERTOS = 4;
 
 enum bossState { MOVE, DETECT, ATTACK };
-enum tipoCubierto { TENEDOR, CUCHILLO, CUCHARA, SPORK };
+enum tipoCubierto { CUCHARA, CUCHILLO, CUCHILLO_CARNICERO, TENEDOR };
 
 struct Cubierto {
-	Entity* tipo;
+	Entity* ent;
+	tipoCubierto tipo;
 	TransformComponent* tr;
+	RenderComponent* render;
 	Box* box;
 	Collider coll;
 	ColliderComponent* collCmp;
 	Vector2D pos;
 	Vector2D speed;
-	Texture* tex; //Imagen del cubierto
 	int spawnTime; //Tiempo en spawnear tras iniciar el ataque del Boss
 };
 
