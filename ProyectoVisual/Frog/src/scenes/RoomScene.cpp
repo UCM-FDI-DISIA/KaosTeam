@@ -86,7 +86,7 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	input->setComponents(mvm, atck, invComp);
 	player->addComponent(INPUT_COMPONENT, input);
 
-	LifeComponent* lc = new LifeComponent();
+	LifeComponent* lc = new LifeComponent(10, 10);
 	player->addComponent(LIFE_COMPONENT, lc);
 
 	MoneyComponent* moneyComp = new MoneyComponent();
@@ -266,7 +266,7 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	AddEntity(cockroach);
 	return cockroach;
 }
-Entity* RoomScene::createExploitableDoor(Vector2D pos) {
+Entity* RoomScene::createExplotableDoor(Vector2D pos) {
 	Entity* door = new Entity(this, EXPLOITABLE_ENTITY);
 	//Texture* txtDoor = &sdlutils().images().at("fishSheet"); falta definir la textura verdadera de la puerta
 	Texture* txtDoor = &sdlutils().images().at("fishSheet");
@@ -293,6 +293,7 @@ Entity* RoomScene::createExploitableDoor(Vector2D pos) {
 	AddEntity(door);
 	return door;
 }
+
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this, SNAKE_ENTITY);
 	Texture* txtSnake = &sdlutils().images().at("snakeSheet");
@@ -559,8 +560,12 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	return c;
 }
 
-Entity* RoomScene::createExploitable(Vector2D pos) {
-	return nullptr;
+Entity* RoomScene::createExplotable(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps) {
+	Entity* c = nullptr;
+	if (objName == "Puerta Explotable") {
+		c = createExplotableDoor(pos);
+	}
+	return c;
 }
 
 Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
@@ -615,6 +620,9 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	}
 	else if (objClass == "Transition") {		
 		c = createTransition(pos, objName, objProps[0].getStringValue());
+	}
+	else if (objClass == "Explotable") {
+		c = createExplotable(pos, objName, objProps);
 	}
 	return c;
 }
