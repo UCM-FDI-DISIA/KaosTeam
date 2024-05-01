@@ -40,14 +40,16 @@ void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
 		if (lifeEntity != nullptr) {
 			//Dañar a la entidad en uno
 			lifeEntity->SetActual(-1); //bajamos vida de la entidad con la que choca
+			explodeBomb(); //En ambos casos la bomba explota
 		}
 		else if (ent->getName() == EntityName::EXPLOITABLE_ENTITY) {
 			//Destruyes el objeto explotable
 			ExploitableComponent* exp = static_cast<ExploitableComponent*>(ent->getComponent(EXPLOITABLE_COMPONENT));
 			//Metodo a llamar
-
+			exp->exploitEntity();
+			explodeBomb();
 		}
-		explodeBomb(); //En ambos casos la bomba explota
+		
 	}
 }
 

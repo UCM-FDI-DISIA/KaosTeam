@@ -324,15 +324,10 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	atckSnake->setContext(snake);
 	snake->addComponent(ATTACK_COMPONENT, atckSnake);
 
-	/*LifeComponent* lfSnake = new LifeComponent(1, 1);
+	LifeComponent* lfSnake = new LifeComponent(1, 1);
 	lfSnake->setContext(snake);
 	lfSnake->initComponent();
-	snake->addComponent(LIFE_COMPONENT, lfSnake);*/
-
-	//ExploitableComponent* exp = new ExploitableComponent();
-	//exp->setContext(snake);
-	//exp->initComponent();
-	//snake->addComponent(EXPLOITABLE_COMPONENT, exp);
+	snake->addComponent(LIFE_COMPONENT, lfSnake);
 
 	AddEntity(snake);
 	return snake;
@@ -441,6 +436,10 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	*/
 
 	return c;
+}
+
+Entity* RoomScene::createExploitable(Vector2D pos) {
+	return nullptr;
 }
 
 Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
