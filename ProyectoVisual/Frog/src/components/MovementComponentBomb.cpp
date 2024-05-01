@@ -42,7 +42,7 @@ void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
 		LifeComponent* lifeEntity = static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT));
 		if (lifeEntity != nullptr) {
 			//Da�ar a la entidad en uno
-			lifeEntity->SetActual(-1); //bajamos vida de la entidad con la que choca
+			lifeEntity->hit(-1); //bajamos vida de la entidad con la que choca
 			explodeBomb(); //En ambos casos la bomba explota
 		}
 		else if (ent->getName() == EntityName::EXPLOITABLE_ENTITY) {
