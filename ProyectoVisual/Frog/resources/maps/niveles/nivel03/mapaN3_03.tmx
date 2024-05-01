@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="17">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="22">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="14" height="15">
   <data encoding="csv">
@@ -40,19 +40,31 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Flonk" x="105" y="234">
+  <object id="1" name="FlonkS" type="Player" x="105" y="220">
    <point/>
   </object>
-  <object id="4" name="Jarron" x="24.5" y="105.5">
+  <object id="6" name="Jarron" type="ObjInteract" x="200.5" y="174.5">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
-  <object id="5" name="Jarron" x="24.5" y="170">
+  <object id="19" name="Jarron" type="ObjInteract" x="199.5" y="107.5">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
-  <object id="6" name="Jarron" x="200.5" y="174.5">
+  <object id="20" name="Jarron" type="ObjInteract" x="24.5" y="107.5">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
-  <object id="7" name="Jarron" x="201.5" y="107.5">
+  <object id="21" name="Jarron" type="ObjInteract" x="26" y="170">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
   <object id="8" name="Orbe" x="24.5" y="57">
@@ -71,6 +83,18 @@
    <point/>
   </object>
   <object id="9" name="Orbe" x="200" y="58">
+   <point/>
+  </object>
+  <object id="17" name="TransitionS" type="Transition" x="120.5" y="234">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="18" name="TransitionS" type="Transition" x="104" y="234">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02.tmx"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

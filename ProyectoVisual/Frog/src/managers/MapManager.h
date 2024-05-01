@@ -83,11 +83,13 @@ private:
 public:
     MapManager(const std::string& path, RoomScene* room);
     ~MapManager();
+    void clearMap();
     void loadBg(const std::string& path, SDL_Renderer* ren);
     void loadObj(const std::string& path);
     void draw(SDL_Renderer* ren);
 
     Vector2D getMapSize();
+
     //la matriz para gestionar colisiones etc
     vector<vector<tile*>> walkableTiles;
     bool isTileWalkable(Vector2D);

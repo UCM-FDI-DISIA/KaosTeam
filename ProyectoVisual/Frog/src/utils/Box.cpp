@@ -20,6 +20,7 @@ Box::Box() {
 	offset = { 0, 0 };
 	width = TILE_SIZE;
 	height = TILE_SIZE;
+	scale = 1;
 };
 
 SDL_Rect Box::GetOnDisplayPosition() const{

@@ -4,7 +4,7 @@
 #include "../managers/DataManager.h"
 #include "AnimationComponent.h"
 #include "MovementComponentFrog.h"
-#include "TransformComponent.h"
+
 
 class MovementComponentRedAnt : public MovementComponent {
 private:
@@ -25,7 +25,7 @@ private:
 	void canMove(Vector2D vel, Direction dir);
 public:
 	MovementComponentRedAnt(AnimationComponent* a, MovementComponentFrog* target);
-	~MovementComponentRedAnt() {};
+	~MovementComponentRedAnt();
 	void update() override;
 	void initComponent() override; 
 };

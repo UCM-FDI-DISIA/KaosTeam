@@ -3,13 +3,14 @@
 #include "Game.h"
 #include "../scenes/RoomScene.h"
 
-RunningState::RunningState(Game* g) : game(g), hud(new HUDManager()), currScene(new RoomScene(1)),imngr(im())
+RunningState::RunningState(Game* g) : game(g), hud(), currScene(new RoomScene(1)),imngr(im())
 {
 	//allRooms.reserve(numRooms);
 }
 
 RunningState::~RunningState()
 {
+	delete currScene;
 	//for (auto a : allRooms)
 	//{
 	//	delete a;
@@ -28,7 +29,7 @@ void RunningState::update()
 	{
 		game->setNextState(game->PAUSED);
 	}
-	currScene->update();
+	//currScene->update();
 }
 
 void RunningState::enter()

@@ -2,9 +2,9 @@
 #include "../scenes/RoomScene.h"
 
 
-void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string animation)
+void MovementComponentFrog::startMovement(Directions d, Vector2D v)
 {
-	if (!jumping && canMove) 
+	if (!jumping) 
 	{
 		if (checkIfTileWalkable(tr->getCasilla() + v))
 		{
@@ -15,7 +15,37 @@ void MovementComponentFrog::startMovement(Directions d, Vector2D v, std::string 
 
 		}
 		actualDirection = d;
-		anim->playAnimation(animation);
+
+		if (!arrastrado) {
+			string animation = "";
+			switch (d) { //Se configura como se empieza a renderizar la lengua
+			case Directions::LEFT:
+				animation = "LEFT";
+				break;
+			case Directions::RIGHT:
+				animation = "RIGHT";
+				break;
+			case Directions::UP:
+				animation = "UP";
+				break;
+			case Directions::DOWN:
+				animation = "DOWN";
+				break;
+			default:
+				break;
+			}
+			anim->playAnimation(animation);
+		}
+	}
+}
+
+void MovementComponentFrog::cancelMovement()
+{
+	if (jumping) {
+		velocity = { 0,0 };
+		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+		jumping = false;
+		tr->setOffset({0,0});
 	}
 }
 
@@ -25,19 +55,10 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 	anim->playAnimation("IDLE_" + animation);
 }
 
-//CAMBIARÁ CUANDO TENGAMOS LAS COLISIONES!!!!
-void MovementComponentFrog::changePosFrog(Vector2D v)
-{	
-	Entity* objEnDestino = ent->getScene()->getMapReader()->getTile(velocity.normalize() + tr->getCasilla())->objInTile;
-	if ((objEnDestino != nullptr) && (objEnDestino->getComponent(TRANSITION_COMPONENT) != nullptr)) {
-		//COLISION CON OBJETO DE TRANSICION
-		static_cast<TransitionComponent*>(objEnDestino->getComponent(TRANSITION_COMPONENT))->changeMap();
-	}
-	else {
-		//Simplemente pasa a la otra casilla
-		tr->setCasilla(velocity + tr->getCasilla());
-		std::cout << "Rana Posicion: " << "(" << tr->getCasilla().getX() << " " << tr->getCasilla().getY() << ")" << std::endl;
-	}
+void MovementComponentFrog::hookAttract(Vector2D newPos)
+{
+	startMovement(actualDirection, newPos - tr->getCasilla());
+	arrastrado = true;
 }
 
 void MovementComponentFrog::update() {
@@ -51,39 +72,21 @@ void MovementComponentFrog::update() {
 		if (actualDirection == LEFT || actualDirection == RIGHT)
 		{
 			tr->setOffsetX(tr->getOffset().getX() + t / framesPerJump * velocity.getX());
-			tr->setOffsetY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
+			if (!arrastrado)
+				tr->setOffsetY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
 		}
 		else
 		{
 			tr->setOffsetY(tr->getOffset().getY() + t / framesPerJump * velocity.getY());
 		}
 
-		//como las colisiones ya no se hacen por casillas, esto no lo necesitamos
-
-		//if (tr->getOffset().getX() * velocity.normalize().getX() >= t / 2 ||
-		//	tr->getOffset().getY() * velocity.normalize().getY() >= t / 2) //si se mueve mas de media casilla, está en la casilla siguiente
-		//{
-		//	//este chikiparrafo cambiará cuando tengamos las colisones
-		//	if (checkIfTileWalkable(velocity.normalize() + tr->getCasilla()))
-		//		changePosFrog(velocity.normalize() + tr->getCasilla());
-		//	else
-		//		tr->getCasilla() = velocity.normalize() + tr->getCasilla();
-
-
-		//	if (actualDirection == LEFT || actualDirection == RIGHT)
-		//		tr->getOffset().setX(tr->getOffset().getX() * -1);
-		//	else
-		//		tr->getOffset().setY(tr->getOffset().getY() * -1);
-
-		//}
-
 		if (framesMoved == framesPerJump) //para acabar el movimiento
 		{
-			changePosFrog(velocity.normalize() + tr->getCasilla());
-			//changePos(velocity.normalize() + posCasilla);
+			tr->setCasilla(velocity + tr->getCasilla());
 			tr->setOffset({ 0,0 });
 			framesMoved = 0;
 			jumping = false;
+			arrastrado = false;
 		}
 	}
 }

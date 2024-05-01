@@ -3,42 +3,45 @@
 #include "../ecs/Component.h"
 #include "../scenes/RoomScene.h"
 
-MovementComponentBomb::MovementComponentBomb() :MovementComponent(), shockEntity(false), direction(NONE), explosionTime(2000) {
-	timerForDelete.pause(); //pausamos timer de explosión (solo se activa cuando la bomba ha chocado con algo)
+
+
+MovementComponentBomb::MovementComponentBomb() : shockEntity(false), direction(NONE), explosionTime(2000) {
+	timerForDelete.pause(); //pausamos timer de explosiï¿½n (solo se activa cuando la bomba ha chocado con algo)
 }
 
 MovementComponentBomb::~MovementComponentBomb(){
 	delete explosionText;
 	moveFrog = nullptr;
-	animator = nullptr;
-	lf = nullptr;
+
 }
 
 void MovementComponentBomb::initComponent() {
 	//Obtenemos componentes necesarios
 	moveFrog = static_cast<MovementComponentFrog*>(ent->getScene()->getPlayer()->getComponent(MOVEMENT_COMPONENT));
-	animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
+	AnimationComponent* animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	tr = static_cast<TransformComponent*> (ent->getComponent(TRANSFORM_COMPONENT));
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
-	rndr = static_cast<RenderComponent*>(ent->getComponent(RENDER_COMPONENT));
-	lf = static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT));
+	//rndr = static_cast<RenderComponent*>(ent->getComponent(RENDER_COMPONENT));
+
 
 	//Inicilaizamos valores que vaa tener en cuanto la bomba se instancie
 	direction = moveFrog->getDirection();
 	animator->playAnimation("BOMB_IDLE");
 
 
-	//Añadimos funcion de collider a la bomba
+	//Aï¿½adimos funcion de collider a la bomba
 	//std::list<Collider> listCol = coll->GetColliders(); //Accedemos a la lista de colliders
-	coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsBomb(e, c); }); //Añadimos callback
+	coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsBomb(e, c); }); //Aï¿½adimos callback
 }
 
-// Esta función, se llamará en cada iteracción del update para detectar con que entity colisiona y hacer las correspondientes acciones
+// Esta funciï¿½n, se llamarï¿½ en cada iteracciï¿½n del update para detectar con que entity colisiona y hacer las correspondientes acciones
+//(Mi idea era hacer el metodo aqui, sin embargo, no puedo acceder a la entidad contra la que colisiona
+// la bomba desde aquï¿½, asi que no me queda mas remedio que hacerlo en la RoomScene...)
 void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
 	if (!shockEntity) { //Comprobamos que ya 
 		LifeComponent* lifeEntity = static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT));
 		if (lifeEntity != nullptr) {
-			//Dañar a la entidad en uno
+			//Daï¿½ar a la entidad en uno
 			lifeEntity->SetActual(-1); //bajamos vida de la entidad con la que choca
 			explodeBomb(); //En ambos casos la bomba explota
 		}
@@ -59,6 +62,7 @@ void MovementComponentBomb::moveBomb() {
 	switch (direction) {
 	case Directions::DOWN:
 		velocity = Vector2D(0, 0.01);
+		//velocity = Vector2D(0, 0);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		break;
 	case Directions::UP:
@@ -86,28 +90,35 @@ void MovementComponentBomb::checkShock() {
 }
 
 //Este metodo se ejecuta en caso de que la bomba choque con algo
-//Simplemente haría la animación de explosión y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
+//Simplemente harï¿½a la animaciï¿½n de explosiï¿½n y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
 void MovementComponentBomb::explodeBomb() {
 	setStatic();
+	AnimationComponent* animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
+	RenderComponent* rndr = ent->getRenderComponent();
+
+
 	animator->stopAnimation(); //Paramos animacion actual
 	animator->removeAnimations(); //Quitamos animaciones existentes
 	rndr->ChangeTexture(explosionText); //cambiamos la textura del objeto (al spriteSheet de la explosion)
-	animator->addAnimation("DEATH", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
+	animator->addAnimation("EXPLOSION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
+	animator->playAnimation("EXPLOSION"); //Reproducimos explosiï¿½n
 
-	lf->SetActual(-1); //Restamos vida
-	shockEntity = true; //Para que la bomba deje de comprobar colisiones
+	shockEntity = true;
+	velocity = Vector2D(0, 0);
+
+	timerForDelete.resume(); //Activamos timer para eliminar la bomba despues de un cierto tiempo
 }
 
 void MovementComponentBomb::update() {
-	if (canMove) { //Si no se ha muerto la bomba y no se puede mover, comporbamos colisiones
-		// Si ha pasado un tiempo suficiente desde la explosión, eliminamos la entidad 
-		// -> Esto lo hago en el LifeComponent para que funcione con todas las entidades, no solo con la bomba
-		//if (timerForDelete.currTime() >= explosionTime) {
-			//ent->getScene()->removeEntity(this->ent);
-		//}
-		checkShock();
-		moveBomb();
+	// Si ha pasado un tiempo suficiente desde la explosiï¿½n, eliminamos la entidad
+	if (timerForDelete.currTime() >= explosionTime) {
+		ent->getScene()->removeEntity(this->ent);
 	}
+	
+	checkShock();
+	
+	//Si no ha chocado con nada, movemos la bomba
+	if (!shockEntity) moveBomb();
 }
 
 
