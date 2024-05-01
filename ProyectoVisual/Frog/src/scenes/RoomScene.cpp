@@ -266,6 +266,33 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	AddEntity(cockroach);
 	return cockroach;
 }
+Entity* RoomScene::createExploitableDoor(Vector2D pos) {
+	Entity* door = new Entity(this, EXPLOITABLE_ENTITY);
+	//Texture* txtDoor = &sdlutils().images().at("fishSheet"); falta definir la textura verdadera de la puerta
+	Texture* txtDoor = &sdlutils().images().at("fishSheet");
+
+	TransformComponent* transform = new TransformComponent(pos);
+	door->addComponent(TRANSFORM_COMPONENT, transform);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	door->addComponent(COLLIDER_COMPONENT, collider);
+
+	AnimationComponent* animDoor = new AnimationComponent();
+	animDoor->setContext(door);
+	animDoor->addAnimation("IDLE", Animation({ Vector2D(0,1) }, true, false));
+	animDoor->addAnimation("DEATH", Animation({ Vector2D(0,0) }, false, true));
+	door->addComponent(ANIMATION_COMPONENT, animDoor);
+	animDoor->playAnimation("IDLE"); //Al crear la puerta esta en modo idle
+
+	RenderComponent* renderDoor = new RenderComponent(txtDoor);
+	door->addRenderComponent(renderDoor);
+
+	ExploitableComponent* exp = new ExploitableComponent();
+	door->addComponent(EXPLOITABLE_COMPONENT, exp);
+
+	AddEntity(door);
+	return door;
+}
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this, SNAKE_ENTITY);
 	Texture* txtSnake = &sdlutils().images().at("snakeSheet");

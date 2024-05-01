@@ -66,6 +66,8 @@
     <ClCompile Include="src\components\TongueHookComponent.cpp" />
     <ClCompile Include="src\components\MapShiftComponent.cpp" />
     <ClCompile Include="src\ecs\Scene.cpp" />
+    <ClCompile Include="src\components\MovementComponentCockroach.cpp" />
+    <ClCompile Include="src\components\ExploitableComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -144,6 +146,8 @@
     <ClInclude Include="src\scenes\MenuPausa.h" />
     <ClInclude Include="src\components\TongueHookComponent.h" />
     <ClInclude Include="src\components\MapShiftComponent.h" />
+    <ClInclude Include="src\components\MovementComponentCockroach.h" />
+    <ClInclude Include="src\components\ExploitableComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

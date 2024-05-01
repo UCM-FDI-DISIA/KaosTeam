@@ -30,6 +30,7 @@
 #include "../components/MapShiftComponent.h"
 #include "../components/InventoryComponent.h"
 #include "../components/MovementComponentCockroach.h"
+#include "../components/ExploitableComponent.h"
 
 class RoomScene : public Scene
 {
@@ -101,6 +102,7 @@ public:
 	Entity* createEnganche(Vector2D pos);
 	Entity* createPalanca(Vector2D pos, bool pushed, string nextMap);
 	Entity* createCockroach(Vector2D pos);
+	Entity* createExploitableDoor(Vector2D pos);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);

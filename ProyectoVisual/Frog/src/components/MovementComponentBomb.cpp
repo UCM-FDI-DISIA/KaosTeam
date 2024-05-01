@@ -96,7 +96,6 @@ void MovementComponentBomb::explodeBomb() {
 	AnimationComponent* animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	RenderComponent* rndr = ent->getRenderComponent();
 
-
 	animator->stopAnimation(); //Paramos animacion actual
 	animator->removeAnimations(); //Quitamos animaciones existentes
 	rndr->ChangeTexture(explosionText); //cambiamos la textura del objeto (al spriteSheet de la explosion)
