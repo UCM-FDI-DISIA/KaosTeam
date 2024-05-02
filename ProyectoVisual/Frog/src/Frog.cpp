@@ -11,7 +11,6 @@ int main(int ac, char** av)
 {
     Game game = Game();
     game.init();
-
     //delete game;
 
     //_CrtSetDbgFlag;

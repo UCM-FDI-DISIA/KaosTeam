@@ -344,15 +344,15 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 Entity* RoomScene::createFrancois(Vector2D pos)
 {
-	Entity* fran = new Entity(this);
+	Entity* fran = new Entity(this,FRENCH_ENTITY);
 
 	Texture* txtFran = &sdlutils().images().at("darkShadow");
 
 	TransformComponent* tr = new TransformComponent(pos, 800, 640);
 	fran->addComponent(TRANSFORM_COMPONENT, tr);
 
-	RenderComponent* renderRedAnt = new RenderComponent(txtFran);
-	fran->addRenderComponent(renderRedAnt);
+	RenderComponent* renderTheFrench = new RenderComponent(txtFran);
+	fran->addRenderComponent(renderTheFrench);
 
 	ColliderComponent* bossColl = new ColliderComponent();
 	fran->addComponent(COLLIDER_COMPONENT, bossColl);

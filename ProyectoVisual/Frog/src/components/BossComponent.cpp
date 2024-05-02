@@ -23,7 +23,10 @@ void BossComponent::initComponent()
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 	render = ent->getRenderComponent();
 	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
-
+	Collider c = Collider(tr);
+	c.AddCall([this](Entity* e, Collider c) {
+		attack(e, c);
+		});
 	createCutlery(); //Creamos cubiertos
 }
 
@@ -37,7 +40,7 @@ void BossComponent::update()
 		detect();
 		break;
 	case ATTACK:
-		attack();
+		//attack();
 		break;
 	default:
 		break;
@@ -72,8 +75,11 @@ void BossComponent::detect()
 	}
 }
 
-void BossComponent::attack()
+void BossComponent::attack(Entity* e, Collider c)
 {
+	if (e->getName() == FROG_ENTITY) {
+		std::cout << "RANANANANANAN";
+	}
 	createCutlery();
 	moveCutlery();
 }

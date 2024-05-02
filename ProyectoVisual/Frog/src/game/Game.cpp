@@ -64,7 +64,6 @@ void Game::gameLoop() {
 		if (changeState) {
 			changeGameState(nextState);
 		}
-
 	}
 }
 /**

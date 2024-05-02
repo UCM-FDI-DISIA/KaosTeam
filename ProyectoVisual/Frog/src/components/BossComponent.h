@@ -52,7 +52,7 @@ public:
 
 	void move();
 	void detect();
-	void attack();
+	void attack(Entity* e, Collider c);
 
 	void darkenShadow();
 	void resetShadow(); // para que e
