@@ -42,6 +42,7 @@ private:
 	Texture* aviso; //Imagen aviso en que columna aparecera un cubierto
 	TransformComponent* tr;
 	MovementComponentFrancois* mov;
+	ColliderComponent* coll;
 
 public:
 	BossComponent();
@@ -57,10 +58,8 @@ public:
 	void moveCutlery(); //Mover cubiertos
 
 	//Getters
-	bool isFlonkOnShadow() const;
 	bool hasCrashed() const; //Comprueba si un cubierto ha chocado contra otro objeto
 	bool isOutOfScreen(Vector2D pos) const; //Comprueba si un cubierto se ha salido de la pantalla
-
 
 	void setContaminatedDishes(int d) { contDishes += d; };
 };

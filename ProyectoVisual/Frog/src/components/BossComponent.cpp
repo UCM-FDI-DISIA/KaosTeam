@@ -22,25 +22,14 @@ void BossComponent::initComponent()
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 	render = ent->getRenderComponent();
 	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
-	Collider c = Collider(tr);
-	c.AddCall([this](Entity* e, Collider c) {
-		attack(e, c);
-		});
+	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
+	coll->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {attack(e, c); }); //A�adimos callback
 	createCutlery(); //Creamos cubiertos
 }
 
 void BossComponent::update()
 {
-	switch (currState) {
-	case MOVE:
-		move();
-		break;
-	case ATTACK:
-		//attack();
-		break;
-	default:
-		break;
-	}
+
 }
 
 void BossComponent::generateCutlery()
@@ -48,7 +37,6 @@ void BossComponent::generateCutlery()
 	int rand = sdlutils().rand().nextInt(1 + contDishes, 5 + contDishes); //Cuantos cubiertos tendra el ataque
 	for (int i = 0; i < rand; i++) {
 		int c = sdlutils().rand().nextInt(CUCHARA, TENEDOR + 1); //Se decide que cubierto se añade a la pool
-
 	}
 
 }
@@ -58,9 +46,9 @@ void BossComponent::attack(Entity* e, Collider c)
 	if (e->getName() == FROG_ENTITY) {
 		std::cout << "RANANANANANAN";
 	}
-	createCutlery();
+	/*createCutlery();
 	generateCutlery();
-	moveCutlery();
+	moveCutlery();*/
 
 }
 
@@ -100,11 +88,6 @@ void BossComponent::moveCutlery()
 		
 }
 
-bool BossComponent::isFlonkOnShadow() const
-{
-	//L�gica de comprobar si Flonk esta en cualquiera de las casillas que ocupa la sombra
-	return false;
-}
 
 bool BossComponent::hasCrashed() const
 {
