@@ -399,6 +399,9 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 	ColliderComponent* colldestructible = new ColliderComponent(transform);
 	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
 
+	DestructibleComponent* destructibleComponent = new DestructibleComponent(loot, pos);
+	destructible->addComponent(DESTRUCTIBLE_COMPONENT, destructibleComponent);
+
 	return destructible;
 }
 
