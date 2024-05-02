@@ -87,7 +87,7 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	input->setComponents(mvm, atck, invComp);
 	player->addComponent(INPUT_COMPONENT, input);
 
-	LifeComponent* lc = new LifeComponent();
+	LifeComponent* lc = new LifeComponent(10, 10);
 	player->addComponent(LIFE_COMPONENT, lc);
 
 	MoneyComponent* moneyComp = new MoneyComponent();
@@ -267,6 +267,34 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	AddEntity(cockroach);
 	return cockroach;
 }
+Entity* RoomScene::createExplotableDoor(Vector2D pos) {
+	Entity* door = new Entity(this, EXPLOITABLE_ENTITY);
+	//Texture* txtDoor = &sdlutils().images().at("fishSheet"); falta definir la textura verdadera de la puerta
+	Texture* txtDoor = &sdlutils().images().at("fishSheet");
+
+	TransformComponent* transform = new TransformComponent(pos);
+	door->addComponent(TRANSFORM_COMPONENT, transform);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	door->addComponent(COLLIDER_COMPONENT, collider);
+
+	AnimationComponent* animDoor = new AnimationComponent();
+	animDoor->setContext(door);
+	animDoor->addAnimation("IDLE", Animation({ Vector2D(0,1) }, true, false));
+	animDoor->addAnimation("DEATH", Animation({ Vector2D(0,0) }, false, true));
+	door->addComponent(ANIMATION_COMPONENT, animDoor);
+	animDoor->playAnimation("IDLE"); //Al crear la puerta esta en modo idle
+
+	RenderComponent* renderDoor = new RenderComponent(txtDoor);
+	door->addRenderComponent(renderDoor);
+
+	ExploitableComponent* exp = new ExploitableComponent();
+	door->addComponent(EXPLOITABLE_COMPONENT, exp);
+
+	AddEntity(door);
+	return door;
+}
+
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this, SNAKE_ENTITY);
 	Texture* txtSnake = &sdlutils().images().at("snakeSheet");
@@ -301,6 +329,11 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 	AttackComponentSnake* atckSnake = new AttackComponentSnake();
 	snake->addComponent(ATTACK_COMPONENT, atckSnake);
+
+	LifeComponent* lfSnake = new LifeComponent(1, 1);
+	lfSnake->setContext(snake);
+	lfSnake->initComponent();
+	snake->addComponent(LIFE_COMPONENT, lfSnake);
 
 	AddEntity(snake);
 	return snake;
@@ -535,6 +568,14 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	return c;
 }
 
+Entity* RoomScene::createExplotable(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps) {
+	Entity* c = nullptr;
+	if (objName == "Puerta Explotable") {
+		c = createExplotableDoor(pos);
+	}
+	return c;
+}
+
 Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;
@@ -590,6 +631,9 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 		c = createTransition(pos, objName, objProps[0].getStringValue());
 	}
 
+	else if (objClass == "Explotable") {
+		c = createExplotable(pos, objName, objProps);
+	}
 	return c;
 }
 
