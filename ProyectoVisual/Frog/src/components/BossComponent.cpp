@@ -31,16 +31,7 @@ void BossComponent::initComponent()
 
 void BossComponent::update()
 {
-	switch (currState) {
-	case MOVE:
-		move();
-		break;
-	case ATTACK:
-		//attack();
-		break;
-	default:
-		break;
-	}
+	moveCutlery();
 }
 
 void BossComponent::generateCutlery()
@@ -53,15 +44,22 @@ void BossComponent::generateCutlery()
 
 }
 
+void BossComponent::cleanPool()
+{
+	for (auto cubierto : poolCubiertos) {
+		if (cubierto.second) {
+			if (isOutOfScreen(Vector2D(0, cubierto.first->tr_->GetOnDisplayPosition().y)))
+				cubierto.second = false;
+		}
+	}
+}
+
 void BossComponent::attack(Entity* e, Collider c)
 {
 	if (e->getName() == FROG_ENTITY) {
 		std::cout << "RANANANANANAN";
 	}
-	createCutlery();
 	generateCutlery();
-	moveCutlery();
-
 }
 
 void BossComponent::createCutlery()
@@ -100,16 +98,12 @@ void BossComponent::moveCutlery()
 		
 }
 
-bool BossComponent::isFlonkOnShadow() const
-{
-	//L�gica de comprobar si Flonk esta en cualquiera de las casillas que ocupa la sombra
-	return false;
-}
-
-bool BossComponent::hasCrashed() const
+void BossComponent::onCutleryCollision(Entity* e, Collider c)
 {
 	//L�gica de colision con otras entidades de la sala
-	return false;
+	if (e->getName() == FROG_ENTITY) {
+		//Llamar a callback que reste vida a Flonk
+	}
 }
 
 bool BossComponent::isOutOfScreen(Vector2D pos) const

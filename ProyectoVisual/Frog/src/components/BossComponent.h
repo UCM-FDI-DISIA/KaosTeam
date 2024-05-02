@@ -55,12 +55,11 @@ public:
 	void createCutlery(); //Crear cubiertos
 	void generateCutlery(); //Colocar cubiertos y avisos en el mapa
 	void moveCutlery(); //Mover cubiertos
+	void cleanPool(); //Elminamos cubiertos que se han salido de la pantalla
+	void onCutleryCollision(Entity* e, Collider c); //Gestion de restar vida a Flonk si es golpeado
 
 	//Getters
-	bool isFlonkOnShadow() const;
-	bool hasCrashed() const; //Comprueba si un cubierto ha chocado contra otro objeto
 	bool isOutOfScreen(Vector2D pos) const; //Comprueba si un cubierto se ha salido de la pantalla
-
 
 	void setContaminatedDishes(int d) { contDishes += d; };
 };
