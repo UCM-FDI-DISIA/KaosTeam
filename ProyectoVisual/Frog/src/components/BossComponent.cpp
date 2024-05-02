@@ -3,7 +3,8 @@
 #include "../scenes/RoomScene.h"
 
 
-BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2) //
+BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTimer(2), //
+							aviso(&sdlutils().images().at("aviso")) //
 {
 	texturasCubiertos = new Texture*[MAX_CUBIERTOS];
 	texturasCubiertos[0] = &sdlutils().images().at("cuchara"); //Sprite cuchara
@@ -14,8 +15,6 @@ BossComponent::BossComponent() : currState(MOVE), shadowTimer(0), postAttackTime
 
 BossComponent::~BossComponent()
 {
-	for (auto a : cubiertos)
-		delete a;
 }
 
 void BossComponent::initComponent()
@@ -33,9 +32,6 @@ void BossComponent::update()
 	case MOVE:
 		move();
 		break;
-	case DETECT:
-		detect();
-		break;
 	case ATTACK:
 		attack();
 		break;
@@ -44,49 +40,28 @@ void BossComponent::update()
 	}
 }
 
+void BossComponent::generateCutlery()
+{
+	int rand = sdlutils().rand().nextInt(1 + contDishes, 5 + contDishes); //Cuantos cubiertos tendra el ataque
+	for (int i = 0; i < rand; i++) {
+		int c = sdlutils().rand().nextInt(CUCHARA, TENEDOR + 1); //Se decide que cubierto se añade a la pool
+
+	}
+
+}
+
 void BossComponent::move()
 {
 	if (isFlonkOnShadow()) {
-		currState = DETECT;
-		mov->setMultiplier(0.3);
-		/*pos = pos + speed * multiplier;*/
-	}
-}
-
-void BossComponent::detect()
-{
-	if (isFlonkOnShadow()) {
-		shadowTimer++;
-		if (shadowTimer >= MAX_TIME_ON_SHADOW) {
-			darkenShadow();
-			currState = ATTACK;
-			mov->setMultiplier(0.0);
-			shadowTimer = 0;
-		}
-	}
-	else {
-		currState = MOVE;
-		resetShadow();
-		mov->setMultiplier(1.0);
-		shadowTimer = 0;
+		currState = ATTACK;
 	}
 }
 
 void BossComponent::attack()
 {
-	createCutlery();
+	generateCutlery();
 	moveCutlery();
-}
 
-
-void BossComponent::darkenShadow()
-{
-	//L�gica de cambiar alpha de la textura por la m�s oscura
-}
-
-void BossComponent::resetShadow()
-{
-	//Logica de cambiar alpha de textura a algo mas claro
 }
 
 void BossComponent::createCutlery()
@@ -100,21 +75,29 @@ void BossComponent::createCutlery()
 		cubiertos.push_back(c);
 		cubiertos[i]->tipo_ = (tipoCubierto)i; //Asignamos id con el tipo de cubierto
 		cubiertos[i]->ent_ = new Entity(ent->getScene()); //Creamos entidad cubierto
-		cubiertos[i]->tr_ = new TransformComponent(Vector2D(i + 3, 5)); //Añadimos transform al cubierto
+		cubiertos[i]->tr_ = new TransformComponent(Vector2D(i , i), 80, 160); //Añadimos transform al cubierto
 		cubiertos[i]->ent_->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr_);
 		cubiertos[i]->coll_ = new ColliderComponent(cubiertos[i]->tr_);
 		cubiertos[i]->ent_->addComponent(COLLIDER_COMPONENT, cubiertos[i]->coll_);
 		cubiertos[i]->render_ = new RenderComponent(texturasCubiertos[i]); //Añadimos la textura pertinente al render
 		cubiertos[i]->ent_->addRenderComponent(cubiertos[i]->render_);
-		ent->getScene()->AddEntity(cubiertos[i]->ent_);
+		ent->getScene()->AddEntity(cubiertos[i]->ent_); //Añadimos a la lista de entidades
+
 	}
 }
 
 void BossComponent::moveCutlery()
 {
 	//L�gica para mover los cubiertos que est�n activos en la pool de cubiertos
-	for (auto cubierto : poolCubiertos)
-		if(cubierto.second) cubierto.first->pos_ = cubierto.first->pos_ + cubierto.first->speed_;
+	for (auto cubierto : poolCubiertos) {
+		if (cubierto.second) {
+			cubierto.first->tr_->setOffset(cubierto.first->tr_->getOffset() + cubierto.first->speed_);
+			cubierto.first->tr_->setCasilla(cubierto.first->speed_ + cubierto.first->tr_->getCasilla());
+			cubierto.first->tr_->setOffset({ -cubierto.first->tr_->getCasilla().getX() / 2,
+				-cubierto.first->tr_->getCasilla().getY() / 2 });
+		}
+	}
+		
 }
 
 bool BossComponent::isFlonkOnShadow() const

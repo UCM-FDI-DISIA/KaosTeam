@@ -22,7 +22,6 @@ struct Cubierto {
 	TransformComponent* tr_;
 	RenderComponent* render_;
 	ColliderComponent* coll_;
-	Vector2D pos_;
 	Vector2D speed_;
 	int spawnTime_; //Tiempo en spawnear tras iniciar el ataque del Boss
 };
@@ -38,6 +37,7 @@ private:
 
 	int shadowTimer; //para saber cuanto tiempo ha pasado en la sombra
 	int postAttackTimer; //para evitar que empiece a detectar tras un ataque
+	int contDishes; //Platos contaminados en cada momento
 
 	Texture* aviso; //Imagen aviso en que columna aparecera un cubierto
 	TransformComponent* tr;
@@ -51,12 +51,10 @@ public:
 	void update() override;
 
 	void move();
-	void detect();
 	void attack();
 
-	void darkenShadow();
-	void resetShadow(); // para que e
 	void createCutlery(); //Crear cubiertos
+	void generateCutlery(); //Colocar cubiertos y avisos en el mapa
 	void moveCutlery(); //Mover cubiertos
 
 	//Getters
@@ -64,5 +62,7 @@ public:
 	bool hasCrashed() const; //Comprueba si un cubierto ha chocado contra otro objeto
 	bool isOutOfScreen(Vector2D pos) const; //Comprueba si un cubierto se ha salido de la pantalla
 
+
+	void setContaminatedDishes(int d) { contDishes += d; };
 };
 

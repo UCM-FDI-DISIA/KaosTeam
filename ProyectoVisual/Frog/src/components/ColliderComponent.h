@@ -49,7 +49,7 @@ public:
 	//Añade un collider a este componente
 	void AddCollider(Collider c);
 	std::list<Collider> GetColliders() const;
-	Collider* GetTransofmCollider();
+	Collider* GetTransformCollider();
 private:
 	//Lista de colliders gestionados por este componente
 	std::list<Collider> colliders;
