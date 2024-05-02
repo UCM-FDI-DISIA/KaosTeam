@@ -50,8 +50,6 @@ public:
 	void initComponent() override;
 	void update() override;
 
-	void move();
-	void detect();
 	void attack(Entity* e, Collider c);
 
 	void createCutlery(); //Crear cubiertos

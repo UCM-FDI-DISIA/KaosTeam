@@ -53,13 +53,6 @@ void BossComponent::generateCutlery()
 
 }
 
-void BossComponent::move()
-{
-	if (isFlonkOnShadow()) {
-		currState = ATTACK;
-	}
-}
-
 void BossComponent::attack(Entity* e, Collider c)
 {
 	if (e->getName() == FROG_ENTITY) {
@@ -89,7 +82,7 @@ void BossComponent::createCutlery()
 		cubiertos[i]->render_ = new RenderComponent(texturasCubiertos[i]); //Añadimos la textura pertinente al render
 		cubiertos[i]->ent_->addRenderComponent(cubiertos[i]->render_);
 		ent->getScene()->AddEntity(cubiertos[i]->ent_); //Añadimos a la lista de entidades
-
+		cubiertos[i]->speed_ = Vector2D(0, -0.1); //Setteamos su velocidad
 	}
 }
 
