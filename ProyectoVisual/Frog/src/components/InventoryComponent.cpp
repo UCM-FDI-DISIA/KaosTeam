@@ -1,7 +1,7 @@
 #include "InventoryComponent.h"
 
 
-InventoryComponent::InventoryComponent() : attackUpgrade(false),damageUpgrade(false), jumpUpgrade(false),entityActual(nullptr) {}
+InventoryComponent::InventoryComponent() : attackUpgrade(false),damageUpgrade(false), jumpUpgrade(true),entityActual(nullptr) {}
 InventoryComponent::~InventoryComponent() {
 	entityActual = nullptr;
 }

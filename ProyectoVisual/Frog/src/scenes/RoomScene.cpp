@@ -31,10 +31,11 @@ void RoomScene::update() {
 void RoomScene::CheckColisions() {
 	for (Entity* e1 : entityList) {
 		ColliderComponent* coll1 = static_cast<ColliderComponent*>(e1->getComponent(COLLIDER_COMPONENT));
-		if (coll1 != nullptr)
+		if (coll1 != nullptr) {
 			for (Entity* e2 : entityList) {
 				coll1->CheckCollision(e2);
 			}
+		}
 	}
 }
 
@@ -328,7 +329,6 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	AddEntity(bomb);
 	return bomb;
 }
-
 Entity* RoomScene::createPiedraMovible(Vector2D pos)
 {
 	Entity* piedra = new Entity(this, PIEDRAMOV_ENTITY);
@@ -352,7 +352,6 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos)
 	AddEntity(piedra);
 	return piedra;
 }
-
 Entity* RoomScene::createEnganche(Vector2D pos)
 {
 	Entity* enganche = new Entity(this, ENGANCHE_ENTITY);
@@ -376,42 +375,51 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	AddEntity(enganche);
 	return enganche;
 }
-
-Entity* RoomScene::createPalanca(Vector2D pos, bool pushed, string nextMap)
+Entity* RoomScene::createMapChanger(string name, Vector2D pos, bool pushed, string nextMap)
 {
-	
-	Entity* palanca = new Entity(this, PALANCA_ENTITY);
-	Texture* textP = nullptr;
-	if (pushed)
-		textP = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PalancaA.png", 1, 1);
-	else
-		textP = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PalancaB.png", 1, 1);
+	Entity* e = nullptr;
+	Texture* text = nullptr;
+
+	if (name == "Palanca") {
+		e =	new Entity(this, PALANCA_ENTITY);
+		if (pushed)
+			text = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PalancaA.png", 1, 1);
+		else
+			text = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PalancaB.png", 1, 1);
+	}
+	else if (name == "Boton") {
+		e = new Entity(this, BOTON_ENTITY);
+		if (!pushed)
+			text = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/BotonA.png", 1, 1);
+		else
+			text = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/BotonB.png", 1, 1);
+	}
 
 	TransformComponent* transform = new TransformComponent(pos);
-	palanca->addComponent(TRANSFORM_COMPONENT, transform);
-	transform->setContext(palanca);
+	e->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(e);
 
-	RenderComponent* renderPalanca = new RenderComponent(textP);
-	renderPalanca->setContext(palanca);
-	renderPalanca->initComponent();
-	palanca->addComponent(RENDER_COMPONENT, renderPalanca);
-	palanca->addRenderComponent(renderPalanca);
+	RenderComponent* renderC = new RenderComponent(text);
+	renderC->setContext(e);
+	renderC->initComponent();
+	e->addComponent(RENDER_COMPONENT, renderC);
+	e->addRenderComponent(renderC);
 
-	Box* boxPalanca = new Box(pos);
-	Collider coll = Collider(boxPalanca);
-	ColliderComponent* collPalanca = new ColliderComponent(transform);
-	collPalanca->AddCollider(coll);
-	collPalanca->setContext(palanca);
-	palanca->addComponent(COLLIDER_COMPONENT, collPalanca);
+	Box* box = new Box(pos);
+	Collider colli = Collider(box);
+	ColliderComponent* collC = new ColliderComponent(transform);
+	collC->AddCollider(colli);
+	collC->setContext(e);
+	e->addComponent(COLLIDER_COMPONENT, collC);
 
 	MapShiftComponent* tongueInteract = new MapShiftComponent(nextMap);
-	palanca->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
-	tongueInteract->setContext(palanca);
-	tongueInteract->initComponent();
+	e->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
+	//tongueInteract->setContext(e);
+	//tongueInteract->initComponent();
 	
 
-	AddEntity(palanca);
-	return palanca;
+	AddEntity(e);
+	return e;
 }
 
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
@@ -520,8 +528,8 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	else if (objName == "Enganche") {
 		c = createEnganche(pos);
 	}
-	else if (objName == "Palanca") {
-		c = createPalanca(pos, objProps[1].getBoolValue(), objProps[0].getStringValue());
+	else if (objName == "Palanca" || objName == "Boton") {
+		c = createMapChanger(objName, pos, objProps[1].getBoolValue(), objProps[0].getStringValue());
 	}
 
 	return c;
@@ -536,6 +544,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	else if (objClass == "Player") {
 		//SOLO CREAR� (aka cambiar� d sitio) EL FLONK QUE CORRESPONDE
 		if (player == nullptr) {
+			cout << "create player";
 			c = createPlayer(pos, 100, 100);
 		}
 		else { //FLONK YA EXISTE estamos cambiando de mapa
@@ -549,7 +558,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 				if (objName == "FlonkS") placeHere = true;
 				break;
 			case E:
-				if (objName == "FlonkE") placeHere = true;
+				if (objName == "FlonkE") placeHere = true;  
 				break;
 			case W:
 				if (objName == "FlonkW") placeHere = true;
@@ -580,13 +589,15 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	else if (objClass == "Transition") {		
 		c = createTransition(pos, objName, objProps[0].getStringValue());
 	}
+
 	return c;
 }
 
 void RoomScene::movePlayer(Vector2D pos)
 {
 	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
-	cameraManager->setTarget(player);
+	if (cameraManager != nullptr)
+		cameraManager->setTarget(player);
 }
 
 void RoomScene::AddEntity(Entity* entity) {

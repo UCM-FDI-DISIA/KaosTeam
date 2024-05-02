@@ -55,7 +55,7 @@ private:
 public:
 	RoomScene(int id) : id(id), cameraManager(nullptr), player(nullptr), playerOrig(S), needMapChange(false), insideShop(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		std::string initMapPath = "resources/maps/niveles/nivel02/fuera/mapaN2_08_fuera.tmx";
+		std::string initMapPath = "resources/maps/niveles/nivel02/dentro/mapaN2_02_dentro.tmx";
 		mapReader = new MapManager(initMapPath, this);
 		mapReader->loadObj(initMapPath);
 
@@ -99,7 +99,7 @@ public:
 	Entity* createBomb(Vector2D pos);
 	Entity* createPiedraMovible(Vector2D pos);
 	Entity* createEnganche(Vector2D pos);
-	Entity* createPalanca(Vector2D pos, bool pushed, string nextMap);
+	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap);
 	Entity* createCockroach(Vector2D pos);
 
 	Entity* getPlayer() { return player; };

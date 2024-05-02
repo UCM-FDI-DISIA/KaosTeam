@@ -9,6 +9,7 @@ class MapShiftComponent :public Component
 private:
 	void trigger(); //hace los cambios en el mapa que se necesiten
 	void collisionPalanca(Entity* ent, Collider c);
+	void collisionBoton(Entity* ent, Collider c);
 	string _nextMap;
 	bool shifted = false;
 
