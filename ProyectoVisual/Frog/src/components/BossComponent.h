@@ -42,6 +42,7 @@ private:
 	Texture* aviso; //Imagen aviso en que columna aparecera un cubierto
 	TransformComponent* tr;
 	MovementComponentFrancois* mov;
+	ColliderComponent* coll;
 
 public:
 	BossComponent();

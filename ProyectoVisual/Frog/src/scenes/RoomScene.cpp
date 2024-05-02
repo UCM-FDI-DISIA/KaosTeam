@@ -354,7 +354,7 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 	RenderComponent* renderTheFrench = new RenderComponent(txtFran);
 	fran->addRenderComponent(renderTheFrench);
 
-	ColliderComponent* bossColl = new ColliderComponent();
+	ColliderComponent* bossColl = new ColliderComponent(tr);
 	fran->addComponent(COLLIDER_COMPONENT, bossColl);
 
 	MovementComponentFrancois* move = new MovementComponentFrancois();
