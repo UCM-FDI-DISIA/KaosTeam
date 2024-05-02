@@ -50,7 +50,7 @@ bool Collider::Collides(Collider c) const {
 	return SDL_HasIntersection(&miRect, &suRect);
 }
 
-Collider* ColliderComponent::GetTransofmCollider() {
+Collider* ColliderComponent::GetTransformCollider() {
 	return transformCollider;
 }
 

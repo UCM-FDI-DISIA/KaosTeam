@@ -32,6 +32,7 @@
         { "id" : "saltamontes", "file" : "resources/cristinaPrueba/saltamonte.png", "rows" : 1, "cols" : 1},
 
         { "id" : "darkShadow", "file" : "resources/Sprites/sombraOscura.png", "rows" : 1, "cols" : 1},
+        { "id" : "aviso", "file" :  "resources/Sprites/Aviso.png", "rows" :  1, "cols" : 1},
         { "id" : "cuchara", "file" :  "resources/Sprites/Cuchara.png", "rows" :  1, "cols" : 1},
         { "id" : "cuchilloCarnicero", "file" :  "resources/Sprites/Cuchillo_Carnicero.png", "rows" :  1, "cols" : 1},
         { "id" : "cuchillo", "file" :  "resources/Sprites/Cuchillo.png", "rows" :  1, "cols" : 1},

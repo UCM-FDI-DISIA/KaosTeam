@@ -31,7 +31,7 @@ void MovementComponentBomb::initComponent() {
 
 	//A�adimos funcion de collider a la bomba
 	//std::list<Collider> listCol = coll->GetColliders(); //Accedemos a la lista de colliders
-	coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsBomb(e, c); }); //A�adimos callback
+	coll->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsBomb(e, c); }); //A�adimos callback
 }
 
 // Esta funci�n, se llamar� en cada iteracci�n del update para detectar con que entity colisiona y hacer las correspondientes acciones
