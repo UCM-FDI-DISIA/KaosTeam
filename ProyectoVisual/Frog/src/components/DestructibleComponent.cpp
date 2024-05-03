@@ -13,28 +13,26 @@ void DestructibleComponent::DestroySelf()
 	{
 	case LOOT_RANDOM:
 		if(auxprob >= RandomLifeProb) {
-			if(auxprob <= RandomLifeProb + RandomMoneyProb) SpawnLoot(LOOT_DINERO);
+			if (auxprob <= RandomLifeProb + RandomMoneyProb) 
+			{ 
+				scen->createSnake(position); 
+			}
 		}
-		else SpawnLoot(LOOT_VIDA);
+		else scen->createSnake(position);
 		break;
 
 	case LOOT_VIDA:
-		SpawnLoot(LOOT_VIDA);
+		scen->createSnake(position);
 		break;
 
 	case LOOT_DINERO:
-		SpawnLoot(LOOT_DINERO);
+		scen->createSnake(position);
 		break;
 
 	default:
 		break;
 	}
 
-	// TODO kms (destroy)
-}
-
-void DestructibleComponent::SpawnLoot(int loot)
-{
 	cout << "DESTRUIBLE (arbusto/jarron) iniciando destruccion" << endl;
 }
 
@@ -58,4 +56,6 @@ void DestructibleComponent::initComponent()
     if (ent->getName() == DESTRUCTIBLE_ENTITY) {
         coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {CheckCollisions(e, c); }); //Añadimos callback
     }
+
+	scen = static_cast<RoomScene*>(ent->getScene());
 }

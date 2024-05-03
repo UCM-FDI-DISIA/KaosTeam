@@ -15,9 +15,9 @@ private:
 	RandomNumberGenerator& rand_;							//generador de numeros random
 	Vector2D position;										//posicion para cuando dropee el loot al morir
 	ColliderComponent* coll = nullptr;
+	RoomScene* scen = nullptr;
 
 	void DestroySelf();
-	void SpawnLoot(int lootType);
 	void CheckCollisions(Entity* ent, Collider c);
 	
 public:
