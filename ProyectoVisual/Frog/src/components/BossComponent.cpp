@@ -133,7 +133,7 @@ void BossComponent::onCutleryCollision(Entity* e, Collider c)
 {
 	//L�gica de colision con otras entidades de la sala
 	if (e->getName() == FROG_ENTITY) {
-		std::cout<<static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->GetActual();
+		static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(1);
 		//Llamar a callback que reste vida a Flonk
 	}
 }
