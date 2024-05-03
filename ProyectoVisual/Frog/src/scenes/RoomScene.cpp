@@ -88,10 +88,11 @@ void RoomScene::update() {
 void RoomScene::CheckColisions() {
 	for (Entity* e1 : entityList) {
 		ColliderComponent* coll1 = static_cast<ColliderComponent*>(e1->getComponent(COLLIDER_COMPONENT));
-		if (coll1 != nullptr)
+		if (coll1 != nullptr) {
 			for (Entity* e2 : entityList) {
 				coll1->CheckCollision(e2);
 			}
+		}
 	}
 }
 
@@ -143,7 +144,7 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	input->setComponents(mvm, atck, invComp);
 	player->addComponent(INPUT_COMPONENT, input);
 
-	LifeComponent* lc = new LifeComponent();
+	LifeComponent* lc = new LifeComponent(10, 10);
 	player->addComponent(LIFE_COMPONENT, lc);
 
 	MoneyComponent* moneyComp = new MoneyComponent();
@@ -303,6 +304,54 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	AddEntity(redAnt);
 	return redAnt;
 }
+Entity* RoomScene::createCockroach(Vector2D pos) {
+	Entity* cockroach = new Entity(this, COCKROACH_ENTITY);
+	//textura cambiar
+	Texture* txtcockroach = &sdlutils().images().at("fishSheet");//supongo que esto estaba de placeholder
+
+	TransformComponent* transform = new TransformComponent(pos);
+	cockroach->addComponent(TRANSFORM_COMPONENT, transform);
+
+	AnimationComponent* animcockroach = new AnimationComponent();
+	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
+
+	RenderComponent* renderanimcockroach = new RenderComponent(txtcockroach);
+	cockroach->addRenderComponent(renderanimcockroach);
+
+	MovementComponentCockroach* mvm = new MovementComponentCockroach(animcockroach);
+	cockroach->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AddEntity(cockroach);
+	return cockroach;
+}
+Entity* RoomScene::createExplotableDoor(Vector2D pos) {
+	Entity* door = new Entity(this, EXPLOITABLE_ENTITY);
+	//Texture* txtDoor = &sdlutils().images().at("fishSheet"); falta definir la textura verdadera de la puerta
+	Texture* txtDoor = &sdlutils().images().at("fishSheet");
+
+	TransformComponent* transform = new TransformComponent(pos);
+	door->addComponent(TRANSFORM_COMPONENT, transform);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	door->addComponent(COLLIDER_COMPONENT, collider);
+
+	AnimationComponent* animDoor = new AnimationComponent();
+	animDoor->setContext(door);
+	animDoor->addAnimation("IDLE", Animation({ Vector2D(0,1) }, true, false));
+	animDoor->addAnimation("DEATH", Animation({ Vector2D(0,0) }, false, true));
+	door->addComponent(ANIMATION_COMPONENT, animDoor);
+	animDoor->playAnimation("IDLE"); //Al crear la puerta esta en modo idle
+
+	RenderComponent* renderDoor = new RenderComponent(txtDoor);
+	door->addRenderComponent(renderDoor);
+
+	ExploitableComponent* exp = new ExploitableComponent();
+	door->addComponent(EXPLOITABLE_COMPONENT, exp);
+
+	AddEntity(door);
+	return door;
+}
+
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this, SNAKE_ENTITY);
 	Texture* txtSnake = &sdlutils().images().at("snakeSheet");
@@ -337,6 +386,11 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 	AttackComponentSnake* atckSnake = new AttackComponentSnake();
 	snake->addComponent(ATTACK_COMPONENT, atckSnake);
+
+	LifeComponent* lfSnake = new LifeComponent(1, 1);
+	lfSnake->setContext(snake);
+	lfSnake->initComponent();
+	snake->addComponent(LIFE_COMPONENT, lfSnake);
 
 	AddEntity(snake);
 	return snake;
@@ -392,7 +446,6 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	AddEntity(bomb);
 	return bomb;
 }
-
 Entity* RoomScene::createPiedraMovible(Vector2D pos)
 {
 	Entity* piedra = new Entity(this, PIEDRAMOV_ENTITY);
@@ -416,7 +469,6 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos)
 	AddEntity(piedra);
 	return piedra;
 }
-
 Entity* RoomScene::createEnganche(Vector2D pos)
 {
 	Entity* enganche = new Entity(this, ENGANCHE_ENTITY);
@@ -439,6 +491,52 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 
 	AddEntity(enganche);
 	return enganche;
+}
+Entity* RoomScene::createMapChanger(string name, Vector2D pos, bool pushed, string nextMap)
+{
+	Entity* e = nullptr;
+	Texture* text = nullptr;
+
+	if (name == "Palanca") {
+		e =	new Entity(this, PALANCA_ENTITY);
+		if (pushed)
+			text = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PalancaA.png", 1, 1);
+		else
+			text = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PalancaB.png", 1, 1);
+	}
+	else if (name == "Boton") {
+		e = new Entity(this, BOTON_ENTITY);
+		if (!pushed)
+			text = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/BotonA.png", 1, 1);
+		else
+			text = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/BotonB.png", 1, 1);
+	}
+
+	TransformComponent* transform = new TransformComponent(pos);
+	e->addComponent(TRANSFORM_COMPONENT, transform);
+	transform->setContext(e);
+
+	RenderComponent* renderC = new RenderComponent(text);
+	renderC->setContext(e);
+	renderC->initComponent();
+	e->addComponent(RENDER_COMPONENT, renderC);
+	e->addRenderComponent(renderC);
+
+	Box* box = new Box(pos);
+	Collider colli = Collider(box);
+	ColliderComponent* collC = new ColliderComponent(transform);
+	collC->AddCollider(colli);
+	collC->setContext(e);
+	e->addComponent(COLLIDER_COMPONENT, collC);
+
+	MapShiftComponent* tongueInteract = new MapShiftComponent(nextMap);
+	e->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
+	//tongueInteract->setContext(e);
+	//tongueInteract->initComponent();
+	
+
+	AddEntity(e);
+	return e;
 }
 
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
@@ -485,10 +583,9 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	else if (objName == "Bomb") {
 		c = createBomb(pos);
 	}
-	/*
-	else if ()......
-	*/
-
+	else if (objName == "Cockroach") {
+		c = createCockroach(pos);
+	}
 	return c;
 }
 
@@ -507,9 +604,9 @@ Entity* RoomScene::createDestructible(Vector2D pos, int type, int loot)
 		destructible->addComponent(TRANSFORM_COMPONENT, transform);
 
 		AnimationComponent* animDestructible = new AnimationComponent();
+		//destructible->addComponent(ANIMATION_COMPONENT, animDestructible);
 
 		RenderComponentDestructible* renderDestructible = new RenderComponentDestructible(txtDestructible, animDestructible);
-		
 
 		return destructible;
 	}
@@ -525,7 +622,8 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 
 	
 	if (objName == "Jarron"){
-		c = createDestructible(pos, 0, objProps[0].getIntValue());
+		//Comentado para que el juego no reviente
+	//	c = createDestructible(pos, 0, objProps[0].getIntValue());
 	}	
 	else if (objName == "Arbusto")
 	{
@@ -548,7 +646,18 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	else if (objName == "Enganche") {
 		c = createEnganche(pos);
 	}
+	else if (objName == "Palanca" || objName == "Boton") {
+		c = createMapChanger(objName, pos, objProps[1].getBoolValue(), objProps[0].getStringValue());
+	}
 
+	return c;
+}
+
+Entity* RoomScene::createExplotable(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps) {
+	Entity* c = nullptr;
+	if (objName == "Puerta Explotable") {
+		c = createExplotableDoor(pos);
+	}
 	return c;
 }
 
@@ -561,6 +670,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	else if (objClass == "Player") {
 		//SOLO CREAR� (aka cambiar� d sitio) EL FLONK QUE CORRESPONDE
 		if (player == nullptr) {
+			cout << "create player";
 			c = createPlayer(pos, 100, 100);
 		}
 		else { //FLONK YA EXISTE estamos cambiando de mapa
@@ -574,7 +684,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 				if (objName == "FlonkS") placeHere = true;
 				break;
 			case E:
-				if (objName == "FlonkE") placeHere = true;
+				if (objName == "FlonkE") placeHere = true;  
 				break;
 			case W:
 				if (objName == "FlonkW") placeHere = true;
@@ -605,7 +715,18 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	else if (objClass == "Transition") {		
 		c = createTransition(pos, objName, objProps[0].getStringValue());
 	}
+
+	else if (objClass == "Explotable") {
+		c = createExplotable(pos, objName, objProps);
+	}
 	return c;
+}
+
+void RoomScene::movePlayer(Vector2D pos)
+{
+	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
+	if (cameraManager != nullptr)
+		cameraManager->setTarget(player);
 }
 
 void RoomScene::AddEntity(Entity* entity) {
@@ -630,11 +751,14 @@ void RoomScene::changeMap()
 {
 	playerOrig = nextFlonk;
 
-	//borramos entidades(objetos del mapa actual)
 	auto it = entityList.begin();
-	++it; //la primera es flonk, no le borramos
 	while (it != entityList.end()) {
-		it = entityList.erase(it);
+		//Por la arquitectura actual, es necesario mantener la entidad de frog.
+		//Para cada entidad se comprueba su name, si no es un frog lo borra.
+		if ((*it)->getName() != FROG_ENTITY)
+			it = entityList.erase(it);
+		else
+			it++;
 	}
 
 	mapReader->clearMap();

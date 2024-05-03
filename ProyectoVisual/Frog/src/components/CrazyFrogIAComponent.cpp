@@ -13,7 +13,9 @@ void CrazyFrogIAComponent::update()
 		if (playerPos == nullptr)
 			playerPos = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT))->getCasillaPointer();
 
-		Vector2D aux = *playerPos - static_cast<TransformComponent * >(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla();
+		//cout << "actualizando rana";
+
+		Vector2D aux = *playerPos - static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla();
 		
 		//calculamos en que direcci�n deberiamos movernos
 		Vector2D speed; Directions direction; string animation;
@@ -53,7 +55,7 @@ void CrazyFrogIAComponent::update()
 		if (aux.magnitude() < 3 && (aux.getX() == 0 || aux.getY() == 0))
 		{
 			movement->changeDirection(direction, animation);
-			attack->attack();
+			//attack->attack();
 		}
 		else
 		{

@@ -7,6 +7,7 @@
 
 void RenderComponentFrog::render()
 {
+
     int t = ent->getScene()->getMapReader()->getTileSize();
     int size = (int)t * scale;
     SDL_Rect frogRect; // Rect de la rana

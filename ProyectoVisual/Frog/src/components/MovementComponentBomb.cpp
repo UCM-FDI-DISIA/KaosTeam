@@ -38,26 +38,24 @@ void MovementComponentBomb::initComponent() {
 //(Mi idea era hacer el metodo aqui, sin embargo, no puedo acceder a la entidad contra la que colisiona
 // la bomba desde aqu�, asi que no me queda mas remedio que hacerlo en la RoomScene...)
 void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
-	switch (ent->getName()) {
-	case EntityName::BREAKABLE_DOOR_ENTITY:
-		//Destruimos la puerta: ent-> MetodoAlQueLlamar(); 
-		std::cout << "PUERTA DESTRUIDA" << std::endl;
-		break;
-	case EntityName::INTERRUPTOR_ENTITY:
-		//Activamos interruptor
-		std::cout << "INTERRUPTOR ACTIVADO" << std::endl;
-		break;
-	case EntityName::SNAKE_ENTITY:
-		//Quitariamos vida a la serpiente...
-		ent->getScene()->removeEntity(ent);
-		//Eliminamos a la bomba
-		explodeBomb();
-		std::cout << "SERPIENTE DADA CON BOMBA" << std::endl;
-		break;
-
-	//...Mas casos
+	if (!shockEntity) { //Comprobamos que ya 
+		LifeComponent* lifeEntity = static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT));
+		if (lifeEntity != nullptr) {
+			//Da�ar a la entidad en uno
+			lifeEntity->hit(-1); //bajamos vida de la entidad con la que choca
+			explodeBomb(); //En ambos casos la bomba explota
+		}
+		else if (ent->getName() == EntityName::EXPLOITABLE_ENTITY) {
+			//Destruyes el objeto explotable
+			ExploitableComponent* exp = static_cast<ExploitableComponent*>(ent->getComponent(EXPLOITABLE_COMPONENT));
+			//Metodo a llamar
+			exp->exploitEntity();
+			explodeBomb();
+		}
+		
 	}
 }
+
 
 //Mueve la bomba en la direccion dada:
 void MovementComponentBomb::moveBomb() {
@@ -94,9 +92,9 @@ void MovementComponentBomb::checkShock() {
 //Este metodo se ejecuta en caso de que la bomba choque con algo
 //Simplemente har�a la animaci�n de explosi�n y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
 void MovementComponentBomb::explodeBomb() {
+	setStatic();
 	AnimationComponent* animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	RenderComponent* rndr = ent->getRenderComponent();
-
 
 	animator->stopAnimation(); //Paramos animacion actual
 	animator->removeAnimations(); //Quitamos animaciones existentes

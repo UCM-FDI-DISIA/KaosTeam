@@ -5,9 +5,6 @@
 #include "AnimationComponent.h"
 #include "MovementComponentFrog.h"
 
-class TransformComponent;
-class RoomScene;
-
 class MovementComponentBlackAnt : public MovementComponent {
 private:
 	enum Direction { RIGHT, LEFT, UP, DOWN };											
