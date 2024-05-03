@@ -27,7 +27,10 @@
 #include "../components/MovementComponentBomb.h"
 #include "../components/TonguePushComponent.h"
 #include "../components/TongueHookComponent.h"
+#include "../components/MapShiftComponent.h"
 #include "../components/InventoryComponent.h"
+#include "../components/MovementComponentCockroach.h"
+#include "../components/ExploitableComponent.h"
 
 class RoomScene : public Scene
 {
@@ -80,12 +83,12 @@ public:
 
 	MapManager* getMapReader() { return mapReader; };
 	void changeMap();
-	void callForMapChange(std::string nextMap, flonkOrig nextFlonk){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
+	void callForMapChange(std::string nextMap, flonkOrig nextFlonk = S){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
 
 	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted = false);
-
 	Entity* createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted = false);
+	Entity* createExplotable(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createPlayer(Vector2D pos, int boundX, int boundY);
 	Entity* createTransition(Vector2D pos, std::string objName, std::string nextMap);
 	Entity* createCrazyFrog(Vector2D pos);
@@ -98,6 +101,10 @@ public:
 	Entity* createPiedraMovible(Vector2D pos);
 	Entity* createEnganche(Vector2D pos);
 	Entity* createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
+	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap);
+	Entity* createCockroach(Vector2D pos);
+	Entity* createExplotableDoor(Vector2D pos);
+
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
 };

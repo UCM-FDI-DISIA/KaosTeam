@@ -107,6 +107,9 @@ void MovementComponentSnake::searchFrog() {
 
 void MovementComponentSnake::initComponent() {
 	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	if (ent->getScene()->getPlayer() == nullptr) {
+		;
+	}
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 
