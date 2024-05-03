@@ -360,7 +360,7 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 Entity* RoomScene::createJarron(Vector2D pos, int loot)
 {
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
-	Entity* destructible = new Entity(this, JARRON_ENTITY);
+	Entity* destructible = new Entity(this, DESTRUCTIBLE_ENTITY);
 	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
 	// hay que animarlo
 
@@ -376,6 +376,9 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 	ColliderComponent* colldestructible = new ColliderComponent(transform);
 	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
 
+	DestructibleComponent* destructibleComponent = new DestructibleComponent(loot, pos);
+	destructible->addComponent(DESTRUCTIBLE_COMPONENT, destructibleComponent);
+
 	AddEntity(destructible);
 	return destructible;
 }
@@ -383,7 +386,7 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 {
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
-	Entity* destructible = new Entity(this,ARBUSTO_ENTITY);
+	Entity* destructible = new Entity(this, DESTRUCTIBLE_ENTITY);
 	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
 	// hay que animarlo
 

@@ -14,6 +14,7 @@ private:
 	int loot;												// Guarda lo que va a soltar cuando sea destruido
 	RandomNumberGenerator& rand_;							//generador de numeros random
 	Vector2D position;										//posicion para cuando dropee el loot al morir
+	ColliderComponent* coll = nullptr;
 
 	void DestroySelf();
 	void SpawnLoot(int lootType);
@@ -21,5 +22,7 @@ private:
 	
 public:
 	DestructibleComponent(int lootType, Vector2D pos);
+	//virtual ~DestructibleComponent();
+	void initComponent() override;
 };
 
