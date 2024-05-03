@@ -23,7 +23,9 @@ void BossComponent::initComponent()
 	rnd = ent->getRenderComponent();
 	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
-	coll->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {attack(e, c); }); //A�adimos callback
+	coll->GetTransformCollider()->AddCall([this](Entity* e, Collider c) { 
+		attack(e, c); 
+		}); //A�adimos callback
 	createCutlery(); //Creamos cubiertos
 }
 
@@ -37,29 +39,31 @@ void BossComponent::render()
 {
 	for (int i = 0; i < poolCubiertos.size(); i++) {
 		//Pintar la señal de aviso
-		
+		if (attackStartTime + poolCubiertos[i].first->spawnTime_ >= sdlutils().currRealTime())
+			aviso->render(poolCubiertos[i].first->dest_);
 	}
 }
 
 void BossComponent::generateCutlery()
 {
-	int numCutlery = sdlutils().rand().nextInt(1 + contDishes, 5 + contDishes); //Cuantos cubiertos tendra el ataque
-	for (int i = 0; i < numCutlery; i++) {
+	//int numCutlery = sdlutils().rand().nextInt(1 + contDishes, 5 + contDishes); //Cuantos cubiertos tendra el ataque
+	for (int i = 0; i < /*numCutlery*/1; i++) {
 		int c = sdlutils().rand().nextInt(CUCHARA, TENEDOR + 1); //Se decide que cubierto se añade a la pool
 		int x = sdlutils().rand().nextInt(tr->getCasilla().getX(), 
 			tr->getWidth() / ent->getScene()->getMapReader()->getTileSize() + 1); //Definde x random donde ira el cubierto
-		poolCubiertos.emplace_back(cubiertos[c], true);
-		poolCubiertos[i].first->tr_->setCasilla(Vector2D(x, -1)); //Ponemos el cubierto una casilla fuera de la pantalla
-		poolCubiertos[i].first->tr_->setOffset(Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 2,
+		pair<Cubierto*, bool> cubierto(cubiertos[c], true);
+		
+		cubierto.first->tr_->setCasilla(Vector2D(x, -1)); //Ponemos el cubierto una casilla fuera de la pantalla
+		cubierto.first->tr_->setOffset(Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 2,
 			-ent->getScene()->getMapReader()->getTileSize() / 2));
-		ent->getScene()->AddEntity(poolCubiertos[i].first->ent_); //Añadimos cubierto a la lista de entidades para usarlo
 
 		//Colocamos el aviso en la columna donde posteriormente aparecera un cubierto
-		poolCubiertos[i].first->dest_.x = poolCubiertos[i].first->tr_->getWidth();
-		poolCubiertos[i].first->dest_.y = poolCubiertos[i].first->tr_->getHeight();
-		poolCubiertos[i].first->dest_.w = poolCubiertos[i].first->dest_.h = 
-			ent->getScene()->getMapReader()->getTileSize();
+		cubierto.first->dest_.x = (int)cubierto.first->tr_->getWidth();
+		cubierto.first->dest_.y = (int)cubierto.first->tr_->getHeight();
+		cubierto.first->dest_.w = cubierto.first->dest_.h = ent->getScene()->getMapReader()->getTileSize();
 
+		ent->getScene()->AddEntity(cubierto.first->ent_); //Añadimos cubierto a la lista de entidades para usarlo
+		poolCubiertos.push_back(cubierto);
 	}
 
 }
@@ -91,22 +95,24 @@ void BossComponent::createCutlery()
 	Cubierto aux;
 	Cubierto* c = &aux;
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {
-		cubiertos.push_back(c);
+		c->tipo_ = (tipoCubierto)i; //Asignamos id con el tipo de cubierto
+		c->speed_ = Vector2D(0, 0.1); //Setteamos su velocidad
+		if (i != 0) c->spawnTime_ = sdlutils().rand().nextInt(0, 3) + cubiertos[i - 1]->spawnTime_;
+		else c->spawnTime_ = sdlutils().rand().nextInt(0, 2);
 
-		cubiertos[i]->tipo_ = (tipoCubierto)i; //Asignamos id con el tipo de cubierto
-		cubiertos[i]->speed_ = Vector2D(0, -0.1); //Setteamos su velocidad
-		if (i != 0) cubiertos[i]->spawnTime_ = sdlutils().rand().nextInt(0, 3) + cubiertos[i - 1]->spawnTime_;
-		else cubiertos[i]->spawnTime_ = sdlutils().rand().nextInt(0, 2);
-
-		cubiertos[i]->ent_ = new Entity(ent->getScene()); //Creamos entidad cubierto
-		cubiertos[i]->tr_ = new TransformComponent(Vector2D(i , i), 80, 160); //Añadimos transform al cubierto
-		cubiertos[i]->ent_->addComponent(TRANSFORM_COMPONENT, cubiertos[i]->tr_);
-		cubiertos[i]->coll_ = new ColliderComponent(cubiertos[i]->tr_);
-		cubiertos[i]->ent_->addComponent(COLLIDER_COMPONENT, cubiertos[i]->coll_);
-		cubiertos[i]->coll_->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {onCutleryCollision(e, c); });
-		cubiertos[i]->render_ = new RenderComponent(texturasCubiertos[i]); //Añadimos la textura pertinente al render
-		cubiertos[i]->ent_->addRenderComponent(cubiertos[i]->render_);
+		c->ent_ = new Entity(ent->getScene()); //Creamos entidad cubierto
+		c->tr_ = new TransformComponent(Vector2D(i , i), 80, 160); //Añadimos transform al cubierto
+		c->ent_->addComponent(TRANSFORM_COMPONENT, c->tr_);
+		c->coll_ = new ColliderComponent(c->tr_);
+		c->ent_->addComponent(COLLIDER_COMPONENT, c->coll_);
+		c->coll_->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {
+			onCutleryCollision(e, c); 
+			});
+		c->render_ = new RenderComponent(texturasCubiertos[i]); //Añadimos la textura pertinente al render
+		c->ent_->addRenderComponent(c->render_);
 		//ent->getScene()->AddEntity(cubiertos[i]->ent_); //Añadimos a la lista de entidades
+
+		cubiertos.push_back(c); //Metemos el cubierto setteado al vector de cubiertos
 	}
 }
 

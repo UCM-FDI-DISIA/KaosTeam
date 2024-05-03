@@ -47,7 +47,7 @@ private:
 
 public:
 	BossComponent();
-	~BossComponent();
+	virtual ~BossComponent();
 
 	void initComponent() override;
 	void update() override;
@@ -64,6 +64,7 @@ public:
 	//Getters
 	bool isOutOfScreen(Vector2D pos) const; //Comprueba si un cubierto se ha salido de la pantalla
 
+	//Setters
 	void setContaminatedDishes(int d) { contDishes += d; };
 };
 
