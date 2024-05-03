@@ -656,7 +656,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	}
 	else if (objClass == "ObjCogible") {
 		c = createCogible(pos, objName, objProps);
-		}
+	}
 	else if (objClass == "Explotable") {
 		c = createExplotable(pos, objName, objProps);
 	}
