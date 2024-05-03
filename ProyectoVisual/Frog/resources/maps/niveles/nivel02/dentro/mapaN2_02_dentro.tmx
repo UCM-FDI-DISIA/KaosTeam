@@ -38,6 +38,15 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
+  <object id="5" name="FlonkW" type="Player" x="24.5" y="107.5">
+   <point/>
+  </object>
+  <object id="6" name="FlonkE" type="Player" x="200.5" y="122">
+   <point/>
+  </object>
+  <object id="7" name="FlonkS" type="Player" x="120" y="201.5">
+   <point/>
+  </object>
   <object id="1" name="PiedraMovible" type="ObjInteract" x="88" y="152">
    <point/>
   </object>
@@ -48,15 +57,6 @@
    <point/>
   </object>
   <object id="4" name="PiedraMovible" type="ObjInteract" x="134" y="153.5">
-   <point/>
-  </object>
-  <object id="5" name="FlonkW" type="Player" x="24.5" y="107.5">
-   <point/>
-  </object>
-  <object id="6" name="FlonkE" type="Player" x="200.5" y="122">
-   <point/>
-  </object>
-  <object id="7" name="FlonkS" type="Player" x="120" y="201.5">
    <point/>
   </object>
   <object id="8" name="TransitionW" type="Transition" x="9.5" y="107">

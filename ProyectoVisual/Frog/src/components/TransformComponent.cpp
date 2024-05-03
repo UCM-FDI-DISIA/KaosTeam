@@ -9,7 +9,7 @@ TransformComponent::TransformComponent(Vector2D casilla, float width, float heig
 void TransformComponent::resetPos(Vector2D v)
 {
 	casilla = v;
-	ent->getScene()->getMapReader()->getTile(casilla)->objInTile = ent;
+	//ent->getScene()->getMapReader()->getTile(casilla)->objInTile = ent;
 }
 
 void TransformComponent::changePos(Vector2D v)
