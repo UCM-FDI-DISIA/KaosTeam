@@ -675,11 +675,14 @@ void RoomScene::changeMap()
 {
 	playerOrig = nextFlonk;
 
-	//borramos entidades(objetos del mapa actual)
 	auto it = entityList.begin();
-	++it; //la primera es flonk, no le borramos
 	while (it != entityList.end()) {
-		it = entityList.erase(it);
+		//Por la arquitectura actual, es necesario mantener la entidad de frog.
+		//Para cada entidad se comprueba su name, si no es un frog lo borra.
+		if ((*it)->getName() != FROG_ENTITY)
+			it = entityList.erase(it);
+		else
+			it++;
 	}
 
 	mapReader->clearMap();
