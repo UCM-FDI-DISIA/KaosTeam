@@ -24,7 +24,6 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\managers\MapManager.cpp" />
     <ClCompile Include="src\components\MovementComponent.cpp" />
-    <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFly.cpp" />
     <ClCompile Include="src\utils\Button.cpp" />
     <ClCompile Include="src\components\MovementComponentFrog.cpp" />
@@ -68,10 +67,10 @@
     <ClCompile Include="src\ecs\Scene.cpp" />
     <ClCompile Include="src\components\MovementComponentCockroach.cpp" />
     <ClCompile Include="src\components\ExploitableComponent.cpp" />
+    <ClCompile Include="src\components\MejoraComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
-    <ClInclude Include="src\components\MoneyComponent.h" />
     <ClInclude Include="src\components\RenderComponent.h" />
     <ClInclude Include="src\ecs\Component.h" />
     <ClInclude Include="src\managers\DataManager.h" />
@@ -148,6 +147,7 @@
     <ClInclude Include="src\components\MapShiftComponent.h" />
     <ClInclude Include="src\components\MovementComponentCockroach.h" />
     <ClInclude Include="src\components\ExploitableComponent.h" />
+    <ClInclude Include="src\components\MejoraComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

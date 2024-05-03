@@ -22,7 +22,6 @@
 #include "../components/MovementComponentSnake.h"
 #include "../components/RenderComponentDestructible.h"
 #include "../components/DestructibleComponent.h"
-#include "../components/MoneyComponent.h"
 #include"../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
 #include "../components/TonguePushComponent.h"

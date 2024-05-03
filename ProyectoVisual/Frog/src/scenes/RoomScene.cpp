@@ -89,9 +89,6 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 	LifeComponent* lc = new LifeComponent(10, 10);
 	player->addComponent(LIFE_COMPONENT, lc);
-
-	MoneyComponent* moneyComp = new MoneyComponent();
-	player->addComponent(MONEY_COMPONENT, moneyComp);
 	
 	AddEntity(player);
 
