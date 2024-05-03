@@ -180,7 +180,6 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	AddEntity(frog);
 	return frog;
 }
-
 Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	Entity* fish = new Entity(this, FISH_ENTITY);
 	Texture* txtFish = &sdlutils().images().at("fishSheet");
@@ -308,7 +307,6 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	AddEntity(bomb);
 	return bomb;
 }
-
 Entity* RoomScene::createPiedraMovible(Vector2D pos)
 {
 	Entity* piedra = new Entity(this, PIEDRAMOV_ENTITY);
@@ -332,7 +330,6 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos)
 	AddEntity(piedra);
 	return piedra;
 }
-
 Entity* RoomScene::createEnganche(Vector2D pos)
 {
 	Entity* enganche = new Entity(this, ENGANCHE_ENTITY);
@@ -356,7 +353,6 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	AddEntity(enganche);
 	return enganche;
 }
-
 Entity* RoomScene::createJarron(Vector2D pos, int loot)
 {
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
@@ -382,7 +378,6 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 	AddEntity(destructible);
 	return destructible;
 }
-
 Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 {
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero

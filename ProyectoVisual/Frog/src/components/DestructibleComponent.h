@@ -12,12 +12,13 @@ class DestructibleComponent :public Component
 private:
 	const int RandomLifeProb = 20, RandomMoneyProb = 20;	//probabilidad sobre 100 de que suelte tal cosa
 	int loot;												// Guarda lo que va a soltar cuando sea destruido
+	bool broken = false;
 	RandomNumberGenerator& rand_;							//generador de numeros random
 	Vector2D position;										//posicion para cuando dropee el loot al morir
 	ColliderComponent* coll = nullptr;
 	RoomScene* scen = nullptr;
 
-	void DestroySelf();
+	void LootAndBreak();
 	void CheckCollisions(Entity* ent, Collider c);
 	
 public:
