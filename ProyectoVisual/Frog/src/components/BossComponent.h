@@ -24,7 +24,7 @@ struct Cubierto {
 	ColliderComponent* coll_;
 	Vector2D speed_;
 	int spawnTime_; //Tiempo en spawnear tras iniciar el ataque del Boss
-	SDL_Rect dest; //Lugar donde va el aviso para avisar de que un cubierto atravesara esa fila
+	SDL_Rect dest_; //Lugar donde va el aviso para avisar de que un cubierto atravesara esa fila
 };
 
 class BossComponent: public Component

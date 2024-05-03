@@ -2,8 +2,8 @@
 #include "../ecs/Entity.h"
 #include "../ecs/Component.h"
 #include "../scenes/RoomScene.h"
-
-
+#include "LifeComponent.h"
+#include "ExploitableComponent.h"
 
 MovementComponentBomb::MovementComponentBomb() : shockEntity(false), direction(NONE), explosionTime(2000) {
 	timerForDelete.pause(); //pausamos timer de explosi�n (solo se activa cuando la bomba ha chocado con algo)

@@ -27,6 +27,9 @@
 #include "../components/TonguePushComponent.h"
 #include "../components/TongueHookComponent.h"
 #include "../components/InventoryComponent.h"
+#include "../components/MapShiftComponent.h"
+#include "../components/MovementComponentCockroach.h"
+#include "../components/ExploitableComponent.h"
 #pragma endregion
 
 RoomScene::RoomScene(int id) : id(id), player(nullptr),needMapChange(false),insideShop(false) {
@@ -82,7 +85,6 @@ void RoomScene::update() {
 		changeMap();
 	//comrpueba las colisiones con la rana
 	CheckColisions();
-
 }
 
 void RoomScene::CheckColisions() {
@@ -94,6 +96,59 @@ void RoomScene::CheckColisions() {
 			}
 		}
 	}
+}
+
+void RoomScene::AddEntity(Entity* entity) {
+	entityList.push_back(entity);
+}
+//Metodo para remover una entidad 
+void RoomScene::removeEntity(Entity* entity) {
+	auto it = entityList.begin();
+	bool eliminated = false;
+
+	while (it != entityList.end() && !eliminated) {
+		if (*it == entity) {
+			it = entityList.erase(it);
+			eliminated = true;
+		}
+		else it++;
+	}
+
+}
+
+void RoomScene::changeMap()
+{
+	playerOrig = nextFlonk;
+
+	auto it = entityList.begin();
+	while (it != entityList.end()) {
+		//Por la arquitectura actual, es necesario mantener la entidad de frog.
+		//Para cada entidad se comprueba su name, si no es un frog lo borra.
+		if ((*it)->getName() != FROG_ENTITY)
+			it = entityList.erase(it);
+		else
+			it++;
+	}
+
+	mapReader->clearMap();
+	mapReader->loadBg(nextMap, sdlutils().renderer());
+	mapReader->loadObj(nextMap);
+
+	cameraManager->setTarget(player);
+
+	needMapChange = false;
+}
+
+void RoomScene::callForMapChange(std::string nextMap, flonkOrig nextFlonk)
+{
+	this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true;
+}
+
+void RoomScene::movePlayer(Vector2D pos)
+{
+	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
+	if (cameraManager != nullptr)
+		cameraManager->setTarget(player);
 }
 
 Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
@@ -722,60 +777,4 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	return c;
 }
 
-void RoomScene::movePlayer(Vector2D pos)
-{
-	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
-	if (cameraManager != nullptr)
-		cameraManager->setTarget(player);
-}
 
-void RoomScene::AddEntity(Entity* entity) {
-	entityList.push_back(entity);
-}
-//Metodo para remover una entidad 
-void RoomScene::removeEntity(Entity* entity) {
-	auto it = entityList.begin();
-	bool eliminated = false;
-
-	while (it != entityList.end() && !eliminated) {
-		if (*it == entity) {
-			it = entityList.erase(it);
-			eliminated = true;
-		}
-		else it++;
-	}
-
-}
-
-void RoomScene::changeMap()
-{
-	playerOrig = nextFlonk;
-
-	auto it = entityList.begin();
-	while (it != entityList.end()) {
-		//Por la arquitectura actual, es necesario mantener la entidad de frog.
-		//Para cada entidad se comprueba su name, si no es un frog lo borra.
-		if ((*it)->getName() != FROG_ENTITY)
-			it = entityList.erase(it);
-		else
-			it++;
-	}
-
-	mapReader->clearMap();
-	mapReader->loadBg(nextMap, sdlutils().renderer());
-	mapReader->loadObj(nextMap);
-
-	cameraManager->setTarget(player);
-
-	needMapChange = false;
-}
-
-void RoomScene::callForMapChange(std::string nextMap, flonkOrig nextFlonk)
-{
-	this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true;
-}
-
-void RoomScene::movePlayer(Vector2D pos)
-{
-	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
-}

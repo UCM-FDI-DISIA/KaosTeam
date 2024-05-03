@@ -29,14 +29,15 @@ void BossComponent::initComponent()
 
 void BossComponent::update()
 {
-	if(poolCubiertos.empty())
+	if(!poolCubiertos.empty())
 		moveCutlery();
 }
 
 void BossComponent::render()
 {
 	for (int i = 0; i < poolCubiertos.size(); i++) {
-
+		//Pintar la señal de aviso
+		
 	}
 }
 
@@ -48,8 +49,17 @@ void BossComponent::generateCutlery()
 		int x = sdlutils().rand().nextInt(tr->getCasilla().getX(), 
 			tr->getWidth() / ent->getScene()->getMapReader()->getTileSize() + 1); //Definde x random donde ira el cubierto
 		poolCubiertos.emplace_back(cubiertos[c], true);
-		poolCubiertos.back().first->tr_->setCasilla(Vector2D(x, -1)); //Ponemos el cubierto una casilla fuera de la pantalla
-		
+		poolCubiertos[i].first->tr_->setCasilla(Vector2D(x, -1)); //Ponemos el cubierto una casilla fuera de la pantalla
+		poolCubiertos[i].first->tr_->setOffset(Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 2,
+			-ent->getScene()->getMapReader()->getTileSize() / 2));
+		ent->getScene()->AddEntity(poolCubiertos[i].first->ent_); //Añadimos cubierto a la lista de entidades para usarlo
+
+		//Colocamos el aviso en la columna donde posteriormente aparecera un cubierto
+		poolCubiertos[i].first->dest_.x = poolCubiertos[i].first->tr_->getWidth();
+		poolCubiertos[i].first->dest_.y = poolCubiertos[i].first->tr_->getHeight();
+		poolCubiertos[i].first->dest_.w = poolCubiertos[i].first->dest_.h = 
+			ent->getScene()->getMapReader()->getTileSize();
+
 	}
 
 }
@@ -96,7 +106,7 @@ void BossComponent::createCutlery()
 		cubiertos[i]->coll_->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {onCutleryCollision(e, c); });
 		cubiertos[i]->render_ = new RenderComponent(texturasCubiertos[i]); //Añadimos la textura pertinente al render
 		cubiertos[i]->ent_->addRenderComponent(cubiertos[i]->render_);
-		ent->getScene()->AddEntity(cubiertos[i]->ent_); //Añadimos a la lista de entidades
+		//ent->getScene()->AddEntity(cubiertos[i]->ent_); //Añadimos a la lista de entidades
 	}
 }
 
