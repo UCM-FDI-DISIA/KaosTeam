@@ -14,19 +14,21 @@ _Flonk!_ es un juego de aventuras de estilo clásico en el que Flonk, la rana de
 
 ## Mecánicas del jugador
 
-El movimiento del juego está basado en saltos de casilla en casilla en un tablero donde se desarrollará la acción . También tendrá un set de habilidades iniciales que luego serán mejoradas con mejoras que aumentarán la fuerza y utilidad de estas y se podrá ampliar el repertorio de habilidades disponibles con otras mejoras obtenidas durante la partida.
+El movimiento del juego está basado en saltos de casilla en casilla en un tablero donde se desarrollará la acción. También tendrá un set de habilidades iniciales que luego serán mejoradas con mejoras que aumentarán la fuerza y utilidad de estas y se podrá ampliar el repertorio de habilidades disponibles con otras mejoras obtenidas durante la partida.
 
 - **Movimientos básicos**
 
-  - **Movimiento basado en saltos** de casilla en casilla que mejorará con la mejora del salto largo. Se diferenciarán por el input del jugador.
+  - **Movimiento basico de salto** de casilla en casilla. El movimiento es arriba, abajo, izquierda o derecha pulsando la tecla correspondiente.
+  - **Salto largo** para avanzar varias casillas. De base se saltarán tres casillas, aumentando con la mejora. Para utilizar el salto largo se mantiene pulsado el botón de movimiento correspondiente a la dirección.
   - **Ataque básico** con la lengua de la rana. Este afectaría a las casillas en la dirección que el jugador apunte/mire. El alcance inicial es de 3 casillas, aumentará con la mejora. El daño inicial que hace es de 1 golpe, aumentará con la mejora.
   - **Escudo** con el saco hinchable de la rana localizado en la parte inferior de su boca. Lo usará para defenderse y rechazar ataques que provengan de determinada dirección.
 - **Mejoras**
 
-  - **Saltamontes** que amplian el alcance del salto. El salto largo aumenta el salto de tres en tres casillas.
-  - **Moscas de la vida** que aumentan la vida máxima del jugador.
-  - **Avispas**: aumentan el daño de los ataques básicos a tres de daño.
-  - **Ciempiés**: aumentan el alcance del ataque de la lengua a seis casillas.
+  - **Saltamontes** que amplian el alcance del salto largo en una casilla.
+  - **Moscas de la vida** que aumentan la vida máxima del jugador en media mosca.
+  - **Avispas**: aumentan el daño de los ataques de la lengua en uno de daño.
+  - **Ciempiés**: aumentan el alcance del ataque de la lengua en una casilla.
+
 - **Habilidades extras desbloqueables**
   - **Gancho** de pesca atado a la lengua. Se podrá usar tanto en combate para atacar a los enemigos como para desplazarse más eficientemente y poder alcanzar lugares nuevos. Se desbloquea en la mazmorra principal del bosque (árbol del Ovi (nombre sin confirmar)) y será necesario conseguirlo para poder avanzar en las zonas posteriores. Su alcance es de cinco casillas.
   - **Hormigas explosivas** rojas que se pueden usar como bombas contra enemigos, para acceder a sitios previamente inaccesibles rompiendo las paredes o necesarias para resolver puzzles.
