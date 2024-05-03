@@ -25,11 +25,11 @@ class InventoryComponent : public Component
 {
 public:
 	InventoryComponent();
-
 	//Gestion del dinero
 	int GetMoney();
 	void AddMoney(int n); //Metodo para añadirle dinero a nuestro total
 	bool TakeMoney(int price); //El metodo es un booleano por haber casos en donde no tengamos suficiente dinero.
+	
 	MejorasData mejoras;
 	HabilidadesData habilidades;
 private:

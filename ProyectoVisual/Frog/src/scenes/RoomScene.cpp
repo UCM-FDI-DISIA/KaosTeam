@@ -1,6 +1,7 @@
 #include "RoomScene.h"
 #include "../components/CrazyFrogIAComponent.h"
 #include "../components/LifeComponent.h"
+#include "../components/CogibleObjectComponent.h"
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
@@ -135,6 +136,7 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 	return c;
 }
 
+//Objetos tales como las monedas, mejoras y power ups
 Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps) {
 	Entity* c = new Entity(this, COGIBLE_ENTITY);
 
@@ -145,6 +147,8 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 	ColliderComponent* collider = new ColliderComponent(transform);
 	c->addComponent(COLLIDER_COMPONENT, collider);
 
+	CogibleObjectComponent* cogible = new CogibleObjectComponent();
+	c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	//Agrega componente que define el comportamiento específico de ese objeto cogible a través
 	//De un switch (parece que para c++ no hay switch con strings).
 	if (objName == "Gancho") {
