@@ -47,6 +47,8 @@ private:
 	Texture& waspTex;
 	Texture& flyTex;
 	Texture& centipedeTex;
+	Texture& pricesTex;
+	Texture& birdTex;
 	std::vector<EntityShop*> animals;
 
 	//metodos
