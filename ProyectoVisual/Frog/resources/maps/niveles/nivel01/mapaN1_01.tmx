@@ -62,12 +62,6 @@
    </properties>
    <point/>
   </object>
-  <object id="13" name="TransitionT" type="Transition" x="55.7111" y="105.21">
-   <properties>
-    <property name="nextMap" value="resources/maps/niveles/tienda/mapaT.tmx"/>
-   </properties>
-   <point/>
-  </object>
   <object id="10" name="Snake" type="Enemigo" x="71.3334" y="75.3333">
    <point/>
   </object>
