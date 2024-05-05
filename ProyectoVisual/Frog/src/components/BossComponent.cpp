@@ -3,7 +3,8 @@
 #include "../scenes/RoomScene.h"
 #include "LifeComponent.h"
 
-BossComponent::BossComponent() : currState(MOVE), attackStartTime(0), postAttackTimer(2), addToList(false), //
+BossComponent::BossComponent() : currState(MOVE), attackStartTime(0), isAttacking(false), //
+							postAttackTimer(2), addToList(false), //
 							aviso(&sdlutils().images().at("aviso")) //
 {
 	texturasCubiertos = new Texture*[MAX_CUBIERTOS];
@@ -31,11 +32,6 @@ void BossComponent::initComponent()
 
 void BossComponent::update()
 {
-	if (addToList) {
-		for (int i = 0; i < poolCubiertos.size(); i++)
-			ent->getScene()->AddEntity(poolCubiertos[i].first->ent_);
-		addToList = false; //Yaetan creados
-	}
 	if(!poolCubiertos.empty())
 		moveCutlery();
 }
@@ -51,8 +47,8 @@ void BossComponent::render()
 
 void BossComponent::generateCutlery()
 {
-	//int numCutlery = sdlutils().rand().nextInt(1 + contDishes, 5 + contDishes); //Cuantos cubiertos tendra el ataque
-	for (int i = 0; i < /*numCutlery*/1; i++) {
+	int numCutlery = sdlutils().rand().nextInt(1 + contDishes, 5 + contDishes); //Cuantos cubiertos tendra el ataque
+	for (int i = 0; i < numCutlery; i++) {
 		int c = sdlutils().rand().nextInt(CUCHARA, TENEDOR + 1); //Se decide que cubierto se añade a la pool
 		int x = sdlutils().rand().nextInt(tr->getCasilla().getX(), 
 			tr->getWidth() / ent->getScene()->getMapReader()->getTileSize() + 1); //Definde x random donde ira el cubierto
@@ -67,8 +63,7 @@ void BossComponent::generateCutlery()
 		cubiertos[c]->dest_.y = (int)cubiertos[c]->tr_->getHeight();
 		cubiertos[c]->dest_.w = cubiertos[c]->dest_.h = ent->getScene()->getMapReader()->getTileSize();
 
-	poolCubiertos.emplace_back(std::pair<Cubierto*, bool>(cubiertos[c], true));
-
+		poolCubiertos.emplace_back(std::pair<Cubierto*, bool>(cubiertos[c], true));
 		addToList = true;
 	}
 }
@@ -85,11 +80,18 @@ void BossComponent::cleanPool()
 
 void BossComponent::attack(Entity* e, Collider c)
 {
-	if (e->getName() == FROG_ENTITY) {
-		//std::cout << "RANANANANANAN"; //Para comprobar si se llama al callback
+	if (e->getName() == FROG_ENTITY && !isAttacking) {
+		isAttacking = true;
 		generateCutlery(); //Añadimos los cubiertos
 		attackStartTime = sdlutils().currRealTime();
 	}
+}
+
+void BossComponent::addCutlery()
+{
+	for (int i = 0; i < poolCubiertos.size(); i++)
+		ent->getScene()->AddEntity(poolCubiertos[i].first->ent_);
+	addToList = false; //Yaetan creados, no hay nada que añadir
 }
 
 void BossComponent::createCutlery()
@@ -97,7 +99,6 @@ void BossComponent::createCutlery()
 	/* L�gica de crear los cubiertos.
 		Usar randoms para la aparicion de cada uno, otro para decidir si se crea cuchillo o tenedor, otro para 
 		la fila en la que spawnea, y otro para la velocidad que tendr�. */
-
 
 	cubiertos.reserve(MAX_CUBIERTOS);
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {
@@ -113,11 +114,10 @@ void BossComponent::createCutlery()
 		c->coll_ = new ColliderComponent(c->tr_);
 		c->ent_->addComponent(COLLIDER_COMPONENT, c->coll_);
 		c->coll_->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {
-			onCutleryCollision(e, c); 
+			onCutleryCollision(e, c); //Callback si cocha cubierto
 			});
 		c->render_ = new RenderComponent(texturasCubiertos[i]); //Añadimos la textura pertinente al render
 		c->ent_->addRenderComponent(c->render_);
-		//ent->getScene()->AddEntity(cubiertos[i]->ent_); //Añadimos a la lista de entidades
 
 		cubiertos.emplace_back(c); //Metemos el cubierto setteado al vector de cubiertos
 	}

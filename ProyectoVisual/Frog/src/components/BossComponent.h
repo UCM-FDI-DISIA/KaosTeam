@@ -38,6 +38,7 @@ private:
 	bool addToList; //Determines if cutlery is added to entity list
 
 	Uint32 attackStartTime; //Definde en que momento empieza un ataque
+	bool isAttacking; //Para determinar el estado de francois
 	Uint32 postAttackTimer; //para evitar que empiece a detectar tras un ataque
 	int contDishes; //Platos contaminados en cada momento
 
@@ -58,13 +59,14 @@ public:
 
 	void createCutlery(); //Crear cubiertos
 	void generateCutlery(); //Colocar cubiertos y avisos en el mapa
+	void addCutlery(); //Añadir cubiertos a la lista de entidades
 	void moveCutlery(); //Mover cubiertos
 	void cleanPool(); //Elminamos cubiertos que se han salido de la pantalla
 	void onCutleryCollision(Entity* e, Collider c); //Gestion de restar vida a Flonk si es golpeado
 
 	//Getters
 	bool isOutOfScreen(Vector2D pos) const; //Comprueba si un cubierto se ha salido de la pantalla
-
+	bool theresCutleryToAdd() const { return addToList; };
 	//Setters
 	void setContaminatedDishes(int d) { contDishes += d; };
 };

@@ -32,7 +32,7 @@
 #include "../components/ExploitableComponent.h"
 #pragma endregion
 
-RoomScene::RoomScene(int id) : id(id), player(nullptr),needMapChange(false),insideShop(false) {
+RoomScene::RoomScene(int id) : id(id), player(nullptr), francois(nullptr), needMapChange(false),insideShop(false) {
 	//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y 
 	// las entidades de la sala.
 	std::string initMapPath = "resources/maps/niveles/nivel01/mapaN1_01.tmx";
@@ -85,6 +85,9 @@ void RoomScene::update() {
 		changeMap();
 	//comrpueba las colisiones con la rana
 	CheckColisions();
+
+	if (francois != nullptr && static_cast<BossComponent*>(francois->getComponent(BOSS_COMPONENT))->theresCutleryToAdd())
+		static_cast<BossComponent*>(francois->getComponent(BOSS_COMPONENT))->addCutlery();
 }
 
 void RoomScene::CheckColisions() {
@@ -453,28 +456,28 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 
 Entity* RoomScene::createFrancois(Vector2D pos)
 {
-	Entity* fran = new Entity(this,FRENCH_ENTITY);
+	francois = new Entity(this,FRENCH_ENTITY);
 
 	Texture* txtFran = &sdlutils().images().at("darkShadow");
 
 	TransformComponent* tr = new TransformComponent(pos, 800, 640);
-	fran->addComponent(TRANSFORM_COMPONENT, tr);
+	francois->addComponent(TRANSFORM_COMPONENT, tr);
 
 	RenderComponent* renderTheFrench = new RenderComponent(txtFran);
-	fran->addRenderComponent(renderTheFrench);
+	francois->addRenderComponent(renderTheFrench);
 
 	ColliderComponent* bossColl = new ColliderComponent(tr);
-	fran->addComponent(COLLIDER_COMPONENT, bossColl);
+	francois->addComponent(COLLIDER_COMPONENT, bossColl);
 
 	MovementComponentFrancois* move = new MovementComponentFrancois();
-	fran->addComponent(MOVEMENT_COMPONENT, move);
+	francois->addComponent(MOVEMENT_COMPONENT, move);
 
 	BossComponent* bossComp = new BossComponent();
-	fran->addComponent(BOSS_COMPONENT, bossComp);
+	francois->addComponent(BOSS_COMPONENT, bossComp);
 
-	AddEntity(fran);
+	AddEntity(francois);
 	
-	return fran;
+	return francois;
 }
 
 Entity* RoomScene::createBomb(Vector2D pos) {

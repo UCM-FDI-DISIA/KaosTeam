@@ -19,6 +19,7 @@ private:
 	HUDManager* HUD;
 	int id;
 	Entity* player;
+	Entity* francois;
 	flonkOrig playerOrig; //Indica en que punto cardinal aparece Flonk al entrar en cada sala
 	bool needMapChange;
 	std::string nextMap;
