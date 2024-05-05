@@ -57,20 +57,18 @@ void BossComponent::generateCutlery()
 		int x = sdlutils().rand().nextInt(tr->getCasilla().getX(), 
 			tr->getWidth() / ent->getScene()->getMapReader()->getTileSize() + 1); //Definde x random donde ira el cubierto
 
-		Cubierto aux;
-		Cubierto* cu = &aux;
-		poolCubiertos.emplace_back(std::pair<Cubierto*, bool>(cu, true));
-		
+
 		cubiertos[c]->tr_->setCasilla(Vector2D(x, -1)); //Ponemos el cubierto una casilla fuera de la pantalla
 		cubiertos[c]->tr_->setOffset(Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 2,
 			-ent->getScene()->getMapReader()->getTileSize() / 2));
 
-		//Colocamos el aviso en la columna donde posteriormente aparecera un cubierto
+		///Colocamos el aviso en la columna donde posteriormente aparecera un cubierto
 		cubiertos[c]->dest_.x = (int)cubiertos[c]->tr_->getWidth();
 		cubiertos[c]->dest_.y = (int)cubiertos[c]->tr_->getHeight();
 		cubiertos[c]->dest_.w = cubiertos[c]->dest_.h = ent->getScene()->getMapReader()->getTileSize();
 
-		poolCubiertos.back().first = cubiertos[c];
+	poolCubiertos.emplace_back(std::pair<Cubierto*, bool>(cubiertos[c], true));
+
 		addToList = true;
 	}
 }
@@ -99,9 +97,11 @@ void BossComponent::createCutlery()
 	/* L�gica de crear los cubiertos.
 		Usar randoms para la aparicion de cada uno, otro para decidir si se crea cuchillo o tenedor, otro para 
 		la fila en la que spawnea, y otro para la velocidad que tendr�. */
-	Cubierto aux;
-	Cubierto* c = &aux;
+
+
+	cubiertos.reserve(MAX_CUBIERTOS);
 	for (int i = 0; i < MAX_CUBIERTOS; i++) {
+		Cubierto* c = new Cubierto;
 		c->tipo_ = (tipoCubierto)i; //Asignamos id con el tipo de cubierto
 		c->speed_ = Vector2D(0, 0.1); //Setteamos su velocidad
 		if (i != 0) c->spawnTime_ = sdlutils().rand().nextInt(0, 3) + cubiertos[i - 1]->spawnTime_;
@@ -119,7 +119,7 @@ void BossComponent::createCutlery()
 		c->ent_->addRenderComponent(c->render_);
 		//ent->getScene()->AddEntity(cubiertos[i]->ent_); //Añadimos a la lista de entidades
 
-		cubiertos.emplace_back(&aux); //Metemos el cubierto setteado al vector de cubiertos
+		cubiertos.emplace_back(c); //Metemos el cubierto setteado al vector de cubiertos
 	}
 }
 
