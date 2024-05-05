@@ -3,7 +3,7 @@
 #include "../scenes/RoomScene.h"
 #include "LifeComponent.h"
 
-BossComponent::BossComponent() : currState(MOVE), attackStartTime(0), postAttackTimer(2), created(false), //
+BossComponent::BossComponent() : currState(MOVE), attackStartTime(0), postAttackTimer(2), addToList(false), //
 							aviso(&sdlutils().images().at("aviso")) //
 {
 	texturasCubiertos = new Texture*[MAX_CUBIERTOS];
@@ -24,12 +24,18 @@ void BossComponent::initComponent()
 	mov = static_cast<MovementComponentFrancois*>(ent->getComponent(MOVEMENT_COMPONENT));
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
 	coll->GetTransformCollider()->AddCall([this](Entity* e, Collider c) { 
-		attack(e, c); 
+		attack(e, c);
 		}); //A�adimos callback
+	createCutlery(); //Creamos cubiertos
 }
 
 void BossComponent::update()
 {
+	if (addToList) {
+		for (int i = 0; i < poolCubiertos.size(); i++)
+			ent->getScene()->AddEntity(poolCubiertos[i].first->ent_);
+		addToList = false; //Yaetan creados
+	}
 	if(!poolCubiertos.empty())
 		moveCutlery();
 }
@@ -53,23 +59,20 @@ void BossComponent::generateCutlery()
 
 		Cubierto aux;
 		Cubierto* cu = &aux;
-		//pair<Cubierto*, bool> cubierto(cubiertos[c], true); //Creamos Cubierto para meter en la poolCubiertos
 		poolCubiertos.emplace_back(std::pair<Cubierto*, bool>(cu, true));
-
-		poolCubiertos.back().first = cubiertos[c];
-		poolCubiertos.back().first->tr_->setCasilla(Vector2D(x, -1)); //Ponemos el cubierto una casilla fuera de la pantalla
-		poolCubiertos.back().first->tr_->setOffset(Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 2,
+		
+		cubiertos[c]->tr_->setCasilla(Vector2D(x, -1)); //Ponemos el cubierto una casilla fuera de la pantalla
+		cubiertos[c]->tr_->setOffset(Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 2,
 			-ent->getScene()->getMapReader()->getTileSize() / 2));
 
 		//Colocamos el aviso en la columna donde posteriormente aparecera un cubierto
-		poolCubiertos.back().first->dest_.x = (int)poolCubiertos.back().first->tr_->getWidth();
-		poolCubiertos.back().first->dest_.y = (int)poolCubiertos.back().first->tr_->getHeight();
-		poolCubiertos.back().first->dest_.w = poolCubiertos.back().first->dest_.h = ent->getScene()->getMapReader()->getTileSize();
+		cubiertos[c]->dest_.x = (int)cubiertos[c]->tr_->getWidth();
+		cubiertos[c]->dest_.y = (int)cubiertos[c]->tr_->getHeight();
+		cubiertos[c]->dest_.w = cubiertos[c]->dest_.h = ent->getScene()->getMapReader()->getTileSize();
 
-		ent->getScene()->AddEntity(poolCubiertos.back().first->ent_); //Añadimos cubierto a la lista de entidades para usarlo
-		//poolCubiertos.push_back(cubierto);
+		poolCubiertos.back().first = cubiertos[c];
+		addToList = true;
 	}
-
 }
 
 void BossComponent::cleanPool()
@@ -86,10 +89,6 @@ void BossComponent::attack(Entity* e, Collider c)
 {
 	if (e->getName() == FROG_ENTITY) {
 		//std::cout << "RANANANANANAN"; //Para comprobar si se llama al callback
-		if (!created) {
-			createCutlery(); //Creamos cubiertos
-			created = true;
-		}
 		generateCutlery(); //Añadimos los cubiertos
 		attackStartTime = sdlutils().currRealTime();
 	}
@@ -108,7 +107,7 @@ void BossComponent::createCutlery()
 		if (i != 0) c->spawnTime_ = sdlutils().rand().nextInt(0, 3) + cubiertos[i - 1]->spawnTime_;
 		else c->spawnTime_ = sdlutils().rand().nextInt(0, 2);
 
-		c->ent_ = new Entity(ent->getScene()); //Creamos entidad cubierto
+		c->ent_ = new Entity(ent->getScene(), CUTLERY_ENTITY); //Creamos entidad cubierto
 		c->tr_ = new TransformComponent(Vector2D(i , i), 80, 160); //Añadimos transform al cubierto
 		c->ent_->addComponent(TRANSFORM_COMPONENT, c->tr_);
 		c->coll_ = new ColliderComponent(c->tr_);

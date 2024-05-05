@@ -35,7 +35,7 @@ private:
 	std::vector<Cubierto*> cubiertos;
 	std::vector<std::pair<Cubierto*, bool>> poolCubiertos; //El numero de cubiertos max instanciados depende de la zona
 	Texture** texturasCubiertos; //Array de texturas de los cubiertos
-	bool created; //Determines if cutlery is created
+	bool addToList; //Determines if cutlery is added to entity list
 
 	Uint32 attackStartTime; //Definde en que momento empieza un ataque
 	Uint32 postAttackTimer; //para evitar que empiece a detectar tras un ataque
