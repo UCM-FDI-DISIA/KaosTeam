@@ -1,5 +1,4 @@
 #include "DestructibleComponent.h"
-#include "../sdlutils/RandomNumberGenerator.h"
 #include "../scenes/RoomScene.h"
 #include <iostream>
 
