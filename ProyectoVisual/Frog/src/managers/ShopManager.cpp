@@ -8,10 +8,13 @@
 
 Shop::Shop() : imngr(im()), grasshoperValue(10), waspValue(15), flyValue(15), centipedeValue(20),
 							player(nullptr), playerMoney(nullptr), playerHUD(nullptr), playerInventory(nullptr),selected(nullptr),
-							grasshoperTex(sdlutils().images().at("saltamontes")),
+							grasshoperTex(sdlutils().images().at("grasshopperSheet")),
 							waspTex(sdlutils().images().at("avispa")),
 							flyTex(sdlutils().images().at("fly")),
-							centipedeTex(sdlutils().images().at("ciempies")) {
+							centipedeTex(sdlutils().images().at("ciempies")),
+							pricesTex(sdlutils().images().at("precios")),
+							birdTex(sdlutils().images().at("pajaroTienda"))
+{
 	selectedPowerUp = GRASSHOPER;
 	actualDirection = RIGHT;
 	selected = grasshoper;
@@ -31,7 +34,7 @@ Shop::~Shop() {
 
 }
 void Shop::initShopEntitys() {
-	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 5,230,65,65 }, 1);
+	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 0,230,80,80 }, 1);
 	grasshoper->addShopComponent(gShop);
 	animals.push_back(grasshoper);
 	ShopComponent* wShop = new ShopComponent(waspTex, SDL_Rect{87,155,65, 65 }, 1);
@@ -99,6 +102,8 @@ void Shop::render() {
 		ShopComponent* sC = a->getShopComponent();
 		sC->myRender();
 	}
+	birdTex.render(SDL_Rect{ 540,170,250, 250 });
+	pricesTex.render(SDL_Rect{ 330,50,250, 250 });
 }
 void Shop::update() {
 	if (imngr.getActionBuy())
