@@ -17,7 +17,7 @@
         { "id" : "fireflySheet", "file" : "resources/Sprites/LuciernagaSheet.png", "rows" : 1, "cols" : 2},
         { "id" : "leverSheet", "file" : "resources/Sprites/PalancaSheet.png", "rows" : 1, "cols" : 2},
         { "id" : "birdSheet", "file" : "resources/Sprites/PajaroSheet.png", "rows" : 1, "cols" : 4},
-        { "id" : "grasshopperSheet", "file" : "resources/Sprites/SaltamontesSheet.png", "rows" : 1, "cols" : 2},
+        { "id" : "grasshopperSheet", "file" : "resources/Sprites/SaltamontesSheet.png", "rows" : 1, "cols" : 1},
         { "id" : "bag", "file" : "resources/Sprites/Bolsa.png", "rows" : 1, "cols" : 1},
         { "id" : "hook", "file" : "resources/Sprites/Gancho.png", "rows" : 1, "cols" : 1},
         { "id" : "rock", "file" : "resources/Sprites/Roca.png", "rows" : 1, "cols" : 1},
@@ -30,7 +30,8 @@
         { "id" : "avispa", "file" : "resources/cristinaPrueba/avispa.png", "rows" : 1, "cols" : 1},
         { "id" : "ciempies", "file" : "resources/cristinaPrueba/ciempies.png", "rows" : 1, "cols" : 1},
         { "id" : "saltamontes", "file" : "resources/cristinaPrueba/saltamonte.png", "rows" : 1, "cols" : 1},
-
+        { "id" : "precios", "file" : "resources/Sprites/preciosTienda.png", "rows" : 1, "cols" : 1},
+        { "id" : "pajaroTienda", "file" : "resources/Sprites/pajaroTienda.png", "rows" : 1, "cols" : 1},
 
 
         { "id" : "MenuInicio", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
