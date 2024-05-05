@@ -570,6 +570,9 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	else if (objName == "Enganche") {
 		c = createEnganche(pos);
 	}
+	else if (objName == "Palanca" || objName == "Boton") {
+		c = createMapChanger(objName, pos, objProps[1].getBoolValue(), objProps[0].getStringValue());
+	}
 
 //	else if ()......
 //
@@ -580,17 +583,6 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	//Entity* c = nullptr;
 
 	//int objIntID: id que necesita cada obj para acceder a su pos en el vector del data manager d objetos interactuables
-
-	
-	else if (objName == "PiedraMovible"){
-		c = createPiedraMovible(pos);
-	}	
-	else if (objName == "Enganche") {
-		c = createEnganche(pos);
-	}
-	else if (objName == "Palanca" || objName == "Boton") {
-		c = createMapChanger(objName, pos, objProps[1].getBoolValue(), objProps[0].getStringValue());
-	}
 //	Entity* c = nullptr;
 //
 //	int objIntID: id que necesita cada obj para acceder a su pos en el vector del data manager d objetos interactuables
