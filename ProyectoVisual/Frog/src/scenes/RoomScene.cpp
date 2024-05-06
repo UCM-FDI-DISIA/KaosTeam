@@ -519,6 +519,11 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 
 	return destructible;
 }
+Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
+{
+	// rotation: 0 norte, 1 este, 2 sur y 3 oeste
+
+}
 
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
@@ -586,6 +591,9 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	}
 	else if (objName == "Palanca" || objName == "Boton") {
 		c = createMapChanger(objName, pos, objProps[1].getBoolValue(), objProps[0].getStringValue());
+	}
+	else if (objName == "CintaTransportadora"){
+		c = createConveyorBelt(pos, objProps[0].getIntValue());
 	}
 
 //	else if ()......

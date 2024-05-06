@@ -104,6 +104,7 @@ public:
 	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap);
 	Entity* createCockroach(Vector2D pos);
 	Entity* createExplotableDoor(Vector2D pos);
+	Entity* createConveyorBelt(Vector2D pos, int orientation);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
