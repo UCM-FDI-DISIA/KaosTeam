@@ -595,6 +595,7 @@
     "project": "FlonkMaps.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "niveles/nivel02/dentro/mapaN2_06_dentro.tmx",
         "niveles/nivel01/mapaN1_06.tmx",
         "niveles/nivel02/dentro/mapaN2_07_dentro_postP.tmx",
         "niveles/nivel01/mapaN1_05.tmx",
@@ -603,7 +604,6 @@
         "niveles/nivel01/mapaN1_02.tmx",
         "niveles/nivel01/mapaN1_01.tmx",
         "niveles/nivel02/dentro/mapaN2_04_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_06_dentro.tmx",
         "niveles/nivel02/dentro/mapaN2_14_dentro.tmx",
         "niveles/nivel02/dentro/mapaN2_13_dentro.tmx",
         "niveles/nivel02/dentro/mapaN2_10_dentro.tmx"
