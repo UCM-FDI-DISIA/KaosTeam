@@ -28,7 +28,8 @@ enum Items {
 	AVISPAS,
 	CIEMPIES,
 	GANCHO,
-	BOMBAS
+	BOMBAS, 
+	MONEDAS
 };
 
 class InventoryComponent : public Component

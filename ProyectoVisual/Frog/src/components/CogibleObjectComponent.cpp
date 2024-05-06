@@ -12,11 +12,12 @@ void CogibleObjectComponent::initComponent() {
 void CogibleObjectComponent::checkHit(Entity* e, Collider c) {
 	if (e->getName() == FROG_ENTITY && c.getName() == TONGUE_COLLIDER) {
 		PickUpItem();
+
 	}
 }
 
 void CogibleObjectComponent::PickUpItem() {
-	InventoryComponent* ic = static_cast<InventoryComponent*>(ent->getComponent(INVENTORY_COMPONENT));
+	InventoryComponent* ic = static_cast<InventoryComponent*>(ent->getScene()->getPlayer()->getComponent(INVENTORY_COMPONENT));
 	ic->PickUpItem(item, itemAmmount);
 }
 
