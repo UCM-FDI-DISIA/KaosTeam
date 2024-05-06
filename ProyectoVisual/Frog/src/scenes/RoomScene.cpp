@@ -3,6 +3,7 @@
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
 
+#include "../sdlutils/Texture.h"
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
 
@@ -12,6 +13,9 @@ void RoomScene::render() {
 	}
 	HUD->render();
 	if (insideShop) shopManager->render();
+	if (showArbol) {
+		arbolTiendaTex.render(SDL_Rect{ 200, 200,144, 144 });
+	}
 }
 
 void RoomScene::update() {
@@ -19,9 +23,13 @@ void RoomScene::update() {
 		if (e != nullptr)
 			e->update();
 	}
+	HUD->update();
 	cameraManager->update();
-	if (insideShop)
+	if (insideShop) {
 		shopManager->update();
+		showArbol = false;
+	}
+
 	if (needMapChange)
 		changeMap();
 	//comrpueba las colisiones con la rana
@@ -90,13 +98,17 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 	LifeComponent* lc = new LifeComponent(10, 10);
 	player->addComponent(LIFE_COMPONENT, lc);
-	
+
+	//Accedemos al Singleton del HUD para enlazar las vidas del jugador con el HUD
+	HUDManager::instance()->LinkLives(lc);
+
 	AddEntity(player);
 
 	return player;
 }
 
 Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::string nextMap) {
+	showArbol = false;
 	Entity* c = new Entity(this);
 
 	TransformComponent* transform = new TransformComponent(pos);
@@ -124,6 +136,9 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 	else if (objName == "TransitionT") {
 		nextFlonk = T;
 
+		arbolX = pos.getX();
+		arbolY = pos.getY();
+		showArbol = !showArbol;
 	}
 	else {
 		nextFlonk = S;
@@ -361,7 +376,6 @@ Entity* RoomScene::createExplotableDoor(Vector2D pos) {
 	AddEntity(door);
 	return door;
 }
-
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this, SNAKE_ENTITY);
 	Texture* txtSnake = &sdlutils().images().at("snakeSheet");
@@ -552,7 +566,6 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
 	Entity* destructible = new Entity(this, DESTRUCTIBLE_ENTITY);
 	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
-	// hay que animarlo
 
 	TransformComponent* transform = new TransformComponent(pos);
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
@@ -570,6 +583,28 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 	destructible->addComponent(DESTRUCTIBLE_COMPONENT, destructibleComponent);
 
 	return destructible;
+}
+Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
+{
+	// rotation: 0 norte, 1 este, 2 sur y 3 oeste
+	Entity* conveyor = new Entity(this, CONVEYOR_ENTITY);
+	Texture* txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);	// cambiarlo cuando sea posible
+
+	TransformComponent* transform = new TransformComponent(pos);
+	conveyor->addComponent(TRANSFORM_COMPONENT, transform);
+
+	RenderComponent* renderDestructible = new RenderComponent(txtConveyor);
+	conveyor->addComponent(RENDER_COMPONENT, renderDestructible);
+	conveyor->addRenderComponent(renderDestructible);
+
+	Box* boxConveyor = new Box(pos);
+	Collider coll = Collider(boxConveyor);
+	ColliderComponent* collConveyor= new ColliderComponent(transform);
+	conveyor->addComponent(COLLIDER_COMPONENT, collConveyor);
+
+
+
+	return conveyor;
 }
 
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
@@ -624,11 +659,13 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	Entity* c = nullptr;
 	
 	if (objName == "Jarron"){
-		c = createJarron(pos, objProps[0].getIntValue());
+		/*c = createJarron(pos, objProps[0].getIntValue());*/
+		c = createJarron(pos, 1);
 	}	
 	else if (objName == "Arbusto")
 	{
-		c = createArbusto(pos, objProps[0].getIntValue());
+		/*c = createArbusto(pos, objProps[0].getIntValue());*/
+		c = createArbusto(pos, 1);
 	}
 	else if (objName == "PiedraMovible"){
 		c = createPiedraMovible(pos, objIntID);
@@ -638,6 +675,9 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	}
 	else if (objName == "Palanca" || objName == "Boton") {
 		c = createMapChanger(objName, pos, objProps[1].getBoolValue(), objProps[0].getStringValue(), objIntID, objInteracted);
+	}
+	else if (objName == "CintaTransportadora"){
+		c = createConveyorBelt(pos, objProps[0].getIntValue());
 	}
 
 	return c;

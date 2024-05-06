@@ -4,6 +4,7 @@
 */
 #include "../sdlutils/Texture.h"
 #include "../utils/Singleton.h"
+#include "../components/LifeComponent.h"
 
 class Game;
 
@@ -13,7 +14,6 @@ class HUDManager: public Singleton<HUDManager>
 
 private:
 	Game* game; //por ahora está aqui, aunq no sé para q se va a usar.
-
 	int vidasActuales, vidasMax, wormsActuales;
 	int xInicialFly = 15;
 	int yInicial = 10;
@@ -25,7 +25,7 @@ private:
 	SDL_Rect rectFly;
 	Font* font;
 	SDL_Color colorFont = {255, 255, 255, 255};
-
+	LifeComponent* lives;
 	//Constructora
 	HUDManager();
     
@@ -43,13 +43,14 @@ public:
 	//	}
 	//	return instance;
 	//};
-
+	
+	void LinkLives(LifeComponent* playerLife); //Metodo para acceder a las vidas del jugador
 	void ChangeLives(int);
 	void ChangeMaxLife(int);
 	void addWorms(int);
 
 	void render();
-	void update() {}; //por ahora no tiene nada
+	void update(); //por ahora no tiene nada
 };
 //inline HUDManager& hud() {
 //	return *HUDManager::GetInstance();

@@ -1,5 +1,6 @@
 #pragma once
 #include "../ecs/Component.h"
+#include "MovementComponentFrog.h"
 #include <string>
 #include <map>
 

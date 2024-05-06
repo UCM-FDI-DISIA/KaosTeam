@@ -158,16 +158,16 @@
   <object id="15" name="PiedraMovible" type="ObjInteract" x="167.167" y="633.5">
    <point/>
   </object>
-  <object id="16" name="FlonkE" type="Player" x="264.667" y="171.833">
+  <object id="16" name="FlonkE" type="Player" x="264.303" y="170.924">
    <point/>
   </object>
-  <object id="18" name="TransitionE" type="Transition" x="280.5" y="155">
+  <object id="18" name="TransitionE" type="Transition" x="281.045" y="153.727">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_02_fuera.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="19" name="TransitionE" type="Transition" x="280.5" y="172.333">
+  <object id="19" name="TransitionE" type="Transition" x="280.5" y="169.788">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/fuera/mapaN2_02_fuera.tmx"/>
    </properties>

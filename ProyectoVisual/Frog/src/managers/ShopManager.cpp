@@ -123,10 +123,10 @@ void Shop::update() {
 		changeTexture();
 		lastChangeTexture = sdlutils().virtualTimer().currTime();
 	}
-	if (imngr.getActionBuy())
+	if (imngr.getAction2())
 	{ buyPowerUp(selectedPowerUp); }
-	else if (imngr.getActionRightShop()) { changeAnimal(RIGHT); }
-	else if (imngr.getActionLeftShop()){ changeAnimal(LEFT); }
+	else if (imngr.getAction3()) { changeAnimal(RIGHT); }
+	else if (imngr.getAction1()){ changeAnimal(LEFT); }
 
 }
 //este metodo se llamara cuando del input se reciba la tecla comprar y se pasa la mejora seleccionada en ese momento
