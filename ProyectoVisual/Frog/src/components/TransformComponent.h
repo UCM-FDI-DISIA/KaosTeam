@@ -30,7 +30,7 @@ public:
 	}
 
 	Vector2D getCasilla() {
-		return casilla;
+		return casilla	;
 	}
 
 	Vector2D* getCasillaPointer() {

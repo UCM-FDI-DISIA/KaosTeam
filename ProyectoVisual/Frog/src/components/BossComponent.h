@@ -13,6 +13,7 @@
 #include <utility>
 
 const int MAX_CUBIERTOS = 4;
+const int TIME_AFTER_ATTACK = 4;
 
 enum bossState { MOVE, ATTACK };	
 enum tipoCubierto { CUCHARA, CUCHILLO, CUCHILLO_CARNICERO, TENEDOR };
