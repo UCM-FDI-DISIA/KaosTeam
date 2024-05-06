@@ -344,7 +344,6 @@ Entity* RoomScene::createExplotableDoor(Vector2D pos) {
 	AddEntity(door);
 	return door;
 }
-
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this, SNAKE_ENTITY);
 	Texture* txtSnake = &sdlutils().images().at("snakeSheet");
