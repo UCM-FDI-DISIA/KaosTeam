@@ -2,6 +2,8 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../scenes/RoomScene.h"
 #include "LifeComponent.h"
+#include <cstdlib>
+#include <ctime>
 
 BossComponent::BossComponent() : currState(MOVE), attackStartTime(0), isAttacking(false), //
 							postAttackTimer(2), addToList(false), //
@@ -12,6 +14,9 @@ BossComponent::BossComponent() : currState(MOVE), attackStartTime(0), isAttackin
 	texturasCubiertos[1] = &sdlutils().images().at("cuchilloCarnicero");//Sprite cuchillo carnicero
 	texturasCubiertos[2] = &sdlutils().images().at("cuchillo"); //Sprite cuchillo 
 	texturasCubiertos[3] = &sdlutils().images().at("tenedor"); //Sprite tenedor
+
+	//Semilla para numeros aleatorios
+	std::srand(std::time(0));
 }
 
 BossComponent::~BossComponent()
@@ -49,10 +54,11 @@ void BossComponent::generateCutlery()
 {
 	int numCutlery = sdlutils().rand().nextInt(1 + contDishes, 5 + contDishes); //Cuantos cubiertos tendra el ataque
 	for (int i = 0; i < numCutlery; i++) {
-		int c = sdlutils().rand().nextInt(CUCHARA, TENEDOR + 1); //Se decide que cubierto se añade a la pool
-		int x = sdlutils().rand().nextInt(tr->getCasilla().getX(), 
-			tr->getWidth() / ent->getScene()->getMapReader()->getTileSize() + 1); //Definde x random donde ira el cubierto
-
+		//int c = sdlutils().rand().nextInt(CUCHARA, TENEDOR + 1); //Se decide que cubierto se añade a la pool
+		int c = rand() % (TENEDOR + 1); //Decide el cubierto a meter en la pool
+		//int x = sdlutils().rand().nextInt(tr->getCasilla().getX(), 
+			//tr->getWidth() / ent->getScene()->getMapReader()->getTileSize() + 1); //Definde x random donde ira el cubierto
+		int x = rand() % ((int)tr->getWidth() / TILE_SIZE + 1) + tr->getCasilla().getX(); //Definde x random donde ira el cubierto
 
 		cubiertos[c]->tr_->setCasilla(Vector2D(x, -1)); //Ponemos el cubierto una casilla fuera de la pantalla
 		cubiertos[c]->tr_->setOffset(Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 2,
