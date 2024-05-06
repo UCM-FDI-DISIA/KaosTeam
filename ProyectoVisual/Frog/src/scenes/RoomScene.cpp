@@ -95,9 +95,6 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	//Accedemos al Singleton del HUD para enlazar las vidas del jugador con el HUD
 	HUDManager::instance()->LinkLives(lc);
 
-	MoneyComponent* moneyComp = new MoneyComponent();
-	player->addComponent(MONEY_COMPONENT, moneyComp);
-	
 	AddEntity(player);
 
 	return player;
