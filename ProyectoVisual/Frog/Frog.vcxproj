@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\scenes\EndingScene.cpp" />
     <ClCompile Include="src\components\DestructibleComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFrancois.cpp" />
     <ClCompile Include="src\components\BossComponent.cpp" />
@@ -227,6 +228,7 @@
     <ClCompile Include="src\components\TongueHookComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\scenes\EndingScene.h" />
     <ClInclude Include="src\components\DestructibleComponent.h" />
     <ClInclude Include="src\components\MovementComponentFrancois.h" />
     <ClInclude Include="src\components\BossComponent.h" />
