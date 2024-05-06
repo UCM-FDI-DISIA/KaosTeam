@@ -99,7 +99,7 @@ void MovementComponentBomb::explodeBomb() {
 	animator->stopAnimation(); //Paramos animacion actual
 	animator->removeAnimations(); //Quitamos animaciones existentes
 	rndr->ChangeTexture(explosionText); //cambiamos la textura del objeto (al spriteSheet de la explosion)
-	animator->addAnimation("EXPLOSION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true));
+	animator->addAnimation("EXPLOSION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, true));
 	animator->playAnimation("EXPLOSION"); //Reproducimos explosi�n
 
 	shockEntity = true;

@@ -6,7 +6,7 @@
 MovementComponentRedAnt::MovementComponentRedAnt(AnimationComponent* a, MovementComponentFrog* target) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
 {
 	actualDirection = RIGHT;
-	//anim->playAnimation("RIGHT");
+	anim->playAnimation("RIGHT");
 	waitTime = 500;
 	movementFrameRate = 30;
 	framesPerMove = 6;
@@ -81,6 +81,7 @@ void MovementComponentRedAnt::update() {
 		switch (actualDirection)
 		{
 		case RIGHT: {
+			anim->playAnimation("RIGHT");
 			canMove(Vector2D(1, 0), RIGHT);
 			if (escape) {
 				//anim->playAnimation("RIGHT");
@@ -94,6 +95,7 @@ void MovementComponentRedAnt::update() {
 		break;
 		case LEFT:
 		{
+			anim->playAnimation("LEFT");
 			canMove(Vector2D(-1, 0), LEFT);
 			if (escape) {
 				//anim->playAnimation("LEFT");
@@ -107,6 +109,7 @@ void MovementComponentRedAnt::update() {
 		break;
 		case UP:
 		{
+			anim->playAnimation("UP");
 			canMove(Vector2D(0, -1), UP);
 			if (escape) {
 				//anim->playAnimation("LEFT");
@@ -120,6 +123,7 @@ void MovementComponentRedAnt::update() {
 		break;
 		case DOWN:
 		{
+			anim->playAnimation("DOWN");
 			canMove(Vector2D(0, 1), DOWN);
 			if (escape) {
 				//anim->playAnimation("LEFT");

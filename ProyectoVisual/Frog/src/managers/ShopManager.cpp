@@ -13,13 +13,16 @@ Shop::Shop() : imngr(im()), grasshoperValue(10), waspValue(15), flyValue(15), ce
 							flyTex(sdlutils().images().at("fly")),
 							centipedeTex(sdlutils().images().at("ciempies")),
 							pricesTex(sdlutils().images().at("precios")),
-							birdTex(sdlutils().images().at("pajaroTienda"))
+							birdTex(sdlutils().images().at("pajaroTienda")),
+							inputTex(sdlutils().images().at("inputTienda"))
+
 {
 	selectedPowerUp = GRASSHOPER;
 	actualDirection = RIGHT;
 	selected = grasshoper;
 	initShopEntitys();
 	setOppacity();
+	lastChangeTexture = sdlutils().virtualTimer().currTime();
 }
 Shop::~Shop() {
 	for (auto& a : animals) {
@@ -97,6 +100,16 @@ void Shop::setOppacity() {
 		sC->setOppacity();
 	}
 }
+void Shop::changeTexture() {
+	if (change) {
+		inputTex.setAlphaMod(255);
+		pricesTex.setAlphaMod(0);
+	}
+	else {
+		pricesTex.setAlphaMod(255);
+		inputTex.setAlphaMod(0);
+	}
+}
 void Shop::render() {
 	for (auto& a : animals) {
 		ShopComponent* sC = a->getShopComponent();
@@ -104,8 +117,15 @@ void Shop::render() {
 	}
 	birdTex.render(SDL_Rect{ 540,170,250, 250 });
 	pricesTex.render(SDL_Rect{ 330,50,250, 250 });
+	inputTex.render(SDL_Rect{ 330,50,250, 250 });
 }
 void Shop::update() {
+
+	if (sdlutils().virtualTimer().currTime() > lastChangeTexture + 3000) {
+		change = !change;
+		changeTexture();
+		lastChangeTexture = sdlutils().virtualTimer().currTime();
+	}
 	if (imngr.getActionBuy())
 	{ buyPowerUp(selectedPowerUp); }
 	else if (imngr.getActionRightShop()) { changeAnimal(RIGHT); }

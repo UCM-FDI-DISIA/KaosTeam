@@ -49,8 +49,9 @@ private:
 	Texture& centipedeTex;
 	Texture& pricesTex;
 	Texture& birdTex;
+	Texture& inputTex;
 	std::vector<EntityShop*> animals;
-
+	bool change = false;
 	//metodos
 	Shop();
 	
@@ -59,6 +60,8 @@ private:
 	void setOppacity();
 	void setSelected();
 	void initShopEntitys();
+	void changeTexture();
 
+	Uint32 lastChangeTexture;
 };
 #endif // !SHOPMANAGER_H

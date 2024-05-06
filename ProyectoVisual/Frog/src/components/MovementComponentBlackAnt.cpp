@@ -6,7 +6,7 @@
 MovementComponentBlackAnt::MovementComponentBlackAnt(AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
 {
 	actualDirection = RIGHT;
-	//anim->playAnimation("RIGHT");
+	anim->playAnimation("RIGHT");
 	waitTime = 500;
 	movementFrameRate = 30;
 	framesPerMove = 6;
@@ -39,6 +39,7 @@ void MovementComponentBlackAnt::update() {
 		switch (actualDirection)
 		{
 		case RIGHT: {
+			anim->playAnimation("RIGHT");
 			if (isAtacking) {
 				velocity = Vector2D(diff, 0);
 				//anim->playAnimation("RIGHT");
@@ -53,6 +54,7 @@ void MovementComponentBlackAnt::update() {
 		break;
 		case LEFT:
 		{
+			anim->playAnimation("LEFT");
 			if (isAtacking) {
 				velocity = Vector2D(diff, 0);
 				//anim->playAnimation("LEFT");
@@ -67,28 +69,26 @@ void MovementComponentBlackAnt::update() {
 		break;
 		case UP:
 		{
+			anim->playAnimation("UP");
 			if (isAtacking) {
-				velocity = Vector2D(0, diff);
-				//anim->playAnimation("LEFT");
+				velocity = Vector2D(0, diff);	
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
 			else {
 				velocity = Vector2D(0, -1);
-				//anim->playAnimation("LEFT");
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
 		break;
 		case DOWN:
 		{
+			anim->playAnimation("DOWN");
 			if (isAtacking) {
 				velocity = Vector2D(0, diff);
-				//anim->playAnimation("LEFT");
 				framesPerMove = 4 + velocity.magnitude() * 3;;
 			}
 			else {
 				velocity = Vector2D(0, 1);
-				//anim->playAnimation("LEFT");
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}

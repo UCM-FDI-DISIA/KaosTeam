@@ -32,6 +32,11 @@
         { "id" : "saltamontes", "file" : "resources/cristinaPrueba/saltamonte.png", "rows" : 1, "cols" : 1},
         { "id" : "precios", "file" : "resources/Sprites/preciosTienda.png", "rows" : 1, "cols" : 1},
         { "id" : "pajaroTienda", "file" : "resources/Sprites/pajaroTienda.png", "rows" : 1, "cols" : 1},
+        { "id" : "blackAntSheet", "file" : "resources/Sprites/AntSpritesheet.png", "rows" : 3, "cols" : 2},
+        { "id" : "redAntSheet", "file" : "resources/Sprites/redAntSpritesheet.png", "rows" : 3, "cols" : 2},
+        { "id" : "roachSheet", "file" : "resources/Sprites/RoachSpritesheet.png", "rows" : 1, "cols" : 3},
+        { "id" : "roachHead", "file" : "resources/Sprites/roachHead.png", "rows" : 1, "cols" : 1},
+        { "id" : "inputTienda", "file" : "resources/Sprites/inputTienda.png", "rows" : 1, "cols" : 1},
 
 
         { "id" : "MenuInicio", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
