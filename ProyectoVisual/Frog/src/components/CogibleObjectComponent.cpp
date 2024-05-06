@@ -16,13 +16,16 @@ void CogibleObjectComponent::checkHit(Entity* e, Collider c) {
 }
 
 void CogibleObjectComponent::PickUpItem() {
-
+	InventoryComponent* ic = static_cast<InventoryComponent*>(ent->getComponent(INVENTORY_COMPONENT));
+	ic->PickUpItem(item, itemAmmount);
 }
 
-CogibleObjectComponent::CogibleObjectComponent() {
+CogibleObjectComponent::CogibleObjectComponent(Items it) {
 	itemAmmount = 1;
+	item = it;
 }
 
-CogibleObjectComponent::CogibleObjectComponent(int ammount) {
+CogibleObjectComponent::CogibleObjectComponent(Items it, int ammount) {
 	itemAmmount = ammount;
+	item = it;
 }

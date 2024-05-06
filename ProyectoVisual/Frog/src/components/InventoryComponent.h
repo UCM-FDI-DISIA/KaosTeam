@@ -39,9 +39,10 @@ public:
 	int GetMoney();
 	void AddMoney(int n); //Metodo para añadirle dinero a nuestro total
 	bool TakeMoney(int price); //El metodo es un booleano por haber casos en donde no tengamos suficiente dinero.
-	void InventItem(Items, int amm);
-private:
-	int money;
+	void PickUpItem(Items, int amm);
+
 	MejorasData mejoras;
 	HabilidadesData habilidades;
+private:
+	int money;
 };

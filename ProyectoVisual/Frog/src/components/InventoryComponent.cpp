@@ -23,7 +23,7 @@ bool InventoryComponent::TakeMoney(int price)
 }
 
 //Mete un item en en el inventario
-void InventoryComponent::InventItem(Items it, int amm = 1) {
+void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 	switch (it)
 	{
 	case SALTAMONTES:

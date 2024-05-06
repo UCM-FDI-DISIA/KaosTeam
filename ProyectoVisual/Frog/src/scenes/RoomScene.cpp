@@ -155,7 +155,7 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		c->addRenderComponent(render);
 
 		//Añade la funcionalidad espcífica de este objeto.
-		CogibleObjectComponent* cogible = new CogibleObjectComponent();
+		CogibleObjectComponent* cogible = new CogibleObjectComponent(GANCHO);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
 	AddEntity(c);
