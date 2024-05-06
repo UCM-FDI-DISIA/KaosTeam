@@ -98,5 +98,4 @@ public:
     int getCols() { return cols; }
     int getRows() { return rows; }
     void move(std::string dir);
-    
 };

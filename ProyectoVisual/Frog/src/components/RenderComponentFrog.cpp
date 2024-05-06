@@ -124,7 +124,7 @@ void RenderComponentFrog::render()
     //renderizamos la rana (depues de la lengua si no mira hacia abajo en el ataque)
     if (d != DOWN || !attacking)
     {
-        if (frogAnimator->getCurrentAnim().flip) //Si se tiene que flipear
+        if (frogAnimator->getCurrentAnim().flipHorizontal) //Si se tiene que flipear
             frogText->renderFrameWithFlip(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
         else
             frogText->renderFrame(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol());

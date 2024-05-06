@@ -137,7 +137,7 @@ void RenderComponentSnake::render() {
     //renderizamos la serpiente (depues de la lengua si no mira hacia abajo en el ataque)
     //if (d != DOWN || !attacking)
     //{
-    if (snakeAnimator->getCurrentAnim().flip) //Si se tiene que flipear
+    if (snakeAnimator->getCurrentAnim().flipHorizontal) //Si se tiene que flipear
         myTexture->renderFrameWithFlip(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
     else
         myTexture->renderFrame(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol());

@@ -1,24 +1,28 @@
 #pragma once
-#include "../components/LifeComponent.h"
-#include "../sdlutils/SDLUtils.h"
+#include "../ecs/Component.h"
+#include "../scenes/RoomScene.h"
+#include "ColliderComponent.h"
+#include "MovementComponentFrog.h"
 
 
-enum LootEnum { LOOT_RANDOM, LOOT_VIDA, LOOT_DINERO};
+enum LootEnum {LOOT_RANDOM, LOOT_VIDA, LOOT_DINERO};
 
-class DestructibleComponent
+class DestructibleComponent :public Component
 {
 private:
-	const int RandomLifeProb = 20, RandomMoneyProb = 20;
-	LifeComponent life;
-	int loot;	// Guarda lo que va a soltar cuando sea destruido
-	RandomNumberGenerator& rand_;	//generador de numeros random
-	Vector2D position;
+	const int RandomLifeProb = 20, RandomMoneyProb = 20;	//probabilidad sobre 100 de que suelte tal cosa
+	int loot;												// Guarda lo que va a soltar cuando sea destruido
+	RandomNumberGenerator& rand_;							//generador de numeros random
+	Vector2D position;										//posicion para cuando dropee el loot al morir
+	ColliderComponent* coll = nullptr;
+	RoomScene* scen = nullptr;
 
-	void DestroySelf();
-	void SpawnLoot(int lootType);
+	void LootAndBreak();
+	void CheckCollisions(Entity* ent, Collider c);
 	
 public:
 	DestructibleComponent(int lootType, Vector2D pos);
-	void update();
+	//virtual ~DestructibleComponent();
+	void initComponent() override;
 };
 

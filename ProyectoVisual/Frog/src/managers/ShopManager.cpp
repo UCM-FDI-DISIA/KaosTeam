@@ -8,15 +8,21 @@
 
 Shop::Shop() : imngr(im()), grasshoperValue(10), waspValue(15), flyValue(15), centipedeValue(20),
 							player(nullptr), playerHUD(nullptr), playerInventory(nullptr),selected(nullptr),
-							grasshoperTex(sdlutils().images().at("saltamontes")),
+							grasshoperTex(sdlutils().images().at("grasshopperSheet")),
 							waspTex(sdlutils().images().at("avispa")),
 							flyTex(sdlutils().images().at("fly")),
-							centipedeTex(sdlutils().images().at("ciempies")) {
+							centipedeTex(sdlutils().images().at("ciempies")),
+							pricesTex(sdlutils().images().at("precios")),
+							birdTex(sdlutils().images().at("pajaroTienda")),
+							inputTex(sdlutils().images().at("inputTienda"))
+
+{
 	selectedPowerUp = GRASSHOPER;
 	actualDirection = RIGHT;
 	selected = grasshoper;
 	initShopEntitys();
 	setOppacity();
+	lastChangeTexture = sdlutils().virtualTimer().currTime();
 }
 Shop::~Shop() {
 	for (auto& a : animals) {
@@ -29,7 +35,7 @@ Shop::~Shop() {
 	playerInventory = nullptr;
 }
 void Shop::initShopEntitys() {
-	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 5,230,65,65 }, 1);
+	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 0,230,80,80 }, 1);
 	grasshoper->addShopComponent(gShop);
 	animals.push_back(grasshoper);
 	ShopComponent* wShop = new ShopComponent(waspTex, SDL_Rect{87,155,65, 65 }, 1);
@@ -91,13 +97,32 @@ void Shop::setOppacity() {
 		sC->setOppacity();
 	}
 }
+void Shop::changeTexture() {
+	if (change) {
+		inputTex.setAlphaMod(255);
+		pricesTex.setAlphaMod(0);
+	}
+	else {
+		pricesTex.setAlphaMod(255);
+		inputTex.setAlphaMod(0);
+	}
+}
 void Shop::render() {
 	for (auto& a : animals) {
 		ShopComponent* sC = a->getShopComponent();
 		sC->myRender();
 	}
+	birdTex.render(SDL_Rect{ 540,170,250, 250 });
+	pricesTex.render(SDL_Rect{ 330,50,250, 250 });
+	inputTex.render(SDL_Rect{ 330,50,250, 250 });
 }
 void Shop::update() {
+
+	if (sdlutils().virtualTimer().currTime() > lastChangeTexture + 3000) {
+		change = !change;
+		changeTexture();
+		lastChangeTexture = sdlutils().virtualTimer().currTime();
+	}
 	if (imngr.getActionBuy())
 	{ buyPowerUp(selectedPowerUp); }
 	else if (imngr.getActionRightShop()) { changeAnimal(RIGHT); }

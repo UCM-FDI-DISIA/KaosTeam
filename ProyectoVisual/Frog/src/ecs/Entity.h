@@ -20,7 +20,8 @@ enum ComponentsEnum
 	TONGUEINTERACT_COMPONENT,
 	INVENTORY_COMPONENT,
 	EXPLOITABLE_COMPONENT,
-	COGIBLE_OBJECT_COMPONENT
+	COGIBLE_OBJECT_COMPONENT,
+	DESTRUCTIBLE_COMPONENT
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
 //Si no es relevante, el valor ser� 0 (UNAMED)
@@ -40,7 +41,8 @@ enum EntityName {
 	COGIBLE_ENTITY,
 	PALANCA_ENTITY,
 	BOTON_ENTITY,
-	COCKROACH_ENTITY
+	COCKROACH_ENTITY,
+	DESTRUCTIBLE_ENTITY
 };
 
 class Component;

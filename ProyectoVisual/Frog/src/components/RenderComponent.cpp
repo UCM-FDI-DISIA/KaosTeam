@@ -6,8 +6,11 @@ void RenderComponent::render()
 {
 	//segun si necesita flip o no la textura
 	if (myAnimator != nullptr) {
-		if (myAnimator->getCurrentAnim().flip) {
+		if (myAnimator->getCurrentAnim().flipHorizontal) {
 			myTexture->renderFrameWithFlip(transform->GetOnDisplayPosition(), myAnimator->getCurrentFil(), myAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
+		}
+		else if (myAnimator->getCurrentAnim().flipVertical) {
+			myTexture->renderFrameWithFlip(transform->GetOnDisplayPosition(), myAnimator->getCurrentFil(), myAnimator->getCurrentCol(), SDL_FLIP_VERTICAL, 0);
 		}
 		else {
 			myTexture->renderFrame(transform->GetOnDisplayPosition(), myAnimator->getCurrentFil(), myAnimator->getCurrentCol());

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "niveles/nivel02/dentro/mapaN2_04_dentro.tmx",
+    "activeFile": "niveles/nivel02/dentro/mapaN2_07_dentro.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
@@ -86,11 +86,11 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 2.529375,
+            "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 52.779836916234245,
-                "y": 38.15171732147269
+                "x": 214.25,
+                "y": 124.75
             }
         },
         "niveles/nivel01/mapaN1_07-2.tmx": {
@@ -559,7 +559,7 @@
             "scaleInEditor": 1
         },
         "tileset/Tileset completo.tsx": {
-            "scaleInDock": 1.5,
+            "scaleInDock": 3,
             "scaleInEditor": 3
         },
         "tileset/mesaTileset.tsx": {
@@ -575,42 +575,27 @@
     "map.tileWidth": 16,
     "map.width": 13,
     "openFiles": [
-        "niveles/nivel02/dentro/mapaN2_04_dentro_postB1y2.tmx",
-        "niveles/nivel02/dentro/mapaN2_04_dentro_postB1.tmx",
-        "niveles/nivel02/dentro/mapaN2_04_dentro.tmx",
         "niveles/nivel02/dentro/mapaN2_07_dentro.tmx",
         "niveles/nivel02/dentro/mapaN2_10_dentro.tmx",
         "niveles/nivel02/dentro/mapaN2_13_dentro.tmx",
         "niveles/nivel02/dentro/mapaN2_14_dentro.tmx",
-        "niveles/nivel03/mapaN3_01.tmx",
-        "niveles/nivel03/mapaN3_01-2.tmx",
-        "niveles/nivel03/mapaN3_02.tmx",
-        "niveles/nivel03/mapaN3_02-2.tmx",
-        "niveles/nivel03/mapaN3_03.tmx",
-        "niveles/nivel03/mapaN3_04.tmx",
-        "niveles/nivel03/mapaN3_04-2.tmx",
-        "niveles/nivel03/mapaN3_05.tmx",
-        "niveles/nivel01/mapaN1_06postPalanca.tmx",
-        "niveles/nivel02/dentro/mapaN2_05_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_06_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_01_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_02_dentro.tmx"
+        "niveles/nivel02/dentro/mapaN2_06_dentro.tmx"
     ],
     "project": "FlonkMaps.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "niveles/nivel02/dentro/mapaN2_05_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_01_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_02_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_04_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_04_dentro_postB1.tmx",
-        "niveles/nivel02/dentro/mapaN2_04_dentro_postB1y2.tmx",
         "niveles/nivel02/dentro/mapaN2_06_dentro.tmx",
-        "niveles/nivel01/mapaN1_06postPalanca.tmx",
+        "niveles/nivel02/dentro/mapaN2_14_dentro.tmx",
+        "niveles/nivel02/dentro/mapaN2_13_dentro.tmx",
+        "niveles/nivel02/dentro/mapaN2_10_dentro.tmx",
+        "niveles/nivel02/dentro/mapaN2_07_dentro.tmx",
         "niveles/nivel03/mapaN3_05.tmx",
         "niveles/nivel03/mapaN3_04-2.tmx",
         "niveles/nivel03/mapaN3_04.tmx",
-        "niveles/nivel03/mapaN3_03.tmx"
+        "niveles/nivel03/mapaN3_03.tmx",
+        "niveles/nivel03/mapaN3_02-2.tmx",
+        "niveles/nivel03/mapaN3_02.tmx",
+        "niveles/nivel03/mapaN3_01-2.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
