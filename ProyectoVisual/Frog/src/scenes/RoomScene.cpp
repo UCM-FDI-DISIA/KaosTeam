@@ -311,7 +311,6 @@ Entity* RoomScene::createExplotableDoor(Vector2D pos) {
 	AddEntity(door);
 	return door;
 }
-
 Entity* RoomScene::createSnake(Vector2D pos) {
 	Entity* snake = new Entity(this, SNAKE_ENTITY);
 	Texture* txtSnake = &sdlutils().images().at("snakeSheet");
@@ -579,15 +578,6 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	else if (objName == "Arbusto")
 	{
 		c = createArbusto(pos, objProps[0].getIntValue());
-	}
-	else if (objName == "PiedraMovible") {
-		c = createPiedraMovible(pos);
-	}
-	else if (objName == "Enganche") {
-		c = createEnganche(pos);
-	}
-	else if (objName == "Palanca" || objName == "Boton") {
-		c = createMapChanger(objName, pos, objProps[1].getBoolValue(), objProps[0].getStringValue());
 	}
 	else if (objName == "PiedraMovible"){
 		c = createPiedraMovible(pos, objIntID);
