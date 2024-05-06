@@ -9,6 +9,11 @@
 * 
 */
 
+struct ObjEdit{
+	bool interacted;
+	Vector2D pos;
+};
+
 class DataManager
 {
 private:
@@ -17,7 +22,7 @@ private:
 	static std::unique_ptr<DataManager> instance;
 	//static DataManager* instance;
 	Uint32 frameTime;
-	std::map<std::string, std::vector<bool>> interactedObjects; //Estructura para el guardado de escenas
+	std::map<std::string, std::vector<ObjEdit>> interactedObjects; //Estructura para el guardado de escenas
 	//Debe ser un singleton que guarda distintos datos generales del juego.
 public:
 	~DataManager() {};
@@ -35,7 +40,7 @@ public:
 	Uint32 getFrameTime();
 
 	//Métodos para el guardado de escenas
-	std::vector<bool> getInteractObj(const std::string& path);
-	void addObjs(const std::string& path, const std::vector<bool>& interactObj);
+	std::vector<ObjEdit>& getInteractObj(std::string path);
+	void addObjs(const std::string& path, const std::vector<ObjEdit>& interactObj);
 };
 

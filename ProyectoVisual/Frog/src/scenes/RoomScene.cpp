@@ -129,6 +129,7 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 	}
 	else if (objName == "TransitionT") {
 		nextFlonk = T;
+
 	}
 	else {
 		nextFlonk = S;
@@ -382,7 +383,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 	AddEntity(bomb);
 	return bomb;
 }
-Entity* RoomScene::createPiedraMovible(Vector2D pos)
+Entity* RoomScene::createPiedraMovible(Vector2D pos, int objIntID)
 {
 	Entity* piedra = new Entity(this, PIEDRAMOV_ENTITY);
 	Texture* textBomb = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PiedraMovible.png", 1, 1);
@@ -399,7 +400,7 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos)
 	ColliderComponent* collPiedra = new ColliderComponent(transform);
 	piedra->addComponent(COLLIDER_COMPONENT, collPiedra);
 	
-	TonguePushComponent* tongueInteract = new TonguePushComponent();
+	TonguePushComponent* tongueInteract = new TonguePushComponent(objIntID);
 	piedra->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);	
 
 	AddEntity(piedra);
@@ -428,7 +429,8 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	AddEntity(enganche);
 	return enganche;
 }
-Entity* RoomScene::createMapChanger(string name, Vector2D pos, bool pushed, string nextMap)
+
+Entity* RoomScene::createMapChanger(string name, Vector2D pos, bool pushed, string nextMap, int objIntID, bool objInteracted)
 {
 	Entity* e = nullptr;
 	Texture* text = nullptr;
@@ -591,19 +593,15 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	else if (objName == "Palanca" || objName == "Boton") {
 		c = createMapChanger(objName, pos, objProps[1].getBoolValue(), objProps[0].getStringValue());
 	}
-
-//	else if ()......
-//
-//	if (objName == "Nombre que le quieras poner a tu objeto"){
-//		c = createLoqsea(objProps[0].getStringValue(), objProps[1].getIntValue()); POR EJEMPLO
-//Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
-//{
-	//Entity* c = nullptr;
-
-	//int objIntID: id que necesita cada obj para acceder a su pos en el vector del data manager d objetos interactuables
-//	Entity* c = nullptr;
-//
-//	int objIntID: id que necesita cada obj para acceder a su pos en el vector del data manager d objetos interactuables
+	else if (objName == "PiedraMovible"){
+		c = createPiedraMovible(pos, objIntID);
+	}	
+	else if (objName == "Enganche") {
+		c = createEnganche(pos);
+	}
+	else if (objName == "Palanca" || objName == "Boton") {
+		c = createMapChanger(objName, pos, objProps[1].getBoolValue(), objProps[0].getStringValue(), objIntID, objInteracted);
+	}
 
 	return c;
 }
