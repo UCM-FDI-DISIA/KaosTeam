@@ -3,6 +3,7 @@
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
 
+#include "../sdlutils/Texture.h"
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
 
@@ -12,6 +13,9 @@ void RoomScene::render() {
 	}
 	HUD->render();
 	if (insideShop) shopManager->render();
+	if (showArbol) {
+		arbolTiendaTex.render(SDL_Rect{ 200, 200,144, 144 });
+	}
 }
 
 void RoomScene::update() {
@@ -20,8 +24,11 @@ void RoomScene::update() {
 			e->update();
 	}
 	cameraManager->update();
-	if (insideShop)
+	if (insideShop) {
 		shopManager->update();
+		showArbol = false;
+	}
+
 	if (needMapChange)
 		changeMap();
 	//comrpueba las colisiones con la rana
@@ -97,6 +104,7 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 }
 
 Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::string nextMap) {
+	showArbol = false;
 	Entity* c = new Entity(this);
 
 	TransformComponent* transform = new TransformComponent(pos);
@@ -124,6 +132,9 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 	else if (objName == "TransitionT") {
 		nextFlonk = T;
 
+		arbolX = pos.getX();
+		arbolY = pos.getY();
+		showArbol = !showArbol;
 	}
 	else {
 		nextFlonk = S;
