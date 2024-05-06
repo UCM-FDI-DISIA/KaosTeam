@@ -188,7 +188,7 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(MOSCAS);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
-	// else 	if (objName == "BolsaBombas") { //Revisar como se llama en el mapa
+	//else 	if (objName == "BolsaBombas") { //Revisar como se llama en el mapa
 	// Texture* texture = &sdlutils().images().at("bag");
 	// RenderComponent* render = new RenderComponent(texture);
 	// c->addRenderComponent(render);
@@ -203,6 +203,21 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 	return c;
 }
 
+
+Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
+	Entity* c = new Entity(this, COGIBLE_ENTITY);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	c->addComponent(TRANSFORM_COMPONENT, transform);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	c->addComponent(COLLIDER_COMPONENT, collider);
+
+	//En vez de la cantidad, al ser moneda se le pasa un valor del enum en vez de la cantidad.
+	//El propio inventario lo gestionará. 
+	CogibleObjectComponent* cogible = new CogibleObjectComponent(MONEDAS, type);
+	c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+}
 
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {

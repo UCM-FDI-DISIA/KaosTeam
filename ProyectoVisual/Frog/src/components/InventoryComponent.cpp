@@ -48,6 +48,9 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 	case BOMBAS:
 		habilidades.sacoBombas = true;
 		break;
+	case MONEDAS:
+		PickMoneda(amm);
+		break;
 	default:
 		break;
 	}
@@ -62,4 +65,25 @@ void InventoryComponent::MejoraMosca(int amm) {
 //Cura la vida en el life component
 void InventoryComponent::CurarVida(int amm) {
 	static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->AddActual(amm);
+}
+
+/// <summary>
+/// Comprueba el tipo de moneda que ha llegado, a partir de eso añade la cantidad adecuada de monedas
+/// </summary>
+/// <param name="MonedaType (int)">El tipo de moneda</param>
+void InventoryComponent::PickMoneda(int type) {
+	switch (type)
+	{
+	case MONEDA_NARANJA:
+		AddMoney(20);
+		break;
+	case MONEDA_MORADO:
+		AddMoney(5);
+		break;
+	case MONEDA_ROSA:
+		AddMoney(1);
+		break;
+	default:
+		break;
+	}
 }

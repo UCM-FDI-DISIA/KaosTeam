@@ -1,6 +1,5 @@
 #pragma once
 #include "../ecs/Scene.h"
-//#include "../sdlutils/checkML.h"
 #include "../components/MovementComponentFly.h"
 #include "../components/RenderComponent.h"
 #include "../components/RenderComponentFrog.h"
@@ -22,7 +21,6 @@
 #include "../components/MovementComponentSnake.h"
 #include "../components/DestructibleComponent.h"
 #include"../managers/ShopManager.h"
-//#include "../components/MoneyComponent.h"
 #include "../components/MovementComponentBomb.h"
 #include "../components/TonguePushComponent.h"
 #include "../components/TongueHookComponent.h"
@@ -30,9 +28,9 @@
 #include "../components/InventoryComponent.h"
 #include "../components/MovementComponentCockroach.h"
 #include "../components/ExploitableComponent.h"
-class Texture;
 #include "../components/ConveyorBeltComponent.h"
 
+class Texture;
 class RoomScene : public Scene
 {
 private:
@@ -111,6 +109,8 @@ public:
 	Entity* createCockroach(Vector2D pos);
 	Entity* createExplotableDoor(Vector2D pos);
 	Entity* createConveyorBelt(Vector2D pos, int orientation);
+
+	Entity* createMoneda(Vector2D pos, MonedaType type);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);

@@ -36,6 +36,13 @@ enum Items {
 	SACO_BOMBAS
 };
 
+//Tipos de moneda
+enum MonedaType {
+	MONEDA_NARANJA,
+	MONEDA_ROSA,
+	MONEDA_MORADO
+};
+
 class InventoryComponent : public Component
 {
 public:
@@ -45,6 +52,7 @@ public:
 	void AddMoney(int n); //Metodo para añadirle dinero a nuestro total
 	bool TakeMoney(int price); //El metodo es un booleano por haber casos en donde no tengamos suficiente dinero.
 	void PickUpItem(Items, int amm);
+	void PickMoneda(int type);
 	void MejoraMosca(int amm);
 	void CurarVida(int amm);
 	MejorasData mejoras;
