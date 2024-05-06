@@ -21,7 +21,6 @@
 #include "../components/MovementComponentRedAnt.h"
 #include "../components/MovementComponentSnake.h"
 #include "../components/DestructibleComponent.h"
-#include "../components/MoneyComponent.h"
 #include"../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
 #include "../components/TonguePushComponent.h"
@@ -55,7 +54,7 @@ private:
 public:
 	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		
+
 		mapReader = new MapManager(path, this);
 		mapReader->loadObj(path);
 
@@ -101,6 +100,8 @@ public:
 	Entity* createBomb(Vector2D pos);
 	Entity* createPiedraMovible(Vector2D pos, int objIntID);
 	Entity* createEnganche(Vector2D pos);
+	Entity* createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
+
 	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap, int objIntID, bool objInteracted);
 	Entity* createCockroach(Vector2D pos);
 	Entity* createExplotableDoor(Vector2D pos);

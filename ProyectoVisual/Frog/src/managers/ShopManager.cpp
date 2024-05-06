@@ -7,7 +7,7 @@
 
 
 Shop::Shop() : imngr(im()), grasshoperValue(10), waspValue(15), flyValue(15), centipedeValue(20),
-							player(nullptr), playerMoney(nullptr), playerHUD(nullptr), playerInventory(nullptr),selected(nullptr),
+							player(nullptr), playerHUD(nullptr), playerInventory(nullptr),selected(nullptr),
 							grasshoperTex(sdlutils().images().at("grasshopperSheet")),
 							waspTex(sdlutils().images().at("avispa")),
 							flyTex(sdlutils().images().at("fly")),
@@ -31,10 +31,8 @@ Shop::~Shop() {
 	}
 	selected = nullptr;
 	player = nullptr;
-	playerMoney = nullptr;
 	playerHUD = nullptr;
 	playerInventory = nullptr;
-
 }
 void Shop::initShopEntitys() {
 	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 0,230,80,80 }, 1);
@@ -52,7 +50,6 @@ void Shop::initShopEntitys() {
 }
 void Shop::setPlayer(Entity* player_) {
 	player = player_;
-	playerMoney = dynamic_cast<MoneyComponent*>(player->getComponent(MONEY_COMPONENT));
 	playerInventory = dynamic_cast<InventoryComponent*>(player->getComponent(INVENTORY_COMPONENT));
 }
 void Shop::setHUD(HUDManager* hud) {
@@ -139,10 +136,10 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 		case Shop::GRASSHOPER: 
 		{	
 			ShopComponent* sC = grasshoper->getShopComponent();
-			if (!sC->isBuy() && playerMoney->TakeMoney(grasshoperValue)) {
+			if (!sC->isBuy() && playerInventory->TakeMoney(grasshoperValue)) {
 				//activar salto largo
 
-				playerInventory->buyJumpUpgrade();
+				playerInventory->mejoras.saltamontes += 1;
 				sC->setBuy();
 				
 			}
@@ -155,10 +152,10 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 		case Shop::WASP:
 		{
 			ShopComponent* sC = wasp->getShopComponent();
-			if (!sC->isBuy() && playerMoney->TakeMoney(waspValue)) {
+			if (!sC->isBuy() && playerInventory->TakeMoney(waspValue)) {
 				//aumentar daño
 
-				playerInventory->buyDamageUpgrade();
+				playerInventory->mejoras.avispas += 1;
 				sC->setBuy();
 				
 			}
@@ -170,7 +167,7 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 		case Shop::FLY:
 		{
 			ShopComponent* sC = fly->getShopComponent();
-			if (!sC->isBuy() && playerMoney->TakeMoney(flyValue)) {
+			if (!sC->isBuy() && playerInventory->TakeMoney(flyValue)) {
 				//aumentar vida
 				playerHUD->ChangeMaxLife(2);
 				sC->setBuy();
@@ -183,10 +180,10 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 		case Shop::CENTIPEDE:
 		{
 			ShopComponent* sC = centipede->getShopComponent();
-			if (!sC->isBuy() && playerMoney->TakeMoney(centipedeValue)) {
+			if (!sC->isBuy() && playerInventory->TakeMoney(centipedeValue)) {
 				//aumentar alcance lengua
 				std::cout << "ciempies \n";
-				playerInventory->buyAttackUpgrade();
+				playerInventory->mejoras.ciempies += 1;
 				sC->setBuy();
 				
 			}

@@ -9,6 +9,7 @@ Entity::Entity(RoomScene* scn) : name(UNAMED_ENTITY), myScene(scn) {};
 Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn), renderComponent(), renderComponentFrog(),
 renderComponentSnake(){};
 
+//Añade el componente a la entidad. El orden en el que añades los componentes importa.
 void Entity::addComponent(ComponentsEnum id, Component* component)
 {
 	if (componentes.count(id) > 0)

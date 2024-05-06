@@ -1,6 +1,7 @@
 #include "RoomScene.h"
 #include "../components/CrazyFrogIAComponent.h"
 #include "../components/LifeComponent.h"
+#include "../components/CogibleObjectComponent.h"
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
@@ -89,9 +90,6 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 	LifeComponent* lc = new LifeComponent(10, 10);
 	player->addComponent(LIFE_COMPONENT, lc);
-
-	MoneyComponent* moneyComp = new MoneyComponent();
-	player->addComponent(MONEY_COMPONENT, moneyComp);
 	
 	AddEntity(player);
 
@@ -138,6 +136,34 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 
 	return c;
 }
+
+//Objetos tales como las monedas, mejoras y power ups
+Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps) {
+	Entity* c = new Entity(this, COGIBLE_ENTITY);
+
+	//Configura primero comportamiento de objeto cogible general.
+	TransformComponent* transform = new TransformComponent(pos);
+	c->addComponent(TRANSFORM_COMPONENT, transform);
+	
+	ColliderComponent* collider = new ColliderComponent(transform);
+	c->addComponent(COLLIDER_COMPONENT, collider);
+
+	//Agrega componente que define el comportamiento específico de ese objeto cogible a través
+	//De un switch (parece que para c++ no hay switch con strings).
+	if (objName == "Gancho") {
+		Texture* texture = &sdlutils().images().at("hook");
+		RenderComponent* render = new RenderComponent(texture);
+		c->addRenderComponent(render);
+
+		//Añade la funcionalidad espcífica de este objeto.
+		CogibleObjectComponent* cogible = new CogibleObjectComponent(GANCHO);
+		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+	}
+	AddEntity(c);
+
+	return c;
+}
+
 
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
@@ -654,7 +680,9 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	else if (objClass == "Transition") {		
 		c = createTransition(pos, objName, objProps[0].getStringValue());
 	}
-
+	else if (objClass == "ObjCogible") {
+		c = createCogible(pos, objName, objProps);
+	}
 	else if (objClass == "Explotable") {
 		c = createExplotable(pos, objName, objProps);
 	}
