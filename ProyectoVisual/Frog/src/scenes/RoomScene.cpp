@@ -19,6 +19,7 @@ void RoomScene::update() {
 		if (e != nullptr)
 			e->update();
 	}
+	HUD->update();
 	cameraManager->update();
 	if (insideShop)
 		shopManager->update();
@@ -90,7 +91,10 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 	LifeComponent* lc = new LifeComponent(10, 10);
 	player->addComponent(LIFE_COMPONENT, lc);
-	
+
+	//Accedemos al Singleton del HUD para enlazar las vidas del jugador con el HUD
+	HUDManager::instance()->LinkLives(lc);
+
 	AddEntity(player);
 
 	return player;
