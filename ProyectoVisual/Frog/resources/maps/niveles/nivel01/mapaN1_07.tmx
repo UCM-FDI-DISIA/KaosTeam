@@ -90,7 +90,7 @@
    </properties>
    <point/>
   </object>
-  <object id="20" name="TransitionP" type="Transition" x="40.5" y="218">
+  <object id="20" name="TransitionP" type="Transition" x="40.6875" y="214.313">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_10.tmx"/>
    </properties>
