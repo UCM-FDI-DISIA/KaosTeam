@@ -14,10 +14,11 @@
 /*Información de la animación*/
 struct Animation {
 	std::vector<Vector2D> frames;
-	bool flip;
+	bool flipHorizontal;
+	bool flipVertical;
 	bool repeat;
-	Animation(const std::vector<Vector2D>& f, bool fl, bool rep) {
-		frames = f; flip = fl; repeat = rep;
+	Animation(const std::vector<Vector2D>& f, bool flH,bool flV, bool rep) {
+		frames = f; flipHorizontal = flH;  flipVertical = flV;repeat = rep;
 	};
 	Animation() {};
 };
