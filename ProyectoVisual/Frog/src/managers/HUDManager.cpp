@@ -5,8 +5,7 @@
 
 using namespace std;
 
-HUDManager::HUDManager() : vidasActuales(10), vidasMax(10), wormsActuales(0), rectFly()
-{
+HUDManager::HUDManager() : vidasActuales(0), vidasMax(0), wormsActuales(0), rectFly() {
 	font = &sdlutils().fonts().at("COMICSANS");
 	textFly = &sdlutils().images().at("flyLifeSheet");
 
@@ -19,18 +18,17 @@ HUDManager::HUDManager() : vidasActuales(10), vidasMax(10), wormsActuales(0), re
 	std::cout << "HUD TEXTURE: " << textNumWorms << std::endl;
 }
 
-HUDManager::~HUDManager()
-{
+HUDManager::~HUDManager() {
 	delete textNumWorms;
 	std::cout << "HUD TEXTURE AFTER DELETE: " << textNumWorms << std::endl;
 	textWorm = nullptr;
 	textFly = nullptr;
 	game = nullptr;
+	lives = nullptr;
 	std::cout << Texture::count << std::endl;
 }
 
-void HUDManager::ChangeLives(int vidasToAdd)
-{
+void HUDManager::ChangeLives(int vidasToAdd) {
 	vidasActuales += vidasToAdd;
 
 	if (vidasActuales > vidasMax)
@@ -53,12 +51,11 @@ void HUDManager::ChangeMaxLife(int maxLifeToAdd)
 //	std::cout << "number of worms changed to: " << wormsActuales << std::endl;
 //}
 
-void HUDManager::render()
-{
+void HUDManager::render() {
 	int i = 0;
 	rectFly.x = xInicialFly;
 	//vidas enteras
-	for (i; i < vidasActuales-1; i += 2)
+	for (i; i < vidasActuales - 1; i += 2)
 	{
 		textFly->renderFrame(rectFly, 0, 0);
 		rectFly.x += rectFly.w;
@@ -78,8 +75,19 @@ void HUDManager::render()
 	}
 
 	//y ahora la worm
-	textWorm->render(xInicialWorm, yInicial-10);
+	textWorm->render(xInicialWorm, yInicial - 10);
 	//y el numero de worms
 	//textNumWorms->render(xInicialWorm + 50, yInicial + 30);
 	//texNumWormsNuevo.render(xInicialWorm + 50, yInicial + 30);
+}
+
+void HUDManager::update() {
+	if (lives != nullptr) { //Si se ha enlazado con el LifeComponent del player
+		vidasActuales = lives->GetActual();
+		vidasMax = lives->GetMax();
+	}
+}
+
+void HUDManager::LinkLives(LifeComponent* playerLife) {
+	lives = playerLife;
 }
