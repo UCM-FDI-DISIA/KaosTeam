@@ -21,7 +21,6 @@
 #include "../components/MovementComponentRedAnt.h"
 #include "../components/MovementComponentSnake.h"
 #include "../components/DestructibleComponent.h"
-#include "../components/MoneyComponent.h"
 #include"../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
 #include "../components/TonguePushComponent.h"
@@ -38,12 +37,12 @@ private:
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
 	HUDManager* HUD;
-	int id;
+	string path;
 	Entity* player;
 	flonkOrig playerOrig;
+	flonkOrig nextFlonk;
 	bool needMapChange;
 	std::string nextMap;
-	flonkOrig nextFlonk;
 	Shop* shopManager;
 	bool insideShop; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
 
@@ -53,12 +52,11 @@ private:
 	void CheckColisions();
 
 public:
-	RoomScene(int id) : id(id), cameraManager(nullptr), player(nullptr), playerOrig(S), needMapChange(false), insideShop(false) {
+	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		std::string initMapPath = "resources/maps/niveles/nivel02/fuera/mapaN2_03_fuera.tmx";
 
-		mapReader = new MapManager(initMapPath, this);
-		mapReader->loadObj(initMapPath);
+		mapReader = new MapManager(path, this);
+		mapReader->loadObj(path);
 
 		//Create player desde el mapa
 		cameraManager = Camera::instance();
@@ -82,6 +80,7 @@ public:
 	virtual ~RoomScene();
 
 	MapManager* getMapReader() { return mapReader; };
+	string getPath() { return path; }
 	void changeMap();
 	void callForMapChange(std::string nextMap, flonkOrig nextFlonk = S){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
 
@@ -99,9 +98,11 @@ public:
 	Entity* createJarron(Vector2D pos, int loot);
 	Entity* createArbusto(Vector2D pos, int loot);
 	Entity* createBomb(Vector2D pos);
-	Entity* createPiedraMovible(Vector2D pos);
+	Entity* createPiedraMovible(Vector2D pos, int objIntID);
 	Entity* createEnganche(Vector2D pos);
-	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap);
+	Entity* createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
+
+	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap, int objIntID, bool objInteracted);
 	Entity* createCockroach(Vector2D pos);
 	Entity* createExplotableDoor(Vector2D pos);
 
