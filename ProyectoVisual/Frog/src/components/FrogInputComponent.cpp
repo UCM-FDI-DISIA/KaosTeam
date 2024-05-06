@@ -87,7 +87,7 @@ void FrogInputComponent::update()
 			if (inventoryComponent->mejoras.ciempies && input->getShift().pressed) {
 				attackComponent->setDistance(longTongue);
 			}
-			else attackComponent->setDistance(shortTongue+1);
+			else attackComponent->setDistance(shortTongue+2);
 			attackComponent->attack(true);
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
