@@ -31,7 +31,7 @@ void FrogInputComponent::update()
 	int JumpSize = shortJump;
 	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > actionCoolDown) {
 		if (input->getDown()) {
-			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+			if (inventoryComponent->mejoras.saltamontes && input->getShift().pressed) {
 				JumpSize = longJump;
 			}
 			else JumpSize = shortJump;
@@ -42,7 +42,7 @@ void FrogInputComponent::update()
 
 		}
 		else if (input->getUp()) {
-			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+			if (inventoryComponent->mejoras.saltamontes && input->getShift().pressed) {
 				JumpSize = longJump;
 			}
 			else JumpSize = shortJump;
@@ -53,7 +53,7 @@ void FrogInputComponent::update()
 
 		}
 		else if (input->getRight()) { 
-			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+			if (inventoryComponent->mejoras.saltamontes && input->getShift().pressed) {
 				JumpSize = longJump;
 			}
 			else JumpSize = shortJump;
@@ -64,7 +64,7 @@ void FrogInputComponent::update()
 
 		}
 		else if (input->getLeft()) {
-			if (inventoryComponent->getJumpUpgrade() && input->getShift().pressed) {
+			if (inventoryComponent->mejoras.saltamontes && input->getShift().pressed) {
 				JumpSize = longJump;
 			}
 			else JumpSize = shortJump;
@@ -74,7 +74,7 @@ void FrogInputComponent::update()
 			cyclesJumpPrepared = 0;
 		}
 		else if (input->getSpace()) {
-			if (inventoryComponent->getAttackUpgrade() && input->getShift().pressed) {
+			if (inventoryComponent->mejoras.ciempies && input->getShift().pressed) {
 				attackComponent->setDistance(longTongue);
 			}
 			else attackComponent->setDistance(shortTongue);
@@ -84,7 +84,7 @@ void FrogInputComponent::update()
 			cyclesJumpPrepared = 0;
 		}
 		else if (input->getM()) { //ATAQUE CON HOOK DECIDIR CÓMO LO VAMOS A HACER
-			if (inventoryComponent->getAttackUpgrade() && input->getShift().pressed) {
+			if (inventoryComponent->mejoras.ciempies && input->getShift().pressed) {
 				attackComponent->setDistance(longTongue);
 			}
 			else attackComponent->setDistance(shortTongue+1);

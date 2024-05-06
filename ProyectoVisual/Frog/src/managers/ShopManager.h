@@ -2,7 +2,6 @@
 #ifndef SHOPMANAGER_H
 #define SHOPMANAGER_H
 
-#include "../components/MoneyComponent.h"
 #include "../components/InventoryComponent.h"
 #include "../utils/Singleton.h"
 #include <vector>
@@ -32,7 +31,6 @@ private:
 	int centipedeValue; //ciempies
 
 	Entity* player;
-	MoneyComponent* playerMoney;
 	HUDManager* playerHUD;
 	InventoryComponent* playerInventory;
  

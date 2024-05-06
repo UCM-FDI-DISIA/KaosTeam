@@ -272,9 +272,8 @@ void MapManager::loadObj(const std::string& path)
             std::cout << "Found " << objects.size() << " objects in layer" << std::endl;
 
             bool roomVisited = false;
-            bool objVisited = false;
             int i = 0; //indice para recorrer el vector cuando los obj sean interactuables
-            vector<bool> interactObj;
+            vector<ObjEdit> interactObj(objects.size(), {false, {0,0}});
             auto DM = DataManager::GetInstance();
             if (DM->getInteractObj(path).empty()) {
                 //NO SE HA REGISTRADO TODAVIA LA SALA
@@ -287,25 +286,24 @@ void MapManager::loadObj(const std::string& path)
 
             for (const auto& object : objects)
             {
+                Entity* ent = nullptr;
                 int x = (int)object.getPosition().x / tiled_map.getTileSize().x;
                 int y = (int)object.getPosition().y / tiled_map.getTileSize().y;
                 Vector2D pos;
                 pos.setX(x);
                 pos.setY(y);
 
-                std::cout << "Object " << object.getName() << ", in posX = " << x << " , posY = " << y << std::endl;
-
-                if (object.getClass() == "ObjInteract") {
-                    if (!roomVisited) {
-                        //si no se ha visitado la sala los obj estarán a false
-                        //objVisited se mantiene a false
+                if (object.getClass() == "ObjInteract" && roomVisited) {
+                    if (interactObj[i].interacted) {
+                        ent = room->createEntity(interactObj[i].pos, object.getName(), object.getClass(), object.getProperties(), i, interactObj[i].interacted);
                     }
                     else {
-                        objVisited = interactObj[i];
-                        ++i;
+                        ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties(), i, interactObj[i].interacted);
                     }
                 }
-                Entity* ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties(), --i, objVisited);
+                else {
+                    ent = room->createEntity(pos, object.getName(), object.getClass(), object.getProperties(), i, false);
+                }
                 
                 if (ent != nullptr) {
                     if (walkableTiles[x][y] != nullptr) {
@@ -322,7 +320,11 @@ void MapManager::loadObj(const std::string& path)
                 {
                     std::cout << "Object uses template tile set " << object.getTilesetName() << "\n";
                 }
+
+                ++i;
             }
+
+            DM->addObjs(path, interactObj);
         }
     }
 }
