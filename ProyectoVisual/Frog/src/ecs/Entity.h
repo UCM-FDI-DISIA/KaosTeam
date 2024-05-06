@@ -21,7 +21,8 @@ enum ComponentsEnum
 	INVENTORY_COMPONENT,
 	EXPLOITABLE_COMPONENT,
 	COGIBLE_OBJECT_COMPONENT,
-	DESTRUCTIBLE_COMPONENT
+	DESTRUCTIBLE_COMPONENT,
+	CONVEYOR_COMPONENT
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
 //Si no es relevante, el valor ser� 0 (UNAMED)
@@ -42,7 +43,8 @@ enum EntityName {
 	PALANCA_ENTITY,
 	BOTON_ENTITY,
 	COCKROACH_ENTITY,
-	DESTRUCTIBLE_ENTITY
+	DESTRUCTIBLE_ENTITY,
+	CONVEYOR_ENTITY
 };
 
 class Component;

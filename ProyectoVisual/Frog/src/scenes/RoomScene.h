@@ -22,6 +22,7 @@
 #include "../components/MovementComponentSnake.h"
 #include "../components/DestructibleComponent.h"
 #include"../managers/ShopManager.h"
+//#include "../components/MoneyComponent.h"
 #include "../components/MovementComponentBomb.h"
 #include "../components/TonguePushComponent.h"
 #include "../components/TongueHookComponent.h"
@@ -29,6 +30,7 @@
 #include "../components/InventoryComponent.h"
 #include "../components/MovementComponentCockroach.h"
 #include "../components/ExploitableComponent.h"
+#include "../components/ConveyorBeltComponent.h"
 
 class RoomScene : public Scene
 {
@@ -105,6 +107,7 @@ public:
 	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap, int objIntID, bool objInteracted);
 	Entity* createCockroach(Vector2D pos);
 	Entity* createExplotableDoor(Vector2D pos);
+	Entity* createConveyorBelt(Vector2D pos, int orientation);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
