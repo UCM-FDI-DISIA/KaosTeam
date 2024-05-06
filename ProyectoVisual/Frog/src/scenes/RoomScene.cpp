@@ -572,14 +572,11 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	Entity* c = nullptr;
 	
 	if (objName == "Jarron"){
-		//Comentado para que el juego no reviente
-		c = createJarron(pos, 0);
-		//c = createJarron(pos, objProps[0].getIntValue());
+		c = createJarron(pos, objProps[0].getIntValue());
 	}	
 	else if (objName == "Arbusto")
 	{
-		c = createArbusto(pos, 0);
-		//c = createArbusto(pos, objProps[0].getIntValue());
+		c = createArbusto(pos, objProps[0].getIntValue());
 	}
 	else if (objName == "PiedraMovible") {
 		c = createPiedraMovible(pos);

@@ -8,31 +8,33 @@ DestructibleComponent::DestructibleComponent(int lootType, Vector2D pos) : loot(
 void DestructibleComponent::LootAndBreak()
 {
 	int auxprob = rand_.nextInt(0, 100);
+
+	// generadores comentados hasta que se tenga dinero y vida
 	switch (loot)
 	{
 	case LOOT_RANDOM:
 		if(auxprob >= RandomLifeProb) {
 			if (auxprob <= RandomLifeProb + RandomMoneyProb) 
 			{ 
-				scen->createSnake(position); 
-				cout << "creando algo";
+				//scen->createSnake(position); 
+				cout << "Rompible generando dinero";
 			}
 		}
 		else 
 		{ 
-			scen->createSnake(position);
-			cout << "creando algo";
+			//scen->createSnake(position);
+			cout << "Rompible generando vida";
 		}
 		break;
 
 	case LOOT_VIDA:
-		scen->createSnake(position);
-		cout << "creando algo";
+		//scen->createSnake(position);
+		cout << "Rompible generando vida ";
 		break;
 
 	case LOOT_DINERO:
-		scen->createSnake(position);
-		cout << "creando algo";
+		//scen->createSnake(position);
+		cout << "Rompible generando dinero";
 		break;
 
 	default:
@@ -42,8 +44,6 @@ void DestructibleComponent::LootAndBreak()
 	cout << "DESTRUIBLE (arbusto/jarron) iniciando destruccion" << endl;
 
 	scen->removeEntity(this->ent);
-
-	broken = true;
 }
 
 void DestructibleComponent::CheckCollisions(Entity* ent, Collider c)
