@@ -21,6 +21,16 @@ struct HabilidadesData {
 	bool sacoBombas;
 };
 
+//Enumerado con todos los items del juego
+enum Items {
+	SALTAMONTES,
+	MOSCAS,
+	AVISPAS,
+	CIEMPIES,
+	GANCHO,
+	BOMBAS
+};
+
 class InventoryComponent : public Component
 {
 public:
@@ -29,9 +39,9 @@ public:
 	int GetMoney();
 	void AddMoney(int n); //Metodo para añadirle dinero a nuestro total
 	bool TakeMoney(int price); //El metodo es un booleano por haber casos en donde no tengamos suficiente dinero.
-	
-	MejorasData mejoras;
-	HabilidadesData habilidades;
+	void InventItem(Items, int amm);
 private:
 	int money;
+	MejorasData mejoras;
+	HabilidadesData habilidades;
 };

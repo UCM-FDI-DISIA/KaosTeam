@@ -21,3 +21,30 @@ bool InventoryComponent::TakeMoney(int price)
 	money -= price;
 	return true;
 }
+
+//Mete un item en en el inventario
+void InventoryComponent::InventItem(Items it, int amm = 1) {
+	switch (it)
+	{
+	case SALTAMONTES:
+		mejoras.saltamontes += 1;
+		break;
+	case MOSCAS:
+		mejoras.moscas += 1;
+		break;
+	case AVISPAS:
+		mejoras.avispas += 1;
+		break;
+	case CIEMPIES:
+		mejoras.ciempies += 1;
+		break;
+	case GANCHO:
+		habilidades.gancho = true;
+		break;
+	case BOMBAS:
+		habilidades.sacoBombas = true;
+		break;
+	default:
+		break;
+	}
+}

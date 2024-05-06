@@ -9,6 +9,7 @@ class CogibleObjectComponent : public Component
 public:
 	void initComponent() override;
 	CogibleObjectComponent();
+	CogibleObjectComponent(int);
 private:
 	void checkHit(Entity* e, Collider c);
 	void PickUpItem();

@@ -20,5 +20,9 @@ void CogibleObjectComponent::PickUpItem() {
 }
 
 CogibleObjectComponent::CogibleObjectComponent() {
+	itemAmmount = 1;
+}
 
+CogibleObjectComponent::CogibleObjectComponent(int ammount) {
+	itemAmmount = ammount;
 }
