@@ -6,7 +6,7 @@
 #include <ctime>
 
 BossComponent::BossComponent() : currState(MOVE), attackStartTime(0), isAttacking(false), //
-							postAttackTimer(2), addToList(false), //
+							postAttackTimer(0), addToList(false), //
 							aviso(&sdlutils().images().at("aviso")) //
 {
 	texturasCubiertos = new Texture*[MAX_CUBIERTOS];
@@ -37,8 +37,15 @@ void BossComponent::initComponent()
 
 void BossComponent::update()
 {
-	if(!poolCubiertos.empty())
-		moveCutlery();
+	if (!isAttacking) {
+		postAttackTimer++;
+	}
+
+	if (poolCubiertos.empty()) {
+		isAttacking = false;
+	}
+	else moveCutlery(); //Si hay cubiertos, se mueven los cubiertos los que haya
+	
 }
 
 void BossComponent::render()
@@ -52,7 +59,8 @@ void BossComponent::render()
 
 void BossComponent::generateCutlery()
 {
-	int numCutlery = sdlutils().rand().nextInt(1 + contDishes, 5 + contDishes); //Cuantos cubiertos tendra el ataque
+	//int numCutlery = sdlutils().rand().nextInt(1 + contDishes, 5 + contDishes); //Cuantos cubiertos tendra el ataque
+	int numCutlery = rand() % 5 + contDishes; //Cuantos cubiertos tendra el ataque
 	for (int i = 0; i < numCutlery; i++) {
 		//int c = sdlutils().rand().nextInt(CUCHARA, TENEDOR + 1); //Se decide que cubierto se añade a la pool
 		int c = rand() % (TENEDOR + 1); //Decide el cubierto a meter en la pool
@@ -86,8 +94,9 @@ void BossComponent::cleanPool()
 
 void BossComponent::attack(Entity* e, Collider c)
 {
-	if (e->getName() == FROG_ENTITY && !isAttacking) {
+	if (e->getName() == FROG_ENTITY && !isAttacking && postAttackTimer >= TIME_AFTER_ATTACK) {
 		isAttacking = true;
+		postAttackTimer = 0;
 		generateCutlery(); //Añadimos los cubiertos
 		attackStartTime = sdlutils().currRealTime();
 	}
@@ -111,8 +120,10 @@ void BossComponent::createCutlery()
 		Cubierto* c = new Cubierto;
 		c->tipo_ = (tipoCubierto)i; //Asignamos id con el tipo de cubierto
 		c->speed_ = Vector2D(0, 0.1); //Setteamos su velocidad
-		if (i != 0) c->spawnTime_ = sdlutils().rand().nextInt(0, 3) + cubiertos[i - 1]->spawnTime_;
-		else c->spawnTime_ = sdlutils().rand().nextInt(0, 2);
+		if (i != 0) c->spawnTime_ = rand() % 3 + cubiertos[i - 1]->spawnTime_;
+		//c->spawnTime_ = sdlutils().rand().nextInt(0, 3) + cubiertos[i - 1]->spawnTime_;
+		else c->spawnTime_ = rand() % 2;
+		//c->spawnTime_ = sdlutils().rand().nextInt(0, 2);
 
 		c->ent_ = new Entity(ent->getScene(), CUTLERY_ENTITY); //Creamos entidad cubierto
 		c->tr_ = new TransformComponent(Vector2D(i , i), 80, 160); //Añadimos transform al cubierto
