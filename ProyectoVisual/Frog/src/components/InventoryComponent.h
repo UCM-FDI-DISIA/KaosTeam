@@ -12,6 +12,8 @@ struct MejorasData {
 	int avispas;
 	//Cada ciempies aumenta el alcance de la lengua en una casilla
 	int ciempies;
+	//Cuantas bombas tiene el jugador
+	int bombas;
 };
 
 //Datos sobre las habilidades que tiene la rana ahora mismo. Al principio de la partida empiezan como false (no las tiene).
@@ -25,11 +27,13 @@ struct HabilidadesData {
 enum Items {
 	SALTAMONTES,
 	MOSCAS,
+	MOSCAS_DE_VIDA,
 	AVISPAS,
 	CIEMPIES,
 	GANCHO,
 	BOMBAS, 
-	MONEDAS
+	MONEDAS,
+	SACO_BOMBAS
 };
 
 class InventoryComponent : public Component
@@ -41,7 +45,8 @@ public:
 	void AddMoney(int n); //Metodo para añadirle dinero a nuestro total
 	bool TakeMoney(int price); //El metodo es un booleano por haber casos en donde no tengamos suficiente dinero.
 	void PickUpItem(Items, int amm);
-
+	void MejoraMosca(int amm);
+	void CurarVida(int amm);
 	MejorasData mejoras;
 	HabilidadesData habilidades;
 private:

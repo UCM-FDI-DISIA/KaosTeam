@@ -27,8 +27,8 @@ public:
 	~LifeComponent();
 	int GetActual();
 	int GetMax();
-	void SetActual(int n);
-	void SetMax(int n);
+	void AddActual(int n);
+	void AddMax(int n);
 	bool alive();
 	void hit(int damage); //A llamar cuando se daña a la entidad
 

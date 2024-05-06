@@ -155,10 +155,34 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		RenderComponent* render = new RenderComponent(texture);
 		c->addRenderComponent(render);
 
-		//Añade la funcionalidad espcífica de este objeto.
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(GANCHO);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+	} else if (objName == "BolsaBombas") {
+		Texture* texture = &sdlutils().images().at("bag");
+		RenderComponent* render = new RenderComponent(texture);
+		c->addRenderComponent(render);
+
+		CogibleObjectComponent* cogible = new CogibleObjectComponent(SACO_BOMBAS);
+		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
+	else if (objName == "Mosca") { //Revisar como se llama en el mapa
+		Texture* texture = &sdlutils().images().at("fly");
+		RenderComponent* render = new RenderComponent(texture);
+		c->addRenderComponent(render);
+
+		CogibleObjectComponent* cogible = new CogibleObjectComponent(MOSCAS);
+		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+	}
+	// else 	if (objName == "BolsaBombas") { //Revisar como se llama en el mapa
+	// Texture* texture = &sdlutils().images().at("bag");
+	// RenderComponent* render = new RenderComponent(texture);
+	// c->addRenderComponent(render);
+
+	// CogibleObjectComponent* cogible = new CogibleObjectComponent(SACO_BOMBAS);
+	// c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+	//}
+	//Hay que hacer un metodo creador de los distintos tipos de moneda
+
 	AddEntity(c);
 
 	return c;

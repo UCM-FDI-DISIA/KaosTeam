@@ -157,7 +157,6 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 
 				playerInventory->mejoras.avispas += 1;
 				sC->setBuy();
-				
 			}
 			else {
 				//algo de dialogo
@@ -169,7 +168,7 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 			ShopComponent* sC = fly->getShopComponent();
 			if (!sC->isBuy() && playerInventory->TakeMoney(flyValue)) {
 				//aumentar vida
-				playerHUD->ChangeMaxLife(2);
+				playerInventory->mejoras.moscas += 1;
 				sC->setBuy();
 			}
 			else {

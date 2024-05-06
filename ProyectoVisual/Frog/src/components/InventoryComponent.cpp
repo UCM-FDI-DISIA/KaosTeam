@@ -1,4 +1,5 @@
 #include "InventoryComponent.h"
+#include "LifeComponent.h"
 
 InventoryComponent::InventoryComponent() : money(0) {}
 
@@ -30,7 +31,10 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 		mejoras.saltamontes += 1;
 		break;
 	case MOSCAS:
-		mejoras.moscas += 1;
+		CurarVida(amm);
+		break;
+	case MOSCAS_DE_VIDA:
+		MejoraMosca(amm);
 		break;
 	case AVISPAS:
 		mejoras.avispas += 1;
@@ -47,4 +51,15 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 	default:
 		break;
 	}
+}
+
+//Añadir las moscas por aquí, para que también añada la vida al life component, 1 mosca = 2 vidas
+void InventoryComponent::MejoraMosca(int amm) {
+	mejoras.moscas += amm;
+	static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->AddMax(amm * 2);
+}
+
+//Cura la vida en el life component
+void InventoryComponent::CurarVida(int amm) {
+	static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->AddActual(amm);
 }

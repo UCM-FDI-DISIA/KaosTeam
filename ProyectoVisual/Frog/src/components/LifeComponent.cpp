@@ -18,14 +18,13 @@ int LifeComponent::GetMax() {
 	return vidaMaxima;
 }
 
-void LifeComponent::SetActual(int n)
+void LifeComponent::AddActual(int n)
 {
-	vidaActual += n;
-	if (vidaActual > vidaMaxima)
-		vidaActual = vidaMaxima;
+	if (vidaActual < vidaMaxima)
+		vidaActual += n;
 }
 
-void LifeComponent::SetMax(int n) {
+void LifeComponent::AddMax(int n) {
 	vidaMaxima += n;
 }
 
