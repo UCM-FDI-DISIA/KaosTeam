@@ -8,7 +8,7 @@ void TransitionComponent::changeMap()
 }
 
 void TransitionComponent::CheckMapChange(Entity* e, Collider c) {
-	if (e->getName() == FROG_ENTITY && c.getName() == TRANSFORM_COLLIDER)
+	if (e->getName() == FROG_ENTITY && c.getName() == TRANSFORM_COLLIDER && static_cast<MovementComponentFrog*>(e->getComponent(MOVEMENT_COMPONENT))->getMoveCompleted())
 		changeMap();
 };
 

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\components\CogibleObjectComponent.cpp" />
+    <ClCompile Include="src\components\ConveyorBeltComponent.cpp" />
     <ClCompile Include="src\components\DestructibleComponent.cpp" />
     <ClCompile Include="src\components\ExploitableComponent.cpp" />
     <ClCompile Include="src\components\MapShiftComponent.cpp" />
@@ -226,6 +227,7 @@
   <ItemGroup>
     <ClInclude Include="Box.h" />
     <ClInclude Include="src\components\CogibleObjectComponent.h" />
+    <ClInclude Include="src\components\ConveyorBeltComponent.h" />
     <ClInclude Include="src\components\DestructibleComponent.h" />
     <ClInclude Include="src\components\ExploitableComponent.h" />
     <ClInclude Include="src\components\MapShiftComponent.h" />
