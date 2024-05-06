@@ -10,38 +10,41 @@ void DestructibleComponent::LootAndBreak()
 	int auxprob = rand_.nextInt(0, 100);
 
 	// generadores comentados hasta que se tenga dinero y vida
-	switch (loot)
-	{
-	case LOOT_RANDOM:
-		if(auxprob >= RandomLifeProb) {
-			if (auxprob <= RandomLifeProb + RandomMoneyProb) 
-			{ 
-				//scen->createSnake(position); 
-				cout << "Rompible generando dinero";
-			}
-		}
-		else 
-		{ 
-			//scen->createSnake(position);
-			cout << "Rompible generando vida";
-		}
-		break;
+    if (!broken) {
+        broken = true;
 
-	case LOOT_VIDA:
-		//scen->createSnake(position);
-		cout << "Rompible generando vida ";
-		break;
+        switch (loot)
+        {
+        case LOOT_RANDOM:
+            if (auxprob >= RandomLifeProb) {
+                if (auxprob <= RandomLifeProb + RandomMoneyProb)
+                {
+                    //scen->createSnake(position); 
+                    cout << "Rompible generando dinero" << endl;
+                }
+            }
+            else
+            {
+                //scen->createSnake(position);
+                cout << "Rompible generando vida" << endl;
+            }
+            break;
 
-	case LOOT_DINERO:
-		//scen->createSnake(position);
-		cout << "Rompible generando dinero";
-		break;
+        case LOOT_VIDA:
+            //scen->createSnake(position);
+            cout << "Rompible generando vida " << endl;
+            break;
 
-	default:
-		break;
-	}
+        case LOOT_DINERO:
+            //scen->createSnake(position);
+            cout << "Rompible generando dinero" << endl;
+            break;
 
-	cout << "DESTRUIBLE (arbusto/jarron) iniciando destruccion" << endl;
+        default:
+            break;
+        }
+        cout << "DESTRUIBLE (arbusto/jarron) iniciando destruccion" << endl;
+    }
 
 	scen->removeEntity(this->ent);
 }
