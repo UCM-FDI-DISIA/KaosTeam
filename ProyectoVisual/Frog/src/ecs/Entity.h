@@ -20,7 +20,8 @@ enum ComponentsEnum
 	TONGUEINTERACT_COMPONENT,
 	INVENTORY_COMPONENT,
 	EXPLOITABLE_COMPONENT,
-	DESTRUCTIBLE_COMPONENT
+	DESTRUCTIBLE_COMPONENT,
+	CONVEYOR_COMPONENT
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
 //Si no es relevante, el valor ser� 0 (UNAMED)

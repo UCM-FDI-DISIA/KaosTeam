@@ -521,7 +521,7 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 {
 	// rotation: 0 norte, 1 este, 2 sur y 3 oeste
-	Entity* conveyor = new Entity(this, DESTRUCTIBLE_ENTITY);
+	Entity* conveyor = new Entity(this, CONVEYOR_ENTITY);
 	Texture* txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);	// cambiarlo cuando sea posible
 
 	TransformComponent* transform = new TransformComponent(pos);
@@ -535,6 +535,8 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 	Collider coll = Collider(boxConveyor);
 	ColliderComponent* collConveyor= new ColliderComponent(transform);
 	conveyor->addComponent(COLLIDER_COMPONENT, collConveyor);
+
+
 
 	return conveyor;
 }
@@ -591,11 +593,13 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	Entity* c = nullptr;
 	
 	if (objName == "Jarron"){
-		c = createJarron(pos, objProps[0].getIntValue());
+		/*c = createJarron(pos, objProps[0].getIntValue());*/
+		c = createJarron(pos, 1);
 	}	
 	else if (objName == "Arbusto")
 	{
-		c = createArbusto(pos, objProps[0].getIntValue());
+		/*c = createArbusto(pos, objProps[0].getIntValue());*/
+		c = createArbusto(pos, 1);
 	}
 	else if (objName == "PiedraMovible") {
 		c = createPiedraMovible(pos);
