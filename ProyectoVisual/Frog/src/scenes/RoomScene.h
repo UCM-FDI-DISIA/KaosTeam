@@ -22,7 +22,7 @@
 #include "../components/MovementComponentSnake.h"
 #include "../components/DestructibleComponent.h"
 #include "../components/MoneyComponent.h"
-#include"../managers/ShopManager.h"
+#include "../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
 #include "../components/TonguePushComponent.h"
 #include "../components/TongueHookComponent.h"
@@ -30,6 +30,7 @@
 #include "../components/InventoryComponent.h"
 #include "../components/MovementComponentCockroach.h"
 #include "../components/ExploitableComponent.h"
+#include "../components/ConveyorBeltComponent.h"
 
 class RoomScene : public Scene
 {

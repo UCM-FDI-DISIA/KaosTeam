@@ -69,6 +69,7 @@
     <ClCompile Include="src\components\MovementComponentCockroach.cpp" />
     <ClCompile Include="src\components\ExploitableComponent.cpp" />
     <ClCompile Include="src\components\DestructibleComponent.cpp" />
+    <ClCompile Include="src\components\ConveyorBeltComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="src\components\MovementComponentCockroach.h" />
     <ClInclude Include="src\components\ExploitableComponent.h" />
     <ClInclude Include="src\components\DestructibleComponent.h" />
+    <ClInclude Include="src\components\ConveyorBeltComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

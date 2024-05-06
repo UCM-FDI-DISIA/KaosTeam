@@ -500,7 +500,6 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
 	Entity* destructible = new Entity(this, DESTRUCTIBLE_ENTITY);
 	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
-	// hay que animarlo
 
 	TransformComponent* transform = new TransformComponent(pos);
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
@@ -522,7 +521,22 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 {
 	// rotation: 0 norte, 1 este, 2 sur y 3 oeste
+	Entity* conveyor = new Entity(this, DESTRUCTIBLE_ENTITY);
+	Texture* txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);	// cambiarlo cuando sea posible
 
+	TransformComponent* transform = new TransformComponent(pos);
+	conveyor->addComponent(TRANSFORM_COMPONENT, transform);
+
+	RenderComponent* renderDestructible = new RenderComponent(txtConveyor);
+	conveyor->addComponent(RENDER_COMPONENT, renderDestructible);
+	conveyor->addRenderComponent(renderDestructible);
+
+	Box* boxConveyor = new Box(pos);
+	Collider coll = Collider(boxConveyor);
+	ColliderComponent* collConveyor= new ColliderComponent(transform);
+	conveyor->addComponent(COLLIDER_COMPONENT, collConveyor);
+
+	return conveyor;
 }
 
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
