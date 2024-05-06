@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "../scenes/RoomScene.h"
 
-RunningState::RunningState(Game* g) : game(g), hud(), currScene(new RoomScene("resources/maps/niveles/nivel02/dentro/mapaN2_07_dentro.tmx")),imngr(im())
+RunningState::RunningState(Game* g) : game(g), hud(), currScene(new RoomScene("resources/maps/niveles/nivel01/mapaN1_01.tmx")),imngr(im())
 {
 	//allRooms.reserve(numRooms);
 }
