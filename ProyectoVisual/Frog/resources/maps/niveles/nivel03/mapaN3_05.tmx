@@ -53,7 +53,7 @@
   <object id="5" name="Orbe" x="200.5" y="200.5">
    <point/>
   </object>
-  <object id="6" name="Saco de bombas" x="105" y="121.5">
+  <object id="6" name="SacoBombas" type="ObjCogible" x="105" y="121.5">
    <point/>
   </object>
   <object id="7" name="TransitionS" type="Transition" x="120.5" y="218">

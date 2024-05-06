@@ -42,10 +42,10 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Enganche" type="ObjInteract" x="24.5" y="24.5">
+  <object id="1" name="Enganche" type="ObjInteract" x="38.7328" y="24.8163">
    <point/>
   </object>
-  <object id="9" name="Enganche" type="ObjInteract" x="104.5" y="25.5">
+  <object id="9" name="Enganche" type="ObjInteract" x="89.0021" y="25.8163">
    <point/>
   </object>
   <object id="3" name="FlonkN" type="Player" x="120.5" y="26.5">
@@ -80,7 +80,7 @@
   </object>
   <object id="10" name="Palanca" type="ObjInteract" x="104.057" y="107.853">
    <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN2_07_dentro_postP.tmx"/>
+    <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_07_dentro_postP.tmx"/>
     <property name="pushed" type="bool" value="false"/>
    </properties>
    <point/>
