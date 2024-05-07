@@ -37,7 +37,7 @@ enum Items {
 	MONEDAS,
 	SACO_BOMBAS,
 	ORBES,
-	ROACH_HEAD
+	ROACH_HEAD,
 	//Indica la cantidad de llaves que lleva el jugador
 	LLAVES
 };
