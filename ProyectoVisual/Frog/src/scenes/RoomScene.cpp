@@ -210,13 +210,34 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 	TransformComponent* transform = new TransformComponent(pos);
 	c->addComponent(TRANSFORM_COMPONENT, transform);
 
+	Texture* txtMoneda;
+	//Selecciona la textura correcta para la moneda
+	switch (type) {
+	case MONEDA_ROSA:
+		txtMoneda = &sdlutils().images().at("wormPinkSheet");
+		break;
+	case MONEDA_MORADO:
+		txtMoneda = &sdlutils().images().at("wormPurpleSheet");
+		break;
+	case MONEDA_NARANJA:
+		txtMoneda = &sdlutils().images().at("wormGoldSheet");
+		break;
+	}
+
+	//Hacer la animacion mas tarde
+	//AnimationComponent* ac = new AnimationComponent();
+	//c->addComponent(ANIMATION_COMPONENT, ac);
+
+	RenderComponent* renderMoneda = new RenderComponent(txtMoneda);
+	c->addRenderComponent(renderMoneda);
+
 	ColliderComponent* collider = new ColliderComponent(transform);
 	c->addComponent(COLLIDER_COMPONENT, collider);
 
-	//En vez de la cantidad, al ser moneda se le pasa un valor del enum en vez de la cantidad.
-	//El propio inventario lo gestionará. 
 	CogibleObjectComponent* cogible = new CogibleObjectComponent(MONEDAS, type);
 	c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+
+	AddEntity(c);
 }
 
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
@@ -270,7 +291,6 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	fish->addComponent(TRANSFORM_COMPONENT, transform);
 
 	AnimationComponent* animFish = new AnimationComponent();
-	animFish->setContext(fish);
 	animFish->addAnimation("RIGHT", Animation({ Vector2D(0,1), Vector2D(0,2) }, true, false, false));
 	animFish->addAnimation("LEFT", Animation({ Vector2D(0,1), Vector2D(0,2) }, false, false, false));
 	animFish->addAnimation("JUMP_RIGHT", Animation({ Vector2D(0,0) }, true, false, false));
@@ -616,8 +636,6 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 	Collider coll = Collider(boxConveyor);
 	ColliderComponent* collConveyor= new ColliderComponent(transform);
 	conveyor->addComponent(COLLIDER_COMPONENT, collConveyor);
-
-
 
 	return conveyor;
 }
