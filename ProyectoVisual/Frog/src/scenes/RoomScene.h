@@ -29,10 +29,10 @@
 #include "../components/MapShiftComponent.h"
 #include "../components/InventoryComponent.h"
 #include "../components/MovementComponentCockroach.h"
+#include "../components/AttackComponentBasicEnemy.h"
 #include "../components/ExploitableComponent.h"
-class Texture;
 #include "../components/ConveyorBeltComponent.h"
-
+class Texture;
 class RoomScene : public Scene
 {
 private:
