@@ -177,7 +177,8 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(GANCHO);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
-	} else if (objName == "BolsaBombas") {
+	} 
+	else if (objName == "BolsaBombas") {
 		Texture* texture = &sdlutils().images().at("bag");
 		RenderComponent* render = new RenderComponent(texture);
 		c->addRenderComponent(render);
@@ -191,6 +192,14 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		c->addRenderComponent(render);
 
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(MOSCAS);
+		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+	}
+	else if (objName == "Orbe") { //Revisar como se llama en el mapa
+		Texture* texture = &sdlutils().images().at("orbeOff");
+		RenderComponent* render = new RenderComponent(texture);
+		c->addRenderComponent(render);
+
+		CogibleObjectComponent* cogible = new CogibleObjectComponent(ORBES);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
 	// else 	if (objName == "BolsaBombas") { //Revisar como se llama en el mapa

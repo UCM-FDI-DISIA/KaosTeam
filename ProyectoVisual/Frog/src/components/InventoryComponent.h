@@ -14,6 +14,8 @@ struct MejorasData {
 	int ciempies;
 	//Cuantas bombas tiene el jugador
 	int bombas;
+	//Cuantos orbes tiene el jugador
+	int orbes;
 };
 
 //Datos sobre las habilidades que tiene la rana ahora mismo. Al principio de la partida empiezan como false (no las tiene).
@@ -33,7 +35,8 @@ enum Items {
 	GANCHO,
 	BOMBAS, 
 	MONEDAS,
-	SACO_BOMBAS
+	SACO_BOMBAS,
+	ORBES
 };
 
 class InventoryComponent : public Component

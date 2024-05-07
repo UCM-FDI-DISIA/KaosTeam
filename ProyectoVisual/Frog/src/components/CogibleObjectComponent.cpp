@@ -12,7 +12,7 @@ void CogibleObjectComponent::initComponent() {
 void CogibleObjectComponent::checkHit(Entity* e, Collider c) {
 	if (e->getName() == FROG_ENTITY && c.getName() == TONGUE_COLLIDER) {
 		PickUpItem();
-
+		e->getScene()->removeEntity(this->ent);
 	}
 }
 
