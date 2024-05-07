@@ -1,9 +1,9 @@
 #include "InventoryComponent.h"
 #include "LifeComponent.h"
 
-InventoryComponent::InventoryComponent() : money(0) {}
+InventoryComponent::InventoryComponent() : money(0), llaves(0) {}
 
-MejorasData::MejorasData() : saltamontes(0), moscas(0), avispas(0), ciempies(0) {}
+MejorasData::MejorasData() : saltamontes(0), moscas(0), avispas(0), ciempies(0), bombas(0) {}
 HabilidadesData::HabilidadesData() : gancho(false), sacoBombas(false) {};
 
 int InventoryComponent::GetMoney() { return money; }
