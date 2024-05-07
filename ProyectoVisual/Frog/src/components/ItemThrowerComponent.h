@@ -5,12 +5,13 @@
 class ItemThrowerComponent : public Component {
 private:
 	InventoryComponent* inv;
-	TransformComponent* playerPos;
+	TransformComponent* playerTr;
 
 public:
 	ItemThrowerComponent();
 	virtual ~ItemThrowerComponent();
 	void initComponent() override;
-	void throwItem(Items object);
+	void throwItem(Items object, MovementComponentFrog* mvFrog);
+	void throwStart();
 };
 

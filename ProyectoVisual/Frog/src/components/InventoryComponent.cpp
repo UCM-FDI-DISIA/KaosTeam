@@ -53,7 +53,7 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 		break;
 	case BOMBAS:
 		mejoras.bombas += 1;
-		//std::cout << "\nNumero de bombas: " << mejoras.bombas << std::endl;
+		std::cout << "\nNumero de bombas: " << mejoras.bombas << std::endl;
 		break;
 	default:
 		break;

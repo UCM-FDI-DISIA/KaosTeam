@@ -23,7 +23,8 @@ enum ComponentsEnum
 	COGIBLE_OBJECT_COMPONENT,
 	DESTRUCTIBLE_COMPONENT,
 	CONVEYOR_COMPONENT,
-	SWALLOW_COMPONENT
+	SWALLOW_COMPONENT,
+	ITEM_THROWER_COMPONENT
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
 //Si no es relevante, el valor ser� 0 (UNAMED)

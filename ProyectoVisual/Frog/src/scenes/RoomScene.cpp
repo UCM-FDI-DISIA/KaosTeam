@@ -92,8 +92,11 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	InventoryComponent* invComp = new InventoryComponent();
 	player->addComponent(INVENTORY_COMPONENT, invComp);
 
+	ItemThrowerComponent* it = new ItemThrowerComponent();
+	player->addComponent(ITEM_THROWER_COMPONENT, it);
+
 	FrogInputComponent* input = new FrogInputComponent();
-	input->setComponents(mvm, atck, invComp);
+	input->setComponents(mvm, atck, invComp, it);
 	player->addComponent(INPUT_COMPONENT, input);
 
 	LifeComponent* lc = new LifeComponent(10, 10);
@@ -101,6 +104,8 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 	//Accedemos al Singleton del HUD para enlazar las vidas del jugador con el HUD
 	HUDManager::instance()->LinkLives(lc);
+
+	
 
 	AddEntity(player);
 

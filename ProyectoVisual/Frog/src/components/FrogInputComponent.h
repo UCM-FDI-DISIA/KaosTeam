@@ -3,14 +3,17 @@
 #include "../managers/InputManager.h"
 #include "MovementComponentFrog.h"
 #include "InventoryComponent.h"
+#include "ItemThrowerComponent.h"
+
 class AttackComponentFrog;
+class ItemThrowerComponent;
 class FrogInputComponent : public Component
 {
 public:
 	FrogInputComponent();
 	~FrogInputComponent();
 	void update() override;
-	void setComponents(MovementComponentFrog* mvm, AttackComponentFrog* atck, InventoryComponent* invComp);
+	void setComponents(MovementComponentFrog* mvm, AttackComponentFrog* atck, InventoryComponent* invComp, ItemThrowerComponent* thrComp);
 
 private:
 	InputManager* input;
@@ -22,5 +25,6 @@ private:
 	MovementComponentFrog* movementComponent;
 	AttackComponentFrog* attackComponent;
 	InventoryComponent* inventoryComponent;
+	ItemThrowerComponent* throwerComponent;
 };
 

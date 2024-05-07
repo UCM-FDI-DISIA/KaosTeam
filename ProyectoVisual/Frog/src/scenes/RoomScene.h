@@ -33,6 +33,7 @@
 #include "../components/ExploitableComponent.h"
 #include "../components/ConveyorBeltComponent.h"
 #include "../components/SwallowComponent.h"
+#include "../components/ItemThrowerComponent.h"
 class Texture;
 class RoomScene : public Scene
 {
