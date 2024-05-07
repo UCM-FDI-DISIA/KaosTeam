@@ -14,6 +14,8 @@ struct MejorasData {
 	int ciempies;
 	//Cuantas bombas tiene el jugador
 	int bombas;
+	//Cuantos orbes tiene el jugador
+	int orbes;
 };
 
 //Datos sobre las habilidades que tiene la rana ahora mismo. Al principio de la partida empiezan como false (no las tiene).
@@ -35,7 +37,8 @@ enum Items {
 	MONEDAS,
 	SACO_BOMBAS,
 	//Indica la cantidad de llaves que lleva el jugador
-	LLAVES
+	LLAVES,
+	ORBES
 };
 
 //Tipos de moneda

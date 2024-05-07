@@ -70,6 +70,9 @@
     <ClCompile Include="src\components\CogibleObjectComponent.cpp" />
     <ClCompile Include="src\components\DestructibleComponent.cpp" />
     <ClCompile Include="src\components\ConveyorBeltComponent.cpp" />
+    <ClCompile Include="src\components\AttackComponentBasicEnemy.cpp" />
+    <ClCompile Include="src\components\SwallowComponent.cpp" />
+    <ClCompile Include="src\components\ItemThrowerComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -152,6 +155,9 @@
     <ClInclude Include="src\components\CogibleObjectComponent.h" />
     <ClInclude Include="src\components\DestructibleComponent.h" />
     <ClInclude Include="src\components\ConveyorBeltComponent.h" />
+    <ClInclude Include="src\components\AttackComponentBasicEnemy.h" />
+    <ClInclude Include="src\components\SwallowComponent.h" />
+    <ClInclude Include="src\components\ItemThrowerComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

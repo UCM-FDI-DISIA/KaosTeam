@@ -1,10 +1,13 @@
 #include "InventoryComponent.h"
 #include "LifeComponent.h"
 
-InventoryComponent::InventoryComponent() : money(0), llaves(0) {}
+InventoryComponent::InventoryComponent() : money(0), llaves(0) {
+	mejoras = MejorasData();
+	habilidades = HabilidadesData();
+}
 
-MejorasData::MejorasData() : saltamontes(0), moscas(0), avispas(0), ciempies(0), bombas(0) {}
-HabilidadesData::HabilidadesData() : gancho(false), sacoBombas(false) {};
+MejorasData::MejorasData() : saltamontes(0), moscas(0), avispas(0), ciempies(0), bombas(0), orbes(0) {}
+HabilidadesData::HabilidadesData() : gancho(false), sacoBombas(true) {};
 
 int InventoryComponent::GetMoney() { return money; }
 
@@ -45,7 +48,7 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 	case GANCHO:
 		habilidades.gancho = true;
 		break;
-	case BOMBAS:
+	case SACO_BOMBAS:
 		habilidades.sacoBombas = true;
 		//Llamada a el hud para actualizar el valor de sacoBombas
 		break;
@@ -56,12 +59,18 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 		llaves++;
 		//Llamar al hud para actualizar el valor
 		break;
+	case BOMBAS:
+		mejoras.bombas += 1;
+		std::cout << "\nNumero de bombas: " << mejoras.bombas << std::endl;
+	case ORBES:
+		mejoras.orbes += 1;
+		break;
 	default:
 		break;
 	}
 }
 
-//Añadir las moscas por aquí, para que también añada la vida al life component, 1 mosca = 2 vidas
+//Aï¿½adir las moscas por aquï¿½, para que tambiï¿½n aï¿½ada la vida al life component, 1 mosca = 2 vidas
 void InventoryComponent::MejoraMosca(int amm) {
 	mejoras.moscas += amm;
 	static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->AddMax(amm * 2);

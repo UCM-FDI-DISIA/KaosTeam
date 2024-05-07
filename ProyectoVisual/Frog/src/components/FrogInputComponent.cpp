@@ -3,7 +3,7 @@
 #include "MovementComponentFrog.h"
 #include "AttackComponentFrog.h"
 
-FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr)
+FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr), throwerComponent(nullptr)
 {
 	input = InputManager::GetInstance();
 }
@@ -12,6 +12,7 @@ FrogInputComponent::~FrogInputComponent()
 	movementComponent = nullptr;
 	attackComponent = nullptr;
 	inventoryComponent = nullptr;
+	throwerComponent = nullptr;
 }
 void FrogInputComponent::update()
 {
@@ -93,15 +94,23 @@ void FrogInputComponent::update()
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 		}
-		//else if (input->getAction2()) { //Pongo aquí un caso para lanzar bomba (Aunque habría que comprobar antes que la rana tenga la capacidad de guardar bombas)
+		else if (input->getAction5()) { //Pongo aquí un caso para lanzar bomba (Aunque habría que comprobar antes que la rana tenga la capacidad de guardar bombas)
+			if (inventoryComponent->habilidades.sacoBombas && inventoryComponent->mejoras.bombas >= 1) {
+				throwerComponent->throwItem(BOMBAS, movementComponent);
+				throwerComponent->throwStart();
+				std::cout << "\nHAS LANZADO BOMBAS CON EL SACO" << std::endl;
+			}
+		}
+		//else if (input->getAction2()) { 
 		//}
 	}
 
 }
 
-void FrogInputComponent::setComponents(MovementComponentFrog* mvm, AttackComponentFrog* atck,InventoryComponent* invComp )
+void FrogInputComponent::setComponents(MovementComponentFrog* mvm, AttackComponentFrog* atck, InventoryComponent* invComp, ItemThrowerComponent* thrComp)
 {
 	movementComponent = mvm;
 	attackComponent = atck;
 	inventoryComponent = invComp;
+	throwerComponent = thrComp;
 }

@@ -64,7 +64,6 @@ void AttackComponentFrog::attack(bool withHook)
 	distanceMoved = 0;
 	hasHook = withHook;
 	static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->AttackStart(withHook);
-	
 	Collider c = Collider(box, TONGUE_COLLIDER);
 	c.AddCall([this](Entity* e, Collider c) {tongueTouch(e, c); });
 	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->AddCollider(c);

@@ -42,12 +42,10 @@ void MovementComponentBlackAnt::update() {
 			anim->playAnimation("RIGHT");
 			if (isAtacking) {
 				velocity = Vector2D(diff, 0);
-				//anim->playAnimation("RIGHT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
 			else {
 				velocity = Vector2D(1, 0);
-				//anim->playAnimation("RIGHT");
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
@@ -57,12 +55,10 @@ void MovementComponentBlackAnt::update() {
 			anim->playAnimation("LEFT");
 			if (isAtacking) {
 				velocity = Vector2D(diff, 0);
-				//anim->playAnimation("LEFT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
 			else {
 				velocity = Vector2D(-1, 0);
-				//anim->playAnimation("LEFT");
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
@@ -111,6 +107,7 @@ void MovementComponentBlackAnt::update() {
 			tr->setOffsetY(tr->getOffset().getY() + t / framesPerMove * velocity.getY());
 		}
 		if (framesMoved == framesPerMove) {
+			std::cout << tr->getCasilla().getX() << " " << tr->getCasilla().getX() << std::endl;
 			tr->setCasilla(tr->getCasilla() + velocity);
 			tr->setOffset({ 0,0 });
 			framesMoved = 0;
@@ -121,8 +118,8 @@ void MovementComponentBlackAnt::update() {
 				checkCollisionWall();
 			}
 			bool attack = isPlayerNear();
-			if (!attack)
-				changeDirection();
+			/*if (!attack)
+				changeDirection();*/
 		}
 	}
 	else if (waitToAttack) {
@@ -191,24 +188,24 @@ void MovementComponentBlackAnt::changeDirection() {
 bool MovementComponentBlackAnt::isPlayerNear() {
 	if (playerPosition.getY() == tr->getCasilla().getY()) {
 
-		if (actualDirection != LEFT && playerPosition.getX() - tr->getCasilla().getX() <= range) {
+		if (actualDirection != LEFT && playerPosition.getX() - tr->getCasilla().getX() <= range && playerPosition.getX() - tr->getCasilla().getX() > 0) {
 			actualDirection = RIGHT;
 			diff = playerPosition.getX() - tr->getCasilla().getX();
 			waitToAttack = true;
 		}
-		else if (!waitToAttack && actualDirection != RIGHT && tr->getCasilla().getX() - playerPosition.getX() <= range) {
+		else if (!waitToAttack && actualDirection != RIGHT && tr->getCasilla().getX() - playerPosition.getX() <= range && tr->getCasilla().getX() - playerPosition.getX() > 0) {
 			actualDirection = LEFT;
 			diff = playerPosition.getX() - tr->getCasilla().getX();
 			waitToAttack = true;
 		}
 	}
 	else if (!waitToAttack && playerPosition.getX() == tr->getCasilla().getX()) {
-		if (actualDirection != UP && playerPosition.getY() - tr->getCasilla().getY() <= range) {
+		if (actualDirection != UP && playerPosition.getY() - tr->getCasilla().getY() <= range && playerPosition.getY() - tr->getCasilla().getY() > 0) {
 			actualDirection = DOWN;
 			waitToAttack = true;
 			diff = playerPosition.getY() - tr->getCasilla().getY();
 		}
-		else if (!waitToAttack && actualDirection != DOWN && tr->getCasilla().getY() - playerPosition.getY() <= range) {
+		else if (!waitToAttack && actualDirection != DOWN && tr->getCasilla().getY() - playerPosition.getY() <= range && tr->getCasilla().getY() - playerPosition.getY() > 0) {
 			actualDirection = UP;
 			waitToAttack = true;
 			diff = playerPosition.getY() - tr->getCasilla().getY();
