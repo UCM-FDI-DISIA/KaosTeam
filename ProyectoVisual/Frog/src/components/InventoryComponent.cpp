@@ -28,7 +28,7 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 	switch (it)
 	{
 	case SALTAMONTES:
-		mejoras.saltamontes += 1;
+		mejoras.saltamontes++;
 		break;
 	case MOSCAS:
 		CurarVida(amm);
@@ -37,19 +37,24 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 		MejoraMosca(amm);
 		break;
 	case AVISPAS:
-		mejoras.avispas += 1;
+		mejoras.avispas++;
 		break;
 	case CIEMPIES:
-		mejoras.ciempies += 1;
+		mejoras.ciempies++;
 		break;
 	case GANCHO:
 		habilidades.gancho = true;
 		break;
 	case BOMBAS:
 		habilidades.sacoBombas = true;
+		//Llamada a el hud para actualizar el valor de sacoBombas
 		break;
 	case MONEDAS:
 		PickMoneda(amm);
+		break;
+	case LLAVES:
+		llaves++;
+		//Llamar al hud para actualizar el valor
 		break;
 	default:
 		break;
@@ -65,6 +70,11 @@ void InventoryComponent::MejoraMosca(int amm) {
 //Cura la vida en el life component
 void InventoryComponent::CurarVida(int amm) {
 	static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->AddActual(amm);
+}
+
+int InventoryComponent::GetLlaves()
+{
+	return llaves;
 }
 
 /// <summary>
@@ -86,4 +96,5 @@ void InventoryComponent::PickMoneda(int type) {
 	default:
 		break;
 	}
+	//Llamar al hud para actualizar la cantidad de monedas que tiene el jugador
 }

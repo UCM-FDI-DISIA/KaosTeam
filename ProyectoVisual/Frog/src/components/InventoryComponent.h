@@ -33,7 +33,9 @@ enum Items {
 	GANCHO,
 	BOMBAS, 
 	MONEDAS,
-	SACO_BOMBAS
+	SACO_BOMBAS,
+	//Indica la cantidad de llaves que lleva el jugador
+	LLAVES
 };
 
 //Tipos de moneda
@@ -55,8 +57,10 @@ public:
 	void PickMoneda(int type);
 	void MejoraMosca(int amm);
 	void CurarVida(int amm);
+	int GetLlaves();
 	MejorasData mejoras;
 	HabilidadesData habilidades;
 private:
 	int money;
+	int llaves;
 };
