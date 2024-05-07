@@ -107,6 +107,7 @@ void MovementComponentBlackAnt::update() {
 			tr->setOffsetY(tr->getOffset().getY() + t / framesPerMove * velocity.getY());
 		}
 		if (framesMoved == framesPerMove) {
+			std::cout << tr->getCasilla().getX() << " " << tr->getCasilla().getX() << std::endl;
 			tr->setCasilla(tr->getCasilla() + velocity);
 			tr->setOffset({ 0,0 });
 			framesMoved = 0;
@@ -117,8 +118,8 @@ void MovementComponentBlackAnt::update() {
 				checkCollisionWall();
 			}
 			bool attack = isPlayerNear();
-			if (!attack)
-				changeDirection();
+			/*if (!attack)
+				changeDirection();*/
 		}
 	}
 	else if (waitToAttack) {
@@ -187,25 +188,25 @@ void MovementComponentBlackAnt::changeDirection() {
 bool MovementComponentBlackAnt::isPlayerNear() {
 	if (playerPosition.getY() == tr->getCasilla().getY()) {
 
-		if (actualDirection != RIGHT && playerPosition.getX() - tr->getCasilla().getX() <= range) {
-			actualDirection = LEFT;
+		if (actualDirection != LEFT && playerPosition.getX() - tr->getCasilla().getX() <= range && playerPosition.getX() - tr->getCasilla().getX() > 0) {
+			actualDirection = RIGHT;
 			diff = playerPosition.getX() - tr->getCasilla().getX();
 			waitToAttack = true;
 		}
-		else if (!waitToAttack && actualDirection != LEFT && tr->getCasilla().getX() - playerPosition.getX() <= range) {
-			actualDirection = RIGHT;
+		else if (!waitToAttack && actualDirection != RIGHT && tr->getCasilla().getX() - playerPosition.getX() <= range && tr->getCasilla().getX() - playerPosition.getX() > 0) {
+			actualDirection = LEFT;
 			diff = playerPosition.getX() - tr->getCasilla().getX();
 			waitToAttack = true;
 		}
 	}
 	else if (!waitToAttack && playerPosition.getX() == tr->getCasilla().getX()) {
-		if (actualDirection != DOWN && playerPosition.getY() - tr->getCasilla().getY() <= range) {
-			actualDirection = UP;
+		if (actualDirection != UP && playerPosition.getY() - tr->getCasilla().getY() <= range && playerPosition.getY() - tr->getCasilla().getY() > 0) {
+			actualDirection = DOWN;
 			waitToAttack = true;
 			diff = playerPosition.getY() - tr->getCasilla().getY();
 		}
-		else if (!waitToAttack && actualDirection != UP && tr->getCasilla().getY() - playerPosition.getY() <= range) {
-			actualDirection = DOWN;
+		else if (!waitToAttack && actualDirection != DOWN && tr->getCasilla().getY() - playerPosition.getY() <= range && tr->getCasilla().getY() - playerPosition.getY() > 0) {
+			actualDirection = UP;
 			waitToAttack = true;
 			diff = playerPosition.getY() - tr->getCasilla().getY();
 		}
