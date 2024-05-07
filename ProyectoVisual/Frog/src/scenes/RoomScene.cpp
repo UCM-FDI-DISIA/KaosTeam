@@ -332,9 +332,6 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
 	blackAnt->addComponent(ATTACK_COMPONENT, attack);
 
-	SwallowComponent* swall = new SwallowComponent();
-	blackAnt->addComponent(SWALLOW_COMPONENT, swall);
-
 	AddEntity(blackAnt);
 	return blackAnt;
 }
@@ -367,6 +364,9 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(1);
 	redAnt->addComponent(ATTACK_COMPONENT, attack);
+
+	SwallowComponent* swall = new SwallowComponent();
+	redAnt->addComponent(SWALLOW_COMPONENT, swall);
 
 	AddEntity(redAnt);
 	return redAnt;

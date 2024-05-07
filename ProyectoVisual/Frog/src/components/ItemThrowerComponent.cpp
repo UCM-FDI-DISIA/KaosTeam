@@ -34,6 +34,8 @@ void ItemThrowerComponent::throwItem(Items object, MovementComponentFrog* mvFrog
 	switch (object) {
 	case BOMBAS:
 		ent->getScene()->createBomb(playerTr->getCasilla() + dir);
+		inv->mejoras.bombas--;
+		std::cout << "\nNumero de bombas (tras lanzar 1): " << inv->mejoras.bombas << std::endl;
 		break;
 	//Haria falta otro caso más para el orbe (o definir otro boton para que lance el orbe en concreto)
 	/*case ORBE:
