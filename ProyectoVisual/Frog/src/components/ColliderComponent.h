@@ -17,7 +17,7 @@ public:
 	//Añade una funcion al collider que quieras
 	void AddCall(std::function<void(Entity*, Collider)> func);
 	//Comprueba la colision con un collider, si hay colision llama a OnCollision
-	void OnCollision(Entity* e, Collider);
+	void OnCollision(Entity*, Collider);
 	bool Collides(Collider) const;
 	ColliderName getName() const;
 	Box* GetBox() const { return box; };

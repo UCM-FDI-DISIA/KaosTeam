@@ -5,6 +5,7 @@
 #include "RenderComponentFrog.h"
 #include "../utils/Box.h"
 #include "ColliderComponent.h"
+#include "LifeComponent.h"
 
 AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()) {
 	distance = 2;
@@ -23,6 +24,10 @@ AttackComponentFrog::~AttackComponentFrog() {
 void AttackComponentFrog::tongueTouch(Entity* ent, Collider c)
 {
 	//std::cout << "TongueTouch ";	
+	//if ( ent->getName() == COCKROACH_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
+	//	//std::cout << "TongueTouch cucaracha";	
+	//	//static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana
+	//}
 }
 
 void AttackComponentFrog::UpdateBox(Vector2D casilla, int w, int h)
@@ -68,7 +73,6 @@ void AttackComponentFrog::attack(bool withHook)
 	c.AddCall([this](Entity* e, Collider c) {tongueTouch(e, c); });
 	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->AddCollider(c);
 }
-
 void AttackComponentFrog::EndAttack()
 {
 	state = 2;

@@ -13,9 +13,6 @@ void RoomScene::render() {
 	}
 	HUD->render();
 	if (insideShop) shopManager->render();
-	if (showArbol) {
-		arbolTiendaTex.render(SDL_Rect{ 200, 200,144, 144 });
-	}
 }
 
 void RoomScene::update() {
@@ -27,7 +24,6 @@ void RoomScene::update() {
 	cameraManager->update();
 	if (insideShop) {
 		shopManager->update();
-		showArbol = false;
 	}
 
 	if (needMapChange)
@@ -116,41 +112,55 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 }
 
 Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::string nextMap) {
-	showArbol = false;
 	Entity* c = new Entity(this);
 
-	TransformComponent* transform = new TransformComponent(pos);
-	c->addComponent(TRANSFORM_COMPONENT, transform);
+	TransformComponent* transform = nullptr;
+
+	flonkOrig nextFlonk;
+	if (objName == "TransitionT") {
+		nextFlonk = T;
+
+		if (insideShop) {
+			transform = new TransformComponent(pos);
+			c->addComponent(TRANSFORM_COMPONENT, transform);
+		}
+		else {
+			pos.setX(pos.getX() - 4);
+			pos.setY(pos.getY() - 3);
+			transform = new TransformComponent(pos, 320, 260);
+			c->addComponent(TRANSFORM_COMPONENT, transform);
+			Texture* textTienda = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Arbol_exterior.png", 1, 1);
+			RenderComponent* renderTienda = new RenderComponent(textTienda);
+			c->addComponent(RENDER_COMPONENT, renderTienda);
+			c->addRenderComponent(renderTienda);
+		}
+	}
+	else {
+		transform = new TransformComponent(pos);
+		c->addComponent(TRANSFORM_COMPONENT, transform);
+
+		if (objName == "TransitionN") {
+			nextFlonk = S;
+		}
+		else if (objName == "TransitionS") {
+			nextFlonk = N;
+		}
+		else if (objName == "TransitionE") {
+			nextFlonk = W;
+		}
+		else if (objName == "TransitionW") {
+			nextFlonk = E;
+		}
+		else if (objName == "TransitionP") {
+			nextFlonk = P;
+		}
+		else {
+			nextFlonk = S;
+		}
+	}
 
 	ColliderComponent* colliderComp = new ColliderComponent(transform);
 	c->addComponent(COLLIDER_COMPONENT, colliderComp);
-
-	flonkOrig nextFlonk;
-	if (objName == "TransitionN") {
-		nextFlonk = S;
-	}
-	else if (objName == "TransitionS") {
-		nextFlonk = N;
-	}
-	else if (objName == "TransitionE") {
-		nextFlonk = W;
-	}
-	else if (objName == "TransitionW") {
-		nextFlonk = E;
-	}
-	else if (objName == "TransitionP") {
-		nextFlonk = P;
-	}
-	else if (objName == "TransitionT") {
-		nextFlonk = T;
-
-		arbolX = pos.getX();
-		arbolY = pos.getY();
-		showArbol = !showArbol;
-	}
-	else {
-		nextFlonk = S;
-	}
 
 	TransitionComponent* trans = new TransitionComponent(nextMap, nextFlonk);
 	c->addComponent(TRANSITION_COMPONENT, trans);
@@ -197,6 +207,10 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(MOSCAS);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
+	//Para probar las monedas. En el juego final las monedas las dropean los enemigos
+	else if (objName == "Moneda") {
+		createMoneda(pos, MONEDA_NARANJA);
+	}
 	else if (objName == "Orbe") { //Revisar como se llama en el mapa
 		Texture* texture = &sdlutils().images().at("orbeOff");
 		RenderComponent* render = new RenderComponent(texture);
@@ -205,6 +219,14 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(ORBES);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
+	/*else if (objName == "RoachHead") { 
+		Texture* texture = &sdlutils().images().at("roachHead");
+		RenderComponent* render = new RenderComponent(texture);
+		c->addRenderComponent(render);
+
+		CogibleObjectComponent* cogible = new CogibleObjectComponent(ROACH_HEAD);
+		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+	}*/
 	// else 	if (objName == "BolsaBombas") { //Revisar como se llama en el mapa
 	// Texture* texture = &sdlutils().images().at("bag");
 	// RenderComponent* render = new RenderComponent(texture);
@@ -213,13 +235,53 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 	// CogibleObjectComponent* cogible = new CogibleObjectComponent(SACO_BOMBAS);
 	// c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	//}
-	//Hay que hacer un metodo creador de los distintos tipos de moneda
 
 	AddEntity(c);
 
 	return c;
 }
 
+Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
+	Entity* c = new Entity(this, COGIBLE_ENTITY);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	c->addComponent(TRANSFORM_COMPONENT, transform);
+
+	Texture* txtMoneda;
+	//Selecciona la textura correcta para la moneda
+	switch (type) {
+	case MONEDA_ROSA:
+		txtMoneda = &sdlutils().images().at("wormPinkSheet");
+		break;
+	case MONEDA_MORADO:
+		txtMoneda = &sdlutils().images().at("wormPurpleSheet");
+		break;
+	case MONEDA_NARANJA:
+		txtMoneda = &sdlutils().images().at("wormGoldSheet");
+		break;
+	default: //Default por si el tipo se asignó mal
+		txtMoneda = &sdlutils().images().at("wormPinkSheet");
+		cerr << "identificador de moneda invalido, default";
+		break;
+	}
+
+	//Hacer la animacion mas tarde
+	//AnimationComponent* ac = new AnimationComponent();
+	//c->addComponent(ANIMATION_COMPONENT, ac);
+
+	RenderComponent* renderMoneda = new RenderComponent(txtMoneda);
+	c->addRenderComponent(renderMoneda);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	c->addComponent(COLLIDER_COMPONENT, collider);
+
+	CogibleObjectComponent* cogible = new CogibleObjectComponent(MONEDAS, type);
+	c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+
+	AddEntity(c);
+
+	return c;
+}
 
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
@@ -276,7 +338,6 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	collider->AddCollider(coll);
 	fish->addComponent(COLLIDER_COMPONENT, collider);
 	AnimationComponent* animFish = new AnimationComponent();
-	animFish->setContext(fish);
 	animFish->addAnimation("RIGHT", Animation({ Vector2D(0,1), Vector2D(0,2) }, true, false, false));
 	animFish->addAnimation("LEFT", Animation({ Vector2D(0,1), Vector2D(0,2) }, false, false, false));
 	animFish->addAnimation("JUMP_RIGHT", Animation({ Vector2D(0,0) }, true, false, false));
@@ -364,6 +425,22 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	AddEntity(redAnt);
 	return redAnt;
 }
+Entity* RoomScene::createHeadCockroach(Vector2D pos) {
+	Entity* head = new Entity(this, COGIBLE_ENTITY);
+	TransformComponent* transform = new TransformComponent(pos);
+	head->addComponent(TRANSFORM_COMPONENT, transform);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	head->addComponent(COLLIDER_COMPONENT, collider);
+	Texture* texture = &sdlutils().images().at("roachHead");
+	RenderComponent* render = new RenderComponent(texture);
+	head->addRenderComponent(render);
+
+	CogibleObjectComponent* cogible = new CogibleObjectComponent(ROACH_HEAD);
+	head->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+	AddEntity(head);
+	return head;
+}
 Entity* RoomScene::createCockroach(Vector2D pos) {
 	Entity* cockroach = new Entity(this, COCKROACH_ENTITY);
 	//textura cambiar
@@ -380,8 +457,8 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	animcockroach->setContext(cockroach);
 	animcockroach->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
 	animcockroach->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
-	animcockroach->addAnimation("DEAD_UP", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, false, false));
-	animcockroach->addAnimation("DEAD_DOWN", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, true, false));
+	animcockroach->addAnimation("DEATH", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, false, false));
+	//animcockroach->addAnimation("DEAD_DOWN", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, true, false));
 	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
 
 	RenderComponent* renderanimcockroach = new RenderComponent(txtcockroach);
@@ -391,6 +468,9 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	cockroach->addComponent(MOVEMENT_COMPONENT, mvm);
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(1);
 	cockroach->addComponent(ATTACK_COMPONENT, attack);
+	LifeComponent* lc = new LifeComponent(2, 2);
+	cockroach->addComponent(LIFE_COMPONENT, lc);
+	createHeadCockroach(pos);
 	AddEntity(cockroach);
 	return cockroach;
 }
@@ -464,7 +544,6 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	AddEntity(snake);
 	return snake;
 }
-
 Entity* RoomScene::createBomb(Vector2D pos) {
 	Entity* bomb = new Entity(this, BOMB_ENTITY);
 	Texture* textBomb = &sdlutils().images().at("eggSheet");;
@@ -534,7 +613,6 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	AddEntity(enganche);
 	return enganche;
 }
-
 Entity* RoomScene::createMapChanger(string name, Vector2D pos, bool pushed, string nextMap, int objIntID, bool objInteracted)
 {
 	Entity* e = nullptr;
@@ -647,11 +725,8 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 	ColliderComponent* collConveyor= new ColliderComponent(transform);
 	conveyor->addComponent(COLLIDER_COMPONENT, collConveyor);
 
-
-
 	return conveyor;
 }
-
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
@@ -698,7 +773,6 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	return c;
 }
-
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;

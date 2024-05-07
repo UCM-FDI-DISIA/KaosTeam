@@ -28,14 +28,14 @@ void MovementComponentCockroach::update() {
 		{
 		case RIGHT: {
 			velocity = Vector2D(1, 0);
-			anim->playAnimation("DEAD_DOWN");
+			anim->playAnimation("UP");
 			framesPerMove = 4 + velocity.magnitude() * 3;
 		}
 				  break;
 		case LEFT:
 		{
 			velocity = Vector2D(-1, 0);
-			anim->playAnimation("DEAD_UP");
+			anim->playAnimation("UP");
 			framesPerMove = 4 + velocity.magnitude() * 3;
 		}
 		break;

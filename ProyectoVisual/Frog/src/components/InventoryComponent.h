@@ -4,11 +4,11 @@
 //Datos sobre las mejoras que tiene la rana ahora mismo. Al principio de la partida empiezan a 0.
 struct MejorasData {
 	MejorasData();
-	//Cada saltamontes añade una casilla al salto largo
+	//Cada saltamontes aï¿½ade una casilla al salto largo
 	int saltamontes;
-	//Cada mosca añade una vida (media mosca)
+	//Cada mosca aï¿½ade una vida (media mosca)
 	int moscas;
-	//Cada avispa aumenta en 1 el daño de la rana
+	//Cada avispa aumenta en 1 el daï¿½o de la rana
 	int avispas;
 	//Cada ciempies aumenta el alcance de la lengua en una casilla
 	int ciempies;
@@ -36,7 +36,17 @@ enum Items {
 	BOMBAS, 
 	MONEDAS,
 	SACO_BOMBAS,
-	ORBES
+	ORBES,
+	ROACH_HEAD,
+	//Indica la cantidad de llaves que lleva el jugador
+	LLAVES
+};
+
+//Tipos de moneda
+enum MonedaType {
+	MONEDA_NARANJA,
+	MONEDA_ROSA,
+	MONEDA_MORADO
 };
 
 class InventoryComponent : public Component
@@ -45,13 +55,16 @@ public:
 	InventoryComponent();
 	//Gestion del dinero
 	int GetMoney();
-	void AddMoney(int n); //Metodo para añadirle dinero a nuestro total
+	void AddMoney(int n); //Metodo para aï¿½adirle dinero a nuestro total
 	bool TakeMoney(int price); //El metodo es un booleano por haber casos en donde no tengamos suficiente dinero.
 	void PickUpItem(Items, int amm);
+	void PickMoneda(int type);
 	void MejoraMosca(int amm);
 	void CurarVida(int amm);
+	int GetLlaves();
 	MejorasData mejoras;
 	HabilidadesData habilidades;
 private:
 	int money;
+	int llaves;
 };

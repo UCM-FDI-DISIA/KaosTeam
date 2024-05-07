@@ -1,7 +1,7 @@
 #include "InventoryComponent.h"
 #include "LifeComponent.h"
 
-InventoryComponent::InventoryComponent() : money(0) {
+InventoryComponent::InventoryComponent() : money(0), llaves(0) {
 	mejoras = MejorasData();
 	habilidades = HabilidadesData();
 }
@@ -31,7 +31,7 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 	switch (it)
 	{
 	case SALTAMONTES:
-		mejoras.saltamontes += 1;
+		mejoras.saltamontes++;
 		break;
 	case MOSCAS:
 		CurarVida(amm);
@@ -40,16 +40,24 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 		MejoraMosca(amm);
 		break;
 	case AVISPAS:
-		mejoras.avispas += 1;
+		mejoras.avispas++;
 		break;
 	case CIEMPIES:
-		mejoras.ciempies += 1;
+		mejoras.ciempies++;
 		break;
 	case GANCHO:
 		habilidades.gancho = true;
 		break;
 	case SACO_BOMBAS:
 		habilidades.sacoBombas = true;
+		//Llamada a el hud para actualizar el valor de sacoBombas
+		break;
+	case MONEDAS:
+		PickMoneda(amm);
+		break;
+	case LLAVES:
+		llaves++;
+		//Llamar al hud para actualizar el valor
 		break;
 	case BOMBAS:
 		mejoras.bombas += 1;
@@ -57,6 +65,7 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 	case ORBES:
 		mejoras.orbes += 1;
 		break;
+	//AQUI FALTA LA CABEZA DE LA CUCARACHA
 	default:
 		break;
 	}
@@ -73,4 +82,29 @@ void InventoryComponent::CurarVida(int amm) {
 	static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->AddActual(amm);
 }
 
+int InventoryComponent::GetLlaves()
+{
+	return llaves;
+}
 
+/// <summary>
+/// Comprueba el tipo de moneda que ha llegado, a partir de eso añade la cantidad adecuada de monedas
+/// </summary>
+/// <param name="MonedaType (int)">El tipo de moneda</param>
+void InventoryComponent::PickMoneda(int type) {
+	switch (type)
+	{
+	case MONEDA_NARANJA:
+		AddMoney(20);
+		break;
+	case MONEDA_MORADO:
+		AddMoney(5);
+		break;
+	case MONEDA_ROSA:
+		AddMoney(1);
+		break;
+	default:
+		break;
+	}
+	//Llamar al hud para actualizar la cantidad de monedas que tiene el jugador
+}
