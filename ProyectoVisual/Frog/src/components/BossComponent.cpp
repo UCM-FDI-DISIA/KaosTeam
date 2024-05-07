@@ -5,8 +5,8 @@
 #include <cstdlib>
 #include <ctime>
 
-BossComponent::BossComponent() : currState(MOVE), attackStartTime(0), isAttacking(false), //
-							postAttackTimer(0), addToList(false), //
+BossComponent::BossComponent() : currState(MOVE), attackStartTime(0), isAttacking(false), numCubiertos(0), //
+							postAttackTimer(0), addToList(false), isDetected(false), //
 							aviso(&sdlutils().images().at("aviso")) //
 {
 	texturasCubiertos = new Texture*[MAX_CUBIERTOS];
@@ -37,18 +37,15 @@ void BossComponent::initComponent()
 
 void BossComponent::update()
 {
-	if (!isAttacking) {
+	if (!isAttacking && !isDetectingFlonk()) {
 		postAttackTimer++;
-	}
-
-	if (poolCubiertos.empty()) {
-		isAttacking = false;
+		isDetected = false;
 	}
 	else {
 		moveCutlery(); //Si hay cubiertos, se mueven los cubiertos los que haya
+		cleanPool();
 		attackStartTime++;
 	}
-	
 }
 
 void BossComponent::render()
@@ -62,13 +59,9 @@ void BossComponent::render()
 
 void BossComponent::generateCutlery()
 {
-	//int numCutlery = sdlutils().rand().nextInt(1 + contDishes, 5 + contDishes); //Cuantos cubiertos tendra el ataque
-	int numCutlery = rand() % 5 + contDishes; //Cuantos cubiertos tendra el ataque
+	int numCutlery = rand() % 5 + MINIMUM_CUTLERY_PER_ATTACK + contDishes; //Cuantos cubiertos tendra el ataque
 	for (int i = 0; i < numCutlery; i++) {
-		//int c = sdlutils().rand().nextInt(CUCHARA, TENEDOR + 1); //Se decide que cubierto se añade a la pool
 		int c = rand() % (TENEDOR + 1); //Decide el cubierto a meter en la pool
-		//int x = sdlutils().rand().nextInt(tr->getCasilla().getX(), 
-			//tr->getWidth() / ent->getScene()->getMapReader()->getTileSize() + 1); //Definde x random donde ira el cubierto
 		int x = rand() % ((int)tr->getWidth() / TILE_SIZE + 1) + tr->getCasilla().getX(); //Definde x random donde ira el cubierto
 
 		cubiertos[c]->tr_->setCasilla(Vector2D(x, -1)); //Ponemos el cubierto una casilla fuera de la pantalla
@@ -76,11 +69,12 @@ void BossComponent::generateCutlery()
 			-ent->getScene()->getMapReader()->getTileSize() / 2));
 
 		///Colocamos el aviso en la columna donde posteriormente aparecera un cubierto
-		cubiertos[c]->dest_.x = (int)cubiertos[c]->tr_->getCasilla().getX();
+		cubiertos[c]->dest_.x = (int)cubiertos[c]->tr_->getCasilla().getX() * TILE_SIZE;
 		cubiertos[c]->dest_.y = 0;
 		cubiertos[c]->dest_.w = cubiertos[c]->dest_.h = ent->getScene()->getMapReader()->getTileSize();
 
 		poolCubiertos.emplace_back(std::pair<Cubierto*, bool>(cubiertos[c], true));
+		numCubiertos++;
 		addToList = true;
 	}
 }
@@ -88,15 +82,19 @@ void BossComponent::generateCutlery()
 void BossComponent::cleanPool()
 {
 	for (auto cubierto : poolCubiertos) {
-		if (cubierto.second) {
-			if (isOutOfScreen(Vector2D(0, cubierto.first->tr_->GetOnDisplayPosition().y)))
-				cubierto.second = false;
+		if (isOutOfScreen(cubierto.first->tr_->getCasilla().getY() * TILE_SIZE) && cubierto.second) {
+			cubierto.second = false;
+			numCubiertos--;
+			if (numCubiertos == 0) {
+				isAttacking = false;
+			}
 		}
 	}
 }
 
 void BossComponent::attack(Entity* e, Collider c)
 {
+	isDetected = true;
 	if (e->getName() == FROG_ENTITY && !isAttacking && postAttackTimer >= TIME_AFTER_ATTACK) {
 		isAttacking = true;
 		postAttackTimer = 0;
@@ -123,9 +121,9 @@ void BossComponent::createCutlery()
 		Cubierto* c = new Cubierto;
 		c->tipo_ = (tipoCubierto)i; //Asignamos id con el tipo de cubierto
 		c->speed_ = Vector2D(0, 0.1); //Setteamos su velocidad
-		if (i != 0) c->spawnTime_ = rand() % 3 + cubiertos[i - 1]->spawnTime_;
+		if (i != 0) c->spawnTime_ = rand() % 100 + cubiertos[i - 1]->spawnTime_;
 		//c->spawnTime_ = sdlutils().rand().nextInt(0, 3) + cubiertos[i - 1]->spawnTime_;
-		else c->spawnTime_ = rand() % 2;
+		else c->spawnTime_ = rand() % 8 + 100;
 		//c->spawnTime_ = sdlutils().rand().nextInt(0, 2);
 
 		c->ent_ = new Entity(ent->getScene(), CUTLERY_ENTITY); //Creamos entidad cubierto
@@ -165,11 +163,21 @@ void BossComponent::onCutleryCollision(Entity* e, Collider c)
 	}
 }
 
-bool BossComponent::isOutOfScreen(Vector2D pos) const
+bool BossComponent::isOutOfScreen(float y) const
 {
 	//L�gica para obtener la posicion del cubierto y ver si est� fuera de la pantalla
-	return pos.getY() >= sdlutils().height();
+	return y >= sdlutils().height();
 }
 
+bool BossComponent::isOnTheShadow(const float & x) const
+{
+	return tr->getCasilla().getX() < x
+		&& tr->getCasilla().getX() + tr->getWidth() / TILE_SIZE > x;
+}
+
+bool BossComponent::isDetectingFlonk() const
+{
+	return isOnTheShadow(static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT))->getCasilla().getX());
+}
 
 

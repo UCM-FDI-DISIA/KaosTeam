@@ -69,6 +69,7 @@ void RoomScene::render() {
 		if (e != nullptr)
 			e->render();
 	}
+	if(francois != nullptr) static_cast<BossComponent*>(francois->getComponent(BOSS_COMPONENT))->render();
 	HUD->render();
 	if (insideShop) shopManager->render();
 }
