@@ -253,7 +253,11 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 
 	TransformComponent* transform = new TransformComponent(pos);
 	fish->addComponent(TRANSFORM_COMPONENT, transform);
-
+	Box* boxFish = new Box(pos);
+	Collider coll = Collider(boxFish);
+	ColliderComponent* collider = new ColliderComponent(transform);
+	collider->AddCollider(coll);
+	fish->addComponent(COLLIDER_COMPONENT, collider);
 	AnimationComponent* animFish = new AnimationComponent();
 	animFish->setContext(fish);
 	animFish->addAnimation("RIGHT", Animation({ Vector2D(0,1), Vector2D(0,2) }, true, false, false));
@@ -268,6 +272,8 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	//el limite tiene que ser una propiedad
 	MovementComponentFish* mvm = new MovementComponentFish(boundX, animFish);
 	fish->addComponent(MOVEMENT_COMPONENT, mvm);
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(1);
+	fish->addComponent(ATTACK_COMPONENT, attack);
 
 	AddEntity(fish);
 	return fish;	
@@ -278,7 +284,11 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 
 	TransformComponent* transform = new TransformComponent(pos);
 	blackAnt->addComponent(TRANSFORM_COMPONENT, transform);
-
+	Box* boxBlackAnt = new Box(pos);
+	Collider coll = Collider(boxBlackAnt);
+	ColliderComponent* collider = new ColliderComponent(transform);
+	collider->AddCollider(coll);
+	blackAnt->addComponent(COLLIDER_COMPONENT, collider);
 	AnimationComponent* animBlackAnt = new AnimationComponent();
 	animBlackAnt->setContext(blackAnt);
 	animBlackAnt->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
@@ -294,7 +304,8 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	
 	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(animBlackAnt);
 	blackAnt->addComponent(MOVEMENT_COMPONENT, mvm);
-
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
+	blackAnt->addComponent(ATTACK_COMPONENT, attack);
 	AddEntity(blackAnt);
 	return blackAnt;
 }
@@ -305,7 +316,11 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 
 	TransformComponent* transform = new TransformComponent(pos);
 	redAnt->addComponent(TRANSFORM_COMPONENT, transform);
-
+	Box* boxRedAnt = new Box(pos);
+	Collider coll = Collider(boxRedAnt);
+	ColliderComponent* collider = new ColliderComponent(transform);
+	collider->AddCollider(coll);
+	redAnt->addComponent(COLLIDER_COMPONENT, collider);
 	AnimationComponent* animRedAnt = new AnimationComponent();
 	animRedAnt->setContext(redAnt);
 	animRedAnt->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
@@ -321,6 +336,9 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	MovementComponentRedAnt* mvm = new MovementComponentRedAnt(animRedAnt, playerMvmCmp);
 	redAnt->addComponent(MOVEMENT_COMPONENT, mvm);
 
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(1);
+	redAnt->addComponent(ATTACK_COMPONENT, attack);
+
 	AddEntity(redAnt);
 	return redAnt;
 }
@@ -331,7 +349,11 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 
 	TransformComponent* transform = new TransformComponent(pos);
 	cockroach->addComponent(TRANSFORM_COMPONENT, transform);
-
+	Box* boxCockroach = new Box(pos);
+	Collider coll = Collider(boxCockroach);
+	ColliderComponent* collider = new ColliderComponent(transform);
+	collider->AddCollider(coll);
+	cockroach->addComponent(COLLIDER_COMPONENT, collider);
 	AnimationComponent* animcockroach = new AnimationComponent();
 	animcockroach->setContext(cockroach);
 	animcockroach->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
@@ -345,7 +367,8 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 
 	MovementComponentCockroach* mvm = new MovementComponentCockroach(animcockroach);
 	cockroach->addComponent(MOVEMENT_COMPONENT, mvm);
-
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(1);
+	cockroach->addComponent(ATTACK_COMPONENT, attack);
 	AddEntity(cockroach);
 	return cockroach;
 }
