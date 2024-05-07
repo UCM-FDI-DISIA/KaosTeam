@@ -2,6 +2,7 @@
 #include "../ecs/Component.h"
 #include "AnimationComponent.h"
 #include "MovementComponent.h"
+#include "DamageBehaviourComponent.h"
 #include "../sdlutils/VirtualTimer.h"
 #include <iostream>
 
@@ -10,21 +11,21 @@ private:
 	int vidaActual; //Un  punto es media mosca
 	int vidaMaxima;
 
-	AnimationComponent* animator;
-	MovementComponent* move;
+	//AnimationComponent* animator;
+	DamageBehaviourComponent* damageComp;
 
 	VirtualTimer timerforDelete; //Timer para borrar la entidad pasado cada cierto tiempo
 	Uint32 aliveTime;			 //Tiempo de vida antes de que la entidad se elimine
 public:
 	LifeComponent() : vidaActual(0), vidaMaxima(0),
-		animator(nullptr), move(nullptr), aliveTime(2000) {
+		damageComp(nullptr), aliveTime(2000) {
 		timerforDelete.pause();
 	};
 	LifeComponent(int actual, int maxima) :vidaActual(actual), vidaMaxima(maxima),
-		animator(nullptr), move(nullptr), aliveTime(2000) {
+		damageComp(nullptr), aliveTime(2000) {
 		timerforDelete.pause();
 	};
-	~LifeComponent();
+	virtual ~LifeComponent();
 	int GetActual();
 	int GetMax();
 	void AddActual(int n);

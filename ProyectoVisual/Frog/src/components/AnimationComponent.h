@@ -57,5 +57,6 @@ public:
 	int getCurrentFil() const { return currentFrameR; };
 	int getCurrentCol() const { return currentFrameC; };
 	Animation getCurrentAnim() const { return currentAnim; };
+	Animation getAnimByName(const std::string& animName) const;
 };
 

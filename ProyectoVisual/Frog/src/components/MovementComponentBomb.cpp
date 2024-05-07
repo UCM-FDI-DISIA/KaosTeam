@@ -91,7 +91,7 @@ void MovementComponentBomb::checkShock() {
 //Este metodo se ejecuta en caso de que la bomba choque con algo
 //Simplemente har�a la animaci�n de explosi�n y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
 void MovementComponentBomb::explodeBomb() {
-	setStatic();
+	setCanMove(false);
 	AnimationComponent* animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	RenderComponent* rndr = ent->getRenderComponent();
 

@@ -81,6 +81,8 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	animFrog->addAnimation("ATTACK_UP", Animation({ Vector2D(1,2) }, false, false, false));
 	animFrog->addAnimation("ATTACK_DOWN", Animation({ Vector2D(0,2) }, false, false, false));
 
+	animFrog->addAnimation("DAMAGE", Animation({ Vector2D(3,0) }, false, false, false));
+
 	player->addComponent(ANIMATION_COMPONENT, animFrog);
 
 	MovementComponentFrog* mvm = new MovementComponentFrog(pos, animFrog);
@@ -99,13 +101,14 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	input->setComponents(mvm, atck, invComp, it);
 	player->addComponent(INPUT_COMPONENT, input);
 
+	DamageBehaviourComponent* dam = new DamageBehaviourComponent("DAMAGE");
+	player->addComponent(DAMAGE_COMPONENT, dam);
+
 	LifeComponent* lc = new LifeComponent(10, 10);
 	player->addComponent(LIFE_COMPONENT, lc);
 
 	//Accedemos al Singleton del HUD para enlazar las vidas del jugador con el HUD
 	HUDManager::instance()->LinkLives(lc);
-
-	
 
 	AddEntity(player);
 

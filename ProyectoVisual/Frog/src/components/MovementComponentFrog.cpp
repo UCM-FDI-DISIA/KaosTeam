@@ -62,7 +62,7 @@ void MovementComponentFrog::hookAttract(Vector2D newPos)
 }
 
 void MovementComponentFrog::update() {
-	if (jumping && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate)
+	if (jumping && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate && canMove)
 	{
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		int t = ent->getScene()->getMapReader()->getTileSize();

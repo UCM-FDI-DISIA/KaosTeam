@@ -73,6 +73,7 @@
     <ClCompile Include="src\components\AttackComponentBasicEnemy.cpp" />
     <ClCompile Include="src\components\SwallowComponent.cpp" />
     <ClCompile Include="src\components\ItemThrowerComponent.cpp" />
+    <ClCompile Include="src\components\DamageBehaviourComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="src\components\AttackComponentBasicEnemy.h" />
     <ClInclude Include="src\components\SwallowComponent.h" />
     <ClInclude Include="src\components\ItemThrowerComponent.h" />
+    <ClInclude Include="src\components\DamageBehaviourComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
