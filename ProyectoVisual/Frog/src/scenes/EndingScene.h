@@ -15,6 +15,10 @@ class EndingScene: public Scene
 private:
 	vector<Texture*>bgs;
 	int currBg;
+	SDL_Rect bgDest;
+	GameState* gameState;
+	Game* game;
+	InputManager& imngr;
 public:
     EndingScene(Game* g, GameState* nGS);
 	virtual ~EndingScene();
