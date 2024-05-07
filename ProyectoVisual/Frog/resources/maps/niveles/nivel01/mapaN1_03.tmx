@@ -43,6 +43,21 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
+  <object id="6" name="FlonkS" type="Player" x="120.167" y="235.5">
+   <point/>
+  </object>
+  <object id="7" name="FlonkW" type="Player" x="23.5" y="121.5">
+   <point/>
+  </object>
+  <object id="8" name="FlonkN" type="Player" x="137.167" y="28">
+   <point/>
+  </object>
+  <object id="20" name="FlonkT" type="Player" x="81.3337" y="41">
+   <point/>
+  </object>
+  <object id="9" name="FlonkE" type="Player" x="232.833" y="136.333">
+   <point/>
+  </object>
   <object id="1" name="Crazy frog" type="Enemigo" x="56.5" y="104">
    <point/>
   </object>
@@ -70,21 +85,6 @@
    </properties>
    <point/>
   </object>
-  <object id="6" name="FlonkS" type="Player" x="120.167" y="235.5">
-   <point/>
-  </object>
-  <object id="7" name="FlonkW" type="Player" x="23.5" y="121.5">
-   <point/>
-  </object>
-  <object id="8" name="FlonkN" type="Player" x="137.167" y="28">
-   <point/>
-  </object>
-  <object id="20" name="FlonkT" type="Player" x="40.667" y="44">
-   <point/>
-  </object>
-  <object id="9" name="FlonkE" type="Player" x="232.833" y="136.333">
-   <point/>
-  </object>
   <object id="10" name="TransitionN" type="Transition" x="136.33" y="11.0341">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_06.tmx"/>
@@ -97,7 +97,7 @@
    </properties>
    <point/>
   </object>
-  <object id="21" name="TransitionT" type="Transition" x="38.875" y="26.625">
+  <object id="21" name="TransitionT" type="Transition" x="54.5417" y="26.2917">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/tienda/mapaT.tmx"/>
    </properties>

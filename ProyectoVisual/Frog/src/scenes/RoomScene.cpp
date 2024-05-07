@@ -13,9 +13,6 @@ void RoomScene::render() {
 	}
 	HUD->render();
 	if (insideShop) shopManager->render();
-	if (showArbol) {
-		arbolTiendaTex.render(SDL_Rect{ 200, 200,144, 144 });
-	}
 }
 
 void RoomScene::update() {
@@ -27,7 +24,6 @@ void RoomScene::update() {
 	cameraManager->update();
 	if (insideShop) {
 		shopManager->update();
-		showArbol = false;
 	}
 
 	if (needMapChange)
@@ -113,41 +109,55 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 }
 
 Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::string nextMap) {
-	showArbol = false;
 	Entity* c = new Entity(this);
 
-	TransformComponent* transform = new TransformComponent(pos);
-	c->addComponent(TRANSFORM_COMPONENT, transform);
+	TransformComponent* transform = nullptr;
+
+	flonkOrig nextFlonk;
+	if (objName == "TransitionT") {
+		nextFlonk = T;
+
+		if (insideShop) {
+			transform = new TransformComponent(pos);
+			c->addComponent(TRANSFORM_COMPONENT, transform);
+		}
+		else {
+			pos.setX(pos.getX() - 4);
+			pos.setY(pos.getY() - 3);
+			transform = new TransformComponent(pos, 320, 260);
+			c->addComponent(TRANSFORM_COMPONENT, transform);
+			Texture* textTienda = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Arbol_exterior.png", 1, 1);
+			RenderComponent* renderTienda = new RenderComponent(textTienda);
+			c->addComponent(RENDER_COMPONENT, renderTienda);
+			c->addRenderComponent(renderTienda);
+		}
+	}
+	else {
+		transform = new TransformComponent(pos);
+		c->addComponent(TRANSFORM_COMPONENT, transform);
+
+		if (objName == "TransitionN") {
+			nextFlonk = S;
+		}
+		else if (objName == "TransitionS") {
+			nextFlonk = N;
+		}
+		else if (objName == "TransitionE") {
+			nextFlonk = W;
+		}
+		else if (objName == "TransitionW") {
+			nextFlonk = E;
+		}
+		else if (objName == "TransitionP") {
+			nextFlonk = P;
+		}
+		else {
+			nextFlonk = S;
+		}
+	}
 
 	ColliderComponent* colliderComp = new ColliderComponent(transform);
 	c->addComponent(COLLIDER_COMPONENT, colliderComp);
-
-	flonkOrig nextFlonk;
-	if (objName == "TransitionN") {
-		nextFlonk = S;
-	}
-	else if (objName == "TransitionS") {
-		nextFlonk = N;
-	}
-	else if (objName == "TransitionE") {
-		nextFlonk = W;
-	}
-	else if (objName == "TransitionW") {
-		nextFlonk = E;
-	}
-	else if (objName == "TransitionP") {
-		nextFlonk = P;
-	}
-	else if (objName == "TransitionT") {
-		nextFlonk = T;
-
-		arbolX = pos.getX();
-		arbolY = pos.getY();
-		showArbol = !showArbol;
-	}
-	else {
-		nextFlonk = S;
-	}
 
 	TransitionComponent* trans = new TransitionComponent(nextMap, nextFlonk);
 	c->addComponent(TRANSITION_COMPONENT, trans);

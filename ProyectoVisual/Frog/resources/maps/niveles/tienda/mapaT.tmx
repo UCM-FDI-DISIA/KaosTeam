@@ -22,26 +22,20 @@
 0,0,0,0,0,0,0,0,0,0,
 400,400,400,400,400,400,400,400,400,400,
 0,0,0,0,0,0,0,0,0,0,
-338,338,338,338,0,0,338,338,338,338
+338,338,338,338,393,0,338,338,338,338
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="3" name="Pajaro" x="119.333" y="72">
+  <object id="5" name="FlonkT" type="Player" x="88.7603" y="109.697">
    <point/>
   </object>
-  <object id="4" name="TransitionT" type="Transition" x="72.3333" y="120.667">
-   <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_03.tmx"/>
-   </properties>
+  <object id="3" name="Pajaro" x="119.333" y="72">
    <point/>
   </object>
   <object id="6" name="TransitionT" type="Transition" x="89" y="121.667">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_03.tmx"/>
    </properties>
-   <point/>
-  </object>
-  <object id="5" name="FlonkT" type="Player" x="85" y="106.333">
    <point/>
   </object>
  </objectgroup>
