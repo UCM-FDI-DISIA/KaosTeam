@@ -51,6 +51,7 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 	case ORBES:
 		mejoras.orbes += 1;
 		break;
+	//AQUI FALTA LA CABEZA DE LA CUCARACHA
 	default:
 		break;
 	}

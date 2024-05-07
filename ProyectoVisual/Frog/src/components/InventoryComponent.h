@@ -36,7 +36,8 @@ enum Items {
 	BOMBAS, 
 	MONEDAS,
 	SACO_BOMBAS,
-	ORBES
+	ORBES,
+	ROACH_HEAD
 };
 
 class InventoryComponent : public Component

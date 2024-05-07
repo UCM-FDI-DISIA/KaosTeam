@@ -197,6 +197,14 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(ORBES);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
+	/*else if (objName == "RoachHead") { 
+		Texture* texture = &sdlutils().images().at("roachHead");
+		RenderComponent* render = new RenderComponent(texture);
+		c->addRenderComponent(render);
+
+		CogibleObjectComponent* cogible = new CogibleObjectComponent(ROACH_HEAD);
+		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+	}*/
 	// else 	if (objName == "BolsaBombas") { //Revisar como se llama en el mapa
 	// Texture* texture = &sdlutils().images().at("bag");
 	// RenderComponent* render = new RenderComponent(texture);
@@ -351,6 +359,22 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	AddEntity(redAnt);
 	return redAnt;
 }
+Entity* RoomScene::createHeadCockroach(Vector2D pos) {
+	Entity* head = new Entity(this, COGIBLE_ENTITY);
+	TransformComponent* transform = new TransformComponent(pos);
+	head->addComponent(TRANSFORM_COMPONENT, transform);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	head->addComponent(COLLIDER_COMPONENT, collider);
+	Texture* texture = &sdlutils().images().at("roachHead");
+	RenderComponent* render = new RenderComponent(texture);
+	head->addRenderComponent(render);
+
+	CogibleObjectComponent* cogible = new CogibleObjectComponent(ROACH_HEAD);
+	head->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+	AddEntity(head);
+	return head;
+}
 Entity* RoomScene::createCockroach(Vector2D pos) {
 	Entity* cockroach = new Entity(this, COCKROACH_ENTITY);
 	//textura cambiar
@@ -367,8 +391,8 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	animcockroach->setContext(cockroach);
 	animcockroach->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
 	animcockroach->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
-	animcockroach->addAnimation("DEAD_UP", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, false, false));
-	animcockroach->addAnimation("DEAD_DOWN", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, true, false));
+	animcockroach->addAnimation("DEATH", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, false, false));
+	//animcockroach->addAnimation("DEAD_DOWN", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, true, false));
 	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
 
 	RenderComponent* renderanimcockroach = new RenderComponent(txtcockroach);
@@ -378,6 +402,9 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	cockroach->addComponent(MOVEMENT_COMPONENT, mvm);
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(1);
 	cockroach->addComponent(ATTACK_COMPONENT, attack);
+	LifeComponent* lc = new LifeComponent(2, 2);
+	cockroach->addComponent(LIFE_COMPONENT, lc);
+	createHeadCockroach(pos);
 	AddEntity(cockroach);
 	return cockroach;
 }
@@ -451,7 +478,6 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	AddEntity(snake);
 	return snake;
 }
-
 Entity* RoomScene::createBomb(Vector2D pos) {
 	Entity* bomb = new Entity(this, BOMB_ENTITY);
 	Texture* textBomb = &sdlutils().images().at("eggSheet");;
@@ -521,7 +547,6 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	AddEntity(enganche);
 	return enganche;
 }
-
 Entity* RoomScene::createMapChanger(string name, Vector2D pos, bool pushed, string nextMap, int objIntID, bool objInteracted)
 {
 	Entity* e = nullptr;
@@ -638,7 +663,6 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 
 	return conveyor;
 }
-
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)
 {
 	Entity* c = nullptr;
@@ -685,7 +709,6 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	return c;
 }
-
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;
