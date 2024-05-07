@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\ItemThrowerComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentBasicEnemy.cpp" />
     <ClCompile Include="src\components\CogibleObjectComponent.cpp" />
     <ClCompile Include="src\components\ConveyorBeltComponent.cpp" />
@@ -228,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\ItemThrowerComponent.h" />
     <ClInclude Include="src\components\AttackComponentBasicEnemy.h" />
     <ClInclude Include="src\components\CogibleObjectComponent.h" />
     <ClInclude Include="src\components\ConveyorBeltComponent.h" />

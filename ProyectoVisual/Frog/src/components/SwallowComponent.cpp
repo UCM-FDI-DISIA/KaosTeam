@@ -36,7 +36,7 @@ void SwallowComponent::initComponent(){
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 	//este componente solo va adherido a las hormigas rojas de momento, pero podemos poner más entidades si hace falta
-	if (ent->getName() == BLACK_ANT_ENTITY) { 
+	if (ent->getName() == BLACK_ANT_ENTITY) { //Deben ser las Hormigas rojas
 		coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsTongue(e, c); });
 	}
 }

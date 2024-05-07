@@ -93,7 +93,13 @@ void FrogInputComponent::update()
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 		}
-		//else if (input->getAction2()) { //Pongo aquí un caso para lanzar bomba (Aunque habría que comprobar antes que la rana tenga la capacidad de guardar bombas)
+		else if (input->getAction5()) { //Pongo aquí un caso para lanzar bomba (Aunque habría que comprobar antes que la rana tenga la capacidad de guardar bombas)
+			if (inventoryComponent->habilidades.sacoBombas) {
+				//attackComponent->
+				std::cout << "HAS LANZADO BOMBAS CON EL SACO" << std::endl;
+			}
+		}
+		//else if (input->getAction2()) { 
 		//}
 	}
 

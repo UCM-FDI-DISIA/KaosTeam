@@ -42,6 +42,7 @@ private:
         BTN_SPACE,
         BTN_SHIFT, 
         BTN_M,
+        BTN_B,
         END //Para tener un valor con el que crear y utilizar el array
     };
 
@@ -77,6 +78,7 @@ public:
     InputButton getAction3();
     InputButton getShift();
     InputButton getAction4();
+    InputButton getAction5();
     InputButton getUp();
     InputButton getDown();
     InputButton getLeft();
