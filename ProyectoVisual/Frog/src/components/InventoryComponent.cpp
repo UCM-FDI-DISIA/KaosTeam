@@ -1,10 +1,13 @@
 #include "InventoryComponent.h"
 #include "LifeComponent.h"
 
-InventoryComponent::InventoryComponent() : money(0) {}
+InventoryComponent::InventoryComponent() : money(0) {
+	mejoras = MejorasData();
+	habilidades = HabilidadesData();
+}
 
-MejorasData::MejorasData() : saltamontes(0), moscas(0), avispas(0), ciempies(0) {}
-HabilidadesData::HabilidadesData() : gancho(false), sacoBombas(false) {};
+MejorasData::MejorasData() : saltamontes(0), moscas(0), avispas(0), ciempies(0), bombas(0) {}
+HabilidadesData::HabilidadesData() : gancho(false), sacoBombas(true) {};
 
 int InventoryComponent::GetMoney() { return money; }
 
@@ -45,8 +48,12 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 	case GANCHO:
 		habilidades.gancho = true;
 		break;
-	case BOMBAS:
+	case SACO_BOMBAS:
 		habilidades.sacoBombas = true;
+		break;
+	case BOMBAS:
+		mejoras.bombas += 1;
+		//std::cout << "\nNumero de bombas: " << mejoras.bombas << std::endl;
 		break;
 	default:
 		break;
@@ -63,3 +70,5 @@ void InventoryComponent::MejoraMosca(int amm) {
 void InventoryComponent::CurarVida(int amm) {
 	static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->AddActual(amm);
 }
+
+

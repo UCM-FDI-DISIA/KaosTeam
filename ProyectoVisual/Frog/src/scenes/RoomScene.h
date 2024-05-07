@@ -32,6 +32,7 @@
 #include "../components/AttackComponentBasicEnemy.h"
 #include "../components/ExploitableComponent.h"
 #include "../components/ConveyorBeltComponent.h"
+#include "../components/SwallowComponent.h"
 class Texture;
 class RoomScene : public Scene
 {
