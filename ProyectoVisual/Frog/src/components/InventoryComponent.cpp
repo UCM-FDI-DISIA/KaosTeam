@@ -3,7 +3,7 @@
 
 InventoryComponent::InventoryComponent() : money(0) {}
 
-MejorasData::MejorasData() : saltamontes(0), moscas(0), avispas(0), ciempies(0) {}
+MejorasData::MejorasData() : saltamontes(0), moscas(0), avispas(0), ciempies(0), orbes(0) {}
 HabilidadesData::HabilidadesData() : gancho(false), sacoBombas(false) {};
 
 int InventoryComponent::GetMoney() { return money; }
@@ -47,6 +47,9 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 		break;
 	case BOMBAS:
 		habilidades.sacoBombas = true;
+		break;
+	case ORBES:
+		mejoras.orbes += 1;
 		break;
 	default:
 		break;
