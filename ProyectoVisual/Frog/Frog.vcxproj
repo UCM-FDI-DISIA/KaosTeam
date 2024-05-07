@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\ItemThrowerComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentBasicEnemy.cpp" />
     <ClCompile Include="src\components\CogibleObjectComponent.cpp" />
     <ClCompile Include="src\components\ConveyorBeltComponent.cpp" />
@@ -224,9 +225,11 @@
     <ClCompile Include="src\components\TransitionComponent.cpp" />
     <ClCompile Include="src\components\TonguePushComponent.cpp" />
     <ClCompile Include="src\components\TongueHookComponent.cpp" />
+    <ClCompile Include="src\components\SwallowComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\ItemThrowerComponent.h" />
     <ClInclude Include="src\components\AttackComponentBasicEnemy.h" />
     <ClInclude Include="src\components\CogibleObjectComponent.h" />
     <ClInclude Include="src\components\ConveyorBeltComponent.h" />
@@ -305,6 +308,7 @@
     <ClInclude Include="src\components\TransitionComponent.h" />
     <ClInclude Include="src\components\TonguePushComponent.h" />
     <ClInclude Include="src\components\TongueHookComponent.h" />
+    <ClInclude Include="src\components\SwallowComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

@@ -1,6 +1,5 @@
 #pragma once
 #include "../ecs/Scene.h"
-//#include "../sdlutils/checkML.h"
 #include "../components/MovementComponentFly.h"
 #include "../components/RenderComponent.h"
 #include "../components/RenderComponentFrog.h"
@@ -22,7 +21,6 @@
 #include "../components/MovementComponentSnake.h"
 #include "../components/DestructibleComponent.h"
 #include"../managers/ShopManager.h"
-//#include "../components/MoneyComponent.h"
 #include "../components/MovementComponentBomb.h"
 #include "../components/TonguePushComponent.h"
 #include "../components/TongueHookComponent.h"
@@ -32,6 +30,8 @@
 #include "../components/AttackComponentBasicEnemy.h"
 #include "../components/ExploitableComponent.h"
 #include "../components/ConveyorBeltComponent.h"
+#include "../components/SwallowComponent.h"
+#include "../components/ItemThrowerComponent.h"
 class Texture;
 class RoomScene : public Scene
 {
@@ -48,16 +48,13 @@ private:
 	std::string nextMap;
 	Shop* shopManager;
 	bool insideShop; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
-	Texture& arbolTiendaTex;
-	int arbolX, arbolY;
-	bool showArbol;
 		/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
 	Por tanto, hay dos OnCollision por cada colision.
 	*/
 	void CheckColisions();
 
 public:
-	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false),arbolTiendaTex(sdlutils().images().at("arbolTienda")) {
+	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 
 		mapReader = new MapManager(path, this);
@@ -112,6 +109,8 @@ public:
 	Entity* createHeadCockroach(Vector2D pos);
 	Entity* createExplotableDoor(Vector2D pos);
 	Entity* createConveyorBelt(Vector2D pos, int orientation);
+
+	Entity* createMoneda(Vector2D pos, MonedaType type);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);
