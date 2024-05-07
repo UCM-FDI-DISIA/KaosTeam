@@ -44,7 +44,10 @@ void BossComponent::update()
 	if (poolCubiertos.empty()) {
 		isAttacking = false;
 	}
-	else moveCutlery(); //Si hay cubiertos, se mueven los cubiertos los que haya
+	else {
+		moveCutlery(); //Si hay cubiertos, se mueven los cubiertos los que haya
+		attackStartTime++;
+	}
 	
 }
 
@@ -52,7 +55,7 @@ void BossComponent::render()
 {
 	for (int i = 0; i < poolCubiertos.size(); i++) {
 		//Pintar la señal de aviso
-		if (attackStartTime + poolCubiertos[i].first->spawnTime_ >= sdlutils().currRealTime())
+		if (attackStartTime <= poolCubiertos[i].first->spawnTime_)
 			aviso->render(poolCubiertos[i].first->dest_);
 	}
 }
@@ -73,8 +76,8 @@ void BossComponent::generateCutlery()
 			-ent->getScene()->getMapReader()->getTileSize() / 2));
 
 		///Colocamos el aviso en la columna donde posteriormente aparecera un cubierto
-		cubiertos[c]->dest_.x = (int)cubiertos[c]->tr_->getWidth();
-		cubiertos[c]->dest_.y = (int)cubiertos[c]->tr_->getHeight();
+		cubiertos[c]->dest_.x = (int)cubiertos[c]->tr_->getCasilla().getX();
+		cubiertos[c]->dest_.y = 0;
 		cubiertos[c]->dest_.w = cubiertos[c]->dest_.h = ent->getScene()->getMapReader()->getTileSize();
 
 		poolCubiertos.emplace_back(std::pair<Cubierto*, bool>(cubiertos[c], true));
@@ -98,7 +101,7 @@ void BossComponent::attack(Entity* e, Collider c)
 		isAttacking = true;
 		postAttackTimer = 0;
 		generateCutlery(); //Añadimos los cubiertos
-		attackStartTime = sdlutils().currRealTime();
+		attackStartTime = 0;
 	}
 }
 
@@ -144,11 +147,11 @@ void BossComponent::moveCutlery()
 {
 	//L�gica para mover los cubiertos que est�n activos en la pool de cubiertos
 	for (pair cubierto : poolCubiertos) {
-		if (cubierto.second && attackStartTime + cubierto.first->spawnTime_ >= sdlutils().currRealTime()) {
-			cubierto.first->tr_->setOffset(cubierto.first->tr_->getOffset() + cubierto.first->speed_);
+		if (cubierto.second && attackStartTime >= cubierto.first->spawnTime_) {
+			//cubierto.first->tr_->setOffset(cubierto.first->tr_->getOffset() + cubierto.first->speed_);
 			cubierto.first->tr_->setCasilla(cubierto.first->speed_ + cubierto.first->tr_->getCasilla());
-			cubierto.first->tr_->setOffset({ -cubierto.first->tr_->getCasilla().getX() / 2,
-				-cubierto.first->tr_->getCasilla().getY() / 2 });
+			//cubierto.first->tr_->setOffset({ -cubierto.first->tr_->getCasilla().getX() / 2,
+				//-cubierto.first->tr_->getCasilla().getY() / 2 });
 		}
 	}		
 }
