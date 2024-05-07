@@ -188,15 +188,10 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(MOSCAS);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
-	//else 	if (objName == "BolsaBombas") { //Revisar como se llama en el mapa
-	// Texture* texture = &sdlutils().images().at("bag");
-	// RenderComponent* render = new RenderComponent(texture);
-	// c->addRenderComponent(render);
-
-	// CogibleObjectComponent* cogible = new CogibleObjectComponent(SACO_BOMBAS);
-	// c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
-	//}
-	//Hay que hacer un metodo creador de los distintos tipos de moneda
+	//Para probar las monedas. En el juego final las monedas las dropean los enemigos
+	else if (objName == "Moneda") {
+		createMoneda(pos, MONEDA_NARANJA);
+	}
 
 	AddEntity(c);
 
@@ -222,6 +217,10 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 	case MONEDA_NARANJA:
 		txtMoneda = &sdlutils().images().at("wormGoldSheet");
 		break;
+	default: //Default por si el tipo se asignó mal
+		txtMoneda = &sdlutils().images().at("wormPinkSheet");
+		cerr << "identificador de moneda invalido, default";
+		break;
 	}
 
 	//Hacer la animacion mas tarde
@@ -238,6 +237,8 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 	c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 
 	AddEntity(c);
+
+	return c;
 }
 
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
