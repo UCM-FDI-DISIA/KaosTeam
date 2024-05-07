@@ -12,6 +12,7 @@ private:
 	ColliderComponent* coll;
 	InventoryComponent* inv;
 	TransformComponent* tr;
+	bool isPicked;
 	void checkCollisionsTongue(Entity* e, Collider c);
 public:
 	SwallowComponent();
