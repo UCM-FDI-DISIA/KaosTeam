@@ -17,7 +17,7 @@ public:
 
 private:
 	InputManager* input;
-	int lastTimeMoved, actionCoolDown = 200;
+	int lastTimeMoved, actionCoolDown = 350;
 	int longJump = 2, shortJump = 1;
 	int longTongue = 5, shortTongue = 2;
 	int cyclesJumpPrepared = 0, cyclesToPrepareJump = 50;
