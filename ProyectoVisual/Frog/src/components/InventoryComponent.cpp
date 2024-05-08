@@ -1,5 +1,6 @@
 #include "InventoryComponent.h"
 #include "LifeComponent.h"
+#include "../managers/HUDManager.h"
 
 InventoryComponent::InventoryComponent() : money(0), llaves(0) {
 	mejoras = MejorasData();
@@ -54,6 +55,7 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 		break;
 	case MONEDAS:
 		PickMoneda(amm);
+		HUDManager::instance()->setWorms(money);
 		break;
 	case LLAVES:
 		llaves++;

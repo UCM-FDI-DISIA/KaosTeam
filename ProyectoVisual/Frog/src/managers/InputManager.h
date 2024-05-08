@@ -39,10 +39,7 @@ private:
         BTN_LEFT,
         BTN_RIGHT,
         BTN_ESCAPE,
-        BTN_SPACE,
-        BTN_SHIFT, 
-        BTN_M,
-        BTN_B,
+        BTN_SHIFT,
         END //Para tener un valor con el que crear y utilizar el array
     };
 
@@ -78,14 +75,14 @@ public:
     InputButton getAction3();
     InputButton getShift();
     InputButton getAction4();
-    InputButton getAction5();
+    //InputButton getAction5();
     InputButton getUp();
     InputButton getDown();
     InputButton getLeft();
     InputButton getRight();
-    InputButton getSpace();
+    //InputButton getSpace();
     InputButton getEscape();
-    InputButton getM();
+    //InputButton getM();
 };
 
 inline InputManager& im() {

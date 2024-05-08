@@ -74,7 +74,7 @@ void FrogInputComponent::update()
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 		}
-		else if (input->getSpace()) {
+		else if (input->getAction2()) {
 			if (inventoryComponent->mejoras.ciempies && input->getShift().pressed) {
 				attackComponent->setDistance(longTongue);
 			}
@@ -84,7 +84,7 @@ void FrogInputComponent::update()
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 		}
-		else if (input->getM()) { //ATAQUE CON HOOK DECIDIR CÓMO LO VAMOS A HACER
+		else if (input->getAction3()) { //ATAQUE CON HOOK DECIDIR CÓMO LO VAMOS A HACER
 			if (inventoryComponent->mejoras.ciempies && input->getShift().pressed) {
 				attackComponent->setDistance(longTongue);
 			}
@@ -94,7 +94,7 @@ void FrogInputComponent::update()
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 		}
-		else if (input->getAction5()) { //Pongo aquí un caso para lanzar bomba (Aunque habría que comprobar antes que la rana tenga la capacidad de guardar bombas)
+		else if (input->getAction4()) { //Pongo aquí un caso para lanzar bomba (Aunque habría que comprobar antes que la rana tenga la capacidad de guardar bombas)
 			if (inventoryComponent->habilidades.sacoBombas && inventoryComponent->mejoras.bombas >= 1) {
 				throwerComponent->throwItem(BOMBAS, movementComponent);
 				throwerComponent->throwStart();

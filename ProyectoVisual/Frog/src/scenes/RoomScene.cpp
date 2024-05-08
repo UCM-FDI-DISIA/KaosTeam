@@ -207,10 +207,6 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(MOSCAS);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
-	//Para probar las monedas. En el juego final las monedas las dropean los enemigos
-	else if (objName == "Moneda") {
-		createMoneda(pos, MONEDA_NARANJA);
-	}
 	else if (objName == "Orbe") { //Revisar como se llama en el mapa
 		Texture* texture = &sdlutils().images().at("orbeOff");
 		RenderComponent* render = new RenderComponent(texture);
@@ -265,9 +261,10 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 		break;
 	}
 
-	//Hacer la animacion mas tarde
-	//AnimationComponent* ac = new AnimationComponent();
-	//c->addComponent(ANIMATION_COMPONENT, ac);
+	AnimationComponent* ac = new AnimationComponent();
+	ac->addAnimation("ANIM", Animation({ Vector2D(0,0), Vector2D(0,1)}, false, false, true));
+	c->addComponent(ANIMATION_COMPONENT, ac);
+	ac->playAnimation("ANIM");
 
 	RenderComponent* renderMoneda = new RenderComponent(txtMoneda);
 	c->addRenderComponent(renderMoneda);
@@ -380,8 +377,8 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	RenderComponent* renderBlackAnt = new RenderComponent(txtBlackAnt);
 	blackAnt->addRenderComponent(renderBlackAnt);
 	
-	/*MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(animBlackAnt);
-	blackAnt->addComponent(MOVEMENT_COMPONENT, mvm);*/
+	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(animBlackAnt);
+	blackAnt->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
 	blackAnt->addComponent(ATTACK_COMPONENT, attack);
@@ -457,7 +454,7 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	animcockroach->setContext(cockroach);
 	animcockroach->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
 	animcockroach->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
-	animcockroach->addAnimation("DEATH", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, false, false));
+	animcockroach->addAnimation("DAMAGE", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, false, false));
 	//animcockroach->addAnimation("DEAD_DOWN", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, true, false));
 	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
 

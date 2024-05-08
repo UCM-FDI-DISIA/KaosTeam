@@ -118,8 +118,8 @@ void MovementComponentBlackAnt::update() {
 				checkCollisionWall();
 			}
 			bool attack = isPlayerNear();
-			/*if (!attack)
-				changeDirection();*/
+			if (!attack)
+				changeDirection();
 		}
 	}
 	else if (waitToAttack) {

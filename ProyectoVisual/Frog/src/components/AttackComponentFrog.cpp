@@ -24,10 +24,10 @@ AttackComponentFrog::~AttackComponentFrog() {
 void AttackComponentFrog::tongueTouch(Entity* ent, Collider c)
 {
 	//std::cout << "TongueTouch ";	
-	//if ( ent->getName() == COCKROACH_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
-	//	//std::cout << "TongueTouch cucaracha";	
-	//	//static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana
-	//}
+	if ( ent->getName() == COCKROACH_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
+		//std::cout << "TongueTouch cucaracha";	
+		static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana
+	}
 }
 
 void AttackComponentFrog::UpdateBox(Vector2D casilla, int w, int h)
