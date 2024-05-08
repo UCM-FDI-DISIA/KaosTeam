@@ -380,8 +380,8 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	RenderComponent* renderBlackAnt = new RenderComponent(txtBlackAnt);
 	blackAnt->addRenderComponent(renderBlackAnt);
 	
-	/*MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(animBlackAnt);
-	blackAnt->addComponent(MOVEMENT_COMPONENT, mvm);*/
+	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(animBlackAnt);
+	blackAnt->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
 	blackAnt->addComponent(ATTACK_COMPONENT, attack);
@@ -457,7 +457,7 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	animcockroach->setContext(cockroach);
 	animcockroach->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
 	animcockroach->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
-	animcockroach->addAnimation("DEATH", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, false, false));
+	animcockroach->addAnimation("DAMAGE", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, false, false));
 	//animcockroach->addAnimation("DEAD_DOWN", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, true, false));
 	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
 
