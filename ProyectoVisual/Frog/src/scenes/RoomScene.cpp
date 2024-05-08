@@ -265,9 +265,10 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 		break;
 	}
 
-	//Hacer la animacion mas tarde
-	//AnimationComponent* ac = new AnimationComponent();
-	//c->addComponent(ANIMATION_COMPONENT, ac);
+	AnimationComponent* ac = new AnimationComponent();
+	ac->addAnimation("ANIM", Animation({ Vector2D(0,0), Vector2D(0,1)}, false, false, true));
+	c->addComponent(ANIMATION_COMPONENT, ac);
+	ac->playAnimation("ANIM");
 
 	RenderComponent* renderMoneda = new RenderComponent(txtMoneda);
 	c->addRenderComponent(renderMoneda);
