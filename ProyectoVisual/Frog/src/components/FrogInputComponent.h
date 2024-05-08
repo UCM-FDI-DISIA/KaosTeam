@@ -20,7 +20,7 @@ private:
 	int lastTimeMoved, actionCoolDown = 200;
 	int longJump = 2, shortJump = 1;
 	int longTongue = 5, shortTongue = 2;
-	int cyclesJumpPrepared = 0, cyclesToPrepareJump = 20;
+	int cyclesJumpPrepared = 0, cyclesToPrepareJump = 50;
 	bool preparingJump;
 	MovementComponentFrog* movementComponent;
 	AttackComponentFrog* attackComponent;
