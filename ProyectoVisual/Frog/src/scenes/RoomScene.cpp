@@ -207,10 +207,6 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(MOSCAS);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
-	//Para probar las monedas. En el juego final las monedas las dropean los enemigos
-	else if (objName == "Moneda") {
-		createMoneda(pos, MONEDA_NARANJA);
-	}
 	else if (objName == "Orbe") { //Revisar como se llama en el mapa
 		Texture* texture = &sdlutils().images().at("orbeOff");
 		RenderComponent* render = new RenderComponent(texture);
