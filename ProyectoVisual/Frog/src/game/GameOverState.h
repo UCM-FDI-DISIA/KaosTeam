@@ -15,7 +15,7 @@ public:
 	void enter() override;
 
 	//Getters
-	Scene* getScene() const override {return &currScene; };
+	Scene* getScene() const override { return &currScene; };
 private:
 	Game* game;
 	Menu* menu; //Puntero que gestiona la pantalla de MenuInicio

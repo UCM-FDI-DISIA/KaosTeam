@@ -29,8 +29,7 @@ void PausedState::leave()
 
 void PausedState::update()
 {
-	if (imngr.getEscape())
-	{
+	if (imngr.getEscape()) {
 		game->setNextState(game->RUNNING);
 	}
 	currScene.update();
