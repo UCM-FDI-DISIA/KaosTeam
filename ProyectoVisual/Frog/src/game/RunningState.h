@@ -26,5 +26,5 @@ private:
 	Scene* currScene; //puede haber escenas d menu d opciones,etc.
 	std::vector<Scene*> allRooms; //NO SE UTILIZA
 	InputManager& imngr;
-	//void se presiona el boton d pausa {llama al game change estate a ause y le pasa la currScene y el hud
+	//void se presiona el boton d pausa {llama al game change estate a pause y le pasa la currScene y el hud
 };
