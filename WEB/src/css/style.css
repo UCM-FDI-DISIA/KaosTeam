@@ -1,7 +1,7 @@
 /*Definir aquí el estilo de la página*/
 /* CSS de ejemplo de navbar sacado de https://www.w3schools.com/howto/howto_js_topnav.asp*/
 html {
-  background-color: #ddd; /*Fondo provisional, en el futuro colocar una imagen todo lo guapa*/
+  background-color: #4CDEDD; /*Fondo provisional, en el futuro colocar una imagen todo lo guapa*/
 }
 
 ul {
@@ -13,7 +13,7 @@ ul {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #333;
+  background-color: #1D582E;
   overflow: hidden;
   text-align: center;
 }
@@ -36,13 +36,13 @@ ul {
 }
 
 .topnav a:hover { /*Aspecto del botón al pasar el ratón por encima*/
-  background-color: #ddd;
+  background-color: #28CB8F;
   color: black;
 }
 
 .topnav a.active {
-  background-color: #1ae94a;
-  color: black;
+  background-color: #eee;
+  color: #0b1f10;
 }
 
 .legal-stuff {
