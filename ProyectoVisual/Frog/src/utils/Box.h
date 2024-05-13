@@ -7,6 +7,7 @@ class Box
 {
 public:
 	Box(Vector2D casilla, float width, float height);
+	Box(Vector2D casilla, float width, float height, int scale);
 	Box(Vector2D casilla);
 	Box();
 	SDL_Rect GetOnDisplayPosition() const;

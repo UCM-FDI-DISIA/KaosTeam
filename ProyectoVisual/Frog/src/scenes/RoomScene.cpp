@@ -46,7 +46,7 @@ RoomScene::RoomScene(int id) : id(id), player(nullptr), francois(nullptr), needM
 	shopManager = Shop::instance();
 	shopManager->setPlayer(player);
 
-	createFrancois(Vector2D(5, 0));
+	createFrancois(Vector2D(1, 0));
 
 #pragma region Cosas q vamos a borrar pronto
 	//createBomb(Vector2D(4, 2));
@@ -461,7 +461,7 @@ Entity* RoomScene::createFrancois(Vector2D pos)
 
 	Texture* txtFran = &sdlutils().images().at("darkShadow");
 
-	TransformComponent* tr = new TransformComponent(pos, 800, 640);
+	TransformComponent* tr = new TransformComponent(pos, BOSS_X, BOSS_Y, BOSS_SCALE);
 	francois->addComponent(TRANSFORM_COMPONENT, tr);
 
 	RenderComponent* renderTheFrench = new RenderComponent(txtFran);

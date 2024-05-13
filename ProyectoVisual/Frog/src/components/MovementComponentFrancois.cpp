@@ -3,9 +3,7 @@
 #include "../scenes/RoomScene.h"
 #include "BossComponent.h"
 
-MovementComponentFrancois::MovementComponentFrancois() :pos(BOSS_INIT_POS), //
-								multiplier(0.2), //
-								lowerLimit(0) //
+MovementComponentFrancois::MovementComponentFrancois() : multiplier(0.2), lowerLimit(0) //
 {
 }
 
@@ -29,6 +27,8 @@ void MovementComponentFrancois::update()
 		
 		tr->setOffsetX(tr->getOffset().getX() + velocity.getX());
 		tr->setCasilla(velocity + tr->getCasilla());
-		tr->setOffset({ -tr->getWidth() / 2,-tr->getHeight() / 2 });
 	}
+
+	cout << "Posicio de la sombra: (" << tr->getCasilla().getX() << ", " << tr->getCasilla().getY() << ")" << endl;
+
 }

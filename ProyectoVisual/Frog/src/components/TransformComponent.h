@@ -9,6 +9,7 @@ class TransformComponent : public Component, public Box
 {
 public:
 	TransformComponent(Vector2D casilla, float width, float height);
+	TransformComponent(Vector2D casilla, float width, float height, int scale);
 	//Crea un transform cuadrado con escala determinada en funcion al tamaño de las casillas
 	TransformComponent(Vector2D casilla);
 	~TransformComponent() {};

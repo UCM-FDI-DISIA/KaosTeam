@@ -10,6 +10,10 @@
 #include "../components/MovementComponentFrog.h"
 #include <vector>
 
+const int BOSS_X = 560;
+const int BOSS_Y = 560;
+const int BOSS_SCALE = 7;
+
 class RoomScene : public Scene
 {
 private:

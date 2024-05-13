@@ -68,8 +68,9 @@ void BossComponent::generateCutlery()
 		cubiertos[c]->tr_->setOffset(Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 2,
 			-ent->getScene()->getMapReader()->getTileSize() / 2));
 
+		Vector2D cameraPos = Camera::instance()->getCameraMovement();
 		///Colocamos el aviso en la columna donde posteriormente aparecera un cubierto
-		cubiertos[c]->dest_.x = (int)cubiertos[c]->tr_->getCasilla().getX() * TILE_SIZE;
+		cubiertos[c]->dest_.x = (int)cubiertos[c]->tr_->getCasilla().getX() * TILE_SIZE - cameraPos.getX();
 		cubiertos[c]->dest_.y = 0;
 		cubiertos[c]->dest_.w = cubiertos[c]->dest_.h = ent->getScene()->getMapReader()->getTileSize();
 

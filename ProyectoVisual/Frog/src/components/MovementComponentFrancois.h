@@ -4,8 +4,6 @@
 #include "TransformComponent.h"
 #include "MovementComponent.h"
 
-const Vector2D BOSS_INIT_POS = Vector2D(12, 0);
-
 class MovementComponentFrancois : public MovementComponent
 {
 private:
@@ -13,8 +11,6 @@ private:
 	short int upperLimit; //Limite superior de movimiento del Boss
 
 	float multiplier;
-
-	Vector2D pos; //Posicion de la sombra
 
 	TransformComponent* tr;
 public:
@@ -30,7 +26,7 @@ public:
 	bool isShadowAtLimit(Vector2D pos) const { return  tr->getCasilla().getX() <= lowerLimit || tr->getCasilla().getX() >= upperLimit; };
 
 	//Setters
-	void setDirection() { if (isShadowAtLimit(pos)) velocity = velocity * -1; };
+	void setDirection() { if (isShadowAtLimit(tr->getCasilla())) velocity = velocity * -1; };
 	void setLowerLimit(short int newLimit) { lowerLimit = newLimit; };
 	void setSpeed(Vector2D newSpeed) { velocity = newSpeed; };
 	void setMultiplier(float newMultiplier) { multiplier = newMultiplier; };
