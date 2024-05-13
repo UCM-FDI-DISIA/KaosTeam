@@ -5,17 +5,11 @@
 
 RunningState::RunningState(Game* g) : game(g), hud(), currScene(new RoomScene(1)),imngr(im())
 {
-	//allRooms.reserve(numRooms);
 }
 
 RunningState::~RunningState()
 {
 	delete currScene;
-	//for (auto a : allRooms)
-	//{
-	//	delete a;
-	//}
-	//allRooms.clear();
 }
 
 void RunningState::leave()
@@ -34,18 +28,4 @@ void RunningState::update()
 
 void RunningState::enter()
 {
-}
-
-void RunningState::changeScene(int id)
-{/*
-	if (allRooms[id] == nullptr)
-	{
-		currScene = allRooms[id];
-	}
-	else
-	{
-		allRooms[id] = new RoomScene(id);
-	}*/
- //Tenemos de encontrar una forma de entrar en nuevas habitaciones aqu�
-
 }

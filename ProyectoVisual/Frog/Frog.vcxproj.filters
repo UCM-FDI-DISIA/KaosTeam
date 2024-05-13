@@ -73,6 +73,7 @@
     <ClCompile Include="src\components\MovementComponentFrancois.cpp" />
     <ClCompile Include="src\components\RenderComponentDestructible.cpp" />
     <ClCompile Include="src\scenes\EndingScene.cpp" />
+    <ClCompile Include="src\game\EndingState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="src\components\MovementComponentFrancois.h" />
     <ClInclude Include="src\components\RenderComponentDestructible.h" />
     <ClInclude Include="src\scenes\EndingScene.h" />
+    <ClInclude Include="src\game\EndingState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

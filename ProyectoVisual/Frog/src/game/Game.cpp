@@ -8,6 +8,7 @@
 #include "NewGameState.h"
 #include "PausedState.h"
 #include "RunningState.h"
+#include "EndingState.h"
 
 //Constructor del game. Debe inicializar todos los elementos que se vayan a utilizar en todas las escenas.
 
@@ -15,7 +16,9 @@ Game::Game() : //
 	pausedState(nullptr), //
 	newgameState(nullptr), //
 	gameOverState(nullptr),
-	runningState(nullptr) {}
+	runningState(nullptr),
+	endingState(nullptr)
+{}
 
 Game::~Game()
 {
@@ -24,6 +27,7 @@ Game::~Game()
 	delete newgameState;
 	delete gameOverState;
 	delete runningState;
+	delete endingState;
 }
 
 void Game::init() {
@@ -38,6 +42,7 @@ void Game::init() {
 	runningState = new RunningState(this);
 	pausedState = new PausedState(this);
     gameOverState = new GameOverState(this);
+	endingState = new EndingState(this);
 	renderStates.push_front(newgameState);
 	updateStates.push_front(newgameState);
 
@@ -124,7 +129,17 @@ void Game::changeGameState(State s) //PROVISIONAL, NO FINAL
 		updateStates.push_back(gameOverState);
 		renderStates.push_back(gameOverState);
 		break;
+	case ENDING:
+	{
+		updateStates.clear();
+		renderStates.clear();
+		updateStates.push_back(endingState);
+		renderStates.push_back(endingState);
+		endingState->enter();
+	}
 	default:
 		break;
 	}
+	changeState = false;
+
 }
