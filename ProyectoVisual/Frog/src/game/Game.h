@@ -23,7 +23,7 @@ class Game
 {
 public:
 	enum State {
-		RUNNING, PAUSED, NEWGAME, GAMEOVER
+		RUNNING, PAUSED, NEWGAME, GAMEOVER,ENDING
 	};
 	Game();
 	virtual ~Game();
@@ -42,6 +42,7 @@ private:
 	GameState* runningState;
 	GameState* newgameState;
 	GameState* gameOverState;
+	GameState* endingState;
 
 	bool exit;
 	bool changeState;
