@@ -9,8 +9,6 @@ void MovementComponent::initComponent()
 	tr = static_cast<TransformComponent * >(ent->getComponent(TRANSFORM_COMPONENT));
 }
 
-bool MovementComponent::checkIfTileWalkable(Vector2D v)
-{
-	return (ent->getScene()->getMapReader()->isTileWalkable(v)); //para comprobar q la tile existe
+bool MovementComponent::checkIfTileWalkable(Vector2D v) const { 
+	return (ent->getScene()->getMapReader()->isTileWalkable(v)); 
 }
-
