@@ -23,16 +23,16 @@ public:
 
 	void initComponent() override;
 
- void update() override;
+	void update() override;
 
- 
-	void checkDirection();
-	void setLowerLimit(short int newLimit);
-	void setSpeed(Vector2D newSpeed);
-	void setMultiplier(float newMultiplier);
+	//Getters
+	//Esta en el borde de la pantalla
+	bool isShadowAtLimit(Vector2D pos) const { return  tr->getCasilla().getX() <= lowerLimit || tr->getCasilla().getX() >= upperLimit; };
 
-	bool isShadowAtLimit(Vector2D pos) const; //Esta en el borde de la pantalla
-
- 
+	//Setters
+	void setDirection() { if (isShadowAtLimit(pos)) velocity = velocity * -1; };
+	void setLowerLimit(short int newLimit) { lowerLimit = newLimit; };
+	void setSpeed(Vector2D newSpeed) { velocity = newSpeed; };
+	void setMultiplier(float newMultiplier) { multiplier = newMultiplier; };
 };
 

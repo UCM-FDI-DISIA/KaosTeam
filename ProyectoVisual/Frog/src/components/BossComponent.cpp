@@ -64,7 +64,7 @@ void BossComponent::generateCutlery()
 		int c = rand() % (TENEDOR + 1); //Decide el cubierto a meter en la pool
 		int x = rand() % ((int)tr->getWidth() / TILE_SIZE + 1) + tr->getCasilla().getX(); //Definde x random donde ira el cubierto
 
-		cubiertos[c]->tr_->setCasilla(Vector2D(x, -1)); //Ponemos el cubierto una casilla fuera de la pantalla
+		cubiertos[c]->tr_->setCasilla(Vector2D(x, -2)); //Ponemos el cubierto una casilla fuera de la pantalla
 		cubiertos[c]->tr_->setOffset(Vector2D(-ent->getScene()->getMapReader()->getTileSize() / 2,
 			-ent->getScene()->getMapReader()->getTileSize() / 2));
 
@@ -107,6 +107,7 @@ void BossComponent::addCutlery()
 {
 	for (int i = 0; i < poolCubiertos.size(); i++)
 		ent->getScene()->AddEntity(poolCubiertos[i].first->ent_);
+
 	addToList = false; //Yaetan creados, no hay nada que añadir
 }
 
@@ -127,7 +128,7 @@ void BossComponent::createCutlery()
 		//c->spawnTime_ = sdlutils().rand().nextInt(0, 2);
 
 		c->ent_ = new Entity(ent->getScene(), CUTLERY_ENTITY); //Creamos entidad cubierto
-		c->tr_ = new TransformComponent(Vector2D(i , i), 80, 160); //Añadimos transform al cubierto
+		c->tr_ = new TransformComponent(Vector2D(0, 0), 80, 160); //Añadimos transform al cubierto
 		c->ent_->addComponent(TRANSFORM_COMPONENT, c->tr_);
 		c->coll_ = new ColliderComponent(c->tr_);
 		c->ent_->addComponent(COLLIDER_COMPONENT, c->coll_);
@@ -145,12 +146,8 @@ void BossComponent::moveCutlery()
 {
 	//L�gica para mover los cubiertos que est�n activos en la pool de cubiertos
 	for (pair cubierto : poolCubiertos) {
-		if (cubierto.second && attackStartTime >= cubierto.first->spawnTime_) {
-			//cubierto.first->tr_->setOffset(cubierto.first->tr_->getOffset() + cubierto.first->speed_);
+		if (cubierto.second && attackStartTime >= cubierto.first->spawnTime_)
 			cubierto.first->tr_->setCasilla(cubierto.first->speed_ + cubierto.first->tr_->getCasilla());
-			//cubierto.first->tr_->setOffset({ -cubierto.first->tr_->getCasilla().getX() / 2,
-				//-cubierto.first->tr_->getCasilla().getY() / 2 });
-		}
 	}		
 }
 
@@ -169,15 +166,12 @@ bool BossComponent::isOutOfScreen(float y) const
 	return y >= sdlutils().height();
 }
 
-bool BossComponent::isOnTheShadow(const float & x) const
-{
-	return tr->getCasilla().getX() < x
-		&& tr->getCasilla().getX() + tr->getWidth() / TILE_SIZE > x;
-}
-
 bool BossComponent::isDetectingFlonk() const
 {
-	return isOnTheShadow(static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT))->getCasilla().getX());
+	TransformComponent* flonkTr = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	
+	return flonkTr->getCasilla().getX() * TILE_SIZE > tr->getCasilla().getX() 
+		&& flonkTr->getCasilla().getX() * TILE_SIZE + flonkTr->getWidth()  < tr->getCasilla().getX() * TILE_SIZE + tr->getWidth();
 }
 
 

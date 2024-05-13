@@ -35,7 +35,7 @@
 RoomScene::RoomScene(int id) : id(id), player(nullptr), francois(nullptr), needMapChange(false),insideShop(false) {
 	//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y 
 	// las entidades de la sala.
-	std::string initMapPath = "resources/maps/niveles/nivel01/mapaN1_01.tmx";
+	std::string initMapPath = "resources/maps/niveles/nivelFinal/mapaNF.tmx";
 	mapReader = new MapManager(initMapPath, this);
 	mapReader->loadObj(initMapPath);
 
@@ -46,10 +46,10 @@ RoomScene::RoomScene(int id) : id(id), player(nullptr), francois(nullptr), needM
 	shopManager = Shop::instance();
 	shopManager->setPlayer(player);
 
-	createFrancois(Vector2D(0, 0));
+	createFrancois(Vector2D(5, 0));
 
 #pragma region Cosas q vamos a borrar pronto
-	createBomb(Vector2D(4, 2));
+	//createBomb(Vector2D(4, 2));
 #pragma endregion
 };
 

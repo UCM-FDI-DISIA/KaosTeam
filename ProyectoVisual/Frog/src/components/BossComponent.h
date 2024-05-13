@@ -71,8 +71,8 @@ public:
 	//Getters
 	bool isOutOfScreen(float y) const; //Comprueba si un cubierto se ha salido de la pantalla
 	bool theresCutleryToAdd() const { return addToList; };
-	bool isOnTheShadow(const float& x) const;
 	bool isDetectingFlonk() const;
+	bool isFlonkAttacking() const { return isAttacking; };
 	//Setters
 	void setContaminatedDishes(int d) { contDishes += d; };
 };
