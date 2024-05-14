@@ -2,19 +2,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="src/img/favicon.ico">
     <link rel="stylesheet" href="src/css/style.css"> <!--Fichero de estilo css general-->
     <link rel="stylesheet" href="src/css/index-style.css"> <!--Fichero de estilo css de esta página-->
-    <!--Enlazado para el uso de la fuente-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <title id="titleName"></title>
+    <title id="titleName">Flonk! - El Juego</title>
 </head>
 <html>
-<nav class="topnav"> <!--Menú superior con enlaces-->
+<nav class="topnav"> <!--Menú superior con enlaces  y el logo-->
+    <div class="logo-studio-container">
+        <img src="src/img/logo_studio.png">
+    </div>
     <ul class="navList">
         <li><a class="active">JUEGO</a></li> <!--Página principal con el juego-->
         <li><a href="./credits.html">CREDITOS</a></li> <!--Nuestros créditos uwu-->
@@ -24,61 +21,74 @@
 </nav>
 <div id="content"><!--Contenido de la página como tal-->
     <div id="title-imagen">
-        <img src="src/img/logo.png" </div>
-        <div class="descripcion-juego">
-            <div class="cuadro">
-                <h2 class="titles1">La aventura de Flonk!</h2>
-            </div>
-            <p class="desc-parag1">¡El chef François 🥐 ha secuestrado a la hermana de Flonk!</p>
-            <p class="desc-parag2 usual-text-style">Explora un mundo lleno de peligros para rescatarla antes de que se convierta en un
-                👨‍🍳 plato de cocina francesa 🥘.</p>
-        </div>
-        <!-- Sección de Capturas -->
-        <div class="slides">
-            <div class="cuadro">
-                <h2 class="titles1">Capturas del Juego</h2>
-            </div>
-
-            <!-- Slides -->
-            <div class="capturas">
-                <div class="imgen visible">
-                    <img src="src/img/captura1.png" style="width: auto; height: 600px;">
-                </div>
-
-                <div class="imgen">
-                    <img src="src/img/captura2.png" style="width: auto; height: 600px;">
-                </div>
-
-                <div class="imgen">
-                    <img src="src/img/captura3.png" style="width: auto; height: 600px;">
-                </div>
-            </div>
-            <br>
-            <div>
-            </div>
-        </div>
-        <!-- Circulitos de las imagenes -->
-        <div style="text-align:center">
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <script src="src/js/slide.js"></script> <!--Script de la funcionalidad del slider de imagenes-->
+        <img src="src/img/logo.png">
     </div>
-    <div class="descripcion-mundo">
+    <div class="descripcion-juego">
         <div class="cuadro">
-            <h2 class="titles1">El mundo de Flonk!</h2>
+            <h2 class="titles1">La aventura de Flonk!</h2>
         </div>
-        <div class="seccion-con-img"> <!--Un texto a la izqierda, acompañado de una imagen a la derecha-->
-            <div class="texto-izq usual-text-style">Lorem ipsum dolor sit amet consectetur adipiscing elit, maecenas placerat libero integer fermentum auctor. Porttitor rhoncus mus morbi per a praesent hendrerit, aliquet nascetur condimentum nostra volutpat odio, ad mauris lectus phasellus orci ridiculus. Habitant nisl pharetra mollis tellus torquent fringilla justo litora praesent nam quis eros tempor mauris hac conubia, ultrices scelerisque posuere sociosqu malesuada maecenas fames nulla curabitur lobortis urna arcu varius cras.
+        <p class="desc-parag1">¡El chef François 🥐 ha secuestrado a la hermana de Flonk!</p>
+        <p class="desc-parag2 usual-text-style">Explora un mundo lleno de peligros para rescatarla antes de que se
+            convierta en un
+            👨‍🍳 plato de cocina francesa 🥘.</p>
+        <p class="desc-parag2 usual-text-style">Flonk! es un videojuego desarrollado por KaosTeam, un grupo de estudiantes del Grado de Desarrollo de Videojuegos de la Universidad Complutense de Madrid (Curso 2023-24).</p>
+    </div>
+    <!-- Sección de Capturas -->
+    <div class="slides">
+        <div class="cuadro">
+            <h2 class="titles1">Capturas del Juego</h2>
+        </div>
 
-                Mattis sollicitudin lectus litora diam nulla nostra cursus convallis dictum, integer vitae nec eu vehicula commodo purus dictumst odio porta, iaculis in metus non ad cubilia quam massa. Curabitur taciti duis dapibus cursus justo mi sed odio aenean dignissim, ullamcorper primis inceptos eget tellus aptent mollis ultrices purus donec egestas, lacus eros dictum vel sociosqu fusce scelerisque interdum nulla. Gravida pharetra fames eleifend lobortis molestie fermentum vulputate curae, tortor mi nam volutpat nisl vel metus in, arcu hac nulla eget porttitor nisi maecenas.</div>
-            <div class="img-der">
-                <img src="src/img/diego.jpg">
+        <!-- Slides -->
+        <div class="capturas">
+            <div class="imgen visible">
+                <img src="src/img/captura1.png" style="width: auto; height: 600px;">
+            </div>
+
+            <div class="imgen">
+                <img src="src/img/captura2.png" style="width: auto; height: 600px;">
+            </div>
+
+            <div class="imgen">
+                <img src="src/img/captura3.png" style="width: auto; height: 600px;">
             </div>
         </div>
+        <br>
+        <div>
+        </div>
     </div>
+    <!-- Circulitos de las imagenes -->
+    <div style="text-align:center">
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <script src="src/js/slide.js"></script> <!--Script de la funcionalidad del slider de imagenes-->
+</div>
+<div class="descripcion-mundo">
+    <div class="cuadro">
+        <h2 class="titles1">El mundo de Flonk!</h2>
+    </div>
+    <div class="seccion-con-img"> <!--Un texto a la izqierda, acompañado de una imagen a la derecha-->
+        <div class="texto-izq usual-text-style">
+            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, maecenas placerat libero integer fermentum
+                auctor. Porttitor rhoncus mus morbi per a praesent hendrerit, aliquet nascetur condimentum nostra
+                volutpat odio, ad mauris lectus phasellus orci ridiculus. Habitant nisl pharetra mollis tellus torquent
+                fringilla justo litora praesent nam quis eros tempor mauris hac conubia, ultrices scelerisque posuere
+                sociosqu malesuada maecenas fames nulla curabitur lobortis urna arcu varius cras. </p>
+            <p>Mattis sollicitudin lectus litora diam nulla nostra cursus convallis dictum, integer vitae nec eu
+                vehicula commodo purus dictumst odio porta, iaculis in metus non ad cubilia quam massa. Curabitur taciti
+                duis dapibus cursus justo mi sed odio aenean dignissim, ullamcorper primis inceptos eget tellus aptent
+                mollis ultrices purus donec egestas, lacus eros dictum vel sociosqu fusce scelerisque interdum nulla.
+                Gravida pharetra fames eleifend lobortis molestie fermentum vulputate curae, tortor mi nam volutpat nisl
+                vel metus in, arcu hac nulla eget porttitor nisi maecenas. </p>
+        </div>
+        <div>
+            <img src="src/img/pajaro.gif" class="img-der">
+        </div>
+    </div>
+</div>
 
 </html>

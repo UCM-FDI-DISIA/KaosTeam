@@ -1,5 +1,3 @@
-/*Definir aquí el estilo de la página*/
-/* CSS de ejemplo de navbar sacado de https://www.w3schools.com/howto/howto_js_topnav.asp*/
 html {
   background-color: #4CDEDD;
   /*Fondo provisional, en el futuro colocar una imagen todo lo guapa*/
@@ -35,7 +33,7 @@ ul {
   text-decoration: none;
   font-size: 28px;
   margin: 0;
-  font-family: "Comic Neue", cursive;
+  font-family: "Comic Sans", cursive;
   font-weight: 1000;
   font-style: normal;
 }
@@ -55,84 +53,28 @@ ul {
   color: #0b1f10;
 }
 
-.cuadro { /*El recuadro para los títulos*/
-  display: block;
-  position: relative;
-  background-color: #1D582E;
-  margin-left: 22%;
-  margin-right: 22%;
-  margin-top: 50px;
-  padding: 5px;
-  text-align: center;
-  border-radius: 69px;
+.logo-studio-container {
+  float: left;
+  position: absolute;
+  margin-left: 40px;
 }
 
-/*Titulo tamaño subtitulo con reborde*/
-.titles1 {
-  font-size: 41px;
-  color: #f2f2f2;
-  font-family: "Comic Neue", cursive;
-  font-weight: 700;
-  font-style: normal;
-
+.logo-studio-container img {
+  height: 70px;
 }
 
-.desc-parag1 {
-  /*Esto le pone bordecito al texto. Puede no ser compatible con todos los navegadores*/
-  -webkit-text-stroke: 1px #000;
-  font-family: "Comic Neue", cursive;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 42px;
-  color: #28cb4b;
-}
-
-/*.desc-parag2 {
-sin uso
-}*/
-
-.usual-text-style { /*El estilo de texto basico para descripciones y etc*/
-  font-family: "Comic Neue", cursive;
-  font-weight: 700;
-  font-style: normal;
+.usual-text-style {
+  /*El estilo de texto basico para descripciones y etc*/
+  font-family: "Comic Sans", cursive;
   font-size: 21px;
   color: #000;
 }
 
 /*Fuentes*/
-/*Están aquí por si quieres utilizarlo directamente. Para añadirlo a una class lo mejor es copiar y pegat los atributos*/
-.comic-neue-light {
-  font-family: "Comic Neue", cursive;
-  font-weight: 300;
+@font-face {
+  font-family: 'Comic Sans';
+  src: url('src/fonts/comic.woff2') format('woff2'),
+    url('src/fonts/comic.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
-}
-
-.comic-neue-regular {
-  font-family: "Comic Neue", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.comic-neue-bold {
-  font-family: "Comic Neue", cursive;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.comic-neue-light-italic {
-  font-family: "Comic Neue", cursive;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.comic-neue-regular-italic {
-  font-family: "Comic Neue", cursive;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.comic-neue-bold-italic {
-  font-family: "Comic Neue", cursive;
-  font-weight: 700;
-  font-style: italic;
 }

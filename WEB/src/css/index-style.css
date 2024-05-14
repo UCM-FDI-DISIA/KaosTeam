@@ -74,12 +74,56 @@ html {
 .seccion-con-img {
 	display: flex;
 	margin-top: 40px;
-	margin-left: 25%;
-    margin-right: 25%;
+	margin-left: 20%;
+	margin-right: 20%;
 	justify-content: space-between;
 }
 
 .texto-izq {
 	text-align: left;
 	padding-right: 4%;
+}
+
+.img-der {
+	width: 430px;
+	height: auto;
+}
+
+/*El recuadro para los títulos*/
+.cuadro {
+	display: block;
+	position: relative;
+	background-color: #1D582E;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 69px;
+	padding: 5px;
+	text-align: center;
+	border-radius: 69px;
+}
+
+/*Titulo tamaño subtitulo con reborde*/
+.titles1 {
+	font-size: 41px;
+	color: #f2f2f2;
+	font-family: "Comic Sans", cursive;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.desc-parag1 {
+	/*Esto le pone bordecito al texto. Puede no ser compatible con todos los navegadores*/
+	-webkit-text-stroke: 1px #000;
+	font-family: "Comic Sans", cursive;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 42px;
+	color: #28cb4b;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+.desc-parag2 {
+	margin-left: 20%;
+	margin-right: 20%;
 }
