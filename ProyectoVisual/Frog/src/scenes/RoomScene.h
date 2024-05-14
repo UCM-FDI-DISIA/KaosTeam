@@ -69,10 +69,8 @@ public:
 		shopManager->setPlayer(player);
 		shopManager->setHUD(HUD);
 
-
-#pragma region Cosas q vamos a borrar pronto
-#pragma endregion
-
+		entityList.push_back(createTroncoTermitas(Vector2D(2, 4)));
+		
 		
 	};
 
@@ -101,6 +99,9 @@ public:
 	Entity* createJarron(Vector2D pos, int loot);
 	Entity* createArbusto(Vector2D pos, int loot);
 	Entity* createBomb(Vector2D pos);
+	Entity* createTroncoTermitas(Vector2D pos);
+
+
 	Entity* createPiedraMovible(Vector2D pos, int objIntID);
 	Entity* createEnganche(Vector2D pos);
 	Entity* createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);

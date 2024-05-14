@@ -543,7 +543,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 }
 Entity* RoomScene::createBomb(Vector2D pos) {
 	Entity* bomb = new Entity(this, BOMB_ENTITY);
-	Texture* textBomb = &sdlutils().images().at("eggSheet");;
+	Texture* textBomb = &sdlutils().images().at("eggSheet");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	bomb->addComponent(TRANSFORM_COMPONENT, transform);
@@ -703,6 +703,24 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 	destructible->addComponent(DESTRUCTIBLE_COMPONENT, destructibleComponent);
 
 	return destructible;
+}
+Entity* RoomScene::createTroncoTermitas(Vector2D pos)
+{
+	Entity* log = new Entity(this, TERMITELOG_ENTITY);
+
+	TransformComponent* transform = new TransformComponent(pos, 320, 160); //mide dos casillas de ancho, y lo haceis con una constante, asiq numero magico por ahora
+	log->addComponent(TRANSFORM_COMPONENT, transform);
+
+	AnimationComponent* anim = new AnimationComponent();
+	anim->addAnimation("LOG_IDLE", Animation({ Vector2D(0,0), Vector2D(0,2) }, false, false, true));
+	anim->playAnimation("LOG_IDLE");
+	log->addComponent(ANIMATION_COMPONENT, anim);
+
+	RenderComponent* renderBomb = new RenderComponent(&sdlutils().images().at("termitaTronco"));
+	log->addRenderComponent(renderBomb);
+
+
+	return log;
 }
 Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 {
