@@ -899,7 +899,6 @@ RoomScene::~RoomScene() {
 		delete* it;
 	}
 
-	//NO BORREIS LO SINGLETONS, Q SE BORRAN SOLOS
 	delete mapReader;
 }
 
