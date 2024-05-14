@@ -1,4 +1,6 @@
+#pragma once
 #include "RoomScene.h"
+#include "../game/Game.h"
 #include "../components/CrazyFrogIAComponent.h"
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
