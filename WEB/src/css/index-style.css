@@ -1,50 +1,36 @@
 html {
-    text-align: center;
+	text-align: center;
 }
-#title-imagen{
-    text-align: center;
+
+#title-imagen {
+	text-align: center;
 }
 
 /*Slide de imagenes, cortesia de fumono studios*/
-
 .capturas {
 	width: auto;
 	height: auto;
 	position: relative;
 	align-items: center;
 	display: flex;
-  	justify-content: center;
-  	margin: 30px auto 0;
+	justify-content: center;
+	margin: 30px auto 0;
 }
 
 .imgen {
-    display: none;
+	display: none;
 }
 
 .visible {
-    display: block;
-}
-.cuadro {
 	display: block;
-	position: relative;
-	background-color: #1D582E;
-	color: #f2f2f2;
-	margin-left: 100px;
-	margin-right: 100px;
-	margin-top: 50px;
-	padding: 5px;
-	text-align: center;
-	border-radius: 30px;
-    font-family: "Comic Neue", cursive;
-    font-weight: 700;
-    font-style: normal;
 }
 
 /*Las flechas del slider de imagenes*/
-.prev, .next {
+.prev,
+.next {
 	cursor: pointer;
 	padding: 14px;
-    margin: 20px;
+	margin: 20px;
 	color: #f2f2f2;
 	font-weight: bold;
 	font-size: 18px;
@@ -54,8 +40,9 @@ html {
 	background-color: #1D582E;
 }
 
-.prev:hover, .next:hover {
-    background-color: #39a858;
+.prev:hover,
+.next:hover {
+	background-color: #39a858;
 }
 
 .prev {
@@ -64,7 +51,7 @@ html {
 
 .next {
 	right: 0;
-}   
+}
 
 /*Los punticos del slider de imagenes*/
 .dot {
@@ -78,6 +65,21 @@ html {
 	transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
-  	background-color: #39a858;
+.active,
+.dot:hover {
+	background-color: #39a858;
+}
+
+/*Elementos de colocaccion y otros de index*/
+.seccion-con-img {
+	display: flex;
+	margin-top: 40px;
+	margin-left: 25%;
+    margin-right: 25%;
+	justify-content: space-between;
+}
+
+.texto-izq {
+	text-align: left;
+	padding-right: 4%;
 }

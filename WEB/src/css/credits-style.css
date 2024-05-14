@@ -33,8 +33,7 @@
     font-weight: 700;
     font-style: normal;
 }
- .credit-descripcion {
-    font-family: 'Teko';
+ .credit-descripcion { /*El texto chiquito que sale después del nombre con los roles y contribuciones*/
     font-size: 24px;
     margin: 0;
     color: #f2f2f2;

@@ -1,15 +1,24 @@
 /*Definir aquí el estilo de la página*/
 /* CSS de ejemplo de navbar sacado de https://www.w3schools.com/howto/howto_js_topnav.asp*/
 html {
-  background-color: #4CDEDD; /*Fondo provisional, en el futuro colocar una imagen todo lo guapa*/
+  background-color: #4CDEDD;
+  /*Fondo provisional, en el futuro colocar una imagen todo lo guapa*/
 }
 
 ul {
-  list-style-type: none; /*Quita las bolitas en las listas ul*/
+  list-style-type: none;
+  /*Quita las bolitas en las listas ul*/
 }
 
+#content {
+  padding-top: 70px;
+  /*Mueve el contenido más abajo para que no se superponga con la barra de navegación*/
+}
+
+/*La barra de navegacion y sus cosillas*/
 .topnav {
   position: fixed;
+  z-index: 9;
   top: 0;
   left: 0;
   right: 0;
@@ -17,9 +26,7 @@ ul {
   overflow: hidden;
   text-align: center;
 }
-#content {
-  padding-top: 70px; /*Mueve el contenido más abajo para que no se superponga con la barra de navegación*/
-}
+
 .topnav a {
   position: relative;
   color: #f2f2f2;
@@ -37,7 +44,8 @@ ul {
   display: inline;
 }
 
-.topnav a:hover { /*Aspecto del botón al pasar el ratón por encima*/
+.topnav a:hover {
+  /*Aspecto del botón al pasar el ratón por encima*/
   background-color: #28CB8F;
   color: black;
 }
@@ -47,21 +55,52 @@ ul {
   color: #0b1f10;
 }
 
-.legal-stuff {
-  text-align: center;
-  padding-inline: 20%;
-  font-style: italic;
-}
-
-.boton-socials:hover .lista-socials {
+.cuadro { /*El recuadro para los títulos*/
   display: block;
+  position: relative;
+  background-color: #1D582E;
+  margin-left: 22%;
+  margin-right: 22%;
+  margin-top: 50px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 69px;
 }
 
-.lista-socials {
-  display: none;
+/*Titulo tamaño subtitulo con reborde*/
+.titles1 {
+  font-size: 41px;
+  color: #f2f2f2;
+  font-family: "Comic Neue", cursive;
+  font-weight: 700;
+  font-style: normal;
+
+}
+
+.desc-parag1 {
+  /*Esto le pone bordecito al texto. Puede no ser compatible con todos los navegadores*/
+  -webkit-text-stroke: 1px #000;
+  font-family: "Comic Neue", cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 42px;
+  color: #28cb4b;
+}
+
+/*.desc-parag2 {
+sin uso
+}*/
+
+.usual-text-style { /*El estilo de texto basico para descripciones y etc*/
+  font-family: "Comic Neue", cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 21px;
+  color: #000;
 }
 
 /*Fuentes*/
+/*Están aquí por si quieres utilizarlo directamente. Para añadirlo a una class lo mejor es copiar y pegat los atributos*/
 .comic-neue-light {
   font-family: "Comic Neue", cursive;
   font-weight: 300;
