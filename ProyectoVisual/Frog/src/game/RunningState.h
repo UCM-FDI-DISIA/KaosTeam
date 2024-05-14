@@ -11,7 +11,7 @@ class InputManager;
 class RunningState: public GameState
 {
 public:
-	RunningState(Game* game);
+	RunningState();
 	virtual ~RunningState();
 	void leave() override;
 	void update() override;

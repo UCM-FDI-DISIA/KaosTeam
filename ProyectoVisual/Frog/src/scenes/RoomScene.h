@@ -1,5 +1,6 @@
 #pragma once
 #include "../ecs/Scene.h"
+//#include "../game/Game.h"
 #include "../components/MovementComponentFly.h"
 #include "../components/RenderComponent.h"
 #include "../components/RenderComponentFrog.h"
@@ -37,6 +38,7 @@ class Texture;
 class RoomScene : public Scene
 {
 private:
+	//Game* game;
 	Camera* cameraManager;
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
@@ -49,13 +51,13 @@ private:
 	std::string nextMap;
 	Shop* shopManager;
 	bool insideShop; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
-		/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
-	Por tanto, hay dos OnCollision por cada colision.
-	*/
+	bool gameOver; //Booleano que se activa solamente en el caso de que que Flonk muera
+	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
+	Por tanto, hay dos OnCollision por cada colision.*/
 	void CheckColisions();
 
 public:
-	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false) {
+	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false), gameOver(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 
 		mapReader = new MapManager(path, this);
@@ -84,6 +86,7 @@ public:
 
 	MapManager* getMapReader() { return mapReader; };
 	string getPath() { return path; }
+	bool getGameOverState() { return gameOver; };
 	void changeMap();
 	void callForMapChange(std::string nextMap, flonkOrig nextFlonk = S){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
 

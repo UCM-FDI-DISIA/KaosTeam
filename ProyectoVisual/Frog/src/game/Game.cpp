@@ -34,10 +34,10 @@ void Game::init() {
 	SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
 	//escenaActual = new RoomScene(1);
 
-	newgameState = new NewGameState(this);
-	runningState = new RunningState(this);
-	pausedState = new PausedState(this);
-    gameOverState = new GameOverState(this);
+	newgameState = new NewGameState();
+	runningState = new RunningState();
+	pausedState = new PausedState();
+    gameOverState = new GameOverState();
 	renderStates.push_front(newgameState);
 	updateStates.push_front(newgameState);
 

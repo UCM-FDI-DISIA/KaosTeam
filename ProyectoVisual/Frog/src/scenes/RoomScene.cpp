@@ -2,8 +2,8 @@
 #include "../components/CrazyFrogIAComponent.h"
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
-
 #include "../sdlutils/Texture.h"
+
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
 
@@ -30,6 +30,12 @@ void RoomScene::update() {
 		changeMap();
 	//comrpueba las colisiones con la rana
 	CheckColisions();
+
+
+	//if (gameOver) {
+	//	//Ir al menu de GameOver
+	//	//Game::instance()->setNextState(Game::instance()->GAMEOVER);
+	//}
 
 }
 
@@ -890,6 +896,7 @@ void RoomScene::removeEntity(Entity* entity) {
 
 	while (it != entityList.end() && !eliminated) {
 		if (*it == entity) {
+			if (*it == player) gameOver = true; //Si es el player -> Game Over
 			it = entityList.erase(it);
 			eliminated = true;
 		}

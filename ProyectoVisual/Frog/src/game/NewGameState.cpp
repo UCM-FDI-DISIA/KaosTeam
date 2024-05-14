@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "../scenes/MenuInicio.h"
 
-NewGameState::NewGameState(Game* g): game(g), menu(new MenuInicio(g, this, 
+NewGameState::NewGameState(): menu(new MenuInicio(Game::instance(), this,
 				&sdlutils().images().at("BotonJuego"), 
 				&sdlutils().images().at("BotonSalir"))),
 				currScene(*menu)
@@ -17,7 +17,7 @@ NewGameState::~NewGameState()
 
 void NewGameState::leave()
 {
-	game->exitGame();
+	Game::instance()->exitGame();
 }
 
 void NewGameState::update()
@@ -27,5 +27,5 @@ void NewGameState::update()
 
 void NewGameState::enter()
 {
-	game->setNextState(game->RUNNING);
+	Game::instance()->setNextState(Game::instance()->RUNNING);
 }

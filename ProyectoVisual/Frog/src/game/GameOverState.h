@@ -8,7 +8,7 @@ class Menu;
 class GameOverState :public GameState
 {
 public:
-	GameOverState(Game* g);
+	GameOverState();
 	virtual ~GameOverState();
 	void leave() override;
 	void update() override;

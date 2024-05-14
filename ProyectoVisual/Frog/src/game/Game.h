@@ -19,13 +19,13 @@ constexpr uint WIN_CHANCE = 75;
 /**
 	El juego debería comenzar lanzando una escena de menu inicial en la que el jugador puede iniciar la partida.
 */
-class Game
-{
+class Game : public Singleton<Game>{
+	friend Singleton<Game>;
+	Game();
 public:
 	enum State {
 		RUNNING, PAUSED, NEWGAME, GAMEOVER
 	};
-	Game();
 	virtual ~Game();
 	void init();
 	void gameLoop();

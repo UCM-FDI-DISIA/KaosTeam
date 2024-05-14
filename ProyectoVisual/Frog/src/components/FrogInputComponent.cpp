@@ -3,8 +3,7 @@
 #include "MovementComponentFrog.h"
 #include "AttackComponentFrog.h"
 
-FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr), throwerComponent(nullptr)
-{
+FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr), throwerComponent(nullptr) {
 	input = InputManager::GetInstance();
 }
 FrogInputComponent::~FrogInputComponent()

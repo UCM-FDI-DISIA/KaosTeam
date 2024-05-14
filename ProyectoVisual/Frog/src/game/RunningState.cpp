@@ -4,9 +4,7 @@
 #include "../scenes/RoomScene.h"
 
 
-RunningState::RunningState(Game* g) : game(g), hud(), currScene(new RoomScene("resources/maps/niveles/nivel01/mapaN1_03.tmx")),imngr(im())
-{
-	//allRooms.reserve(numRooms);
+RunningState::RunningState() : hud(), currScene(new RoomScene("resources/maps/niveles/nivel01/mapaN1_03.tmx")), imngr(im()) {
 }
 
 RunningState::~RunningState()
@@ -27,12 +25,9 @@ void RunningState::update()
 {
 	currScene->update();
 	if (imngr.getEscape()) {
-		game->setNextState(game->PAUSED);
+		Game::instance()->setNextState(Game::instance()->PAUSED);
 	}
 
-	if (imngr.getDown()) {
-		game->setNextState(game->GAMEOVER);
-	}
 	//currScene->update();
 }
 

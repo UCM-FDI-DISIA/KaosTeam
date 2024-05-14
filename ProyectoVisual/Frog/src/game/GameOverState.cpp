@@ -3,7 +3,7 @@
 #include "../scenes/Menu.h"
 #include "../scenes/MenuGameOver.h"
 
-GameOverState::GameOverState(Game* g): game(g), menu(new MenuGameOver(g, this, 
+GameOverState::GameOverState(): menu(new MenuGameOver(Game::instance(), this,
 				&sdlutils().images().at("BotonJuego"/*Reintentar*/), //
 				&sdlutils().images().at("BotonSalir"/*VolverMenuInicial*/))), //
 				currScene(*menu) //
@@ -15,7 +15,7 @@ GameOverState::~GameOverState() {
 }
 
 void GameOverState::leave() { //en este caso volveriamos a la pantalla de menu inicio
-	game->setNextState(game->NEWGAME);
+	Game::instance()->setNextState(Game::instance()->NEWGAME);
 }
 
 void GameOverState::update() {
@@ -23,6 +23,6 @@ void GameOverState::update() {
 }
 
 void GameOverState::enter() { // -> Retry
-	game->setNextState(game->RUNNING);
+	Game::instance()->setNextState(Game::instance()->RUNNING);
 	//Habria que resetear al player de alguna forma
 }
