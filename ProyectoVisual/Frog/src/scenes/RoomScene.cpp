@@ -215,6 +215,14 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(ORBES);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
+	else if (objName == "LLave") {
+		Texture* texture = &sdlutils().images().at("llave");
+		RenderComponent* render = new RenderComponent(texture);
+		c->addRenderComponent(render);
+
+		CogibleObjectComponent* cogible = new CogibleObjectComponent(LLAVES);
+		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+	}
 	/*else if (objName == "RoachHead") { 
 		Texture* texture = &sdlutils().images().at("roachHead");
 		RenderComponent* render = new RenderComponent(texture);

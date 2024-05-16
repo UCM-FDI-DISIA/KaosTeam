@@ -36,6 +36,7 @@
         { "id" : "redAntSheet", "file" : "resources/Sprites/redAntSpritesheet.png", "rows" : 3, "cols" : 2},
         { "id" : "roachSheet", "file" : "resources/Sprites/RoachSpritesheet.png", "rows" : 1, "cols" : 3},
         { "id" : "roachHead", "file" : "resources/Sprites/roachHead.png", "rows" : 1, "cols" : 1},
+        { "id" : "llave", "file" : "resources/Sprites/llave.png", "rows" : 1, "cols" : 1},
         { "id" : "inputTienda", "file" : "resources/Sprites/inputTienda.png", "rows" : 1, "cols" : 1},
         { "id" : "arbolTienda", "file" : "resources/Sprites/Arbol_exterior.png", "rows" : 1, "cols" : 1},
         { "id" : "orbeOff", "file" : "resources/Sprites/OrbeOff.png", "rows" : 1, "cols" : 1},
