@@ -23,6 +23,10 @@ void GameOverState::update() {
 }
 
 void GameOverState::enter() { // -> Retry
-	Game::instance()->setNextState(Game::instance()->RUNNING);
+
 	//Habria que resetear al player de alguna forma
+
+	Game::instance()->setNextState(Game::instance()->RUNNING);
+
+
 }

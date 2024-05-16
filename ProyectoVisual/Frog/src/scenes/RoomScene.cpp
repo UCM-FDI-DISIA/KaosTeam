@@ -1,6 +1,6 @@
 #pragma once
 #include "RoomScene.h"
-#include "../game/Game.h"
+//#include "../game/Game.h"
 #include "../components/CrazyFrogIAComponent.h"
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
@@ -33,7 +33,8 @@ void RoomScene::update() {
 	//comrpueba las colisiones con la rana
 	CheckColisions();
 
-
+	/*La idea original era comprobar aqui el game over del juego, pero al incluir Game.h  en roomScene.h o .cpp 
+	daba un error muy raro que no conseguimos resolver */
 	//if (gameOver) {
 	//	//Ir al menu de GameOver
 	//	//Game::instance()->setNextState(Game::instance()->GAMEOVER);
@@ -291,6 +292,11 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 	return c;
 }
 
+void RoomScene::revivePlayer() {
+	//Creamos de nuevo el player (sin embargo no se guardan los atributos que se habian aquirido hasta ahora)
+	//player = createPlayer( 100, 100);
+}
+
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
 	Entity* frog = new Entity(this, CRAZY_FROG_ENTITY);
@@ -358,7 +364,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	//el limite tiene que ser una propiedad
 	MovementComponentFish* mvm = new MovementComponentFish(boundX, animFish);
 	fish->addComponent(MOVEMENT_COMPONENT, mvm);
-	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(1);
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(5);
 	fish->addComponent(ATTACK_COMPONENT, attack);
 
 	AddEntity(fish);
@@ -881,8 +887,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	return c;
 }
 
-void RoomScene::movePlayer(Vector2D pos)
-{
+void RoomScene::movePlayer(Vector2D pos) {
 	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
 	if (cameraManager != nullptr)
 		cameraManager->setTarget(player);

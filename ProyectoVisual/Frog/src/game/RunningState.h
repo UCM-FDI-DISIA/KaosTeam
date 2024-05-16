@@ -24,6 +24,7 @@ private:
 	Game* game;
 	HUDManager* hud; //Puntero que gestiona la pantalla de MenuInicio
 	Scene* currScene; //puede haber escenas d menu d opciones,etc.
+	RoomScene* currRoomScene; //puntero a roomScene (se que es un poco chpucero, pero es la unica foma que)
 	std::vector<Scene*> allRooms; //NO SE UTILIZA
 	InputManager& imngr;
 	//void se presiona el boton d pausa {llama al game change estate a pause y le pasa la currScene y el hud
