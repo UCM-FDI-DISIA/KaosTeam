@@ -25,7 +25,7 @@ private:
 	Uint32 actionCooldown = 100, movementFrameRate = 30,
 		framesPerJump = 6, framesMoved = 0;
 	bool jumping = false;
-	bool arrastrado = false;
+	bool hooked = false;
 
 public:
 	MovementComponentFrog(Vector2D casilla, AnimationComponent* a) : MovementComponent(), im(InputManager::GetInstance()), lastTimeMoved(SDL_GetTicks()), 
@@ -33,6 +33,7 @@ public:
 	Directions getDirection() { return actualDirection; }
 	void update() override;
 	bool getMoveCompleted() { return !jumping; }
+	bool getHooked() { return hooked; }
 	void startMovement(Directions d, Vector2D v);
 	void cancelMovement();
 	void changeDirection(Directions d, string animation);

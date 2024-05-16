@@ -1,9 +1,6 @@
 #include "RoomScene.h"
-#include "../components/CrazyFrogIAComponent.h"
-#include "../components/LifeComponent.h"
-#include "../components/CogibleObjectComponent.h"
-
 #include "../sdlutils/Texture.h"
+
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
 
@@ -551,7 +548,7 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 }
 Entity* RoomScene::createBomb(Vector2D pos) {
 	Entity* bomb = new Entity(this, BOMB_ENTITY);
-	Texture* textBomb = &sdlutils().images().at("eggSheet");;
+	Texture* textBomb = &sdlutils().images().at("eggSheet");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	bomb->addComponent(TRANSFORM_COMPONENT, transform);
@@ -689,6 +686,32 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 	AddEntity(destructible);
 	return destructible;
 }
+Entity* RoomScene::createDoor(Vector2D pos)
+{
+	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
+	Entity* destructible = new Entity(this, PUERTA_ENTITY);
+	Texture* txtDestructible = &sdlutils().images().at("puerta");
+	// hay que animarlo
+
+	TransformComponent* transform = new TransformComponent(pos);
+	destructible->addComponent(TRANSFORM_COMPONENT, transform);
+
+	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
+	destructible->addComponent(RENDER_COMPONENT, renderDestructible);
+	destructible->addRenderComponent(renderDestructible);
+
+	Box* boxdestructible = new Box(pos);
+	Collider coll = Collider(boxdestructible);
+	ColliderComponent* colldestructible = new ColliderComponent(transform);
+	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
+
+	PuertaComponent* tongueInteract = new PuertaComponent();
+	destructible->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
+
+	AddEntity(destructible);
+	return destructible;
+}
+
 Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 {
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
@@ -802,6 +825,9 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	}
 	else if (objName == "CintaTransportadora"){
 		c = createConveyorBelt(pos, objProps[0].getIntValue());
+	}
+	else if (objName == "Puerta"){
+		c = createDoor(pos);
 	}
 
 	return c;

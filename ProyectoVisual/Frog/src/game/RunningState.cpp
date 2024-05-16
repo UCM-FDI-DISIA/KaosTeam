@@ -4,7 +4,7 @@
 #include "../scenes/RoomScene.h"
 
 
-RunningState::RunningState(Game* g) : game(g), hud(), currScene(new RoomScene("resources/maps/niveles/nivel02/dentro/mapaN2_10_dentro.tmx")),imngr(im())
+RunningState::RunningState(Game* g) : game(g), hud(), currScene(new RoomScene("resources/maps/niveles/nivel02/dentro/mapaN2_08_dentro.tmx")),imngr(im())
 {
 	//allRooms.reserve(numRooms);
 }
