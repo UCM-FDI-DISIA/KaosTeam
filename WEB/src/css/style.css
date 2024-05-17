@@ -5,6 +5,9 @@ body {
   height: 100%;
   margin: 0;
   text-align: center;
+  background-image: url('../img/FondoPagina.png');
+  background-repeat: repeat;
+  background-size: auto;
 }
 
 ul {
@@ -42,17 +45,29 @@ ul {
   font-style: normal;
 }
 
+.green-container {
+  background: rgba(40, 203, 143, 0.83);
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-left: 19%;
+	margin-right: 19%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
 .topnav li {
   display: inline;
 }
 
-.topnav a:hover {
+.navList a:hover {
   /*Aspecto del botón al pasar el ratón por encima*/
   background-color: #28CB8F;
   color: black;
 }
 
-.topnav a.active {
+.navList a.active {
   background-color: #eee;
   color: #0b1f10;
 }
@@ -86,6 +101,11 @@ footer {
   padding-top: 30px;
   padding-bottom: 30px;
   margin-top: 40px;
+}
+
+.secret-page-image {
+  height: 80%;
+  align-self: center;
 }
 
 /*Fuentes*/
@@ -187,7 +207,8 @@ footer {
 
   60% {
     transform: translateY(-10000px);
-    transform: translateX(-800px);  }
+    transform: translateX(-800px);
+  }
 
   100% {
     transform: translateY(0);

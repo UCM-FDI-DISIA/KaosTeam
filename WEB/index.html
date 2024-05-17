@@ -12,7 +12,9 @@
 <body>
     <nav class="topnav"> <!--Menú superior con enlaces  y el logo-->
         <div class="logo-studio-container">
-            <img src="src/img/logo_studio.png">
+            <a style="padding: 0;">
+                <img src="src/img/logo_studio.png">
+            </a>
         </div>
         <ul class="navList">
             <li><a class="active">JUEGO</a></li> <!--Página principal con el juego-->
@@ -29,21 +31,23 @@
             <div class="cuadro">
                 <h2 class="titles1">La aventura de Flonk!</h2>
             </div>
-            <p class="desc-parag1">¡El chef François 🥐 ha secuestrado a la hermana de Flonk!</p>
-            <p class="desc-parag2 usual-text-style">Explora un mundo lleno de peligros para rescatarla antes de que se
-                convierta en un
-                👨‍🍳 plato de cocina francesa 🥘.</p>
-            <p class="desc-parag2 usual-text-style">Flonk! es un videojuego desarrollado por KaosTeam, un grupo de
-                estudiantes del Grado de Desarrollo de Videojuegos de la Universidad Complutense de Madrid (Curso
-                2023-24).
-            </p>
+            <div class="green-container">
+                <p class="desc-parag1">¡El chef François 🥐 ha secuestrado a la hermana de Flonk!</p>
+                <p class="desc-parag2 usual-text-style">Explora un mundo lleno de peligros para rescatarla antes de que
+                    se
+                    convierta en un
+                    👨‍🍳 plato de cocina francesa 🥘.</p>
+                <p class="desc-parag2 usual-text-style">Flonk! es un videojuego desarrollado por KaosTeam, un grupo de
+                    estudiantes del Grado de Desarrollo de Videojuegos de la Universidad Complutense de Madrid (Curso
+                    2023-24).
+                </p>
+            </div>
         </div>
         <!-- Sección de Capturas -->
         <div class="slides">
             <div class="cuadro">
                 <h2 class="titles1">Capturas del Juego</h2>
             </div>
-
             <!-- Slides -->
             <div class="capturas">
                 <div class="imgen visible">
@@ -61,22 +65,22 @@
             <br>
             <div>
             </div>
+            <!-- Circulitos de las imagenes -->
+            <div style="text-align:center">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <script src="src/js/slide.js"></script> <!--Script de la funcionalidad del slider de imagenes-->
         </div>
-        <!-- Circulitos de las imagenes -->
-        <div style="text-align:center">
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <script src="src/js/slide.js"></script> <!--Script de la funcionalidad del slider de imagenes-->
     </div>
     <div class="descripcion-mundo">
         <div class="cuadro">
             <h2 class="titles1">El mundo de Flonk!</h2>
         </div>
-        <div class="seccion-con-img"> <!--Un texto a la izqierda, acompañado de una imagen a la derecha-->
+        <div class="seccion-con-img green-container"> <!--Un texto a la izqierda, acompañado de una imagen a la derecha-->
             <div class="texto-izq usual-text-style">
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, maecenas placerat libero integer fermentum
                     auctor. Porttitor rhoncus mus morbi per a praesent hendrerit, aliquet nascetur condimentum nostra
