@@ -107,16 +107,28 @@
 .titles1 {
 	font-size: 41px;
 	color: #f2f2f2;
-	font-family: "Comic Sans", cursive;
-	font-weight: 700;
+	font-family: "Shantell Sans", cursive;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+	font-variation-settings:
+	  "BNCE" 0,
+	  "INFM" 0,
+	  "SPAC" 0;	font-weight: 700;
 	font-style: normal;
 }
 
 .desc-parag1 {
 	/*Esto le pone bordecito al texto. Puede no ser compatible con todos los navegadores*/
 	-webkit-text-stroke: 1px #000;
-	font-family: "Comic Sans", cursive;
-	font-weight: 700;
+	font-family: "Shantell Sans", cursive;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-variation-settings:
+	  "BNCE" 0,
+	  "INFM" 0,
+	  "SPAC" 0;
+	  	font-weight: 700;
 	font-style: normal;
 	font-size: 42px;
 	color: #28cb4b;
