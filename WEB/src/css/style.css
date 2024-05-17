@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   background-color: #4CDEDD;
   /*Fondo provisional, en el futuro colocar una imagen todo lo guapa*/
   height: 100%;
@@ -72,8 +73,15 @@ ul {
   color: #000;
 }
 
+.usual-text-style-but-white {
+  /*El estilo de texto basico para descripciones y etc*/
+  font-family: "Comic Sans", cursive;
+  font-size: 21px;
+  color: #eee;
+}
+
 footer {
-	background-color: #28CB8F;
+  background-color: #1D582E;
   padding-top: 30px;
   padding-bottom: 30px;
 }
