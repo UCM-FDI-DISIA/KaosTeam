@@ -2,6 +2,7 @@
 //Cortesía de fumono studios
 var slideIndex = 1;
 var slides = [];
+var dots = [];
 showSlides(slideIndex);
 
 //Mueve en n el numero del slide. Para 1 y -1 avanza siguiente y anterior.
@@ -13,12 +14,11 @@ function plusSlides(n) {
 function showSlides(n) {
     var i;
     slides = document.getElementsByClassName("imgen");
+    dots = document.getElementsByClassName("dot");
+
     if (n > slides.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides.length }
-    for (i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("visible");
-    }
-    slides[slideIndex - 1].classList.add("visible");
+    currentSlide(slideIndex);
 }
 
 //Cambia la slide actual a n
@@ -27,4 +27,8 @@ function currentSlide(n) {
         slides[i].classList.remove("visible");
     }
     slides[n - 1].classList.add("visible");
+    for (i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("current-dot");
+    }
+    dots[n - 1].classList.add("current-dot");
 }
