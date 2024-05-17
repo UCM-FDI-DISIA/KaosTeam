@@ -1,6 +1,8 @@
-html {
+html, body {
   background-color: #4CDEDD;
   /*Fondo provisional, en el futuro colocar una imagen todo lo guapa*/
+  height: 100%;
+  margin: 0;
 }
 
 ul {
@@ -68,6 +70,12 @@ ul {
   font-family: "Comic Sans", cursive;
   font-size: 21px;
   color: #000;
+}
+
+footer {
+	background-color: #28CB8F;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 /*Fuentes*/
