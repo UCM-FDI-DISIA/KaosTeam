@@ -4,9 +4,7 @@
 #include "../scenes/RoomScene.h"
 
 
-RunningState::RunningState() : hud(), imngr(im()) {
-	currRoomScene = new RoomScene("resources/maps/niveles/nivel01/mapaN1_03.tmx");
-	currScene = currRoomScene;
+RunningState::RunningState() : currRoomScene(nullptr), currScene(nullptr), hud(), imngr(im()) {
 }
 
 RunningState::~RunningState()
@@ -47,4 +45,14 @@ void RunningState::changeScene(int id) {/*
 		allRooms[id] = new RoomScene(id);
 	}*/
 	//Tenemos de encontrar una forma de entrar en nuevas habitaciones aqui
+}
+
+void RunningState::resetGame() {
+	//revivimos al jugador
+	currRoomScene->revivePlayer();
+}
+
+void RunningState::createNewGame() {
+	currRoomScene = new RoomScene("resources/maps/niveles/nivel01/mapaN1_03.tmx");
+	currScene = currRoomScene;
 }

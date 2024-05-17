@@ -32,6 +32,7 @@ public:
 	void render();
 
 	void setNextState(State nState);
+	GameState* getState(State state);
 	void changeGameState(State s);
 	void exitGame();
 

@@ -1,6 +1,7 @@
 #include "NewGameState.h"
 #include "Game.h"
 #include "../scenes/MenuInicio.h"
+#include "RunningState.h"
 
 NewGameState::NewGameState(): menu(new MenuInicio(Game::instance(), this,
 				&sdlutils().images().at("BotonJuego"), 
@@ -27,5 +28,13 @@ void NewGameState::update()
 
 void NewGameState::enter()
 {
+	//Accedemos al runningState
+	RunningState* runningState = dynamic_cast<RunningState*>(Game::instance()->getState(Game::RUNNING));
+
+	//como running state tiene el puntero a la ultima escena, llamamos a resetGame desde alli
+	if (runningState != nullptr) {
+		runningState->createNewGame();
+	}
+
 	Game::instance()->setNextState(Game::instance()->RUNNING);
 }

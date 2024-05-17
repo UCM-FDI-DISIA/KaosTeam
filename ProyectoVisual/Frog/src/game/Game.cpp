@@ -97,6 +97,26 @@ void Game::setNextState(State nState)
 	changeState = true;
 }
 
+GameState* Game::getState(State state) {
+	switch (state)
+	{
+	case Game::RUNNING:
+		return runningState;
+		break;
+	case Game::PAUSED:
+		return pausedState;
+		break;
+	case Game::NEWGAME:
+		return newgameState;
+		break;
+	case Game::GAMEOVER:
+		return gameOverState;
+		break;
+	default:
+		return nullptr;
+	}
+}
+
 //Cambiar a metodo para cambiar de estado (newgame, running, pause, gameover)
 void Game::changeGameState(State s) //PROVISIONAL, NO FINAL
 {

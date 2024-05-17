@@ -17,6 +17,9 @@ public:
 	void update() override;
 	void enter() override;
 	void changeScene(int id); //Este metodo se usará para el cambio de habitaciones en el estado;
+	void resetGame(); //Metodo para resetear el jugador (no la escena)
+	void createNewGame(); //Metodo para inicaizar la escena de cero
+
 	//Getters
 	Scene* getScene() const override { return currScene; };
 	HUDManager* getHUD()const { return hud; }

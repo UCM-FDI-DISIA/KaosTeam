@@ -294,7 +294,9 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 
 void RoomScene::revivePlayer() {
 	//Creamos de nuevo el player (sin embargo no se guardan los atributos que se habian aquirido hasta ahora)
-	//player = createPlayer( 100, 100);
+	gameOver = false;
+	createPlayer(lastFrogPosition, 100, 100);
+	cameraManager->setTarget(player);
 }
 
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
@@ -835,6 +837,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 		if (player == nullptr) {
 			cout << "create player";
 			c = createPlayer(pos, 100, 100);
+			lastFrogPosition = pos;  //Guardamos ultima posicion de la rana
 		}
 		else { //FLONK YA EXISTE estamos cambiando de mapa
 			bool placeHere = false;
