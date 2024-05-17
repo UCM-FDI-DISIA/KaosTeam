@@ -6,27 +6,45 @@
 
 Entity::Entity(RoomScene* scn) : name(UNAMED_ENTITY), myScene(scn) {};
 
-Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn) {};
+Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn), renderComponent(), renderComponentFrog(),
+renderComponentSnake(){};
 
+//Añade el componente a la entidad. El orden en el que añades los componentes importa.
 void Entity::addComponent(ComponentsEnum id, Component* component)
 {
+	if (componentes.count(id) > 0)
+	{
+		throw "ya hay un componente";
+	}
 	componentes.insert(std::pair<ComponentsEnum, Component*>(id, component));
+	component->setContext(this);
+	component->initComponent();
 }
 
 void Entity::addRenderComponent(RenderComponent* rnd)
 {
+	rnd->setContext(this);
+	rnd->initComponent();
+	assert(renderComponent == nullptr);
 	renderComponent = rnd;
 }
 
 void Entity::addRenderComponentFrog(RenderComponentFrog* rndF)
 {
+	rndF->setContext(this);
+	rndF->initComponent();
+	assert(renderComponentFrog == nullptr);
 	renderComponentFrog = rndF;
 }
 
 void Entity::addRenderComponentSnake(RenderComponentSnake* rndS)
 {
+	rndS->setContext(this);
+	rndS->initComponent();
+	assert(renderComponentSnake == nullptr);
 	renderComponentSnake = rndS;
 }
+
 
 Entity::~Entity()
 {
@@ -34,6 +52,9 @@ Entity::~Entity()
 	{
 		delete it->second;
 	}
+	delete renderComponent;
+	delete renderComponentFrog;
+	delete renderComponentSnake;
 }
 
 void

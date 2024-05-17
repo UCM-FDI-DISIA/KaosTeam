@@ -75,9 +75,9 @@
    </properties>
    <point/>
   </object>
-  <object id="9" name="Pez" type="Enemigo" x="9.54381" y="157.966">
+  <object id="9" name="Pez" type="Enemigo" x="8" y="150">
    <properties>
-    <property name="boundX" type="int" value="13"/>
+    <property name="boundX" type="int" value="12"/>
    </properties>
    <point/>
   </object>

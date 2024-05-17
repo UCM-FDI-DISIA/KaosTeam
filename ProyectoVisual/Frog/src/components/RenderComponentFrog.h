@@ -8,24 +8,30 @@ class TransformComponent;
 class RenderComponentFrog : public Component
 {
 private:
-	Texture* frogText = nullptr;
-	Texture* tongueText = nullptr;
-	AnimationComponent* frogAnimator = nullptr;
-	TransformComponent* transform = nullptr;
+	Texture* frogText ;
+	Texture* tongueText ;
+	AnimationComponent* frogAnimator ;
+	TransformComponent* transform;
 	float scale;
-	bool attacking = false;
+	bool attacking;
+	bool throwing; //Se usa en caso de que se lance un objeto
+	int tongueTipSheetId = 1; //La punta default (sin gancho)
+
 public:
 	RenderComponentFrog(Texture* tf, Texture* tt, AnimationComponent* animFrog, float sc = 1) :
-		frogText(tf), tongueText(tt), 
-		frogAnimator(animFrog), 
-		scale(sc) {
+		frogText(tf), tongueText(tt),
+		frogAnimator(animFrog),
+		transform(nullptr),
+		scale(sc), attacking(false), throwing(false) {
 	};
 	~RenderComponentFrog() {
-		delete tongueText;
-		delete frogText;
+		tongueText= nullptr;
+		frogText = nullptr;
+		//delete frogText;
 	};
 	void render();
-	void AttackStart();
+	void AttackStart(bool withHook = false);
+	void ThrowStart();
 	
 	Texture* getFrogText() {
 		return frogText;

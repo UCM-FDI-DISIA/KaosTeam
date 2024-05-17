@@ -31,14 +31,17 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_RIGHT:
 			DowntiCheck(BTN_RIGHT);
 			break;
-		//case SDLK_LSHIFT:
-		//	btnShift = true;
-		//	break;
+		case SDLK_LSHIFT:
+			DowntiCheck(BTN_SHIFT);
+			break;
 		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
 			DowntiCheck(BTN_ACTION1);
 			break;
 		case SDLK_x:
 			DowntiCheck(BTN_ACTION2);
+			break;
+		case SDLK_c:
+			DowntiCheck(BTN_ACTION3);
 			break;
 		case SDLK_v:	// Escudo
 			DowntiCheck(BTN_ACTION4);
@@ -46,10 +49,10 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_ESCAPE:
 			DowntiCheck(BTN_ESCAPE);
 			break;
-		case SDLK_SPACE:
-			DowntiCheck(BTN_SPACE);
+		default:
 			break;
 		}
+		
 	}
 	else if (event.type == SDL_KEYUP)
 	{
@@ -68,23 +71,25 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_RIGHT:
 			UptiCheck(BTN_RIGHT);
 			break;
-		//case SDLK_LSHIFT:
-		//	btnShift = true;
-		//	break;
-		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
+		case SDLK_LSHIFT:
+			UptiCheck(BTN_SHIFT);
+			break;
+		case SDLK_z:	//escudo
 			UptiCheck(BTN_ACTION1);
 			break;
-		case SDLK_x:
+		case SDLK_x:	//ataque
 			UptiCheck(BTN_ACTION2);
 			break;
-		case SDLK_v:	// Escudo
+		case SDLK_c:    //gancho
+			UptiCheck(BTN_ACTION3);
+			break;
+		case SDLK_v:	//bombas, orbes
 			UptiCheck(BTN_ACTION4);
 			break;
 		case SDLK_ESCAPE:
 			UptiCheck(BTN_ESCAPE);
 			break;
-		case SDLK_SPACE:
-			UptiCheck(BTN_SPACE);
+		default:
 			break;
 		}
 	}
@@ -129,9 +134,12 @@ InputButton InputManager::getAction1() {
 InputButton InputManager::getAction2() {
 	return buttons[BTN_ACTION2];
 }
-//InputButton InputManager::getShift() {
-//	return btnShift;
-//}
+InputButton InputManager::getAction3() {
+	return buttons[BTN_ACTION3];
+}
+InputButton InputManager::getShift() {
+	return buttons[BTN_SHIFT];
+}
 InputButton InputManager::getAction4() {
 	return buttons[BTN_ACTION4];
 }
@@ -147,11 +155,6 @@ InputButton InputManager::getLeft() {
 InputButton InputManager::getRight() {
 	return buttons[BTN_RIGHT];
 }
-InputButton InputManager::getSpace()
-{
-	return buttons[BTN_SPACE];
-}
-InputButton InputManager::getEscape()
-{
+InputButton InputManager::getEscape() {
 	return buttons[BTN_ESCAPE];
 }

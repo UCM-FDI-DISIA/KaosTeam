@@ -1,103 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="19">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="31">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
- <layer id="1" name="Walk" width="12" height="12">
+ <layer id="1" name="Walk" width="14" height="14">
   <data encoding="csv">
-272,273,273,273,273,273,273,273,273,273,273,274,
-300,301,301,301,301,301,301,301,301,301,301,302,
-300,301,301,301,301,301,301,301,301,301,301,302,
-300,301,301,301,301,301,301,301,301,301,301,302,
-300,301,301,301,301,301,301,301,301,301,301,302,
-300,301,301,301,301,301,301,301,301,301,301,302,
-300,301,301,301,301,301,301,301,301,301,301,302,
-300,301,301,301,301,301,301,301,301,301,301,302,
-300,301,301,301,301,301,301,301,301,301,301,302,
-300,301,301,301,301,301,301,301,301,301,301,302,
-300,301,301,301,301,301,301,301,301,301,301,302,
-328,329,329,329,329,329,329,329,329,329,329,330
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,272,273,273,273,273,273,273,273,273,273,273,274,0,
+0,300,301,301,301,301,301,301,301,301,301,301,302,0,
+0,300,301,301,301,301,301,301,301,301,301,301,302,0,
+0,300,301,301,301,301,301,301,301,301,301,301,302,0,
+0,300,301,301,301,301,301,301,301,301,301,301,302,0,
+273,301,301,301,301,301,301,301,301,301,301,301,302,0,
+329,301,301,301,301,301,301,301,301,301,301,301,302,0,
+0,300,301,301,301,301,301,301,301,301,301,301,302,0,
+0,300,301,301,301,301,301,301,301,301,301,301,302,0,
+0,300,301,301,301,301,301,301,301,301,301,301,302,0,
+0,300,301,301,301,301,301,301,301,301,301,301,302,0,
+0,328,329,329,329,329,301,301,329,329,329,329,330,0,
+0,0,0,0,0,0,300,302,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="2" name="NotWalk" width="12" height="12">
+ <layer id="2" name="NotWalk" width="14" height="14">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-206,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-206,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,206,0,0,206,0,0,0,0
+387,387,387,387,387,387,387,387,387,387,387,387,387,387,
+387,0,0,0,0,0,0,0,0,0,0,0,0,387,
+387,0,0,0,0,0,0,0,0,0,0,0,0,387,
+387,0,0,0,0,0,0,0,0,0,0,0,0,387,
+387,0,0,0,0,0,0,0,0,0,0,0,0,387,
+387,0,0,0,0,0,0,0,0,0,0,0,0,387,
+0,0,0,0,0,0,0,0,0,0,0,0,0,387,
+0,0,0,0,0,0,0,0,0,0,0,0,0,387,
+387,0,0,0,0,0,0,0,0,0,0,0,0,387,
+387,0,0,0,0,0,0,0,0,0,0,0,0,387,
+387,0,0,0,0,0,0,0,0,0,0,0,0,387,
+387,0,0,0,0,0,0,0,0,0,0,0,0,387,
+387,0,0,0,0,0,0,0,0,0,0,0,0,387,
+387,387,387,387,387,387,0,0,387,387,387,387,387,387
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="FlonkS" type="Player" x="105.5" y="171.5">
+  <object id="1" name="FlonkS" type="Player" x="118" y="200.5">
    <point/>
   </object>
-  <object id="15" name="FlonkW" type="Player" x="23.5" y="105">
+  <object id="15" name="FlonkW" type="Player" x="24" y="121">
    <point/>
   </object>
-  <object id="2" name="TransitionS" type="Transition" x="88" y="187.5">
+  <object id="2" name="TransitionS" type="Transition" x="104" y="218.5">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_15_dentro.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="17" name="TransitionS" type="Transition" x="105.5" y="187">
+  <object id="17" name="TransitionS" type="Transition" x="118.5" y="218.5">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_15_dentro.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="16" name="TransitionW" type="Transition" x="7.5" y="91.5">
+  <object id="16" name="TransitionW" type="Transition" x="8.5" y="107.5">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_17_dentro.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="18" name="TransitionW" type="Transition" x="7.5" y="107">
+  <object id="18" name="TransitionW" type="Transition" x="8.5" y="123">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_17_dentro.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="3" name="Jarron" x="23.5" y="11">
+  <object id="14" name="Jarron" type="ObjInteract" x="41.5" y="42">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="4" name="Jarron" x="41.5" y="11">
+  <object id="26" name="Jarron" type="ObjInteract" x="153" y="44">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="5" name="Jarron" x="57.5" y="9.5">
+  <object id="19" name="Jarron" type="ObjInteract" x="55" y="42">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="6" name="Jarron" x="136" y="9">
+  <object id="25" name="Jarron" type="ObjInteract" x="166.5" y="44">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="7" name="Jarron" x="152" y="10">
+  <object id="20" name="Jarron" type="ObjInteract" x="71.5" y="42.5">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="8" name="Jarron" x="169" y="10.5">
+  <object id="24" name="Jarron" type="ObjInteract" x="183" y="44.5">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="9" name="Jarron" x="168.5" y="26.5">
+  <object id="21" name="Jarron" type="ObjInteract" x="72" y="27">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="10" name="Jarron" x="151.5" y="27.5">
+  <object id="29" name="Jarron" type="ObjInteract" x="183.5" y="29">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="11" name="Jarron" x="136" y="27.5">
+  <object id="22" name="Jarron" type="ObjInteract" x="56" y="27.5">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="12" name="Jarron" x="57.5" y="27.5">
+  <object id="27" name="Jarron" type="ObjInteract" x="167.5" y="29.5">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="13" name="Jarron" x="41" y="27">
+  <object id="23" name="Jarron" type="ObjInteract" x="41" y="27">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
-  <object id="14" name="Jarron" x="25.5" y="26">
+  <object id="28" name="Jarron" type="ObjInteract" x="152.5" y="29">
+   <properties>
+    <property name="loot" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

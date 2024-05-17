@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="18" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="42">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="18" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="45">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="18" height="18">
   <data encoding="csv">
@@ -55,22 +55,40 @@
   <object id="3" name="Crazy frog" type="Enemigo" x="87" y="267">
    <point/>
   </object>
-  <object id="8" name="Jarron" x="248.5" y="24.5">
+  <object id="8" name="Jarron" type="ObjInteract" x="248.5" y="24.5">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
-  <object id="9" name="Jarron" x="232.5" y="25.5">
+  <object id="42" name="Jarron" type="ObjInteract" x="232" y="26.5">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
-  <object id="10" name="Jarron" x="39" y="267.5">
+  <object id="43" name="Jarron" type="ObjInteract" x="57.5" y="267">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
-  <object id="11" name="Jarron" x="57" y="265.5">
+  <object id="44" name="Jarron" type="ObjInteract" x="40" y="267">
+   <properties>
+    <property name="loot" type="int" value="2"/>
+   </properties>
    <point/>
   </object>
-  <object id="12" name="Pez" x="279.5" y="56">
+  <object id="12" name="Pez" type="Enemigo" x="56" y="60">
+   <properties>
+    <property name="boundX" type="int" value="14"/>
+   </properties>
    <point/>
   </object>
-  <object id="13" name="Pez" x="6.5" y="234">
+  <object id="13" name="Pez" type="Enemigo" x="6.5" y="234">
+   <properties>
+    <property name="boundX" type="int" value="14"/>
+   </properties>
    <point/>
   </object>
   <object id="14" name="Piedra" x="135" y="249">

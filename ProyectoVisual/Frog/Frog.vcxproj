@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -156,7 +156,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\DamageBehaviourComponent.cpp" />
+    <ClCompile Include="src\components\ItemThrowerComponent.cpp" />
+    <ClCompile Include="src\components\AttackComponentBasicEnemy.cpp" />
+    <ClCompile Include="src\components\CogibleObjectComponent.cpp" />
+    <ClCompile Include="src\components\ConveyorBeltComponent.cpp" />
+    <ClCompile Include="src\components\DestructibleComponent.cpp" />
+    <ClCompile Include="src\components\ExploitableComponent.cpp" />
+    <ClCompile Include="src\components\MapShiftComponent.cpp" />
+    <ClCompile Include="src\components\InventoryComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentBomb.cpp" />
+    <ClCompile Include="src\components\MovementComponentCockroach.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
@@ -165,6 +175,8 @@
     <ClCompile Include="src\components\ColliderComponent.cpp" />
     <ClCompile Include="src\components\DefenseComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentSnake.cpp" />
+    <ClCompile Include="src\ecs\EntityShop.cpp" />
+    <ClCompile Include="src\ecs\Scene.cpp" />
     <ClCompile Include="src\managers\LoadManager.cpp" />
     <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
@@ -173,7 +185,6 @@
     <ClCompile Include="src\components\MovementComponentFish.cpp" />
     <ClCompile Include="src\components\MovementComponentFly.cpp" />
     <ClCompile Include="src\components\LifeComponent.cpp" />
-    <ClCompile Include="src\components\MoneyComponent.cpp" />
     <ClCompile Include="src\components\MovementComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFrog.cpp" />
     <ClCompile Include="src\components\MovementComponentRedAnt.cpp" />
@@ -197,6 +208,9 @@
     <ClCompile Include="src\managers\InputManager.cpp" />
     <ClCompile Include="src\managers\ShopManager.cpp" />
     <ClCompile Include="src\scenes\Menu.cpp" />
+    <ClCompile Include="src\scenes\MenuGameOver.cpp" />
+    <ClCompile Include="src\scenes\MenuInicio.cpp" />
+    <ClCompile Include="src\scenes\MenuPausa.cpp" />
     <ClCompile Include="src\scenes\RoomScene.cpp" />
     <ClCompile Include="src\sdlutils\SDLUtils.cpp" />
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
@@ -205,13 +219,28 @@
     <ClCompile Include="src\sdlutils\Texture.cpp" />
     <ClCompile Include="src\utils\assets.cpp" />
     <ClCompile Include="src\managers\MapManager.cpp" />
+    <ClCompile Include="src\utils\Box.cpp" />
     <ClCompile Include="src\utils\Button.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />
     <ClCompile Include="src\components\TransformComponent.cpp" />
     <ClCompile Include="src\components\TransitionComponent.cpp" />
+    <ClCompile Include="src\components\TonguePushComponent.cpp" />
+    <ClCompile Include="src\components\TongueHookComponent.cpp" />
+    <ClCompile Include="src\components\SwallowComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\DamageBehaviourComponent.h" />
+    <ClInclude Include="src\components\ItemThrowerComponent.h" />
+    <ClInclude Include="src\components\AttackComponentBasicEnemy.h" />
+    <ClInclude Include="src\components\CogibleObjectComponent.h" />
+    <ClInclude Include="src\components\ConveyorBeltComponent.h" />
+    <ClInclude Include="src\components\DestructibleComponent.h" />
+    <ClInclude Include="src\components\ExploitableComponent.h" />
+    <ClInclude Include="src\components\MapShiftComponent.h" />
+    <ClInclude Include="src\components\InventoryComponent.h" />
     <ClInclude Include="src\components\MovementComponentBomb.h" />
+    <ClInclude Include="src\components\MovementComponentCockroach.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
     <ClInclude Include="src\components\CrazyFrogIAComponent.h" />
@@ -220,6 +249,8 @@
     <ClInclude Include="src\components\ColliderComponent.h" />
     <ClInclude Include="src\components\DefenseComponent.h" />
     <ClInclude Include="src\components\MovementComponentSnake.h" />
+    <ClInclude Include="src\components\ShopComponent.h" />
+    <ClInclude Include="src\ecs\EntityShop.h" />
     <ClInclude Include="src\managers\DialogManager.h" />
     <ClInclude Include="src\managers\LoadManager.h" />
     <ClInclude Include="src\managers\SceneManager.h" />
@@ -231,7 +262,6 @@
     <ClInclude Include="src\components\MovementComponentFish.h" />
     <ClInclude Include="src\components\MovementComponentFly.h" />
     <ClInclude Include="src\components\LifeComponent.h" />
-    <ClInclude Include="src\components\MoneyComponent.h" />
     <ClInclude Include="src\components\MovementComponent.h" />
     <ClInclude Include="src\components\MovementComponentFrog.h" />
     <ClInclude Include="src\components\MovementComponentRedAnt.h" />
@@ -254,6 +284,9 @@
     <ClInclude Include="src\managers\InputManager.h" />
     <ClInclude Include="src\managers\ShopManager.h" />
     <ClInclude Include="src\scenes\Menu.h" />
+    <ClInclude Include="src\scenes\MenuGameOver.h" />
+    <ClInclude Include="src\scenes\MenuInicio.h" />
+    <ClInclude Include="src\scenes\MenuPausa.h" />
     <ClInclude Include="src\scenes\RoomScene.h" />
     <ClInclude Include="src\sdlutils\checkML.h" />
     <ClInclude Include="src\sdlutils\Font.h" />
@@ -270,10 +303,14 @@
     <ClInclude Include="src\sdlutils\VirtualTimer.h" />
     <ClInclude Include="src\utils\assets.h" />
     <ClInclude Include="src\managers\MapManager.h" />
+    <ClInclude Include="src\utils\Box.h" />
     <ClInclude Include="src\utils\Button.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\utils\Vector2D.h" />
     <ClInclude Include="src\components\TransitionComponent.h" />
+    <ClInclude Include="src\components\TonguePushComponent.h" />
+    <ClInclude Include="src\components\TongueHookComponent.h" />
+    <ClInclude Include="src\components\SwallowComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

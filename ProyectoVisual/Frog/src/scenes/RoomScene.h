@@ -19,135 +19,99 @@
 #include "../components/MovementComponentBlackAnt.h"
 #include "../components/MovementComponentRedAnt.h"
 #include "../components/MovementComponentSnake.h"
-#include "../components/MoneyComponent.h"
+#include "../components/DestructibleComponent.h"
 #include"../managers/ShopManager.h"
 #include "../components/MovementComponentBomb.h"
-
+#include "../components/TonguePushComponent.h"
+#include "../components/TongueHookComponent.h"
+#include "../components/MapShiftComponent.h"
+#include "../components/InventoryComponent.h"
+#include "../components/MovementComponentCockroach.h"
+#include "../components/AttackComponentBasicEnemy.h"
+#include "../components/ExploitableComponent.h"
+#include "../components/ConveyorBeltComponent.h"
+#include "../components/SwallowComponent.h"
+#include "../components/ItemThrowerComponent.h"
+#include "../components/DamageBehaviourComponent.h"
+class Texture;
 class RoomScene : public Scene
 {
 private:
-	Camera* cameraManager = nullptr;
+	Camera* cameraManager;
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
 	HUDManager* HUD;
-	int id;
-	Entity* player = nullptr;
-	flonkOrig playerOrig = S;
-	bool needMapChange = false;
-	std::string nextMap;
+	string path;
+	Entity* player;
+	flonkOrig playerOrig;
 	flonkOrig nextFlonk;
-	Shop* shopManager = nullptr;
-	bool insideShop = false; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
-
-	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
+	bool needMapChange;
+	std::string nextMap;
+	Shop* shopManager;
+	bool insideShop; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
+		/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
 	Por tanto, hay dos OnCollision por cada colision.
 	*/
 	void CheckColisions();
 
-	//Metodos callback para las colisiones
-	void CheckCollisionsBomb(Entity* ent);
 public:
-	RoomScene(int id) : id(id) {
+	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
-		std::string initMapPath = "resources/maps/niveles/nivelFinal/mapaNF.tmx";
-		mapReader = new MapManager(initMapPath, this);
-		mapReader->loadObj(initMapPath);
+
+		mapReader = new MapManager(path, this);
+		mapReader->loadObj(path);
 
 		//Create player desde el mapa
 		cameraManager = Camera::instance();
 		cameraManager->setTarget(player);
-		//HUD
-		HUD = HUDManager::GetInstance();
-		//Tienda
+		HUD = HUDManager::instance();
 		shopManager = Shop::instance();
 		shopManager->setPlayer(player);
+		shopManager->setHUD(HUD);
 
 
 #pragma region Cosas q vamos a borrar pronto
-		//Texture* textFly = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/moscaSpritesheet.png", 1, 3);
-
-		//Entity* fly = new Entity(this);
-
-		//TransformComponent* transform = new TransformComponent();
-		//AnimationComponent* animFly = new AnimationComponent();
-		//RenderComponent* rndrFly = new RenderComponent(textFly, 1, 3, 0.5, animFly);
-
-		//rndrFly->setContext(fly);
-
-		//Animation a; //Animaciones mosca
-		//a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true);
-		//animFly->addAnimation("FLY", a);
-
-		//fly->addRenderComponent(rndrFly);
-		//fly->addComponent(ANIMATION_COMPONENT, animFly);
-
-		//animFly->playAnimation("FLY");
-
-
-		//MovementComponent* mvm = new MovementComponentFly(Vector2D(0, 3));
-		//mvm->setContext(fly);
-		//fly->addComponent(MOVEMENT_COMPONENT, mvm);
-
-		//entityList.push_back(fly);
-
-
-		//Entity* flyToPlayer = new Entity(this);
-
-		//FollowPlayerComponent* fpc = new FollowPlayerComponent(Vector2D(0, 0));
-		//fpc->setContext(flyToPlayer);
-		//flyToPlayer->addComponent(MOVEMENT_COMPONENT, fpc);
-
-		//AnimationComponent* animFly2 = new AnimationComponent();
-		//RenderComponent* rndrFly2 = new RenderComponent(textFly, 1, 3, 0.5, animFly2);
-		//rndrFly2->setContext(flyToPlayer);
-
-		//a = Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true);
-		//animFly2->addAnimation("FLY", a);
-
-		//flyToPlayer->addRenderComponent(rndrFly2);
-		//flyToPlayer->addComponent(ANIMATION_COMPONENT, animFly2);
-
-		//animFly2->playAnimation("FLY");
-
-		////Collider al flyToPlayer para probar las colisiones
-		//ColliderComponent* collider = new ColliderComponent();
-		//collider->setContext(flyToPlayer);
-		//flyToPlayer->addComponent(COLLIDER_COMPONENT, collider);
-
-		//entityList.push_back(flyToPlayer);
-		//createFish(Vector2D(0, 3), 4);
-		//entityList.push_back(flyToPlayer);
-
-
-		//createFish(Vector2D(0, 3), 4);
-		createBomb(Vector2D(4, 1));
-
 #pragma endregion
 
 		
 	};
 
 	void AddEntity(Entity* entity);
+	void removeEntity(Entity* entity);
 	void render() override;
 	void update() override;
 	virtual ~RoomScene();
 
 	MapManager* getMapReader() { return mapReader; };
+	string getPath() { return path; }
 	void changeMap();
-	void callForMapChange(std::string nextMap, flonkOrig nextFlonk){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
+	void callForMapChange(std::string nextMap, flonkOrig nextFlonk = S){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
 
 	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted = false);
-
 	Entity* createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted = false);
+	Entity* createExplotable(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createPlayer(Vector2D pos, int boundX, int boundY);
-	Entity* createTransition(std::string objName, std::string nextMap);
+	Entity* createTransition(Vector2D pos, std::string objName, std::string nextMap);
 	Entity* createCrazyFrog(Vector2D pos);
 	Entity* createFish(Vector2D pos, int boundX);
 	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createSnake(Vector2D pos);
+	Entity* createJarron(Vector2D pos, int loot);
+	Entity* createArbusto(Vector2D pos, int loot);
 	Entity* createBomb(Vector2D pos);
+	Entity* createPiedraMovible(Vector2D pos, int objIntID);
+	Entity* createEnganche(Vector2D pos);
+	Entity* createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
+
+	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap, int objIntID, bool objInteracted);
+	Entity* createCockroach(Vector2D pos);
+	Entity* createHeadCockroach(Vector2D pos);
+	Entity* createExplotableDoor(Vector2D pos);
+	Entity* createConveyorBelt(Vector2D pos, int orientation);
+
+	Entity* createMoneda(Vector2D pos, MonedaType type);
 
 	Entity* getPlayer() { return player; };
 	void movePlayer(Vector2D pos);

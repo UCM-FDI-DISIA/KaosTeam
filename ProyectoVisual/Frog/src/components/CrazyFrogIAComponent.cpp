@@ -13,7 +13,7 @@ void CrazyFrogIAComponent::update()
 		if (playerPos == nullptr)
 			playerPos = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT))->getCasillaPointer();
 
-		cout << "actualizando rana";
+		//cout << "actualizando rana";
 
 		Vector2D aux = *playerPos - static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla();
 		
@@ -55,11 +55,11 @@ void CrazyFrogIAComponent::update()
 		if (aux.magnitude() < 3 && (aux.getX() == 0 || aux.getY() == 0))
 		{
 			movement->changeDirection(direction, animation);
-			attack->attack();
+			//attack->attack();
 		}
 		else
 		{
-			movement->startMovement(direction, speed, animation);
+			movement->startMovement(direction, speed);
 		}
 			
 

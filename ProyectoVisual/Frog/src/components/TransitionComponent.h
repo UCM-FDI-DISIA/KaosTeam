@@ -1,5 +1,6 @@
 #pragma once
 #include "../ecs/Component.h"
+#include "MovementComponentFrog.h"
 #include <string>
 #include <map>
 
@@ -9,7 +10,8 @@ enum flonkOrig
 	S,
 	E,
 	W,
-	P //flonk extra para transiciones
+	P, //flonk extra para transiciones
+	T  //flonk para la tienda
 };
 
 class RoomScene;
@@ -29,16 +31,16 @@ struct flonkOrigMap : public std::map<std::string, flonkOrig>
     ~flonkOrigMap() {}
 };
 */
-
+class Collider;
 class TransitionComponent :public Component
 {
 private:
 	std::string nextMap;
 	flonkOrig nextFlonk;
-
+	void CheckMapChange(Entity* e, Collider c);
 public:
-	TransitionComponent(std::string nextMap, flonkOrig nextFlonk) : nextMap(nextMap), nextFlonk(nextFlonk) {};
+	TransitionComponent(std::string nextMap, flonkOrig nextFlonk);
 	void changeMap();
-
+	void initComponent() override;
 };
 

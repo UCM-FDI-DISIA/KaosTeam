@@ -5,9 +5,6 @@
 #include "AnimationComponent.h"
 #include "MovementComponentFrog.h"
 
-class TransformComponent;
-class RoomScene;
-
 class MovementComponentBlackAnt : public MovementComponent {
 private:
 	enum Direction { RIGHT, LEFT, UP, DOWN };											
@@ -29,7 +26,7 @@ private:
 	void checkCollisionWall();
 public:
 	MovementComponentBlackAnt(AnimationComponent* a);
-	~MovementComponentBlackAnt() {};
+	~MovementComponentBlackAnt();
 	void update() override;
 	void initComponent() override;
 };

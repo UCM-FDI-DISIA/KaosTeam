@@ -1,0 +1,247 @@
+html,
+body {
+  background-color: #4CDEDD;
+  /*Fondo provisional, en el futuro colocar una imagen todo lo guapa*/
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  background-image: url('../img/FondoPagina.png');
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+ul {
+  list-style-type: none;
+  /*Quita las bolitas en las listas ul*/
+}
+
+#content {
+  padding-top: 70px;
+  /*Mueve el contenido más abajo para que no se superponga con la barra de navegación*/
+}
+
+/*La barra de navegacion y sus cosillas*/
+.topnav {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1D582E;
+  overflow: hidden;
+  text-align: center;
+}
+
+.topnav a {
+  position: relative;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 24px 16px;
+  text-decoration: none;
+  font-size: 28px;
+  margin: 0;
+  font-family: "Comic Sans", cursive;
+  font-weight: 1000;
+  font-style: normal;
+}
+
+.green-container {
+  background: rgba(40, 203, 143, 0.83);
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-left: 19%;
+	margin-right: 19%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.topnav li {
+  display: inline;
+}
+
+.navList a:hover {
+  /*Aspecto del botón al pasar el ratón por encima*/
+  background-color: #28CB8F;
+  color: black;
+}
+
+.navList a.active {
+  background-color: #eee;
+  color: #0b1f10;
+}
+
+.logo-studio-container {
+  float: left;
+  position: absolute;
+  margin-left: 40px;
+}
+
+.logo-studio-container img {
+  height: 70px;
+}
+
+.usual-text-style {
+  /*El estilo de texto basico para descripciones y etc*/
+  font-family: "Comic Sans", cursive;
+  font-size: 21px;
+  color: #000;
+}
+
+.usual-text-style-but-white {
+  /*El estilo de texto basico para descripciones y etc*/
+  font-family: "Comic Sans", cursive;
+  font-size: 21px;
+  color: #eee;
+}
+
+footer {
+  background-color: #1D582E;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: 40px;
+}
+
+.secret-page-image {
+  height: 80%;
+  align-self: center;
+}
+
+/*Fuentes*/
+@font-face {
+  font-family: 'Comic Sans';
+  src: url('src/fonts/comic.woff2') format('woff2'),
+    url('src/fonts/comic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*Animaciones*/
+@keyframes frogBounce1 {
+  0% {
+    transform: translateY(0);
+    transform: translateX(-1000px);
+  }
+
+  20% {
+    transform: translateY(-10000px);
+    transform: translateX(-800px);
+  }
+
+  50% {
+    transform: translateY(-100px);
+    transform: translateX(800px);
+  }
+
+  80%,
+  100% {
+    transform: translateY(0);
+    transform: translateX(1400px);
+
+  }
+
+  60% {
+    transform: translateY(-75px);
+  }
+
+  100% {
+    transform: translateY(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes frogBounce2 {
+  0% {
+    transform: translateY(4000px);
+    transform: translateX(-800px);
+  }
+
+  20% {
+    transform: translateY(0);
+    transform: translateX(-100px);
+  }
+
+  50% {
+    transform: translateY(675);
+    transform: translateX(500px);
+  }
+
+  80%,
+  100% {
+    transform: translateY(-10000px);
+    transform: translateX(-800px);
+  }
+
+  60% {
+    transform: translateY(-75px);
+  }
+
+  100% {
+    transform: translateY(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes frogBounce3 {
+  0% {
+    transform: translateY(0);
+    transform: translateX(-1000px);
+  }
+
+  20% {
+    transform: translateY(-10000px);
+    transform: translateX(-800px);
+  }
+
+  50% {
+    transform: translateY(0);
+    transform: translateX(-1000px);
+  }
+
+  80%,
+  100% {
+    transform: translateY(0);
+    transform: translateX(-100px);
+  }
+
+  60% {
+    transform: translateY(-10000px);
+    transform: translateX(-800px);
+  }
+
+  100% {
+    transform: translateY(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes frogBounce4 {
+  0% {
+    transform: translateY(0);
+    transform: translateX(-100px);
+  }
+
+  20% {
+    transform: translateY(0);
+    transform: translateX(-1000px);
+  }
+
+  50% {}
+
+  80%,
+  100% {
+    transform: translateY(0);
+    transform: translateX(0);
+  }
+
+  60% {
+    transform: translateY(-10000px);
+    transform: translateX(-800px);
+  }
+
+  100% {
+    transform: translateY(0);
+    transform: translateX(0);
+  }
+}

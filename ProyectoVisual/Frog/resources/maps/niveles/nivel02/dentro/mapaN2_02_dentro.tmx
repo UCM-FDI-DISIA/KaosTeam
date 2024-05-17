@@ -1,100 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="16">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="16">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
- <layer id="1" name="Walk" width="12" height="12">
+ <layer id="1" name="Walk" width="14" height="14">
   <data encoding="csv">
-275,276,276,276,276,276,276,276,276,276,276,277,
-303,304,304,304,304,304,304,304,304,304,304,305,
-303,304,304,304,304,304,304,304,304,304,304,305,
-303,304,304,304,304,304,304,304,304,304,304,305,
-303,304,304,304,304,304,304,304,304,304,304,305,
-303,304,304,304,304,304,304,304,304,304,304,305,
-303,304,304,304,304,304,304,304,304,304,304,305,
-331,332,332,332,304,304,304,304,332,332,332,333,
-303,304,304,304,303,304,304,305,304,304,304,305,
-303,304,304,304,303,304,304,305,304,304,304,305,
-303,304,304,304,303,304,304,305,304,304,304,305,
-331,332,332,332,331,332,332,333,332,332,332,333
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,275,276,276,276,276,276,276,276,276,276,276,277,0,
+0,303,304,304,304,304,304,304,304,304,304,304,305,0,
+0,303,304,304,304,304,304,304,304,304,304,304,305,0,
+0,303,304,304,304,304,304,304,304,304,304,304,305,0,
+0,303,304,304,304,304,304,304,304,304,304,304,305,0,
+276,304,304,304,304,304,304,304,304,304,304,304,304,276,
+332,304,304,304,304,304,304,304,304,304,304,304,304,332,
+0,331,332,332,332,304,304,304,304,332,332,332,333,0,
+0,303,304,304,304,303,304,304,305,304,304,304,305,0,
+0,303,304,304,304,303,304,304,305,304,304,304,305,0,
+0,303,304,304,304,303,304,304,305,304,304,304,305,0,
+0,331,332,332,332,331,304,304,333,332,332,332,333,0,
+0,0,0,0,0,0,303,305,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="2" name="NotWalk" width="12" height="12">
+ <layer id="2" name="NotWalk" width="14" height="14">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-206,0,0,0,0,0,0,0,0,0,0,206,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-206,0,0,0,0,0,0,0,0,0,0,206,
-295,295,295,295,417,417,417,417,295,295,295,295,
-295,295,295,295,0,0,0,0,295,295,295,295,
-295,295,295,295,0,0,0,0,295,295,295,295,
-295,295,295,295,206,0,0,206,295,295,295,295
+295,295,295,295,295,295,295,295,295,295,295,295,295,295,
+295,0,0,0,0,0,0,0,0,0,0,0,0,295,
+295,0,0,0,0,0,0,0,0,0,0,0,0,295,
+295,0,0,0,0,0,0,0,0,0,0,0,0,295,
+295,0,0,0,0,0,0,0,0,0,0,0,0,295,
+295,0,0,0,0,0,0,0,0,0,0,0,0,295,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+295,0,0,0,0,0,0,0,0,0,0,0,0,295,
+295,295,295,295,295,0,0,0,0,295,295,295,295,295,
+295,295,295,295,295,0,0,0,0,295,295,295,295,295,
+295,295,295,295,295,0,0,0,0,295,295,295,295,295,
+295,295,295,295,295,0,0,0,0,295,295,295,295,295,
+295,295,295,295,295,295,0,0,295,295,295,295,295,295
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="PiedraMovible" x="72" y="136">
+  <object id="5" name="FlonkW" type="Player" x="24.5" y="107.5">
    <point/>
   </object>
-  <object id="2" name="PiedraMovible" x="87.5" y="136">
+  <object id="6" name="FlonkE" type="Player" x="200.5" y="122">
    <point/>
   </object>
-  <object id="3" name="PiedraMovible" x="104.5" y="137.5">
+  <object id="7" name="FlonkS" type="Player" x="120" y="201.5">
    <point/>
   </object>
-  <object id="4" name="PiedraMovible" x="118" y="137.5">
+  <object id="1" name="PiedraMovible" type="ObjInteract" x="88" y="152">
    <point/>
   </object>
-  <object id="5" name="FlonkW" type="Player" x="23.5" y="89.5">
+  <object id="2" name="PiedraMovible" type="ObjInteract" x="103.5" y="152">
    <point/>
   </object>
-  <object id="6" name="FlonkE" type="Player" x="167.5" y="106">
+  <object id="3" name="PiedraMovible" type="ObjInteract" x="120.5" y="153.5">
    <point/>
   </object>
-  <object id="7" name="FlonkS" type="Player" x="103.5" y="169.5">
+  <object id="4" name="PiedraMovible" type="ObjInteract" x="134" y="153.5">
    <point/>
   </object>
-  <object id="8" name="TransitionW" type="Transition" x="9" y="91">
+  <object id="8" name="TransitionW" type="Transition" x="9.5" y="107">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_01_dentro.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="10" name="TransitionW" type="Transition" x="7.5" y="107.5">
+  <object id="10" name="TransitionW" type="Transition" x="9.5" y="123.5">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_01_dentro.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="9" name="TransitionE" type="Transition" x="185" y="92">
+  <object id="9" name="TransitionE" type="Transition" x="216" y="107.5">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_04_dentro.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="15" name="TransitionE" type="Transition" x="184" y="105.5">
+  <object id="15" name="TransitionE" type="Transition" x="215.5" y="121">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_04_dentro.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="13" name="TransitionS" type="Transition" x="87.5" y="188">
+  <object id="13" name="TransitionS" type="Transition" x="104.5" y="217">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_03_dentro.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="14" name="TransitionS" type="Transition" x="104.5" y="188.5">
+  <object id="14" name="TransitionS" type="Transition" x="119" y="218.5">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_03_dentro.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="11" name="Termita" x="87.5" y="29.5">
+  <object id="11" name="Termita" x="103.5" y="44">
    <point/>
   </object>
-  <object id="12" name="Termita" x="101.5" y="58.5">
+  <object id="12" name="Termita" x="117.5" y="74.5">
    <point/>
   </object>
  </objectgroup>

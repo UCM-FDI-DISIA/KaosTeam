@@ -2,6 +2,7 @@
 #include "../managers/MapManager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Entity.h"
+//#include "../sdlutils/checkML.h"
 //#include "../managers/DataManager.h"
 
 /**
@@ -27,5 +28,5 @@ public:
 	virtual void render() = 0;
 	virtual void update() = 0;
 
-	MapManager* getMapReader() const;
+	//MapManager* getMapReader() const;
 };

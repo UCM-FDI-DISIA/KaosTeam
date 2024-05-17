@@ -1,0 +1,123 @@
+#title-imagen {
+	text-align: center;
+	margin-top: 50px;
+}
+
+/*Slide de imagenes, cortesia de fumono studios*/
+.capturas {
+	width: auto;
+	height: auto;
+	position: relative;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin: 30px auto 0;
+}
+
+.imgen {
+	display: none;
+}
+
+.visible {
+	display: block;
+}
+
+/*Las flechas del slider de imagenes*/
+.prev,
+.next {
+	cursor: pointer;
+	padding: 14px;
+	margin: 20px;
+	color: #f2f2f2;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 40px;
+	user-select: none;
+	background-color: #1D582E;
+}
+
+.prev:hover,
+.next:hover {
+	background-color: #39a858;
+}
+
+.prev {
+	left: 0;
+}
+
+.next {
+	right: 0;
+}
+
+/*Los punticos del slider de imagenes*/
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #1D582E;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.current-dot {
+	background-color: #f2f2f2;
+}
+
+.active,
+.dot:not(.current-dot):hover {
+	background-color: #39a858;
+}
+
+/*Elementos de colocaccion y otros de index*/
+.seccion-con-img {
+	display: flex;
+	margin-top: 40px;
+	margin-left: 20%;
+	margin-right: 20%;
+	justify-content: space-between;
+}
+
+.texto-izq {
+	text-align: left;
+	padding-right: 4%;
+}
+
+.img-der {
+	width: 430px;
+	height: auto;
+}
+
+/*El recuadro para los títulos*/
+.cuadro {
+	display: block;
+	position: relative;
+	background-color: #1D582E;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 69px;
+	padding: 5px;
+	text-align: center;
+	border-radius: 69px;
+}
+
+/*Titulo tamaño subtitulo con reborde*/
+.titles1 {
+	font-size: 41px;
+	color: #f2f2f2;
+	font-family: "Comic Sans", cursive;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.desc-parag1 {
+	/*Esto le pone bordecito al texto. Puede no ser compatible con todos los navegadores*/
+	-webkit-text-stroke: 1px #000;
+	font-family: "Comic Sans", cursive;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 42px;
+	color: #28cb4b;
+}
