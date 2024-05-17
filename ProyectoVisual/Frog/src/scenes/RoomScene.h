@@ -116,7 +116,8 @@ public:
 	Entity* createHeadCockroach(Vector2D pos);
 	Entity* createExplotableDoor(Vector2D pos);
 	Entity* createConveyorBelt(Vector2D pos, int orientation);
-
+	
+	Entity* createLifeFly(Vector2D pos);
 	Entity* createMoneda(Vector2D pos, MonedaType type);
 
 	Entity* getPlayer() { return player; };

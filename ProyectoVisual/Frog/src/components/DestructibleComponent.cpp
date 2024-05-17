@@ -25,13 +25,13 @@ void DestructibleComponent::LootAndBreak()
             }
             else
             {
-                scen->createMoneda(position, MONEDA_ROSA);
+                scen->createLifeFly(position);
                 cout << "Rompible generando vida" << endl;
             }
             break;
 
         case LOOT_VIDA:
-            scen->createMoneda(position, MONEDA_ROSA);
+            scen->createLifeFly(position);
             cout << "Rompible generando vida " << endl;
             break;
 

@@ -284,6 +284,31 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 
 	return c;
 }
+Entity* RoomScene::createLifeFly(Vector2D pos){
+	Entity* c = new Entity(this, COGIBLE_ENTITY);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	c->addComponent(TRANSFORM_COMPONENT, transform);
+
+	Texture* txtMosca = &sdlutils().images().at("flySheet");
+	
+	AnimationComponent* ac = new AnimationComponent();
+	ac->addAnimation("ANIM", Animation({ Vector2D(0,0), Vector2D(0,2) }, false, false, true));
+	c->addComponent(ANIMATION_COMPONENT, ac);
+	ac->playAnimation("ANIM");
+
+	RenderComponent* renderMosca = new RenderComponent(txtMosca);
+	c->addRenderComponent(renderMosca);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	c->addComponent(COLLIDER_COMPONENT, collider);
+
+	CogibleObjectComponent* cogible = new CogibleObjectComponent(MOSCAS);
+	c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+
+	AddEntity(c);
+	return c;
+}
 
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
