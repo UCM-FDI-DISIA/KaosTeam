@@ -292,26 +292,25 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 	return c;
 }
 
+/*Metodo que sirve para revivir a Flonk en caso de que pierda todas sus vidas.
+  Se invoca dando a reintentar en la pantalla de Game Over. */
 void RoomScene::revivePlayer() {
-	//Se crea una nueva instancia del juagdor utilizando la copia guardada
-	player = new Entity(*savedPlayer);
-	AddEntity(player);
+	std::cout << "Player revivido" << std::endl;
+	// Reseteamos sus vidas
 	LifeComponent* lf = static_cast<LifeComponent*>(player->getComponent(LIFE_COMPONENT));
-	lf->AddActual(lf->GetMax()); // Reseteamos sus vidas
-	//movePlayer(lastFrogPosition);
+	lf->AddActual(lf->GetMax()); 
+	lf->resetTimer();
+	//Reproducimos animacion inicial
+	AnimationComponent* anim = static_cast<AnimationComponent*>(player->getComponent(ANIMATION_COMPONENT));
+	anim->playAnimation("IDLE_DOWN");
+
+	//movemos a Flonk a su ultima posicion de spawn
+	movePlayer(lastFrogPosition);
+
+	//movemos la camara hasta la nueva posicion de Flonk
 	cameraManager->setTarget(player);
+
 	gameOver = false; //reseteamos el booleano que indica el fin de partida
-}
-
-/*Este metodo crea una copia del player antes de eliminarlo (en caso de que el jugador quiera reinciar la partida y no perder su
-progreso en el juego)*/
-
-void RoomScene::savePlayer() {
-	//borramos al anterior player guardao
-	if (savedPlayer != nullptr)
-		delete savedPlayer;
-
-	savedPlayer = new Entity(*player);
 }
 
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
@@ -850,7 +849,6 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	else if (objClass == "Player") {
 		//SOLO CREAR� (aka cambiar� d sitio) EL FLONK QUE CORRESPONDE
 		if (player == nullptr) {
-			cout << "create player";
 			c = createPlayer(pos, 100, 100);
 			lastFrogPosition = pos;  //Guardamos ultima posicion de la rana
 		}
@@ -922,10 +920,13 @@ void RoomScene::removeEntity(Entity* entity) {
 	while (it != entityList.end() && !eliminated) {
 		if (*it == entity) {
 			if (*it == player) {
-				savePlayer(); //hacemos una copia del jugador
-				gameOver = true; //Si es el player -> Game Over
+				/*Si es el player->Game Over
+				(no borramos a Flonk todavia en caso de que el jugador quiera volver a intentarlo)*/
+				gameOver = true; 
 			}
-			it = entityList.erase(it);
+			else { //Si es cualquier otra entidad, la borramos
+				it = entityList.erase(it);
+			}
 			eliminated = true;
 		}
 		else it++;
@@ -936,8 +937,7 @@ RoomScene::~RoomScene() {
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;
 	}
-	//se borra el puntero auxiliar al jugador guardado
-	delete savedPlayer; 
+
 	//NO BORREIS LO SINGLETONS, Q SE BORRAN SOLOS
 	delete mapReader;
 }
@@ -961,6 +961,9 @@ void RoomScene::changeMap()
 	mapReader->loadObj(nextMap);
 
 	cameraManager->setTarget(player);
+
+	//Actualizamos ultima posición de Spawn de la rana
+	lastFrogPosition = static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->getCasilla();
 
 	needMapChange = false;
 }

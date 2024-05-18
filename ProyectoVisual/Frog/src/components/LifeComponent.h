@@ -32,6 +32,7 @@ public:
 	void AddMax(int n);
 	bool alive();
 	void hit(int damage); //A llamar cuando se daña a la entidad
+	void resetTimer();
 
 	void initComponent() override;
 	void update() override;
