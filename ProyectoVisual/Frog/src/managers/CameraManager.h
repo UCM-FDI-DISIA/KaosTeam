@@ -8,12 +8,16 @@
 #include "../components/MovementComponentFrog.h"
 #include "../utils/Singleton.h"
 
+/*
+* Esta clase se encarga del movimiento de la camara
+*/
+
 class Camera: public Singleton<Camera> { 
 
 	friend Singleton<Camera>;
 public:
 
-	void setTarget(Entity* target);
+	void setTarget(Entity* target);					
 	void update();
 	Vector2D getCameraMovement() { return cameraPos;} 
 

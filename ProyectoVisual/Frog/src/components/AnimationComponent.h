@@ -59,4 +59,3 @@ public:
 	Animation getCurrentAnim() const { return currentAnim; };
 	Animation getAnimByName(const std::string& animName) const;
 };
-

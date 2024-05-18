@@ -49,14 +49,7 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_ESCAPE:
 			DowntiCheck(BTN_ESCAPE);
 			break;
-		case SDLK_SPACE:
-			DowntiCheck(BTN_SPACE);
-			break;
-		case SDLK_m:
-			DowntiCheck(BTN_M);
-			break;
-		case SDLK_b: //Bomba
-			DowntiCheck(BTN_B);
+		default:
 			break;
 		}
 		
@@ -81,29 +74,22 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_LSHIFT:
 			UptiCheck(BTN_SHIFT);
 			break;
-		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
+		case SDLK_z:	//escudo
 			UptiCheck(BTN_ACTION1);
 			break;
-		case SDLK_x:
+		case SDLK_x:	//ataque
 			UptiCheck(BTN_ACTION2);
 			break;
-		case SDLK_c:
+		case SDLK_c:    //gancho
 			UptiCheck(BTN_ACTION3);
 			break;
-		case SDLK_v:	// Escudo
+		case SDLK_v:	//bombas, orbes
 			UptiCheck(BTN_ACTION4);
 			break;
 		case SDLK_ESCAPE:
 			UptiCheck(BTN_ESCAPE);
 			break;
-		case SDLK_SPACE:
-			UptiCheck(BTN_SPACE);
-			break;
-		case SDLK_m:	
-			UptiCheck(BTN_M);
-			break;
-		case SDLK_b: //Bomba
-			UptiCheck(BTN_B);
+		default:
 			break;
 		}
 	}
@@ -169,15 +155,6 @@ InputButton InputManager::getLeft() {
 InputButton InputManager::getRight() {
 	return buttons[BTN_RIGHT];
 }
-InputButton InputManager::getAction5() {
-	return buttons[BTN_B];
-}
-InputButton InputManager::getSpace() {
-	return buttons[BTN_SPACE];
-}
 InputButton InputManager::getEscape() {
 	return buttons[BTN_ESCAPE];
 }
-InputButton InputManager::getM() {
-	return buttons[BTN_M];
-};

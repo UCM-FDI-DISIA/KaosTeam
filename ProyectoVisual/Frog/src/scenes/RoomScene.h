@@ -33,6 +33,11 @@
 #include "../components/SwallowComponent.h"
 #include "../components/ItemThrowerComponent.h"
 #include "../components/DamageBehaviourComponent.h"
+#include "../components/CrazyFrogIAComponent.h"
+#include "../components/LifeComponent.h"
+#include "../components/CogibleObjectComponent.h"
+#include "../components/PuertaComponent.h"
+
 class Texture;
 class RoomScene : public Scene
 {
@@ -107,6 +112,7 @@ public:
 	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
 	Entity* createSnake(Vector2D pos);
+	Entity* createDoor(Vector2D pos);
 	Entity* createJarron(Vector2D pos, int loot);
 	Entity* createArbusto(Vector2D pos, int loot);
 	Entity* createBomb(Vector2D pos);
@@ -119,7 +125,8 @@ public:
 	Entity* createHeadCockroach(Vector2D pos);
 	Entity* createExplotableDoor(Vector2D pos);
 	Entity* createConveyorBelt(Vector2D pos, int orientation);
-
+	
+	Entity* createLifeFly(Vector2D pos);
 	Entity* createMoneda(Vector2D pos, MonedaType type);
 
 	Entity* getPlayer() { return player; };

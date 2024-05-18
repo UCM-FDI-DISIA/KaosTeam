@@ -43,9 +43,6 @@ void Camera::update() {
 	
 }
 
-
-
-
 Vector2D Camera::GetAdditionalOffset()
 {
 	return additionalOffset;

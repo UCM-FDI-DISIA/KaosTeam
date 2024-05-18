@@ -6,6 +6,7 @@
 #include "../utils/Box.h"
 #include "ColliderComponent.h"
 #include "LifeComponent.h"
+#include "../scenes/RoomScene.h"
 
 AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()) {
 	distance = 2;
@@ -13,21 +14,28 @@ AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance())
 	attackFrameTime = 100;
 	lastTimeChanged = 0;
 	attackCooldown = 250;
-
+	hitted = false;
 	box = new Box();
+	elapsedTime = 0;
 }
 
 AttackComponentFrog::~AttackComponentFrog() {
 	delete box;
 }
 
+//comprueba la colision entre la lengua y los diferentes enemigos
 void AttackComponentFrog::tongueTouch(Entity* ent, Collider c)
 {
-	//std::cout << "TongueTouch ";	
-	//if ( ent->getName() == COCKROACH_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
-	//	//std::cout << "TongueTouch cucaracha";	
-	//	//static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana
-	//}
+	if (!hitted && ent->getName() == COCKROACH_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
+		hitted = true;
+		elapsedTime = sdlutils().virtualTimer().currTime();
+		static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana
+		//en el caso de la cucaracha cuando esta muere suelta su cabeza en la escena en la que se encuentren
+		if (!static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->alive()) {
+			scen = static_cast<RoomScene*>(ent->getScene());
+			scen->createHeadCockroach(static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+		}
+	}
 }
 
 void AttackComponentFrog::UpdateBox(Vector2D casilla, int w, int h)
@@ -59,6 +67,11 @@ void AttackComponentFrog::update()
 			box->setWidth(0);
 			box->setHeight(0);
 		}
+	}
+
+	//cuando pase el tiempo de espera podra volver a atacar
+	if (hitted && sdlutils().virtualTimer().currTime() > elapsedTime + WAIT_ATTACK) {
+		hitted = false;
 	}
 }
 

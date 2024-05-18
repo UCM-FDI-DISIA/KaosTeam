@@ -41,7 +41,7 @@
   <object id="1" name="Termita" x="118" y="123">
    <point/>
   </object>
-  <object id="2" name="LLave" x="152" y="106">
+  <object id="2" name="LLave" type="ObjCogible" x="152" y="106">
    <point/>
   </object>
   <object id="3" name="TransitionW" type="Transition" x="8" y="108">
