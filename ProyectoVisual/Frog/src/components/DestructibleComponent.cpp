@@ -19,24 +19,24 @@ void DestructibleComponent::LootAndBreak()
             if (auxprob >= RandomLifeProb) {
                 if (auxprob <= RandomLifeProb + RandomMoneyProb)
                 {
-                    scen->createMoneda(position, MONEDA_ROSA);
+                    //scen->createSnake(position); 
                     cout << "Rompible generando dinero" << endl;
                 }
             }
             else
             {
-                scen->createLifeFly(position);
+                //scen->createSnake(position);
                 cout << "Rompible generando vida" << endl;
             }
             break;
 
         case LOOT_VIDA:
-            scen->createLifeFly(position);
+            //scen->createSnake(position);
             cout << "Rompible generando vida " << endl;
             break;
 
         case LOOT_DINERO:
-            scen->createMoneda(position, MONEDA_ROSA);
+            //scen->createSnake(position);
             cout << "Rompible generando dinero" << endl;
             break;
 

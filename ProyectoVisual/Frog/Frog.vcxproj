@@ -156,7 +156,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\components\PuertaComponent.cpp" />
     <ClCompile Include="src\components\DamageBehaviourComponent.cpp" />
     <ClCompile Include="src\components\ItemThrowerComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentBasicEnemy.cpp" />
@@ -231,7 +230,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
-    <ClInclude Include="src\components\PuertaComponent.h" />
     <ClInclude Include="src\components\DamageBehaviourComponent.h" />
     <ClInclude Include="src\components\ItemThrowerComponent.h" />
     <ClInclude Include="src\components\AttackComponentBasicEnemy.h" />

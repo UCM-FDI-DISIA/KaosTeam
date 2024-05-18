@@ -5,13 +5,6 @@
 #include "AnimationComponent.h"
 #include "MovementComponentFrog.h"
 
-/*
-* Clase que gestiona el comportamiendo de la hormiga negra
-* -la direccion en la que se tiene que mover
-* -comprueba si la rana esta cerca para atacarla
-* -comprueba que despues del ataque no se haya chocado con una pared, si es asi se queda inmovil por un tiempo
-*/
-
 class MovementComponentBlackAnt : public MovementComponent {
 private:
 	enum Direction { RIGHT, LEFT, UP, DOWN };											

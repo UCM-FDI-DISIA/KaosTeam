@@ -6,9 +6,6 @@
 #include "../sdlutils/VirtualTimer.h"
 #include <iostream>
 
-/*
-* Clase que gestiona la vida de las entidades
-*/
 class LifeComponent : public Component{
 private:
 	int vidaActual; //Un  punto es media mosca

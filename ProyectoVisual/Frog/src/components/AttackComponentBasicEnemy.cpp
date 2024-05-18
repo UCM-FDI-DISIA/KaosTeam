@@ -1,19 +1,18 @@
 #include "AttackComponentBasicEnemy.h"
 #include "ColliderComponent.h"
+#include "../utils/Box.h"
 #include "LifeComponent.h"
 #include "../sdlutils/SDLUtils.h"
 
 AttackComponentBasicEnemy::AttackComponentBasicEnemy(int d) : damage(d) {
 	hitted = false;
-	elapsedTime = 0;
 }
 
 AttackComponentBasicEnemy::~AttackComponentBasicEnemy() {
 };
 
 void AttackComponentBasicEnemy::update() {
-	//cuando pasa el tiempo de espera, puede volver a atacar a la rana
-	if (hitted && sdlutils().virtualTimer().currTime() > elapsedTime + WAIT_ATTACK) {
+	if (hitted && sdlutils().virtualTimer().currTime() > elapsedTime + 3000) {
 		hitted = false;
 	}
 }
@@ -22,7 +21,7 @@ void AttackComponentBasicEnemy::initComponent() {
 		checkHit(e, c);
 	});
 }
-//comprueba la colision entre el enemigo y la rana
+
 void AttackComponentBasicEnemy::checkHit(Entity* e, Collider c) {
 	if (!hitted && e->getName() == FROG_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
 		elapsedTime = sdlutils().virtualTimer().currTime();

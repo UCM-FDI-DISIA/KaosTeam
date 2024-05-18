@@ -42,7 +42,7 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Enganche" type="ObjInteract" x="86.25" y="123.5">
+  <object id="1" name="Enganche" type="ObjInteract" x="71" y="124">
    <point/>
   </object>
   <object id="5" name="Enganche" type="ObjInteract" x="168.5" y="122">
@@ -63,7 +63,7 @@
    </properties>
    <point/>
   </object>
-  <object id="4" name="LLave" type="ObjCogible" x="39" y="28">
+  <object id="4" name="LLave" x="39" y="28">
    <point/>
   </object>
  </objectgroup>

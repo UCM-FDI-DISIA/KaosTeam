@@ -9,7 +9,6 @@
 
 class DamageBehaviourComponent :public Component {
 private:
-	const Uint32 WAIT_TIME = 1000;
 	AnimationComponent* animator;
 	MovementComponent* move;
 	std::string damageAnimation;

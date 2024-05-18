@@ -5,7 +5,7 @@
 MovementComponentCockroach::MovementComponentCockroach(AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
 {
 	actualDirection = RIGHT;
-	anim->playAnimation("RIGHT");
+	//anim->playAnimation("RIGHT");
 	waitTime = 500;
 	movementFrameRate = 30;
 	framesPerMove = 6;
@@ -22,20 +22,20 @@ void MovementComponentCockroach::initComponent() {
 
 void MovementComponentCockroach::update() {
 
-	/*if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
+	if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		switch (actualDirection)
 		{
 		case RIGHT: {
 			velocity = Vector2D(1, 0);
-			anim->playAnimation("RIGHT");
+			anim->playAnimation("UP");
 			framesPerMove = 4 + velocity.magnitude() * 3;
 		}
 				  break;
 		case LEFT:
 		{
 			velocity = Vector2D(-1, 0);
-			anim->playAnimation("LEFT");
+			anim->playAnimation("UP");
 			framesPerMove = 4 + velocity.magnitude() * 3;
 		}
 		break;
@@ -77,7 +77,7 @@ void MovementComponentCockroach::update() {
 			isMoving = false;
 			changeDirection();
 		}
-	}*/
+	}
 }
 //metodo para cambiar de direccion y todo lo que conlleva eso
 void MovementComponentCockroach::changeDirection() {

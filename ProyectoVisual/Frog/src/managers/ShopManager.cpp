@@ -34,7 +34,6 @@ Shop::~Shop() {
 	playerHUD = nullptr;
 	playerInventory = nullptr;
 }
-//inicializa y coloca las entidades que podemos comprar
 void Shop::initShopEntitys() {
 	ShopComponent* gShop = new ShopComponent(grasshoperTex, SDL_Rect{ 0,230,80,80 }, 1);
 	grasshoper->addShopComponent(gShop);
@@ -56,7 +55,6 @@ void Shop::setPlayer(Entity* player_) {
 void Shop::setHUD(HUDManager* hud) {
 	playerHUD = hud;
 }
-//gestiona la entidad seleccionada
 void Shop::setSelected() {
 	ShopComponent* sC = selected->getShopComponent();
 	sC->quitSelectd();
@@ -93,14 +91,12 @@ void Shop::setSelected() {
 		break;
 	}
 }
-//gestiona la opacidad de las entidades
 void Shop::setOppacity() {
 	for (auto& a : animals) {
 		ShopComponent* sC = a->getShopComponent();
 		sC->setOppacity();
 	}
 }
-//cambia la textura del dialogo del pajaro
 void Shop::changeTexture() {
 	if (change) {
 		inputTex.setAlphaMod(255);
@@ -122,13 +118,11 @@ void Shop::render() {
 }
 void Shop::update() {
 
-	//cambia la textura del dialogo del pajaro cuando pasa un tiempo
-	if (sdlutils().virtualTimer().currTime() > lastChangeTexture + CHANGE_TIME) {
+	if (sdlutils().virtualTimer().currTime() > lastChangeTexture + 3000) {
 		change = !change;
 		changeTexture();
 		lastChangeTexture = sdlutils().virtualTimer().currTime();
 	}
-	//acciones de comprar o cambiar el animal seleccionado
 	if (imngr.getAction2())
 	{ buyPowerUp(selectedPowerUp); }
 	else if (imngr.getAction3()) { changeAnimal(RIGHT); }
@@ -144,11 +138,13 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 			ShopComponent* sC = grasshoper->getShopComponent();
 			if (!sC->isBuy() && playerInventory->TakeMoney(grasshoperValue)) {
 				//activar salto largo
+
 				playerInventory->mejoras.saltamontes += 1;
 				sC->setBuy();
 				
 			}
 			else {
+				std::cout << "no puedes comprar \n";
 				//algo de dialogo
 			}
 		}	
@@ -158,6 +154,7 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 			ShopComponent* sC = wasp->getShopComponent();
 			if (!sC->isBuy() && playerInventory->TakeMoney(waspValue)) {
 				//aumentar daño
+
 				playerInventory->mejoras.avispas += 1;
 				sC->setBuy();
 			}
@@ -184,6 +181,7 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 			ShopComponent* sC = centipede->getShopComponent();
 			if (!sC->isBuy() && playerInventory->TakeMoney(centipedeValue)) {
 				//aumentar alcance lengua
+				std::cout << "ciempies \n";
 				playerInventory->mejoras.ciempies += 1;
 				sC->setBuy();
 				
@@ -198,7 +196,6 @@ void Shop::buyPowerUp(PowerUps powerUp) {
 	}
 	setOppacity();
 }
-//cambia el animal seleccionado dependiendo de la direccion 
 void Shop::changeAnimal(Direction dir)
 {
 	int step = (dir == RIGHT) ? 1 : -1;

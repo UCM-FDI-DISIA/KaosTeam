@@ -7,9 +7,6 @@
 #include <vector>
 #include "../ecs/EntityShop.h"
 #include "../managers/HUDManager.h"
-/*
-* Clase que gestiona la compra de objetos en la tienda
-*/
 class InputManager;
 class Texture;
 class Shop : public Singleton<Shop> {
@@ -25,7 +22,7 @@ private:
 
 	enum PowerUps { GRASSHOPER, WASP, FLY, CENTIPEDE, TOTAL };
 	PowerUps selectedPowerUp;
-	enum Direction { RIGHT, LEFT };	//para saber en que direccion estamos cambiando entre los objetos para comprar
+	enum Direction { RIGHT, LEFT };
 	Direction actualDirection;
 
 	int grasshoperValue; //saltamones
@@ -39,13 +36,11 @@ private:
  
 	InputManager& imngr;
 
-	//entidades que se pueden comprar
 	EntityShop* grasshoper = new EntityShop();
 	EntityShop* wasp = new EntityShop();
 	EntityShop* fly = new EntityShop();
 	EntityShop* centipede = new EntityShop();
 	EntityShop* selected;
-	//texturas
 	Texture& grasshoperTex;
 	Texture& waspTex;
 	Texture& flyTex;
@@ -58,14 +53,13 @@ private:
 	//metodos
 	Shop();
 	
-	void buyPowerUp(PowerUps powerUp);	
-	void changeAnimal(Direction dir); 
+	void buyPowerUp(PowerUps powerUp);
+	void changeAnimal(Direction dir);
 	void setOppacity();
 	void setSelected();
 	void initShopEntitys();
 	void changeTexture();
 
-	const Uint32 CHANGE_TIME = 3000; //cambiar el recuadro de dialogo del pajaro cada 3 segundos
-	Uint32 lastChangeTexture;	
+	Uint32 lastChangeTexture;
 };
 #endif // !SHOPMANAGER_H

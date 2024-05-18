@@ -17,10 +17,10 @@ public:
 
 private:
 	InputManager* input;
-	int lastTimeMoved, actionCoolDown = 350;
+	int lastTimeMoved, actionCoolDown = 200;
 	int longJump = 2, shortJump = 1;
 	int longTongue = 5, shortTongue = 2;
-	int cyclesJumpPrepared = 0, cyclesToPrepareJump = 50;
+	int cyclesJumpPrepared = 0, cyclesToPrepareJump = 20;
 	bool preparingJump;
 	MovementComponentFrog* movementComponent;
 	AttackComponentFrog* attackComponent;

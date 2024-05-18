@@ -176,13 +176,13 @@
   <object id="20" name="Termita" x="214" y="73.3333">
    <point/>
   </object>
-  <object id="22" name="Termita" type="Enemigo" x="280" y="409.333">
+  <object id="22" name="Termita" x="280" y="409.333">
    <point/>
   </object>
-  <object id="23" name="Termita" type="Enemigo" x="136.667" y="443.333">
+  <object id="23" name="Termita" x="136.667" y="443.333">
    <point/>
   </object>
-  <object id="24" name="Termita" type="Enemigo" x="216.667" y="282.667">
+  <object id="24" name="Termita" x="216.667" y="282.667">
    <point/>
   </object>
   <object id="21" name="Snake" type="Enemigo" x="104" y="171.333">

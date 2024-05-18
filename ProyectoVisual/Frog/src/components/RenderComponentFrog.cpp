@@ -18,7 +18,7 @@ void RenderComponentFrog::render()
     Vector2D pos = transform->getCasilla();
     Directions d = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
-    bool hooked = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getHooked();
+
    
     frogRect.x = pos.getX() * t + offset.getX() - cameraPos.getX();
     frogRect.y = pos.getY() * t + offset.getY() - cameraPos.getY();
@@ -26,12 +26,11 @@ void RenderComponentFrog::render()
     frogRect.h = size;
 
     //la lengua 
-    if (attacking || hooked) {
+    if (attacking) {
         int distanceMoved = static_cast<AttackComponentFrog*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
         Vector2D tongueEndPos = pos;
 
         if (distanceMoved < 0) { //Si el ataque acaba
-
             attacking = false;
             switch (d) { //Se reproduce el idle correspondiente
             case Directions::LEFT:
