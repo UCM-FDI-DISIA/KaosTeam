@@ -293,10 +293,25 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 }
 
 void RoomScene::revivePlayer() {
-	//Creamos de nuevo el player (sin embargo no se guardan los atributos que se habian aquirido hasta ahora)
-	gameOver = false;
-	createPlayer(lastFrogPosition, 100, 100);
+	//Se crea una nueva instancia del juagdor utilizando la copia guardada
+	player = new Entity(*savedPlayer);
+	AddEntity(player);
+	LifeComponent* lf = static_cast<LifeComponent*>(player->getComponent(LIFE_COMPONENT));
+	lf->AddActual(lf->GetMax()); // Reseteamos sus vidas
+	//movePlayer(lastFrogPosition);
 	cameraManager->setTarget(player);
+	gameOver = false; //reseteamos el booleano que indica el fin de partida
+}
+
+/*Este metodo crea una copia del player antes de eliminarlo (en caso de que el jugador quiera reinciar la partida y no perder su
+progreso en el juego)*/
+
+void RoomScene::savePlayer() {
+	//borramos al anterior player guardao
+	if (savedPlayer != nullptr)
+		delete savedPlayer;
+
+	savedPlayer = new Entity(*player);
 }
 
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
@@ -906,7 +921,10 @@ void RoomScene::removeEntity(Entity* entity) {
 
 	while (it != entityList.end() && !eliminated) {
 		if (*it == entity) {
-			if (*it == player) gameOver = true; //Si es el player -> Game Over
+			if (*it == player) {
+				savePlayer(); //hacemos una copia del jugador
+				gameOver = true; //Si es el player -> Game Over
+			}
 			it = entityList.erase(it);
 			eliminated = true;
 		}
@@ -918,7 +936,8 @@ RoomScene::~RoomScene() {
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;
 	}
-
+	//se borra el puntero auxiliar al jugador guardado
+	delete savedPlayer; 
 	//NO BORREIS LO SINGLETONS, Q SE BORRAN SOLOS
 	delete mapReader;
 }

@@ -31,7 +31,7 @@ void NewGameState::enter()
 	//Accedemos al runningState
 	RunningState* runningState = dynamic_cast<RunningState*>(Game::instance()->getState(Game::RUNNING));
 
-	//como running state tiene el puntero a la ultima escena, llamamos a resetGame desde alli
+	//como running state tiene el puntero a la escena de juego, hacemos que inicialice un nuevo juego desde ahí
 	if (runningState != nullptr) {
 		runningState->createNewGame();
 	}
