@@ -7,6 +7,7 @@
 #include "ColliderComponent.h"
 #include "LifeComponent.h"
 #include "../scenes/RoomScene.h"
+#include "TransformComponent.h"
 
 AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()) {
 	distance = 2;
@@ -22,18 +23,24 @@ AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance())
 AttackComponentFrog::~AttackComponentFrog() {
 	delete box;
 }
-
+void AttackComponentFrog::initComponent() {
+	//scen = ent->getScene();
+	scen = static_cast<RoomScene*>(ent->getScene());
+}
 //comprueba la colision entre la lengua y los diferentes enemigos
-void AttackComponentFrog::tongueTouch(Entity* ent, Collider c)
+void AttackComponentFrog::tongueTouch(Entity* e, Collider c)
 {
-	if (!hitted && ent->getName() == COCKROACH_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
+	if (!hitted && e->getName() == COCKROACH_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
 		hitted = true;
 		elapsedTime = sdlutils().virtualTimer().currTime();
-		static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana
+		static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana
 		//en el caso de la cucaracha cuando esta muere suelta su cabeza en la escena en la que se encuentren
-		if (!static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->alive()) {
-			scen = static_cast<RoomScene*>(ent->getScene());
-			scen->createHeadCockroach(static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+		if (!static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->alive()) {
+			/*scen = static_cast<RoomScene*>(e->getScene());
+			scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());*/
+			//scen = ent->getScene();
+			scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla(), false);
+			//ent->getScene()->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());
 		}
 	}
 }

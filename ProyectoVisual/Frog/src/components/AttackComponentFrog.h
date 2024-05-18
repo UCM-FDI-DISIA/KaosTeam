@@ -30,11 +30,12 @@ private:
 public:
 	AttackComponentFrog();
 	virtual ~AttackComponentFrog();
+	void initComponent() override;
 	void update() override;
 	int getDistanceMoved() { return distanceMoved; };
 	void attack(bool withHook = false);
 	void EndAttack();
-	void tongueTouch(Entity* ent, Collider c);
+	void tongueTouch(Entity* e, Collider c);
 	void UpdateBox(Vector2D casilla, int w, int h);
 	void setDistance(int d) { distance = d; }
 	bool attackHasHook() { return hasHook; };
