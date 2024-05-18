@@ -100,6 +100,7 @@ public:
 	Entity* createArbusto(Vector2D pos, int loot);
 	Entity* createBomb(Vector2D pos);
 	Entity* createTroncoTermitas(Vector2D pos);
+	Entity* createTermita(Vector2D pos);
 
 
 	Entity* createPiedraMovible(Vector2D pos, int objIntID);

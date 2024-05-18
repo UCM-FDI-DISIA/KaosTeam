@@ -722,6 +722,41 @@ Entity* RoomScene::createTroncoTermitas(Vector2D pos)
 
 	return log;
 }
+Entity* RoomScene::createTermita(Vector2D pos)
+{
+	Entity* temita = new Entity(this, BLACK_ANT_ENTITY);
+	Texture* txt = &sdlutils().images().at("blackAntSheet");
+
+	TransformComponent* transform = new TransformComponent(pos);
+	temita->addComponent(TRANSFORM_COMPONENT, transform);
+	Box* box = new Box(pos);
+	Collider coll = Collider(box);
+	ColliderComponent* collider = new ColliderComponent(transform);
+	collider->AddCollider(coll);
+	temita->addComponent(COLLIDER_COMPONENT, collider);
+	AnimationComponent* anim = new AnimationComponent();
+	anim->setContext(temita);
+	anim->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
+	anim->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
+	anim->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
+	anim->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
+	anim->addAnimation("DEAD", Animation({ Vector2D(3,0), Vector2D(3,0) }, false, false, false));
+
+	temita->addComponent(ANIMATION_COMPONENT, anim);
+
+	RenderComponent* renderBlackAnt = new RenderComponent(txt);
+	temita->addRenderComponent(renderBlackAnt);
+
+	//tiene el mismo comportamiento
+	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(anim);
+	temita->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
+	temita->addComponent(ATTACK_COMPONENT, attack);
+
+	AddEntity(temita);
+	return temita;
+}
 Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 {
 	// rotation: 0 norte, 1 este, 2 sur y 3 oeste
