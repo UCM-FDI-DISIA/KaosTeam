@@ -1,6 +1,11 @@
 #pragma once
 #include "../ecs/Component.h"
 #include "../sdlutils/Texture.h"
+/*
+* Clase que gestiona el componente para las entidades de la tienda
+* Se encarga sobre todo de su renderizado (saber si esta seleccionado y asi gesrionar la opacidad)
+y de saber si ha sido comprado
+*/
 class ShopComponent :public Component
 {
 private:

@@ -3,12 +3,19 @@
 #include "../managers/InputManager.h"
 #include "../components/RenderComponentFrog.h"
 #include "ColliderComponent.h"
+#include "../scenes/RoomScene.h"
+
+/*
+* Clase que gestiona el componente del ataque de la rana.
+* Esta va a comprobar la colision de su lengua con los enemigos y les va a quitar vida dependiendo del daño de la rana
+*/
 
 class Box;
 class Entity;
 class AttackComponentFrog : public Component
 {
 private:
+	const Uint32 WAIT_ATTACK = 1000;							//tiempo de espera para volver a atacar
 	int distance , distanceMoved ;
 	int attackFrameTime , lastTimeChanged, attackCooldown ;
 	//resting = 0, attacking = 1, retracting = 2
@@ -16,6 +23,9 @@ private:
 	InputManager* inputM;
 	bool hasHook;
 	Box* box;
+	RoomScene* scen = nullptr;									//escena donde se encuentran
+	bool hitted = true;											// "marca" al enemigo como dañado
+	Uint32 elapsedTime;
 
 public:
 	AttackComponentFrog();

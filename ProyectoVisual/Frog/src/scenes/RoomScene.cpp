@@ -309,7 +309,6 @@ Entity* RoomScene::createLifeFly(Vector2D pos){
 	AddEntity(c);
 	return c;
 }
-
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
 {
 	Entity* frog = new Entity(this, CRAZY_FROG_ENTITY);
@@ -484,7 +483,9 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	animcockroach->setContext(cockroach);
 	animcockroach->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
 	animcockroach->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
-	animcockroach->addAnimation("DAMAGE", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, false, false));
+	animcockroach->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
+	animcockroach->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
+	animcockroach->addAnimation("DEAD", Animation({ Vector2D(3,0), Vector2D(3,0) }, false, false, false));
 	//animcockroach->addAnimation("DEAD_DOWN", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, true, false));
 	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
 
@@ -497,7 +498,7 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	cockroach->addComponent(ATTACK_COMPONENT, attack);
 	LifeComponent* lc = new LifeComponent(2, 2);
 	cockroach->addComponent(LIFE_COMPONENT, lc);
-	createHeadCockroach(pos);
+
 	AddEntity(cockroach);
 	return cockroach;
 }

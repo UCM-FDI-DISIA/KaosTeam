@@ -1,6 +1,9 @@
 #pragma once
 #include "../ecs/Component.h"
 
+/*
+* Clase que gestiona el inventario de la rana
+*/
 //Datos sobre las mejoras que tiene la rana ahora mismo. Al principio de la partida empiezan a 0.
 struct MejorasData {
 	MejorasData();
@@ -16,6 +19,8 @@ struct MejorasData {
 	int bombas;
 	//Cuantos orbes tiene el jugador
 	int orbes;
+	//Cuantas cabeza de cucaracha tiene el jugador
+	int roach_head;
 };
 
 //Datos sobre las habilidades que tiene la rana ahora mismo. Al principio de la partida empiezan como false (no las tiene).

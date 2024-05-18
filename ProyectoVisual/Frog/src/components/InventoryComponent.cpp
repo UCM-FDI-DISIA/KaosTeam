@@ -64,8 +64,12 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 	case BOMBAS:
 		mejoras.bombas += 1;
 		std::cout << "\nNumero de bombas: " << mejoras.bombas << std::endl;
+		break;
 	case ORBES:
 		mejoras.orbes += 1;
+		break;
+	case ROACH_HEAD:
+		mejoras.roach_head += 1;
 		break;
 	//AQUI FALTA LA CABEZA DE LA CUCARACHA
 	default:
