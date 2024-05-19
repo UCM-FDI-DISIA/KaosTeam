@@ -78,6 +78,8 @@ public:
 		shopManager = Shop::instance();
 		shopManager->setPlayer(player);
 		shopManager->setHUD(HUD);
+
+		AddEntity(createTroncoTermitas(Vector2D(2, 4)));
 		
 	};
 

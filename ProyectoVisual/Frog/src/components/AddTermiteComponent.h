@@ -4,12 +4,12 @@
 class AddTermiteComponent: public Component
 {
 public:
-	AddTermiteComponent(Vector2D pos) : spawnPos(pos) {};
+	AddTermiteComponent(Vector2D pos);
 	void update() override;
 
 private:
 	Vector2D spawnPos;
-	int lastTimeGenerated, waitTime = 500;
+	int lastTimeGenerated, waitTime = 15000;
 
 };
 

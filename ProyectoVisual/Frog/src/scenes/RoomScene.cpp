@@ -5,6 +5,7 @@
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
 #include "../sdlutils/Texture.h"
+#include "../components/AddTermiteComponent.h"
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
@@ -814,6 +815,9 @@ Entity* RoomScene::createTroncoTermitas(Vector2D pos)
 
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
 	log->addComponent(ATTACK_COMPONENT, attack); //para q colisione
+
+	AddTermiteComponent* add = new AddTermiteComponent(pos);
+	log->addComponent(TERMITE_GENERATOR_COMPONENT, add);
 
 
 	return log;
