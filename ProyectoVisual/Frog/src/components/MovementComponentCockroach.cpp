@@ -22,7 +22,7 @@ void MovementComponentCockroach::initComponent() {
 
 void MovementComponentCockroach::update() {
 
-	/*if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
+	if (!isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		switch (actualDirection)
 		{
@@ -77,7 +77,7 @@ void MovementComponentCockroach::update() {
 			isMoving = false;
 			changeDirection();
 		}
-	}*/
+	}
 }
 //metodo para cambiar de direccion y todo lo que conlleva eso
 void MovementComponentCockroach::changeDirection() {

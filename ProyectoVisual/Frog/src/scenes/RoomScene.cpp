@@ -1005,20 +1005,32 @@ void RoomScene::changeMap()
 	while (it != entityList.end()) {
 		//Por la arquitectura actual, es necesario mantener la entidad de frog.
 		//Para cada entidad se comprueba su name, si no es un frog lo borra.
-		if ((*it)->getName() != FROG_ENTITY)
+		if ((*it)->getName() != FROG_ENTITY) {
+			delete* it;
 			it = entityList.erase(it);
+		}
+			
 		else
 			it++;
 	}
 
-	mapReader->clearMap();
-	mapReader->loadBg(nextMap, sdlutils().renderer());
-	mapReader->loadObj(nextMap);
+	if (mapReader != nullptr) {
+		mapReader->clearMap();
+		mapReader->loadBg(nextMap, sdlutils().renderer());
+		mapReader->loadObj(nextMap);
 
-	cameraManager->setTarget(player);
-
+	}
+	
+	if (cameraManager != nullptr) {
+		cameraManager->setTarget(player);
+	}
+	
+	TransformComponent* transform = static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT));
+	if (transform != nullptr) {
+		lastFrogPosition = transform->getCasilla();
+	}
 	//Actualizamos ultima posición de Spawn de la rana
-	lastFrogPosition = static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->getCasilla();
+	
 
 	needMapChange = false;
 }

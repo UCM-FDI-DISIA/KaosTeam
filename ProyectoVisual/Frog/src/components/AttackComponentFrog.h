@@ -3,12 +3,10 @@
 #include "../managers/InputManager.h"
 #include "../components/RenderComponentFrog.h"
 #include "ColliderComponent.h"
-#include "../scenes/RoomScene.h"
 
 /*
 * Clase que gestiona el componente del ataque de la rana.
 * Esta va a comprobar la colision de su lengua con los enemigos y les va a quitar vida dependiendo del daño de la rana
-* En esta clase tambien se va a hacer el drop del posible loot que suelten los enemigos al morir
 */
 
 class Box;
@@ -24,11 +22,10 @@ private:
 	InputManager* inputM;
 	bool hasHook;
 	Box* box;
-	RoomScene* scen = nullptr;									//escena donde se encuentran
+	//RoomScene* scen = nullptr;									//escena donde se encuentran
 	bool hitted = true;											// "marca" al enemigo como dañado
 	Uint32 elapsedTime;
-	RandomNumberGenerator& rand_;							//Generador de numeros random
-	void dropLoot(Vector2D pos);
+	
 public:
 	AttackComponentFrog();
 	virtual ~AttackComponentFrog();
