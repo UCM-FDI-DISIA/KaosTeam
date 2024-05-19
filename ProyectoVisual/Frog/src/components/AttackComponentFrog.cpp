@@ -47,8 +47,16 @@ void AttackComponentFrog::tongueTouch(Entity* e, Collider c)
 		//}
 		/*Si la entidad con la que interacciona la lengua tiene un LifeComponent...*/
 		LifeComponent* lCEnemy = static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT));
-		if (lCEnemy != nullptr)
-			lCEnemy->hit(1);  //damage
+		if (lCEnemy != nullptr) {
+			/*Accedemos al inventario para tener en cuenta el numero de avispas*/
+			InventoryComponent* inv = static_cast<InventoryComponent*>(ent->getComponent(INVENTORY_COMPONENT));
+			if (inv != nullptr) {
+				lCEnemy->hit(1 + inv->mejoras.avispas);  //damage
+			}
+			else {
+				lCEnemy->hit(1);
+			}
+		}
 		
 	}
 
