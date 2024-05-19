@@ -820,7 +820,7 @@ Entity* RoomScene::createTroncoTermitas(Vector2D pos)
 }
 Entity* RoomScene::createTermita(Vector2D pos)
 {
-	Entity* temita = new Entity(this, BLACK_ANT_ENTITY);
+	Entity* temita = new Entity(this, TERMITE_ENTITY);
 	Texture* txt = &sdlutils().images().at("termita");
 
 	TransformComponent* transform = new TransformComponent(pos);
@@ -840,8 +840,8 @@ Entity* RoomScene::createTermita(Vector2D pos)
 
 	temita->addComponent(ANIMATION_COMPONENT, anim);
 
-	RenderComponent* renderBlackAnt = new RenderComponent(txt);
-	temita->addRenderComponent(renderBlackAnt);
+	RenderComponent* render = new RenderComponent(txt);
+	temita->addRenderComponent(render);
 
 	//tiene el mismo comportamiento
 	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(anim);
@@ -850,7 +850,6 @@ Entity* RoomScene::createTermita(Vector2D pos)
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
 	temita->addComponent(ATTACK_COMPONENT, attack);
 
-	AddEntity(temita);
 	return temita;
 }
 Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)

@@ -43,7 +43,7 @@
         { "id" : "orbeOff", "file" : "resources/Sprites/OrbeOff.png", "rows" : 1, "cols" : 1},
         { "id" : "orbeOn", "file" : "resources/Sprites/OrbeOn.png", "rows" : 1, "cols" : 1},
         { "id" : "termitaTronco", "file" : "resources/Sprites/TroncoSpritesheet.png", "rows" : 1, "cols" : 3},
-        { "id" : "termita", "file" : "resources/Sprites/TermitaSpritesheet.png", "rows" : 2, "cols" : 3},
+        { "id" : "termita", "file" : "resources/Sprites/TermitaSpritesheet.png", "rows" : 3, "cols" : 2},
 
 
         { "id" : "MenuInicio", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
