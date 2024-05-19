@@ -51,7 +51,8 @@
         { "id" : "BotonJuego", "file" : "resources/Buttons/MenuJuego.png", "rows" : 1, "cols" : 1},
         { "id" : "BotonSalir", "file" : "resources/Buttons/MenuSalir.png", "rows" : 1, "cols" : 1},
         { "id" : "BotonSalirPausa", "file" : "resources/Buttons/MenuSalirPausa.png", "rows" : 1, "cols" : 1},
-        { "id" : "BotonSeguirPausa", "file" : "resources/Buttons/MenuSeguir.png", "rows" : 1, "cols" : 1}
+        { "id" : "BotonSeguirPausa", "file" : "resources/Buttons/MenuSeguir.png", "rows" : 1, "cols" : 1},
+        { "id" : "BotonReintentar", "file" : "resources/Buttons/MenuReintentar.png", "rows" : 1, "cols" : 1}
 
     ],
     "messages" : [
