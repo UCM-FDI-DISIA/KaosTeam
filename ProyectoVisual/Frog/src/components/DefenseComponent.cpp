@@ -7,7 +7,7 @@
 
 void DefenseComponent::update()
 {
-	if (!otherStatesChecker() && auxInput->getAction4() && (DataManager::GetInstance()->getFrameTime() - timeSinceChange) > defenseCooldown)
+	if (!otherStatesChecker() && auxInput->getAction1() && (DataManager::GetInstance()->getFrameTime() - timeSinceChange) > defenseCooldown)
 	{
 		defenseActive = true;
 		timeSinceChange = DataManager::GetInstance()->getFrameTime();

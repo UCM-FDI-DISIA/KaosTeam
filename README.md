@@ -14,13 +14,13 @@ _Flonk!_ es un juego de aventuras de estilo clásico en el que Flonk, la rana de
 
 ## Mecánicas del jugador
 
-El movimiento del juego está basado en saltos de casilla en casilla en un tablero donde se desarrollará la acción. También tendrá un set de habilidades iniciales que luego serán mejoradas con mejoras que aumentarán la fuerza y utilidad de estas y se podrá ampliar el repertorio de habilidades disponibles con otras mejoras obtenidas durante la partida.
+El movimiento del juego está basado en saltos de casilla en casilla en un tablero donde se desarrollará la acción. También tendrá un set de habilidades iniciales que luego serán mejoradas con mejoras que aumentarán la fuerza y utilidad de estas.
 
 - **Movimientos básicos**
 
   - **Movimiento basico de salto** de casilla en casilla. El movimiento es arriba, abajo, izquierda o derecha pulsando la tecla correspondiente.
-  - **Salto largo** para avanzar varias casillas. De base se saltarán tres casillas, aumentando con la mejora. Para utilizar el salto largo se mantiene pulsado el botón de movimiento correspondiente a la dirección.
-  - **Ataque básico** con la lengua de la rana. Este afectaría a las casillas en la dirección que el jugador apunte/mire. El alcance inicial es de 3 casillas, aumentará con la mejora. El daño inicial que hace es de 1 golpe, aumentará con la mejora.
+  - **Salto largo** para avanzar varias casillas. De base se saltarán dos casillas, aumentando con la mejora. Para utilizar el salto largo se mantiene pulsado el botón de movimiento correspondiente a la dirección.
+  - **Ataque básico** con la lengua de la rana. Este afectaría a las casillas en la dirección que el jugador apunte/mire. El alcance inicial es de dos casillas, aumentará con la mejora. El daño inicial que hace es de 1 golpe, aumentará con la mejora.
   - **Escudo** con el saco hinchable de la rana localizado en la parte inferior de su boca. Lo usará para defenderse y rechazar ataques que provengan de determinada dirección.
 - **Mejoras**
 
@@ -35,12 +35,15 @@ El movimiento del juego está basado en saltos de casilla en casilla en un table
    - **Saco de hormigas** desbloqueable en el hormiguero. Permitirá a la rana poder almacenar más de una hormiga roja y poder transportarlo y usarlo cuando quiera. 
   
 
-- **Power Ups**
+- **Controles**
 
-Al romper objetos o matar enemigos, podrán aparecer aleatoriamente power ups que otorgarán al jugador un poder especial de forma temporal.
-
-  - **Luciérnagas** que hacen brillar al jugador, iluminando la oscuridad a su alrededor.
-  - Por desarrollar…
+  - **Flechas** : con las que se mueve la rana según la dirección (derecha, izquierda, arriba, abajo).
+  - **Z** : acción 1, escudo, seleccionar botón, en la tienda mover hacia la izquierda.
+  - **X** : acción 2, atacar con lengua, en la tienda comprar.
+  - **C** : acción 3, atacar con lengua gancho, en la tienda mover hacia la derecha.
+  - **V** : acción 4, lanzar items como bombas, orbes, cabeza de cucaracha.
+  - **SHIFT + ACTION** : se realiza la acción correspondiente pero con la mejora (salto más largo, distancia del ataque de la lengua más larga).
+  - **ESC** : ir al menú de pausa.
 
 </details>
 
@@ -92,9 +95,9 @@ Daño recibido: Media Mosca
 
 ### Zona de la cocina del chef francés
 
-Vida: inmortal
+Vida: 2 golpes
 Daño recibido: Media Mosca
-- **Cucarachas** No atacan, simplemente Flonk tiene que derrotarlas y estas al morir sueltan su cabeza que es lo que tiene que recoger Flonk.(Son inmortales pero cuando son atacadas estas se derrumban, dejándolas immóbiles pero en unos pocos segundos, estas se volverán a levantarse para atacarte. Para atacarte, estas te tiran su cabeza como proyectil. Después de atacarte, estas tendrán que ir a recuperar su cabeza dejándolas vulnerables.)
+- **Cucarachas** No atacan, simplemente Flonk tiene que derrotarlas y estas al morir sueltan su cabeza que Flonk puede recoger y lanzar más tarde para atacar.
 
 </details>
 
@@ -220,8 +223,9 @@ Durante la aventura, el jugador encontrará lombrices de uróboros que podrá in
 Hay varios tipos de lombrices de uróboros con diferente valor siendo este ascendente dependiendo de su rareza.
 
 ### Valores de uróboros
-- Uróboro rosa: X
-- Uróboro dorado: X
+- Uróboro rosa: 1
+- Uróboro morado: 5
+- Uróboro dorado: 20
 ### Mejoras
 - Avispa (15 uróboros): Flonk tendrá la capacidad de hacer 3 golpes de daño al atacar.
 - Saltamonte (10 uróboros): en vez de saltar de casilla en casilla, Flonk tendrá la capacidad de saltar de tres en tres casillas.
@@ -249,8 +253,6 @@ Por un lado tenemos en la esquina superior izquierda una barra con iconos de mos
 
 Además, en la esquina superior derecha, se muestra un icono de una lombriz (que es como se representa el dinero en el juego) junto a un contador (que nos indica la cantidad de dinero en el juego). A medida que el jugador obtenga lombrices, dependiendo de su color, el contador aumenta una cantidad u otra.
 
-Por último, debajo de las lombrices si se compra en la tienda alguna mejora permanente (o se obtiene de forma temporal) aparecerá el animal(avispa, ciempiés, saltamnonte) que representa esa mejora para recordar al jugador de que la tiene y puede usarla.
-
 </details>
 
 <details>
@@ -270,17 +272,14 @@ El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de
 ## Menús de juego y flujo de juego
 
 **Menú principal:**
- El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar, un botón que le lleva al menú de ajustes y un botón para salir del juego.
-
-**Menú de ajustes:** 
- Este menú muestra los controles y permite ajustar características del juego.
+ El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar y un botón para salir del juego.
 
 **Durante el juego:**
  En la pantalla se ve la interfaz descrita antes junto a un botón que permite ir al menú de pausa.
 ![](assets/imgGdd/image6.png)
 
 **Menú de pausa:** 
-En el menú de pausa el jugador puede volver a la partida, ir al menú de ajustes o salir del juego.
+En el menú de pausa el jugador puede volver a la partida o salir ir al menú principal.
 
 </details>
 
@@ -298,7 +297,7 @@ En el menú de pausa el jugador puede volver a la partida, ir al menú de ajuste
 
 <summary>Historia</summary>
 
-## Historia (seguramente se puede contar mejor y falten cosas)
+## Historia 
 
 Flonk se despierta un día cualquiera y se entera que un chef francés ha secuestrado a su hermana con el objetivo de utilizarla
 para hacer un guiso. Descontento con esto, Flok deberá salir de su estanque de confianza para salvar a su hermana del chef.

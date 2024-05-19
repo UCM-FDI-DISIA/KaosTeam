@@ -34,7 +34,7 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_LSHIFT:
 			DowntiCheck(BTN_SHIFT);
 			break;
-		case SDLK_z:	//Se puede cambiar si queremos usar otra tecla
+		case SDLK_z:	
 			DowntiCheck(BTN_ACTION1);
 			break;
 		case SDLK_x:
@@ -43,7 +43,7 @@ void InputManager::UpdateStates(const SDL_Event& event) {
 		case SDLK_c:
 			DowntiCheck(BTN_ACTION3);
 			break;
-		case SDLK_v:	// Escudo
+		case SDLK_v:	
 			DowntiCheck(BTN_ACTION4);
 			break;
 		case SDLK_ESCAPE:
