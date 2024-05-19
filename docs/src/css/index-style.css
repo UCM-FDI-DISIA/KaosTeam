@@ -108,18 +108,33 @@
 	position: relative;
 	margin-left: 42%;
 	margin-right: 42%;
-	background-color: #28cb4b;
+	background-color: #28CB4B;
 	text-align: center;
 	padding-left: 20px;
 	padding-right: 20px;
+	border-style: solid;
 	border-radius: 20px;
-	border: none;
+	border-width: 5px;
+	border-color: #1D5840;
 	cursor: pointer;
 	margin-top: 20px;
+	/*Texto*/
+	font-size: 25px;
+	color: #073410;
+	font-family: "Shantell Sans", cursive;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: italic;
+	font-variation-settings:
+	  "BNCE" 0,
+	  "INFM" 0,
+	  "SPAC" 0;	font-weight: 700;
 }
+
 .boton:hover {
-	background-color: #0e5d1f;
+	background-color: #106823;
 	transition-duration: 0.4s;
+	color: #f2f2f2;
 }
 /*Titulo tamaño subtitulo con reborde*/
 .titles1 {
@@ -132,9 +147,7 @@
 	font-variation-settings:
 	  "BNCE" 0,
 	  "INFM" 0,
-	  "SPAC" 0;	font-weight: 700;
-	font-style: normal;
-	
+	  "SPAC" 0;	font-weight: 700;	
 }
 
 .desc-parag1 {
