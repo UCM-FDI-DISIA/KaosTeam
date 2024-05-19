@@ -10,19 +10,19 @@ class TransformComponent;
 
 class RenderComponentSnake : public RenderComponent {
 private:
-	Texture* tongueText;
+	Texture* neckTexture;
 	AnimationComponent* snakeAnimator;
 	TransformComponent* transform;
 	float scale;
 	bool attacking = false;
 public:
 	RenderComponentSnake(Texture* ts, Texture* tt, AnimationComponent* animSnake, float sc = 1) :
-		RenderComponent(ts), tongueText(tt),
+		RenderComponent(ts), neckTexture(tt),
 		snakeAnimator(animSnake),
 		scale(sc),transform(nullptr){};
 	~RenderComponentSnake() {
-		tongueText=nullptr;
-		myTexture=nullptr;
+		neckTexture = nullptr;
+		myTexture = nullptr;
 	};
 	void render();
 	void AttackStart();

@@ -46,6 +46,13 @@ void AttackComponentSnake::attack() {
 	static_cast<RenderComponentSnake*>(ent->getRenderComponentSnake())->AttackStart();
 }
 
+void AttackComponentSnake::checkHitWithBody(Entity* e, Collider c) {
+	/*if (!hitted && e->getName() == FROG_ENTITY) {
+		static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(damage);
+		hitted = true;
+	}*/
+};
+
 AttackComponentSnake::~AttackComponentSnake() {
 	delete attackBox;
 };
@@ -64,6 +71,9 @@ void AttackComponentSnake::initComponent() {
 		checkHit(e, c);
 		});
 	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->AddCollider(c);
+	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {
+		checkHitWithBody(e, c);
+		});
 }
 
 //Comprueba colisión con la rana, hace daño solo si no ha hecho daño en este atque (variable hitted)

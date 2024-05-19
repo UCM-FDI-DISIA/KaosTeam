@@ -7,30 +7,30 @@
 
 void RenderComponentSnake::render() {
     int t = ent->getScene()->getMapReader()->getTileSize();
-    int size = (int)t * scale;
-    SDL_Rect frogRect; // Rect de la rana
-    SDL_Rect tongueRect;                         
+    int size = t * scale;
+    SDL_Rect snakeRect;
+    SDL_Rect neckRect;                         
 
-    Vector2D offset = transform->getOffset()                      //el offset el objeto
-                     + Vector2D((t - size) / 2, (t - size) / 2);  //para que este centrado en la casilla
+    Vector2D offset = transform->getOffset()                      
+                     + Vector2D((t - size) / 2, (t - size) / 2); 
     Vector2D pos = transform->getCasilla();
     Direction d = static_cast<MovementComponentSnake*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
 
-    frogRect.x = pos.getX() * t + offset.getX() - cameraPos.getX();
-    frogRect.y = pos.getY() * t + offset.getY() - cameraPos.getY();
-    frogRect.w = size;
-    frogRect.h = size;
+    snakeRect.x = pos.getX() * t + offset.getX() - cameraPos.getX();
+    snakeRect.y = pos.getY() * t + offset.getY() - cameraPos.getY();
+    snakeRect.w = size;
+    snakeRect.h = size;
 
     //el cuello de la serpiente
     if (attacking) {
         int distanceMoved = static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
         Vector2D tongueEndPos = pos;
 
-        if (distanceMoved < 0) { //Si el ataque acaba
+        if (distanceMoved < 0) {
             attacking = false;
-            switch (d) { //Se reproduce el idle correspondiente
+            switch (d) {
             case Direction::LEFT_ROT:
                 snakeAnimator->playAnimation("IDLE_LEFT");
                 break;
@@ -47,37 +47,36 @@ void RenderComponentSnake::render() {
                 break;
              }
         }
-        else { //Sino, se renderiza el ataque
-            //parte del medio
-            tongueRect.h = size;
-            tongueRect.w = t;
-            tongueRect.y = frogRect.y;
-            tongueRect.x = frogRect.x + size / 2;
+        else { 
+            neckRect.h = size;
+            neckRect.w = t;
+            neckRect.y = snakeRect.y;
+            neckRect.x = snakeRect.x + size / 2;
 
             float endAngle = 0.0f;
             SDL_RendererFlip endFlip = SDL_FLIP_NONE;
 
-            switch (d) { //Se configura como se empieza a renderizar la lengua
+            switch (d) {
             case Direction::LEFT_ROT:
-                tongueRect.x = frogRect.x - size / 2;
+                neckRect.x = snakeRect.x - size / 2;
                 endFlip = SDL_FLIP_HORIZONTAL;
                 tongueEndPos.setX(tongueEndPos.getX() - distanceMoved);
                 break;
             case Direction::RIGHT_ROT:
-                tongueRect.x = frogRect.x + size / 2;
+                neckRect.x = snakeRect.x + size / 2;
                 tongueEndPos.setX(tongueEndPos.getX() + distanceMoved);
                 break;
             case Direction::UP_ROT:
-                tongueRect.y = frogRect.y - size / 2;
-                tongueRect.x = frogRect.x + 5;
+                neckRect.y = snakeRect.y - size / 2;
+                neckRect.x = snakeRect.x + 5;
                 endAngle = -90.0f;
                 tongueEndPos.setY(tongueEndPos.getY() - distanceMoved);
                 break;
             case Direction::DOWN_ROT:
                 snakeAnimator->playAnimation("ATTACK_DOWN");
-                myTexture->renderFrame(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol());
-                tongueRect.y = frogRect.y + size / 2;
-                tongueRect.x = frogRect.x - 5;
+                myTexture->renderFrame(snakeRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol());
+                neckRect.y = snakeRect.y + size / 2;
+                neckRect.x = snakeRect.x - 5;
                 endAngle = 90.0f;
                 tongueEndPos.setY(tongueEndPos.getY() + distanceMoved);
                 break;
@@ -85,39 +84,36 @@ void RenderComponentSnake::render() {
                 break;
             }
             for (int i = 0; i < distanceMoved; i++) {
-                switch (d) { //Dependiendo de la direccion, la lengua se alarga en una dir u otra
+                switch (d) {
                 case Direction::LEFT_ROT:
                     snakeAnimator->playAnimation("ATTACK_LEFT");
-                    tongueText->renderFrameWithFlip(tongueRect, 0, 0, endFlip, endAngle);
-                    tongueRect.x -= tongueRect.w;
+                    neckTexture->renderFrameWithFlip(neckRect, 0, 0, endFlip, endAngle);
+                    neckRect.x -= neckRect.w;
                     break;
                 case Direction::RIGHT_ROT:
                     snakeAnimator->playAnimation("ATTACK_RIGHT");
-                    tongueText->renderFrameWithFlip(tongueRect, 0, 0, endFlip, endAngle);
-                    tongueRect.x += tongueRect.w;
+                    neckTexture->renderFrameWithFlip(neckRect, 0, 0, endFlip, endAngle);
+                    neckRect.x += neckRect.w;
                     break;
                 case Direction::UP_ROT:
                     snakeAnimator->playAnimation("ATTACK_UP");
-                    tongueText->renderFrameWithFlip(tongueRect, 0, 0, endFlip, endAngle);
-                    tongueRect.y -= tongueRect.h;
+                    neckTexture->renderFrameWithFlip(neckRect, 0, 0, endFlip, endAngle);
+                    neckRect.y -= neckRect.h;
                     break;
                 case Direction::DOWN_ROT:
-                    //la rana se renderiza antes en este caso particular
-                    tongueText->renderFrameWithFlip(tongueRect, 0, 0, endFlip, endAngle);
-                    tongueRect.y += tongueRect.h;
+                    neckTexture->renderFrameWithFlip(neckRect, 0, 0, endFlip, endAngle);
+                    neckRect.y += neckRect.h;
                     break;
                 default:
                     break;
                 }
             }
-            //Renderizamos punta de la lengua
-            static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->UpdateBox(tongueEndPos, tongueRect.w, tongueRect.h);
-
-            tongueText->renderFrameWithFlip(tongueRect, 1, 0, endFlip, endAngle);
+            static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->UpdateBox(tongueEndPos, neckRect.w, neckRect.h);
+            neckTexture->renderFrameWithFlip(neckRect, 1, 0, endFlip, endAngle);
         }
     }
 
-    switch (d) { //Se reproduce el idle correspondiente
+    switch (d) {
     case Direction::LEFT_ROT:
         snakeAnimator->playAnimation("IDLE_LEFT");
         break;
@@ -133,15 +129,10 @@ void RenderComponentSnake::render() {
     default:
         break;
     }
-
-    //renderizamos la serpiente (depues de la lengua si no mira hacia abajo en el ataque)
-    //if (d != DOWN || !attacking)
-    //{
-    if (snakeAnimator->getCurrentAnim().flipHorizontal) //Si se tiene que flipear
-        myTexture->renderFrameWithFlip(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
+    if (snakeAnimator->getCurrentAnim().flipHorizontal) //si se flipea la animacion
+        myTexture->renderFrameWithFlip(snakeRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
     else
-        myTexture->renderFrame(frogRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol());
-    //}
+        myTexture->renderFrame(snakeRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol());
 }
 
 void RenderComponentSnake::AttackStart() {

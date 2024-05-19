@@ -33,22 +33,22 @@ void AttackComponentFrog::tongueTouch(Entity* e, Collider c)
 	if (!hitted && c.getName() == TRANSFORM_COLLIDER) {
 		hitted = true;
 		elapsedTime = sdlutils().virtualTimer().currTime();
-		if (e->getName() == COCKROACH_ENTITY) {
-			static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana a la cucaracha
-			//en el caso de la cucaracha cuando esta muere suelta su cabeza en la escena en la que se encuentren
-			if (!static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->alive()) {
-				/*scen = static_cast<RoomScene*>(e->getScene());
-				scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());*/
-				//scen = ent->getScene();
-				scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla(), false);
-				//ent->getScene()->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());
-			}
-		}
-		/*Solo lo comporbamos con los enemigos (para evitar errores al detctar los jarrones u objetos interactuables)*/
-		else if (e->getName() == CRAZY_FROG_ENTITY || e->getName() == FISH_ENTITY ||
-			e->getName() == SNAKE_ENTITY || e->getName() == BLACK_ANT_ENTITY) {
-			static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(1);  //damage
-		}
+		//if (e->getName() == COCKROACH_ENTITY) {
+		//	static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana a la cucaracha
+		//	//en el caso de la cucaracha cuando esta muere suelta su cabeza en la escena en la que se encuentren
+		//	if (!static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->alive()) {
+		//		/*scen = static_cast<RoomScene*>(e->getScene());
+		//		scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());*/
+		//		//scen = ent->getScene();
+		//		scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla(), false);
+		//		//ent->getScene()->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+		//	}
+		//}
+		/*Si la entidad con la que interacciona la lengua tiene un LifeComponent...*/
+		LifeComponent* lCEnemy = static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT));
+		if (lCEnemy != nullptr)
+			lCEnemy->hit(1);  //damage
+		
 	}
 
 	/*Lo dejo comentado por si a Cristina le da problemas*/
