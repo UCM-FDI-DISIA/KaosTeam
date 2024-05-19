@@ -37,6 +37,7 @@
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
 #include "../components/PuertaComponent.h"
+#include "../components/MovementComponentHeadRoach.h"
 
 class Texture;
 class RoomScene : public Scene
@@ -122,7 +123,7 @@ public:
 
 	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap, int objIntID, bool objInteracted);
 	Entity* createCockroach(Vector2D pos);
-	Entity* createHeadCockroach(Vector2D pos);
+	Entity* createHeadCockroach(Vector2D pos, bool move);
 	Entity* createExplotableDoor(Vector2D pos);
 	Entity* createConveyorBelt(Vector2D pos, int orientation);
 	

@@ -95,6 +95,11 @@ void FrogInputComponent::update()
 				throwerComponent->throwStart();
 				std::cout << "\nHAS LANZADO BOMBAS CON EL SACO" << std::endl;
 			}
+			else if ( inventoryComponent->mejoras.roach_head >= 1) {
+				throwerComponent->throwItem(ROACH_HEAD, movementComponent);
+				throwerComponent->throwStart();
+				std::cout << "\nHAS LANZADO CABEZA" << std::endl;
+			}
 		}
 		//else if (input->getAction2()) { 
 		//}

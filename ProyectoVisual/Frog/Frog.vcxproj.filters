@@ -75,6 +75,7 @@
     <ClCompile Include="src\components\ItemThrowerComponent.cpp" />
     <ClCompile Include="src\components\DamageBehaviourComponent.cpp" />
     <ClCompile Include="src\components\PuertaComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentHeadRoach.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="src\components\ItemThrowerComponent.h" />
     <ClInclude Include="src\components\DamageBehaviourComponent.h" />
     <ClInclude Include="src\components\PuertaComponent.h" />
+    <ClInclude Include="src\components\MovementComponentHeadRoach.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

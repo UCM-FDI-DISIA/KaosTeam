@@ -486,7 +486,7 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	AddEntity(redAnt);
 	return redAnt;
 }
-Entity* RoomScene::createHeadCockroach(Vector2D pos) {
+Entity* RoomScene::createHeadCockroach(Vector2D pos, bool move) {
 	Entity* head = new Entity(this, COGIBLE_ENTITY);
 	TransformComponent* transform = new TransformComponent(pos);
 	head->addComponent(TRANSFORM_COMPONENT, transform);
@@ -499,6 +499,9 @@ Entity* RoomScene::createHeadCockroach(Vector2D pos) {
 
 	CogibleObjectComponent* cogible = new CogibleObjectComponent(ROACH_HEAD);
 	head->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+
+	MovementComponentHeadRoach* mvm = new MovementComponentHeadRoach(move);
+	head->addComponent(MOVEMENT_COMPONENT, mvm);
 	AddEntity(head);
 	return head;
 }
