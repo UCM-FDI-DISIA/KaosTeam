@@ -42,6 +42,7 @@ void LifeComponent::hit(int damage) {
 		//animator->stopAnimation(); //Paramos la animaci�n que estuviese haciendo
 		//animator->playAnimation("DEATH"); //Reproducimos animacion de muerte (si la tiene)
 		timerforDelete.resume(); //Ponemos contador en marcha
+		damageComp->setDead(true); //la entidad esta muerta
 	}
 }
 

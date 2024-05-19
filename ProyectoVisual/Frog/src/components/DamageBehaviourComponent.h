@@ -15,10 +15,12 @@ private:
 	std::string damageAnimation;
 
 	Uint32 elapsedTime;
+	bool isDead;
 public:
 	DamageBehaviourComponent(std::string damageAnim);
 	virtual ~DamageBehaviourComponent();
 	void manageDamage();
+	void setDead(bool value);
 
 	void initComponent() override;
 	void update() override;

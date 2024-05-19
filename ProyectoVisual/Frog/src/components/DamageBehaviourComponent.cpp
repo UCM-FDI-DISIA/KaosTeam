@@ -1,7 +1,7 @@
 ﻿#include "DamageBehaviourComponent.h"
 #include "../scenes/RoomScene.h"
 
-DamageBehaviourComponent::DamageBehaviourComponent(std::string damageAnim) : animator(nullptr), move(nullptr){
+DamageBehaviourComponent::DamageBehaviourComponent(std::string damageAnim) : animator(nullptr), move(nullptr), isDead(false) {
 	damageAnimation = damageAnim;
 }
 
@@ -17,6 +17,10 @@ void DamageBehaviourComponent::manageDamage() {
 	elapsedTime = sdlutils().virtualTimer().currTime();
 }
 
+void DamageBehaviourComponent::setDead(bool value) {
+	isDead = value;
+}
+
 void DamageBehaviourComponent::initComponent() {
 	animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	move = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
@@ -24,8 +28,7 @@ void DamageBehaviourComponent::initComponent() {
 
 //cuando pase el tiempo que esta inmovil, la entidad podra moverse otra vez
 void DamageBehaviourComponent::update() {
-	if(!move->getMoveState() && sdlutils().virtualTimer().currTime() > elapsedTime + WAIT_TIME) {
+	if (!move->getMoveState() && sdlutils().virtualTimer().currTime() > elapsedTime + WAIT_TIME && !isDead) {
 		move->setCanMove(true);
 	}
-
 }

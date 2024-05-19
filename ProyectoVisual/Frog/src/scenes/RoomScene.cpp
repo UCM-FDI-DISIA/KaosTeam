@@ -331,6 +331,9 @@ void RoomScene::revivePlayer() {
 	LifeComponent* lf = static_cast<LifeComponent*>(player->getComponent(LIFE_COMPONENT));
 	lf->AddActual(lf->GetMax()); 
 	lf->resetTimer();
+	DamageBehaviourComponent* dm = static_cast<DamageBehaviourComponent*>(player->getComponent(DAMAGE_COMPONENT));
+	dm->setDead(false);
+
 	//Reproducimos animacion inicial
 	AnimationComponent* anim = static_cast<AnimationComponent*>(player->getComponent(ANIMATION_COMPONENT));
 	anim->playAnimation("IDLE_DOWN");
@@ -372,6 +375,9 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	animFrog->addAnimation("ATTACK_UP", Animation({ Vector2D(1,2) }, false, false, false));
 	animFrog->addAnimation("ATTACK_DOWN", Animation({ Vector2D(0,2) }, false, false, false));
 
+	animFrog->addAnimation("DAMAGE", Animation({ Vector2D(3,0) }, false, false, false));
+
+
 	frog->addRenderComponentFrog(renderFrog);
 	frog->addComponent(ANIMATION_COMPONENT, animFrog);
 
@@ -383,6 +389,12 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 
 	CrazyFrogIAComponent* IA = new CrazyFrogIAComponent(mvm, atck);
 	frog->addComponent(IACOMPONENT, IA);
+
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DAMAGE");
+	frog->addComponent(DAMAGE_COMPONENT, dm);
+
+	LifeComponent* lf = new LifeComponent(2, 2);
+	frog->addComponent(LIFE_COMPONENT, lf);
 
 	AddEntity(frog);
 	return frog;
@@ -414,6 +426,14 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(5);
 	fish->addComponent(ATTACK_COMPONENT, attack);
 
+
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent(""); //El pez no tiene animación de ataque
+	fish->addComponent(DAMAGE_COMPONENT, dm);
+
+	LifeComponent* lf = new LifeComponent(2, 2);
+	fish->addComponent(LIFE_COMPONENT, lf);
+
+
 	AddEntity(fish);
 	return fish;	
 }
@@ -434,7 +454,8 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	animBlackAnt->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
 	animBlackAnt->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
 	animBlackAnt->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
-	animBlackAnt->addAnimation("DEAD", Animation({ Vector2D(3,0), Vector2D(3,0) }, false, false, false));
+
+	animBlackAnt->addAnimation("DEAD", Animation({ Vector2D(2,0) }, false, false, false));
 	
 	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
 
@@ -446,6 +467,12 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
 	blackAnt->addComponent(ATTACK_COMPONENT, attack);
+
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DEAD");
+	blackAnt->addComponent(DAMAGE_COMPONENT, dm);
+
+	LifeComponent* lf = new LifeComponent(2, 2);
+	blackAnt->addComponent(LIFE_COMPONENT, lf);
 
 	AddEntity(blackAnt);
 	return blackAnt;
@@ -593,6 +620,9 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	animSnake->addAnimation("ATTACK_DOWN", Animation({ Vector2D(1,1) }, false, false, false));
 	animSnake->addAnimation("ATTACK_UP", Animation({ Vector2D(0,1) }, false, false, false));
 
+	animSnake->addAnimation("DAMAGE", Animation({ Vector2D(3,0) }, false, false, false));
+
+
 	RenderComponentSnake* renderSnake = new RenderComponentSnake(txtSnake, txtNeck, animSnake);
 	snake->addRenderComponentSnake(renderSnake);
 
@@ -602,9 +632,10 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	AttackComponentSnake* atckSnake = new AttackComponentSnake();
 	snake->addComponent(ATTACK_COMPONENT, atckSnake);
 
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent(" ");
+	snake->addComponent(DAMAGE_COMPONENT, dm);
+
 	LifeComponent* lfSnake = new LifeComponent(1, 1);
-	lfSnake->setContext(snake);
-	lfSnake->initComponent();
 	snake->addComponent(LIFE_COMPONENT, lfSnake);
 
 	AddEntity(snake);

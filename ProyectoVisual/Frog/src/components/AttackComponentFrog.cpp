@@ -30,19 +30,41 @@ void AttackComponentFrog::initComponent() {
 //comprueba la colision entre la lengua y los diferentes enemigos
 void AttackComponentFrog::tongueTouch(Entity* e, Collider c)
 {
-	if (!hitted && e->getName() == COCKROACH_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
+	if (!hitted && c.getName() == TRANSFORM_COLLIDER) {
 		hitted = true;
 		elapsedTime = sdlutils().virtualTimer().currTime();
-		static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana
-		//en el caso de la cucaracha cuando esta muere suelta su cabeza en la escena en la que se encuentren
-		if (!static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->alive()) {
-			/*scen = static_cast<RoomScene*>(e->getScene());
-			scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());*/
-			//scen = ent->getScene();
-			scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla(), false);
-			//ent->getScene()->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+		if (e->getName() == COCKROACH_ENTITY) {
+			static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana a la cucaracha
+			//en el caso de la cucaracha cuando esta muere suelta su cabeza en la escena en la que se encuentren
+			if (!static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->alive()) {
+				/*scen = static_cast<RoomScene*>(e->getScene());
+				scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());*/
+				//scen = ent->getScene();
+				scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla(), false);
+				//ent->getScene()->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+			}
+		}
+		/*Solo lo comporbamos con los enemigos (para evitar errores al detctar los jarrones u objetos interactuables)*/
+		else if (e->getName() == CRAZY_FROG_ENTITY || e->getName() == FISH_ENTITY ||
+			e->getName() == SNAKE_ENTITY || e->getName() == BLACK_ANT_ENTITY) {
+			static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(1);  //damage
 		}
 	}
+
+	/*Lo dejo comentado por si a Cristina le da problemas*/
+	//if (!hitted && e->getName() == COCKROACH_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
+	//	hitted = true;
+	//	elapsedTime = sdlutils().virtualTimer().currTime();
+	//	static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana
+	//	//en el caso de la cucaracha cuando esta muere suelta su cabeza en la escena en la que se encuentren
+	//	if (!static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->alive()) {
+	//		/*scen = static_cast<RoomScene*>(e->getScene());
+	//		scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());*/
+	//		//scen = ent->getScene();
+	//		scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla(), false);
+	//		//ent->getScene()->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+	//	}
+	//}
 }
 
 void AttackComponentFrog::UpdateBox(Vector2D casilla, int w, int h)

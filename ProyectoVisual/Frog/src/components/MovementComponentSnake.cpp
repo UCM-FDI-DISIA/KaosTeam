@@ -14,12 +14,11 @@ MovementComponentSnake::MovementComponentSnake(AnimationComponent* a) :
 
 void MovementComponentSnake::update()
 {
-	if (DataManager::GetInstance()->getFrameTime() - lastTimeAction > coolDownTime) {
+	if (DataManager::GetInstance()->getFrameTime() - lastTimeAction > coolDownTime && canMove) {
 
 		lastTimeAction = DataManager::GetInstance()->getFrameTime(); //Actualizamos tiempo de acción
 
 		//La serpeinte va a estar rotando constantemente
-		//... Lógica de rotación aquí
 		//Primero comprobamos si está rotando la serpiente o no
 		if (isRotate) {
 			rotateSnake(); // Rotamos serpiente
