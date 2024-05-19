@@ -3,7 +3,7 @@
 #include "../sdlutils/Texture.h"
 #include "../managers/InputManager.h"
 #include "../game/GameState.h"
-MenuInicio::MenuInicio(Game* g, GameState* gs, Texture* path1, Texture* path2): Menu(g,gs,path1,path2)
+MenuInicio::MenuInicio(Game* g, GameState* gs, Texture* path1, Texture* path2) : Menu(g, gs, path1, path2)
 {
 	SDL_Rect button1Dest, button2Dest;
 
@@ -30,7 +30,5 @@ MenuInicio::MenuInicio(Game* g, GameState* gs, Texture* path1, Texture* path2): 
 	menuButton[1]->connect([this]() { gameState->leave(); });
 }
 
-MenuInicio::~MenuInicio()
-{
-
+MenuInicio::~MenuInicio() {
 }

@@ -49,6 +49,15 @@ void LifeComponent::update() {
 	if (timerforDelete.currTime() >= aliveTime) {
 		ent->getScene()->removeEntity(this->ent); //Quitamos la entidad si esta ha muerto
 	}
-};
+}
+
+/* Este metodo se utiliza para resetear el timer que boorra la entidad cada x tiempo y pausarlo.
+En un principio solo se usa en el player, debido a que si revive Flonk, esto timer debe resetearse,
+de lo contrario, nunca se iniciaría una nueva partida.*/
+void LifeComponent::resetTimer(){
+	timerforDelete.reset();
+	timerforDelete.pause();
+}
+
 
 

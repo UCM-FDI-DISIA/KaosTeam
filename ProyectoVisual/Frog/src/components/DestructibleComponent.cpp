@@ -13,7 +13,7 @@ void DestructibleComponent::LootAndBreak()
     if (!broken) {
         broken = true;
 
-        switch (loot)
+        switch (loot)   // spawnea el loot
         {
         case LOOT_RANDOM:
             if (auxprob >= RandomLifeProb) {
@@ -25,13 +25,13 @@ void DestructibleComponent::LootAndBreak()
             }
             else
             {
-                scen->createMoneda(position, MONEDA_ROSA);
+                scen->createLifeFly(position);
                 cout << "Rompible generando vida" << endl;
             }
             break;
 
         case LOOT_VIDA:
-            scen->createMoneda(position, MONEDA_ROSA);
+            scen->createLifeFly(position);
             cout << "Rompible generando vida " << endl;
             break;
 
@@ -55,7 +55,9 @@ void DestructibleComponent::CheckCollisions(Entity* ent, Collider c)
         MovementComponentFrog* frogMov = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT));
         Directions d = frogMov->getDirection();
         TransformComponent* t = static_cast<TransformComponent*>(this->ent->getComponent(TRANSFORM_COMPONENT));
-        if (c.getName() == TONGUE_COLLIDER) {
+
+        if (c.getName() == TONGUE_COLLIDER) // está colisionando con la lengua
+        {   
 			DestructibleComponent::LootAndBreak();
         }
         else { //está collisionando con el cuerpo de la rana
@@ -88,7 +90,7 @@ void DestructibleComponent::CheckCollisions(Entity* ent, Collider c)
     }
 }
 
-void DestructibleComponent::initComponent()
+void DestructibleComponent::initComponent() // inicializador
 {
     coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
 

@@ -48,7 +48,14 @@ MapManager::MapManager(const std::string& path, RoomScene* room)
 
 MapManager::~MapManager()
 {
-    clearMap();
+   for (int i = 0; i < walkableTiles.size(); i++)
+   {
+       for (int j = 0; j < walkableTiles[0].size(); j++)
+       {
+           delete walkableTiles[i][j];
+       }
+   }
+    //clearMap(); /*Esta llamada daba errrores, debido a que volveis a borrar algo que ya se habia borrado*/
  
     for (auto ts : tilesets)
     {

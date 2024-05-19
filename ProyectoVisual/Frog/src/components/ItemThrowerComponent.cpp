@@ -37,9 +37,15 @@ void ItemThrowerComponent::throwItem(Items object, MovementComponentFrog* mvFrog
 		inv->mejoras.bombas--;
 		std::cout << "\nNumero de bombas (tras lanzar 1): " << inv->mejoras.bombas << std::endl;
 		break;
+	case ROACH_HEAD:
+		ent->getScene()->createHeadCockroach(playerTr->getCasilla() + dir, true);
+		inv->mejoras.roach_head--;
+		break;
 	//Haria falta otro caso más para el orbe (o definir otro boton para que lance el orbe en concreto)
 	/*case ORBE:
 		break;*/
+	default:
+		break;
 	}
 
 

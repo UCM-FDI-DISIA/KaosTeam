@@ -37,11 +37,13 @@
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
 #include "../components/PuertaComponent.h"
+#include "../components/MovementComponentHeadRoach.h"
 
 class Texture;
 class RoomScene : public Scene
 {
 private:
+	//Game* game;
 	Camera* cameraManager;
 	std::vector<Entity*> entityList;
 	MapManager* mapReader;
@@ -54,13 +56,16 @@ private:
 	std::string nextMap;
 	Shop* shopManager;
 	bool insideShop; //se activa cuando se haga la transicion para entrar a la tienda y se desactiva al salir
-		/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
-	Por tanto, hay dos OnCollision por cada colision.
-	*/
+	bool gameOver; //Booleano que se activa solamente en el caso de que que Flonk muera
+	//Entity* lastTransition; //Para guardar la ultima transicion con la que ha interatuado Flonk
+	Vector2D lastFrogPosition; //ultima posicion de respawn de la rana (se actualiza en cada llamada a changeMap())
+
+	/*Comprueba las colisiones de los objetos de la sala, llamando a OnCollision de Collider si hay colision
+	Por tanto, hay dos OnCollision por cada colision.*/
 	void CheckColisions();
 
 public:
-	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false) {
+	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false), gameOver(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 
 		mapReader = new MapManager(path, this);
@@ -89,8 +94,13 @@ public:
 
 	MapManager* getMapReader() { return mapReader; };
 	string getPath() { return path; }
+	bool getGameOverState() { return gameOver; };
 	void changeMap();
-	void callForMapChange(std::string nextMap, flonkOrig nextFlonk = S){ this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true; };
+	void callForMapChange(std::string nextMap, flonkOrig nextFlonk = S) {
+		this->nextMap = nextMap;
+		this->nextFlonk = nextFlonk;
+		needMapChange = true;
+	};
 
 	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted = false);
 	Entity* createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
@@ -113,12 +123,15 @@ public:
 
 	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap, int objIntID, bool objInteracted);
 	Entity* createCockroach(Vector2D pos);
-	Entity* createHeadCockroach(Vector2D pos);
+	Entity* createHeadCockroach(Vector2D pos, bool move);
 	Entity* createExplotableDoor(Vector2D pos);
 	Entity* createConveyorBelt(Vector2D pos, int orientation);
-
+	
+	Entity* createLifeFly(Vector2D pos);
 	Entity* createMoneda(Vector2D pos, MonedaType type);
 
 	Entity* getPlayer() { return player; };
+
+	void revivePlayer();
 	void movePlayer(Vector2D pos);
 };

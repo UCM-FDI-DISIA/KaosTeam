@@ -1,7 +1,6 @@
 #include "Entity.h"
 #include "Component.h"
 #include "../scenes/RoomScene.h"
-//include rendercomponent()
 
 
 Entity::Entity(RoomScene* scn) : name(UNAMED_ENTITY), myScene(scn) {};

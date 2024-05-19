@@ -9,7 +9,7 @@
 
 int main(int ac, char** av)
 {
-    Game game = Game();
+    Game& game = *Game::instance();
     game.init();
 
     //delete game;

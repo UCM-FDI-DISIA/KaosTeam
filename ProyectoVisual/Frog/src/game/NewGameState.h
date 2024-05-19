@@ -7,7 +7,7 @@ class MenuInicio;
 
 class NewGameState : public GameState {
 public:
-	NewGameState(Game* game);
+	NewGameState();
 	virtual ~NewGameState();
 	void leave() override;
 	void update() override;

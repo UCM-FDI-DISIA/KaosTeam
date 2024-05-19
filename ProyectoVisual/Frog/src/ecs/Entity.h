@@ -64,23 +64,30 @@ class Entity
 private:
 	//Vector2D pos;
 	std::map<ComponentsEnum, Component*> componentes;
+	//Referencia la escena en la que se encuentra la entidad.
 	RoomScene* myScene;
 	RenderComponent* renderComponent; //el render no tiene update, y solo se le llama para hacer el render, osea q aqui va
+	//Estos dos son un poco raritos. La entidad puede tener o no tener alguno de estos.
 	RenderComponentFrog* renderComponentFrog;
 	RenderComponentSnake* renderComponentSnake;
-	EntityName name;
+
+	EntityName name; //El tipo de esta entidad
 	//AnimationComponent* animationComponent;
 public:
 	//provisional, sentios libres de haced mas metodos, hacerlos virtuales etc
 	Entity(RoomScene* scn);
 	Entity(RoomScene* scn, EntityName name);
-	void addComponent(ComponentsEnum, Component*); //posiblemente tengamos q meter un IF para coger el rendercomponent
+	//Añade un componente al mapa de componentes por su tipo
+	void addComponent(ComponentsEnum, Component*);
 	void addRenderComponent(RenderComponent* rnd);
 	void addRenderComponentFrog(RenderComponentFrog* rndF);
 	void addRenderComponentSnake(RenderComponentSnake* rndS);
 	virtual ~Entity();
+	//A ser llamado una vez por frame. Llama a todos los componentes del mapa de componentes a sus respectivos update.
 	void update();
+	//A ser llamado una vez por frame, siempre después del Update. Llama al componente de renderizado para lo que tenga que hacer.
 	void render();
+	//Busca el componente en el mapa de componentes a partir del tipo.
 	Component* getComponent(ComponentsEnum) const;
 	RenderComponentFrog* getRenderComponentFrog() const { return renderComponentFrog; };
 	RenderComponentSnake* getRenderComponentSnake() const { return renderComponentSnake; }
