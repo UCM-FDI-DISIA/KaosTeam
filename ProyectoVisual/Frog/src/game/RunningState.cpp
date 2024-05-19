@@ -4,9 +4,7 @@
 #include "../scenes/RoomScene.h"
 
 
-RunningState::RunningState(Game* g) : game(g), hud(), currScene(new RoomScene("resources/maps/niveles/nivel03/mapaN3_01.tmx")),imngr(im())
-{
-	//allRooms.reserve(numRooms);
+RunningState::RunningState() : currRoomScene(nullptr), currScene(nullptr), hud(), imngr(im()) {
 }
 
 RunningState::~RunningState()
@@ -19,26 +17,25 @@ RunningState::~RunningState()
 	//allRooms.clear();
 }
 
-void RunningState::leave()
-{
+void RunningState::leave() {
 }
 
-void RunningState::update()
-{
+void RunningState::update() {
 	currScene->update();
-	if (imngr.getEscape())
-	{
-		game->setNextState(game->PAUSED);
+	if (imngr.getEscape()) {
+		Game::instance()->setNextState(Game::instance()->PAUSED);
+	}
+
+	if (currRoomScene->getGameOverState()) {
+		Game::instance()->setNextState(Game::instance()->GAMEOVER);
 	}
 	//currScene->update();
 }
 
-void RunningState::enter()
-{
+void RunningState::enter() {
 }
 
-void RunningState::changeScene(int id)
-{/*
+void RunningState::changeScene(int id) {/*
 	if (allRooms[id] == nullptr)
 	{
 		currScene = allRooms[id];
@@ -47,6 +44,15 @@ void RunningState::changeScene(int id)
 	{
 		allRooms[id] = new RoomScene(id);
 	}*/
- //Tenemos de encontrar una forma de entrar en nuevas habitaciones aqu�
+	//Tenemos de encontrar una forma de entrar en nuevas habitaciones aqui
+}
 
+void RunningState::resetGame() {
+	//revivimos al jugador
+	currRoomScene->revivePlayer();
+}
+
+void RunningState::createNewGame() {
+	currRoomScene = new RoomScene("resources/maps/niveles/nivel01/mapaN1_01.tmx");
+	currScene = currRoomScene;
 }

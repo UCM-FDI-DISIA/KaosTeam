@@ -5,8 +5,8 @@
 #include "../managers/HUDManager.h"
 #include"Game.h"
 
-PausedState::PausedState(Game* g): game(g), imngr(im()), 
-				menu(new MenuPausa(g, this, &sdlutils().images().at("BotonSeguirPausa"), 
+PausedState::PausedState(): imngr(im()), 
+				menu(new MenuPausa(Game::instance(), this, &sdlutils().images().at("BotonSeguirPausa"),
 				&sdlutils().images().at("BotonSalirPausa"))), currScene(*menu)
 {
 }
@@ -18,20 +18,19 @@ PausedState::~PausedState()
 void PausedState::enter() //Asi no deberia de ser el enter pero por ahora funcionara como el callback para continuar 
 {
 	sdlutils().virtualTimer().resume();
-	game->setNextState(game->RUNNING);
+	Game::instance()->setNextState(Game::instance()->RUNNING);
 }
 
 void PausedState::leave()
 {
 	sdlutils().virtualTimer().resume();
-	game->setNextState(game->NEWGAME);
+	Game::instance()->setNextState(Game::instance()->NEWGAME);
 }
 
 void PausedState::update()
 {
-	if (imngr.getEscape())
-	{
-		game->setNextState(game->RUNNING);
+	if (imngr.getEscape()) {
+		Game::instance()->setNextState(Game::instance()->RUNNING);
 	}
 	currScene.update();
 }

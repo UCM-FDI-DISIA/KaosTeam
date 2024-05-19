@@ -24,7 +24,7 @@ void MovementComponentRedAnt::initComponent() {
 	playerPosition = targetTransformComp->getCasilla();
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
-
+//comprueba si se puede mover a la siguiente casilla 
 void MovementComponentRedAnt::canMove(Vector2D vel, Direction dir) {
 	Vector2D aux = tr->getCasilla() + vel;
 	switch (dir) {
@@ -80,15 +80,14 @@ void MovementComponentRedAnt::update() {
 		playerPosition = targetTransformComp->getCasilla();
 		switch (actualDirection)
 		{
+		//dependiendo si se esta escapando o esta normal, cambian framesPerMove
 		case RIGHT: {
 			anim->playAnimation("RIGHT");
 			canMove(Vector2D(1, 0), RIGHT);
 			if (escape) {
-				//anim->playAnimation("RIGHT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
 			else {
-				//anim->playAnimation("RIGHT");
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
@@ -98,11 +97,9 @@ void MovementComponentRedAnt::update() {
 			anim->playAnimation("LEFT");
 			canMove(Vector2D(-1, 0), LEFT);
 			if (escape) {
-				//anim->playAnimation("LEFT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
 			else {
-				//anim->playAnimation("LEFT");
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
@@ -112,11 +109,9 @@ void MovementComponentRedAnt::update() {
 			anim->playAnimation("UP");
 			canMove(Vector2D(0, -1), UP);
 			if (escape) {
-				//anim->playAnimation("LEFT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
 			else {
-				//anim->playAnimation("LEFT");
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
@@ -126,11 +121,9 @@ void MovementComponentRedAnt::update() {
 			anim->playAnimation("DOWN");
 			canMove(Vector2D(0, 1), DOWN);
 			if (escape) {
-				//anim->playAnimation("LEFT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
 			else {
-				//anim->playAnimation("LEFT");
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
@@ -209,6 +202,7 @@ void MovementComponentRedAnt::changeDirection() {
 		break;
 	}
 }
+//comprueba si el jugador esta cerca y si es asi huye en la direccion contraria
 void MovementComponentRedAnt::isPlayerNear() {
 	if (playerPosition.getY() == tr->getCasilla().getY()) {
 		if (playerPosition.getX() - tr->getCasilla().getX() <= range && playerPosition.getX() - tr->getCasilla().getX() > 0) {

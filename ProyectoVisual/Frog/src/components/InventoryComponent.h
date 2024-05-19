@@ -1,6 +1,9 @@
 #pragma once
 #include "../ecs/Component.h"
 
+/*
+* Clase que gestiona el inventario de la rana
+*/
 //Datos sobre las mejoras que tiene la rana ahora mismo. Al principio de la partida empiezan a 0.
 struct MejorasData {
 	MejorasData();
@@ -16,6 +19,8 @@ struct MejorasData {
 	int bombas;
 	//Cuantos orbes tiene el jugador
 	int orbes;
+	//Cuantas cabeza de cucaracha tiene el jugador
+	int roach_head;
 };
 
 //Datos sobre las habilidades que tiene la rana ahora mismo. Al principio de la partida empiezan como false (no las tiene).
@@ -53,18 +58,21 @@ class InventoryComponent : public Component
 {
 public:
 	InventoryComponent();
-	//Gestion del dinero
 	int GetMoney();
-	void AddMoney(int n); //Metodo para a�adirle dinero a nuestro total
 	bool TakeMoney(int price); //El metodo es un booleano por haber casos en donde no tengamos suficiente dinero.
+	/*Añade un objeto al inventario y aplica lógicas específicas si es necesario*/
 	void PickUpItem(Items, int amm);
-	void PickMoneda(int type);
-	void MejoraMosca(int amm);
-	void CurarVida(int amm);
 	int GetLlaves();
 	MejorasData mejoras;
 	HabilidadesData habilidades;
 private:
+	//A partir del tipo de moneda, añade una cantidad u otra de dinero al total
+	void PickMoneda(MonedaType type);
+	//Metodo para a�adirle dinero a nuestro total
+	void AddMoney(int n);
+	void MejoraMosca(int amm);
+	void CurarVida(int amm);
+
 	int money;
 	int llaves;
 };

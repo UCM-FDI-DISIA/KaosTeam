@@ -13,8 +13,8 @@ public:
 	TransformComponent(Vector2D casilla);
 	~TransformComponent() {};
 
+	//Comprueba si se puede colocar en esa posición. En caso de que se pueda, cambia la posición de casilla del transform.
 	void changePos(Vector2D v);
-	void resetPos(Vector2D v);
 
 	Vector2D getCasilla() {
 		return casilla;

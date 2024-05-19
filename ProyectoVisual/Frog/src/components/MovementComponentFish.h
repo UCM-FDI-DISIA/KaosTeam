@@ -3,7 +3,12 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../managers/DataManager.h"
 #include "AnimationComponent.h"
-
+/*
+* Clase que gestiona el comportamiendo del pez
+* -la direccion en la que se tiene que mover
+* -cuando tiene que cambiar de direccion
+* -durante su camino salta en una casilla elegida de forma aleatoria
+*/
 class RandomNumberGenerator;
 class MovementComponentFish : public MovementComponent {
 private:

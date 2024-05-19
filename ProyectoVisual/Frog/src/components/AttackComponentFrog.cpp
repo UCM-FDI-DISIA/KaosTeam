@@ -6,6 +6,9 @@
 #include "../utils/Box.h"
 #include "ColliderComponent.h"
 #include "LifeComponent.h"
+#include "../scenes/RoomScene.h"
+#include "TransformComponent.h"
+
 
 AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()) {
 	distance = 2;
@@ -13,20 +16,41 @@ AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance())
 	attackFrameTime = 100;
 	lastTimeChanged = 0;
 	attackCooldown = 250;
-
+	hitted = false;
 	box = new Box();
+	elapsedTime = 0;
 }
 
 AttackComponentFrog::~AttackComponentFrog() {
 	delete box;
 }
-
-void AttackComponentFrog::tongueTouch(Entity* ent, Collider c)
+void AttackComponentFrog::initComponent() {
+	//scen = ent->getScene();
+	//scen = static_cast<RoomScene*>(ent->getScene());
+}
+//comprueba la colision entre la lengua y los diferentes enemigos
+void AttackComponentFrog::tongueTouch(Entity* e, Collider c)
 {
-	//std::cout << "TongueTouch ";	
-	if ( ent->getName() == COCKROACH_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
-		//std::cout << "TongueTouch cucaracha";	
-		static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT))->hit(1);  //damage de la rana
+	if (!hitted /*&& e->getName() == COCKROACH_ENTITY*/ && c.getName() == TRANSFORM_COLLIDER) {
+		hitted = true;
+		elapsedTime = sdlutils().virtualTimer().currTime();
+
+		LifeComponent* lCEnemy = static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT));
+		if (lCEnemy != nullptr) 
+			lCEnemy->hit(1); //damage rana
+
+		
+		//if (!static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->alive()) {
+		//	/*scen = static_cast<RoomScene*>(e->getScene());
+		//	scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());*/
+		//	scen = e->getScene();
+		//	//scen = ent->getScene();
+		//	scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla(), false);
+		//	//ent->getScene()->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+
+		//	//puede dropear algo al morir
+		//	//dropLoot(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+		//}
 	}
 }
 
@@ -59,6 +83,11 @@ void AttackComponentFrog::update()
 			box->setWidth(0);
 			box->setHeight(0);
 		}
+	}
+
+	//cuando pase el tiempo de espera podra volver a atacar
+	if (hitted && sdlutils().virtualTimer().currTime() > elapsedTime + WAIT_ATTACK) {
+		hitted = false;
 	}
 }
 

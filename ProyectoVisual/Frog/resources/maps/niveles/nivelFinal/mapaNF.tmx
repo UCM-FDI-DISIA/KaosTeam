@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="62" height="8" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="36">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="62" height="8" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="45">
  <tileset firstgid="1" source="../../tileset/mesaTileset.tsx"/>
  <layer id="1" name="Walk" width="62" height="8">
   <data encoding="csv">
@@ -63,6 +63,33 @@
    <point/>
   </object>
   <object id="11" name="Cerveza" type="ObjInteract" x="184.333" y="41.6667">
+   <point/>
+  </object>
+  <object id="36" name="Cockroach" type="Enemigo" x="184.333" y="103.667">
+   <point/>
+  </object>
+  <object id="43" name="Cockroach" type="Enemigo" x="374.333" y="108.667">
+   <point/>
+  </object>
+  <object id="44" name="Cockroach" type="Enemigo" x="344.333" y="27.6667">
+   <point/>
+  </object>
+  <object id="41" name="Cockroach" type="Enemigo" x="94.333" y="29.6667">
+   <point/>
+  </object>
+  <object id="42" name="Cockroach" type="Enemigo" x="42.333" y="105.667">
+   <point/>
+  </object>
+  <object id="37" name="Cockroach" type="Enemigo" x="245.333" y="58.6667">
+   <point/>
+  </object>
+  <object id="38" name="Cockroach" type="Enemigo" x="536.333" y="89.6667">
+   <point/>
+  </object>
+  <object id="39" name="Cockroach" type="Enemigo" x="649.333" y="105.667">
+   <point/>
+  </object>
+  <object id="40" name="Cockroach" type="Enemigo" x="650.333" y="13.6667">
    <point/>
   </object>
   <object id="14" name="Cerveza" type="ObjInteract" x="311.333" y="90.3333">

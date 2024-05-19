@@ -5,7 +5,10 @@
 #include "AnimationComponent.h"
 #include "TransformComponent.h"
 
-
+/*
+* Clase que gestiona el comportamiendo de la cucaracha
+* -la direccion en la que se tiene que mover
+*/
 
 class MovementComponentCockroach : public MovementComponent {
 private:

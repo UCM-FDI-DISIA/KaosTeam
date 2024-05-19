@@ -22,8 +22,9 @@ void DamageBehaviourComponent::initComponent() {
 	move = static_cast<MovementComponent*>(ent->getComponent(MOVEMENT_COMPONENT));
 }
 
+//cuando pase el tiempo que esta inmovil, la entidad podra moverse otra vez
 void DamageBehaviourComponent::update() {
-	if(!move->getMoveState() && sdlutils().virtualTimer().currTime() > elapsedTime + 3000) {
+	if(!move->getMoveState() && sdlutils().virtualTimer().currTime() > elapsedTime + WAIT_TIME) {
 		move->setCanMove(true);
 	}
 

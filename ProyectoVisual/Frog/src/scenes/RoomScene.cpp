@@ -1,9 +1,11 @@
+#pragma once
 #include "RoomScene.h"
+//#include "../game/Game.h"
 #include "../components/CrazyFrogIAComponent.h"
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
-
 #include "../sdlutils/Texture.h"
+
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
 
@@ -30,6 +32,13 @@ void RoomScene::update() {
 		changeMap();
 	//comrpueba las colisiones con la rana
 	CheckColisions();
+
+	/*La idea original era comprobar aqui el game over del juego, pero al incluir Game.h  en roomScene.h o .cpp 
+	daba un error muy raro que no conseguimos resolver */
+	//if (gameOver) {
+	//	//Ir al menu de GameOver
+	//	//Game::instance()->setNextState(Game::instance()->GAMEOVER);
+	//}
 
 }
 
@@ -215,14 +224,14 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(ORBES);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
-	/*else if (objName == "RoachHead") { 
-		Texture* texture = &sdlutils().images().at("roachHead");
+	else if (objName == "LLave") {
+		Texture* texture = &sdlutils().images().at("llave");
 		RenderComponent* render = new RenderComponent(texture);
 		c->addRenderComponent(render);
 
-		CogibleObjectComponent* cogible = new CogibleObjectComponent(ROACH_HEAD);
+		CogibleObjectComponent* cogible = new CogibleObjectComponent(LLAVES);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
-	}*/
+	}
 	// else 	if (objName == "BolsaBombas") { //Revisar como se llama en el mapa
 	// Texture* texture = &sdlutils().images().at("bag");
 	// RenderComponent* render = new RenderComponent(texture);
@@ -278,6 +287,53 @@ Entity* RoomScene::createMoneda(Vector2D pos, MonedaType type) {
 	AddEntity(c);
 
 	return c;
+}
+
+Entity* RoomScene::createLifeFly(Vector2D pos) {
+	Entity* c = new Entity(this, COGIBLE_ENTITY);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	c->addComponent(TRANSFORM_COMPONENT, transform);
+
+	Texture* txtMosca = &sdlutils().images().at("flySheet");
+
+	AnimationComponent* ac = new AnimationComponent();
+	ac->addAnimation("ANIM", Animation({ Vector2D(0,0), Vector2D(0,2) }, false, false, true));
+	c->addComponent(ANIMATION_COMPONENT, ac);
+	ac->playAnimation("ANIM");
+
+	RenderComponent* renderMosca = new RenderComponent(txtMosca);
+	c->addRenderComponent(renderMosca);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	c->addComponent(COLLIDER_COMPONENT, collider);
+
+	CogibleObjectComponent* cogible = new CogibleObjectComponent(MOSCAS);
+	c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+
+	AddEntity(c);
+	return c;
+}
+
+/*Metodo que sirve para revivir a Flonk en caso de que pierda todas sus vidas.
+  Se invoca dando a reintentar en la pantalla de Game Over. */
+void RoomScene::revivePlayer() {
+	std::cout << "Player revivido" << std::endl;
+	// Reseteamos sus vidas
+	LifeComponent* lf = static_cast<LifeComponent*>(player->getComponent(LIFE_COMPONENT));
+	lf->AddActual(lf->GetMax()); 
+	lf->resetTimer();
+	//Reproducimos animacion inicial
+	AnimationComponent* anim = static_cast<AnimationComponent*>(player->getComponent(ANIMATION_COMPONENT));
+	anim->playAnimation("IDLE_DOWN");
+
+	//movemos a Flonk a su ultima posicion de spawn
+	movePlayer(lastFrogPosition);
+
+	//movemos la camara hasta la nueva posicion de Flonk
+	cameraManager->setTarget(player);
+
+	gameOver = false; //reseteamos el booleano que indica el fin de partida
 }
 
 Entity* RoomScene::createCrazyFrog(Vector2D pos)
@@ -347,7 +403,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	//el limite tiene que ser una propiedad
 	MovementComponentFish* mvm = new MovementComponentFish(boundX, animFish);
 	fish->addComponent(MOVEMENT_COMPONENT, mvm);
-	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(1);
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(5);
 	fish->addComponent(ATTACK_COMPONENT, attack);
 
 	AddEntity(fish);
@@ -422,7 +478,7 @@ Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCm
 	AddEntity(redAnt);
 	return redAnt;
 }
-Entity* RoomScene::createHeadCockroach(Vector2D pos) {
+Entity* RoomScene::createHeadCockroach(Vector2D pos, bool move) {
 	Entity* head = new Entity(this, COGIBLE_ENTITY);
 	TransformComponent* transform = new TransformComponent(pos);
 	head->addComponent(TRANSFORM_COMPONENT, transform);
@@ -435,6 +491,9 @@ Entity* RoomScene::createHeadCockroach(Vector2D pos) {
 
 	CogibleObjectComponent* cogible = new CogibleObjectComponent(ROACH_HEAD);
 	head->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
+
+	MovementComponentHeadRoach* mvm = new MovementComponentHeadRoach(move);
+	head->addComponent(MOVEMENT_COMPONENT, mvm);
 	AddEntity(head);
 	return head;
 }
@@ -454,7 +513,9 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	animcockroach->setContext(cockroach);
 	animcockroach->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
 	animcockroach->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
-	animcockroach->addAnimation("DAMAGE", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, false, false));
+	animcockroach->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
+	animcockroach->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
+	animcockroach->addAnimation("DEAD", Animation({ Vector2D(3,0), Vector2D(3,0) }, false, false, false));
 	//animcockroach->addAnimation("DEAD_DOWN", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, true, false));
 	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
 
@@ -467,7 +528,7 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	cockroach->addComponent(ATTACK_COMPONENT, attack);
 	LifeComponent* lc = new LifeComponent(2, 2);
 	cockroach->addComponent(LIFE_COMPONENT, lc);
-	createHeadCockroach(pos);
+
 	AddEntity(cockroach);
 	return cockroach;
 }
@@ -681,6 +742,32 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 	AddEntity(destructible);
 	return destructible;
 }
+Entity* RoomScene::createDoor(Vector2D pos)
+{
+	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
+	Entity* destructible = new Entity(this, PUERTA_ENTITY);
+	Texture* txtDestructible = &sdlutils().images().at("puerta");
+	// hay que animarlo
+
+	TransformComponent* transform = new TransformComponent(pos);
+	destructible->addComponent(TRANSFORM_COMPONENT, transform);
+
+	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
+	destructible->addComponent(RENDER_COMPONENT, renderDestructible);
+	destructible->addRenderComponent(renderDestructible);
+
+	Box* boxdestructible = new Box(pos);
+	Collider coll = Collider(boxdestructible);
+	ColliderComponent* colldestructible = new ColliderComponent(transform);
+	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
+
+	PuertaComponent* tongueInteract = new PuertaComponent();
+	destructible->addComponent(TONGUEINTERACT_COMPONENT, tongueInteract);
+
+	AddEntity(destructible);
+	return destructible;
+}
+
 Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 {
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
@@ -836,14 +923,13 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 {
 	Entity* c = nullptr;
 	
-	if (objName == "Jarron"){
-		/*c = createJarron(pos, objProps[0].getIntValue());*/
-		c = createJarron(pos, 1);
+	if (objName == "Jarron")
+	{
+		c = createJarron(pos, objProps[0].getIntValue());
 	}	
 	else if (objName == "Arbusto")
 	{
-		/*c = createArbusto(pos, objProps[0].getIntValue());*/
-		c = createArbusto(pos, 1);
+		c = createArbusto(pos, objProps[0].getIntValue());
 	}
 	else if (objName == "PiedraMovible"){
 		c = createPiedraMovible(pos, objIntID);
@@ -856,6 +942,9 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	}
 	else if (objName == "CintaTransportadora"){
 		c = createConveyorBelt(pos, objProps[0].getIntValue());
+	}
+	else if (objName == "Puerta"){
+		c = createDoor(pos);
 	}
 
 	return c;
@@ -878,8 +967,8 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	else if (objClass == "Player") {
 		//SOLO CREAR� (aka cambiar� d sitio) EL FLONK QUE CORRESPONDE
 		if (player == nullptr) {
-			cout << "create player";
 			c = createPlayer(pos, 100, 100);
+			lastFrogPosition = pos;  //Guardamos ultima posicion de la rana
 		}
 		else { //FLONK YA EXISTE estamos cambiando de mapa
 			bool placeHere = false;
@@ -932,9 +1021,8 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 	return c;
 }
 
-void RoomScene::movePlayer(Vector2D pos)
-{
-	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
+void RoomScene::movePlayer(Vector2D pos) {
+	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->setCasilla(pos);
 	if (cameraManager != nullptr)
 		cameraManager->setTarget(player);
 }
@@ -949,7 +1037,14 @@ void RoomScene::removeEntity(Entity* entity) {
 
 	while (it != entityList.end() && !eliminated) {
 		if (*it == entity) {
-			it = entityList.erase(it);
+			if (*it == player) {
+				/*Si es el player->Game Over
+				(no borramos a Flonk todavia en caso de que el jugador quiera volver a intentarlo)*/
+				gameOver = true; 
+			}
+			else { //Si es cualquier otra entidad, la borramos
+				it = entityList.erase(it);
+			}
 			eliminated = true;
 		}
 		else it++;
@@ -972,17 +1067,32 @@ void RoomScene::changeMap()
 	while (it != entityList.end()) {
 		//Por la arquitectura actual, es necesario mantener la entidad de frog.
 		//Para cada entidad se comprueba su name, si no es un frog lo borra.
-		if ((*it)->getName() != FROG_ENTITY)
+		if ((*it)->getName() != FROG_ENTITY) {
+			delete* it;
 			it = entityList.erase(it);
+		}
+			
 		else
 			it++;
 	}
 
-	mapReader->clearMap();
-	mapReader->loadBg(nextMap, sdlutils().renderer());
-	mapReader->loadObj(nextMap);
+	if (mapReader != nullptr) {
+		mapReader->clearMap();
+		mapReader->loadBg(nextMap, sdlutils().renderer());
+		mapReader->loadObj(nextMap);
 
-	cameraManager->setTarget(player);
+	}
+	
+	if (cameraManager != nullptr) {
+		cameraManager->setTarget(player);
+	}
+	
+	TransformComponent* transform = static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT));
+	if (transform != nullptr) {
+		lastFrogPosition = transform->getCasilla();
+	}
+	//Actualizamos ultima posición de Spawn de la rana
+	
 
 	needMapChange = false;
 }

@@ -3,8 +3,7 @@
 #include "MovementComponentFrog.h"
 #include "AttackComponentFrog.h"
 
-FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr), throwerComponent(nullptr)
-{
+FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr), throwerComponent(nullptr) {
 	input = InputManager::GetInstance();
 }
 FrogInputComponent::~FrogInputComponent()
@@ -95,6 +94,11 @@ void FrogInputComponent::update()
 				throwerComponent->throwItem(BOMBAS, movementComponent);
 				throwerComponent->throwStart();
 				std::cout << "\nHAS LANZADO BOMBAS CON EL SACO" << std::endl;
+			}
+			else if ( inventoryComponent->mejoras.roach_head >= 1) {
+				throwerComponent->throwItem(ROACH_HEAD, movementComponent);
+				throwerComponent->throwStart();
+				std::cout << "\nHAS LANZADO CABEZA" << std::endl;
 			}
 		}
 		//else if (input->getAction2()) { 

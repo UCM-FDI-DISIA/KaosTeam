@@ -34,10 +34,10 @@ void Game::init() {
 	SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 255);
 	//escenaActual = new RoomScene(1);
 
-	newgameState = new NewGameState(this);
-	runningState = new RunningState(this);
-	pausedState = new PausedState(this);
-    gameOverState = new GameOverState(this);
+	newgameState = new NewGameState();
+	runningState = new RunningState();
+	pausedState = new PausedState();
+    gameOverState = new GameOverState();
 	renderStates.push_front(newgameState);
 	updateStates.push_front(newgameState);
 
@@ -95,6 +95,26 @@ void Game::setNextState(State nState)
 {
 	nextState = nState;
 	changeState = true;
+}
+
+GameState* Game::getState(State state) {
+	switch (state)
+	{
+	case Game::RUNNING:
+		return runningState;
+		break;
+	case Game::PAUSED:
+		return pausedState;
+		break;
+	case Game::NEWGAME:
+		return newgameState;
+		break;
+	case Game::GAMEOVER:
+		return gameOverState;
+		break;
+	default:
+		return nullptr;
+	}
 }
 
 //Cambiar a metodo para cambiar de estado (newgame, running, pause, gameover)

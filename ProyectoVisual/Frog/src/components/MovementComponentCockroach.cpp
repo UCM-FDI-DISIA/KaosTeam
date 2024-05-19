@@ -5,7 +5,7 @@
 MovementComponentCockroach::MovementComponentCockroach(AnimationComponent* a) : MovementComponent(), lastTimeMoved(SDL_GetTicks()), anim(a), rand_(sdlutils().rand())
 {
 	actualDirection = RIGHT;
-	//anim->playAnimation("RIGHT");
+	anim->playAnimation("RIGHT");
 	waitTime = 500;
 	movementFrameRate = 30;
 	framesPerMove = 6;
@@ -28,14 +28,14 @@ void MovementComponentCockroach::update() {
 		{
 		case RIGHT: {
 			velocity = Vector2D(1, 0);
-			anim->playAnimation("UP");
+			anim->playAnimation("RIGHT");
 			framesPerMove = 4 + velocity.magnitude() * 3;
 		}
 				  break;
 		case LEFT:
 		{
 			velocity = Vector2D(-1, 0);
-			anim->playAnimation("UP");
+			anim->playAnimation("LEFT");
 			framesPerMove = 4 + velocity.magnitude() * 3;
 		}
 		break;

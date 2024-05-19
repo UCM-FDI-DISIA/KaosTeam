@@ -34,8 +34,10 @@
         { "id" : "pajaroTienda", "file" : "resources/Sprites/pajaroTienda.png", "rows" : 1, "cols" : 1},
         { "id" : "blackAntSheet", "file" : "resources/Sprites/AntSpritesheet.png", "rows" : 3, "cols" : 2},
         { "id" : "redAntSheet", "file" : "resources/Sprites/redAntSpritesheet.png", "rows" : 3, "cols" : 2},
-        { "id" : "roachSheet", "file" : "resources/Sprites/RoachSpritesheet.png", "rows" : 1, "cols" : 3},
+        { "id" : "roachSheet", "file" : "resources/Sprites/RoachSpritesheet.png", "rows" : 3, "cols" : 2},
         { "id" : "roachHead", "file" : "resources/Sprites/roachHead.png", "rows" : 1, "cols" : 1},
+        { "id" : "llave", "file" : "resources/Sprites/llave.png", "rows" : 1, "cols" : 1},
+        { "id" : "puerta", "file" : "resources/Sprites/candado.png", "rows" : 1, "cols" : 1},
         { "id" : "inputTienda", "file" : "resources/Sprites/inputTienda.png", "rows" : 1, "cols" : 1},
         { "id" : "arbolTienda", "file" : "resources/Sprites/Arbol_exterior.png", "rows" : 1, "cols" : 1},
         { "id" : "orbeOff", "file" : "resources/Sprites/OrbeOff.png", "rows" : 1, "cols" : 1},
@@ -45,13 +47,14 @@
 
 
         { "id" : "MenuInicio", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
-        { "id" : "GameOver", "file" : "resources/Menus/MenuGameOver.png", "rows" : 1, "cols" : 1},
+        { "id" : "GameOver", "file" : "resources/Menus/GameOverMenu.png", "rows" : 1, "cols" : 1},
         { "id" : "Pausa", "file" : "resources/Menus/MenuPausa.png", "rows" : 1, "cols" : 1},
 
         { "id" : "BotonJuego", "file" : "resources/Buttons/MenuJuego.png", "rows" : 1, "cols" : 1},
         { "id" : "BotonSalir", "file" : "resources/Buttons/MenuSalir.png", "rows" : 1, "cols" : 1},
         { "id" : "BotonSalirPausa", "file" : "resources/Buttons/MenuSalirPausa.png", "rows" : 1, "cols" : 1},
-        { "id" : "BotonSeguirPausa", "file" : "resources/Buttons/MenuSeguir.png", "rows" : 1, "cols" : 1}
+        { "id" : "BotonSeguirPausa", "file" : "resources/Buttons/MenuSeguir.png", "rows" : 1, "cols" : 1},
+        { "id" : "BotonReintentar", "file" : "resources/Buttons/MenuReintentar.png", "rows" : 1, "cols" : 1}
 
     ],
     "messages" : [
