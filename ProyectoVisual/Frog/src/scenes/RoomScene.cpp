@@ -232,14 +232,6 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(LLAVES);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
-	/*else if (objName == "RoachHead") { 
-		Texture* texture = &sdlutils().images().at("roachHead");
-		RenderComponent* render = new RenderComponent(texture);
-		c->addRenderComponent(render);
-
-		CogibleObjectComponent* cogible = new CogibleObjectComponent(ROACH_HEAD);
-		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
-	}*/
 	// else 	if (objName == "BolsaBombas") { //Revisar como se llama en el mapa
 	// Texture* texture = &sdlutils().images().at("bag");
 	// RenderComponent* render = new RenderComponent(texture);

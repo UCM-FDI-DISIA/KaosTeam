@@ -8,8 +8,9 @@
 #include "LifeComponent.h"
 #include "../scenes/RoomScene.h"
 #include "TransformComponent.h"
+#include "../sdlutils/RandomNumberGenerator.h"
 
-AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()) {
+AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()), rand_(sdlutils().rand()) {
 	distance = 2;
 	distanceMoved = 0;
 	attackFrameTime = 100;
@@ -39,8 +40,11 @@ void AttackComponentFrog::tongueTouch(Entity* e, Collider c)
 			/*scen = static_cast<RoomScene*>(e->getScene());
 			scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());*/
 			//scen = ent->getScene();
-			scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla(), false);
+		//	scen->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla(), false);
 			//ent->getScene()->createHeadCockroach(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());
+
+			//puede dropear algo al morir
+			dropLoot(static_cast<TransformComponent*>(e->getComponent(TRANSFORM_COMPONENT))->getCasilla());
 		}
 	}
 }
@@ -98,4 +102,22 @@ void AttackComponentFrog::EndAttack()
 	state = 2;
 	hasHook = false;
 }
+//soltar un loop random al matar un enemigo
+//puede no soltar nada
+void AttackComponentFrog::dropLoot(Vector2D pos) {
 
+	int prob = rand_.nextInt(0, 100);
+
+	if (prob > 0 && prob <= 30) {
+		scen->createMoneda(pos, MONEDA_NARANJA);
+	}
+	else if (prob > 30 && prob <= 50) {
+		scen->createMoneda(pos, MONEDA_ROSA);
+	}
+	else if (prob > 50 && prob <= 60) {
+		scen->createMoneda(pos, MONEDA_MORADO);
+	}
+	else if (prob > 60 && prob <= 70) {
+		scen->createLifeFly(pos);
+	}
+}
