@@ -287,7 +287,7 @@ En el menú de pausa el jugador puede volver a la partida o salir ir al menú pr
 
 <summary>Flujo de juego</summary>
 
-**Flujo de juego:** (por definir, que pasa cuando el jugador pierde todas las vidas)
+**Flujo de juego:** Cuando el jugador muere le aparecerá un menú que le informará de su muerte y le dará a elegir entre cerral el juego y continuar. En caso de que elija lo segundo la sala en la murió se reiniciará.
 
 
 
