@@ -107,17 +107,17 @@ void AttackComponentFrog::EndAttack()
 void AttackComponentFrog::dropLoot(Vector2D pos) {
 
 	int prob = rand_.nextInt(0, 100);
-
-	if (prob > 0 && prob <= 30) {
-		scen->createMoneda(pos, MONEDA_NARANJA);
-	}
-	else if (prob > 30 && prob <= 50) {
+	scen->createMoneda(pos, MONEDA_NARANJA);
+	/*if (prob > 0 && prob <= 30) {
 		scen->createMoneda(pos, MONEDA_ROSA);
 	}
-	else if (prob > 50 && prob <= 60) {
+	else if (prob > 30 && prob <= 50) {
 		scen->createMoneda(pos, MONEDA_MORADO);
+	}
+	else if (prob > 50 && prob <= 60) {
+		scen->createMoneda(pos, MONEDA_NARANJA);
 	}
 	else if (prob > 60 && prob <= 70) {
 		scen->createLifeFly(pos);
-	}
+	}*/
 }

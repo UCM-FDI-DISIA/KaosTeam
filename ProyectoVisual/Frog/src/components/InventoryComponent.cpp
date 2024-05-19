@@ -24,6 +24,7 @@ bool InventoryComponent::TakeMoney(int price)
 		return false;
 
 	money -= price;
+	HUDManager::instance()->setWorms(money);
 	return true;
 }
 
