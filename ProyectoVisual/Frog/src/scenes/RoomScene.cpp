@@ -960,7 +960,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 }
 
 void RoomScene::movePlayer(Vector2D pos) {
-	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
+	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->setCasilla(pos);
 	if (cameraManager != nullptr)
 		cameraManager->setTarget(player);
 }

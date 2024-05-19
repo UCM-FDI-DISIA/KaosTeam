@@ -58,18 +58,21 @@ class InventoryComponent : public Component
 {
 public:
 	InventoryComponent();
-	//Gestion del dinero
 	int GetMoney();
-	void AddMoney(int n); //Metodo para a�adirle dinero a nuestro total
 	bool TakeMoney(int price); //El metodo es un booleano por haber casos en donde no tengamos suficiente dinero.
+	/*Añade un objeto al inventario y aplica lógicas específicas si es necesario*/
 	void PickUpItem(Items, int amm);
-	void PickMoneda(int type);
-	void MejoraMosca(int amm);
-	void CurarVida(int amm);
 	int GetLlaves();
 	MejorasData mejoras;
 	HabilidadesData habilidades;
 private:
+	//A partir del tipo de moneda, añade una cantidad u otra de dinero al total
+	void PickMoneda(MonedaType type);
+	//Metodo para a�adirle dinero a nuestro total
+	void AddMoney(int n);
+	void MejoraMosca(int amm);
+	void CurarVida(int amm);
+
 	int money;
 	int llaves;
 };

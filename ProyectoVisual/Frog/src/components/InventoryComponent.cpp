@@ -54,7 +54,7 @@ void InventoryComponent::PickUpItem(Items it, int amm = 1) {
 		//Llamada a el hud para actualizar el valor de sacoBombas
 		break;
 	case MONEDAS:
-		PickMoneda(amm);
+		PickMoneda((MonedaType)amm);
 		HUDManager::instance()->setWorms(money);
 		break;
 	case LLAVES:
@@ -97,7 +97,7 @@ int InventoryComponent::GetLlaves()
 /// Comprueba el tipo de moneda que ha llegado, a partir de eso añade la cantidad adecuada de monedas
 /// </summary>
 /// <param name="MonedaType (int)">El tipo de moneda</param>
-void InventoryComponent::PickMoneda(int type) {
+void InventoryComponent::PickMoneda(MonedaType type) {
 	switch (type)
 	{
 	case MONEDA_NARANJA:
