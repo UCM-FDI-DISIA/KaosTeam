@@ -41,7 +41,7 @@
   <object id="1" name="GeneradorDeBombas" x="23" y="54.5">
    <point/>
   </object>
-  <object id="2" name="FlonkE" type="Player" x="24.5" y="123.5">
+  <object id="2" name="FlonkW" type="Player" x="24.5" y="123.5">
    <point/>
   </object>
   <object id="25" name="FlonkN" type="Player" x="121" y="26">
@@ -101,13 +101,13 @@
   <object id="22" name="Interruptor" x="6.5" y="216">
    <point/>
   </object>
-  <object id="26" name="TransitionE" type="Transition" x="8.5" y="137.5">
+  <object id="26" name="TransitionW" type="Transition" x="8.5" y="137.5">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_01.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="27" name="TransitionE" type="Transition" x="9" y="124">
+  <object id="27" name="TransitionW" type="Transition" x="9" y="124">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_01.tmx"/>
    </properties>

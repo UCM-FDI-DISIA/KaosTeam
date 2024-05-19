@@ -25,7 +25,7 @@ void RenderComponentSnake::render() {
 
     //el cuello de la serpiente
     if (attacking) {
-        int distanceMoved = static_cast<AttackComponentFrog*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
+        int distanceMoved = static_cast<AttackComponentSnake*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
         Vector2D tongueEndPos = pos;
 
         if (distanceMoved < 0) { //Si el ataque acaba

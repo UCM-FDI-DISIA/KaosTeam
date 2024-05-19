@@ -31,7 +31,7 @@ void MovementComponentBomb::initComponent() {
 
 	//A�adimos funcion de collider a la bomba
 	//std::list<Collider> listCol = coll->GetColliders(); //Accedemos a la lista de colliders
-	coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsBomb(e, c); }); //A�adimos callback
+	coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsBomb(e, c); }); //Anadimos callback
 }
 
 // Esta funci�n, se llamar� en cada iteracci�n del update para detectar con que entity colisiona y hacer las correspondientes acciones
@@ -42,7 +42,7 @@ void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
 		LifeComponent* lifeEntity = static_cast<LifeComponent*>(ent->getComponent(LIFE_COMPONENT));
 		if (lifeEntity != nullptr) {
 			//Da�ar a la entidad en uno
-			lifeEntity->hit(-1); //bajamos vida de la entidad con la que choca
+			lifeEntity->hit(1); //bajamos vida de la entidad con la que choca
 			explodeBomb(); //En ambos casos la bomba explota
 		}
 		else if (ent->getName() == EntityName::EXPLOITABLE_ENTITY) {
@@ -61,20 +61,19 @@ void MovementComponentBomb::checkCollisionsBomb(Entity* ent, Collider c) {
 void MovementComponentBomb::moveBomb() {
 	switch (direction) {
 	case Directions::DOWN:
-		velocity = Vector2D(0, 0.01);
-		//velocity = Vector2D(0, 0);
+		velocity = Vector2D(0, 0.1);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		break;
 	case Directions::UP:
-		velocity = Vector2D(0, -0.01);
+		velocity = Vector2D(0, -0.1);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		break;
 	case Directions::LEFT:
-		velocity = Vector2D(-0.01, 0);
+		velocity = Vector2D(-0.1, 0);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		break;
 	case Directions::RIGHT:
-		velocity = Vector2D(0.01, 0);
+		velocity = Vector2D(0.1, 0);
 		tr->setCasilla(tr->getCasilla() + velocity);
 		break;
 	default:
@@ -92,7 +91,7 @@ void MovementComponentBomb::checkShock() {
 //Este metodo se ejecuta en caso de que la bomba choque con algo
 //Simplemente har�a la animaci�n de explosi�n y su sonido, y una vez hecho eso, elimina la bomba de la escena despues de un tiempo
 void MovementComponentBomb::explodeBomb() {
-	setStatic();
+	setCanMove(false);
 	AnimationComponent* animator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
 	RenderComponent* rndr = ent->getRenderComponent();
 

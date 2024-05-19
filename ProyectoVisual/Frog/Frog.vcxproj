@@ -156,6 +156,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\MovementComponentHeadRoach.cpp" />
+    <ClCompile Include="src\components\PuertaComponent.cpp" />
+    <ClCompile Include="src\components\DamageBehaviourComponent.cpp" />
+    <ClCompile Include="src\components\ItemThrowerComponent.cpp" />
+    <ClCompile Include="src\components\AttackComponentBasicEnemy.cpp" />
     <ClCompile Include="src\components\CogibleObjectComponent.cpp" />
     <ClCompile Include="src\components\ConveyorBeltComponent.cpp" />
     <ClCompile Include="src\components\DestructibleComponent.cpp" />
@@ -223,9 +228,15 @@
     <ClCompile Include="src\components\TransitionComponent.cpp" />
     <ClCompile Include="src\components\TonguePushComponent.cpp" />
     <ClCompile Include="src\components\TongueHookComponent.cpp" />
+    <ClCompile Include="src\components\SwallowComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\MovementComponentHeadRoach.h" />
+    <ClInclude Include="src\components\PuertaComponent.h" />
+    <ClInclude Include="src\components\DamageBehaviourComponent.h" />
+    <ClInclude Include="src\components\ItemThrowerComponent.h" />
+    <ClInclude Include="src\components\AttackComponentBasicEnemy.h" />
     <ClInclude Include="src\components\CogibleObjectComponent.h" />
     <ClInclude Include="src\components\ConveyorBeltComponent.h" />
     <ClInclude Include="src\components\DestructibleComponent.h" />
@@ -303,6 +314,7 @@
     <ClInclude Include="src\components\TransitionComponent.h" />
     <ClInclude Include="src\components\TonguePushComponent.h" />
     <ClInclude Include="src\components\TongueHookComponent.h" />
+    <ClInclude Include="src\components\SwallowComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

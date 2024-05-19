@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="22">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="22">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <tileset firstgid="421" source="../../tileset/H01_tileset.tsx"/>
+ <layer id="4" name="Fondo" width="16" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,174,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
  <layer id="1" name="Walk" width="16" height="16">
   <data encoding="csv">
 34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,
@@ -43,6 +63,21 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
+  <object id="6" name="FlonkS" type="Player" x="120.167" y="235.5">
+   <point/>
+  </object>
+  <object id="7" name="FlonkW" type="Player" x="23.5" y="121.5">
+   <point/>
+  </object>
+  <object id="8" name="FlonkN" type="Player" x="137.167" y="28">
+   <point/>
+  </object>
+  <object id="20" name="FlonkT" type="Player" x="81.3337" y="41">
+   <point/>
+  </object>
+  <object id="9" name="FlonkE" type="Player" x="232.833" y="136.333">
+   <point/>
+  </object>
   <object id="1" name="Crazy frog" type="Enemigo" x="56.5" y="104">
    <point/>
   </object>
@@ -70,21 +105,6 @@
    </properties>
    <point/>
   </object>
-  <object id="6" name="FlonkS" type="Player" x="120.167" y="235.5">
-   <point/>
-  </object>
-  <object id="7" name="FlonkW" type="Player" x="23.5" y="121.5">
-   <point/>
-  </object>
-  <object id="8" name="FlonkN" type="Player" x="137.167" y="28">
-   <point/>
-  </object>
-  <object id="20" name="FlonkT" type="Player" x="40.667" y="44">
-   <point/>
-  </object>
-  <object id="9" name="FlonkE" type="Player" x="232.833" y="136.333">
-   <point/>
-  </object>
   <object id="10" name="TransitionN" type="Transition" x="136.33" y="11.0341">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_06.tmx"/>
@@ -97,7 +117,7 @@
    </properties>
    <point/>
   </object>
-  <object id="21" name="TransitionT" type="Transition" x="38.875" y="26.625">
+  <object id="21" name="TransitionT" type="Transition" x="54.5417" y="26.2917">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/tienda/mapaT.tmx"/>
    </properties>

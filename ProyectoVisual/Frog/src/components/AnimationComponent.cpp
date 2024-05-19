@@ -64,6 +64,15 @@ void AnimationComponent::stopAnimation() {
 	currentAnimName = "";
 }
 
+Animation AnimationComponent::getAnimByName(const std::string& animName) const {
+    Animation a = Animation();
+	auto it = animationSet.find(animName);
+	if (it != animationSet.end()) {
+		a = it->second;
+	}
+	return a;
+}
+
 /* Mueve al siguiente frame de animacion */
 void AnimationComponent::updateAnimation(const Animation& currenAnim, int index)
 {

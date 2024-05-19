@@ -14,7 +14,7 @@ class HUDManager: public Singleton<HUDManager>
 
 private:
 	Game* game; //por ahora está aqui, aunq no sé para q se va a usar.
-	int vidasActuales, vidasMax, wormsActuales;
+	int vidasActuales, vidasMax;
 	int xInicialFly = 15;
 	int yInicial = 10;
 	int xInicialWorm = 700;
@@ -47,7 +47,7 @@ public:
 	void LinkLives(LifeComponent* playerLife); //Metodo para acceder a las vidas del jugador
 	void ChangeLives(int);
 	void ChangeMaxLife(int);
-	void addWorms(int);
+	void setWorms(int);
 
 	void render();
 	void update(); //por ahora no tiene nada

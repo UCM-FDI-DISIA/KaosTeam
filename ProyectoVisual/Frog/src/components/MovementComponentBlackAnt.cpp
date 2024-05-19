@@ -33,6 +33,8 @@ void MovementComponentBlackAnt::initComponent() {
 
 void MovementComponentBlackAnt::update() {
 
+	//si no se esta moviendo, ni esta inmovil, ni esta esperando a atacar
+	//segun la direccion se cambia la animacion y la velocidad, esta tambien depende de si la hormiga esta en estado de atacar a la rana
 	if (!waitToAttack && !waitToMove && !isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		playerPosition = targetTransformComp->getCasilla();
@@ -42,12 +44,10 @@ void MovementComponentBlackAnt::update() {
 			anim->playAnimation("RIGHT");
 			if (isAtacking) {
 				velocity = Vector2D(diff, 0);
-				//anim->playAnimation("RIGHT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
 			else {
 				velocity = Vector2D(1, 0);
-				//anim->playAnimation("RIGHT");
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
@@ -57,12 +57,10 @@ void MovementComponentBlackAnt::update() {
 			anim->playAnimation("LEFT");
 			if (isAtacking) {
 				velocity = Vector2D(diff, 0);
-				//anim->playAnimation("LEFT");
 				framesPerMove = 2 + velocity.magnitude() * 3;
 			}
 			else {
 				velocity = Vector2D(-1, 0);
-				//anim->playAnimation("LEFT");
 				framesPerMove = 4 + velocity.magnitude() * 3;
 			}
 		}
@@ -98,6 +96,7 @@ void MovementComponentBlackAnt::update() {
 		}
 		isMoving = true;
 	}
+	//si esta en estado de moverse, se mueve en la direccion correspondiente
 	else if (isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate)
 	{
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
@@ -111,20 +110,25 @@ void MovementComponentBlackAnt::update() {
 			tr->setOffsetY(tr->getOffset().getY() + t / framesPerMove * velocity.getY());
 		}
 		if (framesMoved == framesPerMove) {
+			std::cout << tr->getCasilla().getX() << " " << tr->getCasilla().getX() << std::endl;
 			tr->setCasilla(tr->getCasilla() + velocity);
 			tr->setOffset({ 0,0 });
 			framesMoved = 0;
 			isMoving = false;
+			//si estaba atacando deja de atacar y comprueba que no se haya chocado con una pared
 			if (isAtacking) {
 				diff = 0;
 				isAtacking = false;
 				checkCollisionWall();
 			}
+			//comprueba si debe atacar
 			bool attack = isPlayerNear();
+			//si no tiene que atacar, cambia de direccion
 			if (!attack)
 				changeDirection();
 		}
 	}
+	//si tiene que esperar para atacar
 	else if (waitToAttack) {
 		Uint32 currentTime = DataManager::GetInstance()->getFrameTime();
 		if ((currentTime - lastTimeMoved) > waitTimeAttack) {
@@ -133,6 +137,7 @@ void MovementComponentBlackAnt::update() {
 			lastTimeMoved = currentTime;
 		}
 	}
+	//si tiene que esperar para moverse por estar inmovil
 	else if (waitToMove) {
 		Uint32 currentTime = DataManager::GetInstance()->getFrameTime();
 		if ((currentTime - lastTimeMoved) > immobileTime) {
@@ -188,27 +193,28 @@ void MovementComponentBlackAnt::changeDirection() {
 		break;
 	}
 }
+//comprueba si esta el jugador cerca ya sea en la misma columna o fila de nuestro sistema por casillas y dependiendo de su direccion actual
 bool MovementComponentBlackAnt::isPlayerNear() {
 	if (playerPosition.getY() == tr->getCasilla().getY()) {
 
-		if (actualDirection != LEFT && playerPosition.getX() - tr->getCasilla().getX() <= range) {
+		if (actualDirection != LEFT && playerPosition.getX() - tr->getCasilla().getX() <= range && playerPosition.getX() - tr->getCasilla().getX() > 0) {
 			actualDirection = RIGHT;
 			diff = playerPosition.getX() - tr->getCasilla().getX();
 			waitToAttack = true;
 		}
-		else if (!waitToAttack && actualDirection != RIGHT && tr->getCasilla().getX() - playerPosition.getX() <= range) {
+		else if (!waitToAttack && actualDirection != RIGHT && tr->getCasilla().getX() - playerPosition.getX() <= range && tr->getCasilla().getX() - playerPosition.getX() > 0) {
 			actualDirection = LEFT;
 			diff = playerPosition.getX() - tr->getCasilla().getX();
 			waitToAttack = true;
 		}
 	}
 	else if (!waitToAttack && playerPosition.getX() == tr->getCasilla().getX()) {
-		if (actualDirection != UP && playerPosition.getY() - tr->getCasilla().getY() <= range) {
+		if (actualDirection != UP && playerPosition.getY() - tr->getCasilla().getY() <= range && playerPosition.getY() - tr->getCasilla().getY() > 0) {
 			actualDirection = DOWN;
 			waitToAttack = true;
 			diff = playerPosition.getY() - tr->getCasilla().getY();
 		}
-		else if (!waitToAttack && actualDirection != DOWN && tr->getCasilla().getY() - playerPosition.getY() <= range) {
+		else if (!waitToAttack && actualDirection != DOWN && tr->getCasilla().getY() - playerPosition.getY() <= range && tr->getCasilla().getY() - playerPosition.getY() > 0) {
 			actualDirection = UP;
 			waitToAttack = true;
 			diff = playerPosition.getY() - tr->getCasilla().getY();

@@ -27,7 +27,8 @@ public:
 
 	void setBoundX(int newBoundX) { boundX = newBoundX; }
 	void setBoundY(int newBoundY) { boundY = newBoundY; }
-	void setStatic() { canMove = false; };
+	void setCanMove(bool b) { canMove = b; };
+	bool getMoveState() const { return canMove; };
 	bool checkIfTileWalkable(Vector2D);
 };
 

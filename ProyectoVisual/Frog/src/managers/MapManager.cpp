@@ -55,7 +55,7 @@ MapManager::~MapManager()
            delete walkableTiles[i][j];
        }
    }
-    clearMap();
+    //clearMap(); /*Esta llamada daba errrores, debido a que volveis a borrar algo que ya se habia borrado*/
  
     for (auto ts : tilesets)
     {

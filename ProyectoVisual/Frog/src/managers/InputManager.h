@@ -32,18 +32,14 @@ private:
     enum btnEnum {
         BTN_ACTION1,
         BTN_ACTION2,
+        BTN_ACTION3,
         BTN_ACTION4,
         BTN_UP,
         BTN_DOWN,
         BTN_LEFT,
         BTN_RIGHT,
         BTN_ESCAPE,
-        BTN_SPACE,
-        BTN_ACTIONBUY,
-        BTN_RIGHTSHOP,
-        BTN_LEFTSHOP,
-        BTN_SHIFT, 
-        BTN_M,
+        BTN_SHIFT,
         END //Para tener un valor con el que crear y utilizar el array
     };
 
@@ -76,18 +72,17 @@ public:
     void PollEvents();
     InputButton getAction1();
     InputButton getAction2();
+    InputButton getAction3();
     InputButton getShift();
     InputButton getAction4();
-    InputButton getActionBuy();
-    InputButton getActionRightShop();
-    InputButton getActionLeftShop();
+    //InputButton getAction5();
     InputButton getUp();
     InputButton getDown();
     InputButton getLeft();
     InputButton getRight();
-    InputButton getSpace();
+    //InputButton getSpace();
     InputButton getEscape();
-    InputButton getM();
+    //InputButton getM();
 };
 
 inline InputManager& im() {

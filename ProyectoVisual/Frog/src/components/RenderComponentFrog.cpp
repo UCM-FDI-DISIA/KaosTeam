@@ -18,7 +18,7 @@ void RenderComponentFrog::render()
     Vector2D pos = transform->getCasilla();
     Directions d = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
-
+    bool hooked = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getHooked();
    
     frogRect.x = pos.getX() * t + offset.getX() - cameraPos.getX();
     frogRect.y = pos.getY() * t + offset.getY() - cameraPos.getY();
@@ -26,11 +26,12 @@ void RenderComponentFrog::render()
     frogRect.h = size;
 
     //la lengua 
-    if (attacking) {
+    if (attacking || hooked) {
         int distanceMoved = static_cast<AttackComponentFrog*>(ent->getComponent(ATTACK_COMPONENT))->getDistanceMoved();
         Vector2D tongueEndPos = pos;
 
         if (distanceMoved < 0) { //Si el ataque acaba
+
             attacking = false;
             switch (d) { //Se reproduce el idle correspondiente
             case Directions::LEFT:
@@ -129,6 +130,26 @@ void RenderComponentFrog::render()
         else
             frogText->renderFrame(frogRect, frogAnimator->getCurrentFil(), frogAnimator->getCurrentCol());
     }
+
+    if (throwing) { //Si se lanza un objeto
+        switch (d) {
+        case Directions::LEFT:
+            frogAnimator->playAnimation("ATTACK_LEFT");
+            break;
+        case Directions::RIGHT:
+            frogAnimator->playAnimation("ATTACK_RIGHT");
+            break;
+        case Directions::UP:
+            frogAnimator->playAnimation("ATTACK_UP");
+            break;
+        case Directions::DOWN:
+            frogAnimator->playAnimation("ATTACK_DOWN");
+            break;
+        default:
+            break;
+        }
+        throwing = false;
+    }
 }
 
 void RenderComponentFrog::AttackStart(bool withHook) {
@@ -139,6 +160,10 @@ void RenderComponentFrog::AttackStart(bool withHook) {
     else {
         tongueTipSheetId = 1;
     }
+}
+
+void RenderComponentFrog::ThrowStart() {
+    throwing = true;
 }
 
 void RenderComponentFrog::initComponent() {

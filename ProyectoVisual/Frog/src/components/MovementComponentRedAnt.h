@@ -5,7 +5,11 @@
 #include "AnimationComponent.h"
 #include "MovementComponentFrog.h"
 
-
+/*
+* Clase que gestiona el comportamiendo de la hormiga roja
+* -la direccion en la que se tiene que mover
+* -si el jugador esta cerca huye de el hacia la otra direccion
+*/
 class MovementComponentRedAnt : public MovementComponent {
 private:
 	enum Direction { RIGHT, LEFT, UP, DOWN };
