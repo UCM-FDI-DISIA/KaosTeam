@@ -232,14 +232,6 @@ Entity* RoomScene::createCogible(Vector2D pos, std::string objName, std::vector<
 		CogibleObjectComponent* cogible = new CogibleObjectComponent(LLAVES);
 		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
 	}
-	/*else if (objName == "RoachHead") { 
-		Texture* texture = &sdlutils().images().at("roachHead");
-		RenderComponent* render = new RenderComponent(texture);
-		c->addRenderComponent(render);
-
-		CogibleObjectComponent* cogible = new CogibleObjectComponent(ROACH_HEAD);
-		c->addComponent(COGIBLE_OBJECT_COMPONENT, cogible);
-	}*/
 	// else 	if (objName == "BolsaBombas") { //Revisar como se llama en el mapa
 	// Texture* texture = &sdlutils().images().at("bag");
 	// RenderComponent* render = new RenderComponent(texture);
@@ -907,14 +899,13 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 {
 	Entity* c = nullptr;
 	
-	if (objName == "Jarron"){
-		/*c = createJarron(pos, objProps[0].getIntValue());*/
-		c = createJarron(pos, 1);
+	if (objName == "Jarron")
+	{
+		c = createJarron(pos, objProps[0].getIntValue());
 	}	
 	else if (objName == "Arbusto")
 	{
-		/*c = createArbusto(pos, objProps[0].getIntValue());*/
-		c = createArbusto(pos, 1);
+		c = createArbusto(pos, objProps[0].getIntValue());
 	}
 	else if (objName == "PiedraMovible"){
 		c = createPiedraMovible(pos, objIntID);
@@ -1007,7 +998,7 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 }
 
 void RoomScene::movePlayer(Vector2D pos) {
-	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->resetPos(pos);
+	static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->setCasilla(pos);
 	if (cameraManager != nullptr)
 		cameraManager->setTarget(player);
 }
@@ -1052,20 +1043,32 @@ void RoomScene::changeMap()
 	while (it != entityList.end()) {
 		//Por la arquitectura actual, es necesario mantener la entidad de frog.
 		//Para cada entidad se comprueba su name, si no es un frog lo borra.
-		if ((*it)->getName() != FROG_ENTITY)
+		if ((*it)->getName() != FROG_ENTITY) {
+			delete* it;
 			it = entityList.erase(it);
+		}
+			
 		else
 			it++;
 	}
 
-	mapReader->clearMap();
-	mapReader->loadBg(nextMap, sdlutils().renderer());
-	mapReader->loadObj(nextMap);
+	if (mapReader != nullptr) {
+		mapReader->clearMap();
+		mapReader->loadBg(nextMap, sdlutils().renderer());
+		mapReader->loadObj(nextMap);
 
-	cameraManager->setTarget(player);
-
+	}
+	
+	if (cameraManager != nullptr) {
+		cameraManager->setTarget(player);
+	}
+	
+	TransformComponent* transform = static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT));
+	if (transform != nullptr) {
+		lastFrogPosition = transform->getCasilla();
+	}
 	//Actualizamos ultima posición de Spawn de la rana
-	lastFrogPosition = static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT))->getCasilla();
+	
 
 	needMapChange = false;
 }

@@ -9,6 +9,7 @@
 #include "../scenes/RoomScene.h"
 #include "TransformComponent.h"
 
+
 AttackComponentFrog::AttackComponentFrog() : inputM(InputManager::GetInstance()) {
 	distance = 2;
 	distanceMoved = 0;
@@ -25,7 +26,7 @@ AttackComponentFrog::~AttackComponentFrog() {
 }
 void AttackComponentFrog::initComponent() {
 	//scen = ent->getScene();
-	scen = static_cast<RoomScene*>(ent->getScene());
+	//scen = static_cast<RoomScene*>(ent->getScene());
 }
 //comprueba la colision entre la lengua y los diferentes enemigos
 void AttackComponentFrog::tongueTouch(Entity* e, Collider c)
