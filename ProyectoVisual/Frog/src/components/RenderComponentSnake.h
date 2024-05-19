@@ -10,7 +10,6 @@ class TransformComponent;
 
 class RenderComponentSnake : public RenderComponent {
 private:
-	//Texture* snakeText; vamos a usar la generica de render component
 	Texture* tongueText;
 	AnimationComponent* snakeAnimator;
 	TransformComponent* transform;
@@ -28,13 +27,9 @@ public:
 	void render();
 	void AttackStart();
 
-	Texture* getFrogText() {
+	Texture* getSnakeText() {
 		return myTexture;
 	}
-
-
 	void initComponent() override;
-	//Esto est� aqu� de manera provisional
-	SDL_Rect GetOnDisplayPosition();
 };
 

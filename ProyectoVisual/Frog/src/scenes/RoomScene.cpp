@@ -357,6 +357,13 @@ Entity* RoomScene::createCrazyFrog(Vector2D pos)
 	TransformComponent* transform = new TransformComponent(pos);
 	frog->addComponent(TRANSFORM_COMPONENT, transform);
 
+	Box* boxCrazyFrog = new Box(pos);
+	Collider coll = Collider(boxCrazyFrog);
+
+	ColliderComponent* collider = new ColliderComponent(transform);
+	collider->AddCollider(coll);
+	frog->addComponent(COLLIDER_COMPONENT, collider);
+
 	AnimationComponent* animFrog = new AnimationComponent();
 	RenderComponentFrog* renderFrog = new RenderComponentFrog(txtFrog, txtTongue, animFrog);
 
@@ -438,7 +445,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	return fish;	
 }
 Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
-	Entity* blackAnt = new Entity(this,BLACK_ANT_ENTITY);
+	Entity* blackAnt = new Entity(this, BLACK_ANT_ENTITY);
 	Texture* txtBlackAnt = &sdlutils().images().at("blackAntSheet");
 
 	TransformComponent* transform = new TransformComponent(pos);
@@ -471,7 +478,7 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DEAD");
 	blackAnt->addComponent(DAMAGE_COMPONENT, dm);
 
-	LifeComponent* lf = new LifeComponent(2, 2);
+	LifeComponent* lf = new LifeComponent(6, 6);
 	blackAnt->addComponent(LIFE_COMPONENT, lf);
 
 	AddEntity(blackAnt);
@@ -632,10 +639,10 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	AttackComponentSnake* atckSnake = new AttackComponentSnake();
 	snake->addComponent(ATTACK_COMPONENT, atckSnake);
 
-	DamageBehaviourComponent* dm = new DamageBehaviourComponent(" ");
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DAMAGE");
 	snake->addComponent(DAMAGE_COMPONENT, dm);
 
-	LifeComponent* lfSnake = new LifeComponent(1, 1);
+	LifeComponent* lfSnake = new LifeComponent(6, 6);
 	snake->addComponent(LIFE_COMPONENT, lfSnake);
 
 	AddEntity(snake);

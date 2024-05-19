@@ -11,7 +11,7 @@ DamageBehaviourComponent::~DamageBehaviourComponent() {
 }
 
 void DamageBehaviourComponent::manageDamage() {
-	animator->stopAnimation(); //Paramos la animaci�n que estuviese haciendo
+	animator->stopAnimation(); //Paramos la animacion que estuviese haciendo
 	animator->playAnimation(damageAnimation); //Reproducimos animacion de muerte (si la tiene)
 	move->setCanMove(false);
 	elapsedTime = sdlutils().virtualTimer().currTime();
