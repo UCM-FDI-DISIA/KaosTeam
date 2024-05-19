@@ -719,13 +719,22 @@ Entity* RoomScene::createTroncoTermitas(Vector2D pos)
 	RenderComponent* renderBomb = new RenderComponent(&sdlutils().images().at("termitaTronco"));
 	log->addRenderComponent(renderBomb);
 
+	Box* box = new Box(pos, 320, 160);
+	Collider coll = Collider(box);
+	ColliderComponent* collider = new ColliderComponent(transform);
+	collider->AddCollider(coll);
+	log->addComponent(COLLIDER_COMPONENT, collider);
+
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
+	log->addComponent(ATTACK_COMPONENT, attack); //para q colisione
+
 
 	return log;
 }
 Entity* RoomScene::createTermita(Vector2D pos)
 {
 	Entity* temita = new Entity(this, BLACK_ANT_ENTITY);
-	Texture* txt = &sdlutils().images().at("blackAntSheet");
+	Texture* txt = &sdlutils().images().at("termita");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	temita->addComponent(TRANSFORM_COMPONENT, transform);
