@@ -861,14 +861,13 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 {
 	Entity* c = nullptr;
 	
-	if (objName == "Jarron"){
-		/*c = createJarron(pos, objProps[0].getIntValue());*/
-		c = createJarron(pos, 1);
+	if (objName == "Jarron")
+	{
+		c = createJarron(pos, objProps[0].getIntValue());
 	}	
 	else if (objName == "Arbusto")
 	{
-		/*c = createArbusto(pos, objProps[0].getIntValue());*/
-		c = createArbusto(pos, 1);
+		c = createArbusto(pos, objProps[0].getIntValue());
 	}
 	else if (objName == "PiedraMovible"){
 		c = createPiedraMovible(pos, objIntID);
