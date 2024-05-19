@@ -1,22 +1,9 @@
 #include "ConveyorBeltComponent.h"
 #include "../scenes/RoomScene.h"
-#include "iostream"
+#include <iostream>
 
 ConveyorBeltComponent::ConveyorBeltComponent(int direccion, Vector2D pos) : direction(direccion), position(pos)
 {}
-
-
-
-void ConveyorBeltComponent::initComponent()
-{
-    coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
-
-    if (ent->getName() == CONVEYOR_ENTITY) {
-        coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {CheckCollisions(e, c); }); //Añadimos callback
-    }
-
-    scen = static_cast<RoomScene*>(ent->getScene());
-}
 
 void CheckCollisionsBelt(Entity* ent, Collider c)
 {
@@ -24,8 +11,19 @@ void CheckCollisionsBelt(Entity* ent, Collider c)
 
     if(ent->getName() == CONVEYOR_ENTITY)
     {
-        
-    
-    
+
+
+
     }
+}
+
+void ConveyorBeltComponent::initComponent()
+{
+    coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
+
+    if (ent->getName() == CONVEYOR_ENTITY) {
+        coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {CheckCollisionsBelt(e, c); }); //Añadimos callback
+    }
+
+    scen = static_cast<RoomScene*>(ent->getScene());
 }
