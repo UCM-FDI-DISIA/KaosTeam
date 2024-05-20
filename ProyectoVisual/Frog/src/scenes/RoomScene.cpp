@@ -550,7 +550,7 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	animcockroach->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
 	animcockroach->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
 	animcockroach->addAnimation("DEAD", Animation({ Vector2D(3,0), Vector2D(3,0) }, false, false, false));
-	//animcockroach->addAnimation("DEAD_DOWN", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, true, false));
+
 	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
 
 	RenderComponent* renderanimcockroach = new RenderComponent(txtcockroach);
@@ -562,6 +562,8 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	cockroach->addComponent(ATTACK_COMPONENT, attack);
 	LifeComponent* lc = new LifeComponent(2, 2);
 	cockroach->addComponent(LIFE_COMPONENT, lc);
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DEAD");
+	cockroach->addComponent(DAMAGE_COMPONENT, dm);
 
 	AddEntity(cockroach);
 	return cockroach;
