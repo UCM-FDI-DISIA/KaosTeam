@@ -671,7 +671,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 Entity* RoomScene::createPiedraMovible(Vector2D pos, int objIntID)
 {
 	Entity* piedra = new Entity(this, PIEDRAMOV_ENTITY);
-	Texture* textBomb = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PiedraMovible.png", 1, 1);
+	Texture* textBomb = &sdlutils().images().at("piedra");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	piedra->addComponent(TRANSFORM_COMPONENT, transform);
@@ -700,7 +700,6 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	enganche->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderEnganche = new RenderComponent(textEnganche);
-	//enganche->addComponent(RENDER_COMPONENT, renderEnganche);
 	enganche->addRenderComponent(renderEnganche);
 
 	Box* boxEnganche = new Box(pos);
@@ -1129,6 +1128,7 @@ void RoomScene::changeMap()
 		//Para cada entidad se comprueba su name, si no es un frog lo borra.
 		if ((*it)->getName() != FROG_ENTITY) {
 			delete* it;
+			*it = nullptr;
 			it = entityList.erase(it);
 		}
 			
