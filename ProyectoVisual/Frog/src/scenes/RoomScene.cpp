@@ -1008,6 +1008,7 @@ Entity* RoomScene::createExplotable(Vector2D pos, std::string objName, std::vect
 Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;
+	std::cout << "ENTITY CREATED: " << objName << std::endl;
 	if (objClass == "Enemigo") {
 		c = createEnemy(pos, objName, objProps);
 	}
@@ -1098,6 +1099,7 @@ void RoomScene::removeEntity(Entity* entity) {
 	}
 }
 RoomScene::~RoomScene() {
+
 	//Eliminar la lista de entidades
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;

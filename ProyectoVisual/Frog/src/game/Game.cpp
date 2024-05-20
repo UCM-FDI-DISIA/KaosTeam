@@ -36,9 +36,9 @@ void Game::init() {
 	//escenaActual = new RoomScene(1);
 
 	newgameState = new NewGameState();
-	//runningState = new RunningState();
-	//pausedState = new PausedState();
-    //gameOverState = new GameOverState();
+	runningState = new RunningState();
+	pausedState = new PausedState();
+    gameOverState = new GameOverState();
 	renderStates.push_front(newgameState);
 	updateStates.push_front(newgameState);
 
