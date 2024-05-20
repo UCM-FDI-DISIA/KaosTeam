@@ -10,11 +10,8 @@ void ConveyorBeltComponent::CheckCollisionsBelt(Entity* ent, Collider c)
 {
     TransformComponent* ObjTrans = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 
-    cout << "Detecta colison";
-
-    if(true && DataManager::GetInstance()->getFrameTime() - lastTimeMoved > COOLDOWN)
+    if(movementEnabled)
     {
-        lastTimeMoved = DataManager::GetInstance()->getFrameTime();
         switch (direction)
         {
         case NORTE:
@@ -32,9 +29,7 @@ void ConveyorBeltComponent::CheckCollisionsBelt(Entity* ent, Collider c)
         default:
             break;
         }
-        
     }
-
 }
 
 void ConveyorBeltComponent::initComponent()
@@ -46,4 +41,14 @@ void ConveyorBeltComponent::initComponent()
     }
 
     scen = static_cast<RoomScene*>(ent->getScene());
+}
+
+void ConveyorBeltComponent::update()
+{
+    if(DataManager::GetInstance()->getFrameTime() - lastTimeMoved > COOLDOWN)
+    {
+        movementEnabled = true;
+        lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+    }
+    else movementEnabled = false;
 }

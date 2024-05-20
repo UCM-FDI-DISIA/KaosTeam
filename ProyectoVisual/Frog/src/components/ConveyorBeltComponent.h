@@ -13,6 +13,7 @@ private:
 	int direction;						//Direccion en la que se mueven los objetos: Norte 0, este 1, sur 2 y oeste 3
 	uint lastTimeMoved = 0;
 	Vector2D position;					//Posición para poder mover los objetos adonde sea
+	bool movementEnabled;
 
 	ColliderComponent* coll = nullptr;	//Referencias
 	RoomScene* scen = nullptr;
@@ -22,5 +23,6 @@ private:
 public:
 	ConveyorBeltComponent(int direccion, Vector2D pos);
 	void initComponent() override;
+	void update() override;
 };
 
