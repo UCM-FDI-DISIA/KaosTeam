@@ -65,25 +65,25 @@
   <object id="14" name="Snake" type="Enemigo" x="42.0432" y="44.5685">
    <point/>
   </object>
-  <object id="30" name="CintaTransportadora" type="ObjInteract" x="41.0307" y="107.852">
+  <object id="30" name="CintaTransportadora" type="ObjInteract" x="41.226" y="123.092">
    <properties>
     <property name="Direccion" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="31" name="CintaTransportadora" type="ObjInteract" x="41.226" y="91.6351">
+  <object id="31" name="CintaTransportadora" type="ObjInteract" x="39.4676" y="90.6582">
    <properties>
     <property name="Direccion" type="int" value="1"/>
    </properties>
    <point/>
   </object>
-  <object id="32" name="CintaTransportadora" type="ObjInteract" x="54.5122" y="91.049">
+  <object id="32" name="CintaTransportadora" type="ObjInteract" x="71.5106" y="90.8536">
    <properties>
     <property name="Direccion" type="int" value="2"/>
    </properties>
    <point/>
   </object>
-  <object id="33" name="CintaTransportadora" type="ObjInteract" x="55.2937" y="108.438">
+  <object id="33" name="CintaTransportadora" type="ObjInteract" x="72.2921" y="123.092">
    <properties>
     <property name="Direccion" type="int" value="3"/>
    </properties>

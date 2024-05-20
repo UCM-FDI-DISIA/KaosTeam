@@ -799,11 +799,11 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 	Texture* txtConveyor = nullptr;
 	if(rotation == 1 || rotation == 3)
 	{
-		txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/candado.png", 1, 1);
+		txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/CintaTransSheetH.png", 1, 1);
 	}
 	else 
 	{
-		txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/candado.png", 1, 1);
+		txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/CintaTransSheetV.png", 1, 1);
 	}
 
 		// cambiarlo cuando sea posible
