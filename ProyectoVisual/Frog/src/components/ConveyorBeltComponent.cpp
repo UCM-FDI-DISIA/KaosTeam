@@ -10,7 +10,7 @@ void ConveyorBeltComponent::CheckCollisionsBelt(Entity* ent, Collider c)
 {
     TransformComponent* ObjTrans = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 
-    if(movementEnabled)
+    if(movementEnabled) // comprueba si se puede mover lo que sea antes
     {
         switch (direction)
         {

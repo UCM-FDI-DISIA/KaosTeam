@@ -795,7 +795,9 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 {
 	// rotation: 0 norte, 1 este, 2 sur y 3 oeste
 	Entity* conveyor = new Entity(this, CONVEYOR_ENTITY);
-	Texture* txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);	// cambiarlo cuando sea posible
+	Texture* txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/CintaTransSheet.png", 1, 1);	// cambiarlo cuando sea posible
+
+
 
 	TransformComponent* transform = new TransformComponent(pos);
 	conveyor->addComponent(TRANSFORM_COMPONENT, transform);
