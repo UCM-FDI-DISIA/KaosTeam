@@ -46,7 +46,7 @@ RoomScene::RoomScene(int id) : id(id), player(nullptr), francois(nullptr), needM
 	shopManager = Shop::instance();
 	shopManager->setPlayer(player);
 
-	createFrancois(Vector2D(1, 0));
+	createFrancois(Vector2D(15, 0));
 
 #pragma region Cosas q vamos a borrar pronto
 	//createBomb(Vector2D(4, 2));
@@ -56,10 +56,13 @@ RoomScene::RoomScene(int id) : id(id), player(nullptr), francois(nullptr), needM
 RoomScene::~RoomScene() {
 	//Eliminar la lista de entidades
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
-		delete* it;
+		if(it.operator*()->getName() != FRENCH_ENTITY)
+			delete* it;
 	}
 	//NO BORREIS LO SINGLETONS, Q SE BORRAN SOLOS
 	delete mapReader;
+	delete francois;
+	player = nullptr;
 }
 
 void RoomScene::render() {

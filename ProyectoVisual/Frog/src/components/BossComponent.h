@@ -12,8 +12,9 @@
 #include <vector>
 #include <utility>
 
-const int MAX_CUBIERTOS = 4;
-const int TIME_AFTER_ATTACK = 4;
+const int TYPES_OF_CUTLERY = 4;
+const int MAX_CUTLERY = 6;
+const int TIME_AFTER_ATTACK = 100;
 const int MINIMUM_CUTLERY_PER_ATTACK = 2;
 
 enum bossState { MOVE, ATTACK };	
@@ -32,22 +33,22 @@ struct Cubierto {
 class BossComponent: public Component
 {	
 private:
-	bossState currState;
-	RenderComponent* rnd;
+	
+	Texture* aviso; //Imagen aviso en que columna aparecera un cubierto
 	std::vector<Cubierto*> cubiertos;
 	int numCubiertos; //Contador del vector poolCubiertos
 	std::vector<std::pair<Cubierto*, bool>> poolCubiertos; //El numero de cubiertos max instanciados depende de la zona
 	Texture** texturasCubiertos; //Array de texturas de los cubiertos
 	bool addToList; //Determines if cutlery is added to entity list
 
-	Uint32 attackStartTime; //Definde en que momento empieza un ataque
+	int attackStartTime; //Definde en que momento empieza un ataque
 	bool isAttacking; //Para determinar el estado de francois
-	bool isDetected; //Determina si Flonk esta sobre la sombra
-	Uint32 postAttackTimer; //para evitar que empiece a detectar tras un ataque
+	int postAttackTimer; //para evitar que empiece a detectar tras un ataque
 	int contDishes; //Platos contaminados en cada momento
 
-	Texture* aviso; //Imagen aviso en que columna aparecera un cubierto
+	bossState currState;
 	TransformComponent* tr;
+	RenderComponent* rnd;
 	MovementComponentFrancois* mov;
 	ColliderComponent* coll;
 
@@ -72,7 +73,8 @@ public:
 	bool isOutOfScreen(float y) const; //Comprueba si un cubierto se ha salido de la pantalla
 	bool theresCutleryToAdd() const { return addToList; };
 	bool isDetectingFlonk() const;
-	bool isFlonkAttacking() const { return isAttacking; };
+	bool isAttackingFlonk() const { return isAttacking; }; //Devuelve si esta atacando a Flonk
+	bool hasTimerPostAttackEnded() const { return postAttackTimer > TIME_AFTER_ATTACK; }
 	//Setters
 	void setContaminatedDishes(int d) { contDishes += d; };
 };

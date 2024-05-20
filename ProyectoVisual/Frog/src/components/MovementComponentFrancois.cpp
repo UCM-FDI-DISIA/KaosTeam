@@ -13,7 +13,7 @@ MovementComponentFrancois::~MovementComponentFrancois()
 
 void MovementComponentFrancois::initComponent()
 {
-	velocity = Vector2D(1.0/10, 0);
+	velocity = Vector2D(-1.0/10, 0);
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 
 	upperLimit = ent->getScene()->getMapReader()->getMapSize().getX() - (tr->getWidth() / TILE_SIZE);
@@ -21,14 +21,13 @@ void MovementComponentFrancois::initComponent()
 
 void MovementComponentFrancois::update()
 {
+	BossComponent* boss = static_cast<BossComponent*>(ent->getComponent(BOSS_COMPONENT));
+
 	setDirection();
-	if (!static_cast<BossComponent*>(ent->getComponent(BOSS_COMPONENT))->isFlonkAttacking()
-			&& !static_cast<BossComponent*>(ent->getComponent(BOSS_COMPONENT))->isDetectingFlonk()) {
-		
+	//Mover al Boss si no esta atacando ni detectando a Flonk, o si lo esta detectando y el tiempo postAttack no termino
+	if (!boss->isAttackingFlonk() && !boss->isDetectingFlonk() 
+			|| boss->isDetectingFlonk() && !boss->hasTimerPostAttackEnded()) {
 		tr->setOffsetX(tr->getOffset().getX() + velocity.getX());
 		tr->setCasilla(velocity + tr->getCasilla());
 	}
-
-	cout << "Posicio de la sombra: (" << tr->getCasilla().getX() << ", " << tr->getCasilla().getY() << ")" << endl;
-
 }
