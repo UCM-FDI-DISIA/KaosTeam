@@ -19,10 +19,14 @@ void RoomScene::render() {
 }
 
 void RoomScene::update() {
-	for (Entity* e : entityList) {
-		if (e != nullptr)
-			e->update();
+	//para poder añadir elementos en ejecución
+	for (int i = 0; i < entityList.size(); i++)
+	{
+		if (entityList[i] != nullptr)
+			entityList[i]->update();
+
 	}
+
 	HUD->update();
 	cameraManager->update();
 	if (insideShop) {
