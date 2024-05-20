@@ -12,3 +12,8 @@ void MovementComponent::initComponent()
 bool MovementComponent::checkIfTileWalkable(Vector2D v) const { 
 	return (ent->getScene()->getMapReader()->isTileWalkable(v)); 
 }
+
+bool MovementComponent::checkIfTileWalkable(Vector2D v)
+{
+	return (ent->getScene()->getMapReader()->isTileWalkable(v)); //para comprobar q la tile existe
+}

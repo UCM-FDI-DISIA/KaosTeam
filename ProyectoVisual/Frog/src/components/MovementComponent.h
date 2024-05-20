@@ -34,6 +34,6 @@ public:
 	void setBoundY(int newBoundY) { boundY = newBoundY; }
 	void setCanMove(bool b) { canMove = b; };
 	bool getMoveState() const { return canMove; };
-	bool checkIfTileWalkable(Vector2D);
+	bool checkIfTileWalkable(Vector2D v);
 };
 

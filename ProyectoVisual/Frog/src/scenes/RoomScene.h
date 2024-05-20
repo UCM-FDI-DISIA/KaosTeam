@@ -74,7 +74,7 @@ private:
 	void CheckColisions();
 
 public:
-	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false), gameOver(false) {
+	RoomScene(string path) : path(path), cameraManager(nullptr), player(nullptr), francois(nullptr), playerOrig(N), nextFlonk(S), needMapChange(false), insideShop(false), gameOver(false) {
 		//A trav�s del id de la sala, se deben buscar los datos necesarios para cargar el tilemap y las entidades de la sala.
 
 		mapReader = new MapManager(path, this);

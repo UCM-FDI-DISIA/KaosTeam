@@ -4,8 +4,8 @@
 #include "../scenes/RoomScene.h"
 #include "../sdlutils/SDLUtils.h"
 
-RunningState::RunningState() : game(Game::instance()), hud(), 
-					currScene(new RoomScene("mapaN1_01.tmx")), imngr(im())
+RunningState::RunningState() : game(Game::instance()), hud(), currRoomScene(nullptr),
+					currScene(nullptr), imngr(im())
 {
 }
 
