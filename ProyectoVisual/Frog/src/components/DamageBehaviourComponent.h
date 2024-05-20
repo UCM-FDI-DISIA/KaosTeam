@@ -9,15 +9,18 @@
 
 class DamageBehaviourComponent :public Component {
 private:
+	const Uint32 WAIT_TIME = 1000;
 	AnimationComponent* animator;
 	MovementComponent* move;
 	std::string damageAnimation;
 
 	Uint32 elapsedTime;
+	bool isDead;
 public:
 	DamageBehaviourComponent(std::string damageAnim);
 	virtual ~DamageBehaviourComponent();
 	void manageDamage();
+	void setDead(bool value);
 
 	void initComponent() override;
 	void update() override;

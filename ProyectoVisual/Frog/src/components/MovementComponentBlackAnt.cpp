@@ -33,7 +33,9 @@ void MovementComponentBlackAnt::initComponent() {
 
 void MovementComponentBlackAnt::update() {
 
-	if (!waitToAttack && !waitToMove && !isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
+	//si no se esta moviendo, ni esta inmovil, ni esta esperando a atacar
+	//segun la direccion se cambia la animacion y la velocidad, esta tambien depende de si la hormiga esta en estado de atacar a la rana
+	if (!waitToAttack && !waitToMove && !isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime && canMove) {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		playerPosition = targetTransformComp->getCasilla();
 		switch (actualDirection)
@@ -94,6 +96,7 @@ void MovementComponentBlackAnt::update() {
 		}
 		isMoving = true;
 	}
+	//si esta en estado de moverse, se mueve en la direccion correspondiente
 	else if (isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > movementFrameRate)
 	{
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
@@ -112,16 +115,20 @@ void MovementComponentBlackAnt::update() {
 			tr->setOffset({ 0,0 });
 			framesMoved = 0;
 			isMoving = false;
+			//si estaba atacando deja de atacar y comprueba que no se haya chocado con una pared
 			if (isAtacking) {
 				diff = 0;
 				isAtacking = false;
 				checkCollisionWall();
 			}
+			//comprueba si debe atacar
 			bool attack = isPlayerNear();
+			//si no tiene que atacar, cambia de direccion
 			if (!attack)
 				changeDirection();
 		}
 	}
+	//si tiene que esperar para atacar
 	else if (waitToAttack) {
 		Uint32 currentTime = DataManager::GetInstance()->getFrameTime();
 		if ((currentTime - lastTimeMoved) > waitTimeAttack) {
@@ -130,6 +137,7 @@ void MovementComponentBlackAnt::update() {
 			lastTimeMoved = currentTime;
 		}
 	}
+	//si tiene que esperar para moverse por estar inmovil
 	else if (waitToMove) {
 		Uint32 currentTime = DataManager::GetInstance()->getFrameTime();
 		if ((currentTime - lastTimeMoved) > immobileTime) {
@@ -185,6 +193,7 @@ void MovementComponentBlackAnt::changeDirection() {
 		break;
 	}
 }
+//comprueba si esta el jugador cerca ya sea en la misma columna o fila de nuestro sistema por casillas y dependiendo de su direccion actual
 bool MovementComponentBlackAnt::isPlayerNear() {
 	if (playerPosition.getY() == tr->getCasilla().getY()) {
 

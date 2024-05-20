@@ -8,14 +8,14 @@ class Menu;
 class GameOverState :public GameState
 {
 public:
-	GameOverState(Game* g);
+	GameOverState();
 	virtual ~GameOverState();
 	void leave() override;
 	void update() override;
 	void enter() override;
 
 	//Getters
-	Scene* getScene() const override {return &currScene; };
+	Scene* getScene() const override { return &currScene; };
 private:
 	Game* game;
 	Menu* menu; //Puntero que gestiona la pantalla de MenuInicio

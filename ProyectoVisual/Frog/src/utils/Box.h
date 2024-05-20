@@ -7,8 +7,10 @@ class Box
 {
 public:
 	Box(Vector2D casilla, float width, float height);
+	//Con este constructor, se define la escala como de 1 casilla.
 	Box(Vector2D casilla);
 	Box();
+	/*Devuelve como SDL_Rect la posición real en pantalla de la entidad a partir de su posición en las casillas y su offset*/
 	SDL_Rect GetOnDisplayPosition() const;
 
 	void setCasilla(Vector2D);
@@ -20,10 +22,13 @@ public:
 
 protected:
 	Vector2D casilla;
-	float width;
-	float height;
+	//La anchura (en casillas) de la entidad
+	int width;
+	//La altura (en casillas) de la entidad
+	int height;
+	//La escala de la caja. Si es 1, mide 1 casilla. Si es 2 mide 2 casillas y etc.
 	float scale;
-	//El offset dentro de la casilla
+	//El desplazamiento dentro de la casilla
 	Vector2D offset;
 };
 

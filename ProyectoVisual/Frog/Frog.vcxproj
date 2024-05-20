@@ -152,10 +152,13 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>"$(SolutionDir)tmxlite\lib"; "$(SolutionDir)SDL2_ttf-2.0.14\lib\x64"; "$(SolutionDir)SDL2_mixer-2.0.2\lib\x64";</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;tmxlite-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libtmxlite-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\AddTermiteComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentHeadRoach.cpp" />
+    <ClCompile Include="src\components\PuertaComponent.cpp" />
     <ClCompile Include="src\components\DamageBehaviourComponent.cpp" />
     <ClCompile Include="src\components\ItemThrowerComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentBasicEnemy.cpp" />
@@ -229,7 +232,10 @@
     <ClCompile Include="src\components\SwallowComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\AddTermiteComponent.h" />
     <ClInclude Include="Box.h" />
+    <ClInclude Include="src\components\MovementComponentHeadRoach.h" />
+    <ClInclude Include="src\components\PuertaComponent.h" />
     <ClInclude Include="src\components\DamageBehaviourComponent.h" />
     <ClInclude Include="src\components\ItemThrowerComponent.h" />
     <ClInclude Include="src\components\AttackComponentBasicEnemy.h" />

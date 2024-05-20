@@ -3,8 +3,7 @@
 #include "MovementComponentFrog.h"
 #include "AttackComponentFrog.h"
 
-FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr), throwerComponent(nullptr)
-{
+FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr), throwerComponent(nullptr) {
 	input = InputManager::GetInstance();
 }
 FrogInputComponent::~FrogInputComponent()
@@ -16,59 +15,55 @@ FrogInputComponent::~FrogInputComponent()
 }
 void FrogInputComponent::update()
 {
-	////mover shortJump y LngJump al movemente despues del hito
-	//int JumpSize = shortJump;
-	//if (input->getAction2())
-	//{
-	//	preparingJump = true;
-	//	cyclesJumpPrepared++;
-	//	if (cyclesJumpPrepared > cyclesToPrepareJump)
-	//		JumpSize = longJump;
-	//}
-	//
-	//else
-	//	cyclesJumpPrepared = 0;
 		
-	int JumpSize = shortJump;
+	int JumpSize = 0;
 	if ((DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > actionCoolDown) {
-		if (input->getDown()) {
-			if (inventoryComponent->mejoras.saltamontes && input->getShift().pressed) {
-				JumpSize = longJump;
-			}
-			else JumpSize = shortJump;
+
+		if (input->getDown().pressed || input->getUp().pressed || input->getLeft().pressed || input->getRight().pressed) {
+			preparingJump = true;
+			cyclesJumpPrepared++;
+		}
+		else if (input->getDown().keyUP) {
+
+			if (cyclesJumpPrepared > cyclesToPrepareJump)
+				JumpSize = inventoryComponent->mejoras.saltamontes;
+			else
+				JumpSize = shortJump;
 			movementComponent->startMovement(DOWN, Vector2D(0, JumpSize));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
-			cyclesJumpPrepared= 0;
+			cyclesJumpPrepared = 0;
 
 		}
-		else if (input->getUp()) {
-			if (inventoryComponent->mejoras.saltamontes && input->getShift().pressed) {
-				JumpSize = longJump;
-			}
-			else JumpSize = shortJump;
+
+		else if (input->getUp().keyUP) {
+
+			if (cyclesJumpPrepared > cyclesToPrepareJump)
+				JumpSize = inventoryComponent->mejoras.saltamontes;
+			else
+				JumpSize = shortJump;
 			movementComponent->startMovement(UP, Vector2D(0, -JumpSize));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 
 		}
-		else if (input->getRight()) { 
-			if (inventoryComponent->mejoras.saltamontes && input->getShift().pressed) {
-				JumpSize = longJump;
-			}
-			else JumpSize = shortJump;
+		else if (input->getRight().keyUP) { 
+			if (cyclesJumpPrepared > cyclesToPrepareJump)
+				JumpSize = inventoryComponent->mejoras.saltamontes;
+			else
+				JumpSize = shortJump;
 			movementComponent->startMovement(RIGHT, Vector2D(JumpSize, 0));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 
 		}
-		else if (input->getLeft()) {
-			if (inventoryComponent->mejoras.saltamontes && input->getShift().pressed) {
-				JumpSize = longJump;
-			}
-			else JumpSize = shortJump;
+		else if (input->getLeft().keyUP) {
+			if (cyclesJumpPrepared > cyclesToPrepareJump)
+				JumpSize = inventoryComponent->mejoras.saltamontes;
+			else
+				JumpSize = shortJump;
 			movementComponent->startMovement(LEFT, Vector2D(-JumpSize, 0));
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
@@ -99,6 +94,11 @@ void FrogInputComponent::update()
 				throwerComponent->throwItem(BOMBAS, movementComponent);
 				throwerComponent->throwStart();
 				std::cout << "\nHAS LANZADO BOMBAS CON EL SACO" << std::endl;
+			}
+			else if ( inventoryComponent->mejoras.roach_head >= 1) {
+				throwerComponent->throwItem(ROACH_HEAD, movementComponent);
+				throwerComponent->throwStart();
+				std::cout << "\nHAS LANZADO CABEZA" << std::endl;
 			}
 		}
 	}

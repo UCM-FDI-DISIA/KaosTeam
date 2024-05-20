@@ -37,6 +37,7 @@ class TransitionComponent :public Component
 private:
 	std::string nextMap;
 	flonkOrig nextFlonk;
+	Entity* lastTransition;
 	void CheckMapChange(Entity* e, Collider c);
 public:
 	TransitionComponent(std::string nextMap, flonkOrig nextFlonk);

@@ -16,7 +16,7 @@ void MovementComponentFrog::startMovement(Directions d, Vector2D v)
 		}
 		actualDirection = d;
 
-		if (!arrastrado) {
+		if (!hooked) {
 			string animation = "";
 			switch (d) { //Se configura como se empieza a renderizar la lengua
 			case Directions::LEFT:
@@ -58,7 +58,7 @@ void MovementComponentFrog::changeDirection(Directions d, string animation)
 void MovementComponentFrog::hookAttract(Vector2D newPos)
 {
 	startMovement(actualDirection, newPos - tr->getCasilla());
-	arrastrado = true;
+	hooked = true;
 }
 
 void MovementComponentFrog::update() {
@@ -72,7 +72,7 @@ void MovementComponentFrog::update() {
 		if (actualDirection == LEFT || actualDirection == RIGHT)
 		{
 			tr->setOffsetX(tr->getOffset().getX() + t / framesPerJump * velocity.getX());
-			if (!arrastrado)
+			if (!hooked)
 				tr->setOffsetY(-t/2 * sin(3.14/framesPerJump * framesMoved)); //para calcular la altura del salto
 		}
 		else
@@ -86,7 +86,7 @@ void MovementComponentFrog::update() {
 			tr->setOffset({ 0,0 });
 			framesMoved = 0;
 			jumping = false;
-			arrastrado = false;
+			hooked = false;
 		}
 	}
 }

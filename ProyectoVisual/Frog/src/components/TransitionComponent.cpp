@@ -13,7 +13,6 @@ void TransitionComponent::CheckMapChange(Entity* e, Collider c) {
 };
 
 TransitionComponent::TransitionComponent(std::string nextMap, flonkOrig nextFlonk) : nextMap(nextMap), nextFlonk(nextFlonk) {
-
 };
 
 void TransitionComponent::initComponent() {
