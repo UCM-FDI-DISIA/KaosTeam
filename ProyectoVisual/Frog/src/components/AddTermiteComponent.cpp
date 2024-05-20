@@ -11,7 +11,7 @@ void AddTermiteComponent::update()
 {
 	if ((DataManager::GetInstance()->getFrameTime() - lastTimeGenerated) > waitTime) {
 
-		ent->getScene()->AddEntity(ent->getScene()->createTermita(spawnPos));
+		ent->getScene()->createTermita(spawnPos);
 		lastTimeGenerated = DataManager::GetInstance()->getFrameTime();
 	}
 }

@@ -1145,8 +1145,13 @@ RoomScene::~RoomScene() {
 
 	//Eliminar la lista de entidades
 	std::cout << "TOTAL NUMBER OF ENTITIES: " << entityList.size() << std::endl;
-	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
+	/*for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;
+	}*/
+
+	for (int i = 0; i < entityList.size(); i++)
+	{
+		delete entityList[i];
 	}
 
 	delete mapReader;
