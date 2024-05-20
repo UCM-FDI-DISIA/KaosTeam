@@ -145,7 +145,7 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 			c->addComponent(TRANSFORM_COMPONENT, transform);
 			Texture* textTienda = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Arbol_exterior.png", 1, 1);
 			RenderComponent* renderTienda = new RenderComponent(textTienda);
-			c->addComponent(RENDER_COMPONENT, renderTienda);
+			//c->addComponent(RENDER_COMPONENT, renderTienda);
 			c->addRenderComponent(renderTienda);
 		}
 	}
@@ -679,7 +679,7 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos, int objIntID)
 	piedra->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderPiedra = new RenderComponent(textBomb);
-	piedra->addComponent(RENDER_COMPONENT, renderPiedra);
+	//piedra->addComponent(RENDER_COMPONENT, renderPiedra);
 	piedra->addRenderComponent(renderPiedra);
 
 	Box* boxPiedra = new Box(pos);
@@ -702,7 +702,7 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	enganche->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderEnganche = new RenderComponent(textEnganche);
-	enganche->addComponent(RENDER_COMPONENT, renderEnganche);
+	//enganche->addComponent(RENDER_COMPONENT, renderEnganche);
 	enganche->addRenderComponent(renderEnganche);
 
 	Box* boxEnganche = new Box(pos);
@@ -743,7 +743,7 @@ Entity* RoomScene::createMapChanger(string name, Vector2D pos, bool pushed, stri
 	RenderComponent* renderC = new RenderComponent(text);
 	renderC->setContext(e);
 	renderC->initComponent();
-	e->addComponent(RENDER_COMPONENT, renderC);
+	//e->addComponent(RENDER_COMPONENT, renderC);
 	e->addRenderComponent(renderC);
 
 	Box* box = new Box(pos);
@@ -773,7 +773,7 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
-	destructible->addComponent(RENDER_COMPONENT, renderDestructible);
+	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
 	Box* boxdestructible = new Box(pos);
@@ -798,7 +798,7 @@ Entity* RoomScene::createDoor(Vector2D pos)
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
-	destructible->addComponent(RENDER_COMPONENT, renderDestructible);
+	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
 	Box* boxdestructible = new Box(pos);
@@ -823,7 +823,7 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
-	destructible->addComponent(RENDER_COMPONENT, renderDestructible);
+	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
 	Box* boxdestructible = new Box(pos);
@@ -910,7 +910,7 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 	conveyor->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderDestructible = new RenderComponent(txtConveyor);
-	conveyor->addComponent(RENDER_COMPONENT, renderDestructible);
+	//conveyor->addComponent(RENDER_COMPONENT, renderDestructible);
 	conveyor->addRenderComponent(renderDestructible);
 
 	Box* boxConveyor = new Box(pos);

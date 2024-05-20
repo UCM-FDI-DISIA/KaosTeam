@@ -54,6 +54,8 @@ Entity::~Entity()
 	delete renderComponent;
 	delete renderComponentFrog;
 	delete renderComponentSnake;
+
+	std::cout << "Has eliminado la entidad: " << this->getName() << std::endl;
 }
 
 void
