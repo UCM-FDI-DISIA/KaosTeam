@@ -35,7 +35,7 @@ void MovementComponentBlackAnt::update() {
 
 	//si no se esta moviendo, ni esta inmovil, ni esta esperando a atacar
 	//segun la direccion se cambia la animacion y la velocidad, esta tambien depende de si la hormiga esta en estado de atacar a la rana
-	if (!waitToAttack && !waitToMove && !isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime) {
+	if (!waitToAttack && !waitToMove && !isMoving && (DataManager::GetInstance()->getFrameTime() - lastTimeMoved) > waitTime && canMove) {
 		lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 		playerPosition = targetTransformComp->getCasilla();
 		switch (actualDirection)

@@ -5,7 +5,7 @@
 #include "RunningState.h"
 
 GameOverState::GameOverState(): menu(new MenuGameOver(Game::instance(), this,
-				&sdlutils().images().at("BotonJuego"/*Reintentar*/), //
+				&sdlutils().images().at("BotonReintentar"/*Reintentar*/), //
 				&sdlutils().images().at("BotonSalir"/*VolverMenuInicial*/))), //
 				currScene(*menu) //
 {}

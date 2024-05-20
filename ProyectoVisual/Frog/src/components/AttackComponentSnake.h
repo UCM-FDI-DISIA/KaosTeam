@@ -14,6 +14,7 @@ private:
 	Box* attackBox;
 	virtual ~AttackComponentSnake();
 	void checkHit(Entity*, Collider);
+	void checkHitWithBody(Entity*, Collider);
 	bool hitted;
 	int damage;
 public:

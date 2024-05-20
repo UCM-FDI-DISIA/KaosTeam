@@ -39,26 +39,28 @@ void LifeComponent::hit(int damage) {
 	}
 	//Si ya no tiene vidas (lo compruebo aqui para no tener que hacerlo todo el rato en el update)
 	if (!alive()) {
-		//DEJO COMENTADO LO DE LA CABEZA DE LA CUCARACHA, NO HE CONSEGUIDO ARREGLAR EL PROBLEMA
 		//TransformComponent* transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+		 TransformComponent* transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 		////en el caso de la cucaracha cuando esta muere suelta su cabeza en la escena en la que se encuentren y el loot se dropea en la casilla de al lado
-		//if (ent->getName() == COCKROACH_ENTITY) {
-		//	if (transform != nullptr) {
-		//		ent->getScene()->createHeadCockroach(transform->getCasilla(), false);
-		//		Vector2D posActual = transform->getCasilla();
-		//		
-		//		Vector2D posAux = posActual + Vector2D(1, 1);
-		//		dropLoot(posAux);
-		//	}
-		//}
-		//else {
-		//	//posibilidad de dropear loot al morir
-		//	if (transform != nullptr)
-		//		dropLoot(transform->getCasilla());
-		//}
-		//animator->stopAnimation(); //Paramos la animaci�n que estuviese haciendo
-		//animator->playAnimation("DEATH"); //Reproducimos animacion de muerte (si la tiene)
+		if (ent->getName() == COCKROACH_ENTITY) {
+			if (transform != nullptr) {
+				ent->getScene()->createHeadCockroach(transform->getCasilla(), false);
+				Vector2D posActual = transform->getCasilla();
+				
+				Vector2D posAux = posActual + Vector2D(1, 1);
+				dropLoot(posAux);
+			}
+		}
+		else {
+			//posibilidad de dropear loot al morir
+			if (transform != nullptr)
+				dropLoot(transform->getCasilla());
+		}
 		timerforDelete.resume(); //Ponemos contador en marcha
+		if (damageComp != nullptr) {
+			damageComp->setDead(true); //la entidad esta muerta
+		}
+		
 	}
 }
 

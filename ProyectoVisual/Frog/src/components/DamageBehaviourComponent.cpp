@@ -1,7 +1,7 @@
 ﻿#include "DamageBehaviourComponent.h"
 #include "../scenes/RoomScene.h"
 
-DamageBehaviourComponent::DamageBehaviourComponent(std::string damageAnim) : animator(nullptr), move(nullptr){
+DamageBehaviourComponent::DamageBehaviourComponent(std::string damageAnim) : animator(nullptr), move(nullptr), isDead(false) {
 	damageAnimation = damageAnim;
 }
 
@@ -11,10 +11,14 @@ DamageBehaviourComponent::~DamageBehaviourComponent() {
 }
 
 void DamageBehaviourComponent::manageDamage() {
-	animator->stopAnimation(); //Paramos la animaci�n que estuviese haciendo
+	animator->stopAnimation(); //Paramos la animacion que estuviese haciendo
 	animator->playAnimation(damageAnimation); //Reproducimos animacion de muerte (si la tiene)
 	move->setCanMove(false);
 	elapsedTime = sdlutils().virtualTimer().currTime();
+}
+
+void DamageBehaviourComponent::setDead(bool value) {
+	isDead = value;
 }
 
 void DamageBehaviourComponent::initComponent() {
@@ -24,8 +28,7 @@ void DamageBehaviourComponent::initComponent() {
 
 //cuando pase el tiempo que esta inmovil, la entidad podra moverse otra vez
 void DamageBehaviourComponent::update() {
-	if(!move->getMoveState() && sdlutils().virtualTimer().currTime() > elapsedTime + WAIT_TIME) {
+	if (!move->getMoveState() && sdlutils().virtualTimer().currTime() > elapsedTime + WAIT_TIME && !isDead) {
 		move->setCanMove(true);
 	}
-
 }
