@@ -277,15 +277,15 @@ El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de
 
 **Durante el juego:**
  Durante el juego se ve la interfaz descrita antes.
-![](assets/imgGdd/InGameMenu.png)
+![](assets/imgGdd/imgInGame.png)
 
 **Menú de pausa:** 
 En el menú de pausa el jugador puede volver a la partida o ir al menú principal.
-![](assets/imgGdd/PauseMenu.png)
+![](assets/imgGdd/imgPauseMenu.png)
 
 **Menú de GameOver:**
 En el menú de Game Over el jugador puede revivir e intentarlo de nuevo o ir al menú principal.
-![](assets/imgGdd/GameOverMenu.png)
+![](assets/imgGdd/imgGameOverMenu.png)
 
 </details>
 
