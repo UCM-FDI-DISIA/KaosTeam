@@ -694,7 +694,7 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos, int objIntID)
 Entity* RoomScene::createEnganche(Vector2D pos)
 {
 	Entity* enganche = new Entity(this, ENGANCHE_ENTITY);
-	Texture* textEnganche = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/EngancheProv.png", 1, 1);
+	Texture* textEnganche = &sdlutils().images().at("enganche");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	enganche->addComponent(TRANSFORM_COMPONENT, transform);
@@ -702,8 +702,8 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	RenderComponent* renderEnganche = new RenderComponent(textEnganche);
 	enganche->addRenderComponent(renderEnganche);
 
-	Box* boxEnganche = new Box(pos);
-	Collider coll = Collider(boxEnganche);
+	/*Box* boxEnganche = new Box(pos);
+	Collider coll = Collider(boxEnganche);*/
 	ColliderComponent* collEnganche = new ColliderComponent(transform);
 	enganche->addComponent(COLLIDER_COMPONENT, collEnganche);
 
