@@ -273,7 +273,7 @@ El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de
 
 **Menú principal:**
  El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar y un botón para salir del juego.
-![](assets/imgGdd/image6.png)
+![](assets/imgGdd/imgMainMenu.png)
 
 **Durante el juego:**
  Durante el juego se ve la interfaz descrita antes.
