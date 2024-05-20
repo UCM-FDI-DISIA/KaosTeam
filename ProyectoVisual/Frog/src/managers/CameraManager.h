@@ -6,6 +6,7 @@
 #include "../ecs/Entity.h"
 #include "../utils/Vector2D.h"
 #include "../components/MovementComponentFrog.h"
+#include "../components/TransformComponent.h"
 #include "../utils/Singleton.h"
 
 /*

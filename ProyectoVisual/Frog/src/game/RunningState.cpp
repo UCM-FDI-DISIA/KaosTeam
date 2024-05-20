@@ -4,18 +4,13 @@
 #include "../scenes/RoomScene.h"
 #include "../sdlutils/SDLUtils.h"
 
-
-RunningState::RunningState() : currRoomScene(nullptr), currScene(nullptr), hud(), imngr(im()) {
+RunningState::RunningState(Game* g) : game(g), hud(), currScene(new RoomScene(1)),imngr(im())
+{
 }
 
 RunningState::~RunningState()
 {
 	delete currScene;
-	//for (auto a : allRooms)
-	//{
-	//	delete a;
-	//}
-	//allRooms.clear();
 }
 
 void RunningState::leave() {

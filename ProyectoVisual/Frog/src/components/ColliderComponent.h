@@ -16,6 +16,7 @@ enum ColliderName {
 Necesitan una box que defina el espacion en pantalla que ocupan*/
 class Collider {
 public:
+	Collider() {};
 	Collider(Box* box, ColliderName name) : funciones(std::list<std::function<void(Entity*, Collider)>>()), box(box), name(name) {};
 	//En caso de no querer darle un ColliderName. Lo deja como UNAMED_COLLIDER
 	Collider(Box* box) : funciones(std::list<std::function<void(Entity*, Collider)>>()), box(box), name(UNAMED_COLLIDER) {};
@@ -61,7 +62,7 @@ public:
 	//Añade un collider a este componente
 	void AddCollider(Collider c);
 	std::list<Collider> GetColliders() const;
-	Collider* GetTransofmCollider();
+	Collider* GetTransformCollider();
 private:
 	//Lista de colliders gestionados por este componente
 	std::list<Collider> colliders;

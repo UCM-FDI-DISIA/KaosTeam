@@ -25,6 +25,11 @@ public:
 	MovementComponent() : canMove(true) {};
 	void initComponent() override;
 
+	//Getters
+	//Para comprobar q la tile existe
+	bool checkIfTileWalkable(Vector2D v) const;
+
+	//Setters
 	void setBoundX(int newBoundX) { boundX = newBoundX; }
 	void setBoundY(int newBoundY) { boundY = newBoundY; }
 	void setCanMove(bool b) { canMove = b; };

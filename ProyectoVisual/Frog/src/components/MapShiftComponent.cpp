@@ -36,9 +36,9 @@ void MapShiftComponent::collisionBoton(Entity* ent, Collider c)
 void MapShiftComponent::initComponent()
 {
     if (ent->getName() == PALANCA_ENTITY) {
-        static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {collisionPalanca(e, c); }); //Añadimos callback
+        static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {collisionPalanca(e, c); }); //Añadimos callback
     }
     else if (ent->getName() == BOTON_ENTITY) {
-        static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {collisionBoton(e, c); }); //Añadimos callback
+        static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {collisionBoton(e, c); }); //Añadimos callback
     }
 }

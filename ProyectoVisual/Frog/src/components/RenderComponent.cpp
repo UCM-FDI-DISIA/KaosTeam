@@ -1,6 +1,10 @@
 #include "RenderComponent.h"
 #include "../scenes/RoomScene.h"
 
+void RenderComponent::initComponent() {
+	transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+	myAnimator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
+}
 
 void RenderComponent::render()
 {
@@ -15,14 +19,10 @@ void RenderComponent::render()
 		}
 		else {
 			myTexture->renderFrame(transform->GetOnDisplayPosition(), myAnimator->getCurrentFil(), myAnimator->getCurrentCol());
-		}	
+		}
 	}
 	else {
 		myTexture->render(transform->GetOnDisplayPosition());
 	}
 }
 
-void RenderComponent::initComponent() {
-	transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
-	myAnimator = static_cast<AnimationComponent*>(ent->getComponent(ANIMATION_COMPONENT));
-}

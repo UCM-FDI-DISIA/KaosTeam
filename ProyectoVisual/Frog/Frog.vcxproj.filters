@@ -53,6 +53,7 @@
     <ClCompile Include="src\components\MovementComponentSnake.cpp" />
     <ClCompile Include="src\components\RenderComponentSnake.cpp" />
     <ClCompile Include="src\components\AttackComponentSnake.cpp" />
+    <ClCompile Include="src\components\BossComponent.cpp" />
     <ClCompile Include="src\managers\ShopManager.cpp" />
     <ClCompile Include="src\components\MovementComponentBomb.cpp" />
     <ClCompile Include="src\utils\Box.cpp" />
@@ -68,7 +69,6 @@
     <ClCompile Include="src\components\MovementComponentCockroach.cpp" />
     <ClCompile Include="src\components\ExploitableComponent.cpp" />
     <ClCompile Include="src\components\CogibleObjectComponent.cpp" />
-    <ClCompile Include="src\components\DestructibleComponent.cpp" />
     <ClCompile Include="src\components\ConveyorBeltComponent.cpp" />
     <ClCompile Include="src\components\AttackComponentBasicEnemy.cpp" />
     <ClCompile Include="src\components\SwallowComponent.cpp" />
@@ -76,6 +76,11 @@
     <ClCompile Include="src\components\DamageBehaviourComponent.cpp" />
     <ClCompile Include="src\components\PuertaComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentHeadRoach.cpp" />
+    <ClCompile Include="src\components\DestructibleComponent.cpp" />
+    <ClCompile Include="src\components\MovementComponentFrancois.cpp" />
+    <ClCompile Include="src\components\RenderComponentDestructible.cpp" />
+    <ClCompile Include="src\scenes\EndingScene.cpp" />
+    <ClCompile Include="src\game\EndingState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -140,6 +145,7 @@
     <ClInclude Include="src\components\MovementComponentSnake.h" />
     <ClInclude Include="src\components\RenderComponentSnake.h" />
     <ClInclude Include="src\components\AttackComponentSnake.h" />
+    <ClInclude Include="src\components\BossComponent.h" />
     <ClInclude Include="src\managers\ShopManager.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="src\components\MovementComponentBomb.h" />
@@ -164,6 +170,10 @@
     <ClInclude Include="src\components\DamageBehaviourComponent.h" />
     <ClInclude Include="src\components\PuertaComponent.h" />
     <ClInclude Include="src\components\MovementComponentHeadRoach.h" />
+    <ClInclude Include="src\components\MovementComponentFrancois.h" />
+    <ClInclude Include="src\components\RenderComponentDestructible.h" />
+    <ClInclude Include="src\scenes\EndingScene.h" />
+    <ClInclude Include="src\game\EndingState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">

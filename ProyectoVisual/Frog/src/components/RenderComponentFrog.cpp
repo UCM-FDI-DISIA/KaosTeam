@@ -16,7 +16,7 @@ void RenderComponentFrog::render()
     Vector2D offset = transform->getOffset() //el offset el objeto
                     + Vector2D((t - size) / 2, (t - size) / 2);                                             //para que este centrado en la casilla
     Vector2D pos = transform->getCasilla();
-    Directions d = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
+    Directions d = static_cast<MovementComponentFrog*>( ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
     bool hooked = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getHooked();
    

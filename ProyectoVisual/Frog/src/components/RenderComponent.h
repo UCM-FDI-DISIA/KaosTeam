@@ -3,6 +3,7 @@
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
 #include "TransformComponent.h"
+#include "AnimationComponent.h"
 /*
 * Se encargar� de renderizar cada entidad en la ubicaci�n de la pantalla acorde al tilemap
 */

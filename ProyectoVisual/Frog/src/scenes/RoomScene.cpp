@@ -1,7 +1,24 @@
 #pragma once
 #include "RoomScene.h"
-//#include "../game/Game.h"
 #include "../components/CrazyFrogIAComponent.h"
+#include "../components/MovementComponentFly.h"
+#include "../components/RenderComponent.h"
+#include "../components/RenderComponentFrog.h"
+#include "../components/RenderComponentSnake.h"
+#include "../components/AttackComponentFrog.h"
+#include "../components/AttackComponentSnake.h"
+#include "../components/MovementComponentFrog.h"
+#include "../components/FollowPlayerComponent.h"
+#include "../components/AnimationComponent.h"
+#include "../components/MovementComponentFish.h";
+#include "../components/MovementComponentBlackAnt.h";
+#include "../components/MovementComponentRedAnt.h"
+#include "../components/MovementComponentSnake.h"
+#include "../components/BossComponent.h"
+#include "../components/FrogInputComponent.h"
+#include "../components/ColliderComponent.h"
+#include "../components/MovementComponentFrancois.h"
+#include "../components/MovementComponentBomb.h"
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
 #include "../sdlutils/Texture.h"
@@ -14,6 +31,7 @@ void RoomScene::render() {
 		if (e != nullptr)
 			e->render();
 	}
+	if(francois != nullptr) static_cast<BossComponent*>(francois->getComponent(BOSS_COMPONENT))->render();
 	HUD->render();
 	if (insideShop) shopManager->render();
 }
@@ -38,13 +56,8 @@ void RoomScene::update() {
 	//comrpueba las colisiones con la rana
 	CheckColisions();
 
-	/*La idea original era comprobar aqui el game over del juego, pero al incluir Game.h  en roomScene.h o .cpp 
-	daba un error muy raro que no conseguimos resolver */
-	//if (gameOver) {
-	//	//Ir al menu de GameOver
-	//	//Game::instance()->setNextState(Game::instance()->GAMEOVER);
-	//}
-
+	if (francois != nullptr && static_cast<BossComponent*>(francois->getComponent(BOSS_COMPONENT))->theresCutleryToAdd())
+		static_cast<BossComponent*>(francois->getComponent(BOSS_COMPONENT))->addCutlery();
 }
 
 void RoomScene::CheckColisions() {
@@ -56,6 +69,11 @@ void RoomScene::CheckColisions() {
 			}
 		}
 	}
+}
+
+void RoomScene::callForMapChange(std::string nextMap, flonkOrig nextFlonk)
+{
+	this->nextMap = nextMap; this->nextFlonk = nextFlonk;  needMapChange = true;
 }
 
 Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
@@ -482,6 +500,7 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	AddEntity(blackAnt);
 	return blackAnt;
 }
+
 Entity* RoomScene::createRedAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp) {
 	Entity* redAnt = new Entity(this,RED_ANT_ENTITY);
 	//textura cambiar
@@ -537,6 +556,7 @@ Entity* RoomScene::createHeadCockroach(Vector2D pos, bool move) {
 	AddEntity(head);
 	return head;
 }
+
 Entity* RoomScene::createCockroach(Vector2D pos) {
 	Entity* cockroach = new Entity(this, COCKROACH_ENTITY);
 	//textura cambiar
@@ -647,11 +667,38 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	AddEntity(snake);
 	return snake;
 }
+
+Entity* RoomScene::createFrancois(Vector2D pos)
+{
+	francois = new Entity(this,FRENCH_ENTITY);
+
+	Texture* txtFran = &sdlutils().images().at("darkShadow");
+
+	TransformComponent* tr = new TransformComponent(pos, BOSS_X, BOSS_Y, BOSS_SCALE);
+	francois->addComponent(TRANSFORM_COMPONENT, tr);
+
+	RenderComponent* renderTheFrench = new RenderComponent(txtFran);
+	francois->addRenderComponent(renderTheFrench);
+
+	ColliderComponent* bossColl = new ColliderComponent(tr);
+	francois->addComponent(COLLIDER_COMPONENT, bossColl);
+
+	MovementComponentFrancois* move = new MovementComponentFrancois();
+	francois->addComponent(MOVEMENT_COMPONENT, move);
+
+	BossComponent* bossComp = new BossComponent();
+	francois->addComponent(BOSS_COMPONENT, bossComp);
+
+	AddEntity(francois);
+	
+	return francois;
+}
+
 Entity* RoomScene::createBomb(Vector2D pos) {
 	Entity* bomb = new Entity(this, BOMB_ENTITY);
 	Texture* textBomb = &sdlutils().images().at("eggSheet");
 
-	TransformComponent* transform = new TransformComponent(pos);
+	TransformComponent* transform = new TransformComponent(pos,TILE_SIZE,TILE_SIZE);
 	bomb->addComponent(TRANSFORM_COMPONENT, transform);
 
 	AnimationComponent* animBomb = new AnimationComponent();
@@ -660,6 +707,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 
 	RenderComponent* renderBomb = new RenderComponent(textBomb);
 	bomb->addRenderComponent(renderBomb);
+
 
 	ColliderComponent* collBomb = new ColliderComponent(transform);
 	bomb->addComponent(COLLIDER_COMPONENT, collBomb);
@@ -934,7 +982,7 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	else if (objName == "Black ant") {
 		if (player != nullptr) {
-			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+			MovementComponentFrog* mvmPlayer = static_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			c = createBlackAnt(pos, mvmPlayer);
 		}
 	}
@@ -953,12 +1001,15 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	}
 	else if (objName == "Red ant") {
 		if (player != nullptr) {
-			MovementComponentFrog* mvmPlayer = dynamic_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
+			MovementComponentFrog* mvmPlayer = static_cast<MovementComponentFrog*>(player->getComponent(MOVEMENT_COMPONENT));
 			c = createRedAnt(pos, mvmPlayer);
 		}
 	}
 	else if (objName == "Snake") {
 		c = createSnake(pos);
+	}
+	else if (objName == "Francois") {
+		c = createFrancois(pos);
 	}
 	else if (objName == "Bomb") {
 		c = createBomb(pos);

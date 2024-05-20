@@ -20,7 +20,7 @@ MovementComponentRedAnt::~MovementComponentRedAnt() {
 	anim = nullptr;
 }
 void MovementComponentRedAnt::initComponent() {
-	targetTransformComp = static_cast<TransformComponent*>(ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
+	targetTransformComp = static_cast<TransformComponent *>( ent->getScene()->getPlayer()->getComponent(TRANSFORM_COMPONENT));
 	playerPosition = targetTransformComp->getCasilla();
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }

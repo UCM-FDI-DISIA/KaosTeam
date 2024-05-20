@@ -17,7 +17,7 @@ void CrazyFrogIAComponent::update()
 
 		Vector2D aux = *playerPos - static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT))->getCasilla();
 		
-		//calculamos en que dirección deberiamos movernos
+		//calculamos en que direcciï¿½n deberiamos movernos
 		Vector2D speed; Directions direction; string animation;
 		if ((unsigned int)aux.getX() > (unsigned int)aux.getY())
 		{

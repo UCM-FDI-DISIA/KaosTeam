@@ -1,7 +1,9 @@
+#include "RenderComponentSnake.h"
 #include "../scenes/RoomScene.h"
 #include "../managers/MapManager.h"
 #include "AttackComponentSnake.h"
-#include "RenderComponentSnake.h"
+#include "AttackComponentFrog.h"
+#include "MovementComponentSnake.h"
 #include "AnimationComponent.h"
 #include "TransformComponent.h"
 
@@ -14,7 +16,7 @@ void RenderComponentSnake::render() {
     Vector2D offset = transform->getOffset()                      
                      + Vector2D((t - size) / 2, (t - size) / 2); 
     Vector2D pos = transform->getCasilla();
-    Direction d = static_cast<MovementComponentSnake*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
+    Direction d = static_cast<MovementComponentSnake*> (ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
 

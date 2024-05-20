@@ -83,7 +83,7 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
     Map tiled_map;
 
     tiled_map.load(path);
-    //std::cout << "Loaded Map version: " << tiled_map.getVersion().upper << ", " << tiled_map.getVersion().lower << std::endl;
+    std::cout << "Loaded Map version: " << tiled_map.getVersion().upper << ", " << tiled_map.getVersion().lower << std::endl;
 
     // We need to know the size of the map (in tiles)
     auto map_dimensions = tiled_map.getTileCount();
@@ -247,7 +247,7 @@ void MapManager::loadBg(const std::string& path, SDL_Renderer* ren) {
             }
             std::cout << "Tile vector size: " << tiles.size() << std::endl;
         }
-
+        std::cout << "Tile vector size: " << tiles.size() << std::endl;
         const auto& properties = layer->getProperties();
         //std::cout << properties.size() << " Layer Properties:" << std::endl;
         for (const auto& prop : properties)

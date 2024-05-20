@@ -4,8 +4,8 @@
 #include <iostream>
 #include "../sdlutils/SDLUtils.h"
 /*
-	Comprueba si tiene colisión con la entidad e.
-	En caso de que le entidad tenga collider, no sea ella misma y se esté tocando devuelve true.
+	Comprueba si tiene colisiï¿½n con la entidad e.
+	En caso de que le entidad tenga collider, no sea ella misma y se estï¿½ tocando devuelve true.
 */
 
 ColliderComponent::~ColliderComponent()
@@ -59,7 +59,7 @@ bool Collider::Collides(Collider c) const {
 	return SDL_HasIntersection(&miRect, &suRect);
 }
 
-Collider* ColliderComponent::GetTransofmCollider() {
+Collider* ColliderComponent::GetTransformCollider() {
 	return transformCollider;
 }
 

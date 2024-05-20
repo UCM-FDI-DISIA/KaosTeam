@@ -1,4 +1,5 @@
 #pragma once
+
 #include "../ecs/Scene.h"
 #include "../components/MovementComponentFly.h"
 #include "../components/RenderComponent.h"
@@ -38,6 +39,13 @@
 #include "../components/CogibleObjectComponent.h"
 #include "../components/PuertaComponent.h"
 #include "../components/MovementComponentHeadRoach.h"
+#include "../managers/MapManager.h"
+#include "../ecs/Entity.h"
+#include <vector>
+
+const int BOSS_X = 560;
+const int BOSS_Y = 560;
+const int BOSS_SCALE = 7;
 
 class Texture;
 class RoomScene : public Scene
@@ -50,8 +58,9 @@ private:
 	HUDManager* HUD;
 	string path;
 	Entity* player;
-	flonkOrig playerOrig;
 	flonkOrig nextFlonk;
+	Entity* francois;
+	flonkOrig playerOrig; //Indica en que punto cardinal aparece Flonk al entrar en cada sala
 	bool needMapChange;
 	std::string nextMap;
 	Shop* shopManager;
@@ -79,33 +88,27 @@ public:
 		shopManager->setPlayer(player);
 		shopManager->setHUD(HUD);
 	};
+	virtual ~RoomScene();
+
+	string getPath() { return path; }
+
+	void render() override;
+	void update() override;
 
 	void AddEntity(Entity* entity);
 	void removeEntity(Entity* entity);
-	void render() override;
-	void update() override;
-	virtual ~RoomScene();
-
-	MapManager* getMapReader() { return mapReader; };
-	string getPath() { return path; }
-	bool getGameOverState() { return gameOver; };
 	void changeMap();
+	void callForMapChange(std::string nextMap, flonkOrig nextFlonk = S);
 	void resetScene(string path);
-
-	
-
-	void callForMapChange(std::string nextMap, flonkOrig nextFlonk = S) {
-		this->nextMap = nextMap;
-		this->nextFlonk = nextFlonk;
-		needMapChange = true;
-	};
+	void movePlayer(Vector2D pos);
+	void revivePlayer();
 
 	Entity* createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted = false);
 	Entity* createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
+	Entity* createTransition(Vector2D pos, std::string objName, std::string nextMap);
 	Entity* createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted = false);
 	Entity* createExplotable(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createPlayer(Vector2D pos, int boundX, int boundY);
-	Entity* createTransition(Vector2D pos, std::string objName, std::string nextMap);
 	Entity* createCrazyFrog(Vector2D pos);
 	Entity* createFish(Vector2D pos, int boundX);
 	Entity* createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvmCmp);
@@ -115,11 +118,7 @@ public:
 	Entity* createJarron(Vector2D pos, int loot);
 	Entity* createArbusto(Vector2D pos, int loot);
 	Entity* createBomb(Vector2D pos);
-	Entity* createTroncoTermitas(Vector2D pos);
-	Entity* createTermita(Vector2D pos);
-
-
-	Entity* createPiedraMovible(Vector2D pos, int objIntID);
+	Entity* createFrancois(Vector2D pos);
 	Entity* createEnganche(Vector2D pos);
 	Entity* createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 
@@ -128,12 +127,11 @@ public:
 	Entity* createHeadCockroach(Vector2D pos, bool move);
 	Entity* createExplotableDoor(Vector2D pos);
 	Entity* createConveyorBelt(Vector2D pos, int orientation);
-	
 	Entity* createLifeFly(Vector2D pos);
 	Entity* createMoneda(Vector2D pos, MonedaType type);
 
-	Entity* getPlayer() { return player; };
-
-	void revivePlayer();
-	void movePlayer(Vector2D pos);
+	//Getters
+	Entity* getPlayer() const { return player; };
+	MapManager* getMapReader() const { return mapReader; };
+	bool getGameOverState() { return gameOver; };
 };

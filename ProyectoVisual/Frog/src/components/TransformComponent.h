@@ -9,6 +9,7 @@ class TransformComponent : public Component, public Box
 {
 public:
 	TransformComponent(Vector2D casilla, float width, float height);
+	TransformComponent(Vector2D casilla, float width, float height, int scale);
 	//Crea un transform cuadrado con escala determinada en funcion al tamaño de las casillas
 	TransformComponent(Vector2D casilla);
 	~TransformComponent() {};
@@ -16,14 +17,7 @@ public:
 	//Comprueba si se puede colocar en esa posición. En caso de que se pueda, cambia la posición de casilla del transform.
 	void changePos(Vector2D v);
 
-	Vector2D getCasilla() {
-		return casilla;
-	}
-
-	void setCasilla(Vector2D casilla) {
-		this->casilla = casilla;
-	}
-
+	//Getters
 	float getWidth() {
 		return width;
 	}
@@ -36,6 +30,19 @@ public:
 		return offset;
 	}
 
+	Vector2D getCasilla() {
+		return casilla	;
+	}
+
+	Vector2D* getCasillaPointer() {
+		return &casilla;
+	}
+
+	//Setters
+	void setCasilla(Vector2D casilla) {
+		this->casilla = casilla;
+	}
+
 	void setOffset(Vector2D offset) {
 		this->offset = offset;
 	}
@@ -46,10 +53,5 @@ public:
 
 	void setOffsetX(float x) {
 		this->offset.setX(x);
-	}
-
-
-	Vector2D* getCasillaPointer() {
-		return &casilla;
 	}
 };

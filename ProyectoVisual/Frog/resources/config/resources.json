@@ -46,7 +46,16 @@
         { "id" : "orbeOn", "file" : "resources/Sprites/OrbeOn.png", "rows" : 1, "cols" : 1},
         { "id" : "termitaTronco", "file" : "resources/Sprites/TroncoSpritesheet.png", "rows" : 1, "cols" : 3},
         { "id" : "termita", "file" : "resources/Sprites/TermitaSpritesheet.png", "rows" : 3, "cols" : 2},
-
+        { "id" : "darkShadow", "file" : "resources/Sprites/sombraOscura.png", "rows" : 1, "cols" : 1},
+        { "id" : "aviso", "file" :  "resources/Sprites/Aviso.png", "rows" :  1, "cols" : 1},
+        { "id" : "cuchara", "file" :  "resources/Sprites/Cuchara.png", "rows" :  1, "cols" : 1},
+        { "id" : "cuchilloCarnicero", "file" :  "resources/Sprites/Cuchillo_Carnicero.png", "rows" :  1, "cols" : 1},
+        { "id" : "cuchillo", "file" :  "resources/Sprites/Cuchillo.png", "rows" :  1, "cols" : 1},
+        { "id" : "tenedor", "file" :  "resources/Sprites/Tenedor.png", "rows" :  1, "cols" : 1},
+        { "id" : "Ending0", "file" : "resources/Sprites/Final0.png", "rows" : 1, "cols" : 1},
+        { "id" : "Ending1", "file" : "resources/Sprites/Final1.png", "rows" : 1, "cols" : 1},
+        { "id" : "Ending2", "file" : "resources/Sprites/Final2.png", "rows" : 1, "cols" : 1},
+        { "id" : "Ending3", "file" : "resources/Sprites/Final3.png", "rows" : 1, "cols" : 1},
 
         { "id" : "MenuInicio", "file" : "resources/Menus/MainMenu.png", "rows" : 1, "cols" : 1},
         { "id" : "GameOver", "file" : "resources/Menus/GameOverMenu.png", "rows" : 1, "cols" : 1},
@@ -75,6 +84,7 @@
     ],
   
     "musics" : [
+      
     ]
   
   }

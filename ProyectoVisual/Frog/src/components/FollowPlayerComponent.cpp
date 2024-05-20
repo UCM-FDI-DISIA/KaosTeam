@@ -1,4 +1,5 @@
 #include "FollowPlayerComponent.h"
+#include "../components/TransformComponent.h"
 #include "../scenes/RoomScene.h"
 #include "../ecs/Entity.h"
 

@@ -1,16 +1,16 @@
 #pragma once
 #include "Vector2D.h"
-
+const int TILE_SIZE = 80;
 class SDL_Rect;
-//Representa una caja en el espacio con tamaño
+//Representa una caja en el espacio con tamaï¿½o
 class Box
 {
 public:
 	Box(Vector2D casilla, float width, float height);
-	//Con este constructor, se define la escala como de 1 casilla.
+	Box(Vector2D casilla, float width, float height, int scale);
 	Box(Vector2D casilla);
 	Box();
-	/*Devuelve como SDL_Rect la posición real en pantalla de la entidad a partir de su posición en las casillas y su offset*/
+	/*Devuelve como SDL_Rect la posiciï¿½n real en pantalla de la entidad a partir de su posiciï¿½n en las casillas y su offset*/
 	SDL_Rect GetOnDisplayPosition() const;
 
 	void setCasilla(Vector2D);

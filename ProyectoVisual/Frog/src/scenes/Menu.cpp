@@ -4,7 +4,7 @@
 #include "../sdlutils/Texture.h"
 #include "../managers/InputManager.h"
 #include "../game/GameState.h"
-
+#include "SDL.h"
 
 
 Menu::Menu(Game* g, GameState* gs, Texture * path1, Texture * path2):
@@ -33,6 +33,7 @@ Menu::~Menu()
 }
 
 void Menu::render() {
+	//bgEffect->render(bgDest);
 	bg->render(bgDest); 
 	currSelec.render(selecDest);
 	for (auto it : menuButton)

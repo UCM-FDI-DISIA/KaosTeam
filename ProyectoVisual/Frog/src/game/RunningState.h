@@ -16,7 +16,7 @@ public:
 	void leave() override;
 	void update() override;
 	void enter() override;
-	void changeScene(int id); //Este metodo se usará para el cambio de habitaciones en el estado;
+	void changeScene(int id); //Este metodo se usarï¿½ para el cambio de habitaciones en el estado;
 	void resetGame(); //Metodo para resetear el jugador (no la escena)
 	void createNewGame(); //Metodo para inicaizar la escena de cero
 
