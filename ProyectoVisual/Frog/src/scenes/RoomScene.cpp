@@ -341,6 +341,8 @@ void RoomScene::revivePlayer() {
 	//movemos la camara hasta la nueva posicion de Flonk
 	cameraManager->setTarget(player);
 
+	HUD->ChangeLives(lf->GetMax());
+
 	gameOver = false; //reseteamos el booleano que indica el fin de partida
 }
 
@@ -1030,11 +1032,12 @@ void RoomScene::resetScene(string path)
 			it++;
 	}
 
+	revivePlayer();
 
 	if (mapReader != nullptr) {
 		mapReader->clearMap();
-		mapReader->loadBg(nextMap, sdlutils().renderer());
-		mapReader->loadObj(nextMap);
+		mapReader->loadBg(path, sdlutils().renderer());
+		mapReader->loadObj(path);
 
 	}
 
