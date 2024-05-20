@@ -437,7 +437,6 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	LifeComponent* lf = new LifeComponent(2, 2);
 	fish->addComponent(LIFE_COMPONENT, lf);
 
-
 	AddEntity(fish);
 	return fish;	
 }
@@ -459,7 +458,7 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	animBlackAnt->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
 	animBlackAnt->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
 
-	animBlackAnt->addAnimation("DEAD", Animation({ Vector2D(2,0) }, false, false, false));
+	animBlackAnt->addAnimation("DAMAGE", Animation({ Vector2D(2,0) }, false, false, false));
 	
 	blackAnt->addComponent(ANIMATION_COMPONENT, animBlackAnt);
 
@@ -472,7 +471,7 @@ Entity* RoomScene::createBlackAnt(Vector2D pos, MovementComponentFrog* playerMvm
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
 	blackAnt->addComponent(ATTACK_COMPONENT, attack);
 
-	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DEAD");
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DAMAGE");
 	blackAnt->addComponent(DAMAGE_COMPONENT, dm);
 
 	LifeComponent* lf = new LifeComponent(6, 6);
@@ -554,7 +553,7 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	animcockroach->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
 	animcockroach->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
 	animcockroach->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
-	animcockroach->addAnimation("DEAD", Animation({ Vector2D(3,0), Vector2D(3,0) }, false, false, false));
+	animcockroach->addAnimation("DAMAGE", Animation({ Vector2D(2,0), Vector2D(2,0) }, false, false, false));
 
 	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
 
@@ -565,11 +564,10 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	cockroach->addComponent(MOVEMENT_COMPONENT, mvm);
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(1);
 	cockroach->addComponent(ATTACK_COMPONENT, attack);
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DAMAGE");
+	cockroach->addComponent(DAMAGE_COMPONENT, dm);
 	LifeComponent* lc = new LifeComponent(2, 2);
 	cockroach->addComponent(LIFE_COMPONENT, lc);
-	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DEAD");
-	cockroach->addComponent(DAMAGE_COMPONENT, dm);
-
 	AddEntity(cockroach);
 	return cockroach;
 }

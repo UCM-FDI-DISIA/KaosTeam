@@ -78,7 +78,6 @@ public:
 		shopManager = Shop::instance();
 		shopManager->setPlayer(player);
 		shopManager->setHUD(HUD);
-		
 	};
 
 	void AddEntity(Entity* entity);

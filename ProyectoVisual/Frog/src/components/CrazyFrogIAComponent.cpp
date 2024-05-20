@@ -55,7 +55,7 @@ void CrazyFrogIAComponent::update()
 		if (aux.magnitude() < 3 && (aux.getX() == 0 || aux.getY() == 0))
 		{
 			movement->changeDirection(direction, animation);
-			//attack->attack();
+			attack->attack();
 		}
 		else
 		{
