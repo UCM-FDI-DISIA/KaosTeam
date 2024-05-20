@@ -28,7 +28,13 @@ SDL_Rect Box::GetOnDisplayPosition() const{
 	SDL_Rect dest;
 
 	int size = TILE_SIZE;
-	Vector2D mOffset = offset + Vector2D((size - width % size) / 2, (size - height %size) / 2);
+	Vector2D mOffset = offset;
+	if (width % size != 0 && height % size != 0) //si no está centrado
+	{
+		mOffset = offset + Vector2D((size - width % size) / 2, (size - height % size) / 2);
+	}
+
+	
 	Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
 	//Calcula la posición real en pantalla
