@@ -79,7 +79,7 @@
   <object id="18" name="Snake" type="Enemigo" x="151.333" y="42.667">
    <point/>
   </object>
-  <object id="4" name="Recompensa" x="87.3333" y="106.5">
+  <object id="4" name="Recompensa" type="ObjInteract" x="87.3333" y="106.5">
    <point/>
   </object>
  </objectgroup>

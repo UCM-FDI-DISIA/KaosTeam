@@ -26,8 +26,8 @@
             "scale": 2,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 96.25,
-                "y": 79.25
+                "x": 95.5,
+                "y": 78.75
             }
         },
         "niveles/nivel01/mapaN1_02.tmx": {
@@ -37,8 +37,8 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 103.25,
-                "y": 127.75
+                "x": 102.5,
+                "y": 127.25
             }
         },
         "niveles/nivel01/mapaN1_03.tmx": {
@@ -48,8 +48,8 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 171.5,
-                "y": 81.25
+                "x": 170.5,
+                "y": 80.75
             }
         },
         "niveles/nivel01/mapaN1_04.tmx": {
@@ -57,10 +57,10 @@
                 3
             ],
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 221.33333333333331,
-                "y": 152.33333333333337
+                "x": 133.99999999999997,
+                "y": 248.33333333333334
             }
         },
         "niveles/nivel01/mapaN1_05.tmx": {
@@ -78,8 +78,8 @@
             "scale": 2.529375,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 55.942673585371864,
-                "y": 38.15171732147269
+                "x": 55.34964170990858,
+                "y": 37.756362737830486
             }
         },
         "niveles/nivel01/mapaN1_06postPalanca.tmx": {
@@ -109,10 +109,10 @@
                 3
             ],
             "scale": 2,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 127.75,
-                "y": 128.25
+                "x": 40,
+                "y": 215.75
             }
         },
         "niveles/nivel01/mapaN1_08-2.tmx": {
@@ -131,10 +131,10 @@
                 3
             ],
             "scale": 2,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 143.75,
-                "y": 144.25
+                "x": 262.5,
+                "y": 119.25
             }
         },
         "niveles/nivel01/mapaN1_09.tmx": {
@@ -144,8 +144,8 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 111.75,
-                "y": 112.25
+                "x": 111.5,
+                "y": 111.75
             }
         },
         "niveles/nivel01/mapaN1_10.tmx": {
@@ -166,8 +166,8 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 170,
-                "y": 151.25
+                "x": 169,
+                "y": 150.75
             }
         },
         "niveles/nivel02/dentro/mapaN2_02_dentro.tmx": {
@@ -177,8 +177,8 @@
             "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 23.666666666666657,
-                "y": 107.16666666666669
+                "x": 133.66666666666669,
+                "y": 153.16666666666669
             }
         },
         "niveles/nivel02/dentro/mapaN2_03_dentro.tmx": {
@@ -188,8 +188,8 @@
             "scale": 3.16171875,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 98.04793674326662,
-                "y": 122.24363726216951
+                "x": 117.65752409191995,
+                "y": 187.081788979491
             }
         },
         "niveles/nivel02/dentro/mapaN2_04_dentro.tmx": {
@@ -199,8 +199,8 @@
             "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 263.3333333333333,
-                "y": 138.16666666666669
+                "x": 71.33333333333331,
+                "y": 40.833333333333314
             }
         },
         "niveles/nivel02/dentro/mapaN2_04_dentro_postB1.tmx": {
@@ -243,8 +243,8 @@
             "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 89.33333333333331,
-                "y": 151.83333333333331
+                "x": 88.66666666666666,
+                "y": 150.83333333333331
             }
         },
         "niveles/nivel02/dentro/mapaN2_06_dentro.tmx": {
@@ -254,7 +254,7 @@
             "scale": 4.215625,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 94.173461823573,
+                "x": 93.69903632320236,
                 "y": 95.4781319495923
             }
         },
@@ -265,8 +265,8 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 124.5,
-                "y": 126.25
+                "x": 123.5,
+                "y": 125.75
             }
         },
         "niveles/nivel02/dentro/mapaN2_07_dentro_postP.tmx": {
@@ -287,8 +287,8 @@
             "scale": 5.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 105.81818181818181,
-                "y": 116.81818181818183
+                "x": 105.45454545454545,
+                "y": 116.45454545454547
             }
         },
         "niveles/nivel02/dentro/mapaN2_09_dentro.tmx": {
@@ -298,8 +298,8 @@
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 151.33333333333331,
-                "y": 25.66666666666663
+                "x": 149.99999999999997,
+                "y": 24.99999999999997
             }
         },
         "niveles/nivel02/dentro/mapaN2_10_dentro.tmx": {
@@ -309,7 +309,7 @@
             "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 230.99999999999997,
+                "x": 229.99999999999997,
                 "y": 138.16666666666669
             }
         },
@@ -320,8 +320,8 @@
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 121.99999999999997,
-                "y": 66.99999999999997
+                "x": 120.66666666666663,
+                "y": 66.33333333333331
             }
         },
         "niveles/nivel02/dentro/mapaN2_13_dentro.tmx": {
@@ -331,8 +331,8 @@
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 124,
-                "y": 204.25
+                "x": 123,
+                "y": 203.75
             }
         },
         "niveles/nivel02/dentro/mapaN2_13_dentro_postP.tmx": {
@@ -342,8 +342,8 @@
             "scale": 8,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 282.25,
-                "y": 149.4375
+                "x": 282,
+                "y": 149.1875
             }
         },
         "niveles/nivel02/dentro/mapaN2_14_dentro.tmx": {
@@ -354,7 +354,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 117.89473684210529,
-                "y": 122.46108228317273
+                "y": 121.90758586607365
             }
         },
         "niveles/nivel02/dentro/mapaN2_15_dentro.tmx": {
@@ -364,8 +364,8 @@
             "scale": 2.810416666666667,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 136.9903632320237,
-                "y": 186.62713120830242
+                "x": 24.907338769458846,
+                "y": 196.94588584136397
             }
         },
         "niveles/nivel02/dentro/mapaN2_16_dentro.tmx": {
@@ -383,8 +383,8 @@
             "scale": 2.810416666666667,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 144.1067457375834,
-                "y": 143.9288361749444
+                "x": 143.3951074870274,
+                "y": 143.5730170496664
             }
         },
         "niveles/nivel02/fuera/mapaN2_01_fuera.tmx": {
@@ -394,7 +394,7 @@
             "scale": 3.154296875,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 127.76222910216718,
+                "x": 127.44520123839013,
                 "y": 128.23777089783283
             }
         },
@@ -405,7 +405,7 @@
             "scale": 2.5234375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 158.91021671826627,
+                "x": 158.5139318885449,
                 "y": 158.71207430340561
             }
         },
@@ -416,8 +416,8 @@
             "scale": 3.16171875,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 127.4623177662466,
-                "y": 127.6204595997035
+                "x": 127.14603409933284,
+                "y": 127.30417593278973
             }
         },
         "niveles/nivel02/fuera/mapaN2_04_fuera.tmx": {
@@ -427,7 +427,7 @@
             "scale": 3.154296875,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 127.76222910216718,
+                "x": 127.44520123839013,
                 "y": 128.23777089783283
             }
         },
@@ -438,7 +438,7 @@
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 113.33333333333331,
+                "x": 112.66666666666669,
                 "y": 91.16666666666669
             }
         },
@@ -449,8 +449,8 @@
             "scale": 1.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 148.66666666666663,
-                "y": 457.66666666666663
+                "x": 147.33333333333331,
+                "y": 456.33333333333337
             }
         },
         "niveles/nivel02/fuera/mapaN2_07_fuera.tmx": {
@@ -460,8 +460,8 @@
             "scale": 2.031473214285714,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 109.77255246676188,
-                "y": 111.00318646302605
+                "x": 108.7880452697506,
+                "y": 110.51093286452038
             }
         },
         "niveles/nivel02/fuera/mapaN2_08_fuera.tmx": {
@@ -471,8 +471,8 @@
             "scale": 1,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 274,
-                "y": 390.5
+                "x": 272,
+                "y": 389.5
             }
         },
         "niveles/nivel02/fuera/mapaN2_09_fuera.tmx": {
@@ -482,8 +482,8 @@
             "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 87.33333333333331,
-                "y": 59.499999999999986
+                "x": 86.66666666666666,
+                "y": 106.16666666666669
             }
         },
         "niveles/nivel03/mapaN3_01-2.tmx": {
@@ -498,11 +498,11 @@
             }
         },
         "niveles/nivel03/mapaN3_01.tmx": {
-            "scale": 3.570982142857143,
+            "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 110.8938617327166,
-                "y": 110.75384423052881
+                "x": 165.5,
+                "y": 150.25
             }
         },
         "niveles/nivel03/mapaN3_02-2.tmx": {
@@ -686,18 +686,18 @@
     "project": "FlonkMaps.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "niveles/nivel02/fuera/mapaN2_04_fuera.tmx",
+        "niveles/nivel02/fuera/mapaN2_05_fuera.tmx",
+        "niveles/nivel02/fuera/mapaN2_06_fuera.tmx",
+        "niveles/nivel02/fuera/mapaN2_07_fuera.tmx",
+        "niveles/nivel02/fuera/mapaN2_08_fuera.tmx",
+        "niveles/nivel02/fuera/mapaN2_09_fuera.tmx",
+        "niveles/nivel03/mapaN3_01.tmx",
         "niveles/nivel02/dentro/mapaN2_01_dentro.tmx",
         "niveles/nivel02/dentro/mapaN2_02_dentro.tmx",
         "niveles/nivel02/dentro/mapaN2_03_dentro.tmx",
         "niveles/nivel02/dentro/mapaN2_04_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_05_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_06_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_07_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_08_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_09_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_10_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_12_dentro.tmx",
-        "niveles/nivel02/dentro/mapaN2_13_dentro.tmx"
+        "niveles/nivel02/dentro/mapaN2_05_dentro.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

@@ -91,22 +91,22 @@
    </properties>
    <point/>
   </object>
-  <object id="14" name="Piedra" x="135" y="249">
+  <object id="14" name="PiedraMovible" type="ObjInteract" x="135" y="249">
    <point/>
   </object>
-  <object id="15" name="Piedra" x="153.5" y="252">
+  <object id="15" name="PiedraMovible" type="ObjInteract" x="153.5" y="252">
    <point/>
   </object>
-  <object id="24" name="Piedra" x="168.5" y="251">
+  <object id="24" name="PiedraMovible" type="ObjInteract" x="168.5" y="251">
    <point/>
   </object>
-  <object id="25" name="Piedra" x="168" y="266.5">
+  <object id="25" name="PiedraMovible" type="ObjInteract" x="168" y="266.5">
    <point/>
   </object>
-  <object id="26" name="Piedra" x="120.5" y="250.5">
+  <object id="26" name="PiedraMovible" type="ObjInteract" x="120.5" y="250.5">
    <point/>
   </object>
-  <object id="27" name="Piedra" x="121" y="269">
+  <object id="27" name="PiedraMovible" type="ObjInteract" x="121" y="269">
    <point/>
   </object>
   <object id="20" name="FlonkS" type="Player" x="136.481" y="266.834">

@@ -57,7 +57,7 @@
   <object id="12" name="Termita" type="Enemigo" x="70.5" y="154.5">
    <point/>
   </object>
-  <object id="13" name="Termita" type="Enemigo" x="118" y="188">
+  <object id="13" name="TermitaTronco" type="Enemigo" x="118" y="188">
    <point/>
   </object>
   <object id="14" name="Termita" type="Enemigo" x="200.5" y="156.5">

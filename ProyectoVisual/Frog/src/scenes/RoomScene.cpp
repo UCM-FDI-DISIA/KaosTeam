@@ -997,6 +997,9 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	else if (objName == "Puerta"){
 		c = createDoor(pos);
 	}
+	else if (objName == "Recompensa"){
+		c = createMoneda(pos, MONEDA_ROSA);
+	}
 
 	return c;
 }

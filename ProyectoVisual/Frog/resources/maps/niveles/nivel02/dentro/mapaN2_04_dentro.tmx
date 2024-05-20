@@ -56,7 +56,7 @@
    </properties>
    <point/>
   </object>
-  <object id="9" name="Recompensa" x="71.6774" y="41.1002">
+  <object id="9" name="Recompensa" type="ObjInteract" x="71.6774" y="41.1002">
    <point/>
   </object>
   <object id="11" name="FlonkE" type="Player" x="248.833" y="137.833">
