@@ -267,9 +267,9 @@ El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de
 
 <details>
 
-<summary>Menus de juego</summary>
+<summary>Menús de juego</summary>
 
-## Menús de juego y flujo de juego
+## Menús de juego
 
 **Menú principal:**
  El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar y un botón para salir del juego.
@@ -302,7 +302,6 @@ En el menú de GameOver, el jugador puede elegir entre "Reintentar" o "Salir". L
 Si el juagdor vuelve a dar "Jugar" desde el menú principal, la partida anterior se borrará.
 
 Además, durante el gameplay, el jugador podrá acceder a un menú de pausa en el que se podrá elegir entre "Seguir" y "Salir" que nos permiten ir al gameplay e ir al menú principal, respectivamente.
-
 
 </details>
 
