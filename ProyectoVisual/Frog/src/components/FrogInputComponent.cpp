@@ -2,6 +2,7 @@
 #include "../managers/DataManager.h"
 #include "MovementComponentFrog.h"
 #include "AttackComponentFrog.h"
+#include <math.h>
 
 FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr), throwerComponent(nullptr) {
 	input = InputManager::GetInstance();
@@ -26,7 +27,7 @@ void FrogInputComponent::update()
 		else if (input->getDown().keyUP) {
 
 			if (cyclesJumpPrepared > cyclesToPrepareJump)
-				JumpSize = inventoryComponent->mejoras.saltamontes;
+				JumpSize = max(inventoryComponent->mejoras.saltamontes, longJump);
 			else
 				JumpSize = shortJump;
 			movementComponent->startMovement(DOWN, Vector2D(0, JumpSize));
@@ -39,7 +40,7 @@ void FrogInputComponent::update()
 		else if (input->getUp().keyUP) {
 
 			if (cyclesJumpPrepared > cyclesToPrepareJump)
-				JumpSize = inventoryComponent->mejoras.saltamontes;
+				JumpSize = max(inventoryComponent->mejoras.saltamontes, longJump);
 			else
 				JumpSize = shortJump;
 			movementComponent->startMovement(UP, Vector2D(0, -JumpSize));
@@ -50,7 +51,7 @@ void FrogInputComponent::update()
 		}
 		else if (input->getRight().keyUP) { 
 			if (cyclesJumpPrepared > cyclesToPrepareJump)
-				JumpSize = inventoryComponent->mejoras.saltamontes;
+				JumpSize = max(inventoryComponent->mejoras.saltamontes, longJump);
 			else
 				JumpSize = shortJump;
 			movementComponent->startMovement(RIGHT, Vector2D(JumpSize, 0));
@@ -61,7 +62,7 @@ void FrogInputComponent::update()
 		}
 		else if (input->getLeft().keyUP) {
 			if (cyclesJumpPrepared > cyclesToPrepareJump)
-				JumpSize = inventoryComponent->mejoras.saltamontes;
+				JumpSize = max(inventoryComponent->mejoras.saltamontes, longJump);
 			else
 				JumpSize = shortJump;
 			movementComponent->startMovement(LEFT, Vector2D(-JumpSize, 0));
@@ -84,6 +85,7 @@ void FrogInputComponent::update()
 				attackComponent->setDistance(longTongue);
 			}
 			else attackComponent->setDistance(shortTongue+2);
+
 			attackComponent->attack(true);
 			lastTimeMoved = DataManager::GetInstance()->getFrameTime();
 			preparingJump = false;
