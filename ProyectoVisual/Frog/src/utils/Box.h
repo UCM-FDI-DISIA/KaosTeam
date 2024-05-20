@@ -23,9 +23,9 @@ public:
 protected:
 	Vector2D casilla;
 	//La anchura (en casillas) de la entidad
-	float width;
+	int width;
 	//La altura (en casillas) de la entidad
-	float height;
+	int height;
 	//La escala de la caja. Si es 1, mide 1 casilla. Si es 2 mide 2 casillas y etc.
 	float scale;
 	//El desplazamiento dentro de la casilla
