@@ -26,6 +26,7 @@ void TonguePushComponent::checkCollisionsTongue(Entity* ent, Collider c)
             }
             DataManager::GetInstance()->getInteractObj(this->ent->getScene()->getPath())[objIntID].interacted = true;
             DataManager::GetInstance()->getInteractObj(this->ent->getScene()->getPath())[objIntID].pos = t->getCasilla();
+            sdlutils().soundEffects().at("Roca").play();
         }
         else { //está collisionando con el cuerpo de la rana
             TransformComponent* tFrog = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
