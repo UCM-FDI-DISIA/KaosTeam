@@ -680,8 +680,8 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos, int objIntID)
 	//piedra->addComponent(RENDER_COMPONENT, renderPiedra);
 	piedra->addRenderComponent(renderPiedra);
 
-	Box* boxPiedra = new Box(pos);
-	Collider coll = Collider(boxPiedra);
+	//Box* boxPiedra = new Box(pos);
+	//Collider coll = Collider(boxPiedra);
 	ColliderComponent* collPiedra = new ColliderComponent(transform);
 	piedra->addComponent(COLLIDER_COMPONENT, collPiedra);
 	
@@ -773,8 +773,8 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
-	Box* boxdestructible = new Box(pos);
-	Collider coll = Collider(boxdestructible);
+	/*Box* boxdestructible = new Box(pos);
+	Collider coll = Collider(boxdestructible);*/
 	ColliderComponent* colldestructible = new ColliderComponent(transform);
 	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
 
@@ -798,8 +798,8 @@ Entity* RoomScene::createDoor(Vector2D pos)
 	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
-	Box* boxdestructible = new Box(pos);
-	Collider coll = Collider(boxdestructible);
+	/*Box* boxdestructible = new Box(pos);
+	Collider coll = Collider(boxdestructible)*/;
 	ColliderComponent* colldestructible = new ColliderComponent(transform);
 	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
 
@@ -823,8 +823,8 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
-	Box* boxdestructible = new Box(pos);
-	Collider coll = Collider(boxdestructible);
+	//Box* boxdestructible = new Box(pos);
+	//Collider coll = Collider(boxdestructible);
 	ColliderComponent* colldestructible = new ColliderComponent(transform);
 	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
 
