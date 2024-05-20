@@ -10,22 +10,29 @@ void ConveyorBeltComponent::CheckCollisionsBelt(Entity* ent, Collider c)
 {
     TransformComponent* ObjTrans = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 
-    switch (direction)
+    cout << "Detecta colison";
+
+    if(true && DataManager::GetInstance()->getFrameTime() - lastTimeMoved > COOLDOWN)
     {
-    case NORTE:
-        ObjTrans->changePos(position + Vector2D(0,-1));
-        break;
-    case ESTE:
-        ObjTrans->changePos(position + Vector2D(1, 0));
-        break;
-    case SUR:
-        ObjTrans->changePos(position + Vector2D(0, 1));
-        break;
-    case OESTE:
-        ObjTrans->changePos(position + Vector2D(-1, 0));
-        break;
-    default:
-        break;
+        lastTimeMoved = DataManager::GetInstance()->getFrameTime();
+        switch (direction)
+        {
+        case NORTE:
+            ObjTrans->changePos(position + Vector2D(0, -1));
+            break;
+        case ESTE:
+            ObjTrans->changePos(position + Vector2D(1, 0));
+            break;
+        case SUR:
+            ObjTrans->changePos(position + Vector2D(0, 1));
+            break;
+        case OESTE:
+            ObjTrans->changePos(position + Vector2D(-1, 0));
+            break;
+        default:
+            break;
+        }
+        
     }
 
 }

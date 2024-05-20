@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="17">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="30">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="10" height="10">
   <data encoding="csv">
@@ -63,6 +63,30 @@
    <point/>
   </object>
   <object id="14" name="Snake" type="Enemigo" x="73.5" y="70.75">
+   <point/>
+  </object>
+  <object id="17" name="CintaTransportadora" type="ObjInteract" x="38.2953" y="60.5691">
+   <properties>
+    <property name="direccion" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" name="CintaTransportadora" type="ObjInteract" x="38.8814" y="73.4644">
+   <properties>
+    <property name="direccion" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="28" name="CintaTransportadora" type="ObjInteract" x="38.686" y="90.8536">
+   <properties>
+    <property name="direccion" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="29" name="CintaTransportadora" type="ObjInteract" x="39.0768" y="104.921">
+   <properties>
+    <property name="direccion" type="int" value="1"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

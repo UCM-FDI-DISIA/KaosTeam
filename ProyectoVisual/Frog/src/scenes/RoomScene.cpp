@@ -809,6 +809,9 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 	ColliderComponent* collConveyor= new ColliderComponent(transform);
 	conveyor->addComponent(COLLIDER_COMPONENT, collConveyor);
 
+	ConveyorBeltComponent* conveyorComponent = new ConveyorBeltComponent(rotation, pos);
+	conveyor->addComponent(CONVEYOR_COMPONENT, conveyorComponent);
+
 	return conveyor;
 }
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)

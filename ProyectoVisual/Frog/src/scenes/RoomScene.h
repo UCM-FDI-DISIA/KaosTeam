@@ -38,6 +38,7 @@
 #include "../components/CogibleObjectComponent.h"
 #include "../components/PuertaComponent.h"
 #include "../components/MovementComponentHeadRoach.h"
+#include "../components/ConveyorBeltComponent.h"
 
 class Texture;
 class RoomScene : public Scene
