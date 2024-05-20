@@ -34,16 +34,6 @@ public:
 	//Destructora
 	virtual ~HUDManager(); 
 	
-	////Gestion para hacer singleton de HUDManager
-	//HUDManager(HUDManager&) = delete;
-	//void operator=(const HUDManager&) = delete;
-	//static HUDManager* GetInstance() {
-	//	if (instance == nullptr) {
-	//		instance = new HUDManager();
-	//	}
-	//	return instance;
-	//};
-	
 	void LinkLives(LifeComponent* playerLife); //Metodo para acceder a las vidas del jugador
 	void ChangeLives(int);
 	void ChangeMaxLife(int);
@@ -52,8 +42,6 @@ public:
 	void render();
 	void update(); //por ahora no tiene nada
 };
-//inline HUDManager& hud() {
-//	return *HUDManager::GetInstance();
-//}
+
 
 

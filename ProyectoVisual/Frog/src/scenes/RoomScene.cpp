@@ -341,7 +341,7 @@ void RoomScene::revivePlayer() {
 	//movemos la camara hasta la nueva posicion de Flonk
 	cameraManager->setTarget(player);
 
-	HUD->ChangeLives(lf->GetMax());
+	HUD->update();
 
 	gameOver = false; //reseteamos el booleano que indica el fin de partida
 }

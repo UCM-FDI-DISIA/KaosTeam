@@ -20,8 +20,9 @@ int LifeComponent::GetMax() {
 
 void LifeComponent::AddActual(int n)
 {
-	if (vidaActual < vidaMaxima)
-		vidaActual += n;
+	vidaActual += n;
+	if (vidaActual > vidaMaxima)
+		vidaActual = vidaMaxima;
 }
 
 void LifeComponent::AddMax(int n) {
@@ -37,6 +38,9 @@ void LifeComponent::hit(int damage) {
 	if (damageComp != nullptr) {
 		damageComp->manageDamage();
 	}
+	if (vidaActual < 0)
+		vidaActual = 0; //para q no de errores al revivir a flonk
+
 	//Si ya no tiene vidas (lo compruebo aqui para no tener que hacerlo todo el rato en el update)
 	if (!alive()) {
 
