@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Flonk!"
-#define MyAppVersion "0.99"
+#define MyAppVersion "0.999"
 #define MyAppPublisher "Kaos Team"
 #define MyAppURL "https://ucm-fdi-disia.github.io/KaosTeam/"
 #define MyAppExeName "FrogRelease.exe"
@@ -25,7 +25,7 @@ LicenseFile=..\LICENSE.txt
 PrivilegesRequired=lowest
 OutputDir=..\Instalador
 OutputBaseFilename=FlonkInstalador
-SetupIconFile=..\WEB\src\img\favicon.ico
+SetupIconFile=..\docs\src\img\favicon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
