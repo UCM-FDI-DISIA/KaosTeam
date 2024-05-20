@@ -671,7 +671,7 @@ Entity* RoomScene::createBomb(Vector2D pos) {
 Entity* RoomScene::createPiedraMovible(Vector2D pos, int objIntID)
 {
 	Entity* piedra = new Entity(this, PIEDRAMOV_ENTITY);
-	Texture* textBomb = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PiedraMovible.png", 1, 1);
+	Texture* textBomb = &sdlutils().images().at("piedra");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	piedra->addComponent(TRANSFORM_COMPONENT, transform);
@@ -680,8 +680,8 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos, int objIntID)
 	//piedra->addComponent(RENDER_COMPONENT, renderPiedra);
 	piedra->addRenderComponent(renderPiedra);
 
-	Box* boxPiedra = new Box(pos);
-	Collider coll = Collider(boxPiedra);
+	//Box* boxPiedra = new Box(pos);
+	//Collider coll = Collider(boxPiedra);
 	ColliderComponent* collPiedra = new ColliderComponent(transform);
 	piedra->addComponent(COLLIDER_COMPONENT, collPiedra);
 	
@@ -694,17 +694,16 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos, int objIntID)
 Entity* RoomScene::createEnganche(Vector2D pos)
 {
 	Entity* enganche = new Entity(this, ENGANCHE_ENTITY);
-	Texture* textEnganche = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/EngancheProv.png", 1, 1);
+	Texture* textEnganche = &sdlutils().images().at("enganche");
 
 	TransformComponent* transform = new TransformComponent(pos);
 	enganche->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderEnganche = new RenderComponent(textEnganche);
-	//enganche->addComponent(RENDER_COMPONENT, renderEnganche);
 	enganche->addRenderComponent(renderEnganche);
 
-	Box* boxEnganche = new Box(pos);
-	Collider coll = Collider(boxEnganche);
+	/*Box* boxEnganche = new Box(pos);
+	Collider coll = Collider(boxEnganche);*/
 	ColliderComponent* collEnganche = new ColliderComponent(transform);
 	enganche->addComponent(COLLIDER_COMPONENT, collEnganche);
 
@@ -774,8 +773,8 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
-	Box* boxdestructible = new Box(pos);
-	Collider coll = Collider(boxdestructible);
+	/*Box* boxdestructible = new Box(pos);
+	Collider coll = Collider(boxdestructible);*/
 	ColliderComponent* colldestructible = new ColliderComponent(transform);
 	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
 
@@ -799,8 +798,8 @@ Entity* RoomScene::createDoor(Vector2D pos)
 	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
-	Box* boxdestructible = new Box(pos);
-	Collider coll = Collider(boxdestructible);
+	/*Box* boxdestructible = new Box(pos);
+	Collider coll = Collider(boxdestructible)*/;
 	ColliderComponent* colldestructible = new ColliderComponent(transform);
 	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
 
@@ -824,8 +823,8 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
-	Box* boxdestructible = new Box(pos);
-	Collider coll = Collider(boxdestructible);
+	//Box* boxdestructible = new Box(pos);
+	//Collider coll = Collider(boxdestructible);
 	ColliderComponent* colldestructible = new ColliderComponent(transform);
 	destructible->addComponent(COLLIDER_COMPONENT, colldestructible);
 
@@ -861,6 +860,7 @@ Entity* RoomScene::createTroncoTermitas(Vector2D pos)
 	AddTermiteComponent* add = new AddTermiteComponent(pos);
 	log->addComponent(TERMITE_GENERATOR_COMPONENT, add);
 
+	AddEntity(log);
 
 	return log;
 }
@@ -895,6 +895,8 @@ Entity* RoomScene::createTermita(Vector2D pos)
 
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
 	temita->addComponent(ATTACK_COMPONENT, attack);
+
+	AddEntity(temita);
 
 	return temita;
 }
@@ -962,6 +964,12 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	else if (objName == "Cockroach") {
 		c = createCockroach(pos);
 	}
+	else if (objName == "Termita") {
+		c = createTermita(pos);
+	}
+	else if (objName == "TermitaTronco") {
+		c = createTroncoTermitas(pos);
+	}
 	return c;
 }
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
@@ -991,6 +999,9 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	else if (objName == "Puerta"){
 		c = createDoor(pos);
 	}
+	else if (objName == "Recompensa"){
+		c = createMoneda(pos, MONEDA_ROSA);
+	}
 
 	return c;
 }
@@ -1006,7 +1017,7 @@ Entity* RoomScene::createExplotable(Vector2D pos, std::string objName, std::vect
 Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;
-	std::cout << "ENTITY CREATED: " << objName << std::endl;
+	
 	if (objClass == "Enemigo") {
 		c = createEnemy(pos, objName, objProps);
 	}
@@ -1117,6 +1128,7 @@ void RoomScene::changeMap()
 		//Para cada entidad se comprueba su name, si no es un frog lo borra.
 		if ((*it)->getName() != FROG_ENTITY) {
 			delete* it;
+			*it = nullptr;
 			it = entityList.erase(it);
 		}
 			

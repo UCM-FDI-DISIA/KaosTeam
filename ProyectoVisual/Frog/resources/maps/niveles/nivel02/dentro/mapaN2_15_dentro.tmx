@@ -46,13 +46,19 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
+  <object id="8" name="FlonkE" type="Player" x="265.333" y="156">
+   <point/>
+  </object>
+  <object id="9" name="FlonkN" type="Player" x="135.334" y="26.6666">
+   <point/>
+  </object>
   <object id="1" name="Enganche" type="ObjInteract" x="151.333" y="249.333">
    <point/>
   </object>
   <object id="4" name="Enganche" type="ObjInteract" x="151.333" y="58">
    <point/>
   </object>
-  <object id="5" name="Enganche" x="135.333" y="153.333">
+  <object id="5" name="Enganche" type="ObjInteract" x="135.333" y="153.333">
    <point/>
   </object>
   <object id="2" name="Enganche" type="ObjInteract" x="231.333" y="251.333">
@@ -85,34 +91,28 @@
    </properties>
    <point/>
   </object>
-  <object id="7" name="Termita" x="264" y="76">
+  <object id="7" name="Termita" type="Enemigo" x="264" y="76">
    <point/>
   </object>
-  <object id="12" name="Termita" x="249.333" y="220">
+  <object id="12" name="Termita" type="Enemigo" x="249.333" y="220">
    <point/>
   </object>
-  <object id="13" name="Termita" x="137.333" y="187.333">
+  <object id="13" name="TermitaTronco" type="Enemigo" x="137.333" y="187.333">
    <point/>
   </object>
-  <object id="14" name="Termita" x="24.6667" y="265.334">
+  <object id="14" name="Termita" type="Enemigo" x="24.6667" y="265.334">
    <point/>
   </object>
-  <object id="15" name="Termita" x="24.6667" y="152">
+  <object id="15" name="Termita" type="Enemigo" x="24.6667" y="152">
    <point/>
   </object>
-  <object id="16" name="Termita" x="120.788" y="58.1212">
-   <point/>
-  </object>
-  <object id="8" name="FlonkE" type="Player" x="265.333" y="156">
-   <point/>
-  </object>
-  <object id="9" name="FlonkN" type="Player" x="135.334" y="26.6666">
+  <object id="16" name="Termita" type="Enemigo" x="120.788" y="58.1212">
    <point/>
   </object>
   <object id="17" name="Recompensa" x="25.3333" y="198">
    <point/>
   </object>
-  <object id="19" name="Puerta" type="ObjInteract" x="149.875" y="42.125">
+  <object id="19" name="Puerta" type="ObjInteract" x="151.625" y="41.25">
    <point/>
   </object>
  </objectgroup>

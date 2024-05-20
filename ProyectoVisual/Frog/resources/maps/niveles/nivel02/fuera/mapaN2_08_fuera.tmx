@@ -173,10 +173,10 @@
    </properties>
    <point/>
   </object>
-  <object id="20" name="Termita" x="214" y="73.3333">
+  <object id="20" name="Termita" type="Enemigo" x="214" y="73.3333">
    <point/>
   </object>
-  <object id="22" name="Termita" type="Enemigo" x="280" y="409.333">
+  <object id="22" name="TermitaTronco" type="Enemigo" x="280" y="409.333">
    <point/>
   </object>
   <object id="23" name="Termita" type="Enemigo" x="136.667" y="443.333">

@@ -100,22 +100,22 @@
    </properties>
    <point/>
   </object>
-  <object id="16" name="Piedra" x="263.333" y="119.333">
+  <object id="16" name="PiedraMovible" type="ObjInteract" x="263.333" y="119.333">
    <point/>
   </object>
-  <object id="17" name="Piedra" x="247.333" y="120.667">
+  <object id="17" name="PiedraMovible" type="ObjInteract" x="247.333" y="120.667">
    <point/>
   </object>
-  <object id="18" name="Piedra" x="246.667" y="138.667">
+  <object id="18" name="PiedraMovible" type="ObjInteract" x="246.667" y="138.667">
    <point/>
   </object>
-  <object id="19" name="Piedra" x="246.667" y="153.333">
+  <object id="19" name="PiedraMovible" type="ObjInteract" x="246.667" y="153.333">
    <point/>
   </object>
-  <object id="20" name="Piedra" x="246.667" y="171.333">
+  <object id="20" name="PiedraMovible" type="ObjInteract" x="246.667" y="171.333">
    <point/>
   </object>
-  <object id="21" name="Piedra" x="264" y="172">
+  <object id="21" name="PiedraMovible" type="ObjInteract" x="264" y="172">
    <point/>
   </object>
   <object id="23" name="FlonkW" type="Player" x="24.6196" y="135.607">

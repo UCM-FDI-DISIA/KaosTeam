@@ -8,6 +8,15 @@
 	En caso de que le entidad tenga collider, no sea ella misma y se esté tocando devuelve true.
 */
 
+ColliderComponent::~ColliderComponent()
+{
+	for (Collider collider : colliders) {
+		if (collider.getName() != TRANSFORM_COLLIDER)
+			collider.deleteBox();
+	}
+	
+}
+
 void ColliderComponent::CheckCollision(Entity* e) {
 	//Comprueba los colliders de este ColliderComponent con los colliders del otro
 	if (e != ent) {

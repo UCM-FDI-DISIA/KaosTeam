@@ -50,6 +50,12 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
+  <object id="3" name="FlonkN" type="Player" x="152" y="26">
+   <point/>
+  </object>
+  <object id="18" name="FlonkW" type="Player" x="24" y="172.833">
+   <point/>
+  </object>
   <object id="1" name="Enganche" type="ObjInteract" x="153" y="204.5">
    <point/>
   </object>
@@ -62,43 +68,37 @@
   <object id="7" name="Enganche" type="ObjInteract" x="39.5" y="267.5">
    <point/>
   </object>
-  <object id="2" name="Termita" x="168.5" y="237">
+  <object id="2" name="Termita" type="Enemigo" x="168.5" y="237">
    <point/>
   </object>
-  <object id="9" name="Termita" x="187.5" y="285.5">
+  <object id="9" name="Termita" type="Enemigo" x="187.5" y="285.5">
    <point/>
   </object>
-  <object id="10" name="Termita" x="232" y="252">
+  <object id="10" name="TermitaTronco" type="Enemigo" x="232" y="252">
    <point/>
   </object>
-  <object id="11" name="Termita" x="283" y="299.5">
+  <object id="11" name="Termita" type="Enemigo" x="283" y="299.5">
    <point/>
   </object>
-  <object id="12" name="Termita" x="219.5" y="203.5">
+  <object id="12" name="Termita" type="Enemigo" x="219.5" y="203.5">
    <point/>
   </object>
-  <object id="13" name="Termita" x="213" y="108.5">
+  <object id="13" name="Termita" type="Enemigo" x="213" y="108.5">
    <point/>
   </object>
-  <object id="14" name="Termita" x="121.5" y="76.5">
+  <object id="14" name="Termita" type="Enemigo" x="121.5" y="76.5">
    <point/>
   </object>
-  <object id="15" name="Termita" x="199.5" y="60.5">
+  <object id="15" name="TermitaTronco" type="Enemigo" x="199.5" y="60.5">
    <point/>
   </object>
-  <object id="16" name="Termita" x="265.5" y="43.5">
+  <object id="16" name="Termita" type="Enemigo" x="265.5" y="43.5">
    <point/>
   </object>
-  <object id="17" name="Termita" x="263" y="73.5">
+  <object id="17" name="Termita" type="Enemigo" x="263" y="73.5">
    <point/>
   </object>
-  <object id="8" name="Termita" x="276.5" y="206">
-   <point/>
-  </object>
-  <object id="3" name="FlonkN" type="Player" x="152" y="26">
-   <point/>
-  </object>
-  <object id="18" name="FlonkW" type="Player" x="24" y="172.833">
+  <object id="8" name="Termita" type="Enemigo" x="276.5" y="206">
    <point/>
   </object>
   <object id="4" name="TransitionN" type="Transition" x="168.333" y="12">
