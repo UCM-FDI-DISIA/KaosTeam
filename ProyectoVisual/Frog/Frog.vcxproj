@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\AddTermiteComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentHeadRoach.cpp" />
     <ClCompile Include="src\components\PuertaComponent.cpp" />
     <ClCompile Include="src\components\DamageBehaviourComponent.cpp" />
@@ -231,6 +232,7 @@
     <ClCompile Include="src\components\SwallowComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\AddTermiteComponent.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="src\components\MovementComponentHeadRoach.h" />
     <ClInclude Include="src\components\PuertaComponent.h" />

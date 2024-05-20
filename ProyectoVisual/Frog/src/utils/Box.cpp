@@ -7,6 +7,7 @@ const int TILE_SIZE = 80;
 
 Box::Box(Vector2D casilla, float width, float height) : casilla(casilla), width(width), height(height) {
 	offset = { 0,0 };
+	scale = 1;
 };
 Box::Box(Vector2D casilla) : casilla(casilla) {
 	offset = { 0, 0 };
@@ -27,7 +28,7 @@ SDL_Rect Box::GetOnDisplayPosition() const{
 	SDL_Rect dest;
 
 	int size = TILE_SIZE * scale;
-	Vector2D mOffset = offset + Vector2D((width - size) / 2, (height - size) / 2);
+	Vector2D mOffset = offset + Vector2D((size - width % size) / 2, (size - height %size) / 2);
 	Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
 	//Calcula la posición real en pantalla

@@ -25,7 +25,8 @@ enum ComponentsEnum
 	CONVEYOR_COMPONENT,
 	SWALLOW_COMPONENT,
 	ITEM_THROWER_COMPONENT,
-	DAMAGE_COMPONENT
+	DAMAGE_COMPONENT,
+	TERMITE_GENERATOR_COMPONENT,
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
 //Si no es relevante, el valor ser� 0 (UNAMED)
@@ -47,6 +48,8 @@ enum EntityName {
 	BOTON_ENTITY,
 	COCKROACH_ENTITY,
 	DESTRUCTIBLE_ENTITY,
+	TERMITELOG_ENTITY,
+	TERMITE_ENTITY,
 	PUERTA_ENTITY,
 	CONVEYOR_ENTITY
 };

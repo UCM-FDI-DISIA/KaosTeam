@@ -26,7 +26,7 @@ void FrogInputComponent::update()
 		else if (input->getDown().keyUP) {
 
 			if (cyclesJumpPrepared > cyclesToPrepareJump)
-				JumpSize = longJump;
+				JumpSize = inventoryComponent->mejoras.saltamontes;
 			else
 				JumpSize = shortJump;
 			movementComponent->startMovement(DOWN, Vector2D(0, JumpSize));
@@ -39,7 +39,7 @@ void FrogInputComponent::update()
 		else if (input->getUp().keyUP) {
 
 			if (cyclesJumpPrepared > cyclesToPrepareJump)
-				JumpSize = longJump;
+				JumpSize = inventoryComponent->mejoras.saltamontes;
 			else
 				JumpSize = shortJump;
 			movementComponent->startMovement(UP, Vector2D(0, -JumpSize));
@@ -50,7 +50,7 @@ void FrogInputComponent::update()
 		}
 		else if (input->getRight().keyUP) { 
 			if (cyclesJumpPrepared > cyclesToPrepareJump)
-				JumpSize = longJump;
+				JumpSize = inventoryComponent->mejoras.saltamontes;
 			else
 				JumpSize = shortJump;
 			movementComponent->startMovement(RIGHT, Vector2D(JumpSize, 0));
@@ -61,7 +61,7 @@ void FrogInputComponent::update()
 		}
 		else if (input->getLeft().keyUP) {
 			if (cyclesJumpPrepared > cyclesToPrepareJump)
-				JumpSize = longJump;
+				JumpSize = inventoryComponent->mejoras.saltamontes;
 			else
 				JumpSize = shortJump;
 			movementComponent->startMovement(LEFT, Vector2D(-JumpSize, 0));

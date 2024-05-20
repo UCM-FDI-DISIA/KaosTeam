@@ -5,6 +5,7 @@
 #include "../components/LifeComponent.h"
 #include "../components/CogibleObjectComponent.h"
 #include "../sdlutils/Texture.h"
+#include "../components/AddTermiteComponent.h"
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
@@ -18,10 +19,14 @@ void RoomScene::render() {
 }
 
 void RoomScene::update() {
-	for (Entity* e : entityList) {
-		if (e != nullptr)
-			e->update();
+	//para poder añadir elementos en ejecución
+	for (int i = 0; i < entityList.size(); i++)
+	{
+		if (entityList[i] != nullptr)
+			entityList[i]->update();
+
 	}
+
 	HUD->update();
 	cameraManager->update();
 	if (insideShop) {
@@ -140,7 +145,7 @@ Entity* RoomScene::createTransition(Vector2D pos, std::string objName, std::stri
 			c->addComponent(TRANSFORM_COMPONENT, transform);
 			Texture* textTienda = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Arbol_exterior.png", 1, 1);
 			RenderComponent* renderTienda = new RenderComponent(textTienda);
-			c->addComponent(RENDER_COMPONENT, renderTienda);
+			//c->addComponent(RENDER_COMPONENT, renderTienda);
 			c->addRenderComponent(renderTienda);
 		}
 	}
@@ -550,7 +555,7 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	animcockroach->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
 	animcockroach->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
 	animcockroach->addAnimation("DEAD", Animation({ Vector2D(3,0), Vector2D(3,0) }, false, false, false));
-	//animcockroach->addAnimation("DEAD_DOWN", Animation({ Vector2D(0,2), Vector2D(0,2) }, false, true, false));
+
 	cockroach->addComponent(ANIMATION_COMPONENT, animcockroach);
 
 	RenderComponent* renderanimcockroach = new RenderComponent(txtcockroach);
@@ -562,6 +567,8 @@ Entity* RoomScene::createCockroach(Vector2D pos) {
 	cockroach->addComponent(ATTACK_COMPONENT, attack);
 	LifeComponent* lc = new LifeComponent(2, 2);
 	cockroach->addComponent(LIFE_COMPONENT, lc);
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DEAD");
+	cockroach->addComponent(DAMAGE_COMPONENT, dm);
 
 	AddEntity(cockroach);
 	return cockroach;
@@ -672,7 +679,7 @@ Entity* RoomScene::createPiedraMovible(Vector2D pos, int objIntID)
 	piedra->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderPiedra = new RenderComponent(textBomb);
-	piedra->addComponent(RENDER_COMPONENT, renderPiedra);
+	//piedra->addComponent(RENDER_COMPONENT, renderPiedra);
 	piedra->addRenderComponent(renderPiedra);
 
 	Box* boxPiedra = new Box(pos);
@@ -695,7 +702,7 @@ Entity* RoomScene::createEnganche(Vector2D pos)
 	enganche->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderEnganche = new RenderComponent(textEnganche);
-	enganche->addComponent(RENDER_COMPONENT, renderEnganche);
+	//enganche->addComponent(RENDER_COMPONENT, renderEnganche);
 	enganche->addRenderComponent(renderEnganche);
 
 	Box* boxEnganche = new Box(pos);
@@ -736,7 +743,7 @@ Entity* RoomScene::createMapChanger(string name, Vector2D pos, bool pushed, stri
 	RenderComponent* renderC = new RenderComponent(text);
 	renderC->setContext(e);
 	renderC->initComponent();
-	e->addComponent(RENDER_COMPONENT, renderC);
+	//e->addComponent(RENDER_COMPONENT, renderC);
 	e->addRenderComponent(renderC);
 
 	Box* box = new Box(pos);
@@ -766,7 +773,7 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
-	destructible->addComponent(RENDER_COMPONENT, renderDestructible);
+	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
 	Box* boxdestructible = new Box(pos);
@@ -791,7 +798,7 @@ Entity* RoomScene::createDoor(Vector2D pos)
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
-	destructible->addComponent(RENDER_COMPONENT, renderDestructible);
+	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
 	Box* boxdestructible = new Box(pos);
@@ -816,7 +823,7 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderDestructible = new RenderComponent(txtDestructible);
-	destructible->addComponent(RENDER_COMPONENT, renderDestructible);
+	//destructible->addComponent(RENDER_COMPONENT, renderDestructible);
 	destructible->addRenderComponent(renderDestructible);
 
 	Box* boxdestructible = new Box(pos);
@@ -829,6 +836,70 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 
 	return destructible;
 }
+Entity* RoomScene::createTroncoTermitas(Vector2D pos)
+{
+	Entity* log = new Entity(this, TERMITELOG_ENTITY);
+
+	TransformComponent* transform = new TransformComponent(pos, 320, 160); //mide dos casillas de ancho, y lo haceis con una constante, asiq numero magico por ahora
+	log->addComponent(TRANSFORM_COMPONENT, transform);
+
+	AnimationComponent* anim = new AnimationComponent();
+	anim->addAnimation("LOG_IDLE", Animation({ Vector2D(0,0), Vector2D(0,2) }, false, false, true));
+	anim->playAnimation("LOG_IDLE");
+	log->addComponent(ANIMATION_COMPONENT, anim);
+
+	RenderComponent* renderBomb = new RenderComponent(&sdlutils().images().at("termitaTronco"));
+	log->addRenderComponent(renderBomb);
+
+	Box* box = new Box(pos, 320, 160);
+	Collider coll = Collider(box);
+	ColliderComponent* collider = new ColliderComponent(transform);
+	collider->AddCollider(coll);
+	log->addComponent(COLLIDER_COMPONENT, collider);
+
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
+	log->addComponent(ATTACK_COMPONENT, attack); //para q colisione
+
+	AddTermiteComponent* add = new AddTermiteComponent(pos);
+	log->addComponent(TERMITE_GENERATOR_COMPONENT, add);
+
+
+	return log;
+}
+Entity* RoomScene::createTermita(Vector2D pos)
+{
+	Entity* temita = new Entity(this, TERMITE_ENTITY);
+	Texture* txt = &sdlutils().images().at("termita");
+
+	TransformComponent* transform = new TransformComponent(pos);
+	temita->addComponent(TRANSFORM_COMPONENT, transform);
+	Box* box = new Box(pos);
+	Collider coll = Collider(box);
+	ColliderComponent* collider = new ColliderComponent(transform);
+	collider->AddCollider(coll);
+	temita->addComponent(COLLIDER_COMPONENT, collider);
+	AnimationComponent* anim = new AnimationComponent();
+	anim->setContext(temita);
+	anim->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
+	anim->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
+	anim->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
+	anim->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
+	anim->addAnimation("DEAD", Animation({ Vector2D(3,0), Vector2D(3,0) }, false, false, false));
+
+	temita->addComponent(ANIMATION_COMPONENT, anim);
+
+	RenderComponent* render = new RenderComponent(txt);
+	temita->addRenderComponent(render);
+
+	//tiene el mismo comportamiento
+	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(anim);
+	temita->addComponent(MOVEMENT_COMPONENT, mvm);
+
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
+	temita->addComponent(ATTACK_COMPONENT, attack);
+
+	return temita;
+}
 Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 {
 	// rotation: 0 norte, 1 este, 2 sur y 3 oeste
@@ -839,7 +910,7 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 	conveyor->addComponent(TRANSFORM_COMPONENT, transform);
 
 	RenderComponent* renderDestructible = new RenderComponent(txtConveyor);
-	conveyor->addComponent(RENDER_COMPONENT, renderDestructible);
+	//conveyor->addComponent(RENDER_COMPONENT, renderDestructible);
 	conveyor->addRenderComponent(renderDestructible);
 
 	Box* boxConveyor = new Box(pos);
