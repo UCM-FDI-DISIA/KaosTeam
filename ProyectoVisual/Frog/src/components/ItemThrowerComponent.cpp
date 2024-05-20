@@ -53,4 +53,5 @@ void ItemThrowerComponent::throwItem(Items object, MovementComponentFrog* mvFrog
 
 void ItemThrowerComponent::throwStart() {
 	static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->ThrowStart();
+	sdlutils().soundEffects().at("Disparo").play();
 }

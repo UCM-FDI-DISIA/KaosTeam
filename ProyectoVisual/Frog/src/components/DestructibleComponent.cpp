@@ -59,6 +59,7 @@ void DestructibleComponent::CheckCollisions(Entity* ent, Collider c)
         if (c.getName() == TONGUE_COLLIDER) // está colisionando con la lengua
         {   
 			DestructibleComponent::LootAndBreak();
+            sdlutils().soundEffects().at("Jarra").play();
         }
         else { //está collisionando con el cuerpo de la rana
             TransformComponent* tFrog = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));

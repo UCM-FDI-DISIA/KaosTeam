@@ -44,6 +44,7 @@ void AttackComponentSnake::attack() {
 	state = 1;
 	distanceMoved = 0;
 	static_cast<RenderComponentSnake*>(ent->getRenderComponentSnake())->AttackStart();
+	sdlutils().soundEffects().at("AttackSnake").play();
 }
 
 void AttackComponentSnake::checkHitWithBody(Entity* e, Collider c) {

@@ -427,7 +427,7 @@ Entity* RoomScene::createFish(Vector2D pos, int boundX) {
 	//el limite tiene que ser una propiedad
 	MovementComponentFish* mvm = new MovementComponentFish(boundX, animFish);
 	fish->addComponent(MOVEMENT_COMPONENT, mvm);
-	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(5);
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(1);
 	fish->addComponent(ATTACK_COMPONENT, attack);
 
 

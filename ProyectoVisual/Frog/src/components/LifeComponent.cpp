@@ -45,6 +45,9 @@ void LifeComponent::hit(int damage) {
 			damageComp->setDead(true); //la entidad esta muerta
 		}
 	}
+	if (this->ent->getName() == FROG_ENTITY) {
+		sdlutils().soundEffects().at("DamageFrog").play();
+	}
 }
 
 void LifeComponent::update() {

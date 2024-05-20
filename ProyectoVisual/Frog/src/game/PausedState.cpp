@@ -19,6 +19,7 @@ void PausedState::enter() //Asi no deberia de ser el enter pero por ahora funcio
 {
 	sdlutils().virtualTimer().resume();
 	Game::instance()->setNextState(Game::instance()->RUNNING);
+	sdlutils().soundEffects().at("Flonk").resumeChannel();
 }
 
 void PausedState::leave()

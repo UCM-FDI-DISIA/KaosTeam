@@ -15,6 +15,7 @@ void MapShiftComponent::collisionPalanca(Entity* ent, Collider c)
         if (c.getName() == TONGUE_COLLIDER) {
             Texture* textPalanca = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/PalancaB.png", 1, 1);
             static_cast<RenderComponent*>(this->ent->getRenderComponent())->ChangeTexture(textPalanca);
+            sdlutils().soundEffects().at("Palanca").play();
             trigger();
         }
     }
@@ -26,6 +27,7 @@ void MapShiftComponent::collisionBoton(Entity* ent, Collider c)
         if (c.getName() == TRANSFORM_COLLIDER) {
             Texture* textBoton = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/BotonB.png", 1, 1);
             static_cast<RenderComponent*>(this->ent->getRenderComponent())->ChangeTexture(textBoton);
+            sdlutils().soundEffects().at("Palanca").play(); //reutilizamos el sonido de la palanca
             trigger();
         }
     }
