@@ -1101,6 +1101,7 @@ void RoomScene::removeEntity(Entity* entity) {
 RoomScene::~RoomScene() {
 
 	//Eliminar la lista de entidades
+	std::cout << "TOTAL NUMBER OF ENTITIES: " << entityList.size() << std::endl;
 	for (auto it = entityList.begin(); it != entityList.end(); ++it) {
 		delete* it;
 	}
