@@ -32,9 +32,17 @@
             <img src="src/img/logo.png">
         </div>
         <!--Botón de descarga-->
-        <div class="boton"">
+        <button class="boton" onclick="descarga()">
             <h2>INSTALAR</h2> <!--Esto debería descargar el juego. O por lo menos redirigir a la página de itch.io-->
-        </div>
+        </button>
+        <script>
+            function descarga() {
+                const enlace = document.createElement('a');
+                enlace.href = "descargas/FlonkInstalador.exe"
+                enlace.download = "FlonkInstalador.exe"
+                enlace.click();
+            }
+        </script>
         <!--Sección descripción-->
         <div class="descripcion-juego">
             <div class="cuadro">
