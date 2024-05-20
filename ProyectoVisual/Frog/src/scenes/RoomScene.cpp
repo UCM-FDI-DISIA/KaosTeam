@@ -836,7 +836,6 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 }
 Entity* RoomScene::createDoor(Vector2D pos)
 {
-	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
 	Entity* destructible = new Entity(this, PUERTA_ENTITY);
 	Texture* txtDestructible = &sdlutils().images().at("puerta");
 	// hay que animarlo
@@ -880,7 +879,8 @@ Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 
 	DestructibleComponent* destructibleComponent = new DestructibleComponent(loot, pos);
 	destructible->addComponent(DESTRUCTIBLE_COMPONENT, destructibleComponent);
-
+	
+	AddEntity(destructible);
 	return destructible;
 }
 Entity* RoomScene::createTroncoTermitas(Vector2D pos)
@@ -954,7 +954,18 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 {
 	// rotation: 0 norte, 1 este, 2 sur y 3 oeste
 	Entity* conveyor = new Entity(this, CONVEYOR_ENTITY);
-	Texture* txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);	// cambiarlo cuando sea posible
+
+	Texture* txtConveyor = nullptr;
+	if(rotation == 1 || rotation == 3)
+	{
+		txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/CintaTransSheetH.png", 1, 1);
+	}
+	else 
+	{
+		txtConveyor = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/CintaTransSheetV.png", 1, 1);
+	}
+
+		// cambiarlo cuando sea posible
 
 	TransformComponent* transform = new TransformComponent(pos);
 	conveyor->addComponent(TRANSFORM_COMPONENT, transform);
@@ -968,6 +979,10 @@ Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 	ColliderComponent* collConveyor= new ColliderComponent(transform);
 	conveyor->addComponent(COLLIDER_COMPONENT, collConveyor);
 
+	ConveyorBeltComponent* conveyorComponent = new ConveyorBeltComponent(rotation, pos);
+	conveyor->addComponent(CONVEYOR_COMPONENT, conveyorComponent);
+
+	AddEntity(conveyor);
 	return conveyor;
 }
 Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps)

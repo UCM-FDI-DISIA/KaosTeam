@@ -41,11 +41,13 @@
 #include "../components/MovementComponentHeadRoach.h"
 #include "../managers/MapManager.h"
 #include "../ecs/Entity.h"
+#include "../components/ConveyorBeltComponent.h"
 #include <vector>
 
 const int BOSS_X = 560;
 const int BOSS_Y = 560;
 const int BOSS_SCALE = 7;
+
 
 class Texture;
 class RoomScene : public Scene
