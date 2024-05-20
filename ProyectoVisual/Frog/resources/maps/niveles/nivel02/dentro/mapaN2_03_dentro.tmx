@@ -45,37 +45,37 @@
   <object id="1" name="FlonkN" type="Player" x="121" y="26">
    <point/>
   </object>
-  <object id="2" name="Termita" x="74" y="89.5">
+  <object id="2" name="Termita" type="Enemigo" x="74" y="89.5">
    <point/>
   </object>
-  <object id="11" name="Termita" x="23" y="152.5">
+  <object id="11" name="Termita" type="Enemigo" x="23" y="152.5">
    <point/>
   </object>
-  <object id="7" name="Termita" x="98.5" y="122.5">
+  <object id="7" name="Termita" type="Enemigo" x="98.5" y="122.5">
    <point/>
   </object>
-  <object id="12" name="Termita" x="70.5" y="154.5">
+  <object id="12" name="Termita" type="Enemigo" x="70.5" y="154.5">
    <point/>
   </object>
-  <object id="13" name="Termita" x="118" y="188">
+  <object id="13" name="Termita" type="Enemigo" x="118" y="188">
    <point/>
   </object>
-  <object id="14" name="Termita" x="200.5" y="156.5">
+  <object id="14" name="Termita" type="Enemigo" x="200.5" y="156.5">
    <point/>
   </object>
-  <object id="15" name="Termita" x="181" y="202">
+  <object id="15" name="Termita" type="Enemigo" x="181" y="202">
    <point/>
   </object>
-  <object id="10" name="Termita" x="25.5" y="57.5">
+  <object id="10" name="Termita" type="Enemigo" x="25.5" y="57.5">
    <point/>
   </object>
-  <object id="8" name="Termita" x="195.5" y="74.5">
+  <object id="8" name="Termita" type="Enemigo" x="195.5" y="74.5">
    <point/>
   </object>
-  <object id="9" name="Termita" x="153.5" y="107">
+  <object id="9" name="Termita" type="Enemigo" x="153.5" y="107">
    <point/>
   </object>
-  <object id="3" name="LLave" x="136" y="231.5">
+  <object id="3" name="LLave" type="ObjCogible" x="136" y="231.5">
    <point/>
   </object>
   <object id="5" name="Jarron" type="ObjInteract" x="229" y="218">

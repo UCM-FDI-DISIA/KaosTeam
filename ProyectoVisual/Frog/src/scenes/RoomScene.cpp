@@ -962,6 +962,12 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 	else if (objName == "Cockroach") {
 		c = createCockroach(pos);
 	}
+	else if (objName == "Termita") {
+		c = createTermita(pos);
+	}
+	else if (objName == "TermitaTronco") {
+		c = createTroncoTermitas(pos);
+	}
 	return c;
 }
 Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)

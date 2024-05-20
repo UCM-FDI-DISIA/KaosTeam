@@ -49,22 +49,22 @@
   <object id="2" name="FlonkP" type="Player" x="167.833" y="105.833">
    <point/>
   </object>
-  <object id="9" name="Termita" x="41.8333" y="29.1667">
+  <object id="9" name="Termita" type="Enemigo" x="41.8333" y="29.1667">
    <point/>
   </object>
-  <object id="19" name="Termita" x="104.333" y="27.1667">
+  <object id="19" name="Termita" type="Enemigo" x="104.333" y="27.1667">
    <point/>
   </object>
-  <object id="20" name="Termita" x="87.8333" y="59.6667">
+  <object id="20" name="TermitaTronco" type="Enemigo" x="87.8333" y="59.6667">
    <point/>
   </object>
-  <object id="21" name="Termita" x="150.333" y="138.667">
+  <object id="21" name="Termita" type="Enemigo" x="150.333" y="138.667">
    <point/>
   </object>
-  <object id="16" name="Termita" x="22.8333" y="60.6667">
+  <object id="16" name="Termita" type="Enemigo" x="22.8333" y="60.6667">
    <point/>
   </object>
-  <object id="17" name="Termita" x="23.8333" y="124.167">
+  <object id="17" name="Termita" type="Enemigo" x="23.8333" y="124.167">
    <point/>
   </object>
   <object id="12" name="Snake" type="Enemigo" x="106.333" y="124.667">

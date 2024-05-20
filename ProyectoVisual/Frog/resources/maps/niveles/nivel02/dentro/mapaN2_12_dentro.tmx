@@ -50,19 +50,19 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Termita" x="40" y="284.667">
+  <object id="1" name="Termita" type="Enemigo" x="40" y="284.667">
    <point/>
   </object>
-  <object id="3" name="Termita" x="280.667" y="284">
+  <object id="3" name="Termita" type="Enemigo" x="280.667" y="284">
    <point/>
   </object>
-  <object id="4" name="Termita" x="280" y="41.3333">
+  <object id="4" name="Termita" type="Enemigo" x="280" y="41.3333">
    <point/>
   </object>
-  <object id="2" name="Termita" x="39.3333" y="42">
+  <object id="2" name="Termita" type="Enemigo" x="39.3333" y="42">
    <point/>
   </object>
-  <object id="5" name="Enganche" x="40" y="265.333">
+  <object id="5" name="Enganche" type="ObjInteract" x="40" y="265.333">
    <point/>
   </object>
   <object id="6" name="Enganche" type="ObjInteract" x="40" y="265.333">
@@ -77,7 +77,7 @@
   <object id="11" name="Enganche" type="ObjInteract" x="55.3333" y="298.667">
    <point/>
   </object>
-  <object id="9" name="Enganche" x="168" y="267.333">
+  <object id="9" name="Enganche" type="ObjInteract" x="168" y="267.333">
    <point/>
   </object>
   <object id="10" name="Enganche" type="ObjInteract" x="263.333" y="265.333">
