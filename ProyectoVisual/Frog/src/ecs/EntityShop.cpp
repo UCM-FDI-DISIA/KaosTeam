@@ -4,7 +4,8 @@ EntityShop::EntityShop() : myShopComponent(nullptr) {
 }
 EntityShop::~EntityShop()
 {
-	myShopComponent = nullptr;
+	//myShopComponent = nullptr;
+	delete myShopComponent;
 }
 ShopComponent* EntityShop::getShopComponent() 
 {
