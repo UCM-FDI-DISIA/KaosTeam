@@ -25,6 +25,12 @@ public:
 	void OnCollision(Entity*, Collider);
 	//Comprueba la colisión de este collider con otro. Devuelve true si hay colisión.
 	bool Collides(Collider) const;
+
+	void deleteBox()
+	{
+		if (box != nullptr)
+		delete box;
+	}
 	
 	ColliderName getName() const;
 	Box* GetBox() const { return box; };
@@ -49,6 +55,7 @@ public:
 		AddCollider(Collider(tr, TRANSFORM_COLLIDER));
 		transformCollider = &colliders.front();
 	};
+	~ColliderComponent();
 	//Comprueba la colisión de los colliders de este componente con los de la otra entidad
 	void CheckCollision(Entity* e);
 	//Añade un collider a este componente

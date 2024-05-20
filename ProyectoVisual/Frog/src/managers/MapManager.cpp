@@ -308,7 +308,7 @@ void MapManager::loadObj(const std::string& path)
                 if (ent != nullptr) {
                     if (walkableTiles[x][y] != nullptr) {
                         walkableTiles[x][y]->objInTile = ent;
-                        std::cout << "Anadida entidad a tile: " << object.getName() << std::endl;
+                        std::cout << "Anadida entidad a tile: " << object.getName() << "puntero: " << ent << std::endl;
                     }
                 }
                 else {

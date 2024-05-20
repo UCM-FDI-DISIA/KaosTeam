@@ -27,7 +27,7 @@ Box::Box() {
 SDL_Rect Box::GetOnDisplayPosition() const{
 	SDL_Rect dest;
 
-	int size = TILE_SIZE * scale;
+	int size = TILE_SIZE;
 	Vector2D mOffset = offset + Vector2D((size - width % size) / 2, (size - height %size) / 2);
 	Vector2D cameraPos = Camera::instance()->getCameraMovement();
 
