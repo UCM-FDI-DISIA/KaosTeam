@@ -90,6 +90,10 @@ public:
 	string getPath() { return path; }
 	bool getGameOverState() { return gameOver; };
 	void changeMap();
+	void resetScene(string path);
+
+	
+
 	void callForMapChange(std::string nextMap, flonkOrig nextFlonk = S) {
 		this->nextMap = nextMap;
 		this->nextFlonk = nextFlonk;

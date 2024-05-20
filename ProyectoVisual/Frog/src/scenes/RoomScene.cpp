@@ -1014,6 +1014,40 @@ Entity* RoomScene::createExplotable(Vector2D pos, std::string objName, std::vect
 	return c;
 }
 
+void RoomScene::resetScene(string path)
+{
+	auto it = entityList.begin();
+	while (it != entityList.end()) {
+		//Por la arquitectura actual, es necesario mantener la entidad de frog.
+		//Para cada entidad se comprueba su name, si no es un frog lo borra.
+		if ((*it)->getName() != FROG_ENTITY) {
+			delete* it;
+			*it = nullptr;
+			it = entityList.erase(it);
+		}
+
+		else
+			it++;
+	}
+
+
+	if (mapReader != nullptr) {
+		mapReader->clearMap();
+		mapReader->loadBg(nextMap, sdlutils().renderer());
+		mapReader->loadObj(nextMap);
+
+	}
+
+	if (cameraManager != nullptr) {
+		cameraManager->setTarget(player);
+	}
+
+	TransformComponent* transform = static_cast<TransformComponent*>(player->getComponent(TRANSFORM_COMPONENT));
+	if (transform != nullptr) {
+		lastFrogPosition = transform->getCasilla();
+	}
+}
+
 Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string objClass, std::vector<tmx::Property> objProps, int objIntID, bool objInteracted)
 {
 	Entity* c = nullptr;

@@ -53,7 +53,15 @@ void RunningState::resetGame() {
 }
 
 void RunningState::createNewGame() {
-	delete currRoomScene;
-	currRoomScene = new RoomScene("resources/maps/niveles/nivel02/dentro/mapaN2_09_dentro.tmx");
-	currScene = currRoomScene;
+
+	if (currRoomScene != nullptr)
+	{
+		currRoomScene->resetScene("resources / maps / niveles / nivel02 / dentro / mapaN2_09_dentro.tmx");
+	}
+	else
+	{
+		currRoomScene = new RoomScene("resources/maps/niveles/nivel02/dentro/mapaN2_09_dentro.tmx");
+		currScene = currRoomScene;
+	}
+	
 }
