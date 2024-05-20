@@ -66,7 +66,7 @@
    </properties>
    <point/>
   </object>
-  <object id="9" name="Piedra" x="40.5" y="216.5">
+  <object id="9" name="PiedraMovible" type="ObjInteract" x="40.5" y="216.5">
    <point/>
   </object>
   <object id="10" name="FlonkP" type="Player" x="40" y="233">

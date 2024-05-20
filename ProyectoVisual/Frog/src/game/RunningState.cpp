@@ -54,6 +54,6 @@ void RunningState::resetGame() {
 
 void RunningState::createNewGame() {
 	delete currRoomScene;
-	currRoomScene = new RoomScene("resources/maps/niveles/nivel01/mapaN1_01.tmx");
+	currRoomScene = new RoomScene("resources/maps/niveles/nivel02/dentro/mapaN2_09_dentro.tmx");
 	currScene = currRoomScene;
 }
