@@ -57,8 +57,10 @@ void RunningState::resetGame() {
 }
 
 void RunningState::createNewGame() {
-	//delete currRoomScene;
-	currRoomScene = new RoomScene("resources/maps/niveles/nivel01/mapaN1_01.tmx");
+	delete currRoomScene;
+	//currRoomScene = new RoomScene("resources/maps/niveles/nivel01/mapaN1_01.tmx");
+	//currRoomScene = new RoomScene("resources/maps/niveles/nivel03/mapaN3_01.tmx");
+	currRoomScene = new RoomScene("resources/maps/niveles/nivel02/fuera/mapaN2_03_fuera.tmx");
 	currScene = currRoomScene;
 	sdlutils().soundEffects().at("Flonk").play(-1, 0);
 }

@@ -100,6 +100,7 @@ void MovementComponentBomb::explodeBomb() {
 	rndr->ChangeTexture(explosionText); //cambiamos la textura del objeto (al spriteSheet de la explosion)
 	animator->addAnimation("EXPLOSION", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, true));
 	animator->playAnimation("EXPLOSION"); //Reproducimos explosi�n
+	sdlutils().soundEffects().at("Explosion").play();
 
 	shockEntity = true;
 	velocity = Vector2D(0, 0);
