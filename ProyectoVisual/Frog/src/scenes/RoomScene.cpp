@@ -861,6 +861,7 @@ Entity* RoomScene::createTroncoTermitas(Vector2D pos)
 	AddTermiteComponent* add = new AddTermiteComponent(pos);
 	log->addComponent(TERMITE_GENERATOR_COMPONENT, add);
 
+	AddEntity(log);
 
 	return log;
 }
@@ -895,6 +896,8 @@ Entity* RoomScene::createTermita(Vector2D pos)
 
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
 	temita->addComponent(ATTACK_COMPONENT, attack);
+
+	AddEntity(temita);
 
 	return temita;
 }
