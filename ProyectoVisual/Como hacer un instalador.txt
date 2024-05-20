@@ -1,0 +1,4 @@
+1. Instala Inno Setup
+2. Compila una versión RELEASE desde visual studio
+3. Abre buildFile.iss
+4. Compila el archivo. Esto creará el ejecutable instalador en KaosTeam/Instalador
