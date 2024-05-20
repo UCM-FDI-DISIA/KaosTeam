@@ -61,10 +61,18 @@
     ],
     
     "sounds" : [
+      { "id" : "Flonk", "file" : "resources/Sound/music.wav" },
+      { "id" : "Slurp", "file" : "resources/Sound/rana/SlurpFrog.wav" },
+      { "id" : "DamageFrog", "file" : "resources/Sound/rana/DamageFrog.wav" },
+      { "id" : "AttackSnake", "file" : "resources/Sound/serpiente/SnakeAttack.wav" },
+      { "id" : "Explosion", "file" : "resources/Sound/bomba/explosion.wav" },
+      { "id" : "Disparo", "file" : "resources/Sound/bomba/gunshot.wav" },
+      { "id" : "Jarra", "file" : "resources/Sound/interactuable/jarSmash.wav" },
+      { "id" : "Roca", "file" : "resources/Sound/interactuable/rock.wav" },
+      { "id" : "Palanca", "file" : "resources/Sound/interactuable/PalancaActivada.wav" }
     ],
   
     "musics" : [
-      
     ]
   
   }

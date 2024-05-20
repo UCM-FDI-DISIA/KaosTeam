@@ -72,6 +72,7 @@ void FrogInputComponent::update()
 		else if (input->getAction2()) {
 			if (inventoryComponent->mejoras.ciempies && input->getShift().pressed) {
 				attackComponent->setDistance(longTongue);
+				
 			}
 			else attackComponent->setDistance(shortTongue);
 			attackComponent->attack();

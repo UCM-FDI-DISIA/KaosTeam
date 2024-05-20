@@ -94,6 +94,7 @@ void AttackComponentFrog::attack(bool withHook)
 	state = 1;
 	distanceMoved = 0;
 	hasHook = withHook;
+	sdlutils().soundEffects().at("Slurp").play(0, 1);
 	static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->AttackStart(withHook);
 	Collider c = Collider(box, TONGUE_COLLIDER);
 	c.AddCall([this](Entity* e, Collider c) {tongueTouch(e, c); });
