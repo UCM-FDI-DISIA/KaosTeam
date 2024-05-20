@@ -293,6 +293,8 @@ En el menú de Game Over el jugador puede revivir e intentarlo de nuevo o ir al 
 
 <summary>Flujo de juego</summary>
 
+## Flujo de juego 
+
 Cuando se pulsa a "Jugar" en el menú principal del juego se empieza una nueva partida. 
 
 Si durante la partida el jugador pierde todas sus vidas, el jugador morirá y lo enviará al menú de Game Over.
