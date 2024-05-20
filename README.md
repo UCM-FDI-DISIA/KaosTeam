@@ -273,13 +273,19 @@ El juego tendría un aspecto de dibujo en un entorno tridimensional al estilo de
 
 **Menú principal:**
  El juego comienza con un menú principal donde se encuentra un botón para empezar a jugar y un botón para salir del juego.
+ ![](assets/imgGdd/MainMenu.png)
 
 **Durante el juego:**
- En la pantalla se ve la interfaz descrita antes junto a un botón que permite ir al menú de pausa.
-![](assets/imgGdd/image6.png)
+ Durante el juego se ve la interfaz descrita antes.
+![](assets/imgGdd/InGameMenu.png)
 
 **Menú de pausa:** 
-En el menú de pausa el jugador puede volver a la partida o salir ir al menú principal.
+En el menú de pausa el jugador puede volver a la partida o ir al menú principal.
+![](assets/imgGdd/PauseMenu.png)
+
+**Menú de GameOver:**
+En el menú de Game Over el jugador puede revivir e intentarlo de nuevo o ir al menú principal.
+![](assets/imgGdd/GameOverMenu.png)
 
 </details>
 
@@ -287,8 +293,13 @@ En el menú de pausa el jugador puede volver a la partida o salir ir al menú pr
 
 <summary>Flujo de juego</summary>
 
-**Flujo de juego:** Cuando el jugador muere le aparecerá un menú que le informará de su muerte y le dará a elegir entre cerral el juego y continuar. En caso de que elija lo segundo la sala en la murió se reiniciará.
+Cuando se pulsa a "Jugar" en el menú principal del juego se empieza una nueva partida. 
 
+Si durante la partida el jugador pierde todas sus vidas, el jugador morirá y lo enviará al menú de Game Over.
+En el menú de GameOver, el jugador puede elegir entre "Reintentar" o "Salir". La opción "Reintentar" hará que el jugador reaparezca en la sala que murió, regenerándole las vidas por completo, mientras que la opción "Salir" hace que el jugador vuelva al menú principal. 
+Si el juagdor vuelve a dar "Jugar" desde el menú principal, la partida anterior se borrará.
+
+Además, durante el gameplay, el jugador podrá acceder a un menú de pausa en el que se podrá elegir entre "Seguir" y "Salir" que nos permiten ir al gameplay e ir al menú principal, respectivamente.
 
 
 </details>
