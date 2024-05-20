@@ -25,7 +25,11 @@ private:
 	std::map<std::string, std::vector<ObjEdit>> interactedObjects; //Estructura para el guardado de escenas
 	//Debe ser un singleton que guarda distintos datos generales del juego.
 public:
-	~DataManager() {};
+	~DataManager() 
+	{
+		std::cout << "DATA MANAGER: DELETED" << std::endl;
+	
+	};
 	DataManager(DataManager&) = delete;
 	void operator=(const DataManager&) = delete;
 

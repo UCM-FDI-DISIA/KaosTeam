@@ -9,11 +9,10 @@
 
 int main(int ac, char** av)
 {
-    Game& game = *Game::instance();
-    game.init();
+    Game* game = Game::instance();
+    game->init();
 
     //delete game;
 
-    //_CrtSetDbgFlag;
     return 0;
 }

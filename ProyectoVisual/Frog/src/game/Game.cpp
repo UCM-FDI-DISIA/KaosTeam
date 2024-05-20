@@ -19,7 +19,8 @@ Game::Game() : //
 
 Game::~Game()
 {
-	//sdlutils().close();
+	sdlutils().close();
+	std::cout << "GAME DELETED" << std::endl;
 	delete pausedState;
 	delete newgameState;
 	delete gameOverState;
@@ -35,9 +36,9 @@ void Game::init() {
 	//escenaActual = new RoomScene(1);
 
 	newgameState = new NewGameState();
-	runningState = new RunningState();
-	pausedState = new PausedState();
-    gameOverState = new GameOverState();
+	//runningState = new RunningState();
+	//pausedState = new PausedState();
+    //gameOverState = new GameOverState();
 	renderStates.push_front(newgameState);
 	updateStates.push_front(newgameState);
 
@@ -77,10 +78,6 @@ void Game::render() {
 	{
 		a->getScene()->render();
 	}
-
-	//Esto se realiza en cada escena
-	/*if (currentState->getScene()->getCanRenderHUD())
-		hud->render();*/
 
 	SDL_RenderPresent(sdlutils().renderer());
 }
