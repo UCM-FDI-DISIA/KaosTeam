@@ -121,7 +121,9 @@ public:
 	Entity* createFrancois(Vector2D pos);
 	Entity* createEnganche(Vector2D pos);
 	Entity* createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
-
+	Entity* createPiedraMovible(Vector2D pos, int objIntID);
+	Entity* createTroncoTermitas(Vector2D pos);
+	Entity* createTermita(Vector2D pos);
 	Entity* createMapChanger(string name, Vector2D pos, bool pushed, string nextMap, int objIntID, bool objInteracted);
 	Entity* createCockroach(Vector2D pos);
 	Entity* createHeadCockroach(Vector2D pos, bool move);
