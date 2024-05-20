@@ -101,8 +101,6 @@ void FrogInputComponent::update()
 				std::cout << "\nHAS LANZADO CABEZA" << std::endl;
 			}
 		}
-		//else if (input->getAction2()) { 
-		//}
 	}
 
 }

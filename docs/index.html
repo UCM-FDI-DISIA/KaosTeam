@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="src/img/favicon.ico">
+    <link rel="stylesheet" href="src/css/style.css"> <!--Fichero de estilo css general-->
+    <link rel="stylesheet" href="src/css/index-style.css"> <!--Fichero de estilo css de esta página-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <title id="titleName">Flonk! - El Juego</title>
+</head>
+<html>
+
+<body>
+    <nav class="topnav"> <!--Menú superior con enlaces  y el logo-->
+        <div class="logo-studio-container">
+            <a style="padding: 0;">
+                <img src="src/img/logo_studio.png">
+            </a>
+        </div>
+        <ul class="navList">
+            <li><a class="active">JUEGO</a></li> <!--Página principal con el juego-->
+            <li><a href="./credits.html">CREDITOS</a></li> <!--Nuestros créditos uwu-->
+            <li><a href="https://github.com/UCM-FDI-DISIA/KaosTeam" target="_blank">GITHUB</a></li>
+            <li><a href="https://dmontec.itch.io/flonk" target="_blank">ITCH.IO</a></li>
+        </ul>
+    </nav>
+    <div id="content"><!--Contenido de la página como tal-->
+        <div id="title-imagen">
+            <img src="src/img/logo.png">
+        </div>
+        <!--Botón de descarga-->
+        <button class="boton" onclick="descarga()">
+            <h2>INSTALAR</h2> <!--Esto debería descargar el juego. O por lo menos redirigir a la página de itch.io-->
+        </button>
+        <script>
+            function descarga() {
+                const enlace = document.createElement('a');
+                enlace.href = "descargas/FlonkInstalador.exe"
+                enlace.download = "FlonkInstalador.exe"
+                enlace.click();
+            }
+        </script>
+        <!--Sección descripción-->
+        <div class="descripcion-juego">
+            <div class="cuadro">
+                <h2 class="titles1">La aventura de Flonk!</h2>
+            </div>
+            <div class="green-container">
+                <p class="desc-parag1">¡El chef François 🥐 ha secuestrado a la hermana de Flonk!</p>
+                <p class="desc-parag2 usual-text-style">Explora un mundo lleno de peligros para rescatarla antes de que
+                    se
+                    convierta en un
+                    👨‍🍳 plato de cocina francesa 🥘.</p>
+                <p class="desc-parag2 usual-text-style">Flonk! es un videojuego desarrollado por KaosTeam, un grupo de
+                    estudiantes del Grado de Desarrollo de Videojuegos de la Universidad Complutense de Madrid (Curso
+                    2023-24).
+                </p>
+            </div>
+        </div>
+        <!--Trailer-->
+        <div class="cuadro">
+            <h2 class="titles1">Trailer</h2>
+        </div>
+        <div class="video-container">
+            <iframe width="1120" height="630" src="https://www.youtube.com/embed/a8D4VjUn01A?si=i9bEpeW2y_bInIRJ"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <!-- Sección de Capturas -->
+        <div class="slides">
+            <div class="cuadro">
+                <h2 class="titles1">Capturas del Juego</h2>
+            </div>
+            <!-- Slides -->
+            <div class="capturas">
+                <div class="imgen visible">
+                    <img src="src/img/captura1.png" style="width: auto; height: 600px;">
+                </div>
+
+                <div class="imgen">
+                    <img src="src/img/captura2.png" style="width: auto; height: 600px;">
+                </div>
+
+                <div class="imgen">
+                    <img src="src/img/captura3.png" style="width: auto; height: 600px;">
+                </div>
+            </div>
+            <br>
+            <div>
+            </div>
+            <!-- Circulitos de las imagenes -->
+            <div style="text-align:center">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <script src="src/js/slide.js"></script> <!--Script de la funcionalidad del slider de imagenes-->
+        </div>
+    </div>
+    <!--Otras secciones epecíficas-->
+    <div class="descripcion-mundo">
+        <div class="cuadro">
+            <h2 class="titles1">El mundo de Flonk!</h2>
+        </div>
+        <div class="seccion-con-img green-container">
+            <!--Un texto a la izqierda, acompañado de una imagen a la derecha-->
+            <div class="texto-izq usual-text-style">
+                <p>Tensión, animales, naturaleza, franceses y mucho peligro te esperan en el mundo de Flonk!
+                    Haz todo en tu poder para rescatar a tu hermana y obtener el corazón de tu querido tendero. 
+                    ¡Derrota enemigos varios, resuelve puzles y vive la aventura de tu vida! </p>
+                <p>En este colorido mundo, será tu deber mantenerlo verde, ¡Juégalo ya! </p>
+            </div>
+            <div>
+                <img src="src/img/pajaro.gif" class="img-der">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="usual-text-style-but-white">KaosTeam - 2024</div>
+    </footer>
+</body>
+
+</html>
