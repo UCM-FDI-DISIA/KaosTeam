@@ -3,6 +3,7 @@
 #include "../scenes/RoomScene.h"
 
 
+
 Entity::Entity(RoomScene* scn) : name(UNAMED_ENTITY), myScene(scn) {};
 
 Entity::Entity(RoomScene* scn, EntityName name) : name(name), myScene(scn), renderComponent(), renderComponentFrog(),
@@ -51,6 +52,7 @@ Entity::~Entity()
 	{
 		delete it->second;
 	}
+
 	delete renderComponent;
 	delete renderComponentFrog;
 	delete renderComponentSnake;
@@ -93,5 +95,5 @@ RoomScene* Entity::getScene() const
 
 EntityName Entity::getName() const
 {
-	return name;
+	return (EntityName) name;
 }

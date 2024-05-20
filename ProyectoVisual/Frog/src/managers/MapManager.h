@@ -51,6 +51,7 @@ struct tile {
 
     tile(SDL_Texture* tset, int x = 0, int y = 0, int tx = 0, int ty = 0, int w = 0, 
         int h = 0, bool walkable = true, bool theresObj = false, Entity* objInTile = nullptr);
+    ~tile() {}
     void draw(SDL_Renderer* ren, int num, Vector2D cameraPos);
 };
 

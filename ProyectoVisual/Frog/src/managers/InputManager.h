@@ -1,6 +1,8 @@
 #pragma once
 #include <SDL.h>
 #include <vector>
+#include <iostream>
+#include <memory>
 
 /*Struct con los datos de input de un botón específico*/
 struct InputButton {
@@ -45,12 +47,13 @@ private:
 
     //InputButton buttons[];
     std::vector<InputButton> buttons;
-    static InputManager* instance;
+
+    //static InputManager* instance;
+    static std::unique_ptr<InputManager> instance;
 
     //Constructor vacio privado para poder instanciar desde dentro
     InputManager();
-    //Destructor
-    ~InputManager() {};
+    
 
     //Actualiza el estado de los eventos
     void UpdateStates(const SDL_Event& event);
@@ -59,14 +62,17 @@ private:
     void UptiCheck(btnEnum btn);
     void DowntiCheck(btnEnum btn);
 public:
+    //Destructor
+    ~InputManager() { std::cout << "INPUT MANAGER DELETED" << std::endl; };
     //Gestion para hacer singleton de InputManager
     InputManager(InputManager&) = delete;
     void operator=(const InputManager&) = delete;
+
     static InputManager* GetInstance() {
         if (instance == nullptr) {
-            instance = new InputManager();
+            instance.reset(new InputManager());
         }
-        return instance;
+        return instance.get();
     };
 
     void PollEvents();

@@ -6,6 +6,7 @@
 Camera::~Camera() {
 	camTarget = nullptr;
 	targetTransform = nullptr;
+	std::cout << "CAMERA DELETED" << std::endl;
 }
 void Camera::setTarget(Entity* target)
 {

@@ -181,7 +181,6 @@
     <ClCompile Include="src\ecs\EntityShop.cpp" />
     <ClCompile Include="src\ecs\Scene.cpp" />
     <ClCompile Include="src\managers\LoadManager.cpp" />
-    <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\components\AttackComponentFrog.cpp" />
     <ClCompile Include="src\components\FollowPlayerComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentBlackAnt.cpp" />
@@ -259,7 +258,6 @@
     <ClInclude Include="src\ecs\EntityShop.h" />
     <ClInclude Include="src\managers\DialogManager.h" />
     <ClInclude Include="src\managers\LoadManager.h" />
-    <ClInclude Include="src\managers\SceneManager.h" />
     <ClInclude Include="src\game\PausedState.h" />
     <ClInclude Include="src\game\RunningState.h" />
     <ClInclude Include="src\components\AttackComponentFrog.h" />

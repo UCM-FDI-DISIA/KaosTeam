@@ -25,6 +25,7 @@ Shop::Shop() : imngr(im()), grasshoperValue(10), waspValue(15), flyValue(15), ce
 	lastChangeTexture = sdlutils().virtualTimer().currTime();
 }
 Shop::~Shop() {
+
 	for (auto& a : animals) {
 		delete a;
 		a = nullptr;
@@ -33,6 +34,8 @@ Shop::~Shop() {
 	player = nullptr;
 	playerHUD = nullptr;
 	playerInventory = nullptr;
+
+	std::cout << "SHOP DELETED" << std::endl;
 }
 //inicializa y coloca las entidades que podemos comprar
 void Shop::initShopEntitys() {

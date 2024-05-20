@@ -1,6 +1,7 @@
 #include "InputManager.h"
+std::unique_ptr<InputManager> InputManager::instance;
 
-InputManager* InputManager::instance = nullptr;
+//InputManager* InputManager::instance = nullptr;
 
 InputManager::InputManager() { 
 	//buttons[END] = {}; 
