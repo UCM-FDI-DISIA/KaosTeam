@@ -22,7 +22,7 @@ private:
 	InputManager& imngr;
 	float initTime;
 public:
-    EndingScene(Game* g, GameState* nGS);
+    EndingScene(GameState* nGS);
 	void changeInitTime();
 	virtual ~EndingScene();
 	void render() override;

@@ -3,7 +3,7 @@
 #include "../sdlutils/Texture.h"
 #include "../managers/InputManager.h"
 #include "../game/GameState.h"
-MenuPausa::MenuPausa(Game* g, GameState* gs, Texture* path1, Texture* path2):Menu(g,gs,path1,path2)
+MenuPausa::MenuPausa(GameState* gs, Texture* path1, Texture* path2):Menu(gs,path1,path2)
 {
 	SDL_Rect button1Dest, button2Dest;
 

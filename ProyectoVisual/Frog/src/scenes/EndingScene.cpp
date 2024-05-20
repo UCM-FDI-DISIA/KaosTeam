@@ -4,7 +4,7 @@
 #include "../managers/InputManager.h"
 #include "../game/GameState.h"
 
-EndingScene::EndingScene(Game* g, GameState* nGS):game(g),currBg(0), imngr(im()), initTime(sdlutils().virtualTimer().currTime()), gameState(nGS)
+EndingScene::EndingScene(GameState* nGS):game(Game::instance()),currBg(0), imngr(im()), initTime(sdlutils().virtualTimer().currTime()), gameState(nGS)
 {
 	bgDest.x = bgDest.y = 0;
 	bgDest.w = WIN_WIDTH;

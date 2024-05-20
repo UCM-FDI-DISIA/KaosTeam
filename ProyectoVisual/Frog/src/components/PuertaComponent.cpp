@@ -43,6 +43,6 @@ void PuertaComponent::initComponent()
     coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
 
     if (ent->getName() == PUERTA_ENTITY) {
-        coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsTongue(e, c); }); //Añadimos callback
+        coll->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {checkCollisionsTongue(e, c); }); //Añadimos callback
     }
 }

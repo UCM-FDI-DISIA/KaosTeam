@@ -6,7 +6,7 @@ class EndingScene;
 class EndingState:public GameState
 {
 public:
-	EndingState(Game* g);
+	EndingState();
 	virtual ~EndingState();
 	void leave() override;
 	void update() override;

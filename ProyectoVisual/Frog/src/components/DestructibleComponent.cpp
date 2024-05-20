@@ -96,7 +96,7 @@ void DestructibleComponent::initComponent() // inicializador
     coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
 
     if (ent->getName() == DESTRUCTIBLE_ENTITY) {
-        coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {CheckCollisions(e, c); }); //Añadimos callback
+        coll->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {CheckCollisions(e, c); }); //Añadimos callback
     }
 
 	scen = static_cast<RoomScene*>(ent->getScene());

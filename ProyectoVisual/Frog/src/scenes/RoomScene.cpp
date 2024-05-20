@@ -1205,10 +1205,12 @@ RoomScene::~RoomScene() {
 
 	for (int i = 0; i < entityList.size(); i++)
 	{
+		if (entityList[i]->getName() != FRENCH_ENTITY)
 		delete entityList[i];
 	}
 
 	delete mapReader;
+	delete francois;
 }
 
 void RoomScene::changeMap()

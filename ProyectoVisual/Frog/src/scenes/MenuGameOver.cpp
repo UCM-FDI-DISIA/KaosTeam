@@ -1,6 +1,6 @@
 #include "MenuGameOver.h"
 
-MenuGameOver::MenuGameOver(Game* g, GameState* gs, Texture* p1, Texture* p2) : Menu(g, gs, p1, p2) {
+MenuGameOver::MenuGameOver(GameState* gs, Texture* p1, Texture* p2) : Menu(gs, p1, p2) {
 	SDL_Rect buttonRetryDest, buttonExitDest;
 
 	//Boton de retry y de salir

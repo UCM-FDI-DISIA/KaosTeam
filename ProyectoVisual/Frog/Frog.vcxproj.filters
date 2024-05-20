@@ -78,7 +78,6 @@
     <ClCompile Include="src\components\MovementComponentHeadRoach.cpp" />
     <ClCompile Include="src\components\DestructibleComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFrancois.cpp" />
-    <ClCompile Include="src\components\RenderComponentDestructible.cpp" />
     <ClCompile Include="src\scenes\EndingScene.cpp" />
     <ClCompile Include="src\game\EndingState.cpp" />
   </ItemGroup>
@@ -171,7 +170,6 @@
     <ClInclude Include="src\components\PuertaComponent.h" />
     <ClInclude Include="src\components\MovementComponentHeadRoach.h" />
     <ClInclude Include="src\components\MovementComponentFrancois.h" />
-    <ClInclude Include="src\components\RenderComponentDestructible.h" />
     <ClInclude Include="src\scenes\EndingScene.h" />
     <ClInclude Include="src\game\EndingState.h" />
   </ItemGroup>

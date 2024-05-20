@@ -7,11 +7,11 @@
 #include "SDL.h"
 
 
-Menu::Menu(Game* g, GameState* gs, Texture * path1, Texture * path2):
+Menu::Menu(GameState* gs, Texture * path1, Texture * path2):
 		Scene(), //
 		gameState(gs), //
 		imngr(im()), //
-		game(g), // 
+		game(Game::instance()), // 
 		bg(nullptr), //
 		currSelec(sdlutils().images().at("fly")), //
 		width(WIN_WIDTH), height(WIN_HEIGHT), //

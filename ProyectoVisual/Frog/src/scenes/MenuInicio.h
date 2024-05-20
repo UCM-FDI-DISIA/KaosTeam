@@ -20,6 +20,6 @@ class MenuInicio : public Menu
 private:
 
 public:
-	MenuInicio(Game* g, GameState* gs, Texture* path1, Texture* path2);
+	MenuInicio(GameState* gs, Texture* path1, Texture* path2);
 	~MenuInicio();
 };

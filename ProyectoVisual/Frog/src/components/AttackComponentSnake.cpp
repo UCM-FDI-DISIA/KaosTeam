@@ -72,7 +72,7 @@ void AttackComponentSnake::initComponent() {
 		checkHit(e, c);
 		});
 	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->AddCollider(c);
-	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {
+	static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT))->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {
 		checkHitWithBody(e, c);
 		});
 }

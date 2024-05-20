@@ -22,6 +22,6 @@ class GameState;
 class MenuGameOver : public Menu
 {
 public:
-	MenuGameOver(Game* g, GameState* gs, Texture* p1, Texture* p2);
+	MenuGameOver(GameState* gs, Texture* p1, Texture* p2);
 	~MenuGameOver();
 };

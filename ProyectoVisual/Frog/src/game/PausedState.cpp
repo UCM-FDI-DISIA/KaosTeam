@@ -3,10 +3,10 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../managers/InputManager.h"
 #include "../managers/HUDManager.h"
-#include"Game.h"
+#include "Game.h"
 
 PausedState::PausedState(): imngr(im()), 
-				menu(new MenuPausa(Game::instance(), this, &sdlutils().images().at("BotonSeguirPausa"),
+				menu(new MenuPausa(this, &sdlutils().images().at("BotonSeguirPausa"),
 				&sdlutils().images().at("BotonSalirPausa"))), currScene(*menu)
 {
 }

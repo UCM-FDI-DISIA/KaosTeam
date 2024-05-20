@@ -18,7 +18,7 @@ void MovementComponentHeadRoach::initComponent() {
 	coll = static_cast<ColliderComponent*>(ent->getComponent(COLLIDER_COMPONENT));
 	direction = moveFrog->getDirection();
 	//A�adimos funcion de collider a la cabeza
-	coll->GetTransofmCollider()->AddCall([this](Entity* e, Collider c) {checkEntityCollisions(e, c); }); //Añadimos callback
+	coll->GetTransformCollider()->AddCall([this](Entity* e, Collider c) {checkEntityCollisions(e, c); }); //Añadimos callback
 }
 
 void MovementComponentHeadRoach::checkEntityCollisions(Entity* ent, Collider c) {

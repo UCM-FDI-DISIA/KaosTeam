@@ -4,7 +4,7 @@
 #include "RunningState.h"
 #include"../scenes/EndingScene.h"
 
-NewGameState::NewGameState(Game* g) : game(g), menu(new MenuInicio(g, this, &sdlutils().images().at("BotonJuego"),
+NewGameState::NewGameState() : game(Game::instance()), menu(new MenuInicio(this, &sdlutils().images().at("BotonJuego"),
 	&sdlutils().images().at("BotonSalir"))), currScene(*menu)
 {
 }

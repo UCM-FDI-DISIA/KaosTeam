@@ -21,6 +21,6 @@ class MenuPausa :public Menu
 private:
 
 public:
-	MenuPausa(Game* g, GameState* gs, Texture* path1, Texture* path2);
+	MenuPausa(GameState* gs, Texture* path1, Texture* path2);
 	~MenuPausa() {};
 };

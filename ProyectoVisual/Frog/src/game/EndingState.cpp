@@ -3,7 +3,7 @@
 #include "../scenes/MenuInicio.h"
 #include"../scenes/EndingScene.h"
 
-EndingState::EndingState(Game* g):game(g), ending(new EndingScene(g, this)), currScene(*ending)
+EndingState::EndingState():game(Game::instance()), ending(new EndingScene(this)), currScene(*ending)
 {
 }
 
