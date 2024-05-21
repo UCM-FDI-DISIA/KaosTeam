@@ -1,11 +1,11 @@
 #pragma once
 #include "../ecs/Component.h"
 #include "../scenes/RoomScene.h"
-#include "ColliderComponent.h"
 #include "../managers/DataManager.h"
 
 enum DirectionConveyorEnum { NORTE, ESTE, SUR, OESTE };
 
+class ColliderComponent;
 class ConveyorBeltComponent :public Component
 {
 private:

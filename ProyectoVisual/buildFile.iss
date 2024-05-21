@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Flonk!"
-#define MyAppVersion "0.999"
+#define MyAppVersion "1.0"
 #define MyAppPublisher "Kaos Team"
 #define MyAppURL "https://ucm-fdi-disia.github.io/KaosTeam/"
 #define MyAppExeName "FrogRelease.exe"
