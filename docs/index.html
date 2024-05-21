@@ -32,17 +32,9 @@
             <img src="src/img/logo.png">
         </div>
         <!--Botón de descarga-->
-        <button class="boton" onclick="descarga()">
-            <h2>INSTALAR</h2> <!--Esto debería descargar el juego. O por lo menos redirigir a la página de itch.io-->
-        </button>
-        <script>
-            function descarga() {
-                const enlace = document.createElement('a');
-                enlace.href = "descargas/FlonkInstalador.exe"
-                enlace.download = "FlonkInstalador.exe"
-                enlace.click();
-            }
-        </script>
+        <a class="boton" href="https://dmontec.itch.io/flonk" target="_blank">
+            <h2>INSTALAR</h2> <!--Redirigir a la página de itch.io-->
+        </a>
         <!--Sección descripción-->
         <div class="descripcion-juego">
             <div class="cuadro">

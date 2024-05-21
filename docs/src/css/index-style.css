@@ -118,7 +118,9 @@
 	border-color: #1D5840;
 	cursor: pointer;
 	margin-top: 20px;
+	
 	/*Texto*/
+	text-decoration: none; /*Le quita el subrrayado*/
 	font-size: 25px;
 	color: #073410;
 	font-family: "Shantell Sans", cursive;
