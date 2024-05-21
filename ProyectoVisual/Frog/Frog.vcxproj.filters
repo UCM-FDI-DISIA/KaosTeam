@@ -40,7 +40,6 @@
     <ClCompile Include="src\components\CrazyFrogIAComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentFish.cpp" />
     <ClCompile Include="src\scenes\Menu.cpp" />
-    <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\managers\LoadManager.cpp" />
     <ClCompile Include="src\managers\DialogManager.cpp" />
     <ClCompile Include="src\game\GameOverState.cpp" />
@@ -80,6 +79,7 @@
     <ClCompile Include="src\components\MovementComponentFrancois.cpp" />
     <ClCompile Include="src\scenes\EndingScene.cpp" />
     <ClCompile Include="src\game\EndingState.cpp" />
+    <ClCompile Include="src\components\AddTermiteComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -129,7 +129,6 @@
     <ClInclude Include="src\components\MovementComponentFish.h" />
     <ClInclude Include="src\sdlutils\checkML.h" />
     <ClInclude Include="src\scenes\Menu.h" />
-    <ClInclude Include="src\managers\SceneManager.h" />
     <ClInclude Include="src\managers\LoadManager.h" />
     <ClInclude Include="src\managers\DialogManager.h" />
     <ClInclude Include="src\game\RunningState.h" />
@@ -172,6 +171,7 @@
     <ClInclude Include="src\components\MovementComponentFrancois.h" />
     <ClInclude Include="src\scenes\EndingScene.h" />
     <ClInclude Include="src\game\EndingState.h" />
+    <ClInclude Include="src\components\AddTermiteComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
