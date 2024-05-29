@@ -80,7 +80,7 @@
   <object id="42" name="Cockroach" type="Enemigo" x="42.333" y="105.667">
    <point/>
   </object>
-  <object id="37" name="Cockroach" type="Enemigo" x="245.333" y="58.6667">
+  <object id="37" name="Francois" type="Enemigo" x="245.333" y="58.6667">
    <point/>
   </object>
   <object id="38" name="Cockroach" type="Enemigo" x="536.333" y="89.6667">
