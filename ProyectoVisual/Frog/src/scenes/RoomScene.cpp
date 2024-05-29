@@ -668,13 +668,13 @@ Entity* RoomScene::createSnake(Vector2D pos) {
 	return snake;
 }
 
-Entity* RoomScene::createFrancois(Vector2D pos)
+Entity* RoomScene::createFrancois()
 {
 	francois = new Entity(this,FRENCH_ENTITY);
 
 	Texture* txtFran = &sdlutils().images().at("darkShadow");
 
-	TransformComponent* tr = new TransformComponent(pos, BOSS_X, BOSS_Y, BOSS_SCALE);
+	TransformComponent* tr = new TransformComponent(Vector2D(15, 0), BOSS_X, BOSS_Y, BOSS_SCALE);
 	francois->addComponent(TRANSFORM_COMPONENT, tr);
 
 	RenderComponent* renderTheFrench = new RenderComponent(txtFran);
@@ -1024,7 +1024,7 @@ Entity* RoomScene::createEnemy(Vector2D pos, std::string objName, std::vector<tm
 		c = createSnake(pos);
 	}
 	else if (objName == "Francois") {
-		c = createFrancois(pos);
+		c = createFrancois();
 	}
 	else if (objName == "Bomb") {
 		c = createBomb(pos);
@@ -1250,7 +1250,7 @@ void RoomScene::changeMap()
 		mapReader->clearMap();
 		mapReader->loadBg(nextMap, sdlutils().renderer());
 		mapReader->loadObj(nextMap);
-
+		if (nextMap == "mapaNF.tmx") createFrancois();
 	}
 	
 	if (cameraManager != nullptr) {
