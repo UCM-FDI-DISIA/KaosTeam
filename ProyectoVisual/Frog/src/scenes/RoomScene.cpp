@@ -858,12 +858,11 @@ Entity* RoomScene::createDoor(Vector2D pos)
 	AddEntity(destructible);
 	return destructible;
 }
-
 Entity* RoomScene::createArbusto(Vector2D pos, int loot)
 {
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
 	Entity* destructible = new Entity(this, DESTRUCTIBLE_ENTITY);
-	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/placeholderArbusto.png", 1, 1);
+	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/arbusto.png", 1, 1);
 
 	TransformComponent* transform = new TransformComponent(pos);
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
