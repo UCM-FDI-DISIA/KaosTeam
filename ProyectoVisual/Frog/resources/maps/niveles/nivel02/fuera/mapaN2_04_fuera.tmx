@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="13">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="31">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="16" height="16">
   <data encoding="csv">
@@ -94,6 +94,114 @@
    <point/>
   </object>
   <object id="12" name="Snake" type="Enemigo" x="136.5" y="170">
+   <point/>
+  </object>
+  <object id="13" name="Arbusto" type="ObjInteract" x="71.9635" y="134.27">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="14" name="Arbusto" type="ObjInteract" x="71.3404" y="150.158">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="15" name="Arbusto" type="ObjInteract" x="85.6708" y="151.092">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="16" name="Arbusto" type="ObjInteract" x="105.92" y="151.715">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="17" name="Arbusto" type="ObjInteract" x="104.674" y="167.603">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="18" name="Arbusto" type="ObjInteract" x="105.297" y="185.984">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="19" name="Arbusto" type="ObjInteract" x="90.0322" y="41.122">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="20" name="Arbusto" type="ObjInteract" x="88.4746" y="58.5677">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="21" name="Arbusto" type="ObjInteract" x="106.232" y="60.1253">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="22" name="Arbusto" type="ObjInteract" x="104.363" y="39.5643">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="23" name="Arbusto" type="ObjInteract" x="119.939" y="38.0067">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="24" name="Arbusto" type="ObjInteract" x="121.808" y="55.7639">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="25" name="Arbusto" type="ObjInteract" x="136.139" y="57.6331">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="26" name="Arbusto" type="ObjInteract" x="137.696" y="39.8759">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" name="Arbusto" type="ObjInteract" x="150.781" y="40.8105">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="28" name="Arbusto" type="ObjInteract" x="153.584" y="56.6985">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="29" name="Arbusto" type="ObjInteract" x="165.423" y="57.01">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="30" name="Arbusto" type="ObjInteract" x="165.111" y="43.6142">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

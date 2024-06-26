@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="11">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="22">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="16" height="16">
   <data encoding="csv">
@@ -82,6 +82,60 @@
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_07_dentro_postP.tmx"/>
     <property name="pushed" type="bool" value="false"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="11" name="Arbusto" type="ObjInteract" x="231.96" y="25.0092">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="12" name="Arbusto" type="ObjInteract" x="213.203" y="25.6344">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="13" name="Arbusto" type="ObjInteract" x="215.079" y="41.8903">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="16" name="Jarron" type="ObjInteract" x="232.273" y="40.9525">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="17" name="Jarron" type="ObjInteract" x="231.022" y="57.5211">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="18" name="Jarron" type="ObjInteract" x="214.141" y="56.2706">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="19" name="Arbusto" type="ObjInteract" x="233.21" y="199.761">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="20" name="Arbusto" type="ObjInteract" x="212.265" y="215.079">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="21" name="Arbusto" type="ObjInteract" x="232.585" y="231.335">
+   <properties>
+    <property name="loot" type="int" value="0"/>
    </properties>
    <point/>
   </object>

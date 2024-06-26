@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="26">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="42">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="20" height="20">
   <data encoding="csv">
@@ -134,6 +134,102 @@
   <object id="25" name="TransitionN" type="Transition" x="152.667" y="7.33333">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel02/dentro/mapaN2_13_dentro.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="26" name="Arbusto" type="ObjInteract" x="105.117" y="122.701">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" name="Arbusto" type="ObjInteract" x="121.138" y="122.701">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="28" name="Arbusto" type="ObjInteract" x="120.747" y="134.424">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="29" name="Arbusto" type="ObjInteract" x="104.726" y="137.16">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="30" name="Arbusto" type="ObjInteract" x="213.75" y="139.113">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="31" name="Arbusto" type="ObjInteract" x="196.947" y="124.655">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="32" name="Arbusto" type="ObjInteract" x="194.993" y="138.723">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="33" name="Arbusto" type="ObjInteract" x="214.141" y="125.046">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="34" name="Arbusto" type="ObjInteract" x="104.726" y="218.049">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="35" name="Arbusto" type="ObjInteract" x="118.403" y="217.658">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="36" name="Arbusto" type="ObjInteract" x="119.184" y="233.289">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="37" name="Arbusto" type="ObjInteract" x="104.726" y="232.116">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="38" name="Arbusto" type="ObjInteract" x="215.313" y="235.242">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="39" name="Arbusto" type="ObjInteract" x="197.729" y="234.852">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="40" name="Arbusto" type="ObjInteract" x="196.556" y="218.83">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="41" name="Arbusto" type="ObjInteract" x="214.141" y="218.049">
+   <properties>
+    <property name="loot" type="int" value="0"/>
    </properties>
    <point/>
   </object>

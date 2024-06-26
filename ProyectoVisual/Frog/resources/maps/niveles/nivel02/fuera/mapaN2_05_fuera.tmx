@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="18" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="9">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="18" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="11">
  <tileset firstgid="1" source="../../../tileset/Tileset completo.tsx"/>
  <layer id="4" name="Fondo" width="18" height="10">
   <data encoding="csv">
@@ -78,6 +78,18 @@
    <point/>
   </object>
   <object id="7" name="Enganche" type="ObjInteract" x="169" y="40.375">
+   <point/>
+  </object>
+  <object id="9" name="Arbusto" type="ObjInteract" x="262.503" y="42.0566">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="10" name="Arbusto" type="ObjInteract" x="247.082" y="118.81">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>
