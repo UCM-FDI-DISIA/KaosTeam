@@ -909,12 +909,6 @@ Entity* RoomScene::createTroncoTermitas(Vector2D pos)
 	AddTermiteComponent* add = new AddTermiteComponent(pos);
 	log->addComponent(TERMITE_GENERATOR_COMPONENT, add);
 
-	LifeComponent* lf = new LifeComponent(1, 1);
-	log->addComponent(LIFE_COMPONENT, lf);
-
-	DamageBehaviourComponent* dm = new DamageBehaviourComponent("LOG_IDLE");
-	log->addComponent(DAMAGE_COMPONENT, dm);
-
 	AddEntity(log);
 
 	return log;
