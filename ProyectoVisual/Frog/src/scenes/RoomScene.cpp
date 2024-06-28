@@ -909,45 +909,58 @@ Entity* RoomScene::createTroncoTermitas(Vector2D pos)
 	AddTermiteComponent* add = new AddTermiteComponent(pos);
 	log->addComponent(TERMITE_GENERATOR_COMPONENT, add);
 
+	LifeComponent* lf = new LifeComponent(1, 1);
+	log->addComponent(LIFE_COMPONENT, lf);
+
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent("LOG_IDLE");
+	log->addComponent(DAMAGE_COMPONENT, dm);
+
 	AddEntity(log);
 
 	return log;
 }
 Entity* RoomScene::createTermita(Vector2D pos)
 {
-	Entity* temita = new Entity(this, TERMITE_ENTITY);
+	Entity* termita = new Entity(this, TERMITE_ENTITY);
 	Texture* txt = &sdlutils().images().at("termita");
 
 	TransformComponent* transform = new TransformComponent(pos);
-	temita->addComponent(TRANSFORM_COMPONENT, transform);
+	termita->addComponent(TRANSFORM_COMPONENT, transform);
 	Box* box = new Box(pos);
 	Collider coll = Collider(box);
 	ColliderComponent* collider = new ColliderComponent(transform);
 	collider->AddCollider(coll);
-	temita->addComponent(COLLIDER_COMPONENT, collider);
+	termita->addComponent(COLLIDER_COMPONENT, collider);
 	AnimationComponent* anim = new AnimationComponent();
-	anim->setContext(temita);
+	anim->setContext(termita);
 	anim->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
 	anim->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
 	anim->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
 	anim->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
-	anim->addAnimation("DEAD", Animation({ Vector2D(3,0), Vector2D(3,0) }, false, false, false));
 
-	temita->addComponent(ANIMATION_COMPONENT, anim);
+	anim->addAnimation("DAMAGE", Animation({ Vector2D(2,0)}, false, false, false));
+
+	termita->addComponent(ANIMATION_COMPONENT, anim);
 
 	RenderComponent* render = new RenderComponent(txt);
-	temita->addRenderComponent(render);
+	termita->addRenderComponent(render);
 
 	//tiene el mismo comportamiento
 	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(anim);
-	temita->addComponent(MOVEMENT_COMPONENT, mvm);
+	termita->addComponent(MOVEMENT_COMPONENT, mvm);
 
 	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
-	temita->addComponent(ATTACK_COMPONENT, attack);
+	termita->addComponent(ATTACK_COMPONENT, attack);
 
-	AddEntity(temita);
+	LifeComponent* lftemita = new LifeComponent(1, 1);
+	termita->addComponent(LIFE_COMPONENT, lftemita);
 
-	return temita;
+	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DAMAGE");
+	termita->addComponent(DAMAGE_COMPONENT, dm);
+
+	AddEntity(termita);
+
+	return termita;
 }
 Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 {

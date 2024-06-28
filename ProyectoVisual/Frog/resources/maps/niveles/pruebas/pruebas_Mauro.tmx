@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="25">
+ <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
+ <layer id="1" name="Walk" width="10" height="10">
+  <data encoding="csv">
+34,34,34,34,34,34,34,34,34,34,
+34,34,34,34,34,34,34,34,34,34,
+34,34,34,34,34,295,34,34,34,34,
+34,34,34,35,35,34,34,34,7,34,
+34,34,34,34,35,34,34,34,35,34,
+34,7,7,34,34,34,34,34,34,34,
+34,7,7,34,34,34,34,34,34,34,
+34,34,34,34,34,34,34,34,34,34,
+34,34,34,34,34,7,7,34,34,34,
+34,34,34,34,34,34,34,34,34,34
+</data>
+ </layer>
+ <layer id="2" name="NotWalk" width="10" height="10">
+  <data encoding="csv">
+169,281,62,0,0,121,0,122,283,171,
+197,281,93,0,63,0,62,0,283,199,
+197,309,310,310,310,0,310,310,311,199,
+197,0,0,0,0,0,0,0,0,199,
+197,0,0,0,0,0,0,0,0,199,
+197,0,0,0,0,0,0,0,0,199,
+197,0,0,0,0,0,0,0,0,199,
+197,0,0,0,369,369,0,0,0,199,
+197,0,0,0,0,0,0,0,0,199,
+225,226,226,226,226,226,226,226,226,227
+</data>
+ </layer>
+ <layer id="3" name="Details" width="10" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,340,341,342,0,0,0,
+0,0,0,0,368,0,370,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="5" name="Obj">
+  <object id="7" name="TransitionN" type="Transition" x="88.9395" y="42.3592">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_01.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="19" name="FlonkS" type="Player" x="104.947" y="122.665">
+   <point/>
+  </object>
+  <object id="22" name="Termita" type="Enemigo" x="39.7201" y="71.652">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

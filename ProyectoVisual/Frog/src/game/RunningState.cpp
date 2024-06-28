@@ -60,7 +60,7 @@ void RunningState::createNewGame() {
 	}
 	else
 	{
-		currRoomScene = new RoomScene("resources/maps/niveles/nivel01/mapaN1_01.tmx");
+		currRoomScene = new RoomScene("resources/maps/niveles/pruebas/pruebas_Mauro.tmx");
 		currScene = currRoomScene;
 	}
 	
