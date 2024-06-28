@@ -28,6 +28,7 @@ private:
 	Vector2D playerPosition;
 	AnimationComponent* anim;
 	RandomNumberGenerator& rand_;	//generador de numeros random
+
 	void changeDirection();
 	bool isPlayerNear();
 	void checkCollisionWall();

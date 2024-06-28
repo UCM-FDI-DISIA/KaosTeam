@@ -814,7 +814,6 @@ Entity* RoomScene::createJarron(Vector2D pos, int loot)
 	// el loot indica que va a soltar cuando se rompa, 0 = loot aleatorio, 1 = vida y 2 = dinero
 	Entity* destructible = new Entity(this, DESTRUCTIBLE_ENTITY);
 	Texture* txtDestructible = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Jarron.png", 1, 1);
-	// hay que animarlo
 
 	TransformComponent* transform = new TransformComponent(pos);
 	destructible->addComponent(TRANSFORM_COMPONENT, transform);
@@ -915,46 +914,46 @@ Entity* RoomScene::createTroncoTermitas(Vector2D pos)
 }
 Entity* RoomScene::createTermita(Vector2D pos)
 {
-	Entity* termita = new Entity(this, TERMITE_ENTITY);
-	Texture* txt = &sdlutils().images().at("termita");
+	//Entity* termita = new Entity(this, TERMITE_ENTITY);
+	//Texture* txt = &sdlutils().images().at("termita");
 
+	Entity* temita = new Entity(this, BLACK_ANT_ENTITY);
+	Texture* txtTemita = &sdlutils().images().at("termita");
 	TransformComponent* transform = new TransformComponent(pos);
-	termita->addComponent(TRANSFORM_COMPONENT, transform);
-	Box* box = new Box(pos);
-	Collider coll = Collider(box);
+	temita->addComponent(TRANSFORM_COMPONENT, transform);
+	Box* boxTemita = new Box(pos);
+	Collider coll = Collider(boxTemita);
 	ColliderComponent* collider = new ColliderComponent(transform);
 	collider->AddCollider(coll);
-	termita->addComponent(COLLIDER_COMPONENT, collider);
-	AnimationComponent* anim = new AnimationComponent();
-	anim->setContext(termita);
-	anim->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
-	anim->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
-	anim->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
-	anim->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
+	temita->addComponent(COLLIDER_COMPONENT, collider);
+	AnimationComponent* animTemita = new AnimationComponent();
+	animTemita->setContext(temita);
+	animTemita->addAnimation("UP", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, false, false));
+	animTemita->addAnimation("DOWN", Animation({ Vector2D(0,0), Vector2D(0,1) }, false, true, false));
+	animTemita->addAnimation("RIGHT", Animation({ Vector2D(1,0), Vector2D(1,1) }, false, false, false));
+	animTemita->addAnimation("LEFT", Animation({ Vector2D(1,0), Vector2D(1,1) }, true, false, false));
 
-	anim->addAnimation("DAMAGE", Animation({ Vector2D(2,0)}, false, false, false));
+	animTemita->addAnimation("DAMAGE", Animation({ Vector2D(2,0) }, false, false, false));
 
-	termita->addComponent(ANIMATION_COMPONENT, anim);
+	temita->addComponent(ANIMATION_COMPONENT, animTemita);
 
-	RenderComponent* render = new RenderComponent(txt);
-	termita->addRenderComponent(render);
+	RenderComponent* renderTemita = new RenderComponent(txtTemita);
+	temita->addRenderComponent(renderTemita);
 
-	//tiene el mismo comportamiento
-	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(anim);
-	termita->addComponent(MOVEMENT_COMPONENT, mvm);
+	MovementComponentBlackAnt* mvm = new MovementComponentBlackAnt(animTemita);
+	temita->addComponent(MOVEMENT_COMPONENT, mvm);
 
-	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(4);
-	termita->addComponent(ATTACK_COMPONENT, attack);
-
-	LifeComponent* lftemita = new LifeComponent(1, 1);
-	termita->addComponent(LIFE_COMPONENT, lftemita);
+	AttackComponentBasicEnemy* attack = new AttackComponentBasicEnemy(2);
+	temita->addComponent(ATTACK_COMPONENT, attack);
 
 	DamageBehaviourComponent* dm = new DamageBehaviourComponent("DAMAGE");
-	termita->addComponent(DAMAGE_COMPONENT, dm);
+	temita->addComponent(DAMAGE_COMPONENT, dm);
 
-	AddEntity(termita);
+	LifeComponent* lf = new LifeComponent(1, 1);
+	temita->addComponent(LIFE_COMPONENT, lf);
 
-	return termita;
+	AddEntity(temita);
+	return temita;
 }
 Entity* RoomScene::createConveyorBelt(Vector2D pos, int rotation)
 {

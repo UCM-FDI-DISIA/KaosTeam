@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="26">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="33">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="10" height="10">
   <data encoding="csv">
@@ -50,10 +50,10 @@
    </properties>
    <point/>
   </object>
-  <object id="19" name="FlonkS" type="Player" x="104.947" y="122.665">
+  <object id="19" name="FlonkS" type="Player" x="119.939" y="91.3173">
    <point/>
   </object>
-  <object id="22" name="Termita" type="Enemigo" x="39.7201" y="71.652">
+  <object id="32" name="Termita" type="Enemigo" x="57.4384" y="74.5726">
    <point/>
   </object>
  </objectgroup>
