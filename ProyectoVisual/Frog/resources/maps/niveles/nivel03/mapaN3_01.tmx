@@ -38,79 +38,79 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Red ant" type="Enemigo" x="72.5" y="89">
+  <object id="1" name="Red ant" type="Enemigo" x="73.5904" y="90.6355">
    <point/>
   </object>
-  <object id="11" name="Red ant" type="Enemigo" x="152.5" y="91">
+  <object id="11" name="Red ant" type="Enemigo" x="153.59" y="92.6355">
    <point/>
   </object>
-  <object id="3" name="GeneradorDeBombas" x="24" y="199.5">
+  <object id="3" name="GeneradorDeBombas" x="25.0904" y="201.136">
    <point/>
   </object>
-  <object id="4" name="Roca" x="185" y="121">
+  <object id="4" name="Roca" x="186.09" y="122.636">
    <point/>
   </object>
-  <object id="5" name="Roca" x="185" y="139">
+  <object id="5" name="Roca" x="186.09" y="140.636">
    <point/>
   </object>
-  <object id="20" name="Roca" x="185" y="155.5">
+  <object id="20" name="Roca" x="186.09" y="157.136">
    <point/>
   </object>
-  <object id="21" name="Roca" x="199.5" y="156">
+  <object id="21" name="Roca" x="200.59" y="157.636">
    <point/>
   </object>
-  <object id="22" name="Roca" x="198.5" y="109">
+  <object id="22" name="Roca" x="199.59" y="110.636">
    <point/>
   </object>
-  <object id="23" name="Roca" x="183" y="107.5">
+  <object id="23" name="Roca" x="184.09" y="109.136">
    <point/>
   </object>
-  <object id="6" name="Puerta" x="103.5" y="42.5">
+  <object id="6" name="Puerta" x="104.59" y="44.1355">
    <point/>
   </object>
-  <object id="7" name="Puerta" x="120" y="43">
+  <object id="7" name="Puerta" x="121.09" y="44.6355">
    <point/>
   </object>
-  <object id="8" name="FlonkS" type="Player" x="104.5" y="204">
+  <object id="8" name="FlonkS" type="Player" x="105.59" y="205.636">
    <point/>
   </object>
-  <object id="13" name="FlonkE" type="Player" x="201.5" y="139">
+  <object id="13" name="FlonkE" type="Player" x="202.59" y="140.636">
    <point/>
   </object>
-  <object id="16" name="FlonkN" type="Player" x="120" y="27.5">
+  <object id="16" name="FlonkN" type="Player" x="121.09" y="29.1355">
    <point/>
   </object>
-  <object id="12" name="TransitionS" type="Transition" x="120.5" y="219.5">
+  <object id="12" name="TransitionS" type="Transition" x="121.59" y="221.136">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_06.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="15" name="TransitionE" type="Transition" x="217" y="139">
+  <object id="15" name="TransitionE" type="Transition" x="218.09" y="140.636">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="17" name="TransitionE" type="Transition" x="216" y="122.5">
+  <object id="17" name="TransitionE" type="Transition" x="217.09" y="124.136">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="18" name="TransitionN" type="Transition" x="103" y="10.5">
+  <object id="18" name="TransitionN" type="Transition" x="104.09" y="12.1355">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_04.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="19" name="TransitionN" type="Transition" x="120" y="10.5">
+  <object id="19" name="TransitionN" type="Transition" x="121.09" y="12.1355">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_04.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="14" name="TransitionS" type="Transition" x="104" y="220">
+  <object id="14" name="TransitionS" type="Transition" x="105.09" y="221.636">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_06.tmx"/>
    </properties>

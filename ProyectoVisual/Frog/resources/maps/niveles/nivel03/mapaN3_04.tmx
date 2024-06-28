@@ -50,25 +50,25 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="FlonkS" type="Player" x="120.666" y="299.333">
+  <object id="1" name="FlonkS" type="Player" x="119.927" y="300.441">
    <point/>
   </object>
-  <object id="2" name="FlonkN" type="Player" x="137.333" y="22.6667">
+  <object id="2" name="FlonkN" type="Player" x="136.594" y="23.7747">
    <point/>
   </object>
-  <object id="3" name="Interruptor" x="199.333" y="244.667">
+  <object id="3" name="Interruptor" x="198.594" y="245.775">
    <point/>
   </object>
-  <object id="4" name="Interruptor" x="200" y="90.6667">
+  <object id="4" name="Interruptor" x="199.261" y="91.7747">
    <point/>
   </object>
-  <object id="5" name="Interruptor" x="56.6667" y="88.6667">
+  <object id="5" name="Interruptor" x="55.928" y="89.7747">
    <point/>
   </object>
-  <object id="6" name="Interruptor" x="56.6667" y="249.333">
+  <object id="6" name="Interruptor" x="55.928" y="250.441">
    <point/>
   </object>
-  <object id="7" name="GeneradorDeBombas" x="120.667" y="165.333">
+  <object id="7" name="GeneradorDeBombas" x="119.928" y="166.441">
    <point/>
   </object>
   <object id="8" name="TransitionS" type="Transition" x="135.333" y="314.667">

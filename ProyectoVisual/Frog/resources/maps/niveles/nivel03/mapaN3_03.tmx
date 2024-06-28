@@ -40,52 +40,52 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="FlonkS" type="Player" x="105" y="220">
+  <object id="1" name="FlonkS" type="Player" x="105" y="219.723">
    <point/>
   </object>
-  <object id="6" name="Jarron" type="ObjInteract" x="200.5" y="174.5">
+  <object id="6" name="Jarron" type="ObjInteract" x="200.5" y="174.223">
    <properties>
     <property name="loot" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="19" name="Jarron" type="ObjInteract" x="199.5" y="107.5">
+  <object id="19" name="Jarron" type="ObjInteract" x="199.5" y="107.223">
    <properties>
     <property name="loot" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="20" name="Jarron" type="ObjInteract" x="24.5" y="107.5">
+  <object id="20" name="Jarron" type="ObjInteract" x="24.5" y="107.223">
    <properties>
     <property name="loot" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="21" name="Jarron" type="ObjInteract" x="26" y="170">
+  <object id="21" name="Jarron" type="ObjInteract" x="26" y="169.723">
    <properties>
     <property name="loot" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="8" name="Orbe" type="ObjCogible" x="24.5" y="57">
+  <object id="8" name="Orbe" type="ObjCogible" x="24.5" y="56.723">
    <point/>
   </object>
-  <object id="13" name="NoOrbe" x="88" y="57.5">
+  <object id="13" name="NoOrbe" x="88" y="57.223">
    <point/>
   </object>
-  <object id="16" name="NoOrbe" x="56" y="55.5">
+  <object id="16" name="NoOrbe" x="56" y="55.223">
    <point/>
   </object>
-  <object id="14" name="NoOrbe" x="136.5" y="57.5">
+  <object id="14" name="NoOrbe" x="136.5" y="57.223">
    <point/>
   </object>
-  <object id="15" name="NoOrbe" x="168.5" y="55">
+  <object id="15" name="NoOrbe" x="168.5" y="54.723">
    <point/>
   </object>
-  <object id="9" name="Orbe" type="ObjCogible" x="200" y="58">
+  <object id="9" name="Orbe" type="ObjCogible" x="200" y="57.723">
    <point/>
   </object>
-  <object id="17" name="TransitionS" type="Transition" x="120.5" y="234">
+  <object id="17" name="TransitionS" type="Transition" x="119.946" y="234.831">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02.tmx"/>
    </properties>

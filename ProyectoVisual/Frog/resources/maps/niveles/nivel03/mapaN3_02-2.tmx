@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="23">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="35">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="14" height="14">
   <data encoding="csv">
@@ -38,70 +38,106 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="GeneradorDeBombas" x="23" y="54.5">
+  <object id="1" name="GeneradorDeBombas" x="22.7274" y="55.0452">
    <point/>
   </object>
-  <object id="2" name="Flonk" x="9" y="123">
+  <object id="2" name="Flonk" x="8.72741" y="123.545">
    <point/>
   </object>
   <object id="3" name="Flonk" x="121.5" y="11">
    <point/>
   </object>
-  <object id="4" name="Puerta" x="121" y="41">
+  <object id="4" name="Puerta" x="120.727" y="41.5452">
    <point/>
   </object>
-  <object id="5" name="Puerta" x="103" y="41.5">
+  <object id="5" name="Puerta" x="102.727" y="42.0452">
    <point/>
   </object>
-  <object id="6" name="HormigaNegra" x="169" y="76">
+  <object id="6" name="HormigaNegra" x="168.727" y="76.5452">
    <point/>
   </object>
-  <object id="7" name="HormigaNegra" x="168" y="170">
+  <object id="7" name="HormigaNegra" x="167.727" y="170.545">
    <point/>
   </object>
-  <object id="8" name="HormigaNegra" x="136.5" y="142">
+  <object id="8" name="HormigaNegra" x="136.227" y="142.545">
    <point/>
   </object>
-  <object id="9" name="HormigaNegra" x="136" y="108">
-   <point/>
-  </object>
-  <object id="10" name="CintaTransportadora" x="200.5" y="214">
-   <point/>
-  </object>
-  <object id="11" name="CintaTransportadora" x="183.5" y="216">
-   <point/>
-  </object>
-  <object id="12" name="CintaTransportadora" x="170" y="217.5">
-   <point/>
-  </object>
-  <object id="13" name="CintaTransportadora" x="152" y="217.5">
-   <point/>
-  </object>
-  <object id="14" name="CintaTransportadora" x="136" y="217">
-   <point/>
-  </object>
-  <object id="15" name="CintaTransportadora" x="120" y="216">
-   <point/>
-  </object>
-  <object id="16" name="CintaTransportadora" x="103" y="216.5">
-   <point/>
-  </object>
-  <object id="17" name="CintaTransportadora" x="89.5" y="216.5">
-   <point/>
-  </object>
-  <object id="18" name="CintaTransportadora" x="72" y="216.5">
-   <point/>
-  </object>
-  <object id="19" name="CintaTransportadora" x="57" y="216">
-   <point/>
-  </object>
-  <object id="20" name="CintaTransportadora" x="40" y="215.5">
-   <point/>
-  </object>
-  <object id="21" name="CintaTransportadora" x="24.5" y="216">
+  <object id="9" name="HormigaNegra" x="135.727" y="108.545">
    <point/>
   </object>
   <object id="22" name="Interruptor" x="6.5" y="216">
+   <point/>
+  </object>
+  <object id="23" name="CintaTransportadora" x="23.6821" y="217.363">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="24" name="CintaTransportadora" x="39.7979" y="215.891">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="25" name="CintaTransportadora" x="56.4258" y="215.345">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="26" name="CintaTransportadora" x="72.7811" y="215.618">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" name="CintaTransportadora" x="86.9558" y="216.436">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="28" name="CintaTransportadora" x="104.947" y="216.708">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="29" name="CintaTransportadora" x="118.303" y="218.344">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="30" name="CintaTransportadora" x="135.749" y="216.708">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="31" name="CintaTransportadora" x="152.377" y="216.163">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="32" name="CintaTransportadora" x="168.732" y="214.528">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="33" name="CintaTransportadora" x="183.18" y="216.163">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="34" name="CintaTransportadora" x="199.535" y="216.436">
+   <properties>
+    <property name="direccion" type="int" value="3"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

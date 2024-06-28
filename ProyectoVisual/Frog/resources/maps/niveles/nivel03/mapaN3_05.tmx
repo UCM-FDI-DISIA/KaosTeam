@@ -38,31 +38,31 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="FlonkS" type="Player" x="104.5" y="204">
+  <object id="1" name="FlonkS" type="Player" x="104.5" y="204.273">
    <point/>
   </object>
-  <object id="2" name="Orbe" x="24" y="199">
+  <object id="2" name="Orbe" x="24" y="199.273">
    <point/>
   </object>
-  <object id="3" name="Orbe" x="23.5" y="56">
+  <object id="3" name="Orbe" x="23.5" y="56.2726">
    <point/>
   </object>
-  <object id="4" name="Orbe" x="200" y="55.5">
+  <object id="4" name="Orbe" x="200" y="55.7726">
    <point/>
   </object>
-  <object id="5" name="Orbe" x="200.5" y="200.5">
+  <object id="5" name="Orbe" x="200.5" y="200.773">
    <point/>
   </object>
-  <object id="6" name="SacoBombas" type="ObjCogible" x="105" y="121.5">
+  <object id="6" name="SacoBombas" type="ObjCogible" x="105" y="121.773">
    <point/>
   </object>
-  <object id="7" name="TransitionS" type="Transition" x="120.5" y="218">
+  <object id="7" name="TransitionS" type="Transition" x="120.5" y="218.273">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_04.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="8" name="TransitionS" type="Transition" x="104" y="219.5">
+  <object id="8" name="TransitionS" type="Transition" x="104" y="219.773">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_04.tmx"/>
    </properties>

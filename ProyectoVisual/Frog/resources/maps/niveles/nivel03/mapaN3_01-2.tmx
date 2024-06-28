@@ -38,25 +38,25 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="Red ant" type="Enemigo" x="72.5" y="89">
+  <object id="1" name="Red ant" type="Enemigo" x="72.7726" y="89.2726">
    <point/>
   </object>
-  <object id="8" name="Red ant" type="Enemigo" x="150.5" y="90">
+  <object id="8" name="Red ant" type="Enemigo" x="150.773" y="90.2726">
    <point/>
   </object>
-  <object id="3" name="GeneradorDeBombas" x="24" y="199.5">
+  <object id="3" name="GeneradorDeBombas" x="24.2726" y="199.773">
    <point/>
   </object>
-  <object id="4" name="Roca" x="201" y="120.5">
+  <object id="4" name="Roca" x="201.273" y="120.773">
    <point/>
   </object>
-  <object id="5" name="Roca" x="201.5" y="139">
+  <object id="5" name="Roca" x="201.773" y="139.273">
    <point/>
   </object>
-  <object id="6" name="Puerta" x="103.5" y="38">
+  <object id="6" name="Puerta" x="103.773" y="38.2726">
    <point/>
   </object>
-  <object id="7" name="Puerta" x="118.5" y="38">
+  <object id="7" name="Puerta" x="118.773" y="38.2726">
    <point/>
   </object>
  </objectgroup>
