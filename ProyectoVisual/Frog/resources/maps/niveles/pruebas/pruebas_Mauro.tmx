@@ -46,7 +46,7 @@
  <objectgroup id="5" name="Obj">
   <object id="7" name="TransitionN" type="Transition" x="88.9395" y="42.3592">
    <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_01.tmx"/>
+    <property name="nextMap" value="resources/maps/niveles/nivelFinal/mapaNF.tmx"/>
    </properties>
    <point/>
   </object>
