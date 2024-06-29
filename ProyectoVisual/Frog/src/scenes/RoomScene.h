@@ -134,6 +134,14 @@ public:
 	Entity* createLifeFly(Vector2D pos);
 	Entity* createMoneda(Vector2D pos, MonedaType type);
 
+	Entity* createBeer(Vector2D pos);
+	Entity* createApple(Vector2D pos);
+	Entity* createSalt(Vector2D pos);
+	Entity* createWine(Vector2D pos);
+	Entity* createCheese(Vector2D pos);
+	Entity* createBaguette(Vector2D pos);
+	Entity* createEmptyInaccesible(Vector2D pos);
+
 	//Getters
 	Entity* getPlayer() const { return player; };
 	MapManager* getMapReader() const { return mapReader; };

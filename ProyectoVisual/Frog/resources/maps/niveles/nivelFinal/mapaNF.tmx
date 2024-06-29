@@ -74,7 +74,7 @@
   <object id="44" name="Cockroach" type="Enemigo" x="344.333" y="27.6667">
    <point/>
   </object>
-  <object id="41" name="Cockroach" type="Enemigo" x="94.333" y="29.6667">
+  <object id="41" name="Cockroach" type="Enemigo" x="105.333" y="28.1667">
    <point/>
   </object>
   <object id="42" name="Cockroach" type="Enemigo" x="42.333" y="105.667">

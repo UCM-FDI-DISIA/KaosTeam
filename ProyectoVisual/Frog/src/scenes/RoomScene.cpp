@@ -23,6 +23,7 @@
 #include "../components/CogibleObjectComponent.h"
 #include "../sdlutils/Texture.h"
 #include "../components/AddTermiteComponent.h"
+#include "../components/MultiBlockComponent.h"
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
@@ -1075,9 +1076,184 @@ Entity* RoomScene::createObjInteract(Vector2D pos, std::string objName, std::vec
 	else if (objName == "Recompensa"){
 		c = createMoneda(pos, MONEDA_ROSA);
 	}
-
+	else if (objName == "Cerveza")
+	{
+		c = createBeer(pos);
+	}
+	else if (objName == "Manzana")
+	{
+		c = createApple(pos);
+	}
+	else if (objName == "Salero")
+	{
+		c = createSalt(pos);
+	}
+	else if (objName == "Vino")
+	{
+		c = createWine(pos);
+	}
+	else if (objName == "Queso")
+	{
+		c = createCheese(pos);
+	}
+	else if (objName == "Baguette")
+	{
+		c = createBaguette(pos);
+	}
 	return c;
 }
+//solo ocupan una casilla por lo que no generan bloques invisibles y tienen su propias colisiones
+Entity* RoomScene::createBeer(Vector2D pos)
+{
+	Entity* multiblock = new Entity(this, MULTISQUARE_ENTITY);
+	Texture* txtmulti = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Cerveza.png", 3, 1);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	multiblock->addComponent(TRANSFORM_COMPONENT, transform);
+
+	RenderComponent* rendermulti = new RenderComponent(txtmulti);
+	multiblock->addRenderComponent(rendermulti);
+
+	ColliderComponent* colldestructible = new ColliderComponent(transform);
+	multiblock->addComponent(COLLIDER_COMPONENT, colldestructible);
+
+	MultiBlockComponent* multiblockComponent = new MultiBlockComponent(pos);
+	multiblock->addComponent(MULTIBLOCK_COMPONENT, multiblockComponent);
+
+	AddEntity(multiblock);
+	return multiblock;
+}
+Entity* RoomScene::createApple(Vector2D pos)
+{
+	Entity* multiblock = new Entity(this, MULTISQUARE_ENTITY);
+	Texture* txtmulti = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Manzana.png", 3, 1);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	multiblock->addComponent(TRANSFORM_COMPONENT, transform);
+
+	RenderComponent* rendermulti = new RenderComponent(txtmulti);
+	multiblock->addRenderComponent(rendermulti);
+
+	ColliderComponent* colldestructible = new ColliderComponent(transform);
+	multiblock->addComponent(COLLIDER_COMPONENT, colldestructible);
+
+	MultiBlockComponent* multiblockComponent = new MultiBlockComponent(pos);
+	multiblock->addComponent(MULTIBLOCK_COMPONENT, multiblockComponent);
+
+	AddEntity(multiblock);
+	return multiblock;
+}
+Entity* RoomScene::createSalt(Vector2D pos)
+{
+	Entity* multiblock = new Entity(this, MULTISQUARE_ENTITY);
+	Texture* txtmulti = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Salero.png", 3, 1);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	multiblock->addComponent(TRANSFORM_COMPONENT, transform);
+
+	RenderComponent* rendermulti = new RenderComponent(txtmulti);
+	multiblock->addRenderComponent(rendermulti);
+
+	ColliderComponent* colldestructible = new ColliderComponent(transform);
+	multiblock->addComponent(COLLIDER_COMPONENT, colldestructible);
+
+	MultiBlockComponent* multiblockComponent = new MultiBlockComponent(pos);
+	multiblock->addComponent(MULTIBLOCK_COMPONENT, multiblockComponent);
+
+	AddEntity(multiblock);
+	return multiblock;
+}
+//como ocupan varios bloques si generan bloques invisibles y no tienen colisiones propias
+Entity* RoomScene::createWine(Vector2D pos)
+{
+	Entity* multiblock = new Entity(this, MULTISQUARE_ENTITY);
+	Texture* txtmulti = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Vino.png", 3, 1);
+
+	TransformComponent* transform = new TransformComponent(pos, 160, 160);
+	multiblock->addComponent(TRANSFORM_COMPONENT, transform);
+
+	RenderComponent* rendermulti = new RenderComponent(txtmulti);
+	multiblock->addRenderComponent(rendermulti);
+
+	//bloques invisibles para emular la colision
+	createEmptyInaccesible(pos);
+	createEmptyInaccesible(Vector2D(pos.getX() + 1, pos.getY() + 1));
+	createEmptyInaccesible(Vector2D(pos.getX(), pos.getY() + 1));
+	createEmptyInaccesible(Vector2D(pos.getX() + 1, pos.getY()));
+
+	AddEntity(multiblock);
+	return multiblock;
+}
+Entity* RoomScene::createCheese(Vector2D pos)
+{
+	Entity* multiblock = new Entity(this, MULTISQUARE_ENTITY);
+	Texture* txtmulti = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Queso.png", 3, 1);
+
+	TransformComponent* transform = new TransformComponent(pos, 320, 320);
+	multiblock->addComponent(TRANSFORM_COMPONENT, transform);
+
+	RenderComponent* rendermulti = new RenderComponent(txtmulti);
+	multiblock->addRenderComponent(rendermulti);
+
+	//bloques invisibles para emular la colision
+	// fila 1
+	createEmptyInaccesible(pos);
+	createEmptyInaccesible(Vector2D(pos.getX(), pos.getY() + 1));
+	createEmptyInaccesible(Vector2D(pos.getX(), pos.getY() + 2));
+	createEmptyInaccesible(Vector2D(pos.getX(), pos.getY() + 3));
+	// fila 2
+	createEmptyInaccesible(Vector2D(pos.getX() + 1, pos.getY()));
+	createEmptyInaccesible(Vector2D(pos.getX() + 1, pos.getY() + 3));
+	// fila 3
+	createEmptyInaccesible(Vector2D(pos.getX() + 2, pos.getY()));
+	createEmptyInaccesible(Vector2D(pos.getX() + 2, pos.getY() + 3));
+	// fila 4
+	createEmptyInaccesible(Vector2D(pos.getX() + 3, pos.getY()));
+	createEmptyInaccesible(Vector2D(pos.getX() + 3, pos.getY() + 1));
+	createEmptyInaccesible(Vector2D(pos.getX() + 3, pos.getY() + 2));
+	createEmptyInaccesible(Vector2D(pos.getX() + 3, pos.getY() + 3));
+
+	AddEntity(multiblock);
+	return multiblock;
+}
+Entity* RoomScene::createBaguette(Vector2D pos)
+{
+	Entity* multiblock = new Entity(this, MULTISQUARE_ENTITY);
+	Texture* txtmulti = new Texture(sdlutils().renderer(), "../Frog/resources/sprites/Baguette.png", 3, 1);
+
+	TransformComponent* transform = new TransformComponent(pos, 320, 80);
+	multiblock->addComponent(TRANSFORM_COMPONENT, transform);
+
+	RenderComponent* rendermulti = new RenderComponent(txtmulti);
+	multiblock->addRenderComponent(rendermulti);
+
+	//bloques invisibles para emular la colision
+	createEmptyInaccesible(pos);
+	createEmptyInaccesible(Vector2D(pos.getX() + 1, pos.getY()));
+	createEmptyInaccesible(Vector2D(pos.getX() + 2, pos.getY()));
+	createEmptyInaccesible(Vector2D(pos.getX() + 3, pos.getY()));
+
+	AddEntity(multiblock);
+	return multiblock;
+}
+Entity* RoomScene::createEmptyInaccesible(Vector2D pos)
+{
+	Entity* multiblock = new Entity(this, MULTISQUARE_ENTITY);
+
+	TransformComponent* transform = new TransformComponent(pos);
+	multiblock->addComponent(TRANSFORM_COMPONENT, transform);
+
+	ColliderComponent* colldestructible = new ColliderComponent(transform);
+	multiblock->addComponent(COLLIDER_COMPONENT, colldestructible);
+
+	MultiBlockComponent* multiblockComponent = new MultiBlockComponent(pos);
+	multiblock->addComponent(MULTIBLOCK_COMPONENT, multiblockComponent);
+
+	AddEntity(multiblock);
+	return multiblock;
+
+}
+
 
 Entity* RoomScene::createExplotable(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps) {
 	Entity* c = nullptr;
@@ -1170,7 +1346,6 @@ Entity* RoomScene::createEntity(Vector2D pos, std::string objName, std::string o
 			}
 		}
 	}
-
 	else if (objClass == "ObjInteract") {
 		c = createObjInteract(pos, objName, objProps, objIntID, objInteracted);
 	}

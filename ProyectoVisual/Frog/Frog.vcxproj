@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\MultiBlockComponent.cpp" />
     <ClCompile Include="src\components\AddTermiteComponent.cpp" />
     <ClCompile Include="src\components\MovementComponentHeadRoach.cpp" />
     <ClCompile Include="src\components\PuertaComponent.cpp" />
@@ -235,6 +236,7 @@
     <ClCompile Include="src\components\SwallowComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\MultiBlockComponent.h" />
     <ClInclude Include="src\components\AddTermiteComponent.h" />
     <ClInclude Include="src\game\EndingState.h" />
     <ClInclude Include="src\scenes\EndingScene.h" />
@@ -336,7 +338,7 @@
     <None Include="libvorbisfile-3.dll" />
     <None Include="libwebp-7.dll" />
     <None Include="resources\maps\tileMap_Prueba.tmx" />
-    <None Include="SDL2.dll" />
+    <None Include="src\components\SDL2.dll" />
     <None Include="SDL2_image.dll" />
     <None Include="SDL2_mixer.dll" />
     <None Include="SDL2_ttf.dll" />

@@ -80,6 +80,7 @@
     <ClCompile Include="src\scenes\EndingScene.cpp" />
     <ClCompile Include="src\game\EndingState.cpp" />
     <ClCompile Include="src\components\AddTermiteComponent.cpp" />
+    <ClCompile Include="src\components\MultiBlockComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\LifeComponent.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="src\scenes\EndingScene.h" />
     <ClInclude Include="src\game\EndingState.h" />
     <ClInclude Include="src\components\AddTermiteComponent.h" />
+    <ClInclude Include="src\components\MultiBlockComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Frog.cpp">
@@ -291,7 +293,7 @@
     <None Include="libvorbis-0.dll" />
     <None Include="libvorbisfile-3.dll" />
     <None Include="libwebp-7.dll" />
-    <None Include="SDL2.dll" />
+    <None Include="src\components\SDL2.dll" />
     <None Include="SDL2_image.dll" />
     <None Include="SDL2_mixer.dll" />
     <None Include="SDL2_ttf.dll" />

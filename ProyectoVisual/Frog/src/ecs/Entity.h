@@ -28,6 +28,7 @@ enum ComponentsEnum
 	ITEM_THROWER_COMPONENT,
 	DAMAGE_COMPONENT,
 	TERMITE_GENERATOR_COMPONENT,
+	MULTIBLOCK_COMPONENT,
 };
 //Cada entidad puede tener un "nombre". ejs: rana, palanca, pez.
 //Si no es relevante, el valor ser� 0 (UNAMED)
