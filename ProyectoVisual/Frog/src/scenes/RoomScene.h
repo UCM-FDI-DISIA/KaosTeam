@@ -120,7 +120,7 @@ public:
 	Entity* createJarron(Vector2D pos, int loot);
 	Entity* createArbusto(Vector2D pos, int loot);
 	Entity* createBomb(Vector2D pos);
-	Entity* createFrancois(Vector2D pos);
+	Entity* createFrancois();
 	Entity* createEnganche(Vector2D pos);
 	Entity* createCogible(Vector2D pos, std::string objName, std::vector<tmx::Property> objProps);
 	Entity* createPiedraMovible(Vector2D pos, int objIntID);
