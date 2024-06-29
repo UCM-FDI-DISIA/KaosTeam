@@ -58,6 +58,7 @@ void MovementComponentSnake::rotateSnake() {
 		//anim->playAnimation("IDLE_LEFT");
 		break;
 	}
+	MustMove = true;
 }
 
 void MovementComponentSnake::searchFrog() {
@@ -109,3 +110,12 @@ void MovementComponentSnake::initComponent() {
 	tr = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
 }
 
+bool MovementComponentSnake::GetMustMove()
+{
+	return MustMove;
+}
+
+void MovementComponentSnake::NegMustMove()
+{
+	MustMove = false;
+}

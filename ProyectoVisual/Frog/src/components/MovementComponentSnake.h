@@ -24,6 +24,7 @@ private:
 	int attackDistance;
 	TransformComponent* targetTransformComp;
 	Vector2D playerPos;
+	bool MustMove = true;
 
 	void rotateSnake();
 	void searchFrog();
@@ -32,5 +33,7 @@ public:
 	void initComponent() override;
 	Direction getDirection() const { return currentDirection; };
 	void update() override;
+	bool GetMustMove();
+	void NegMustMove();
 };
 

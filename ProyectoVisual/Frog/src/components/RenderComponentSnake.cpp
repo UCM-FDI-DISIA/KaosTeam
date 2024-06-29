@@ -18,7 +18,7 @@ void RenderComponentSnake::render() {
     Vector2D pos = transform->getCasilla();
     Direction d = static_cast<MovementComponentSnake*> (ent->getComponent(MOVEMENT_COMPONENT))->getDirection(); //Obtenemos direccion actual
     Vector2D cameraPos = Camera::instance()->getCameraMovement();
-
+    bool move = static_cast<MovementComponentSnake*> (ent->getComponent(MOVEMENT_COMPONENT))->GetMustMove();
 
     snakeRect.x = pos.getX() * t + offset.getX() - cameraPos.getX();
     snakeRect.y = pos.getY() * t + offset.getY() - cameraPos.getY();
@@ -115,21 +115,24 @@ void RenderComponentSnake::render() {
         }
     }
 
-    switch (d) {
-    case Direction::LEFT_ROT:
-        snakeAnimator->playAnimation("IDLE_LEFT");
-        break;
-    case Direction::RIGHT_ROT:
-        snakeAnimator->playAnimation("IDLE_RIGHT");
-        break;
-    case Direction::UP_ROT:
-        snakeAnimator->playAnimation("IDLE_UP");
-        break;
-    case Direction::DOWN_ROT:
-        snakeAnimator->playAnimation("IDLE_DOWN");
-        break;
-    default:
-        break;
+    if (move) {
+        switch (d) {
+        case Direction::LEFT_ROT:
+            snakeAnimator->playAnimation("IDLE_LEFT");
+            break;
+        case Direction::RIGHT_ROT:
+            snakeAnimator->playAnimation("IDLE_RIGHT");
+            break;
+        case Direction::UP_ROT:
+            snakeAnimator->playAnimation("IDLE_UP");
+            break;
+        case Direction::DOWN_ROT:
+            snakeAnimator->playAnimation("IDLE_DOWN");
+            break;
+        default:
+            break;
+        }
+        static_cast<MovementComponentSnake*> (ent->getComponent(MOVEMENT_COMPONENT))->NegMustMove();
     }
     if (snakeAnimator->getCurrentAnim().flipHorizontal) //si se flipea la animacion
         myTexture->renderFrameWithFlip(snakeRect, snakeAnimator->getCurrentFil(), snakeAnimator->getCurrentCol(), SDL_FLIP_HORIZONTAL, 0);
