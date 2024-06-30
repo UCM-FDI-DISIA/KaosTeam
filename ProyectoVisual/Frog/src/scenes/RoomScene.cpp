@@ -111,11 +111,6 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 	animFrog->addAnimation("ATTACK_UP", Animation({ Vector2D(1,2) }, false, false, false));
 	animFrog->addAnimation("ATTACK_DOWN", Animation({ Vector2D(0,2) }, false, false, false));
 
-	animFrog->addAnimation("DEFENSE_RIGHT", Animation({ Vector2D(2,3) }, false, false, false));
-	animFrog->addAnimation("DEFENSE_LEFT", Animation({ Vector2D(2,3) }, true, false, false));
-	animFrog->addAnimation("DEFENSE_UP", Animation({ Vector2D(1,3) }, false, false, false));
-	animFrog->addAnimation("DEFENSE_DOWN", Animation({ Vector2D(0,3) }, false, false, false));
-
 	animFrog->addAnimation("DAMAGE", Animation({ Vector2D(3,0) }, false, false, false));
 
 	player->addComponent(ANIMATION_COMPONENT, animFrog);
@@ -1245,8 +1240,7 @@ Entity* RoomScene::createBaguette(Vector2D pos)
 	AddEntity(multiblock);
 	return multiblock;
 }
-
-Entity* RoomScene::createEmptyInaccesible(Vector2D pos)	// bloque invisible que hace de colisiones para los objetos multibloque
+Entity* RoomScene::createEmptyInaccesible(Vector2D pos)
 {
 	Entity* multiblock = new Entity(this, MULTISQUARE_ENTITY);
 

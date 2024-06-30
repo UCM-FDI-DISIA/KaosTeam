@@ -133,6 +133,7 @@ public:
 	Entity* createConveyorBelt(Vector2D pos, int orientation);
 	Entity* createLifeFly(Vector2D pos);
 	Entity* createMoneda(Vector2D pos, MonedaType type);
+
 	Entity* createBeer(Vector2D pos);
 	Entity* createApple(Vector2D pos);
 	Entity* createSalt(Vector2D pos);
