@@ -17,21 +17,19 @@ DefenseComponent::DefenseComponent() : inputM(InputManager::GetInstance())
 
 void DefenseComponent::update()
 {
-	if (inputM->getAction1() && (DataManager::GetInstance()->getFrameTime() - timeSinceChange) > defenseCooldown)
+	if (inputM->getAction1() && (DataManager::GetInstance()->getFrameTime() - timeSinceChange) > defenseCooldown)	// revisa si se ha dado la orden de usar el escudo y si el cooldown ha pasado
 	{
 		defenseActive = true;
 		timeSinceChange = DataManager::GetInstance()->getFrameTime();
-		static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->DefenseStart();
+		static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->DefenseStart();	// animacion
 	}
-	else if (defenseActive && (DataManager::GetInstance()->getFrameTime() - timeSinceChange) > defenseTime)
+	else if (defenseActive && (DataManager::GetInstance()->getFrameTime() - timeSinceChange) > defenseTime)			// revisa si el tiempo del escudo ha terminado 
 	{
 		defenseActive = false;
-		timeSinceChange = DataManager::GetInstance()->getFrameTime();
-		static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->IdleStart();
+		timeSinceChange = DataManager::GetInstance()->getFrameTime();						
+		static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->IdleStart();		// animacion
 
 	}
-
-	std::cout << defenseActive;
 }
 
 bool DefenseComponent::getDefenseActive()	// getter de defenseActive
