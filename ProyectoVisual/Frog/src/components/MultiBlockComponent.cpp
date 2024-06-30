@@ -6,14 +6,14 @@
 MultiBlockComponent::MultiBlockComponent(Vector2D(pos)) : position(pos) 
 {}
 
-void MultiBlockComponent::CheckCollisions(Entity* ent, Collider c)
+void MultiBlockComponent::CheckCollisions(Entity* ent, Collider c)  // revisa si ha habido choque de la rana e impide que pase
 {
     if (ent->getName() == FROG_ENTITY) {
         MovementComponentFrog* frogMov = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT));
         Directions d = frogMov->getDirection();
         TransformComponent* t = static_cast<TransformComponent*>(this->ent->getComponent(TRANSFORM_COMPONENT));
             TransformComponent* tFrog = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
-            switch (d) { //Se configura como se empieza a renderizar la lengua
+            switch (d) { 
             case Directions::LEFT:
                 if (tFrog->getCasilla().getX() > t->getCasilla().getX() && tFrog->getCasilla().getY() == t->getCasilla().getY()) {
                     frogMov->cancelMovement();
