@@ -34,22 +34,7 @@ void RenderComponentFrog::render()
         if (distanceMoved < 0) { //Si el ataque acaba
 
             attacking = false;
-            switch (d) { //Se reproduce el idle correspondiente
-            case Directions::LEFT:
-                frogAnimator->playAnimation("IDLE_LEFT");
-                break;
-            case Directions::RIGHT:
-                frogAnimator->playAnimation("IDLE_RIGHT");
-                break;
-            case Directions::UP:
-                frogAnimator->playAnimation("IDLE_UP");
-                break;
-            case Directions::DOWN:
-                frogAnimator->playAnimation("IDLE_DOWN");
-                break;
-            default:
-                break;
-            }
+            IdleStart();
         }
         else { //Sino, se renderiza el ataque
             //parte del medio
@@ -151,6 +136,26 @@ void RenderComponentFrog::render()
         }
         throwing = false;
     }
+
+    if(defending){  // si tiene el escudo alzado
+        switch (d) {
+        case Directions::LEFT:
+            frogAnimator->playAnimation("DEFENSE_LEFT");
+            break;
+        case Directions::RIGHT:
+            frogAnimator->playAnimation("DEFENSE_RIGHT");
+            break;
+        case Directions::UP:
+            frogAnimator->playAnimation("DEFENSE_UP");
+            break;
+        case Directions::DOWN:
+            frogAnimator->playAnimation("DEFENSE_DOWN");
+            break;
+        default:
+            break;
+        }
+        defending = false;
+    }
 }
 
 void RenderComponentFrog::AttackStart(bool withHook) {
@@ -169,4 +174,30 @@ void RenderComponentFrog::ThrowStart() {
 
 void RenderComponentFrog::initComponent() {
     transform = static_cast<TransformComponent*>(ent->getComponent(TRANSFORM_COMPONENT));
+}
+
+void RenderComponentFrog::DefenseStart() {
+
+    defending = true;
+}
+
+void RenderComponentFrog::IdleStart(){
+    Directions d = static_cast<MovementComponentFrog*>(ent->getComponent(MOVEMENT_COMPONENT))->getDirection();
+
+    switch (d) { //Se reproduce el idle correspondiente
+    case Directions::LEFT:
+        frogAnimator->playAnimation("IDLE_LEFT");
+        break;
+    case Directions::RIGHT:
+        frogAnimator->playAnimation("IDLE_RIGHT");
+        break;
+    case Directions::UP:
+        frogAnimator->playAnimation("IDLE_UP");
+        break;
+    case Directions::DOWN:
+        frogAnimator->playAnimation("IDLE_DOWN");
+        break;
+    default:
+        break;
+    }
 }

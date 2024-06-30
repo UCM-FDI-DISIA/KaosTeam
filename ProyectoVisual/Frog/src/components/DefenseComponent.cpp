@@ -24,11 +24,14 @@ void DefenseComponent::update()
 	{
 		defenseActive = true;
 		timeSinceChange = DataManager::GetInstance()->getFrameTime();
+		static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->DefenseStart();
 	}
 	else if (defenseActive && (DataManager::GetInstance()->getFrameTime() - timeSinceChange) > defenseTime)
 	{
 		defenseActive = false;
 		timeSinceChange = DataManager::GetInstance()->getFrameTime();
+		static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->IdleStart();
+
 	}
 
 	std::cout << defenseActive;
@@ -46,10 +49,4 @@ bool DefenseComponent::otherStatesChecker()	// comprueba que no haya otras accio
 	}
 
 	return aux;
-}
-
-void DefenseComponent::defendAnim()
-{
-	static_cast<RenderComponentFrog*>(ent->getRenderComponentFrog())->AttackStart(false);
-
 }

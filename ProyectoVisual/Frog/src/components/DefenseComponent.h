@@ -17,6 +17,4 @@ public:
 	DefenseComponent();
 	void update() override;
 	bool otherStatesChecker();
-	void defendAnim();
-
 };

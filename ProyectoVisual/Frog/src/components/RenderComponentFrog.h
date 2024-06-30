@@ -32,7 +32,9 @@ public:
 	};
 	void render();
 	void AttackStart(bool withHook = false);
+	void DefenseStart();
 	void ThrowStart();
+	void IdleStart();
 	
 	Texture* getFrogText() {
 		return frogText;
