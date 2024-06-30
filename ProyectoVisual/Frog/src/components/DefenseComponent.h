@@ -16,5 +16,5 @@ private:
 public:
 	DefenseComponent();
 	void update() override;
-	bool otherStatesChecker();
+	bool getDefenseActive();
 };

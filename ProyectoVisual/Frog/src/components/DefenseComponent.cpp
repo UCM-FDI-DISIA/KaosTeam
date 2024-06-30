@@ -6,9 +6,6 @@
 
 #include <iostream>
 
-// faltan animaciones e implementarlo en el daño
-// la idea es que cuando reciba daño se compruebe el defenseActive y si está activado no se recibe daño
-
 DefenseComponent::DefenseComponent() : inputM(InputManager::GetInstance())
 {
 	defenseTime = 750;
@@ -20,7 +17,7 @@ DefenseComponent::DefenseComponent() : inputM(InputManager::GetInstance())
 
 void DefenseComponent::update()
 {
-	if (!otherStatesChecker() && inputM->getAction1() && (DataManager::GetInstance()->getFrameTime() - timeSinceChange) > defenseCooldown)
+	if (inputM->getAction1() && (DataManager::GetInstance()->getFrameTime() - timeSinceChange) > defenseCooldown)
 	{
 		defenseActive = true;
 		timeSinceChange = DataManager::GetInstance()->getFrameTime();
@@ -37,16 +34,7 @@ void DefenseComponent::update()
 	std::cout << defenseActive;
 }
 
-
-
-bool DefenseComponent::otherStatesChecker()	// comprueba que no haya otras acciones o estados en curso
+bool DefenseComponent::getDefenseActive()	// getter de defenseActive
 {
-	bool aux = false;
-
-	if(defenseActive)	// añadir detector de ataque con lengua y ampliar si fuese necesario
-	{
-		aux = true;
-	}
-
-	return aux;
+	return defenseActive;
 }

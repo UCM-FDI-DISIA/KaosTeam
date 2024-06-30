@@ -5,7 +5,8 @@
 #include "../utils/Box.h"
 #include "../utils/Vector2D.h"
 #include "LifeComponent.h"
-#include "../components/RenderComponentFrog.h"
+#include "RenderComponentFrog.h"
+#include "DefenseComponent.h"
 
 AttackComponentSnake::AttackComponentSnake() {
 	attackDistance = 2;
@@ -80,7 +81,10 @@ void AttackComponentSnake::initComponent() {
 //Comprueba colisión con la rana, hace daño solo si no ha hecho daño en este atque (variable hitted)
 void AttackComponentSnake::checkHit(Entity* e, Collider c) {
 	if (!hitted && e->getName() == FROG_ENTITY) {
-		static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(damage);
-		hitted = true;
+		if(!static_cast<DefenseComponent*>(e->getComponent(DEFENSE_COMPONENT))->getDefenseActive())
+		{
+			static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(damage);
+			hitted = true;
+		}
 	}
 }

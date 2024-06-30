@@ -1,6 +1,7 @@
 #include "AttackComponentBasicEnemy.h"
 #include "ColliderComponent.h"
 #include "LifeComponent.h"
+#include "DefenseComponent.h"
 #include "../sdlutils/SDLUtils.h"
 
 AttackComponentBasicEnemy::AttackComponentBasicEnemy(int d) : damage(d) {
@@ -24,9 +25,12 @@ void AttackComponentBasicEnemy::initComponent() {
 }
 //comprueba la colision entre el enemigo y la rana
 void AttackComponentBasicEnemy::checkHit(Entity* e, Collider c) {
-	if (!hitted && e->getName() == FROG_ENTITY && c.getName() == TRANSFORM_COLLIDER) {
-		elapsedTime = sdlutils().virtualTimer().currTime();
-		static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(damage);
-		hitted = true;
+	if(e->getName() == FROG_ENTITY)
+	{
+		if (!hitted && !static_cast<DefenseComponent*>(e->getComponent(DEFENSE_COMPONENT))->getDefenseActive() && c.getName() == TRANSFORM_COLLIDER) {
+			elapsedTime = sdlutils().virtualTimer().currTime();
+			static_cast<LifeComponent*>(e->getComponent(LIFE_COMPONENT))->hit(damage);
+			hitted = true;
+		}
 	}
 }

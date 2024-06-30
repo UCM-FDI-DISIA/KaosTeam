@@ -3,6 +3,7 @@
 #include "AnimationComponent.h"
 #include "MovementComponent.h"
 #include "DamageBehaviourComponent.h"
+#include "DefenseComponent.h"
 #include "../sdlutils/VirtualTimer.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/RandomNumberGenerator.h"
