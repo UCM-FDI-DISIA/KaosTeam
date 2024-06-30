@@ -16,7 +16,7 @@ class AttackComponentFrog : public Component
 private:
 	const Uint32 WAIT_ATTACK = 1000;							//tiempo de espera para volver a atacar
 	int distance , distanceMoved ;
-	int attackFrameTime , lastTimeChanged, attackCooldown ;
+	int attackFrameTime, lastTimeChanged, attackCooldown;
 	//resting = 0, attacking = 1, retracting = 2
 	int state = 0;
 	InputManager* inputM;

@@ -4,6 +4,7 @@
 #include "AttackComponentFrog.h"
 #include "AnimationComponent.h"
 #include "TransformComponent.h"
+#include "DefenseComponent.h"
 
 void RenderComponentFrog::render()
 {

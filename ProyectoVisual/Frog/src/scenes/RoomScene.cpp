@@ -24,6 +24,7 @@
 #include "../sdlutils/Texture.h"
 #include "../components/AddTermiteComponent.h"
 #include "../components/MultiBlockComponent.h"
+#include "../components/DefenseComponent.h"
 
 void RoomScene::render() {
 	mapReader->draw(sdlutils().renderer());
@@ -140,6 +141,9 @@ Entity* RoomScene::createPlayer(Vector2D pos, int boundX, int boundY)
 
 	LifeComponent* lc = new LifeComponent(10, 10);
 	player->addComponent(LIFE_COMPONENT, lc);
+
+	DefenseComponent* df = new DefenseComponent();
+	player->addComponent(DEFENSE_COMPONENT, df);
 
 	//Accedemos al Singleton del HUD para enlazar las vidas del jugador con el HUD
 	HUDManager::instance()->LinkLives(lc);

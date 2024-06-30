@@ -3,6 +3,7 @@
 #include "MovementComponentFrog.h"
 #include "AttackComponentFrog.h"
 #include <math.h>
+#include <iostream>
 
 FrogInputComponent::FrogInputComponent() : movementComponent(nullptr), attackComponent(nullptr), inventoryComponent(nullptr), throwerComponent(nullptr) {
 	input = InputManager::GetInstance();
@@ -70,7 +71,13 @@ void FrogInputComponent::update()
 			preparingJump = false;
 			cyclesJumpPrepared = 0;
 		}
-		else if (input->getAction2()) {
+		else if(input->getAction1()){	// escudo
+			
+
+
+
+		}
+		else if (input->getAction2()) {	// ataque básico
 			if (inventoryComponent->mejoras.ciempies && input->getShift().pressed) {
 				attackComponent->setDistance(longTongue);
 				

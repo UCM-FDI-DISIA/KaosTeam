@@ -14,6 +14,7 @@ private:
 	TransformComponent* transform;
 	float scale;
 	bool attacking;
+	bool defending;
 	bool throwing; //Se usa en caso de que se lance un objeto
 	int tongueTipSheetId = 1; //La punta default (sin gancho)
 
