@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="24">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="29">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="14" height="14">
   <data encoding="csv">
@@ -47,22 +47,7 @@
   <object id="3" name="GeneradorDeBombas" x="25.0904" y="201.136">
    <point/>
   </object>
-  <object id="4" name="Roca" x="186.09" y="122.636">
-   <point/>
-  </object>
-  <object id="5" name="Roca" x="186.09" y="140.636">
-   <point/>
-  </object>
-  <object id="20" name="Roca" x="186.09" y="157.136">
-   <point/>
-  </object>
-  <object id="21" name="Roca" x="200.59" y="157.636">
-   <point/>
-  </object>
-  <object id="22" name="Roca" x="199.59" y="110.636">
-   <point/>
-  </object>
-  <object id="23" name="Roca" x="184.09" y="109.136">
+  <object id="23" name="Puerta Explotable" type="Explotable" x="184.09" y="109.136">
    <point/>
   </object>
   <object id="6" name="Puerta" x="104.59" y="44.1355">
@@ -114,6 +99,21 @@
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_06.tmx"/>
    </properties>
+   <point/>
+  </object>
+  <object id="24" name="Puerta Explotable" type="Explotable" x="183.18" y="119.394">
+   <point/>
+  </object>
+  <object id="25" name="Puerta Explotable" type="Explotable" x="183.18" y="134.659">
+   <point/>
+  </object>
+  <object id="26" name="Puerta Explotable" type="Explotable" x="182.089" y="152.105">
+   <point/>
+  </object>
+  <object id="27" name="Puerta Explotable" type="Explotable" x="198.717" y="151.832">
+   <point/>
+  </object>
+  <object id="28" name="Puerta Explotable" type="Explotable" x="200.353" y="103.856">
    <point/>
   </object>
  </objectgroup>

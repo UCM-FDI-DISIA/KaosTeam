@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="9">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="11">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="14" height="14">
   <data encoding="csv">
@@ -47,16 +47,16 @@
   <object id="3" name="GeneradorDeBombas" x="24.2726" y="199.773">
    <point/>
   </object>
-  <object id="4" name="Roca" x="201.273" y="120.773">
-   <point/>
-  </object>
-  <object id="5" name="Roca" x="201.773" y="139.273">
-   <point/>
-  </object>
   <object id="6" name="Puerta" x="103.773" y="38.2726">
    <point/>
   </object>
   <object id="7" name="Puerta" x="118.773" y="38.2726">
+   <point/>
+  </object>
+  <object id="9" name="Puerta Explotable" type="Explotable" x="199.535" y="119.667">
+   <point/>
+  </object>
+  <object id="10" name="Puerta Explotable" type="Explotable" x="199.263" y="140.111">
    <point/>
   </object>
  </objectgroup>

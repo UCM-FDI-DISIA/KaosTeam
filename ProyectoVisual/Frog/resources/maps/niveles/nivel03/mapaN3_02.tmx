@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="44">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="57">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="14" height="14">
   <data encoding="csv">
@@ -34,7 +34,7 @@
 324,0,0,0,0,0,0,0,0,0,0,0,0,294,
 352,0,0,0,0,0,0,0,0,0,0,0,0,294,
 380,299,299,299,299,299,299,299,299,299,299,0,0,294,
-0,77,77,77,77,77,77,77,77,77,77,77,77,298
+0,0,0,0,0,0,0,0,0,0,0,0,0,298
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
@@ -62,13 +62,10 @@
   <object id="32" name="Black ant" type="Enemigo" x="166.955" y="172.091">
    <point/>
   </object>
-  <object id="21" name="CintaTransportadora" x="25.3178" y="215.455">
+  <object id="21" name="CintaTransportadora" type="ObjInteract" x="25.3178" y="215.455">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
-   <point/>
-  </object>
-  <object id="22" name="Interruptor" x="7.31777" y="215.455">
    <point/>
   </object>
   <object id="26" name="TransitionW" type="Transition" x="7.95483" y="138.591">
@@ -95,69 +92,76 @@
    </properties>
    <point/>
   </object>
-  <object id="33" name="CintaTransportadora" x="41.4336" y="213.983">
+  <object id="44" name="CintaTransportadora" type="ObjInteract" x="40.0706" y="214.528">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
    <point/>
   </object>
-  <object id="34" name="CintaTransportadora" x="58.0615" y="213.437">
+  <object id="45" name="CintaTransportadora" type="ObjInteract" x="55.6082" y="215.345">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
    <point/>
   </object>
-  <object id="35" name="CintaTransportadora" x="74.4168" y="213.71">
+  <object id="46" name="CintaTransportadora" type="ObjInteract" x="72.2361" y="216.436">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
    <point/>
   </object>
-  <object id="36" name="CintaTransportadora" x="88.5915" y="214.528">
+  <object id="47" name="CintaTransportadora" type="ObjInteract" x="89.4092" y="215.345">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
    <point/>
   </object>
-  <object id="37" name="CintaTransportadora" x="106.583" y="214.8">
+  <object id="48" name="CintaTransportadora" type="ObjInteract" x="106.037" y="215.618">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
    <point/>
   </object>
-  <object id="38" name="CintaTransportadora" x="119.939" y="216.436">
+  <object id="49" name="CintaTransportadora" type="ObjInteract" x="119.939" y="215.345">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
    <point/>
   </object>
-  <object id="39" name="CintaTransportadora" x="137.385" y="214.8">
+  <object id="50" name="CintaTransportadora" type="ObjInteract" x="134.386" y="215.618">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
    <point/>
   </object>
-  <object id="40" name="CintaTransportadora" x="154.013" y="214.255">
+  <object id="51" name="CintaTransportadora" type="ObjInteract" x="152.105" y="214.8">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
    <point/>
   </object>
-  <object id="41" name="CintaTransportadora" x="170.368" y="212.62">
+  <object id="52" name="CintaTransportadora" type="ObjInteract" x="168.46" y="214.528">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
    <point/>
   </object>
-  <object id="42" name="CintaTransportadora" x="184.816" y="214.255">
+  <object id="53" name="CintaTransportadora" type="ObjInteract" x="184.27" y="214.8">
    <properties>
     <property name="direccion" type="int" value="3"/>
    </properties>
    <point/>
   </object>
-  <object id="43" name="CintaTransportadora" x="201.171" y="214.528">
+  <object id="54" name="CintaTransportadora" type="ObjInteract" x="199.263" y="214.8">
    <properties>
     <property name="direccion" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="56" name="Palanca" type="ObjInteract" x="8.17767" y="215.89">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel02/mapaN3_02.tmx"/>
+    <property name="pushed" type="bool" value="true"/>
    </properties>
    <point/>
   </object>
