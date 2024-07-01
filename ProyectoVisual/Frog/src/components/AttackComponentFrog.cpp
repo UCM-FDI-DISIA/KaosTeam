@@ -47,8 +47,8 @@ void AttackComponentFrog::tongueTouch(Entity* e, Collider c)
 			if (inv != nullptr) {
 				lCEnemy->hit(1 + inv->mejoras.avispas);  //damage
 			}
-			else if(!defEnemy->getDefenseActive()){
-				lCEnemy->hit(1);
+			else if( defEnemy != nullptr){
+				if (defEnemy->getDefenseActive()) lCEnemy->hit(1);
 			}
 		}
 		
