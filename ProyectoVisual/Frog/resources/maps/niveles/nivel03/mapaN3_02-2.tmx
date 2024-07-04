@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="48">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="60">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="14" height="14">
   <data encoding="csv">
@@ -39,36 +39,6 @@
  </layer>
  <objectgroup id="3" name="Obj">
   <object id="1" name="GeneradorDeBombas" x="22.7274" y="55.0452">
-   <point/>
-  </object>
-  <object id="2" name="Flonk" x="8.72741" y="123.545">
-   <point/>
-  </object>
-  <object id="3" name="Flonk" x="121.5" y="11">
-   <point/>
-  </object>
-  <object id="4" name="Puerta" x="120.727" y="41.5452">
-   <point/>
-  </object>
-  <object id="5" name="Puerta" x="102.727" y="42.0452">
-   <point/>
-  </object>
-  <object id="6" name="HormigaNegra" x="168.727" y="76.5452">
-   <point/>
-  </object>
-  <object id="7" name="HormigaNegra" x="167.727" y="170.545">
-   <point/>
-  </object>
-  <object id="8" name="HormigaNegra" x="136.227" y="142.545">
-   <point/>
-  </object>
-  <object id="9" name="HormigaNegra" x="135.727" y="108.545">
-   <point/>
-  </object>
-  <object id="35" name="CintaTransportadora" type="ObjInteract" x="23.6818" y="217.908">
-   <properties>
-    <property name="direccion" type="int" value="3"/>
-   </properties>
    <point/>
   </object>
   <object id="36" name="CintaTransportadora" type="ObjInteract" x="38.4346" y="216.981">
@@ -137,11 +107,50 @@
    </properties>
    <point/>
   </object>
-  <object id="47" name="Palanca" type="ObjInteract" x="6.81472" y="217.253">
+  <object id="49" name="FlonkW" type="Player" x="26.4411" y="124.028">
+   <point/>
+  </object>
+  <object id="51" name="TransitionW" type="Transition" x="8.72285" y="124.573">
    <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel02/mapaN3_02.tmx"/>
-    <property name="pushed" type="bool" value="true"/>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_01-2.tmx"/>
    </properties>
+   <point/>
+  </object>
+  <object id="52" name="TransitionW" type="Transition" x="7.3599" y="135.204">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_01-2.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="53" name="Palanca" type="ObjInteract" x="11.1761" y="219.162">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02.tmx"/>
+    <property name="pushed" type="bool" value="false"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="54" name="TransitionN" type="Transition" x="102.939" y="11.1761">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_03.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="55" name="TransitionN" type="Transition" x="119.939" y="11.1761">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_03.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="56" name="Black ant" type="Enemigo" x="168.642" y="74.64">
+   <point/>
+  </object>
+  <object id="57" name="Black ant" type="Enemigo" x="135.642" y="106.641">
+   <point/>
+  </object>
+  <object id="58" name="Black ant" type="Enemigo" x="137.642" y="137.641">
+   <point/>
+  </object>
+  <object id="59" name="Black ant" type="Enemigo" x="167.642" y="170.641">
    <point/>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="12">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="13">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="16" height="20">
   <data encoding="csv">
@@ -50,22 +50,10 @@
 </data>
  </layer>
  <objectgroup id="3" name="Obj">
-  <object id="1" name="FlonkS" type="Player" x="119.927" y="300.441">
+  <object id="1" name="FlonkS" type="Player" x="120.666" y="298.964">
    <point/>
   </object>
-  <object id="2" name="FlonkN" type="Player" x="136.594" y="23.7747">
-   <point/>
-  </object>
-  <object id="3" name="Interruptor" x="198.594" y="245.775">
-   <point/>
-  </object>
-  <object id="4" name="Interruptor" x="199.261" y="91.7747">
-   <point/>
-  </object>
-  <object id="5" name="Interruptor" x="55.928" y="89.7747">
-   <point/>
-  </object>
-  <object id="6" name="Interruptor" x="55.928" y="250.441">
+  <object id="2" name="FlonkN" type="Player" x="136.225" y="28.2068">
    <point/>
   </object>
   <object id="7" name="GeneradorDeBombas" x="119.928" y="166.441">
@@ -83,15 +71,22 @@
    </properties>
    <point/>
   </object>
-  <object id="10" name="TransitionN" type="Transition" x="120.667" y="10">
+  <object id="10" name="TransitionN" type="Transition" x="120.667" y="12.9548">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_05.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="11" name="TransitionN" type="Transition" x="137.333" y="10.6667">
+  <object id="11" name="TransitionN" type="Transition" x="135.117" y="13.6215">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_05.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="12" name="Palanca" type="ObjInteract" x="199.446" y="91.9668">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_04.tmx"/>
+    <property name="pushed" type="bool" value="true"/>
    </properties>
    <point/>
   </object>

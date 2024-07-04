@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="26">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="28">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="20" height="20">
   <data encoding="csv">
@@ -90,18 +90,6 @@
   <object id="16" name="FlonkE" type="Player" x="300.625" y="168.313">
    <point/>
   </object>
-  <object id="17" name="TransitionN" type="Transition" x="149.333" y="10">
-   <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_01.tmx"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="25" name="TransitionN" type="Transition" x="168" y="10">
-   <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_01.tmx"/>
-   </properties>
-   <point/>
-  </object>
   <object id="18" name="TransitionW" type="Transition" x="6.66667" y="150.667">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_05.tmx"/>
@@ -135,6 +123,18 @@
   <object id="24" name="TransitionE" type="Transition" x="312" y="169.333">
    <properties>
     <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_07.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="26" name="TransitionN" type="Transition" x="152.26" y="11.6824">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_01-2.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" name="TransitionN" type="Transition" x="168.226" y="8.56708">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_01-2.tmx"/>
    </properties>
    <point/>
   </object>

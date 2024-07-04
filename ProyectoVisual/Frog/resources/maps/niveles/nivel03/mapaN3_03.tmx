@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="22">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="42">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="14" height="15">
   <data encoding="csv">
@@ -55,18 +55,6 @@
    </properties>
    <point/>
   </object>
-  <object id="20" name="Jarron" type="ObjInteract" x="24.5" y="107.223">
-   <properties>
-    <property name="loot" type="int" value="0"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="21" name="Jarron" type="ObjInteract" x="26" y="169.723">
-   <properties>
-    <property name="loot" type="int" value="0"/>
-   </properties>
-   <point/>
-  </object>
   <object id="8" name="Orbe" type="ObjCogible" x="24.5" y="56.723">
    <point/>
   </object>
@@ -85,15 +73,123 @@
   <object id="9" name="Orbe" type="ObjCogible" x="200" y="57.723">
    <point/>
   </object>
-  <object id="17" name="TransitionS" type="Transition" x="119.946" y="234.831">
+  <object id="18" name="TransitionS" type="Transition" x="104" y="234">
    <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02.tmx"/>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02-3.tmx"/>
    </properties>
    <point/>
   </object>
-  <object id="18" name="TransitionS" type="Transition" x="104" y="234">
+  <object id="22" name="Jarron" type="ObjInteract" x="200.554" y="123.823">
    <properties>
-    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02.tmx"/>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="23" name="Jarron" type="ObjInteract" x="201.162" y="139.633">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="24" name="Jarron" type="ObjInteract" x="202.216" y="156.233">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="25" name="Jarron" type="ObjInteract" x="23.7688" y="170.622">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="26" name="Jarron" type="ObjInteract" x="22.7688" y="103.622">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" name="Jarron" type="ObjInteract" x="23.8228" y="120.222">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="28" name="Jarron" type="ObjInteract" x="24.4308" y="136.032">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="29" name="Jarron" type="ObjInteract" x="25.4848" y="152.632">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="30" name="Jarron" type="ObjInteract" x="42.6053" y="169.237">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="31" name="Jarron" type="ObjInteract" x="41.0513" y="104.453">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="32" name="Jarron" type="ObjInteract" x="42.6593" y="118.837">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="33" name="Jarron" type="ObjInteract" x="43.2673" y="134.647">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="34" name="Jarron" type="ObjInteract" x="44.3213" y="151.247">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="35" name="Jarron" type="ObjInteract" x="183.326" y="171.73">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="36" name="Jarron" type="ObjInteract" x="182.326" y="104.73">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="37" name="Jarron" type="ObjInteract" x="183.38" y="121.33">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="38" name="Jarron" type="ObjInteract" x="183.988" y="137.14">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="39" name="Jarron" type="ObjInteract" x="185.042" y="153.74">
+   <properties>
+    <property name="loot" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="41" name="TransitionS" type="Transition" x="120.222" y="232.41">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02-3.tmx"/>
    </properties>
    <point/>
   </object>

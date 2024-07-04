@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="11">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="14" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="24">
  <tileset firstgid="1" source="../../tileset/Tileset completo.tsx"/>
  <layer id="1" name="Walk" width="14" height="14">
   <data encoding="csv">
@@ -47,16 +47,52 @@
   <object id="3" name="GeneradorDeBombas" x="24.2726" y="199.773">
    <point/>
   </object>
-  <object id="6" name="Puerta" x="103.773" y="38.2726">
+  <object id="11" name="TransitionS" type="Transition" x="102.493" y="216.163">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_06.tmx"/>
+   </properties>
    <point/>
   </object>
-  <object id="7" name="Puerta" x="118.773" y="38.2726">
+  <object id="12" name="TransitionS" type="Transition" x="119.939" y="218.616">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel01/mapaN1_06.tmx"/>
+   </properties>
    <point/>
   </object>
-  <object id="9" name="Puerta Explotable" type="Explotable" x="199.535" y="119.667">
+  <object id="13" name="FlonkS" type="Player" x="101.403" y="198.445">
    <point/>
   </object>
-  <object id="10" name="Puerta Explotable" type="Explotable" x="199.263" y="140.111">
+  <object id="14" name="Puerta Explotable" type="Explotable" x="184.09" y="108.591">
+   <point/>
+  </object>
+  <object id="15" name="FlonkE" type="Player" x="201.772" y="143.635">
+   <point/>
+  </object>
+  <object id="17" name="TransitionE" type="Transition" x="216.272" y="127.135">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02-2.tmx"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="18" name="Puerta Explotable" type="Explotable" x="182.362" y="122.393">
+   <point/>
+  </object>
+  <object id="19" name="Puerta Explotable" type="Explotable" x="182.362" y="137.658">
+   <point/>
+  </object>
+  <object id="20" name="Puerta Explotable" type="Explotable" x="181.271" y="155.104">
+   <point/>
+  </object>
+  <object id="21" name="Puerta Explotable" type="Explotable" x="197.899" y="154.831">
+   <point/>
+  </object>
+  <object id="22" name="Puerta Explotable" type="Explotable" x="199.535" y="106.855">
+   <point/>
+  </object>
+  <object id="23" name="TransitionE" type="Transition" x="217.253" y="139.566">
+   <properties>
+    <property name="nextMap" value="resources/maps/niveles/nivel03/mapaN3_02-2.tmx"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>
